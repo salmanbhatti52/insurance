@@ -1,0 +1,109 @@
+// ion-header{
+//   width: 85%;
+//   margin: 20px auto 0px;
+// }
+.title{
+  text-align: center;
+    font-family: Bliss Pro;
+    font-size: 20px;
+    color: #1A0F55;
+    font-weight: bold;
+}
+.head-p{
+  margin: 0px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A0F55;
+  font-family: Bliss Pro;
+}
+.wrapper{
+  width: 85%;
+  margin:5% auto;
+  font-family: Bliss Pro;
+}
+.segment1 {
+  --background:none;
+  .sbtn {
+    --border-width: 0;
+    --margin-bottom: 5px;
+    --margin-top: 5px;
+    border-radius: 12px;
+    --background-checked: #1A0F55;
+    --indicator-color: transparent !important;
+    --color: #85858A;
+    --color-checked: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    --background: #E8E8E7;
+  }
+  .active{
+    --background-checked: #A8B400;
+
+  }
+
+}
+.dropbox{
+  margin: 4% 0%;
+  background: #E8E8E7;
+  border-radius: 12px;
+  padding: 12px 15px;
+
+}
+.innerdropbox{
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 2px;
+  padding-bottom: 2.8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.euro-text{
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+
+}
+.euro-text1{
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 5%;
+}
+.flex-c{
+  display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15%;
+}
+.flex-2{
+  display: flex;
+    align-items: center;
+}
+.flex-2 span{
+  color: #85858A;
+  font-size: 14px;
+  padding-left: 10%;
+}
+.lebel1{
+  color: #1A0F55;
+  font-size: 18px;
+  margin-top: 10%;
+}
+.btn1{
+  --background: #1A0F55;
+  --border-radius: 16px;
+  width: 110px;
+  height: 32px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.btn2{
+  --background: #A8B400;
+  --border-radius: 16px;
+  width: 110px;
+  height: 32px;
+  font-weight: 500;
+  text-transform: capitalize;
+}

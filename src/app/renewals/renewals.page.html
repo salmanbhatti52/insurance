@@ -1,0 +1,120 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 25px;">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Renewals</div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <ion-segment mode="ios" (ionChange)="segmentChanged($event)" #mySegment scrollable="true" class="segment1">
+      <ion-segment-button mode="ios" value="renewals" class="sbtn">
+        <ion-label>Renewals</ion-label>
+      </ion-segment-button>
+      <ion-segment-button checked mode="ios" value="subsequent" class="sbtn" [class.active]="requestsType=='subsequent'"
+        style="margin-left: 5%;">
+        <ion-label>Subsequent</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div style="margin-top:30px;">
+      <label class="con-l1">Policy Type</label>
+      <div class="dropbox">
+        <div class="innerdropbox" (click)="openlist()">
+          <div class="euro-text">{{Insurance}}</div>
+          <div class="imgdiv">
+            <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
+            <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
+          </div>
+        </div>
+        <div *ngIf="show==true">
+          <div *ngFor="let list of listarray" (click)="selectInsurance(list)">
+            <div class="euro-text1">{{list.Insurance}}</div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div *ngIf="requestsType=='renewals'">
+      <div class="flex-c">
+        <div>
+          <img src="assets/images/motorcar.svg">
+          <div class="lebel1">Motor Insurance</div>
+        </div>
+        <div>
+          <div class="flex-2">
+            <img src="assets/images/user1.png"><span>Jhon Doe</span>
+          </div>
+          <div style="margin-top:10%;">
+            <ion-button class="btn1">Renewal</ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-c">
+        <div>
+          <img src="assets/images/motorcar.svg">
+          <div class="lebel1">Motor Insurance</div>
+        </div>
+        <div>
+          <div class="flex-2">
+            <img src="assets/images/user1.png"><span>Jhon Doe</span>
+          </div>
+          <div style="margin-top:10%;">
+            <ion-button class="btn1">Renewal</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!----------------- request type subsequent-------------------->
+    <div *ngIf="requestsType=='subsequent'">
+      <div class="flex-c">
+        <div>
+          <img src="assets/images/motorcar.svg">
+          <div class="lebel1">Motor Insurance</div>
+        </div>
+        <div>
+          <div class="flex-2">
+            <img src="assets/images/user1.png"><span>Jhon Doe</span>
+          </div>
+          <div style="margin-top:10%;">
+            <ion-button class="btn2">subsequent</ion-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-c">
+        <div>
+          <img src="assets/images/motorcar.svg">
+          <div class="lebel1">Motor Insurance</div>
+        </div>
+        <div>
+          <div class="flex-2">
+            <img src="assets/images/user1.png"><span>Jhon Doe</span>
+          </div>
+          <div style="margin-top:10%;">
+            <ion-button class="btn2">subsequent</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

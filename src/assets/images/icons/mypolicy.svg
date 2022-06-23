@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="vuesax_bold_shield-tick" data-name="vuesax/bold/shield-tick" transform="translate(-300 -188)">
+    <path id="Vector" d="M12.292,1.834,7.782.13a2.829,2.829,0,0,0-1.7,0l-4.51,1.7A2.633,2.633,0,0,0,0,4.126v6.7a2.755,2.755,0,0,0,.968,1.952l4.51,3.4a2.539,2.539,0,0,0,2.895,0l4.51-3.4a2.771,2.771,0,0,0,.968-1.952v-6.7A2.617,2.617,0,0,0,12.292,1.834ZM9.782,6.467,6.257,10.024a.61.61,0,0,1-.869,0L4.075,8.683a.628.628,0,0,1,0-.877.615.615,0,0,1,.869,0L5.83,8.7,8.921,5.581a.615.615,0,0,1,.869,0A.631.631,0,0,1,9.782,6.467Z" transform="translate(303.071 189.646)" fill="#fff"/>
+    <path id="Vector-2" data-name="Vector" d="M0,0H20V20H0Z" transform="translate(320 208) rotate(180)" fill="none" opacity="0"/>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 27px;">
+
+        <ion-buttons>
+          <div style="width:100% ;" (click)="goback()">
+            <img src="assets/images/back-arrow.svg" alt="sb-btn">
+          </div>
+        </ion-buttons>
+
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Agent ID Login</div>
+      </ion-col>
+      <ion-col size="2">
+      </ion-col>
+
+
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <div class="container">
+
+    <div style="width: 60%;text-align: center;margin: 70px auto 0px;">
+      <p class="con-p2">Record Doesn't Exist</p>
+    </div>
+
+    <div class="img-div">
+      <img src="assets/images/no-records.svg">
+    </div>
+
+
+
+  </div>
+</ion-content>
+<ion-footer>
+  <div style="text-align: center;">
+    <ion-button class="btn" (click)="signIn()">DISCOVER</ion-button>
+  </div>
+</ion-footer>

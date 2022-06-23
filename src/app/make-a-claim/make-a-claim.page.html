@@ -1,0 +1,152 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 25px;">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Make a Claim</div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+    <ion-segment mode="ios" (ionChange)="segmentChanged($event)" #mySegment scrollable="true" class="segment1">
+      <ion-segment-button mode="ios" value="NewClaim" class="sbtn">
+        <ion-label>New Claim</ion-label>
+      </ion-segment-button>
+      <ion-segment-button checked mode="ios" value="PreviousClaim" class="sbtn">
+        <ion-label>Previous Claim</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div>
+      <p class="con-p1">Enter Customer ID</p>
+    </div>
+
+    <div>
+      <ion-input class="input" type="email" (ionInput)="changeView()" placeholder="{{ph_value}}" (ionFocus)="changeView()"><img class="customer" src="assets/images/cust-logo.svg"></ion-input>
+    </div>
+
+    <div style="margin-top:123px ;" *ngIf="hide===false">
+      <img src="assets/images/record-img.svg" alt="">
+    </div>
+    
+    <!-- -------------------record---------------- -->
+    <div  *ngIf="hide===true">
+      <div class="rec-div" style="margin-top: 32px;">
+        <div style="margin: 39px 0px 40px 25px; width: 100%;">
+          <div >
+            <img class="car-css" src="assets/images/car.svg">
+          </div>
+          <div>
+            <ion-label class="con-l1">Motor Insurance</ion-label>
+          </div>
+          
+        </div>
+        <div style="width: 100%; margin: 16px 24px 16px 0px; text-align: right; " *ngIf="requestsType=='NewClaim'">
+          <ion-button style="margin: 0px; --background:#E8E8E7;"   class="btn" size="small" [disabled]=true >Status</ion-button>
+          <ion-button style="margin: 0px; margin-top: 12px;" class="btn" size="small" >Claim</ion-button>
+          <div class="img-div" style="margin: 18px auto 0px 26%;">
+            <img src="assets/images/john-doe.svg">
+            <ion-label class="con-l2" style="margin-left: 8px;">John Doe</ion-label>
+          </div>
+        </div>
+
+        <!-------- PreviousClaim -->
+        <div style="width: 100%; margin: 16px 24px 16px 0px; text-align: right; " *ngIf="requestsType=='PreviousClaim'">
+          <ion-button style="margin: 0px; --background:#A8B400;"   class="btn" size="small"  >Status</ion-button>
+          <ion-button style="margin: 0px; margin-top: 12px; --background:#E8E8E7;" class="btn" size="small" [disabled]=true>Claim</ion-button>
+          <div class="img-div" style="margin: 18px auto 0px 26%;">
+            <img src="assets/images/john-doe.svg">
+            <ion-label class="con-l2" style="margin-left: 8px;">John Doe</ion-label>
+          </div>
+        </div>
+      </div>
+  
+      <div class="rec-div" style="margin-top: 16.5px;">
+        <div style="margin: 15px 0px 15px 20px; width: 100%;">
+          <div style="text-align:center ;">
+            <img class="car-css" style="height: 55.87px; width: 53.6px; margin-bottom:3px" src="assets/images/safe-hand.svg">
+          </div>
+          <div style="margin-left: 5px;">
+            <ion-label class="con-l1" >Home Insurance & Combined Fire and Burglary</ion-label>
+          </div>
+         
+        </div>
+        <div style="width: 100%; margin: 16px 24px 16px 0px; text-align: right; " *ngIf="requestsType=='NewClaim'" >
+          <ion-button style="margin: 0px; --background:#E8E8E7;"   class="btn" size="small" [disabled]=true >Status</ion-button>
+          <ion-button style="margin: 0px; margin-top: 12px;" class="btn" size="small" >Claim</ion-button>
+          <div class="img-div"  >
+            <img src="assets/images/john-doe.svg">
+            <ion-label class="con-l2" style="margin-left: 8px;">John Doe</ion-label>
+          </div>
+        </div>
+
+        <!-------- PreviousClaim -->
+        <div style="width: 100%; margin: 16px 24px 16px 0px; text-align: right; " *ngIf="requestsType=='PreviousClaim'">
+          <ion-button style="margin: 0px; --background:#A8B400;"   class="btn" size="small"  >Status</ion-button>
+          <ion-button style="margin: 0px; margin-top: 12px; --background:#E8E8E7;" class="btn" size="small" [disabled]=true>Claim</ion-button>
+          <div class="img-div">
+            <img src="assets/images/john-doe.svg">
+            <ion-label class="con-l2" style="margin-left: 8px;">John Doe</ion-label>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+    <!-- -------------------record-----------------------
+    <div class="rec-div" style="margin-top: 32px;"  *ngIf="hide1===true">
+      <div style="margin: 39px 0px 40px 25px; width: 100%;">
+        <div >
+          <img class="car-css" src="assets/images/car.svg">
+        </div>
+        <div>
+          <ion-label class="con-l1">Motor Insurance</ion-label>
+        </div>
+        
+      </div>
+      <div style="width: 100%; margin: 16px 24px 16px 0px; text-align: right; " >
+        <ion-button style="margin: 0px; --background:#A8B400;"   class="btn" size="small"  >Status</ion-button>
+        <ion-button style="margin: 0px; margin-top: 12px; --background:#E8E8E7;" class="btn" size="small" [disabled]=true>Claim</ion-button>
+        <div class="img-div" style="margin: 18px auto 0px 28%;">
+          <img src="assets/images/john-doe.svg">
+          <ion-label class="con-l2" style="margin-left: 8px;">John Doe</ion-label>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-div" style="margin-top: 16.5px;"  *ngIf="hide1===true">
+      <div style="margin: 15px 0px 15px 20px; width: 100%;">
+        <div style="text-align:center ;">
+          <img class="car-css" style="height: 55.87px; width: 53.6px; margin-bottom:3px" src="assets/images/safe-hand.svg">
+        </div>
+        <div style="margin-left: 5px;">
+          <ion-label class="con-l1" >Home Insurance & Combined Fire and Burglary</ion-label>
+        </div>
+       
+      </div>
+      <div style="width: 100%; margin: 16px 24px 16px 0px; text-align: right; " >
+        <ion-button style="margin: 0px; --background:#A8B400;"   class="btn" size="small"  >Status</ion-button>
+        <ion-button style="margin: 0px; margin-top: 12px; --background:#E8E8E7;" class="btn" size="small" [disabled]=true >Claim</ion-button>
+        <div class="img-div">
+          <img src="assets/images/john-doe.svg">
+          <ion-label class="con-l2" style="margin-left: 8px;">John Doe</ion-label>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</ion-content>

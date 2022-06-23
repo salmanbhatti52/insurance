@@ -1,0 +1,140 @@
+.container {
+    width: 85%;
+    margin: 10% auto 10%;
+}
+p.cont-p1 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #A8B400;
+    margin: 20px auto;
+}
+.input{
+    height: 48px;
+    // width: 85%;
+    margin:15px auto 0px;
+    border-radius: 12px;
+    background: #E8E8E7;
+    color: black;
+    --placeholder-color:#5D5D5D;
+    // --placeholder-font-style:
+    --placeholder-font-weight:500;
+    --placeholder-font-size:16px;
+    --padding-end: 15px;
+    --padding-start: 2px;
+}
+ion-input {
+  --ion-font-family: Bliss Pro;
+}
+.dropbox{
+    margin: 4% 0%;
+    background: #E8E8E7;
+    border-radius: 12px;
+    padding: 14px 16px;
+
+  }
+  .innerdropbox{
+    // padding-left: 3px;
+    padding-right: 3px;
+    // padding-top: 2px;
+    // padding-bottom: 2.8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  .euro-text{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+
+  }
+  .euro-text1{
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 5%;
+    // padding-left: 31px;
+  }
+  .ion-txt{
+    font-family: Bliss Pro;
+    font-size: 14px;
+    font-weight: 400;
+    color:black;
+}
+.item-picker{
+    // width: 85%;
+    // height: 48px;
+    border-color: white;
+    border-radius: 12px;
+    background: #E8E8E7;
+    // box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 16px 0px;
+    
+}
+
+.item-native {
+  padding-left: unset;
+  padding-right: unset;
+  padding-inline-start: 0px !important;
+  padding-inline-end: var(--padding-end);
+}
+img.plchldr-css {
+  margin: 10px 10px 10px 15px;
+}
+.email{
+    margin: 15px 0px 15px 20px;
+}
+//najam password input css///
+.fields{
+    // width: 85%;
+    margin: 5% auto 0%;
+  }
+  .inputdiv{
+    display: flex;
+    border-radius: 12px;
+    align-items: center;
+    background: #E8E8E7;
+    height: 48px;
+  }
+  .pinput
+  {
+    padding-left: 7px;
+    width: 100%;
+    padding-right: 13px; 
+  }
+  .ph-css{
+    --placeholder-color: #656565;
+    --placeholder-font-weight: 400;
+    --placeholder-font-size: 14px;
+    color: black;
+    --padding-start:5px;
+  }
+// ---------------------------------------------------
+  .btn {
+    width: 85%;
+    height: 48px;
+    // margin-top: 20px;
+    --border-radius: 12px;
+    font-size: 20px;
+    font-family: Bliss Pro;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+p.last-para {
+  width: 85%;
+  margin: 10px auto 0px;
+  text-align: center;
+  line-height: normal;
+  padding-bottom: 20px;
+}
+span.span-start {
+    color: #1A0F55;
+    font-size: 16px;
+    font-weight: 400;
+}
+span.span-end {
+    font-size: 16px;
+    font-weight: 500;
+    color: #A8B400;
+}

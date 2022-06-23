@@ -1,0 +1,72 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 27px;">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Dasboard</div>
+      </ion-col>
+      <ion-col class="titleclass" size="2">
+        <img class="pro-img" src="assets/images/profile.svg" alt="profile">
+      </ion-col>
+
+
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-content>
+    <div class="wrapper">
+      <ion-row>
+        <ion-col size="8" style="padding-top: 4%;">
+          <div class="mtext1">Policy Count Per Product</div>
+        </ion-col>
+        <ion-col size="4">
+          <div class="mtext2">
+            <div class="ltext">Monthly <span style="padding-left:5% ;">
+                <img src="assets/images/down-arrow.svg">
+              </span>
+            </div>
+          </div>
+
+        </ion-col>
+      </ion-row>
+
+      <!-- <div class="mainhead">
+        <div class="mtext1">Policy Count Per Product</div>
+        <div class="mtext2">
+          <div class="ltext">Monthly <span>
+              <img src="assets/images/down-arrow.svg">
+            </span>
+          </div>
+        </div>
+      </div> -->
+      <div class="main">
+        <div style="display:flex;align-items: center;
+          margin-bottom: 10%;padding-left:14%;">
+          <div class="text">Total count </div>
+          <div class="text1">260</div>
+        </div>
+
+        <div class="chart-container">
+          <canvas #barChart style="width:100%;max-width:800px"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </ion-content>

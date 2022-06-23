@@ -1,0 +1,56 @@
+.title{
+  text-align: center;
+    font-family: Bliss Pro;
+    font-size: 20px;
+    color: #1A0F55;
+    font-weight: bold;
+}
+
+p.para {
+  margin: 0px;
+  padding-bottom: 2px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A0F55;
+}
+
+.btn{
+  width: 80%;
+  height: 48px;
+  /* margin-top: 20px; */
+  --border-radius: 12px;
+  font-size: 20px;
+  font-family: Bliss Pro;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  --background: #1A0F55;
+}
+.container {
+  width: 85%;
+  margin: 20px auto 0px;
+}
+p.con-p1 {
+  margin: 0px;
+  margin-top: 32px;
+  margin-left: 7px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1A0F55;
+}
+
+
+p.con-p2 {
+  margin: 0px;
+  font-size: 33px;
+  font-weight: 700;
+  color: #1A0F55;
+  /* width: 60%; */
+}
+.img-div {
+  text-align: center;
+  margin: 60px auto 0px 10px;
+}
+ion-footer {
+  width: 85%;
+  margin: 20px auto 30px;
+}

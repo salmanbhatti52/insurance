@@ -1,0 +1,93 @@
+.title{
+    text-align: center;
+    font-family: Bliss Pro;
+    font-size: 20px;
+    color: #1A0F55;
+    font-weight: bold;
+}
+.container{
+    width: 85%;
+    margin: 10% auto 25%;
+}
+.segment1 {
+    padding: 5px 3px;
+    border-radius: 12px;
+    margin-top: 10px;
+    --background: #E8E8E7;
+    width:100%;
+    .sbtn {
+      --border-width: 0;
+      --margin-bottom: 5px;
+      --margin-top: 5px;
+      border-radius: 12px;
+      --background-checked: #1A0F55;
+      --indicator-color: transparent !important;
+      --color: #85858A;
+      --color-checked: #fff;
+      font-size: 16px;
+      font-weight: 400;
+    } 
+}
+.con-p1{
+    font-size: 16px;
+    font-weight: 500;
+    color: #1A0F55;
+    margin: 20px 0px 0px 0px;
+}
+.input{
+    height: 48px;
+    width: 100%;
+    margin: 20px auto 0px;
+    border-radius: 12px;
+    background: #E8E8E7;
+    color: black;
+    --placeholder-color: #5D5D5D;
+    --placeholder-font-weight: 400;
+    --placeholder-font-size: 14px;
+    --padding-start: 15px;
+    --padding-end: 20px;   
+}
+img.customer {
+    margin: 13px 0px 12px 18px;
+}
+ion-input {
+    --ion-font-family: Bliss Pro;
+}
+.car-css{
+    height: 44.59px;
+    width: 127.08px;
+    margin-bottom: 12px;
+}
+.con-l1{
+    font-size: 18px;
+    font-weight: 400;
+    color: #1A0F55;
+}
+.btn{
+    width: 80px;
+    height: 32px;
+    --background: #1A0F55;
+    --border-radius: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    --box-shadow: none;
+}
+.img-div{
+    display: flex;
+    align-items: center;
+    margin: 18px auto 0px 27%;
+    text-align: right;
+}
+.con-l2{
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 8px;
+    color: #85858A;
+}
+.rec-div{
+    display: flex;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgb(176 181 0 / 10%);
+}

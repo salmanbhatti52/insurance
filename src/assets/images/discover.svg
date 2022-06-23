@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21.5" height="21.5" viewBox="0 0 21.5 21.5">
+  <g id="Group_428" data-name="Group 428" transform="translate(-41 -68)">
+    <g id="vuesax_bold_discover" data-name="vuesax/bold/discover" transform="translate(-448 -437)">
+      <g id="discover" transform="translate(492 508)">
+        <path id="Vector" d="M11.962.641A2.162,2.162,0,0,0,9.888.067L3.711,1.612a2.875,2.875,0,0,0-2.1,2.1L.067,9.895a2.179,2.179,0,0,0,2.105,2.711,1.955,1.955,0,0,0,.536-.069l6.184-1.544a2.875,2.875,0,0,0,2.1-2.1l1.544-6.184A2.146,2.146,0,0,0,11.962.641ZM6.3,8.747A2.446,2.446,0,1,1,8.747,6.3,2.448,2.448,0,0,1,6.3,8.747Z" transform="translate(1.263 1.263)" fill="#fff"/>
+        <path id="Vector-2" data-name="Vector" d="M0,0H15.129V15.129H0Z" transform="translate(15.129 15.129) rotate(180)" fill="none" opacity="0"/>
+      </g>
+    </g>
+    <path id="Vector-3" data-name="Vector" d="M10,20.75A10.738,10.738,0,0,1,2.407,2.407,10.738,10.738,0,1,1,17.593,17.593,10.674,10.674,0,0,1,10,20.75Zm0-20A9.25,9.25,0,1,0,19.25,10,9.26,9.26,0,0,0,10,.75Z" transform="translate(41.75 68.75)" fill="#fff"/>
+  </g>
+</svg>

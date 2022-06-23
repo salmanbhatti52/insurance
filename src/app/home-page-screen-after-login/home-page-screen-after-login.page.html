@@ -1,0 +1,201 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="8" style="padding-left: 27px;">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+      <ion-col class="titleclass" size="2">
+        <img (click)="updateProfile()" class="pro-img" src="assets/images/profile.svg" alt="profile">
+      </ion-col>
+
+
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+
+  <div class="container">
+
+    <p class="name-para">Hi John!</p>
+    <p class="wc-para">Welcome</p>
+
+
+
+
+    <div class="slide-div">
+      <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide">
+
+        <ion-slide>
+          <div class="mid-div" style="width: 99%;">
+            <div class="mid-sub-div">
+              <div>
+                <p class="p1">Get Immediate</p>
+                <p class="p2">Claim assistance</p>
+                <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A0F55;"></ion-progress-bar>
+                <p class="p3">We have got you covered</p>
+                <ion-button class="btn-sm">Learn more</ion-button>
+              </div>
+              <div>
+                <div style="width:100% ;">
+                  <img class="ins-nce" src="assets/images/insurance.svg">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="mid-div" style="width: 99%;">
+            <div class="mid-sub-div">
+              <div>
+                <p class="p1">Get Immediate</p>
+                <p class="p2">Claim assistance</p>
+                <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A0F55;"></ion-progress-bar>
+                <p class="p3">We have got you covered</p>
+                <ion-button class="btn-sm">Learn more</ion-button>
+              </div>
+              <div>
+                <div style="width:100% ;">
+                  <img class="ins-nce" src="assets/images/insurance.svg">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="mid-div" style="width: 99%;">
+            <div class="mid-sub-div">
+              <div>
+                <p class="p1">Get Immediate</p>
+                <p class="p2">Claim assistance</p>
+                <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A0F55;"></ion-progress-bar>
+                <p class="p3">We have got you covered</p>
+                <ion-button class="btn-sm">Learn more</ion-button>
+              </div>
+              <div>
+                <div style="width:100% ;">
+                  <img class="ins-nce" src="assets/images/insurance.svg">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+
+      </ion-slides>
+    </div>
+
+    <div style="display:flex; align-items: center;">
+      <p class="mid-p1">PRODUCTS</p>
+      <p class="mid-p2">See more <img class="arrow" src="assets/images/down-arrow.svg"> </p>
+    </div>
+
+    <ion-grid style="padding:0px; width: 100%;">
+      <ion-row style="margin-top:16px ;">
+        <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;">
+          <div class="gc-div">
+            <div class="gimg-div">
+              <img src="assets/images/car.svg" alt="">
+            </div>
+            <p class="gp-div">Motor Insurance</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="4" style="padding:6px; width: 100%;">
+          <div class="gc-div">
+            <div class="gimg-div" style="padding:18px 26px 17px 27px ;">
+              <img src="assets/images/plane.svg" alt="">
+            </div>
+            <p class="gp-div">Travel Insurance</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="4" style="padding:6px 0px 6px 6px; width: 100%;">
+          <div class="gc-div">
+            <div class="gimg-div" style="padding:15px 24px 14px 25px ;">
+              <img src="assets/images/safe-hand.svg" alt="">
+            </div>
+            <p class="gp-div">Home Insurance</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin-top:16px ;">
+        <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;">
+          <div class="gc-div">
+            <div class="gimg-div" style="padding: 28px 22px 27px 23px ;">
+              <img src="assets/images/mortarboard.svg" alt="">
+            </div>
+            <p class="gp-div">School Fees Guarantee</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="4" style="padding:6px; width: 100%;">
+          <div class="gc-div">
+            <div class="gimg-div" style="padding:16px 31px ;">
+              <img src="assets/images/sec-doc.svg" alt="">
+            </div>
+            <p class="gp-div">Verify Policy</p>
+          </div>
+        </ion-col>
+
+        <ion-col size="4" style="padding:6px 0px 6px 6px; width: 100%;">
+          <div class="gc-div">
+            <div class="gimg-div" style="padding:25px 23px ;">
+              <img src="assets/images/helping-staff.svg" alt="">
+            </div>
+            <p class="gp-div">Get in Touch</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="lst-div">
+      <p class="lst-para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+        invidunt ut labore et dolore</p>
+      <div class="limg-div">
+        <img src="assets/images/damage-car.svg" alt="">
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-tabs style="top:10px !important;">
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <hr>
+      <ion-tab-button (click)="tab1Click()">
+        <img src="assets/images/discover.svg" class="img">
+        <ion-label class="font">Discover</ion-label>
+      </ion-tab-button>
+
+
+      <ion-tab-button (click)="tab2Click()">
+        <img src="assets/images/home.svg" class="activeimg">
+        <ion-label class="fontactive">Home</ion-label>
+      </ion-tab-button>
+
+
+      <ion-tab-button (click)="tab3Click()">
+        <img src="assets/images/contactus.svg" class="img">
+        <ion-label class="font">Contact Us</ion-label>
+
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-footer>

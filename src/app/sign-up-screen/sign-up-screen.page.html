@@ -1,0 +1,80 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Sign</ion-title>
+  </ion-toolbar>
+  
+</ion-header> -->
+
+<ion-content>
+  <div class="container">
+    
+    <div style="text-align:center">
+      <img src="assets/images/logo.svg" style="text-align:center ;" alt="">
+    </div>
+    
+    <div class="title-para" style="text-align: center;">
+      <p class="cont-p1">Sign Up</p>
+    </div>
+    <ion-input type="text" class="input" placeholder="Mr/Mrs"  ><img class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt=""></ion-input>
+    <ion-input type="text" class="input" placeholder="First Name"  ><img class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt=""></ion-input>
+    <ion-input type="text" class="input" placeholder="Last Name" ><img class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt=""></ion-input>
+    <div class="item-picker" style="margin: 15px auto 0px; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPicker = !showPicker">
+      <div style="display: flex; align-items:center">
+        <img  class="cal-css" src="assets/images/icons/calendar.svg" alt="">
+        <ion-text class="ion-txt" style="margin-left: 14px" >{{ formattedString }}</ion-text>
+      </div>
+      
+    </div>
+    <ion-datetime  class="item-picker" style="margin:10px auto 0px; color: black;" presentation="date" *ngIf="showPicker" #datetime [value]="dateValue" size="cover" (ionChange)="dateChanged(datetime.value)" showDefaultButtons="true"  (ionCancel)="showPicker=false"></ion-datetime>
+    
+    <ion-input type="tel" class="input" placeholder="+234 569 789" ><img class="plchldr-css" src="assets/images/icons/phone.svg" alt=""></ion-input>
+    <ion-input type="email" class="input" placeholder="Jhondeo@example.com" ><img class="plchldr-css" src="assets/images/icons/email.svg" alt=""></ion-input>
+    
+    <div class="fields"> 
+      <div class="inputdiv">
+        <div >
+          <img style="margin:15px 10px 13px 15px;" src="assets/images/pw-lock.svg">
+        </div>
+        <div class="pinput">
+          <ion-input  class="ph-css" placeholder="Password" type="{{showPass ? 'text':'password' }}" ></ion-input>
+          <!-- formControlName="password" [(ngModel)]="userPassword" -->
+        </div>
+        <div class="icondiv" style="margin-top: 4px;">
+          <!-- <img src="assets/imgs/icons/eye.svg"> -->
+          <ion-icon style="color:black ; margin-right: 15px;" name="eye" *ngIf="!showPass" (click)="togglePass()"></ion-icon>
+          <ion-icon style="color:black ; margin-right: 15px;" name="eye-off" *ngIf="showPass" (click)="togglePass()"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="fields"> 
+      <div class="inputdiv">
+        <div >
+          <img style="margin:15px 10px 13px 15px;" src="assets/images/pw-lock.svg">
+        </div>
+        <div class="pinput">
+          <ion-input  class="ph-css" placeholder="Confirm Password" type="{{cshowPass ? 'text':'password' }}" ></ion-input>
+          <!-- formControlName="password" [(ngModel)]="userPassword" -->
+        </div>
+        <div class="icondiv" style="margin-top: 4px;">
+          <!-- <img src="assets/imgs/icons/eye.svg"> -->
+          <ion-icon style="color:black ; margin-right: 15px;" name="eye" *ngIf="!cshowPass" (click)="confirmtogglePass()"></ion-icon>
+          <ion-icon style="color:black ; margin-right: 15px;" name="eye-off" *ngIf="cshowPass" (click)="confirmtogglePass()"></ion-icon>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+</ion-content>
+
+<ion-footer  >
+  <div style="width: 85%; margin: 20px auto 0px;">
+    <div style="text-align:center ; padding-bottom: 5px;   ">
+      <ion-button class="btn"  (click)="signUp()" style="--background: #A8B400;">Register</ion-button>
+      <!-- type="submit" [disabled]="RegisterForm.invalid" -->
+    </div>
+    <p class="last-para"><span class="span-start">Already have an account? </span> <span (click)="signInPage()" class="span-end">Sign In</span> </p>
+  </div>
+  
+</ion-footer>

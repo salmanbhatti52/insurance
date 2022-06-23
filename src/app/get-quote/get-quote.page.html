@@ -1,0 +1,44 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 25px;">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Get Quote</div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <p class="con-p1">Enter Customer Email ID</p>
+
+    <ion-input class="input" type="email" placeholder="Example@Gmail.com"></ion-input>
+
+    <div style="width: 60%;text-align: center;margin: 70px auto 0px;">
+      <p class="con-p2">Record Doesn't Exist</p>
+    </div>
+
+    <div class="img-div">
+      <img src="assets/images/file-not-found.svg">
+    </div>
+
+
+
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="btn-footer" style="text-align: center;">
+    <ion-button class="btn" (click)="PopupCust()">Get Quote</ion-button>
+  </div>
+</ion-footer>

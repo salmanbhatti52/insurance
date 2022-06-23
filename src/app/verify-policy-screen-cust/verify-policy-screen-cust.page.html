@@ -1,0 +1,73 @@
+<ion-header>
+  <div style="display: flex;align-items: center;width: 85%;
+  margin: 20px auto 10px;">
+    <div style="width: 55%;">
+      <img  style="padding-top: 3px;" src="assets/images/back-arrow.svg" alt="">
+    </div>
+    <div style="width: 100%;">
+      <p class="head-p">Verify Policy</p>
+    </div>
+  </div>
+
+</ion-header>
+
+<ion-content>
+  <div class="container">
+
+    <div class="img-div">
+      <img src="assets/images/logo.svg" alt="">
+    </div>
+
+    <div style="width: 75%;
+    /* text-align: center; */
+    /* margin: 60px auto 0px; */
+    text-align: center;
+    margin: 60px auto 0px;">
+      <p class="con-p1">Find your Cornerstone Insurance policy in seconds!</p>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <label class="con-l1">Policy Type</label>
+      <div class="dropbox">
+        <div class="innerdropbox" (click)="openlist()">
+          <div class="euro-text">{{Insurance}}</div>
+          <div class="imgdiv">
+            <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
+            <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
+          </div>
+        </div>
+        <div *ngIf="show==true">
+          <div *ngFor="let list of listarray" (click)="selectInsurance(list)">
+            <div class="euro-text1">{{list.Insurance}}</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 25px;">
+      <label class="con-l2">Policy Number</label>
+      <div>
+        <ion-input class="input" placeholder="13254PA"></ion-input>
+      </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <ion-label class="con-l3">OR</ion-label>
+      <label class="con-l4">Vehicle Registration Number</label>
+      <div>
+        <ion-input class="input" placeholder="13254PA"></ion-input>
+      </div>
+    </div>
+
+    <div style="height: 30px ;"></div>
+
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <div style="text-align:center ; margin: 0px auto 30px;">
+    <ion-button class="btn" (click)="PopupCust()">Submit</ion-button>
+  </div>
+</ion-footer>

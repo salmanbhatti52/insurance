@@ -1,0 +1,259 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 25px;">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">My Policies</div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <ion-segment mode="ios" (ionChange)="segmentChanged($event)" #mySegment scrollable="true" class="segment1">
+      <ion-segment-button mode="ios" value="PurchasePolicies" class="sbtn">
+        <ion-label>Purchase Policies</ion-label>
+      </ion-segment-button>
+      <ion-segment-button checked mode="ios" value="InvestmentPlan" class="sbtn">
+        <ion-label>Investment Plan</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <!------------- Purchase Policies -------------------->
+    <div *ngIf="requestsType=='PurchasePolicies'">
+      <div style="display:flex;justify-content: space-around;margin-top: 5%;">
+        <div class="htext1" (click)="checktype('thirdparty')">
+          Third Party
+          <hr class="r1" *ngIf="value=='thirdparty'">
+        </div>
+        <div class="htext1" (click)="checktype('ComprehensiveMotorInsurance')">
+          Comprehensive Motor Insurance
+          <hr class="r2" *ngIf="value=='ComprehensiveMotorInsurance'">
+        </div>
+      </div>
+
+      <!-- third party discription -->
+      <div *ngIf="value=='thirdparty'">
+      </div>
+      <div *ngIf="value=='ComprehensiveMotorInsurance'" style="border: 1px solid #A8B400;
+      border-radius: 12px;">
+        <div class="main">
+          <div class="cflex">
+            <div class="text"><b>AUTO CLASS</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive</span>
+            </div>
+            <div class="text1">1.75%<br><span class="cspan">Of vehicle value</span></div>
+          </div>
+          <div *ngIf="show==false">
+            <div class="cflex1">
+              <div class="text3">3RD PARTY PROPERTY DAMAGE</div>
+              <div class="text4">Up To N1 Million</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">3RD PARTY BODILY INJURY</div>
+              <div class="text4">Up To N60 Million</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">THIFT</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">FIRE</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">ACCIDENTAL DAMAGE</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">AUTHORIZED REPAIR LIMIT</div>
+              <div class="text4">2.5% Of The Car Value</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">2.5% Of The Car Value</div>
+              <div class="text4">N 12,500</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">DEPRECIATION RATE</div>
+              <div class="text4">Graduated</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">MINIMUM SUM INSURED</div>
+              <div class="text4">₦2,000,000</div>
+            </div>
+
+            <div class="headtext">ADDITIONAL COVERS AT NO EXTRA COST</div>
+
+            <div class="cflex1">
+              <div class="text3">REFUND OF MEDICAL EXPENSES</div>
+              <div class="text4">Up To ₦10,000</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">LOSS OF PERSONAL EFFECT</div>
+              <div class="text4">UP TO N 10,000</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">TRACKING INSTALLATION</div>
+              <div class="text4">Free For Vehicles Of N5,000,000 And Above</div>
+            </div>
+
+            <div class="headtext">TOP UP COVERS AVAILABLE AT EXTRA COST</div>
+
+            <div class="cflex1">
+              <div class="text3">EXCESS BUY BACK</div>
+              <div class="text4">0.5% Of Sum Insured</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">FLOOD EXTENSION</div>
+              <div class="text4">0.25% Of Sum Insured</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">TRACKING INSTALLATION</div>
+              <div class="text4">Free For Vehicles Of N5,000,000 And Above</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF N 2,000,000</div>
+              <div class="imgdiv">
+                <img src="assets/images/cross.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">INCREASE IN PASSENGER LIABILITY</div>
+              <div class="imgdiv">
+                <img src="assets/images/cross.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR PAYMENTS MADE OVER 3
+                INSTALLMENTS)</div>
+              <div class="text4">Up To 3 Consecutive And Equal Payments</div>
+            </div>
+
+            <div class="btndiv">
+              <ion-button class="btn">Get Quote</ion-button>
+            </div>
+          </div>
+
+
+          <div style="text-align: center;margin-top:8%;">
+            <img src="assets/images/uparrow.svg">
+            <!-- <img src="assets/images/downarrow.svg" *ngIf="show==false" (click)="showdiv()"> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!------------- Investment Plan -------------------->
+    <div *ngIf="requestsType=='InvestmentPlan'">
+      <ion-row style="margin-top:5%;">
+        <ion-col size="6">
+          <div class="box" [class.active]="box=='checked'" (click)="changed()">
+            <img src="assets/images/filltick.svg" class="tickimg" *ngIf="box=='checked'">
+            <div class="imgdiv">
+              <img src="assets/images/investment.svg" height="70">
+              <div class="itext">All</div>
+            </div>
+          </div>
+
+
+        </ion-col>
+
+        <ion-col size="6">
+          <div class="box">
+            <!-- <img src="assets/images/filltick.svg" class="tickimg"> -->
+            <div class="imgdiv">
+              <img src="assets/images/saveplan.svg" height="70">
+              <div class="itext">iSave Plan</div>
+            </div>
+          </div>
+
+
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row style="margin-top:5%;">
+        <ion-col size="6">
+          <div class="box">
+            <!-- <img src="assets/images/filltick.svg" class="tickimg"> -->
+            <div class="imgdiv">
+              <img src="assets/images/family2.svg" height="70">
+              <div class="itext">Maximum Investment Plan</div>
+            </div>
+          </div>
+
+
+        </ion-col>
+
+        <ion-col size="6">
+          <div class="box">
+            <!-- <img src="assets/images/filltick.svg" class="tickimg"> -->
+            <div class="imgdiv">
+              <img src="assets/images/cornerstone.svg" height="70">
+              <div class="itext">Cornerstone Universal Plan</div>
+            </div>
+          </div>
+
+
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row style="margin-top:5%;">
+        <ion-col size="3">
+        </ion-col>
+
+        <ion-col size="6">
+          <div class="box">
+            <!-- <img src="assets/images/filltick.svg" class="tickimg"> -->
+            <div class="imgdiv">
+              <img src="assets/images/fullfamily.svg" height="70">
+              <div class="itext">Children Education Plan</div>
+            </div>
+          </div>
+
+
+        </ion-col>
+
+        <ion-col size="3">
+        </ion-col>
+
+      </ion-row>
+      <div style="text-align:center;margin-top: 8%;">
+        <ion-button class="btn1">Account Statement</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

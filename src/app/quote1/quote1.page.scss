@@ -1,0 +1,80 @@
+.wrapper{
+  width: 85%;
+  margin: 5% auto;
+}
+.title{
+  text-align: center;
+    font-family: Bliss Pro;
+    font-size: 20px;
+    color: #1A0F55;
+    font-weight: bold;
+}
+.htext{
+  color: #A8B400;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+.flex-cls{
+  display: flex;
+  margin-top: 5%;
+}
+.label{
+  color: #000000;
+  font-size: 16px;
+}
+.dropbox{
+  margin: 4% 0%;
+  background: #E8E8E7;
+  border-radius: 12px;
+  padding: 12px 15px;
+
+}
+.innerdropbox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.euro-text{
+  color: #5D5D5D;
+  font-size: 14px;
+  font-weight: 400;
+
+}
+.euro-text1{
+  color: #5D5D5D;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 5%;
+}
+ion-input {
+  --ion-font-family: Bliss Pro;
+}
+.inputfield{
+  margin: 4% 0%;
+  background: #E8E8E7;
+  border-radius: 12px;
+}
+.in-text{
+  --color:#5D5D5D;
+  --placeholder-color:#5D5D5D;
+  --padding-start: 7%;
+    --padding-top: 5%;
+    --padding-bottom: 5%;
+    font-size: 14px;
+  font-weight: 400;
+  --placeholder-font-weight:400;
+  --placeholder-opacity: 100%;
+}
+
+.btn{
+  --background: #1A0F55;
+  --border-radius:12px ;
+  width: 100%;
+  height: 48px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: capitalize;
+}
