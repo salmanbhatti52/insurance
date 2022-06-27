@@ -28,5 +28,7 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
   tab3Click(){
     this.navCtrl.navigateRoot('contactus');
   }
-
+  updateProfile(){
+    this.router.navigate(['/profile-update']);
+  }
 }

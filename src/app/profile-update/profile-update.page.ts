@@ -1,29 +1,63 @@
 import { Component, OnInit } from '@angular/core';
-import { IonDatetime } from '@ionic/angular';
+import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { Router } from '@angular/router';
+import { InsuranceAppService } from '../services/insurance-app.service';
 @Component({
   selector: 'app-profile-update',
   templateUrl: './profile-update.page.html',
   styleUrls: ['./profile-update.page.scss'],
 })
 export class ProfileUpdatePage implements OnInit {
+  RegisterForm: FormGroup;
+  uTitle= '';
+  fName = '';
+  lName = '';
+  mobNumber = '';
+  userEmail = '';
+  userPassword = '';
+  cuserPassword = '';
   show = false;
-  Title = 'Select Title'
-  listarray = [{ Title: 'Mr' }, { Title: 'Mrs.' }]
-  showPicker = false;
-  dateValue = format(new Date(), 'yyyy-MM-dd');
-  formattedString = '';
   showPass = false;
   cshowPass = false;
-  constructor(public router:Router) {this.setToday(); }
+  usertitle = '';
+  firstName = '';
+  lastName =  '';
+  userNumber =  '';
+  useremail = '' ; 
+  userpwd =  '' ;
+  cuserpwd =  '';
+  i=1;
+  constructor(public router:Router, public api:InsuranceAppService) {}
 
   ngOnInit() {
-  }
+    this.RegisterForm = new FormGroup({
+      title: new FormControl('', [Validators.required]),
+      fname: new FormControl('', Validators.required),
+      lname: new FormControl('',Validators.required),
+      number: new FormControl('',Validators.required),
+      email: new FormControl('', [Validators.required, Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
+      password: new FormControl('',[Validators.required]),
+      cpassword: new FormControl('',[Validators.required])
+    });
+    this.RegisterForm.reset();
 
-
-  setToday(){
-    this.formattedString = format(parseISO(format(new Date(), 'yyyy-MM-dd') ), ' MMM d, yyyy');
+    this.uTitle = localStorage.getItem('title');
+    this.fName = localStorage.getItem('fname');
+    this.lName =  localStorage.getItem('lname');
+    this.mobNumber =  localStorage.getItem('number');
+    this.userEmail = localStorage.getItem('email');
+    this.userPassword =  localStorage.getItem('password');
+    this.cuserPassword = localStorage.getItem('password');
+  
+    console.log(this.usertitle);
+    console.log(this.firstName);
+    console.log(this.lastName);
+    console.log(this.userNumber);
+    console.log(this.useremail);
+    console.log(this.userpwd);
+    console.log(this.cuserpwd);
+    
   }
 
   togglePass() {
@@ -35,12 +69,10 @@ export class ProfileUpdatePage implements OnInit {
 
     this.cshowPass = !this.cshowPass;
   }
-  dateChanged(value){
-    this.dateValue=value;
-    this.formattedString = format(parseISO(value), ' MMM d, yyyy')
-    this.showPicker = false;
-  }
 
+  goBack(){
+    this.router.navigate(['/home-page-screen-after-login']);
+  }
   openlist() {
     if (this.show == true) {
       this.show = false
@@ -50,12 +82,31 @@ export class ProfileUpdatePage implements OnInit {
     }
   }
 
-  selectTitle(list) {
-    this.Title = list.Title
-    this.show = false
-  }
-  profile(){
-    this.router.navigate(['/home-page-screen-after-login'])
+  updateProfile(){
+    let myData = "myData={\r\n    \"user_id\":\""+localStorage.getItem('userid') +"\",\r\n    \"title\":\""+this.uTitle+"\",\r\n    \"first_name\": \""+this.fName+"\",\r\n    \"last_name\":\""+this.lName+"\",\r\n    \"phone\":\""+this.mobNumber+"\",\r\n    \"email\":\""+this.userEmail+"\",\r\n    \"password\":\""+this.userPassword+"\",\r\n    \"conf_password\":\""+this.cuserPassword+"\",\r\n    \"verify_token\":\""+localStorage.getItem('token')+"\",\r\n    \"method\": \"update_user\" \r\n}"
+    
+    if(this.userPassword===this.cuserPassword){
+      console.log(this.userPassword);
+      console.log(this.cuserPassword);
+      this.api.insertData(myData).subscribe((res:any)=>{
+        console.log("res==",res);
+        if(res.message==='Updated done'){
+          console.log(res.message);
+          this.api.presenttoast("Profile updated successfully!");
+          this.router.navigate(['/home-page-screen-after-login']);
+        }else{
+          this.api.presenttoast(res.message);
+        }
+        
+      },(err)=>{
+        console.log('err==',err);
+        this.api.presenttoast(err);
+        
+      })
+      
+    }else{
+      this.api.presenttoast('"Password" and "Confirm_password" not matched!')
+    }
   }
   // signInPage(){
   //   this.router.navigate(['/sign-in-screen']);

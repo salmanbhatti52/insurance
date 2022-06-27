@@ -1,6 +1,6 @@
 .container {
     width: 85%;
-    margin: 10% auto 10%;
+    margin: 10% auto 5%;
 }
 p.cont-p1 {
     font-size: 30px;
@@ -137,4 +137,21 @@ span.span-end {
     font-size: 16px;
     font-weight: 500;
     color: #A8B400;
+}
+.validation{
+  width: 100%;
+  margin: 5px auto 5px;
+  display: flex;
+  align-items: center;
+}
+.alertIcon{
+  
+  width: 13px;
+}
+.error-msg{
+  margin-left: 4px;
+  font-size: 13px;
+  font-weight: 400;
+  font-family: 'Rubik', sans-serif;
+  color: #d93025;
 }

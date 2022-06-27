@@ -10,26 +10,22 @@ export class InsuranceAppService {
   constructor(private toastctrl:ToastController,
     private http: HttpClient,
     private loadingController:LoadingController) { }
-    insertData(action, data, token?) {
+    insertData(myData) {
       let header;
-      if (token) {
-        header = new HttpHeaders({
-          "Authorization": "Bearer "+token,
-        });
-        header.append("Access-Control-Allow-Origin", "*");
-        header.append(
-          "Access-Control-Allow-Methods",
-          "POST, GET, DELETE, PUT,OPTIONS"
-        );
-      } else {
-        header = new HttpHeaders();
-        header.append("Access-Control-Allow-Origin", "*");
-        header.append(
-          "Access-Control-Allow-Methods",
-          "POST, GET, DELETE, PUT,OPTIONS"
-        );
-      }
-      return this.http.post(`${this.url}/${action}`, data, {
+     
+      header = new HttpHeaders({
+        // "Content-Type": "application/json",
+        // "Accept": "application/json"
+        "Content-Type": "application/x-www-form-urlencoded",
+      });
+      //header.append('Content-Type','application/x-www-form-urlencoded');
+      //header.append("Access-Control-Allow-Origin", "*");
+      //header.append(
+      //  "Access-Control-Allow-Methods",
+      //  "POST, GET, DELETE, PUT,OPTIONS"
+      //);
+      //let myData1 = "myData={\r\n    \"email\": \"abdur.techvill@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"method\": \"login\"\r\n}";
+        return this.http.post(this.url,myData , {
         headers: header,
       });
     }

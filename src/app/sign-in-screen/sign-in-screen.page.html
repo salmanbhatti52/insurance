@@ -12,7 +12,7 @@
 
   <form [formGroup]="RegisterForm" (ngSubmit)="formSubmit()"> 
     <div class="input-div">
-      <ion-input formControlName="email" [(ngModel)]="userEmail" class="input" type="email" placeholder="Email" ><img style="margin:15px 7px 15px 20px;" src="assets/images/email-icon.svg" > </ion-input>
+      <ion-input formControlName="email" [(ngModel)]="userEmail" class="input" type="email" placeholder="Email" ><img style="margin:15px 7px 14px 15px;" src="assets/images/email-icon.svg" > </ion-input>
         <div class="validation" *ngIf="RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched">
           <img src="assets/images/alert-icon.png" class="alertIcon">
           <span class="error-msg">Enter your email</span>
@@ -31,7 +31,7 @@
       <div class="fields"> 
         <div class="inputdiv">
           <div >
-            <img style="margin:15px 7px 15px 20px;" src="assets/images/pw-lock.svg">
+            <img style="margin:16px 7px 14px 15px;" src="assets/images/pw-lock.svg">
           </div>
           <div class="pinput">
             <ion-input formControlName="password" [(ngModel)]="userPassword"  class="ph-css" placeholder="Password" type="{{showPass ? 'text':'password' }}" ></ion-input>

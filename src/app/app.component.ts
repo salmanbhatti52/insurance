@@ -1,5 +1,6 @@
 import { MenuController, NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
+import { InsuranceAppService } from './services/insurance-app.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,7 +18,8 @@ export class AppComponent {
 
   selectedtitle: any;
   constructor(public navCtrl: NavController,
-    public menuCtrl: MenuController) { }
+    public menuCtrl: MenuController,
+    public api:InsuranceAppService) { }
 
   selected(p) {
     this.appPages.map((value) => {
@@ -33,6 +35,12 @@ export class AppComponent {
     this.menuCtrl.close();
   }
   logout() {
+    localStorage.removeItem('userid');
+    localStorage.removeItem('token');
+    localStorage.removeItem('password');
+    console.log('userid==',localStorage.getItem('userid'));
+    console.log('token==',localStorage.getItem('token'));
+    this.api.presenttoast('You are successfully logged out!');
     this.menuCtrl.close();
     this.navCtrl.navigateRoot('sign-in-screen');
   }

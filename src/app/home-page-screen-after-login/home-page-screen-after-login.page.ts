@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-home-page-screen-after-login',
   templateUrl: './home-page-screen-after-login.page.html',
@@ -10,7 +10,7 @@ slideOpts = {
     initialSlide: 0,
     speed: 400
   };
-  constructor(public navCtrl:NavController) { }
+  constructor(public navCtrl:NavController, public menuCtrl:MenuController) { }
 
   ngOnInit() {
   }

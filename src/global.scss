@@ -68,6 +68,12 @@ ion-footer{
     border-radius: 5px;
     // --bullet-background:white !important;
 }
+.radio {
+  height: 16px;
+  width: 16px;
+  --color: #A8B400 !important;
+  --color-checked: #A8B400 !important;
+}
 .swiper-pagination-bullet-active {
   --bullet-background-active:#9CCB48 !important;
 //   width: 24px !important;
