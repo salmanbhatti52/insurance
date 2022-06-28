@@ -140,6 +140,10 @@ const routes: Routes = [
   {
     path: 'car-insurance-details',
     loadChildren: () => import('./car-insurance-details/car-insurance-details.module').then( m => m.CarInsuranceDetailsPageModule)
+  },
+  {
+    path: 'yourquote',
+    loadChildren: () => import('./yourquote/yourquote.module').then( m => m.YourquotePageModule)
   }
 
 
