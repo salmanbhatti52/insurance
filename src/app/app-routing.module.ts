@@ -136,6 +136,10 @@ const routes: Routes = [
   {
     path: 'profile-update',
     loadChildren: () => import('./profile-update/profile-update.module').then( m => m.ProfileUpdatePageModule)
+  },
+  {
+    path: 'car-insurance-details',
+    loadChildren: () => import('./car-insurance-details/car-insurance-details.module').then( m => m.CarInsuranceDetailsPageModule)
   }
 
 

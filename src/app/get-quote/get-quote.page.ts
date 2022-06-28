@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { QuotePopupPage } from '../quote-popup/quote-popup.page';
+// import { ModalController } from '@ionic/angular';
+// import { QuotePopupPage } from '../quote-popup/quote-popup.page';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 @Component({
@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 export class GetQuotePage implements OnInit {
 
   constructor(public router: Router,
-    public modal: ModalController,
+    // public modal: ModalController,
     public location: Location) { }
 
   ngOnInit() {
@@ -21,18 +21,18 @@ export class GetQuotePage implements OnInit {
   goback() {
     this.router.navigate(['/home-page-screen-after-login'])
   }
-  async PopupCust() {
-    const modal = await this.modal.create({
-      component: QuotePopupPage,
-      cssClass: 'QuotePopup',
-    });
-    modal.onDidDismiss().then((data) => {
-      console.log('data', data);
-      if (data.data == 'navigate') {
-        this.router.navigate(['/quote1']);
-      }
+  // async PopupCust() {
+  //   const modal = await this.modal.create({
+  //     component: QuotePopupPage,
+  //     cssClass: 'QuotePopup',
+  //   });
+  //   modal.onDidDismiss().then((data) => {
+  //     console.log('data', data);
+  //     if (data.data == 'navigate') {
+  //       this.router.navigate(['/quote1']);
+  //     }
 
-    });
-    return await modal.present();
-  }
+  //   });
+  //   return await modal.present();
+  // }
 }

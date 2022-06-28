@@ -131,13 +131,21 @@
         
 
         <!----------- fifth form ---------------------------->
-        <div class="label">Email Address<span style="color:#A8B400;">*</span></div>
+        <div class="label">Full Name<span style="color:#A8B400;">*Please re-enter your full name as you want it to appear on your certificate.</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="userEmail" type="email" placeholder="johndoe@gmail.com" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="fullName" type="text" placeholder="" class="in-text"></ion-input>
           </div>
         </div>
-
+        
+        <!----------- fifth form ---------------------------->
+        <div class="label">Vehicle Registration Number<span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="regNo" type="text" placeholder="MUS585AQ" class="in-text"></ion-input>
+          </div>
+        </div>
+        
         <!----------- sixth form ---------------------------->
         <div class="label">Phone Number <span style="color:#A8B400;">*</span></div>
         <div class="inputfield">

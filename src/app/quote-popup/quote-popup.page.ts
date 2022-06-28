@@ -7,11 +7,23 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./quote-popup.page.scss'],
 })
 export class QuotePopupPage implements OnInit {
-
+  imgPath: any;
+  Insurace_name: any;
+  prod_id:any;
   constructor(public router: Router,
     public modal: ModalController) { }
 
   ngOnInit() {
+     let product_record = JSON.parse(localStorage.getItem('product-details'));
+     console.log(product_record);
+     console.log(product_record.img);
+     console.log(product_record.name);
+     console.log(product_record.id);
+     
+     this.imgPath = product_record.img;
+     this.Insurace_name = product_record.name;
+     this.prod_id = product_record.id;
+     localStorage.setItem('prod_id',this.prod_id);
   }
 
   dismiss() {

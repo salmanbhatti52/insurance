@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
 
 @Component({
-  selector: 'app-quote1',
-  templateUrl: './quote1.page.html',
-  styleUrls: ['./quote1.page.scss'],
+  selector: 'app-car-insurance-details',
+  templateUrl: './car-insurance-details.page.html',
+  styleUrls: ['./car-insurance-details.page.scss'],
 })
-export class Quote1Page implements OnInit {
+export class CarInsuranceDetailsPage implements OnInit {
   fName = '';
   lName = '';
   userEmail = '';

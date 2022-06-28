@@ -103,17 +103,18 @@
     </div>
 
     <ion-grid style="padding:0px; width: 100%;">
-      <ion-row style="margin-top:16px ;">
-        <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;">
-          <div class="gc-div">
+      <ion-row style="margin:16px 0px ;">
+        <!-- padding:6px 6px 6px 0px;  -->
+        <ion-col size="4" style="width: 100%;" *ngFor="let p of products">
+          <div class="gc-div" (click)="openQuote(p)">
             <div class="gimg-div">
-              <img src="assets/images/car.svg" alt="">
+              <img src="{{p.img}}" alt="" class="cimg">
             </div>
-            <p class="gp-div">Motor Insurance</p>
+            <p class="gp-div">{{p.name}}</p>
           </div>
         </ion-col>
 
-        <ion-col size="4" style="padding:6px; width: 100%;">
+        <!-- <ion-col size="4" style="padding:6px; width: 100%;">
           <div class="gc-div">
             <div class="gimg-div" style="padding:18px 26px 17px 27px ;">
               <img src="assets/images/plane.svg" alt="">
@@ -129,10 +130,10 @@
             </div>
             <p class="gp-div">Home Insurance</p>
           </div>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
 
-      <ion-row style="margin-top:16px ;">
+      <!-- <ion-row style="margin-top:16px ;">
         <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;">
           <div class="gc-div">
             <div class="gimg-div" style="padding: 28px 22px 27px 23px ;">
@@ -159,7 +160,7 @@
             <p class="gp-div">Get in Touch</p>
           </div>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </ion-grid>
 
     <div class="lst-div">

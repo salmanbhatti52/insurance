@@ -124,14 +124,19 @@ p.mid-p2 {
 }
 .gc-div {
     text-align: center;
-    height: 103px;
+    // height: 103px;
 }
 .gimg-div {
-    height: 85px;
-    padding: 31px 17px 30px 18px;
+    padding: 20px;
+    // height: 85px;
+    // padding: 31px 17px 30px 18px;
     border-radius: 12px;
     background-color: white;
     box-shadow: 0px 0px 20px rgb(176 181 0 / 10%);
+}
+.cimg{
+  width: 100px;
+    height: 50px;
 }
 p.gp-div {
     margin: 0px;
