@@ -28,110 +28,9 @@
         <img src="assets/images/slider/1.svg">
       </div> -->
       <div style="width:80%;margin:0% auto;">
-        <div class="label">Vehicle Type <span style="color:#A8B400;">*</span></div>
-        <div class="dropbox">
-          <div class="innerdropbox" (click)="openVehicleList()">
-            <div class="euro-text">{{vehicleVal}}</div>
-            <div class="imgdiv">
-              <img src="assets/images/down-arrow.svg" *ngIf="showVehicle==false">
-              <img src="assets/images/yuparrow.svg" *ngIf="showVehicle==true">
-            </div>
-          </div>
-          <div *ngIf="showVehicle==true">
-            <div *ngFor="let list of vehicleClass" (click)="selectVehicleCls(list)">
-              <div class="euro-text1">{{list.vehicle}}</div>
-            </div>
-
-          </div>
-
-        </div>
-        <!----------- second form ---------------------------->
-        <div class="label">Vehicle Make <span style="color:#A8B400;">*</span></div>
-        <div class="dropbox">
-          <div class="innerdropbox" (click)="openVhclMakeList()">
-            <div class="euro-text">{{vehicleMakeVal}}</div>
-            <div class="imgdiv">
-              <img src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
-              <img src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
-            </div>
-          </div>
-          <div *ngIf="showMaker==true">
-            <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
-              <div class="euro-text1">{{list.vMake}}</div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!----------- third form ---------------------------->
-        <div class="label">Vehicle Model <span style="color:#A8B400;">*</span></div>
-        <div class="dropbox">
-          <div class="innerdropbox" (click)="opnenVehicleModelList()">
-            <div class="euro-text">{{vehicleModelVal}}</div>
-            <div class="imgdiv">
-              <img src="assets/images/down-arrow.svg" *ngIf="showVehicleModel==false">
-              <img src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
-            </div>
-          </div>
-          <div *ngIf="showVehicleModel==true">
-            <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
-              <div class="euro-text1">{{list.vModel}}</div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!----------- fourth form ---------------------------->
-        <div class="label">Policyholder Type <span style="color:#A8B400;">*</span></div>
-        <div class="dropbox">
-          <div class="innerdropbox" (click)="openPolicyhldrList()">
-            <div class="euro-text">{{policyhldrVal}}</div>
-            <div class="imgdiv">
-              <img src="assets/images/down-arrow.svg" *ngIf="showPolicyholder==false">
-              <img src="assets/images/yuparrow.svg" *ngIf="showPolicyholder==true">
-            </div>
-          </div>
-          <div *ngIf="showPolicyholder==true">
-            <div *ngFor="let list of policyhldrList" (click)="selectPolicyholder(list)">
-              <div class="euro-text1">{{list.plcyhldrType}}</div>
-            </div>
-
-          </div>
-
-        </div>
-        <!----------- fifth form ---------------------------->
-        <div *ngIf="policyhldrVal=='Private'">
-          <div class="label">First Name</div>
-          <div class="inputfield">
-            <div class="innerdropbox">
-              <ion-input [(ngModel)]="fName" type="email" placeholder="John" class="in-text"></ion-input>
-            </div>
-          </div>
-        </div>
-        <!----------- fifth form ---------------------------->
-        <div *ngIf="policyhldrVal=='Private'">
-          <div class="label">Last Name</div>
-          <div class="inputfield">
-            <div class="innerdropbox">
-              <ion-input [(ngModel)]="lName" type="email" placeholder="Doe" class="in-text"></ion-input>
-            </div>
-          </div>
-        </div>
-        <!----------- fifth form ---------------------------->
-        <div *ngIf="policyhldrVal=='Corporate'">
-          <div class="label">Company Name</div>
-          <div class="inputfield">
-            <div class="innerdropbox">
-              <ion-input [(ngModel)]="compName" type="email" placeholder="phenologix" class="in-text"></ion-input>
-            </div>
-          </div>
-        </div>
         
-
         <!----------- fifth form ---------------------------->
-        <div class="label">Full Name<span style="color:#A8B400;">*Please re-enter your full name as you want it to appear on your certificate.</span></div>
+        <div class="label">Full Name <span style="color:#A8B400;">*Please re-enter your full name as you want it to appear on your certificate.</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
             <ion-input [(ngModel)]="fullName" type="text" placeholder="" class="in-text"></ion-input>
@@ -139,39 +38,159 @@
         </div>
         
         <!----------- fifth form ---------------------------->
-        <div class="label">Vehicle Registration Number<span style="color:#A8B400;">*</span></div>
+        <div class="label">Vehicle Registration Number <span style="color:#A8B400;">*</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
             <ion-input [(ngModel)]="regNo" type="text" placeholder="MUS585AQ" class="in-text"></ion-input>
           </div>
         </div>
         
-        <!----------- sixth form ---------------------------->
-        <div class="label">Phone Number <span style="color:#A8B400;">*</span></div>
+        <!----------- fifth form ---------------------------->
+        <div class="label">Engine Number <span style="color:#A8B400;">*</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="mobNumber" type="tel" placeholder="923565466554" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="engNo" type="text" placeholder="1M286534" class="in-text"></ion-input>
+          </div>
+        </div>
+        <!----------- fifth form ---------------------------->
+        <div class="label">Chasis Number <span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="chasisNo" type="text" placeholder="JMTBK426481418844" class="in-text"></ion-input>
+          </div>
+        </div>
+        <!----------- fifth form ---------------------------->
+        <div class="label">Vehicle Colour <span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="vehclr" type="text" placeholder="" class="in-text"></ion-input>
+          </div>
+        </div>
+        <!----------- fifth form ---------------------------->
+        <div class="label">Address <span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="clientAddress" type="text" placeholder="e.g:136, LEWIS STREET, OBALENDE, LAGOS ISLAND,LAGOS STATE" class="in-text"></ion-input>
+          </div>
+        </div>
+        <!----------- fifth form ---------------------------->
+        <div class="label">Engine Number <span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="engNo" type="text" placeholder="1M286534" class="in-text"></ion-input>
           </div>
         </div>
 
         <!----------- seventh form ---------------------------->
-        <div class="label">Vehicle Usage <span style="color:#A8B400;">*</span></div>
+        <div class="label">Gender <span style="color:#A8B400;">*</span></div>
         <div class="dropbox">
-          <div class="innerdropbox" (click)="opnenVehicleUsageList()">
-            <div class="euro-text">{{vehicleUsageVal}}</div>
+          <div class="innerdropbox" (click)="openGenderList()">
+            <div class="euro-text">{{genderVal}}</div>
             <div class="imgdiv">
-              <img src="assets/images/down-arrow.svg" *ngIf="showVehicleUsage==false">
-              <img src="assets/images/yuparrow.svg" *ngIf="showVehicleUsage==true">
+              <img src="assets/images/down-arrow.svg" *ngIf="showGender==false">
+              <img src="assets/images/yuparrow.svg" *ngIf="showGender==true">
             </div>
           </div>
-          <div *ngIf="showVehicleUsage==true">
-            <div *ngFor="let list of vehicleUsage" (click)="selectVehicleUsage(list)">
-              <div class="euro-text1">{{list.usage}}</div>
+          <div *ngIf="showGender==true">
+            <div *ngFor="let list of genderType" (click)="selectGenderType(list)">
+              <div class="euro-text1">{{list.gender}}</div>
             </div>
 
           </div>
 
         </div>
+        <!----------- seventh form ---------------------------->
+        <div class="label">Date of Birth <span style="color:#A8B400;">*This is a NAICOM KYC Reqirement.</span></div>
+        <ion-grid style="padding: 0px;">
+          <ion-row>
+          
+            <ion-col size="4">
+              <div class="dropbox" style="padding: 12px 10px;" >
+                <div class="innerdropbox" (click)="openDayList()" >
+                  <div class="euro-text" style="text-align:center ; width: 100%;" >
+                    <ion-label *ngIf="showDay==false"> {{dayVal}}</ion-label>
+                  </div>
+                  <div class="imgdiv">
+                    <img src="assets/images/down-arrow.svg" *ngIf="showDay==false">
+                    <img src="assets/images/yuparrow.svg" *ngIf="showDay==true">
+                  </div>
+                </div>
+                <div *ngIf="showDay==true" style="line-height: 20px; overflow: scroll; height: 88px; text-align: center;">
+                  <div *ngFor="let list of dateDay" (click)="selectDay(list)">
+                    <div class="euro-text1">{{list.day}}</div>
+                  </div>
+                </div>
+              </div>
+            </ion-col>
+            
+            <ion-col size="4">
+              <div class="dropbox" style="padding: 12px 10px;">
+                <div class="innerdropbox" (click)="openMonthList()">
+                  <div class="euro-text" style="text-align:center ; width: 100%;" >
+                    <ion-label *ngIf="showMonth==false"> {{monthVal}}</ion-label>
+                  </div>
+                  <div class="imgdiv">
+                    <img src="assets/images/down-arrow.svg" *ngIf="showMonth==false">
+                    <img src="assets/images/yuparrow.svg" *ngIf="showMonth==true">
+                  </div>
+                </div>
+                <div *ngIf="showMonth==true" style="line-height: 20px;text-align:center ; overflow: scroll; height: 88px;">
+                  <div *ngFor="let list of dateMonth" (click)="selectMonth(list)">
+                    <div class="euro-text1">{{list.month}}</div>
+                  </div>
+                </div>
+              </div>               
+            </ion-col>
+            
+            <ion-col size="4">
+              <div class="dropbox" style="padding: 12px 10px;">
+                <div class="innerdropbox" (click)="openYearList()">
+                  <div class="euro-text" style="text-align:center ; width: 100%;" >
+                    <ion-label *ngIf="showYear==false"> {{yearVal}}</ion-label>
+                  </div>
+                  <div class="imgdiv">
+                    <img src="assets/images/down-arrow.svg" *ngIf="showYear==false">
+                    <img src="assets/images/yuparrow.svg" *ngIf="showYear==true">
+                  </div>
+                </div>
+                <div *ngIf="showYear==true" style="line-height: 20px; overflow: scroll; height: 88px; text-align: center;">
+                  <div *ngFor="let list of dateYear" (click)="selectYear(list)">
+                    <div class="euro-text1">{{list.year}}</div>
+                  </div>
+                </div>
+              </div> 
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        
+        <!----------- seventh form ---------------------------->
+        <div class="label">Year of Purchase <span style="color:#A8B400;">*</span></div>
+        <div class="dropbox">
+          <div class="innerdropbox" (click)="openGenderList()">
+            <div class="euro-text">{{genderVal}}</div>
+            <div class="imgdiv">
+              <img src="assets/images/down-arrow.svg" *ngIf="showGender==false">
+              <img src="assets/images/yuparrow.svg" *ngIf="showGender==true">
+            </div>
+          </div>
+          <div *ngIf="showGender==true">
+            <div *ngFor="let list of genderType" (click)="selectGenderType(list)">
+              <div class="euro-text1">{{list.gender}}</div>
+            </div>
+
+          </div>
+
+        </div>
+      
+        
+        
+        
+        
+
+
+
+
+
         <div style="width: 90%;margin:8% auto;" (click)="continue()">
           <ion-button class="btn">Continue</ion-button>
         </div>
