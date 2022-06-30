@@ -101,98 +101,99 @@
         </div>
         <!----------- seventh form ---------------------------->
         <div class="label">Date of Birth <span style="color:#A8B400;">*This is a NAICOM KYC Reqirement.</span></div>
-        <ion-grid style="padding: 0px;">
-          <ion-row>
+        
+        <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerDob = !showPickerDob">
+          <div style="display: flex; align-items:center">
+            <!-- <img  class="cal-css" src="assets/images/icons/calendar.svg" alt=""> -->
+            <ion-text class="ion-txt" style="margin-left: 14px" >{{ dobValue }}</ion-text>
+          </div>
           
-            <ion-col size="4">
-              <div class="dropbox" style="padding: 12px 10px;" >
-                <div class="innerdropbox" (click)="openDayList()" >
-                  <div class="euro-text" style="text-align:center ; width: 100%;" >
-                    <ion-label *ngIf="showDay==false"> {{dayVal}}</ion-label>
-                  </div>
-                  <div class="imgdiv">
-                    <img src="assets/images/down-arrow.svg" *ngIf="showDay==false">
-                    <img src="assets/images/yuparrow.svg" *ngIf="showDay==true">
-                  </div>
-                </div>
-                <div *ngIf="showDay==true" style="line-height: 20px; overflow: scroll; height: 88px; text-align: center;">
-                  <div *ngFor="let list of dateDay" (click)="selectDay(list)">
-                    <div class="euro-text1">{{list.day}}</div>
-                  </div>
-                </div>
-              </div>
-            </ion-col>
-            
-            <ion-col size="4">
-              <div class="dropbox" style="padding: 12px 10px;">
-                <div class="innerdropbox" (click)="openMonthList()">
-                  <div class="euro-text" style="text-align:center ; width: 100%;" >
-                    <ion-label *ngIf="showMonth==false"> {{monthVal}}</ion-label>
-                  </div>
-                  <div class="imgdiv">
-                    <img src="assets/images/down-arrow.svg" *ngIf="showMonth==false">
-                    <img src="assets/images/yuparrow.svg" *ngIf="showMonth==true">
-                  </div>
-                </div>
-                <div *ngIf="showMonth==true" style="line-height: 20px;text-align:center ; overflow: scroll; height: 88px;">
-                  <div *ngFor="let list of dateMonth" (click)="selectMonth(list)">
-                    <div class="euro-text1">{{list.month}}</div>
-                  </div>
-                </div>
-              </div>               
-            </ion-col>
-            
-            <ion-col size="4">
-              <div class="dropbox" style="padding: 12px 10px;">
-                <div class="innerdropbox" (click)="openYearList()">
-                  <div class="euro-text" style="text-align:center ; width: 100%;" >
-                    <ion-label *ngIf="showYear==false"> {{yearVal}}</ion-label>
-                  </div>
-                  <div class="imgdiv">
-                    <img src="assets/images/down-arrow.svg" *ngIf="showYear==false">
-                    <img src="assets/images/yuparrow.svg" *ngIf="showYear==true">
-                  </div>
-                </div>
-                <div *ngIf="showYear==true" style="line-height: 20px; overflow: scroll; height: 88px; text-align: center;">
-                  <div *ngFor="let list of dateYear" (click)="selectYear(list)">
-                    <div class="euro-text1">{{list.year}}</div>
-                  </div>
-                </div>
-              </div> 
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+        </div>
+        <ion-datetime  class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date" *ngIf="showPickerDob" #datetime [value]="dobValue" size="cover" (ionChange)="dobChanged(datetime.value)" showDefaultButtons="true"  (ionCancel)="showPickerDob=false"></ion-datetime>
         
         <!----------- seventh form ---------------------------->
+        <div class="label">Incorporation <span style="color:#A8B400;">*</span></div>
+        
+        <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerCorp = !showPickerCorp">
+          <div style="display: flex; align-items:center">
+            <!-- <img  class="cal-css" src="assets/images/icons/calendar.svg" alt=""> -->
+            <ion-text class="ion-txt" style="margin-left: 14px" >{{ corpValue }}</ion-text>
+          </div>
+          
+        </div>
+        <ion-datetime  class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date" *ngIf="showPickerCorp" #datetime [value]="corpValue" size="cover" (ionChange)="corpChanged(datetime.value)" showDefaultButtons="true"  (ionCancel)="showPickerCorp=false"></ion-datetime>
+
+        <!----------- seventh form ---------------------------->
         <div class="label">Year of Purchase <span style="color:#A8B400;">*</span></div>
+        
+        <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerYop = !showPickerYop">
+          <div style="display: flex; align-items:center">
+            <!-- <img  class="cal-css" src="assets/images/icons/calendar.svg" alt=""> -->
+            <ion-text class="ion-txt" style="margin-left: 14px" >{{ yopValue }}</ion-text>
+          </div>
+          
+        </div>
+        <ion-datetime  class="item-picker" style="margin:10px auto 8px; color: black;" presentation="year" *ngIf="showPickerYop" #datetime [value]="yopValue" size="cover" (ionChange)="yopChanged(datetime.value)" showDefaultButtons="true"  (ionCancel)="showPickerYop=false"></ion-datetime>
+
+        <!----------- seventh form ---------------------------->
+        <div class="label">Year of Manufacture <span style="color:#A8B400;">*</span></div>
+        
+        <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerYom = !showPickerYom">
+          <div style="display: flex; align-items:center">
+            <!-- <img  class="cal-css" src="assets/images/icons/calendar.svg" alt=""> -->
+            <ion-text class="ion-txt" style="margin-left: 14px" >{{ yomValue }}</ion-text>
+          </div>
+          
+        </div>
+        <ion-datetime  class="item-picker" style="margin:10px auto 8px; color: black;" presentation="year" *ngIf="showPickerYom" #datetime [value]="yomValue" size="cover" (ionChange)="yomChanged(datetime.value)" showDefaultButtons="true"  (ionCancel)="showPickerYom=false"></ion-datetime>
+        
+        <!----------- seventh form ---------------------------->
+        <div class="label">Vehicle Licence  <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
+        
+        <div class="inputfield" style="display:flex ;">
+          <ion-input style="width:100% ;" disabled="true" >{{imgurl}}</ion-input>
+          <ion-button style="height: 43px;--background: white; color: #1A0F55;" (click)="selectImage('license')"> Choose file</ion-button>
+        </div>
+        <div style="height: 100px; width:100px; text-align: center;" *ngIf="imgURL"><img style="height: 100px; width:100px" src="{{imgURL}}" alt=""></div>
+        
+        <!----------- seventh form ---------------------------->
+        <div class="label">Valid Drivers license/National Identity Card/International Pasport  <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
+        
+        <div class="inputfield" style="display:flex ;">
+          <ion-input style="width:100% ;" disabled="true" >{{imgurl}}</ion-input>
+          <ion-button style="height: 43px;--background: white; color: #1A0F55;" (click)="selectImage('nic')"> Choose file</ion-button>
+        </div>
+        <div style="height: 100px; width:100px; text-align: center;" *ngIf="imgURL1"><img style="height: 100px; width:100px" src="{{imgURL1}}" alt=""></div>
+
+        <!----------- seventh form ---------------------------->
+        <div class="label">Who referred you? <span style="color:#A8B400;">*Please enter the name and if possible phone number of the referrer.</span></div>
         <div class="dropbox">
-          <div class="innerdropbox" (click)="openGenderList()">
-            <div class="euro-text">{{genderVal}}</div>
+          <div class="innerdropbox" (click)="openReferrerList()">
+            <div class="euro-text">{{referrerVal}}</div>
             <div class="imgdiv">
-              <img src="assets/images/down-arrow.svg" *ngIf="showGender==false">
-              <img src="assets/images/yuparrow.svg" *ngIf="showGender==true">
+              <img src="assets/images/down-arrow.svg" *ngIf="showReferrer==false">
+              <img src="assets/images/yuparrow.svg" *ngIf="showReferrer==true">
             </div>
           </div>
-          <div *ngIf="showGender==true">
-            <div *ngFor="let list of genderType" (click)="selectGenderType(list)">
-              <div class="euro-text1">{{list.gender}}</div>
+          <div *ngIf="showReferrer==true">
+            <div *ngFor="let list of referrerList" (click)="selectReferrerType(list)">
+              <div class="euro-text1">{{list.referrer}}</div>
             </div>
 
           </div>
 
         </div>
+
+        <!----------- fifth form ---------------------------->
       
-        
-        
-        
-        
-
-
-
-
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="referrerData" type="text" placeholder="Enter name, Branch and mobile number" class="in-text"></ion-input>
+          </div>
+        </div>
 
         <div style="width: 90%;margin:8% auto;" (click)="continue()">
-          <ion-button class="btn">Continue</ion-button>
+          <ion-button class="btn">Submit Proposal</ion-button>
         </div>
 
       </div>

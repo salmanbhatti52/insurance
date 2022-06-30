@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
-
+import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
+import { Camera, CameraResultType, CameraSource, ImageOptions, Photo } from '@capacitor/camera';
+import { ActionSheetController } from '@ionic/angular';
 @Component({
   selector: 'app-car-insurance-details',
   templateUrl: './car-insurance-details.page.html',
@@ -13,7 +15,19 @@ export class CarInsuranceDetailsPage implements OnInit {
   userEmail = '';
   mobNumber = '';
   compName = '';
+  imgURL='';
+  imgURL1='';
+  dobValue = format(new Date(), 'yyyy-MM-dd');
+  corpValue = format(new Date(), 'yyyy-MM-dd');
+  yopValue = format(new Date(), 'yyyy');
+  yomValue = format(new Date(), 'yyyy');
   
+  
+  showReferrer = false;
+  showPickerYop = false;
+  showPickerYom = false;
+  showPickerDob = false;
+  showPickerCorp = false;
   show = false;
   showVehicle = false;
   showMaker = false;
@@ -21,9 +35,7 @@ export class CarInsuranceDetailsPage implements OnInit {
   showVehicleModel = false;
   showVehicleUsage = false;
   showGender = false;
-  showDay = false;
-  showMonth = false;
-  showYear = false;
+
 
   vehicleVal = '';
   vehicleMakeVal = '';
@@ -31,9 +43,7 @@ export class CarInsuranceDetailsPage implements OnInit {
   vehicleModelVal = '';
   vehicleUsageVal = 'Personal';
   genderVal = 'Please Select';
-  dayVal = 'Day';
-  monthVal = 'Month';
-  yearVal = 'Year';
+  referrerVal='Please Select';
 
 
   genderType = [{gender: 'Male'},{gender: 'Female'}]
@@ -42,31 +52,17 @@ export class CarInsuranceDetailsPage implements OnInit {
   policyhldrList = [{ plcyhldrType: 'Private' }, { plcyhldrType:'Corporate' }]
   vehicleModel = [{ vModel : 'EL'},{ vModel : 'EL'}]
   vehicleUsage = [{ usage: 'Personal'},{ usage: 'Personal'}]
-  dateYear = [
-    { year: 1950 }, { year: 1951 }, { year: 1952 }, { year: 1953 },{ year: 1954 },{ year: 1955 },{ year: 1956 },
-    { year: 1957 },{ year: 1958 },{ year: 1959 },{ year: 1960 },{ year: 1961 },{ year: 1962 },{ year: 1963 },
-    { year: 1964 },{ year: 1965 },{ year: 1966 },{ year: 1967 },{ year: 1968 },{ year: 1969 },{ year: 1970 },
-    { year: 1971 },{ year: 1972 },{ year: 1973 }, { year: 1974 }, { year: 1975 }, { year: 1976 },{ year: 1977 },
-    { year: 1978 },{ year: 1979 },{ year: 1980 },{ year: 1981 },{ year: 1982 },{ year: 1983 },{ year: 1984 },
-    { year: 1985 },{ year: 1986 },{ year: 1987 },{ year: 1988 },{ year: 1989 },{ year: 1990 },{ year: 1991 },
-    { year: 1992 },{ year: 1993 },{ year: 1994 },{ year: 1995 },{ year: 1996 },{ year: 1997 },{ year: 1998 },
-    { year: 1999 },{ year: 2000 },{ year: 2001 },{ year: 2002 },{ year: 2003 },{ year: 2004 },{ year: 2005 },
-    { year: 2006 },{ year: 2007 },{ year: 2008 },{ year: 2009 },{ year: 2010 },{ year: 2011 },{ year: 2012 },
-    { year: 2013 },{ year: 2014 },{ year: 2015 },{ year: 2016 },{ year: 2017 },{ year: 2018 },{ year: 2019 },
-    { year: 2020 },{ year: 2021 },{ year: 2022 },{ year: 2023 }
-  ];
-  dateDay=[{day : 1},{day : 2},{day : 3},{day : 4},{day : 5},{day : 6},{day : 7},{day : 8},{day : 9},{day : 10},
-    {day : 11},{day : 12},{day : 13},{day : 14},{day : 15},{day : 16},{day : 17},{day : 18},{day : 19},{day : 20},
-    {day : 21},{day : 22},{day : 23},{day : 24},{day : 25},{day : 26},{day : 27},{day : 28},{day : 29},{day : 30},
-    {day : 31}
-  ]
-  dateMonth=[{month:'01'},{month:'02'},{month:'03'},{month:'04'},{month:'05'},{month:'06'},{month:'07'},
-    {month:'08'},{month:'09'},{month:'10'},{month:'11'},{month:'12'},
-  ]
+  referrerList = [{referrer:'Friend'},{referrer:'Email'}]
   constructor(public router:Router,
-    public api:InsuranceAppService) { }
+    public api:InsuranceAppService,
+    private actionSheetController: ActionSheetController) { }
 
   ngOnInit() {
+    console.log(this.dobValue);
+    console.log(this.corpValue);
+    console.log(this.yopValue);
+    console.log(this.yomValue);
+    
   }
   ionViewWillEnter() {
     this.vehicleVal = '';
@@ -79,7 +75,35 @@ export class CarInsuranceDetailsPage implements OnInit {
     this.mobNumber = '';
     this.compName = '';
   }
+  dobChanged(value){
+    this.dobValue=value;
+    console.log(this.dobValue);
+    
+    // this.formattedString = format(parseISO(value), ' MMM d, yyyy')
+    this.showPickerDob = false;
+  }
+  corpChanged(value){
+    this.corpValue=value;
+    console.log(this.corpValue);
+    
+    // this.formattedString = format(parseISO(value), ' MMM d, yyyy')
+    this.showPickerCorp = false;
+  }
 
+  yopChanged(value){
+    this.yopValue=value;
+    console.log(this.yopValue);
+    
+    // this.formattedString = format(parseISO(value), ' MMM d, yyyy')
+    this.showPickerYop = false;
+  }
+  yomChanged(value){
+    this.yomValue=value;
+    console.log(this.yomValue);
+    
+    // this.formattedString = format(parseISO(value), ' MMM d, yyyy')
+    this.showPickerYom = false;
+  }
   openGenderList(){
     if (this.showGender == true) {
       this.showGender = false
@@ -89,53 +113,79 @@ export class CarInsuranceDetailsPage implements OnInit {
     }
   }
 
-  openDayList(){
-    if (this.showDay == true) {
-      this.showDay = false
+  openReferrerList(){
+    if (this.showReferrer == true) {
+      this.showReferrer = false
     } else {
-      this.showDay = true;
+      this.showReferrer = true;
 
     }
   }
 
-  openMonthList(){
-    if (this.showMonth == true) {
-      this.showMonth = false
-    } else {
-      this.showMonth = true;
-
-    }
-  }
-
-  openYearList(){
-    if (this.showYear == true) {
-      this.showYear = false
-    } else {
-      this.showYear = true;
-
-    }
-  }
   
   selectGenderType(list){
     this.genderVal= list.gender;
     this.showGender = false;
   }
-
-  selectDay(list){
-    this.dayVal= list.day;
-    this.showDay = false;
-  }
-
-  selectMonth(list){
-    this.monthVal= list.month;
-    this.showMonth = false;
-  }
-
-  selectYear(list){
-    this.yearVal= list.year;
-    this.showYear = false;
+  selectReferrerType(list){
+    this.referrerVal= list.referrer;
+    this.showReferrer = false;
   }
   
+  async camera2(source,imgetype) {
+    console.log('yyyyyy==',imgetype);
+    
+    var options: ImageOptions = {
+      source: source,
+
+      resultType: CameraResultType.DataUrl
+    }
+    const image = await Camera.getPhoto(options); 
+    console.log(image.dataUrl);
+    if(imgetype=='license')
+    this.imgURL=image.dataUrl
+    if(imgetype=='nic')
+    this.imgURL1=image.dataUrl
+    // url = ' https://eigix.net/morlaApp/api';
+    let imgData = {
+      image: this.imgURL
+    }
+    // //folder url: https://eigix.net/morlaApp/storage/app/public/
+    // this.api.insertData('upload_img/'+this.userID, imgData,localStorage.getItem('token')).subscribe((res:any)=>{
+    //   console.log('res==',res);
+    //   if(res.status=='sucess'){
+    //     localStorage.setItem('imgdata',res.data);
+    //   }
+    // })
+
+  }
+  
+  async selectImage(imagefile) {
+
+    let imgtype=imagefile
+    const actionSheet = await this.actionSheetController.create({
+      header: "Select Image source",
+      buttons: [{
+        text: 'Load from Library',
+        handler: () => {
+          this.camera2(CameraSource.Photos,imgtype);
+        }
+      },
+      // {
+      //   text: 'Use Camera',
+      //   handler: () => {
+      //     this.camera2(CameraSource.Camera);
+      //   }
+      // },
+      {
+        text: 'Cancel',
+        role: 'cancel'
+      }
+      ]
+    });
+    await actionSheet.present();
+  }
+
   goback(){
     this.router.navigate(['/home-page-screen-after-login']);
   }

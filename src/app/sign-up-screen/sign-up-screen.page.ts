@@ -24,12 +24,12 @@ export class SignUpScreenPage implements OnInit {
   listarray = [{ Title: 'Mr' }, { Title: 'Mrs.' }]
   showPicker = false;
   dateValue = format(new Date(), 'yyyy-MM-dd');
-  formattedString = '';
+  // formattedString = '';
   showPass = false;
   cshowPass = false;
   constructor(public router:Router, public api:InsuranceAppService)
    {
-    this.setToday();
+    // this.setToday();
    }
    
    ngOnInit() {
@@ -42,12 +42,13 @@ export class SignUpScreenPage implements OnInit {
       password: new FormControl('',[Validators.required]),
       cpassword: new FormControl('',[Validators.required])
     });
-    console.log(this.formattedString);
+    console.log(this.dateValue);
+    // console.log(this.formattedString);
     this.RegisterForm.reset();
   }
-  setToday(){
-    this.formattedString = format(parseISO(format(new Date(), 'yyyy-MM-dd') ), ' MMM d, yyyy');
-  }
+  // setToday(){
+  //   this.formattedString = format(parseISO(format(new Date(), 'yyyy-MM-dd') ), ' MMM d, yyyy');
+  // }
 
   togglePass() {
 
@@ -60,7 +61,9 @@ export class SignUpScreenPage implements OnInit {
   }
   dateChanged(value){
     this.dateValue=value;
-    this.formattedString = format(parseISO(value), ' MMM d, yyyy')
+    console.log(this.dateValue);
+    
+    // this.formattedString = format(parseISO(value), ' MMM d, yyyy')
     this.showPicker = false;
   }
 
@@ -80,7 +83,7 @@ export class SignUpScreenPage implements OnInit {
   }
   signUp(){
     // let myData = "myData={\r\n    \"email\": \""+this.userEmail+"\",\r\n    \"password\": \""+this.userPassword+"\",\r\n    \"method\": \"login\"\r\n}";
-    let myData = "myData={\r\n    \"title\":\""+this.uTitle+"\",\r\n    \"first_name\": \""+this.fName+"\",\r\n    \"last_name\":\""+this.lName+"\",\r\n    \"date_of_birth\":\""+this.formattedString+"\",\r\n    \"mobile\":\""+this.mobNumber+"\",\r\n    \"email\":\""+this.uEmail+"\",\r\n    \"password\":\""+this.userPassword+"\",\r\n    \"conf_password\":\""+this.cuserPassword+"\",\r\n    \"method\": \"save_user\" \r\n}";
+    let myData = "myData={\r\n    \"title\":\""+this.uTitle+"\",\r\n    \"first_name\": \""+this.fName+"\",\r\n    \"last_name\":\""+this.lName+"\",\r\n    \"date_of_birth\":\""+this.dateValue+"\",\r\n    \"mobile\":\""+this.mobNumber+"\",\r\n    \"email\":\""+this.uEmail+"\",\r\n    \"password\":\""+this.userPassword+"\",\r\n    \"conf_password\":\""+this.cuserPassword+"\",\r\n    \"method\": \"save_user\" \r\n}";
     if(this.userPassword===this.cuserPassword){
       console.log(this.userPassword);
       console.log(this.cuserPassword);
