@@ -33,7 +33,7 @@
         <div class="label">Full Name <span style="color:#A8B400;">*Please re-enter your full name as you want it to appear on your certificate.</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="fullName" type="text" placeholder="" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="fullName" style="height:48px;" type="text" placeholder="" class="in-text"></ion-input>
           </div>
         </div>
         
@@ -41,7 +41,7 @@
         <div class="label">Vehicle Registration Number <span style="color:#A8B400;">*</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="regNo" type="text" placeholder="MUS585AQ" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="regNo" style="height:48px;" type="text" placeholder="MUS585AQ" class="in-text"></ion-input>
           </div>
         </div>
         
@@ -49,46 +49,39 @@
         <div class="label">Engine Number <span style="color:#A8B400;">*</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="engNo" type="text" placeholder="1M286534" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="engNo" style="height:48px;" type="text" placeholder="1M286534" class="in-text"></ion-input>
           </div>
         </div>
         <!----------- fifth form ---------------------------->
         <div class="label">Chasis Number <span style="color:#A8B400;">*</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="chasisNo" type="text" placeholder="JMTBK426481418844" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="chasisNo" style="height:48px;" type="text" placeholder="JMTBK426481418844" class="in-text"></ion-input>
           </div>
         </div>
         <!----------- fifth form ---------------------------->
         <div class="label">Vehicle Colour <span style="color:#A8B400;">*</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="vehclr" type="text" placeholder="" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="vehclr" style="height:48px;" type="text" placeholder="" class="in-text"></ion-input>
           </div>
         </div>
         <!----------- fifth form ---------------------------->
         <div class="label">Address <span style="color:#A8B400;">*</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="clientAddress" type="text" placeholder="e.g:136, LEWIS STREET, OBALENDE, LAGOS ISLAND,LAGOS STATE" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="clientAddress" style="height:48px;" type="text" placeholder="e.g:136, LEWIS STREET, OBALENDE, LAGOS ISLAND,LAGOS STATE" class="in-text"></ion-input>
           </div>
         </div>
-        <!----------- fifth form ---------------------------->
-        <div class="label">Engine Number <span style="color:#A8B400;">*</span></div>
-        <div class="inputfield">
-          <div class="innerdropbox">
-            <ion-input [(ngModel)]="engNo" type="text" placeholder="1M286534" class="in-text"></ion-input>
-          </div>
-        </div>
-
+        
         <!----------- seventh form ---------------------------->
         <div class="label">Gender <span style="color:#A8B400;">*</span></div>
         <div class="dropbox">
           <div class="innerdropbox" (click)="openGenderList()">
             <div class="euro-text">{{genderVal}}</div>
-            <div class="imgdiv">
-              <img src="assets/images/down-arrow.svg" *ngIf="showGender==false">
-              <img src="assets/images/yuparrow.svg" *ngIf="showGender==true">
+            <div class="imgdiv" style="padding-bottom: 2px;">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showGender==false">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showGender==true">
             </div>
           </div>
           <div *ngIf="showGender==true">
@@ -104,7 +97,7 @@
         
         <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerDob = !showPickerDob">
           <div style="display: flex; align-items:center">
-            <!-- <img  class="cal-css" src="assets/images/icons/calendar.svg" alt=""> -->
+           
             <ion-text class="ion-txt" style="margin-left: 14px" >{{ dobValue }}</ion-text>
           </div>
           
@@ -116,7 +109,7 @@
         
         <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerCorp = !showPickerCorp">
           <div style="display: flex; align-items:center">
-            <!-- <img  class="cal-css" src="assets/images/icons/calendar.svg" alt=""> -->
+           
             <ion-text class="ion-txt" style="margin-left: 14px" >{{ corpValue }}</ion-text>
           </div>
           
@@ -128,7 +121,7 @@
         
         <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerYop = !showPickerYop">
           <div style="display: flex; align-items:center">
-            <!-- <img  class="cal-css" src="assets/images/icons/calendar.svg" alt=""> -->
+            
             <ion-text class="ion-txt" style="margin-left: 14px" >{{ yopValue }}</ion-text>
           </div>
           
@@ -140,7 +133,7 @@
         
         <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerYom = !showPickerYom">
           <div style="display: flex; align-items:center">
-            <!-- <img  class="cal-css" src="assets/images/icons/calendar.svg" alt=""> -->
+           
             <ion-text class="ion-txt" style="margin-left: 14px" >{{ yomValue }}</ion-text>
           </div>
           
@@ -150,18 +143,18 @@
         <!----------- seventh form ---------------------------->
         <div class="label">Vehicle Licence  <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
         
-        <div class="inputfield" style="display:flex ;">
+        <div class="inputfield" style="display:flex ; height: 48px;">
           <ion-input style="width:100% ;" disabled="true" >{{imgurl}}</ion-input>
-          <ion-button style="height: 43px;--background: white; color: #1A0F55;" (click)="selectImage('license')"> Choose file</ion-button>
+          <ion-button style="height: 40px;--background: white; color: #1A0F55;" (click)="selectImage('license')"> Choose file</ion-button>
         </div>
         <div style="height: 100px; width:100px; text-align: center;" *ngIf="imgURL"><img style="height: 100px; width:100px" src="{{imgURL}}" alt=""></div>
         
         <!----------- seventh form ---------------------------->
         <div class="label">Valid Drivers license/National Identity Card/International Pasport  <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
         
-        <div class="inputfield" style="display:flex ;">
-          <ion-input style="width:100% ;" disabled="true" >{{imgurl}}</ion-input>
-          <ion-button style="height: 43px;--background: white; color: #1A0F55;" (click)="selectImage('nic')"> Choose file</ion-button>
+        <div class="inputfield" style="display:flex ; height: 48px;">
+          <ion-input style="width:100% ;" disabled="true" >{{imgurl1}}</ion-input>
+          <ion-button style="height: 40px;--background: white; color: #1A0F55;" (click)="selectImage('nic')"> Choose file</ion-button>
         </div>
         <div style="height: 100px; width:100px; text-align: center;" *ngIf="imgURL1"><img style="height: 100px; width:100px" src="{{imgURL1}}" alt=""></div>
 
@@ -170,9 +163,9 @@
         <div class="dropbox">
           <div class="innerdropbox" (click)="openReferrerList()">
             <div class="euro-text">{{referrerVal}}</div>
-            <div class="imgdiv">
-              <img src="assets/images/down-arrow.svg" *ngIf="showReferrer==false">
-              <img src="assets/images/yuparrow.svg" *ngIf="showReferrer==true">
+            <div class="imgdiv" style="padding-bottom: 2px;">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showReferrer==false">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showReferrer==true">
             </div>
           </div>
           <div *ngIf="showReferrer==true">
@@ -188,11 +181,11 @@
       
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="referrerData" type="text" placeholder="Enter name, Branch and mobile number" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="referrerData" style="height:48px;" type="text" placeholder="Enter name, Branch and mobile number" class="in-text"></ion-input>
           </div>
         </div>
 
-        <div style="width: 90%;margin:8% auto;" (click)="continue()">
+        <div style="width: 90%;margin:8% auto;" (click)="submitProposal()">
           <ion-button class="btn">Submit Proposal</ion-button>
         </div>
 

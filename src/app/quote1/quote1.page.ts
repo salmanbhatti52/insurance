@@ -190,7 +190,13 @@ export class Quote1Page implements OnInit {
     this.api.insertData(myData).subscribe((data:any)=>{
       console.log(data);
       if(data.message=='success'){
-        this.api.presenttoast(data.info.message)
+        this.api.presenttoast(data.info.message);
+        localStorage.setItem('product_id',data.info.product_id);
+        localStorage.setItem('quote_id',data.info.quote_id);
+        console.log(localStorage.getItem('product_id'));
+        console.log(localStorage.getItem('quote_id'));
+        
+        this.router.navigate(['/car-insurance-details']);
       }
     })
   }
