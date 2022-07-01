@@ -1,7 +1,29 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <!-- <ion-toolbar class="headBgGlobal"> -->
+    <ion-row style="display: flex;align-items: center; margin-top: 20px;" >
+      <ion-col size="10" style="padding-left: 27px;">
+        <!-- <ion-menu-toggle> -->
+          <!-- <ion-buttons> -->
+            <div style="width:100% ;">
+              <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
+            </div>
+          <!-- </ion-buttons> -->
+        <!-- </ion-menu-toggle> -->
+      </ion-col>
+
+      <ion-col class="titleclass" size="2">
+        <!-- <div class="header-div" style="width: 85%; margin:20px auto 0px; text-align:end ;"> -->
+          <img src="assets/images/icons/notification.svg">
+        <!-- </div> -->
+      </ion-col>
+
+
+    </ion-row>
+  <!-- </ion-toolbar> -->
+
+</ion-header>
 <ion-header>
-  <div class="header-div" style="width: 85%; margin:20px auto 0px; text-align:end ;">
-    <img src="assets/images/bell.svg">
-  </div>
+  
 </ion-header>
 
 <ion-content>
@@ -12,7 +34,7 @@
 
   <form [formGroup]="RegisterForm" (ngSubmit)="formSubmit()"> 
     <div class="input-div">
-      <ion-input formControlName="email" [(ngModel)]="userEmail" class="input" type="email" placeholder="Email" ><img style="margin:15px 7px 14px 15px;" src="assets/images/email-icon.svg" > </ion-input>
+      <ion-input formControlName="email" [(ngModel)]="userEmail" class="input" type="email" placeholder="Email" ><img style="margin:15px 7px 14px 15px;" src="assets/images/icons/email.svg" > </ion-input>
         <div class="validation" *ngIf="RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched">
           <img src="assets/images/alert-icon.png" class="alertIcon">
           <span class="error-msg">Enter your email</span>
@@ -31,7 +53,7 @@
       <div class="fields"> 
         <div class="inputdiv">
           <div >
-            <img style="margin:16px 7px 14px 15px;" src="assets/images/pw-lock.svg">
+            <img style="margin:16px 7px 14px 15px;" src="assets/images/icons/lock.svg">
           </div>
           <div class="pinput">
             <ion-input formControlName="password" [(ngModel)]="userPassword"  class="ph-css" placeholder="Password" type="{{showPass ? 'text':'password' }}" ></ion-input>
@@ -71,8 +93,8 @@
   
   </form>
     <div style="text-align:center ;">
-      <ion-button class="btn" style="--background: #1A0F55;" (click)="PopupCust()">Agent ID Login</ion-button>
-      <ion-button fill="outline" class="btn" style="color: #A8B400; --border-color:#A8B400 ;" (click)="exScBefLin()">Tap to Explore</ion-button>
+      <ion-button class="btn" style="--background: #1A206D;" (click)="PopupCust()">Agent ID Login</ion-button>
+      <ion-button fill="outline" class="btn" style="color: #A8B400; --border-color:#A8B400 ; margin-top:40px" (click)="exScBefLin()">Tap to Explore</ion-button>
     </div>
  
   
@@ -82,7 +104,7 @@
 
 <ion-footer>
 <p style="text-align:center ; margin: 20px 0px;">
-  <span class="p-span" style="color: #1A0F55;">Not Register Yet? </span>
+  <span class="p-span" style="color: #1A206D;">Not Register Yet? </span>
   <span class="p-span" style="color: #A8B400;" (click)="signUpPage()">Sign Up</span>
 </p>
 </ion-footer>

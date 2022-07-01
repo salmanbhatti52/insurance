@@ -16,22 +16,22 @@ export class ExploreScreenBeforeLoginPage implements OnInit {
 
   ngOnInit() {
   }
-  ionViewDidEnter() {
-    this.menuCtrl.enable(false);
-    // this.RegisterForm.reset();
-  }
-  ionViewWillLeave() {
-    // enable the root left menu when leaving this page
-    this.menuCtrl.enable(true);
-  }
+  // ionViewDidEnter() {
+  //   this.menuCtrl.enable(false);
+  //   // this.RegisterForm.reset();
+  // }
+  // ionViewWillLeave() {
+  //   // enable the root left menu when leaving this page
+  //   this.menuCtrl.enable(true);
+  // }
   tab1Click(){
-    // this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
+    this.navCtrl.navigateRoot('sign-up-screen');
   }
   tab2Click(){
     this.navCtrl.navigateRoot('home-page-screen-after-login')
   }
   tab3Click(){
-    // this.navCtrl.navigateRoot('contactus');
+    this.navCtrl.navigateRoot('sign-in-screen');
   }
   toogleShow(){
     this.show= !this.show

@@ -180,9 +180,11 @@
       <ion-row style="margin-top:5%;">
         <ion-col size="6">
           <div class="box" [class.active]="box=='checked'" (click)="changed()">
-            <img src="assets/images/filltick.svg" class="tickimg" *ngIf="box=='checked'">
+            <!-- <img src="assets/images/filltick.svg" class="tickimg" *ngIf="box=='checked'"> -->
             <div class="imgdiv">
-              <img src="assets/images/investment.svg" height="70">
+              
+              <img src="assets/images/all.svg" height="70" *ngIf="box=='unchecked'">
+              <img src="assets/images/tick-all.svg" height="70" *ngIf="box=='checked'" >
               <div class="itext">All</div>
             </div>
           </div>

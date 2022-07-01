@@ -1,5 +1,5 @@
 .bg{
-  --background: #A8B400;
+  --background: #A8B400 !important;
   border-radius: 32px;
 }
 .container{
@@ -16,6 +16,7 @@
   font-weight: 700;
 }
 .input1{
+  height: 48px;
   margin-top: 5%;
   border-radius: 12px;
   background: #fff url(../../assets/images/profile-circle.svg) no-repeat;
@@ -24,10 +25,10 @@
 }
 .btndiv{
   text-align: center;
-  margin-top: 5%;
+  margin-top: 8%;
 }
 .btn{
-  --background:#1A0F55 url(../../assets/images/search-normal.svg) 10% no-repeat;
+  --background:#1A206D  10% no-repeat;
   --border-radius:12px;
   width:171px ;
   height: 48px;

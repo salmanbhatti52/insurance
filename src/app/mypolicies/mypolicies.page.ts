@@ -10,7 +10,7 @@ export class MypoliciesPage implements OnInit {
   requestsType: any;
   value = 'thirdparty';
   show = false;
-  box = 'checked'
+  box = 'unchecked'
   constructor() { }
 
   ngOnInit() {

@@ -15,7 +15,7 @@ slideOpts = {
   };
   products=[
     {id:2,name:'Motor Insurance',img:'assets/images/car.svg'},
-    {id:2,name:'Travel Insurance',img:'assets/images/plane.svg'},
+    {id:2,name:'Travel Insurance',img:'assets/images/travel.svg'},
     {id:2,name:'Home Insurance',img:'assets/images/safe-hand.svg'},
     {id:2,name:'School Fees Guarantee',img:'assets/images/mortarboard.svg'},
     {id:2,name:'Verify Policy',img:'assets/images/sec-doc.svg'},

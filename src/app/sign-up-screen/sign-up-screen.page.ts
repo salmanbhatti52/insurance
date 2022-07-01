@@ -4,6 +4,7 @@ import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms'
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-sign-up-screen',
   templateUrl: './sign-up-screen.page.html',
@@ -27,7 +28,10 @@ export class SignUpScreenPage implements OnInit {
   // formattedString = '';
   showPass = false;
   cshowPass = false;
-  constructor(public router:Router, public api:InsuranceAppService)
+
+  constructor(public router:Router,
+     public api:InsuranceAppService,
+     public location:Location)
    {
     // this.setToday();
    }
@@ -114,7 +118,7 @@ export class SignUpScreenPage implements OnInit {
     this.router.navigate(['/sign-in-screen']);
   }
   goBack(){
-    this.router.navigate(['/explore-screen-before-login']);
+    this.location.back();
   }
   
 }

@@ -47,7 +47,7 @@ p.wc-para {
     margin: 0px auto;
     font-size: 32px;
     font-weight: 500;
-    color: #1A0F55;
+    color: #1A206D;
     text-transform: uppercase;
     line-height: 1.6;
 }
@@ -72,7 +72,7 @@ p.p1 {
     margin: 0px;
     font-size: 16px;
     font-weight: 400;
-    color: #1A0F55;
+    color: #1A206D;
 }
 p.p2 {
     margin: 0px;
@@ -96,7 +96,7 @@ ion-button.btn-sm{
     font-weight: 400;
     color: white;
     text-transform: capitalize;
-    --background: #1A0F55;
+    --background: #1A206D;
     --border-radius: 5px;
     margin-top: 15px;
 }
@@ -104,7 +104,7 @@ p.mid-p1 {
     margin: 0px;
     font-size: 18px;
     font-weight: 500;
-    color: #1A0F55;
+    color: #1A206D;
     text-transform: uppercase;
     width: 100%;
     padding-top: 0.8px;
@@ -128,11 +128,15 @@ p.mid-p2 {
     height: 103px;
 }
 .gimg-div {
-    height: 85px;
-    padding: 31px 17px 30px 18px;
+    // height: 85px;
+    padding: 20px;
     border-radius: 12px;
     background-color: white;
     box-shadow: 0px 0px 20px rgb(176 181 0 / 10%);
+}
+.imgclass{
+  width: 100px;
+  height: 50px;
 }
 p.gp-div {
     margin: 0px;
@@ -169,7 +173,7 @@ ion-tabs{
 
 	ion-tab-bar {
 		--border: 0;
-		--background: #1A0F55;
+		--background: #1A206D;
 		position: absolute;
 		bottom: 0;
 		left:0; right: 0;
@@ -189,7 +193,7 @@ ion-tabs{
 			position: absolute;
 		}
 		ion-tab-button {
-      background:#1A0F55;
+      background:#1A206D;
       ion-icon{
         color:#42474F;
       }

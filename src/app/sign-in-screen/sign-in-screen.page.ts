@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +18,8 @@ export class SignInScreenPage implements OnInit {
   constructor(public router: Router, 
     public modal: ModalController,
      public menuCtrl: MenuController,
-     public api:InsuranceAppService) { }
+     public api:InsuranceAppService,
+     public location:Location) { }
 
   ngOnInit() {
     this.RegisterForm = new FormGroup({
@@ -85,5 +87,8 @@ export class SignInScreenPage implements OnInit {
   }
   signUpPage(){
     this.router.navigate(['/sign-up-screen'])
+  }
+  goback(){
+    this.location.back();
   }
 }

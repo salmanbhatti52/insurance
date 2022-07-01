@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
@@ -12,7 +13,7 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     initialSlide: 0,
     speed: 400
   };
-  constructor(public navCtrl: NavController,public router:Router) { }
+  constructor(public navCtrl: NavController,public router:Router, public location:Location) { }
 
   ngOnInit() {
   }
@@ -29,6 +30,6 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     this.navCtrl.navigateRoot('contactus');
   }
   updateProfile(){
-    this.router.navigate(['/profile-update']);
+    this.location.back();
   }
 }
