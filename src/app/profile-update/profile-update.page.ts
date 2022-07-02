@@ -3,6 +3,7 @@ import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms'
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-profile-update',
   templateUrl: './profile-update.page.html',
@@ -28,7 +29,9 @@ export class ProfileUpdatePage implements OnInit {
   userpwd =  '' ;
   cuserpwd =  '';
   i=1;
-  constructor(public router:Router, public api:InsuranceAppService) {}
+  constructor(public router:Router,
+    public api:InsuranceAppService,
+    public location:Location) {}
 
   ngOnInit() {
     this.RegisterForm = new FormGroup({
@@ -71,7 +74,7 @@ export class ProfileUpdatePage implements OnInit {
   }
 
   goBack(){
-    this.router.navigate(['/home-page-screen-after-login']);
+    this.location.back();
   }
   openlist() {
     if (this.show == true) {

@@ -27,15 +27,18 @@ export class Quote1Page implements OnInit {
   vehicleModelVal = '';
   vehicleUsageVal = 'Personal';
   
-  vehicleClass = [{ vehicle: 'Cars/Sedan/SUV' }]
-  vehicleMake = [{ vMake : 'Acura'},{vMake : 'Acura'}]
+  vehicleClass:any;
+  vehicleMake:any;
   policyhldrList = [{ plcyhldrType: 'Private' }, { plcyhldrType:'Corporate' }]
-  vehicleModel = [{ vModel : 'EL'},{ vModel : 'EL'}]
+  vehicleModel:any;
   vehicleUsage = [{ usage: 'Personal'},{ usage: 'Personal'}]
   constructor(public router:Router,
     public api:InsuranceAppService) { }
 
   ngOnInit() {
+    this.getCarVehicleTypeCls();
+    this.getCarMakeCompanies();
+    
   }
   ionViewWillEnter() {
     this.vehicleVal = '';
@@ -47,6 +50,51 @@ export class Quote1Page implements OnInit {
     this.userEmail = '';
     this.mobNumber = '';
     this.compName = '';
+  }
+  getCarVehicleTypeCls(){
+    let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"product_class\":\"vehicle_class_thirdparty\",\"method\":\"get_car_classes\"}"
+    this.api.insertData(myData).subscribe((res:any)=>{
+     console.log(res);
+     if(res.values!=""){
+      this.vehicleClass=res.values;
+      console.log(this.vehicleClass);
+      
+     }
+     
+    },(err)=>{
+     console.log(err);
+     
+    })
+  }
+  getCarMakeCompanies(){
+    let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"method\":\"get_car_companies\"}"
+    this.api.insertData(myData).subscribe((res:any)=>{
+     console.log(res);
+    if(res.values!=""){
+       this.vehicleMake=res.values;
+       console.log(this.vehicleMake);
+       
+    }
+     
+    },(err)=>{
+     console.log(err);
+     
+    })
+  }
+  getVehicleModels(){
+    let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"method\":\"get_car_models\",\"manufacturer\":\""+this.vehicleMakeVal+"\"}"
+    this.api.insertData(myData).subscribe((res:any)=>{
+     console.log(res);
+    if(res.values!=""){
+       this.vehicleModel=res.values;
+       console.log(this.vehicleModel);
+      
+    }
+     
+    },(err)=>{
+     console.log(err);
+     
+    })
   }
   openVehicleList() {
     if (this.showVehicle == true) {
@@ -94,13 +142,15 @@ export class Quote1Page implements OnInit {
   }
 
   selectVehicleCls(list) {
-    this.vehicleVal= list.vehicle;
+    this.vehicleVal= list;
     this.showVehicle = false;
   }
 
   selectVehicleMaker(list){
-    this.vehicleMakeVal = list.vMake;
+    this.vehicleMakeVal = list.manufacturer;
+    this.vehicleModelVal = '';
     this.showMaker = false;
+    this.getVehicleModels();
   }
 
   selectPolicyholder(list){
@@ -109,7 +159,7 @@ export class Quote1Page implements OnInit {
   }
   
   selectVehicleModel(list){
-    this.vehicleModelVal = list.vModel;
+    this.vehicleModelVal = list.model;
     this.showVehicleModel = false;
   }
   selectVehicleUsage(list){
@@ -121,6 +171,7 @@ export class Quote1Page implements OnInit {
     this.router.navigate(['/home-page-screen-after-login']);
   }
 
+  
   continue(){
     if(this.vehicleVal==''){
       this.api.presenttoast('Vehicle Type required')

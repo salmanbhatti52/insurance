@@ -54,6 +54,7 @@ export class CarInsuranceDetailsPage implements OnInit {
     console.log(this.yomValue);
     
   }
+
   ionViewWillEnter() {
     this.fullName = '';
     this.regNo = '';
@@ -67,6 +68,8 @@ export class CarInsuranceDetailsPage implements OnInit {
     this.imgURL1='';
     this.referrerData = '';
   }
+  
+
   dobChanged(value){
     this.dobValue=value;
     console.log(this.dobValue);
@@ -174,6 +177,10 @@ export class CarInsuranceDetailsPage implements OnInit {
     });
 
     console.log('savedFile data==', savedFile)
+    console.log(savedFile.uri);
+    this.imgURL = savedFile.uri;
+    this.imgURL1 = savedFile.uri;
+    
     if(imgtype == 'license'){
       this.imgURL = savedFile.uri;
     }

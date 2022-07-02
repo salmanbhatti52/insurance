@@ -30,6 +30,6 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     this.navCtrl.navigateRoot('contactus');
   }
   updateProfile(){
-    this.location.back();
+    this.router.navigate(['/profile-update']);
   }
 }

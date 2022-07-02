@@ -31,15 +31,15 @@
         <div class="label">Vehicle Type <span style="color:#A8B400;">*</span></div>
         <div class="dropbox">
           <div class="innerdropbox" (click)="openVehicleList()">
-            <div class="euro-text">{{vehicleVal}}</div>
+            <div class="euro-text" style="width: 100%;">{{vehicleVal}}</div>
             <div class="imgdiv" style="padding-bottom: 2px;">
               <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showVehicle==false">
               <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicle==true">
             </div>
           </div>
-          <div *ngIf="showVehicle==true">
+          <div *ngIf="showVehicle==true" style="height:120px ; overflow: scroll;">
             <div *ngFor="let list of vehicleClass" (click)="selectVehicleCls(list)">
-              <div class="euro-text1">{{list.vehicle}}</div>
+              <div class="euro-text1">{{list}}</div>
             </div>
 
           </div>
@@ -55,9 +55,9 @@
               <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
             </div>
           </div>
-          <div *ngIf="showMaker==true">
+          <div *ngIf="showMaker==true" style="height:120px ; overflow: scroll;">
             <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
-              <div class="euro-text1">{{list.vMake}}</div>
+              <div class="euro-text1">{{list.manufacturer}}</div>
             </div>
 
           </div>
@@ -74,9 +74,9 @@
               <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
             </div>
           </div>
-          <div *ngIf="showVehicleModel==true">
+          <div *ngIf="showVehicleModel==true" style="height:120px ; overflow: scroll;">
             <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
-              <div class="euro-text1">{{list.vModel}}</div>
+              <div class="euro-text1">{{list.model}}</div>
             </div>
 
           </div>

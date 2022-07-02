@@ -1,13 +1,21 @@
-<ion-header>
-  <div style="display: flex;align-items: center;width: 85%;
-  margin: 20px auto 10px;">
-    <div style="width: 55%;">
-      <img  style="padding-top: 3px;" src="assets/images/back-arrow.svg" alt="">
-    </div>
-    <div style="width: 100%;">
-      <p class="head-p">Verify Policy</p>
-    </div>
-  </div>
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 25px;">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Verify Policy</div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 
 </ion-header>
 
