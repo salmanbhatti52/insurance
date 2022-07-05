@@ -21,10 +21,10 @@ export class Quote1Page implements OnInit {
   showVehicleModel = false;
   showVehicleUsage = false;
 
-  vehicleVal = '';
-  vehicleMakeVal = '';
-  policyhldrVal = '';
-  vehicleModelVal = '';
+  vehicleVal = 'Please Select';
+  vehicleMakeVal = 'Please Select';
+  policyhldrVal = 'Please Select';
+  vehicleModelVal = 'Please Select';
   vehicleUsageVal = 'Personal';
   
   vehicleClass:any;
@@ -41,10 +41,10 @@ export class Quote1Page implements OnInit {
     
   }
   ionViewWillEnter() {
-    this.vehicleVal = '';
-    this.vehicleMakeVal = '';
-    this.policyhldrVal = '';
-    this.vehicleModelVal = '';
+    this.vehicleVal = 'Please Select';
+    this.vehicleMakeVal = 'Please Select';
+    this.policyhldrVal = 'Please Select';
+    this.vehicleModelVal = 'Please Select';
     this.fName = '';
     this.lName = '';
     this.userEmail = '';

@@ -7,6 +7,7 @@ import { ActionSheetController } from '@ionic/angular';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import axios from 'axios';
 import { Filesystem, Directory } from '@capacitor/filesystem';
+import { Location } from '@angular/common';
 const IMAGE_DIR = 'stored-images';
 @Component({
   selector: 'app-car-insurance-details',
@@ -41,18 +42,22 @@ export class CarInsuranceDetailsPage implements OnInit {
   referrerVal='Please Select';
 
   genderType = [{gender: 'Male'},{gender: 'Female'}]
-  referrerList = [{referrer:'Friend'},{referrer:'Email'}]
-  constructor(public router:Router,
+  // referrerList = [{referrer:'Friend'},{referrer:'Email'}]
+  referrerList:any;
+  constructor(
+    public location:Location,
+    public router:Router,
     public api:InsuranceAppService,
     private actionSheetController: ActionSheetController,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    ) { }
 
   ngOnInit() {
     console.log(this.dobValue);
     console.log(this.corpValue);
     console.log(this.yopValue);
     console.log(this.yomValue);
-    
+    this.getReferrerList();
   }
 
   ionViewWillEnter() {
@@ -69,7 +74,21 @@ export class CarInsuranceDetailsPage implements OnInit {
     this.referrerData = '';
   }
   
-
+  getReferrerList(){
+    let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"method\":\"get_referred_by\"}"
+    this.api.insertData(myData).subscribe((res:any)=>{
+      console.log(res);
+      if(res.message!=''){
+        this.referrerList = res.values;
+        console.log(this.referrerList);
+        
+      }
+      
+    },(err)=>{
+      console.log(err);
+      
+    })
+  }
   dobChanged(value){
     this.dobValue=value;
     console.log(this.dobValue);
@@ -123,7 +142,7 @@ export class CarInsuranceDetailsPage implements OnInit {
     this.showGender = false;
   }
   selectReferrerType(list){
-    this.referrerVal= list.referrer;
+    this.referrerVal= list;
     this.showReferrer = false;
   }
   
@@ -218,7 +237,7 @@ export class CarInsuranceDetailsPage implements OnInit {
   }
 
   goback(){
-    this.router.navigate(['/quote1']);
+   this.location.back();
   }
 
   submitProposal(){

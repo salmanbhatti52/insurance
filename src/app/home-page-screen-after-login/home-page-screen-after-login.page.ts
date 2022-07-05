@@ -41,6 +41,18 @@ slideOpts = {
       console.log(err);
     })
   }
+  subProducts(id){
+    let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"product_id\":\""+id+"\",\"method\":\"get_avilable_subproducts\"}"
+    this.api.insertData(myData).subscribe((res:any)=>{
+      console.log(res);
+      localStorage.setItem('subProducts',JSON.stringify(res.subproducts) ) ;
+      this.PopupCust();
+      
+    },(err)=>{
+      console.log(err);
+      
+    })
+  }
   tab1Click(){
     this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
   }
@@ -53,11 +65,11 @@ slideOpts = {
   updateProfile(){
     this.navCtrl.navigateRoot('profile-update');
   }
-  openQuote(p){
-    console.log(p);
-    localStorage.setItem('product-details',JSON.stringify(p)) ;
-    this.PopupCust();
-  }
+  // openQuote(p){
+  //   console.log(p);
+  //   localStorage.setItem('product-details',JSON.stringify(p)) ;
+  //   this.PopupCust();
+  // }
   async PopupCust() {
     const modal = await this.modal.create({
       component: QuotePopupPage,
@@ -68,8 +80,26 @@ slideOpts = {
     });
     modal.onDidDismiss().then((data) => {
       console.log('data', data);
-      if (data.data == 'navigate'){
-        this.router.navigate(['/quote1']);
+      if(data.data.name == 'Third Party' ){
+        this.router.navigate(['/mypolicies']);
+        localStorage.setItem('subProId',data.data.id);
+        localStorage.setItem('subProName',data.data.name);
+        console.log(data.data.description);
+        console.log(data.data.subtitle); 
+      }
+      else if (data.data.name == 'Enhanced Comprehensive'){
+        this.router.navigate(['/mypolicies']);
+        localStorage.setItem('subProId',data.data.id);
+        localStorage.setItem('subProName',data.data.name);
+        console.log(data.data.description);
+        console.log(data.data.subtitle); 
+      }
+      else if(data.data.name == "Auto Variants"){
+        this.router.navigate(['/mypolicies']);
+        localStorage.setItem('subProId',data.data.id);
+        localStorage.setItem('subProName',data.data.name);
+        console.log(data.data.description);
+        console.log(data.data.subtitle); 
       }
     });
     return await modal.present();

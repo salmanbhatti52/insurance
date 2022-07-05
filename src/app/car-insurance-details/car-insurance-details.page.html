@@ -168,9 +168,9 @@
               <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showReferrer==true">
             </div>
           </div>
-          <div *ngIf="showReferrer==true">
+          <div *ngIf="showReferrer==true" style="height: 120px; overflow: scroll;">
             <div *ngFor="let list of referrerList" (click)="selectReferrerType(list)">
-              <div class="euro-text1">{{list.referrer}}</div>
+              <div class="euro-text1">{{list}}</div>
             </div>
 
           </div>

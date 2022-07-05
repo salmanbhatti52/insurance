@@ -8,14 +8,22 @@
 
     <div class="c-center">
       <p class="con-p1">Make a Quote</p>
-      <img src="{{imgPath}}" alt="" style="margin-top:5%; width: 170px; height: 83px;">
-      <p class="con-p2">{{Insurace_name}}</p> 
     </div>
 
-    <div class="btndiv">
-      <ion-button class="btn">QUOTE</ion-button>
-      <ion-button class="btn1" (click)="seeDetails()">SEE DETAILS</ion-button>
+    <div *ngFor="let sp of subProducts">
+      <div class="c-center">
+        <img src="{{sp.image}}" alt="" style="margin-top:5%; width: 170px; height: 83px;">
+        <p class="con-p2">{{sp.name}}</p> 
+      </div>
+  
+      <div class="btndiv">
+        <ion-button class="btn" (click)="seeDetails(sp)">QUOTE</ion-button>
+        <!-- <ion-button class="btn1" (click)="seeDetails()">SEE DETAILS</ion-button> -->
+      </div>
+      <hr style="margin-top:25px; border-top: 5px solid #A8B400; width:70%">
     </div>
+    
+    
   </div>
 
 </ion-content>

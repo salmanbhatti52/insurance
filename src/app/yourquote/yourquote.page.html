@@ -33,25 +33,29 @@
         <div class="table-responsive">
           <table class="table quotetable table-bordered">
             <tbody>
-              <tr>
-                <td>First Name</td>
-                <td>najam</td>
+              <tr *ngIf="quoteArrayLength=='5'">
+                <td style="width: 30%;">First Name</td>
+                <td>{{firstName}}</td>
               </tr>
-              <tr>
+              <tr *ngIf="quoteArrayLength=='5'">
                 <td>Last Name</td>
-                <td>khan</td>
+                <td>{{lastName}}</td>
+              </tr>
+              <tr *ngIf="quoteArrayLength=='4'">
+                <td style="width: 40%;">Name of Company</td>
+                <td>{{companyName}}</td>
               </tr>
               <tr>
                 <td>Vehicle Make</td>
-                <td>Acura MDX</td>
+                <td>{{vehicleMake}}</td>
               </tr>
               <tr>
                 <td>Vehicle Class</td>
-                <td>Cars/Sedan/SUV</td>
+                <td>{{vehicleClass}}</td>
               </tr>
               <tr>
                 <td>Quote</td>
-                <td>₦5,000.00</td>
+                <td>{{quote}}</td>
               </tr>
             </tbody>
           </table>
@@ -60,8 +64,8 @@
     </div>
 
     <div class="btndiv">
-      <ion-button class="btn">Buy Online Now </ion-button>
-      <ion-button class="btn1">Get a new quote </ion-button>
+      <ion-button class="btn" (click)="buyOnlineQuote()">Buy Online Now </ion-button>
+      <ion-button class="btn1" (click)="getAnewQuote()">Get a new quote </ion-button>
     </div>
 
   </div>

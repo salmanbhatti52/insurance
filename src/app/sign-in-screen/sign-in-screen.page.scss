@@ -1,15 +1,25 @@
+.container {
+    width: 85%;
+    margin: 0px auto 0px;
+}
 .input-div{
-    margin-top: 60px;
+    margin-top: 26px;
 }
 @font-face {
     font-family: Bliss Pro;
     src: url('/assets/BlissPro-Medium/BlissPro-Medium.ttf');
 }
+p.sign-in-para {
+    font-size: 24px;
+    font-weight: 500;
+    color: #1A206D;
+    margin: 0px;
+}
 .input{
-    height: 48px;
-    width: 85%;
+    height: 44px;
+    width: 100%;
     margin:20px auto 0px;
-    border-radius: 12px;
+    border-radius: 15px;
     background: #E8E8E7;
     color: black;
     --placeholder-color:#5D5D5D;
@@ -24,7 +34,7 @@ ion-input {
 }
 .row-div{
     display: flex;
-    width: 85%;
+    width: 100%;
     margin: 22px auto 0px;
     align-items: center;
 }
@@ -53,9 +63,9 @@ ion-input {
     margin-top: 5px;
 }
 .btn {
-    width: 68%;
+    width: 78%;
     height: 48px;
-    margin-top: 20px;
+    margin-top: 24px;
     --border-radius: 12px;
     font-size: 20px;
     font-family: Bliss Pro;
@@ -93,15 +103,15 @@ span.arrow-span {
 
 //najam password input css///
 .fields{
-    width: 85%;
-    margin: 5% auto 0%;
+    width: 100%;
+    margin: 7% auto 0%;
   }
   .inputdiv{
     display: flex;
-    border-radius: 12px;
+    border-radius: 15px;
     align-items: center;
     background: #E8E8E7;
-    height: 48px;
+    height: 44px;
   }
   .pinput
   {
@@ -116,4 +126,8 @@ span.arrow-span {
     color: black;
     --padding-start: 5px;
   }
-  
+  .explore-btn {
+    width: 85%;
+    margin: 20px auto 30px;
+    text-align: center;
+}

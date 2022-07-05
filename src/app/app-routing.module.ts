@@ -144,6 +144,10 @@ const routes: Routes = [
   {
     path: 'yourquote',
     loadChildren: () => import('./yourquote/yourquote.module').then( m => m.YourquotePageModule)
+  },
+  {
+    path: 'sub-products',
+    loadChildren: () => import('./sub-products/sub-products.module').then( m => m.SubProductsPageModule)
   }
 
 
