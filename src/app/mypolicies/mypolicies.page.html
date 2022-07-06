@@ -14,6 +14,10 @@
       <ion-col size="8">
         <div class="title">Product Offering or Details</div>
       </ion-col>
+      <ion-col size="2" style="text-align: center;
+      padding-top: 3%;" *ngIf="requestsType=='PurchasePolicies'">
+        <img src="assets/images/info.png" (click)="goto()">
+      </ion-col>
     </ion-row>
   </ion-toolbar>
 
@@ -57,7 +61,8 @@
                 <div class="innerdropbox" (click)="openVehicleList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showVehicle==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showVehicle==false">
                     <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicle==true">
                   </div>
                 </div>
@@ -65,9 +70,9 @@
                   <div *ngFor="let list of vehicleClass" (click)="selectVehicleCls(list)">
                     <div class="euro-text1">{{list}}</div>
                   </div>
-      
+
                 </div>
-      
+
               </div>
               <!----------- second form ---------------------------->
               <div class="label">Vehicle Make <span style="color:#A8B400;">*</span></div>
@@ -75,7 +80,8 @@
                 <div class="innerdropbox" (click)="openVhclMakeList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleMakeVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showMaker==false">
                     <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
                   </div>
                 </div>
@@ -83,54 +89,59 @@
                   <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
                     <div class="euro-text1">{{list.manufacturer}}</div>
                   </div>
-      
+
                 </div>
-      
+
               </div>
-      
+
               <!----------- third form ---------------------------->
               <div class="label">Vehicle Model <span style="color:#A8B400;">*</span></div>
               <div class="dropbox">
                 <div class="innerdropbox" (click)="opnenVehicleModelList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleModelVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg" *ngIf="showVehicleModel==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
+                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg"
+                      *ngIf="showVehicleModel==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showVehicleModel==true">
                   </div>
                 </div>
                 <div *ngIf="showVehicleModel==true" style="height:100px ; overflow: scroll;">
                   <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
                     <div class="euro-text1">{{list.model}}</div>
                   </div>
-      
+
                 </div>
-      
+
               </div>
-      
+
               <!----------- fourth form ---------------------------->
               <div class="label">Policyholder Type <span style="color:#A8B400;">*</span></div>
               <div class="dropbox">
                 <div class="innerdropbox" (click)="openPolicyhldrList()">
                   <div class="euro-text" style="width: 100%;">{{policyhldrVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showPolicyholder==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showPolicyholder==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showPolicyholder==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showPolicyholder==true">
                   </div>
                 </div>
                 <div *ngIf="showPolicyholder==true">
                   <div *ngFor="let list of policyhldrList" (click)="selectPolicyholder(list)">
                     <div class="euro-text1">{{list.plcyhldrType}}</div>
                   </div>
-      
+
                 </div>
-      
+
               </div>
               <!----------- fifth form ---------------------------->
               <div *ngIf="policyhldrVal=='Private'">
                 <div class="label">First Name</div>
                 <div class="inputfield">
                   <div class="innerdropbox">
-                    <ion-input [(ngModel)]="fName" style="height: 48px;"  type="email" placeholder="John" class="in-text"></ion-input>
+                    <ion-input [(ngModel)]="fName" style="height: 48px;" type="email" placeholder="John"
+                      class="in-text"></ion-input>
                   </div>
                 </div>
               </div>
@@ -139,7 +150,8 @@
                 <div class="label">Last Name</div>
                 <div class="inputfield">
                   <div class="innerdropbox">
-                    <ion-input [(ngModel)]="lName" style="height: 48px;" type="email" placeholder="Doe" class="in-text"></ion-input>
+                    <ion-input [(ngModel)]="lName" style="height: 48px;" type="email" placeholder="Doe" class="in-text">
+                    </ion-input>
                   </div>
                 </div>
               </div>
@@ -148,55 +160,60 @@
                 <div class="label">Company Name</div>
                 <div class="inputfield">
                   <div class="innerdropbox">
-                    <ion-input [(ngModel)]="compName" style="height: 48px;" type="email" placeholder="phenologix" class="in-text"></ion-input>
+                    <ion-input [(ngModel)]="compName" style="height: 48px;" type="email" placeholder="phenologix"
+                      class="in-text"></ion-input>
                   </div>
                 </div>
               </div>
-              
-      
+
+
               <!----------- fifth form ---------------------------->
               <div class="label">Email Address<span style="color:#A8B400;">*</span></div>
               <div class="inputfield">
                 <div class="innerdropbox">
-                  <ion-input [(ngModel)]="userEmail" style="height: 48px;" type="email" placeholder="johndoe@gmail.com" class="in-text"></ion-input>
+                  <ion-input [(ngModel)]="userEmail" style="height: 48px;" type="email" placeholder="johndoe@gmail.com"
+                    class="in-text"></ion-input>
                 </div>
               </div>
-      
+
               <!----------- sixth form ---------------------------->
               <div class="label">Phone Number <span style="color:#A8B400;">*</span></div>
               <div class="inputfield">
                 <div class="innerdropbox">
-                  <ion-input [(ngModel)]="mobNumber" style="height: 48px;" type="tel" placeholder="923565466554" class="in-text"></ion-input>
+                  <ion-input [(ngModel)]="mobNumber" style="height: 48px;" type="tel" placeholder="923565466554"
+                    class="in-text"></ion-input>
                 </div>
               </div>
-      
+
               <!----------- seventh form ---------------------------->
               <div class="label">Vehicle Usage <span style="color:#A8B400;">*</span></div>
               <div class="dropbox">
                 <div class="innerdropbox" (click)="opnenVehicleUsageList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleUsageVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showVehicleUsage==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleUsage==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showVehicleUsage==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showVehicleUsage==true">
                   </div>
                 </div>
                 <div *ngIf="showVehicleUsage==true">
                   <div *ngFor="let list of vehicleUsage" (click)="selectVehicleUsage(list)">
                     <div class="euro-text1">{{list.usage}}</div>
                   </div>
-      
+
                 </div>
-      
+
               </div>
               <div style="width: 90%;margin:8% auto;" (click)="continue()">
                 <ion-button class="btn">Continue</ion-button>
               </div>
-      
+
             </div>
           </div>
-      
+
         </div>
-        
+
       </div>
 
       <!-- ------------Enhanced-comprehensive----------------------- -->
@@ -336,9 +353,9 @@
           <div class="box" [class.active]="box=='checked'" (click)="changed()">
             <!-- <img src="assets/images/filltick.svg" class="tickimg" *ngIf="box=='checked'"> -->
             <div class="imgdiv">
-              
+
               <img src="assets/images/all.svg" height="70" *ngIf="box=='unchecked'">
-              <img src="assets/images/tick-all.svg" height="70" *ngIf="box=='checked'" >
+              <img src="assets/images/tick-all.svg" height="70" *ngIf="box=='checked'">
               <div class="itext">All</div>
             </div>
           </div>
