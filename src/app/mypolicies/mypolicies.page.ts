@@ -12,6 +12,8 @@ export class MypoliciesPage implements OnInit {
   requestsType: any;
   value = localStorage.getItem('subProName');
   show = false;
+  showPlus = false;
+  showClassic = false;
   box = 'unchecked'
 
   fName = '';
@@ -120,6 +122,22 @@ export class MypoliciesPage implements OnInit {
 
     } else {
       this.show = false;
+    }
+  }
+  showAutoPlus() {
+    if (this.showPlus == false) {
+      this.showPlus = true;
+
+    } else {
+      this.showPlus = false;
+    }
+  }
+  showUberClassic() {
+    if (this.showClassic == false) {
+      this.showClassic = true;
+
+    } else {
+      this.showClassic = false;
     }
   }
 

@@ -28,6 +28,8 @@
         <img src="assets/images/slider/1.svg">
       </div> -->
       <div style="width:80%;margin:0% auto;">
+
+
         <div class="label">Auto Plan of Choice <span style="color:#A8B400;">*</span></div>
         <div class="dropbox">
           <div class="innerdropbox" (click)="openAutoPlan()">
@@ -46,6 +48,24 @@
 
         </div>
         <!----------- second form ---------------------------->
+          <div class="label">Vehicle Class <span style="color:#A8B400;">*</span></div>
+          <div class="dropbox">
+            <div class="innerdropbox" (click)="openEcVehicleClass()">
+              <div class="euro-text" style="width: 100%;">{{eCvehicleClassVal}}</div>
+              <div class="imgdiv" style="padding-bottom: 2px;">
+                <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showEcVehicleClass==false">
+                <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showEcVehicleClass==true">
+              </div>
+            </div>
+            <div *ngIf="showEcVehicleClass==true" style="height:90px ; overflow: scroll;">
+              <div *ngFor="let list of eCcarClasses" (click)="selectEcCarClass(list)">
+                <div class="euro-text1">{{list}}</div>
+              </div>
+  
+            </div>
+  
+          </div>
+          <!----------- second form ---------------------------->
         <div class="label">Vehicle Make <span style="color:#A8B400;">*</span></div>
         <ion-grid style="padding-left: 0px; padding-right: 0px;">
           <ion-row>
@@ -195,6 +215,22 @@
           </div>
         </div>
 
+        <!----------- seventh form ---------------------------->
+        <div class="label">Vehicle Tracking <span style="color:#A8B400;">*</span></div>
+        <div class="dropbox">
+          <div class="innerdropbox" (click)="openVehicleTracking()">
+            <div class="euro-text">{{vehicleTrackingVal}}</div>
+            <div class="imgdiv" style="padding-bottom: 2px;">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showVehicleTracking==false">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleTracking==true">
+            </div>
+          </div>
+          <div *ngIf="showVehicleTracking==true">
+            <div *ngFor="let list of vehicleTrackingValues" (click)="selectVehicleTracking(list)">
+              <div class="euro-text1">{{list.vehicleTrack}}</div>
+            </div>
+          </div>
+        </div>
         <!----------- seventh form ---------------------------->
         <div class="label">Strike Riot & Civil Commotion <span style="color:#A8B400;">*</span></div>
         <div class="dropbox">

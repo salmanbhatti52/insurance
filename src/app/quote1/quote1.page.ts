@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-quote1',
   templateUrl: './quote1.page.html',
@@ -27,8 +27,11 @@ export class Quote1Page implements OnInit {
   showExcessBuyBack = false;
   showStrikeRiot = false;
   showPassLiabili = false;
+  showEcVehicleClass = false;
+  showVehicleTracking = false;
   
 
+  eCvehicleClassVal = 'Please Select';
   paymentFrequencyVal = 'Please Select';
   autoPlanVal = 'Please Select';
   tPdamageVal = 'Please Select';
@@ -40,10 +43,13 @@ export class Quote1Page implements OnInit {
   excessBuyBackVal = 'Please Select';
   strikeRiotVal = 'Please Select';
   passLiabilityVal = 'Please Select';
+  vehicleTrackingVal = 'Please Select';
   
 
   vehicleMake:any;
+  vehicleTrackingValues = [{vehicleTrack:'Yes'},{vehicleTrack:'No'}]
   autoPlanList = [{autoPlan: 'Auto Classic(1.75% Of vehicle value)'},{autoPlan: 'Auto Plus(3% Of vehicle value)'},{autoPlan: 'Uber Classic(2.5% Of vehicle value)'}]
+  eCcarClasses:any;
   policyhldrList = [{ plcyhldrType: 'Private' }, { plcyhldrType:'Corporate' }]
   vehicleModel:any;
   vehicleUsage = [{ usage: 'Personal'},{ usage: 'Personal'}]
@@ -54,10 +60,12 @@ export class Quote1Page implements OnInit {
   StrikeRiotCivilCommotion = [{strikeRiot:'Yes'},{strikeRiot:'No'}]
   passengerLiability = [{passLiab:'Yes'},{passLiab:'No'}]
   constructor(public router:Router,
-    public api:InsuranceAppService) { }
+    public api:InsuranceAppService,
+    public location:Location) { }
 
   ngOnInit() {
     this.getCarMakeCompanies();
+    this.getEcCarClasses();
     
   }
   ionViewWillEnter() {
@@ -74,6 +82,8 @@ export class Quote1Page implements OnInit {
     this.vehicleUsageVal = 'Personal';
     this.paymentFrequencyVal = 'Please Select';
     this.tPdamageVal = 'Please Select';
+    this.vehicleTrackingVal = 'Please Select';
+    
   }
   getCarMakeCompanies(){
     let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"method\":\"get_car_companies\"}"
@@ -104,6 +114,38 @@ export class Quote1Page implements OnInit {
      console.log(err);
      
     })
+  }
+  getEcCarClasses(){
+    let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"method\":\"get_car_classes\",\"product_class\":\"vehicle_class_enhanced_comprehensive\"}"
+    this.api.insertData(myData).subscribe((res:any)=>{
+     console.log(res);
+    if(res.values!=""){
+       this.eCcarClasses=res.values;
+       console.log('Enhanced Comprehensive car classes==',this.eCcarClasses);
+      
+    }
+     
+    },(err)=>{
+     console.log(err);
+     
+    })
+  }
+
+  openVehicleTracking() {
+    if (this.showVehicleTracking == true) {
+      this.showVehicleTracking = false
+    } else {
+      this.showVehicleTracking = true;
+
+    }
+  }
+  openEcVehicleClass() {
+    if (this.showEcVehicleClass == true) {
+      this.showEcVehicleClass = false
+    } else {
+      this.showEcVehicleClass = true;
+
+    }
   }
   openPassenger() {
     if (this.showPassLiabili == true) {
@@ -199,6 +241,14 @@ export class Quote1Page implements OnInit {
     }
   }
 
+  selectVehicleTracking(list) {
+    this.vehicleTrackingVal= list.vehicleTrack;
+    this.showVehicleTracking = false;
+  }
+  selectEcCarClass(list) {
+    this.eCvehicleClassVal= list;
+    this.showEcVehicleClass = false;
+  }
   selectPassLiab(list) {
     this.passLiabilityVal= list.passLiab;
     this.showPassLiabili = false;
@@ -250,13 +300,16 @@ export class Quote1Page implements OnInit {
   }
 
   goback(){
-    this.router.navigate(['/home-page-screen-after-login']);
+    this.location.back();
   }
 
   
   continue(){
     if(this.autoPlanVal=='Select Auto Plan'){
       this.api.presenttoast('Auto Plan required')
+    }
+    else if(this.eCvehicleClassVal=='Please Select'){
+      this.api.presenttoast('Vehicle Class required')
     }
     else if(this.vehicleMakeVal=='Manufacturer'){
       this.api.presenttoast('Manufacturer required')
@@ -338,18 +391,21 @@ export class Quote1Page implements OnInit {
   }
 
   callingapi(){
-    let myData = "myData={\r\n    \"product_id\":\""+localStorage.getItem('prod_id')+"\",\r\n    \"vehicle_class\":\""+this.autoPlanVal+"\",\r\n    \"first_name\": \""+this.fName+"\",\r\n    \"last_name\":\""+this.lName+"\",\r\n    \"vehicle_manufacturer\":\""+this.vehicleMakeVal+"\",\r\n    \"vehicle_model\":\""+this.vehicleModelVal+"\",\r\n    \"policyholder_type\":\""+this.policyhldrVal+"\",\r\n    \"mobile\":\""+this.mobNumber+"\",\r\n    \"company_name\":\""+this.compName+"\",\r\n    \"email\":\""+this.userEmail+"\",\r\n    \"verify_token\":\""+localStorage.getItem('token')+"\",\r\n    \"method\": \"save_product_quote\" \r\n}"
+    let myData = "myData={\"product_id\":\""+localStorage.getItem('subProId')+"\",\"vehicle_class\":\""+this.eCvehicleClassVal+"\",\"vehicle_manufacturer\":\""+this.vehicleMakeVal+"\", \"vehicle_model\":\""+this.vehicleModelVal+"\", \"first_name\":\""+this.fName+"\", \"last_name\":\""+this.lName+"\",\r\n\"policyholder_type\":\""+this.policyhldrVal+"\", \"mobile\":\""+this.mobNumber+"\", \"company_name\": \""+this.compName+"\", \"email\":\""+this.userEmail+"\", \"value_of_vehicle\":\""+this.valOfVehicle+"\", \"flood_extension\":\""+this.floodExtVal+"\", \"excess_buy_back\":\""+this.excessBuyBackVal+"\", \"vehicle_tracking\":\""+this.vehicleTrackingVal+"\", \"verify_token\":\""+localStorage.getItem('token')+"\",\"method\":\"save_product_quote\"}"
     this.api.insertData(myData).subscribe((data:any)=>{
       console.log(data);
-      if(data.message=='success'){
-        this.api.presenttoast(data.info.message);
-        localStorage.setItem('product_id',data.info.product_id);
-        localStorage.setItem('quote_id',data.info.quote_id);
-        console.log(localStorage.getItem('product_id'));
-        console.log(localStorage.getItem('quote_id'));
+      // if(data.message=='success'){
+      //   this.api.presenttoast(data.info.message);
+      //   localStorage.setItem('product_id',data.info.product_id);
+      //   localStorage.setItem('quote_id',data.info.quote_id);
+      //   console.log(localStorage.getItem('product_id'));
+      //   console.log(localStorage.getItem('quote_id'));
         
-        this.router.navigate(['/car-insurance-details']);
-      }
+      //   this.router.navigate(['/car-insurance-details']);
+      // }
+    },(err)=>{
+      console.log(err);
+      
     })
   }
 }

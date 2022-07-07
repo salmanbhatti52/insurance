@@ -117,44 +117,6 @@
                   </ion-row>
                 </ion-grid>
 
-              <div class="dropbox">
-                <div class="innerdropbox" (click)="openVhclMakeList()">
-                  <div class="euro-text" style="width: 100%;">{{vehicleMakeVal}}</div>
-                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
-                      *ngIf="showMaker==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
-                  </div>
-                </div>
-                <div *ngIf="showMaker==true" style="height:100px ; overflow: scroll;">
-                  <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
-                    <div class="euro-text1">{{list.manufacturer}}</div>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <!----------- third form ---------------------------->
-              <div class="label">Vehicle Model <span style="color:#A8B400;">*</span></div>
-              <div class="dropbox">
-                <div class="innerdropbox" (click)="opnenVehicleModelList()">
-                  <div class="euro-text" style="width: 100%;">{{vehicleModelVal}}</div>
-                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg"
-                      *ngIf="showVehicleModel==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
-                      *ngIf="showVehicleModel==true">
-                  </div>
-                </div>
-                <div *ngIf="showVehicleModel==true" style="height:100px ; overflow: scroll;">
-                  <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
-                    <div class="euro-text1">{{list.model}}</div>
-                  </div>
-
-                </div>
-
-              </div>
               <!----------- fourth form ---------------------------->
               <div class="label">Policyholder Type <span style="color:#A8B400;">*</span></div>
               <div class="dropbox">
@@ -257,15 +219,14 @@
       </div>
 
       <!-- ------------Enhanced-comprehensive----------------------- -->
-      <div *ngIf="value=='Enhanced Comprehensive'" style="border: 1px solid #A8B400;
-      border-radius: 12px;">
+      <div *ngIf="value=='Enhanced Comprehensive'" style="border: 1px solid #A8B400;border-radius: 12px; margin-top: 20px;">
         <div class="main">
           <div class="cflex">
             <div class="text"><b>AUTO CLASS</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive</span>
             </div>
             <div class="text1">1.75%<br><span class="cspan">Of vehicle value</span></div>
           </div>
-          <div *ngIf="show==false">
+          <div *ngIf="show==false" >
             <div class="cflex1">
               <div class="text3">3RD PARTY PROPERTY DAMAGE</div>
               <div class="text4">Up To N1 Million</div>
@@ -277,7 +238,7 @@
             </div>
 
             <div class="cflex1">
-              <div class="text5">THIFT</div>
+              <div class="text5">THEFT</div>
               <div class="imgdiv">
                 <img src="assets/images/tick.svg">
               </div>
@@ -303,7 +264,7 @@
             </div>
 
             <div class="cflex1">
-              <div class="text3">2.5% Of The Car Value</div>
+              <div class="text3">TOWING LIMIT</div>
               <div class="text4">N 12,500</div>
             </div>
 
@@ -337,6 +298,11 @@
             <div class="headtext">TOP UP COVERS AVAILABLE AT EXTRA COST</div>
 
             <div class="cflex1">
+              <div class="text3">INCREASE IN TPPD</div>
+              <div class="text4">0.2% On Additional Value Above ₦1,000,000 Limit </div>
+            </div>
+
+            <div class="cflex1">
               <div class="text3">EXCESS BUY BACK</div>
               <div class="text4">0.5% Of Sum Insured</div>
             </div>
@@ -344,11 +310,6 @@
             <div class="cflex1">
               <div class="text3">FLOOD EXTENSION</div>
               <div class="text4">0.25% Of Sum Insured</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">TRACKING INSTALLATION</div>
-              <div class="text4">Free For Vehicles Of N5,000,000 And Above</div>
             </div>
 
             <div class="cflex1">
@@ -378,12 +339,277 @@
 
 
           <div style="text-align: center;margin-top:8%;">
-            <img src="assets/images/uparrow.svg">
-            <!-- <img src="assets/images/downarrow.svg" *ngIf="show==false" (click)="showdiv()"> -->
+            <img src="assets/images/uparrow.svg" *ngIf="show==true" (click)="showdiv()">
+            <img src="assets/images/downarrow.svg" *ngIf="show==false" (click)="showdiv()">
           </div>
         </div>
 
       </div>
+
+
+      <!-- ----------------------------AUTO PLUS--------------------------->
+      
+      <div *ngIf="value=='Enhanced Comprehensive'" style="border: 1px solid #A8B400;border-radius: 12px; margin-top: 20px;">
+        <div class="main">
+          <div class="cflex">
+            <div class="text"><b>AUTO PLUS</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive</span>
+            </div>
+            <div class="text1">3%<br><span class="cspan">Of vehicle value</span></div>
+          </div>
+          <div *ngIf="showPlus==true" >
+            <div class="cflex1">
+              <div class="text3">3RD PARTY PROPERTY DAMAGE</div>
+              <div class="text4">Up To N1 Million</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">3RD PARTY BODILY INJURY</div>
+              <div class="text4">Up To N60 Million</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">THEFT</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">FIRE</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">ACCIDENTAL DAMAGE</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">AUTHORIZED REPAIR LIMIT</div>
+              <div class="text4">5% Of The Car Value</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">TOWING LIMIT</div>
+              <div class="text4">N 15,000</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">DEPRECIATION RATE</div>
+              <div class="text4">Graduated</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">MINIMUM SUM INSURED</div>
+              <div class="text4">₦3,500,000</div>
+            </div>
+
+            <div class="headtext">ADDITIONAL COVERS AT NO EXTRA COST</div>
+
+            <div class="cflex1">
+              <div class="text3">REFUND OF MEDICAL EXPENSES</div>
+              <div class="text4">Up To ₦50,000</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">LOSS OF PERSONAL EFFECT</div>
+              <div class="text4">UP TO N 50,000</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">TRACKING INSTALLATION</div>
+              <div class="text4">Free For Vehicles Of N3,500,000 And Above</div>
+            </div>
+
+            <div class="headtext">TOP UP COVERS AVAILABLE AT EXTRA COST</div>
+
+            <div class="cflex1">
+              <div class="text3">INCREASE IN TPPD</div>
+              <div class="text4">0.2% On Additional Value Above ₦1,000,000 Limit </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">EXCESS BUY BACK</div>
+              <div class="text4">Included</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">FLOOD EXTENSION</div>
+              <div class="text4">Included</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF N 2,000,000</div>
+              <div class="imgdiv">
+                <img src="assets/images/cross.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">INCREASE IN PASSENGER LIABILITY</div>
+              <div class="imgdiv">
+                <img src="assets/images/cross.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR PAYMENTS MADE OVER 3
+                INSTALLMENTS)</div>
+              <div class="text4">Up To 3 Consecutive And Equal Payments</div>
+            </div>
+
+            <div class="btndiv">
+              <ion-button class="btn" (click)="getQuote()">Get Quote</ion-button>
+            </div>
+          </div>
+
+
+          <div style="text-align: center;margin-top:8%;">
+            <img src="assets/images/uparrow.svg" *ngIf="showPlus==true" (click)="showAutoPlus()">
+            <img src="assets/images/downarrow.svg" *ngIf="showPlus==false" (click)="showAutoPlus()">
+          </div>
+        </div>
+
+      </div>
+
+      <!------------------------------UBER CLASSIC--------------------------->
+      <div *ngIf="value=='Enhanced Comprehensive'" style="border: 1px solid #A8B400;border-radius: 12px; margin-top: 20px;">
+        <div class="main">
+          <div class="cflex">
+            <div class="text" style="text-align: center;"><b>UBER CLASSIC</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive for Uber Drivers Only</span></div>
+            <div class="text1">2.5%<br><span class="cspan">Of vehicle value</span></div>
+          </div>
+          <div *ngIf="showClassic==true" >
+            <div class="cflex1">
+              <div class="text3">3RD PARTY PROPERTY DAMAGE</div>
+              <div class="text4">Up To N1 Million</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">3RD PARTY BODILY INJURY</div>
+              <div class="text4">Up To N60 Million</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">THEFT</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">FIRE</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">ACCIDENTAL DAMAGE</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">AUTHORIZED REPAIR LIMIT</div>
+              <div class="text4">5% Of The Car Value</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">TOWING LIMIT</div>
+              <div class="text4">N 12,500</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">DEPRECIATION RATE</div>
+              <div class="text4">Flat</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">MINIMUM SUM INSURED</div>
+              <div class="text4">₦1,500,000</div>
+            </div>
+
+            <div class="headtext">ADDITIONAL COVERS AT NO EXTRA COST</div>
+
+            <div class="cflex1">
+              <div class="text3">REFUND OF MEDICAL EXPENSES</div>
+              <div class="imgdiv">
+                <img src="assets/images/cross.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">LOSS OF PERSONAL EFFECT</div>
+              <div class="imgdiv">
+                <img src="assets/images/cross.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">TRACKING INSTALLATION</div>
+              <div class="imgdiv">
+                <img src="assets/images/cross.svg">
+              </div>
+            </div>
+
+            <div class="headtext">TOP UP COVERS AVAILABLE AT EXTRA COST</div>
+
+            <div class="cflex1">
+              <div class="text3">INCREASE IN TPPD</div>
+              <div class="text4">0.2% On Additional Value Above ₦1,000,000 Limit </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">EXCESS BUY BACK</div>
+              <div class="text4">1% Of Sum Insured</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">FLOOD EXTENSION</div>
+              <div class="text4">0.25% Of Sum Insured</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF N 2,000,000</div>
+              <div class="imgdiv">
+                <img src="assets/images/tick.svg">
+              </div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text5">INCREASE IN PASSENGER LIABILITY</div>
+              <div class="text4">@ 0.375% of increased benefit</div>
+            </div>
+
+            <div class="cflex1">
+              <div class="text3">PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR PAYMENTS MADE OVER 3
+                INSTALLMENTS)</div>
+              <div class="text4">Once</div>
+            </div>
+
+            <div class="btndiv">
+              <ion-button class="btn" (click)="getQuote()">Get Quote</ion-button>
+            </div>
+          </div>
+
+
+          <div style="text-align: center;margin-top:8%;">
+            <img src="assets/images/uparrow.svg" *ngIf="showClassic==true" (click)="showUberClassic()">
+            <img src="assets/images/downarrow.svg" *ngIf="showClassic==false" (click)="showUberClassic()">
+          </div>
+        </div>
+
+      </div>
+
+
+
+
     </div>
 
     <!------------- Investment Plan -------------------->
