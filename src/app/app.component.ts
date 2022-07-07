@@ -1,6 +1,8 @@
+import { Location } from '@angular/common';
 import { MenuController, NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { InsuranceAppService } from './services/insurance-app.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -19,7 +21,18 @@ export class AppComponent {
   selectedtitle: any;
   constructor(public navCtrl: NavController,
     public menuCtrl: MenuController,
-    public api:InsuranceAppService) { }
+    public api: InsuranceAppService,
+    public route: Router) {
+
+
+    if (localStorage.getItem('userid') != null) {
+      this.route.navigate(['home-page-screen-after-login'])
+    } else {
+      this.route.navigate(['sign-in-screen'])
+    }
+  }
+
+
 
   selected(p) {
     this.appPages.map((value) => {
@@ -31,15 +44,15 @@ export class AppComponent {
     p.status = 'checked'
 
   }
-  closeMenu(){
+  closeMenu() {
     this.menuCtrl.close();
   }
   logout() {
     localStorage.removeItem('userid');
     localStorage.removeItem('token');
     localStorage.removeItem('password');
-    console.log('userid==',localStorage.getItem('userid'));
-    console.log('token==',localStorage.getItem('token'));
+    console.log('userid==', localStorage.getItem('userid'));
+    console.log('token==', localStorage.getItem('token'));
     this.api.presenttoast('You are successfully logged out!');
     this.menuCtrl.close();
     this.navCtrl.navigateRoot('sign-in-screen');

@@ -1,0 +1,58 @@
+.title{
+  text-align: center;
+  font-family: Bliss Pro;
+  font-size: 20px;
+  color: #1A0F55;
+  font-weight: bold;
+}
+.wrapper{
+  width: 85%;
+  margin: 0% auto;
+}
+.htitle{
+  color: #A8B400;
+  text-align: center;
+  font-family: Bliss Pro;
+  font-size: 20px;
+}
+.p1{
+  color: #1A206D;
+  font-family: Bliss Pro;
+  font-size: 20px;
+  font-weight: 900;
+}
+.p2{
+  color: #5D5D5D;
+  font-family: Bliss Pro;
+  font-size: 14px;
+}
+.p3{
+  color: #A8B400;
+  font-size: 14px;
+  font-weight: bold;
+}
+ul li{
+  color: #000000;
+  font-family: Bliss Pro;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+ul {
+  list-style: none;
+}
+ul li::before {
+  content: "\2022";
+  color: #A8B400;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+.btn{
+  width: 273px;
+  height: 48px;
+  --background: #1A206D;
+  --border-radius: 12px;
+  opacity: 1;
+}

@@ -148,6 +148,14 @@ const routes: Routes = [
   {
     path: 'sub-products',
     loadChildren: () => import('./sub-products/sub-products.module').then( m => m.SubProductsPageModule)
+  },
+  {
+    path: 'comprehensivequote',
+    loadChildren: () => import('./comprehensivequote/comprehensivequote.module').then( m => m.ComprehensivequotePageModule)
+  },
+  {
+    path: 'thirdpartydetails',
+    loadChildren: () => import('./thirdpartydetails/thirdpartydetails.module').then( m => m.ThirdpartydetailsPageModule)
   }
 
 
