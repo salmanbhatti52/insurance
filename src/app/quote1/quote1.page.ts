@@ -13,58 +13,67 @@ export class Quote1Page implements OnInit {
   userEmail = '';
   mobNumber = '';
   compName = '';
-  
+  valOfVehicle = '';
+
   show = false;
-  showVehicle = false;
+  showAutoPlan = false;
   showMaker = false;
   showPolicyholder = false;
   showVehicleModel = false;
   showVehicleUsage = false;
+  showTPdagmage = false;
+  showPayFreq = false;
+  showFloodExt = false;
+  showExcessBuyBack = false;
+  showStrikeRiot = false;
+  showPassLiabili = false;
+  
 
-  vehicleVal = 'Please Select';
+  paymentFrequencyVal = 'Please Select';
+  autoPlanVal = 'Please Select';
+  tPdamageVal = 'Please Select';
   vehicleMakeVal = 'Please Select';
   policyhldrVal = 'Please Select';
-  vehicleModelVal = 'Please Select';
+  vehicleModelVal = '';
   vehicleUsageVal = 'Personal';
+  floodExtVal = 'Please Select';
+  excessBuyBackVal = 'Please Select';
+  strikeRiotVal = 'Please Select';
+  passLiabilityVal = 'Please Select';
   
-  vehicleClass:any;
+
   vehicleMake:any;
+  autoPlanList = [{autoPlan: 'Auto Classic(1.75% Of vehicle value)'},{autoPlan: 'Auto Plus(3% Of vehicle value)'},{autoPlan: 'Uber Classic(2.5% Of vehicle value)'}]
   policyhldrList = [{ plcyhldrType: 'Private' }, { plcyhldrType:'Corporate' }]
   vehicleModel:any;
   vehicleUsage = [{ usage: 'Personal'},{ usage: 'Personal'}]
+  tPdamageValues = [{tpDamage: 'Yes'},{tpDamage: 'No'}]
+  paymentFrequencies = [{pfreq: 'Once'},{pfreq: 'Twice'},{pfreq: 'Thrice'}]
+  floodExtValues = [{floodExt:'Yes'},{floodExt:'No'}]
+  ExcessBuyBack = [{excessByBack:'Yes'},{excessByBack:'No'}]
+  StrikeRiotCivilCommotion = [{strikeRiot:'Yes'},{strikeRiot:'No'}]
+  passengerLiability = [{passLiab:'Yes'},{passLiab:'No'}]
   constructor(public router:Router,
     public api:InsuranceAppService) { }
 
   ngOnInit() {
-    this.getCarVehicleTypeCls();
     this.getCarMakeCompanies();
     
   }
   ionViewWillEnter() {
-    this.vehicleVal = 'Please Select';
-    this.vehicleMakeVal = 'Please Select';
+    this.autoPlanVal = 'Select Auto Plan';
+    this.vehicleMakeVal = 'Manufacturer';
     this.policyhldrVal = 'Please Select';
-    this.vehicleModelVal = 'Please Select';
+    this.vehicleModelVal = '';
     this.fName = '';
     this.lName = '';
     this.userEmail = '';
     this.mobNumber = '';
     this.compName = '';
-  }
-  getCarVehicleTypeCls(){
-    let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"product_class\":\"vehicle_class_thirdparty\",\"method\":\"get_car_classes\"}"
-    this.api.insertData(myData).subscribe((res:any)=>{
-     console.log(res);
-     if(res.values!=""){
-      this.vehicleClass=res.values;
-      console.log(this.vehicleClass);
-      
-     }
-     
-    },(err)=>{
-     console.log(err);
-     
-    })
+    this.valOfVehicle = '';
+    this.vehicleUsageVal = 'Personal';
+    this.paymentFrequencyVal = 'Please Select';
+    this.tPdamageVal = 'Please Select';
   }
   getCarMakeCompanies(){
     let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"method\":\"get_car_companies\"}"
@@ -96,15 +105,64 @@ export class Quote1Page implements OnInit {
      
     })
   }
-  openVehicleList() {
-    if (this.showVehicle == true) {
-      this.showVehicle = false
+  openPassenger() {
+    if (this.showPassLiabili == true) {
+      this.showPassLiabili = false
     } else {
-      this.showVehicle = true;
+      this.showPassLiabili = true;
+
+    }
+  }
+  openPaymentFrequency() {
+    if (this.showPayFreq == true) {
+      this.showPayFreq = false
+    } else {
+      this.showPayFreq = true;
+
+    }
+  }
+  openExcessBuyBack() {
+    if (this.showExcessBuyBack == true) {
+      this.showExcessBuyBack = false
+    } else {
+      this.showExcessBuyBack = true;
+
+    }
+  }
+  openStrikeRiot() {
+    if (this.showStrikeRiot == true) {
+      this.showStrikeRiot = false
+    } else {
+      this.showStrikeRiot = true;
 
     }
   }
 
+  openFloodExtension() {
+    if (this.showFloodExt == true) {
+      this.showFloodExt = false
+    } else {
+      this.showFloodExt = true;
+
+    }
+  }
+  openAutoPlan() {
+    if (this.showAutoPlan == true) {
+      this.showAutoPlan = false
+    } else {
+      this.showAutoPlan = true;
+
+    }
+  }
+
+  openTPDamageValues() {
+    if (this.showTPdagmage == true) {
+      this.showTPdagmage = false
+    } else {
+      this.showTPdagmage = true;
+
+    }
+  }
   openVhclMakeList() {
     if (this.showMaker == true) {
       this.showMaker = false
@@ -141,9 +199,33 @@ export class Quote1Page implements OnInit {
     }
   }
 
-  selectVehicleCls(list) {
-    this.vehicleVal= list;
-    this.showVehicle = false;
+  selectPassLiab(list) {
+    this.passLiabilityVal= list.passLiab;
+    this.showPassLiabili = false;
+  }
+  selectFloodExt(list) {
+    this.floodExtVal= list.floodExt;
+    this.showFloodExt = false;
+  }
+  selectExcessBuyBack(list) {
+    this.excessBuyBackVal= list.excessByBack;
+    this.showExcessBuyBack = false;
+  }
+  selectStrikeRiot(list) {
+    this.strikeRiotVal= list.strikeRiot;
+    this.showStrikeRiot = false;
+  }
+  selectPayFreq(list) {
+    this.paymentFrequencyVal= list.pfreq;
+    this.showPayFreq = false;
+  }
+  selectTpDamage(list) {
+    this.tPdamageVal= list.tpDamage;
+    this.showTPdagmage = false;
+  }
+  selectAutoPlan(list) {
+    this.autoPlanVal= list.autoPlan;
+    this.showAutoPlan = false;
   }
 
   selectVehicleMaker(list){
@@ -173,16 +255,16 @@ export class Quote1Page implements OnInit {
 
   
   continue(){
-    if(this.vehicleVal==''){
-      this.api.presenttoast('Vehicle Type required')
+    if(this.autoPlanVal=='Select Auto Plan'){
+      this.api.presenttoast('Auto Plan required')
     }
-    else if(this.vehicleMakeVal==''){
-      this.api.presenttoast('Vehicle Make required')
+    else if(this.vehicleMakeVal=='Manufacturer'){
+      this.api.presenttoast('Manufacturer required')
     }
     else if(this.vehicleModelVal==''){
-      this.api.presenttoast('Vehicle Model required')
+      this.api.presenttoast('Model required')
     }
-    else if(this.policyhldrVal==''){
+    else if(this.policyhldrVal=='Please Select'){
       this.api.presenttoast('Policyholder Type required');
       
     }
@@ -202,7 +284,16 @@ export class Quote1Page implements OnInit {
       }
       else if(this.mobNumber==''){
         this.api.presenttoast('Phone Number required')
-      } 
+      }
+      else if(this.valOfVehicle == '' ){
+        this.api.presenttoast('Value of vehicle required')
+      }
+      else if(this.tPdamageVal == 'Please Select'){
+        this.api.presenttoast('Increase in third party property damage required')
+      }
+      else if(this.paymentFrequencyVal == 'Please Select'){
+        this.api.presenttoast('PaymentFrequency required')
+      }
       else{
         this.callingapi()
       }
@@ -224,6 +315,16 @@ export class Quote1Page implements OnInit {
       else if(this.mobNumber==''){
         this.api.presenttoast('Phone Number required')
       } 
+      else if(this.valOfVehicle == '' ){
+        this.api.presenttoast('Value of vehicle required')
+      }
+      else if(this.tPdamageVal == 'Please Select'){
+        this.api.presenttoast('Increase in third party property damage required')
+      }
+      else if(this.paymentFrequencyVal == 'Please Select'){
+        this.api.presenttoast('PaymentFrequency required')
+      }
+      
         else{
           this.callingapi()
       }
@@ -237,7 +338,7 @@ export class Quote1Page implements OnInit {
   }
 
   callingapi(){
-    let myData = "myData={\r\n    \"product_id\":\""+localStorage.getItem('prod_id')+"\",\r\n    \"vehicle_class\":\""+this.vehicleVal+"\",\r\n    \"first_name\": \""+this.fName+"\",\r\n    \"last_name\":\""+this.lName+"\",\r\n    \"vehicle_manufacturer\":\""+this.vehicleMakeVal+"\",\r\n    \"vehicle_model\":\""+this.vehicleModelVal+"\",\r\n    \"policyholder_type\":\""+this.policyhldrVal+"\",\r\n    \"mobile\":\""+this.mobNumber+"\",\r\n    \"company_name\":\""+this.compName+"\",\r\n    \"email\":\""+this.userEmail+"\",\r\n    \"verify_token\":\""+localStorage.getItem('token')+"\",\r\n    \"method\": \"save_product_quote\" \r\n}"
+    let myData = "myData={\r\n    \"product_id\":\""+localStorage.getItem('prod_id')+"\",\r\n    \"vehicle_class\":\""+this.autoPlanVal+"\",\r\n    \"first_name\": \""+this.fName+"\",\r\n    \"last_name\":\""+this.lName+"\",\r\n    \"vehicle_manufacturer\":\""+this.vehicleMakeVal+"\",\r\n    \"vehicle_model\":\""+this.vehicleModelVal+"\",\r\n    \"policyholder_type\":\""+this.policyhldrVal+"\",\r\n    \"mobile\":\""+this.mobNumber+"\",\r\n    \"company_name\":\""+this.compName+"\",\r\n    \"email\":\""+this.userEmail+"\",\r\n    \"verify_token\":\""+localStorage.getItem('token')+"\",\r\n    \"method\": \"save_product_quote\" \r\n}"
     this.api.insertData(myData).subscribe((data:any)=>{
       console.log(data);
       if(data.message=='success'){

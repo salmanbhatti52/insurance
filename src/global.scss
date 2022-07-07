@@ -96,10 +96,10 @@ ion-footer{
 
 .PolicyPopupCust{
   --border-radius: 32px;
-    --max-height: 56%;
+    --max-height: 65%;
     --max-width: 90%;
     --width: 90%;
-    --height: 56%;
+    --height: 65%;
   background-color:rgba(255,255,255,1) !important;
   --box-shadow: #00000029 0px 0px 22px 0px;
 }
@@ -126,10 +126,10 @@ ion-footer{
 @media only screen and (max-width:375px)and (min-height:667px) {
   .PolicyPopupCust{
     --border-radius: 32px;
-      --max-height: 60%;
+      --max-height: 80%;
       --max-width: 90%;
       --width: 90%;
-      --height: 90%;
+      --height: 80%;
     background-color:rgba(255,255,255,1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
@@ -204,10 +204,10 @@ ion-footer{
 @media only screen and (max-width:390px)and (min-height:844px) {
   .PolicyPopupCust{
     --border-radius: 32px;
-      --max-height: 55%;
+      --max-height: 65%;
       --max-width: 90%;
       --width: 90%;
-      --height: 43%;
+      --height: 65%;
     background-color:rgba(255,255,255,1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }

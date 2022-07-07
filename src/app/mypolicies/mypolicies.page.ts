@@ -61,9 +61,9 @@ export class MypoliciesPage implements OnInit {
 
     }
     this.vehicleVal = 'Please Select';
-    this.vehicleMakeVal = 'Please Select';
+    this.vehicleMakeVal = 'Manufacturer';
     this.policyhldrVal = 'Please Select';
-    this.vehicleModelVal = 'Please Select';
+    this.vehicleModelVal = 'Select Model';
     this.fName = '';
     this.lName = '';
     this.userEmail = '';
@@ -110,7 +110,9 @@ export class MypoliciesPage implements OnInit {
       this.box = 'checked'
     }
   }
-
+  getQuote(){
+    this.router.navigate(['/quote1']);
+  }
   // -----------------Third Party---------------------------
 
   getCarVehicleTypeCls(){

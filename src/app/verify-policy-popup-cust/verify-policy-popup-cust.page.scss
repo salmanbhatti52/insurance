@@ -16,7 +16,7 @@
   margin: 0px;
 }
 .con-p2{
-  color: #1A0F55;
+  color: #1A206D;
   font-size: 20px;
   font-weight: 500;
   margin: 0px;
@@ -28,7 +28,7 @@
     margin-top: 5%;
 }
 .con-p3{
-  color: #1A0F55;
+  color: #1A206D;
   font-size: 14px;
   font-weight: 500;
   margin: 0px;
@@ -48,9 +48,18 @@
   text-align: center;
   margin-top: 7%
 }
-.btn{
-  --background:#1A0F55 ;
+.btn1{
+  --background:#1A206D ;
   --border-radius:12px;
+  width:171px ;
+  height: 48px;
+}
+.btn2{
+  margin-top: 16px;
+  --background:white ;
+  border: 2px solid #1A206D;
+  color: #1A206D;
+  border-radius:12px;
   width:171px ;
   height: 48px;
 }

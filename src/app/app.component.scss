@@ -1,6 +1,6 @@
 ion-menu ion-content {
   // --background: var(--ion-item-background, var(--ion-background-color, #fff));
-  --background:#1A206D
+  --background:#1A206D;
 }
 
 ion-menu.md ion-content {
@@ -142,6 +142,7 @@ ion-menu::part(container) {
   }
   .title{
     margin-left: 4%;
+    font-family: 'Bliss Pro';
   }
   .text1{
     font-size: 18px;
