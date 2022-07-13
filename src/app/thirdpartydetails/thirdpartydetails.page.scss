@@ -14,22 +14,41 @@
   text-align: center;
   font-family: Bliss Pro;
   font-size: 20px;
+  margin-top: 14px;
 }
+
 .p1{
   color: #1A206D;
   font-family: Bliss Pro;
   font-size: 20px;
   font-weight: 900;
 }
+p.number-styling {
+  font-size: 10px;
+    font-weight: 400;
+    background: #A8B400;
+    height: 13px;
+    width: 16px;
+    color: white;
+    border-radius: 50%;
+    padding-left: 3.5px;
+    padding-bottom: 0px;
+    margin: 0px;
+    margin-right: 8px;
+    margin-top: 2px;
+    font-family: "Bliss Pro";
+}
 .p2{
   color: #5D5D5D;
   font-family: Bliss Pro;
   font-size: 14px;
+  margin: 0px;
 }
 .p3{
   color: #A8B400;
   font-size: 14px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 ul li{
   color: #000000;
@@ -55,4 +74,8 @@ ul li::before {
   --background: #1A206D;
   --border-radius: 12px;
   opacity: 1;
+  font-size: 20px;
+  font-family: 'Bliss Pro';
+  text-transform: capitalize;
+  font-weight: 500;
 }
