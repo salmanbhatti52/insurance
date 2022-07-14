@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   public appPages = [
+    { title: 'Home', url: '/home-page-screen-after-login', img: '/assets/images/home.svg', img1: '/assets/images/homeicon.svg', status: 'unchecked' },
     { title: 'Dashboard', url: 'dashboard', img: '/assets/images/icons/chart.svg', img1: '/assets/images/icons/dashboard.svg', status: 'unchecked' },
     { title: 'Get Quote', url: '/get-quote', img: '/assets/images/icons/quote.svg', img1: '/assets/images/icons/activequote.svg', status: 'unchecked' },
     { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
@@ -25,11 +26,11 @@ export class AppComponent {
     public route: Router) {
 
 
-    // if (localStorage.getItem('userid') != null) {
-    //   this.route.navigate(['home-page-screen-after-login'])
-    // } else {
-    //   this.route.navigate(['sign-in-screen'])
-    // }
+    if (localStorage.getItem('userid') != null) {
+      this.route.navigate(['home-page-screen-after-login'])
+    } else {
+      this.route.navigate(['sign-in-screen'])
+    }
   }
 
 

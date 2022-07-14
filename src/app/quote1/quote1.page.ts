@@ -394,15 +394,18 @@ export class Quote1Page implements OnInit {
     let myData = "myData={\"product_id\":\""+localStorage.getItem('subProId')+"\",\"vehicle_class\":\""+this.eCvehicleClassVal+"\",\"vehicle_manufacturer\":\""+this.vehicleMakeVal+"\", \"vehicle_model\":\""+this.vehicleModelVal+"\", \"first_name\":\""+this.fName+"\", \"last_name\":\""+this.lName+"\",\r\n\"policyholder_type\":\""+this.policyhldrVal+"\", \"mobile\":\""+this.mobNumber+"\", \"company_name\": \""+this.compName+"\", \"email\":\""+this.userEmail+"\", \"value_of_vehicle\":\""+this.valOfVehicle+"\", \"flood_extension\":\""+this.floodExtVal+"\", \"excess_buy_back\":\""+this.excessBuyBackVal+"\", \"vehicle_tracking\":\""+this.vehicleTrackingVal+"\", \"verify_token\":\""+localStorage.getItem('token')+"\",\"method\":\"save_product_quote\"}"
     this.api.insertData(myData).subscribe((data:any)=>{
       console.log(data);
-      // if(data.message=='success'){
-      //   this.api.presenttoast(data.info.message);
-      //   localStorage.setItem('product_id',data.info.product_id);
-      //   localStorage.setItem('quote_id',data.info.quote_id);
-      //   console.log(localStorage.getItem('product_id'));
-      //   console.log(localStorage.getItem('quote_id'));
+
+      if(data.message=='success'){
+        this.api.presenttoast(data.info.message);
+        // localStorage.setItem('product_id',data.info.product_id);
+        // localStorage.setItem('quote_id',data.info.quote_id);
+        // console.log(localStorage.getItem('product_id'));
+        // console.log(localStorage.getItem('quote_id'));
         
-      //   this.router.navigate(['/car-insurance-details']);
-      // }
+        this.router.navigate(['/car-insurance-details']);
+      }else{
+        this.api.presenttoast(data.message);
+      }
     },(err)=>{
       console.log(err);
       
