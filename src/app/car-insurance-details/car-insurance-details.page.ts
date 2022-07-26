@@ -44,6 +44,7 @@ export class CarInsuranceDetailsPage implements OnInit {
   genderType = [{gender: 'Male'},{gender: 'Female'}]
   // referrerList = [{referrer:'Friend'},{referrer:'Email'}]
   referrerList:any;
+  imgURLBase: string;
   constructor(
     public location:Location,
     public router:Router,
@@ -152,20 +153,18 @@ export class CarInsuranceDetailsPage implements OnInit {
     var options: ImageOptions = {
       source: source,
 
-      resultType: CameraResultType.Uri
+      resultType: CameraResultType.DataUrl
     }
     const image = await Camera.getPhoto(options); 
     console.log(image);
     
-    console.log(image.webPath);
+    console.log(image.dataUrl);
     if(imgetype=='license'){
-      this.imgURL=image.webPath;
-      this.saveimage(image.webPath,imgetype);
+      this.imgURL=image.dataUrl;
     }
     
     if(imgetype=='nic'){
-      this.imgURL1=image.webPath;
-      this.saveimage(image.webPath,imgetype);
+      this.imgURL1=image.dataUrl;
     }
     
     // url = ' https://eigix.net/morlaApp/api';
@@ -194,10 +193,10 @@ export class CarInsuranceDetailsPage implements OnInit {
       directory: Directory.Documents,
       recursive: true
     });
-
+   
     console.log('savedFile data==', savedFile)
     console.log(savedFile.uri);
-    this.imgURL = savedFile.uri;
+    this.imgURLBase = savedFile.uri;
     this.imgURL1 = savedFile.uri;
     
     if(imgtype == 'license'){
@@ -289,39 +288,18 @@ export class CarInsuranceDetailsPage implements OnInit {
   }
     
   callingApi(){
-    // this.imgURL = '/C:/Users/aligh/OneDrive/Desktop/syllabus.jpg';
-    // this.imgURL1 = '/C:/Users/aligh/OneDrive/Desktop/syllabus.jpg'
     console.log(this.imgURL);
     console.log(this.imgURL1);
-    
-    
-    var form = new FormData();
-    // form.append("product_id", localStorage.getItem('product_id'));
-    // form.append("quote_id", localStorage.getItem('quote_id'));
-    // form.append("name", this.fullName);
-    // form.append("registration_number", this.regNo);
-    // form.append("engine_number", this.engNo);
-    // form.append("chasis_number", this.chasisNo);
-    // form.append("vehicle_colour", this.vehclr);
-    // form.append("address", this.clientAddress);
-    // form.append("gender", this.genderVal);
-    // form.append("date_of_birth", this.dobValue);
-    // form.append("incorporation", this.corpValue);
-    // form.append("year_of_purchase", this.yopValue);
-    // form.append("year_of_manufacture", this.yomValue);
-    // form.append("referred_by", this.referrerVal);
-    // form.append("referrer_details", this.referrerData);
-    // form.append("means_of_id", this.imgURL1);
-    // form.append("vehicle_licence", this.imgURL);
-    // form.append("verify_token", localStorage.getItem('token'));
-    // form.append("method", "save_product_proposal");
-    
-    // this.api.insertFormData(form).subscribe((data:any)=>{
-    //   console.log(data);
-    //   // if(data.message=='success'){
-    //   //   this.api.presenttoast(data.info.message)
-    //   // }
+    // let headers= new HttpHeaders({
+
+    //   'Content-Type': 'application/json; charset=UTF-8',
+  
+    //   'Access-Control-Allow-Origin': '*',
+  
+    //   'enctype': 'multipart/form-data',
+  
     // })
+    let headers= new HttpHeaders();
     var form = new FormData();
     form.append("product_id", localStorage.getItem('product_id'));
     form.append("quote_id", localStorage.getItem('quote_id'));
@@ -338,27 +316,34 @@ export class CarInsuranceDetailsPage implements OnInit {
     form.append("year_of_manufacture", this.yomValue);
     form.append("referred_by", this.referrerVal);
     form.append("referrer_details", this.referrerData);
-    form.append("means_of_id", this.imgURL1);
-    form.append("vehicle_licence", this.imgURL);
+    form.append("means_of_id", this.imgURL1.split(',')[1]);
+    form.append("vehicle_licence", this.imgURL.split(',')[1]);
     form.append("verify_token", localStorage.getItem('token'));
     form.append("method", "save_product_proposal");
-    // let config = {
-    //   method: 'post',
-    //   url: 'https://www.cornerstone.com.ng/devtest/webservice',
-    //   headers: { 
-    //     'Content-Type': 'application/x-www-form-urlencoded', 
-    //     'Cookie': 'corci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%229067b6add23324d21220d8f7d5c649c0%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A12%3A%2239.40.231.23%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A21%3A%22PostmanRuntime%2F7.29.0%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1656587499%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7D87fb653bf23ba596c9ade5a76135fe0a7557093d', 
-    //     ...data.getHeaders()
-    //   },
-    //   data : data
-    // };
+    let config = {
+      method: 'post',
+      url: 'https://www.cornerstone.com.ng/devtest/webservice',
+      headers: headers,
+      data : form
+    };
 
-    axios.post('https://www.cornerstone.com.ng/devtest/webservice',form)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
+      
+    console.log("form form config",config)
+    this.http.post(config.url,config.data , {
+      headers: config.headers,
+    }).subscribe((res)=>{
+      console.log('cid===',res);
+      
+    },err=>{
+      console.log('err===',err);
+      
     });
+    // axios.post('https://www.cornerstone.com.ng/devtest/webservice',form)
+    // .then(function (response) {
+    //   console.log(JSON.stringify(response.data));
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
   }
 }

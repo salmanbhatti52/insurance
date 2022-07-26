@@ -36,28 +36,19 @@
 
     <!------------- Purchase Policies -------------------->
     <div *ngIf="requestsType=='PurchasePolicies'">
-      <div style="display:flex;justify-content: space-around;margin-top: 5%;">
-        <div class="htext1" (click)="checktype('Third Party')">
-          Third Party
-          <hr class="r1" *ngIf="value=='Third Party'">
-        </div>
-        <div class="htext1" (click)="checktype('Enhanced Comprehensive')">
-          Comprehensive Motor Insurance
-          <hr class="r2" *ngIf="value=='Enhanced Comprehensive'">
-        </div>
-      </div>
 
       <!-------------- third party discription ------------------->
       <div *ngIf="value=='Third Party'">
         <div class="thirdParty-wrapper">
-          <div class="htext">Your Details</div>
+          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt=""> Third Party</div>
+          <div class="htext" style="color: black; font-size: 18px;">Your Details</div>
           <div class="flex-cls">
             <!-- <div>
               <img src="assets/images/slider/1.svg">
             </div> -->
             <div style="width:80%;margin:0% auto;">
               <div class="label">Vehicle Class <span style="color:#A8B400;">*</span></div>
-              <div class="dropbox">
+              <div class="dropbox" style="position: relative;">
                 <div class="innerdropbox" (click)="openVehicleList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
@@ -66,7 +57,7 @@
                     <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicle==true">
                   </div>
                 </div>
-                <div *ngIf="showVehicle==true" style="height:100px ; overflow: scroll;">
+                <div *ngIf="showVehicle==true" style="height:100px ; overflow: scroll; ">
                   <div *ngFor="let list of vehicleClass" (click)="selectVehicleCls(list)">
                     <div class="euro-text1">{{list}}</div>
                   </div>
@@ -76,46 +67,38 @@
               </div>
               <!----------- second form ---------------------------->
               <div class="label">Vehicle Make <span style="color:#A8B400;">*</span></div>
-                <ion-grid style="padding-left: 0px; padding-right: 0px;">
-                  <ion-row>
-                    <ion-col size="6" style="padding-left: 0px;">
-                      <div class="dropbox">
-                        <div class="innerdropbox" (click)="openVhclMakeList()">
-                          <div class="euro-text" style="width: 100%;">{{vehicleMakeVal}}</div>
-                          <div class="imgdiv" style="padding-bottom: 2px; width: 12%;">
-                            <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
-                            <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
-                          </div>
-                        </div>
-                        <div *ngIf="showMaker==true" style="height:100px ; overflow: scroll;">
-                          <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
-                            <div class="euro-text1">{{list.manufacturer}}</div>
-                          </div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openVhclMakeList()">
+                  <div class="euro-text" style="width: 100%;">{{vehicleMakeVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
+                  </div>
+                </div>
+                <div *ngIf="showMaker==true" style="height:100px ; overflow: scroll;">
+                  <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
+                    <div class="euro-text1">{{list.manufacturer}}</div>
+                  </div>
 
-                        </div>
+                </div>
 
-                      </div>
-                    </ion-col>
-                    <ion-col size="6" style="padding-right: 0px;">
-                      <div class="dropbox" >
-                        <div class="innerdropbox" (click)="opnenVehicleModelList()">
-                          <div class="euro-text" style="width: 100%;">{{vehicleModelVal}}</div>
-                          <div class="imgdiv" style="padding-bottom: 2px; width: 12%;">
-                            <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg" *ngIf="showVehicleModel==false">
-                            <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
-                          </div>
-                        </div>
-                        <div *ngIf="showVehicleModel==true" style="height:100px ; overflow: scroll;">
-                          <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
-                            <div class="euro-text1">{{list.model}}</div>
-                          </div>
+              </div>  
+              <div class="dropbox" >
+                <div class="innerdropbox" (click)="opnenVehicleModelList()">
+                  <div class="euro-text" style="width: 100%;">{{vehicleModelVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg" *ngIf="showVehicleModel==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
+                  </div>
+                </div>
+                <div *ngIf="showVehicleModel==true" style="height:100px ; overflow: scroll;">
+                  <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
+                    <div class="euro-text1">{{list.model}}</div>
+                  </div>
 
-                        </div>
+                </div>
 
-                      </div>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
+              </div>
 
               <!----------- fourth form ---------------------------->
               <div class="label">Policyholder Type <span style="color:#A8B400;">*</span></div>
@@ -186,28 +169,8 @@
                     class="in-text"></ion-input>
                 </div>
               </div>
-
-              <!----------- seventh form ---------------------------->
-              <div class="label">Vehicle Usage <span style="color:#A8B400;">*</span></div>
-              <div class="dropbox">
-                <div class="innerdropbox" (click)="opnenVehicleUsageList()">
-                  <div class="euro-text" style="width: 100%;">{{vehicleUsageVal}}</div>
-                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
-                      *ngIf="showVehicleUsage==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
-                      *ngIf="showVehicleUsage==true">
-                  </div>
-                </div>
-                <div *ngIf="showVehicleUsage==true">
-                  <div *ngFor="let list of vehicleUsage" (click)="selectVehicleUsage(list)">
-                    <div class="euro-text1">{{list.usage}}</div>
-                  </div>
-
-                </div>
-
-              </div>
-              <div style="width: 90%;margin:8% auto;" (click)="continue()">
+              <!-- ---------------------------------------------------------------- -->
+              <div style="width: 90%;margin:8% auto;" (click)="thirdPartyQ()">
                 <ion-button class="btn">Continue</ion-button>
               </div>
 
@@ -219,393 +182,419 @@
       </div>
 
       <!-- ------------Enhanced-comprehensive----------------------- -->
-      <div *ngIf="value=='Enhanced Comprehensive'" style="border: 1px solid #A8B400;border-radius: 12px; margin-top: 20px;">
-        <div class="main">
-          <div class="cflex">
-            <div class="text"><b>AUTO CLASS</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive</span>
+      <div *ngIf="value=='Enhanced Comprehensive'" >
+        
+        <div class="thirdParty-wrapper">
+          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt=""> Enhanced Comprehensive</div>
+          <div class="htext" style="color: black; font-size: 18px;">Your Details</div>
+          <div class="flex-cls">
+            <div style="width:80%;margin:0% auto;">
+              <div class="label">Vehicle Class <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox" >
+                <div class="innerdropbox" (click)="openVehicleList()">
+                  <div class="euro-text" style="width: 100%;">{{vehicleVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showVehicle==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicle==true">
+                  </div>
+                </div>
+                <div *ngIf="showVehicle==true" style="height:100px ; overflow: scroll; ">
+                  <div *ngFor="let list of eCcarClasses" (click)="selectVehicleCls(list)">
+                    <div class="euro-text1">{{list}}</div>
+                  </div>
+
+                </div>
+
+              </div>
+              <!----------- second form ---------------------------->
+              <div class="label">Vehicle Make <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openVhclMakeList()">
+                  <div class="euro-text" style="width: 100%;">{{vehicleMakeVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
+                  </div>
+                </div>
+                <div *ngIf="showMaker==true" style="height:100px ; overflow: scroll;">
+                  <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
+                    <div class="euro-text1">{{list.manufacturer}}</div>
+                  </div>
+
+                </div>
+
+              </div>  
+              <div class="dropbox" >
+                <div class="innerdropbox" (click)="opnenVehicleModelList()">
+                  <div class="euro-text" style="width: 100%;">{{vehicleModelVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg" *ngIf="showVehicleModel==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
+                  </div>
+                </div>
+                <div *ngIf="showVehicleModel==true" style="height:100px ; overflow: scroll;">
+                  <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
+                    <div class="euro-text1">{{list.model}}</div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!----------- fourth form ---------------------------->
+              <div class="label">Policyholder Type <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openPolicyhldrList()">
+                  <div class="euro-text" style="width: 100%;">{{policyhldrVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showPolicyholder==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showPolicyholder==true">
+                  </div>
+                </div>
+                <div *ngIf="showPolicyholder==true">
+                  <div *ngFor="let list of policyhldrList" (click)="selectPolicyholder(list)">
+                    <div class="euro-text1">{{list.plcyhldrType}}</div>
+                  </div>
+
+                </div>
+
+              </div>
+              <!----------- fifth form ---------------------------->
+              <div *ngIf="policyhldrVal=='Private'">
+                <div class="label">First Name</div>
+                <div class="inputfield">
+                  <div class="innerdropbox">
+                    <ion-input [(ngModel)]="fName" style="height: 48px;" type="email" placeholder="John"
+                      class="in-text"></ion-input>
+                  </div>
+                </div>
+              </div>
+              <!----------- fifth form ---------------------------->
+              <div *ngIf="policyhldrVal=='Private'">
+                <div class="label">Last Name</div>
+                <div class="inputfield">
+                  <div class="innerdropbox">
+                    <ion-input [(ngModel)]="lName" style="height: 48px;" type="email" placeholder="Doe" class="in-text">
+                    </ion-input>
+                  </div>
+                </div>
+              </div>
+              <!----------- fifth form ---------------------------->
+              <div *ngIf="policyhldrVal=='Corporate'">
+                <div class="label">Company Name</div>
+                <div class="inputfield">
+                  <div class="innerdropbox">
+                    <ion-input [(ngModel)]="compName" style="height: 48px;" type="email" placeholder="phenologix"
+                      class="in-text"></ion-input>
+                  </div>
+                </div>
+              </div>
+
+
+              <!----------- fifth form ---------------------------->
+              <div class="label">Email Address<span style="color:#A8B400;">*</span></div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="userEmail" style="height: 48px;" type="email" placeholder="johndoe@gmail.com"
+                    class="in-text"></ion-input>
+                </div>
+              </div>
+
+              <!----------- sixth form ---------------------------->
+              <div class="label">Phone Number <span style="color:#A8B400;">*</span></div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="mobNumber" style="height: 48px;" type="tel" placeholder="923565466554"
+                    class="in-text"></ion-input>
+                </div>
+              </div>
+              <!----------- sixth form ---------------------------->
+              <div class="label">Value of Vehicle <span style="color:#A8B400;">*</span></div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="valOfVehicle" style="height: 48px;" type="tel" placeholder="" class="in-text"></ion-input>
+                </div>
+              </div>
+
+              <!----------- seventh form ---------------------------->
+              <div class="label">Flood Extension <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openFloodExtension()">
+                  <div class="euro-text" style="width: 100%;">{{floodExtVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showFloodExt==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showFloodExt==true">
+                  </div>
+                </div>
+                <div *ngIf="showFloodExt==true">
+                  <div *ngFor="let list of floodExtValues" (click)="selectFloodExt(list)">
+                    <div class="euro-text1">{{list.floodExt}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!----------- seventh form ---------------------------->
+              <div class="label">Excess Buy Back <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openExcessBuyBack()">
+                  <div class="euro-text" style="width: 100%;">{{excessBuyBackVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px;  width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showExcessBuyBack==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showExcessBuyBack==true">
+                  </div>
+                </div>
+                <div *ngIf="showExcessBuyBack==true">
+                  <div *ngFor="let list of ExcessBuyBack" (click)="selectExcessBuyBack(list)">
+                    <div class="euro-text1">{{list.excessByBack}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!----------- seventh form ---------------------------->
+              <div class="label">Would you want Vehicle Tracking? <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openVehicleTracking()">
+                  <div class="euro-text" style="width: 100%;">{{vehicleTrackingVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showVehicleTracking==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleTracking==true">
+                  </div>
+                </div>
+                <div *ngIf="showVehicleTracking==true">
+                  <div *ngFor="let list of vehicleTrackingValues" (click)="selectVehicleTracking(list)">
+                    <div class="euro-text1">{{list.vehicleTrack}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---------------------------------------------------------------- -->
+              <div style="width: 90%;margin:8% auto;" (click)="enhancedCompQ()">
+                <ion-button class="btn">Continue</ion-button>
+              </div>
             </div>
-            <div class="text1">1.75%<br><span class="cspan">Of vehicle value</span></div>
           </div>
-          <div *ngIf="show==false" >
-            <div class="cflex1">
-              <div class="text3">3RD PARTY PROPERTY DAMAGE</div>
-              <div class="text4">Up To N1 Million</div>
-            </div>
 
-            <div class="cflex1">
-              <div class="text3">3RD PARTY BODILY INJURY</div>
-              <div class="text4">Up To N60 Million</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">THEFT</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">FIRE</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">ACCIDENTAL DAMAGE</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">AUTHORIZED REPAIR LIMIT</div>
-              <div class="text4">2.5% Of The Car Value</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">TOWING LIMIT</div>
-              <div class="text4">N 12,500</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">DEPRECIATION RATE</div>
-              <div class="text4">Graduated</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">MINIMUM SUM INSURED</div>
-              <div class="text4">₦2,000,000</div>
-            </div>
-
-            <div class="headtext">ADDITIONAL COVERS AT NO EXTRA COST</div>
-
-            <div class="cflex1">
-              <div class="text3">REFUND OF MEDICAL EXPENSES</div>
-              <div class="text4">Up To ₦10,000</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">LOSS OF PERSONAL EFFECT</div>
-              <div class="text4">UP TO N 10,000</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">TRACKING INSTALLATION</div>
-              <div class="text4">Free For Vehicles Of N5,000,000 And Above</div>
-            </div>
-
-            <div class="headtext">TOP UP COVERS AVAILABLE AT EXTRA COST</div>
-
-            <div class="cflex1">
-              <div class="text3">INCREASE IN TPPD</div>
-              <div class="text4">0.2% On Additional Value Above ₦1,000,000 Limit </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">EXCESS BUY BACK</div>
-              <div class="text4">0.5% Of Sum Insured</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">FLOOD EXTENSION</div>
-              <div class="text4">0.25% Of Sum Insured</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF N 2,000,000</div>
-              <div class="imgdiv">
-                <img src="assets/images/cross.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">INCREASE IN PASSENGER LIABILITY</div>
-              <div class="imgdiv">
-                <img src="assets/images/cross.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR PAYMENTS MADE OVER 3
-                INSTALLMENTS)</div>
-              <div class="text4">Up To 3 Consecutive And Equal Payments</div>
-            </div>
-
-            <div class="btndiv">
-              <ion-button class="btn" (click)="getQuote()">Get Quote</ion-button>
-            </div>
-          </div>
-
-
-          <div style="text-align: center;margin-top:8%;">
-            <img src="assets/images/uparrow.svg" *ngIf="show==true" (click)="showdiv()">
-            <img src="assets/images/downarrow.svg" *ngIf="show==false" (click)="showdiv()">
-          </div>
         </div>
 
       </div>
 
+      <!-- ------------Auto Variants----------------------- -->
+      <div *ngIf="value=='Auto Variants'" >
+        <div class="thirdParty-wrapper">
+          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt=""> Auto Variants</div>
+          <div class="htext" style="color: black; font-size: 18px;">Your Details</div>
+          <div class="flex-cls">
+            <div style="width:80%;margin:0% auto;">
+              <div class="label">Auto Plan of Choice <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox" >
+                <div class="innerdropbox" (click)="openAutoPlanList()">
+                  <div class="euro-text" style="width: 100%;">{{autoPlanVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showPlan==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showPlan==true">
+                  </div>
+                </div>
+                <div *ngIf="showPlan==true" style="height:100px ; overflow: scroll; ">
+                  <div *ngFor="let list of autoPlansOfChoice" (click)="selectAutoPlan(list)">
+                    <div class="euro-text1">{{list.autoPlan}}</div>
+                  </div>
 
-      <!-- ----------------------------AUTO PLUS--------------------------->
-      
-      <div *ngIf="value=='Enhanced Comprehensive'" style="border: 1px solid #A8B400;border-radius: 12px; margin-top: 20px;">
-        <div class="main">
-          <div class="cflex">
-            <div class="text"><b>AUTO PLUS</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive</span>
+                </div>
+
+              </div>
+              <!----------- second form ---------------------------->
+              <div class="label">Vehicle Make <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openVhclMakeList()">
+                  <div class="euro-text" style="width: 100%;">{{vehicleMakeVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
+                  </div>
+                </div>
+                <div *ngIf="showMaker==true" style="height:100px ; overflow: scroll;">
+                  <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
+                    <div class="euro-text1">{{list.manufacturer}}</div>
+                  </div>
+
+                </div>
+
+              </div>  
+              <div class="dropbox" >
+                <div class="innerdropbox" (click)="opnenVehicleModelList()">
+                  <div class="euro-text" style="width: 100%;">{{vehicleModelVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg" *ngIf="showVehicleModel==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
+                  </div>
+                </div>
+                <div *ngIf="showVehicleModel==true" style="height:100px ; overflow: scroll;">
+                  <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
+                    <div class="euro-text1">{{list.model}}</div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!----------- fourth form ---------------------------->
+              <div class="label">Policyholder Type <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openPolicyhldrList()">
+                  <div class="euro-text" style="width: 100%;">{{policyhldrVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showPolicyholder==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showPolicyholder==true">
+                  </div>
+                </div>
+                <div *ngIf="showPolicyholder==true">
+                  <div *ngFor="let list of policyhldrList" (click)="selectPolicyholder(list)">
+                    <div class="euro-text1">{{list.plcyhldrType}}</div>
+                  </div>
+
+                </div>
+
+              </div>
+              <!----------- fifth form ---------------------------->
+              <div *ngIf="policyhldrVal=='Private'">
+                <div class="label">First Name</div>
+                <div class="inputfield">
+                  <div class="innerdropbox">
+                    <ion-input [(ngModel)]="fName" style="height: 48px;" type="email" placeholder="John"
+                      class="in-text"></ion-input>
+                  </div>
+                </div>
+              </div>
+              <!----------- fifth form ---------------------------->
+              <div *ngIf="policyhldrVal=='Private'">
+                <div class="label">Last Name</div>
+                <div class="inputfield">
+                  <div class="innerdropbox">
+                    <ion-input [(ngModel)]="lName" style="height: 48px;" type="email" placeholder="Doe" class="in-text">
+                    </ion-input>
+                  </div>
+                </div>
+              </div>
+              <!----------- fifth form ---------------------------->
+              <div *ngIf="policyhldrVal=='Corporate'">
+                <div class="label">Company Name</div>
+                <div class="inputfield">
+                  <div class="innerdropbox">
+                    <ion-input [(ngModel)]="compName" style="height: 48px;" type="email" placeholder="phenologix"
+                      class="in-text"></ion-input>
+                  </div>
+                </div>
+              </div>
+
+
+              <!----------- fifth form ---------------------------->
+              <div class="label">Email Address<span style="color:#A8B400;">*</span></div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="userEmail" style="height: 48px;" type="email" placeholder="johndoe@gmail.com"
+                    class="in-text"></ion-input>
+                </div>
+              </div>
+
+              <!----------- sixth form ---------------------------->
+              <div class="label">Phone Number <span style="color:#A8B400;">*</span></div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="mobNumber" style="height: 48px;" type="tel" placeholder="923565466554"
+                    class="in-text"></ion-input>
+                </div>
+              </div>
+              <!----------- sixth form ---------------------------->
+              <div class="label">Value of Vehicle <span style="color:#A8B400;">*</span></div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="valOfVehicle" style="height: 48px;" type="tel" placeholder="" class="in-text"></ion-input>
+                </div>
+              </div>
+
+              <!----------- seventh form ---------------------------->
+              <div class="label">Flood Extension <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openFloodExtension()">
+                  <div class="euro-text" style="width: 100%;">{{floodExtVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showFloodExt==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showFloodExt==true">
+                  </div>
+                </div>
+                <div *ngIf="showFloodExt==true">
+                  <div *ngFor="let list of floodExtValues" (click)="selectFloodExt(list)">
+                    <div class="euro-text1">{{list.floodExt}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!----------- seventh form ---------------------------->
+              <div class="label">Excess Buy Back <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openExcessBuyBack()">
+                  <div class="euro-text" style="width: 100%;">{{excessBuyBackVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px;  width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showExcessBuyBack==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showExcessBuyBack==true">
+                  </div>
+                </div>
+                <div *ngIf="showExcessBuyBack==true">
+                  <div *ngFor="let list of ExcessBuyBack" (click)="selectExcessBuyBack(list)">
+                    <div class="euro-text1">{{list.excessByBack}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!----------- seventh form ---------------------------->
+              <div class="label">Would you want Vehicle Tracking? <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openVehicleTracking()">
+                  <div class="euro-text" style="width: 100%;">{{vehicleTrackingVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showVehicleTracking==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleTracking==true">
+                  </div>
+                </div>
+                <div *ngIf="showVehicleTracking==true">
+                  <div *ngFor="let list of vehicleTrackingValues" (click)="selectVehicleTracking(list)">
+                    <div class="euro-text1">{{list.vehicleTrack}}</div>
+                  </div>
+                </div>
+              </div>
+              <!----------- seventh form ---------------------------->
+              <div class="label">Road Side Assistance <span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openRoadSideAssistance()">
+                  <div class="euro-text" style="width: 100%;">{{roadSideVal}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showRoadSide==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showRoadSide==true">
+                  </div>
+                </div>
+                <div *ngIf="showRoadSide==true">
+                  <div *ngFor="let list of roadSideAssistance" (click)="selectRoadSideAssistance(list)">
+                    <div class="euro-text1">{{list.roadSide}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ---------------------------------------------------------------- -->
+              <div style="width: 90%;margin:8% auto;" (click)="enhancedCompQ()">
+                <ion-button class="btn">Continue</ion-button>
+              </div>
             </div>
-            <div class="text1">3%<br><span class="cspan">Of vehicle value</span></div>
           </div>
-          <div *ngIf="showPlus==true" >
-            <div class="cflex1">
-              <div class="text3">3RD PARTY PROPERTY DAMAGE</div>
-              <div class="text4">Up To N1 Million</div>
-            </div>
 
-            <div class="cflex1">
-              <div class="text3">3RD PARTY BODILY INJURY</div>
-              <div class="text4">Up To N60 Million</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">THEFT</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">FIRE</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">ACCIDENTAL DAMAGE</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">AUTHORIZED REPAIR LIMIT</div>
-              <div class="text4">5% Of The Car Value</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">TOWING LIMIT</div>
-              <div class="text4">N 15,000</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">DEPRECIATION RATE</div>
-              <div class="text4">Graduated</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">MINIMUM SUM INSURED</div>
-              <div class="text4">₦3,500,000</div>
-            </div>
-
-            <div class="headtext">ADDITIONAL COVERS AT NO EXTRA COST</div>
-
-            <div class="cflex1">
-              <div class="text3">REFUND OF MEDICAL EXPENSES</div>
-              <div class="text4">Up To ₦50,000</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">LOSS OF PERSONAL EFFECT</div>
-              <div class="text4">UP TO N 50,000</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">TRACKING INSTALLATION</div>
-              <div class="text4">Free For Vehicles Of N3,500,000 And Above</div>
-            </div>
-
-            <div class="headtext">TOP UP COVERS AVAILABLE AT EXTRA COST</div>
-
-            <div class="cflex1">
-              <div class="text3">INCREASE IN TPPD</div>
-              <div class="text4">0.2% On Additional Value Above ₦1,000,000 Limit </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">EXCESS BUY BACK</div>
-              <div class="text4">Included</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">FLOOD EXTENSION</div>
-              <div class="text4">Included</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF N 2,000,000</div>
-              <div class="imgdiv">
-                <img src="assets/images/cross.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">INCREASE IN PASSENGER LIABILITY</div>
-              <div class="imgdiv">
-                <img src="assets/images/cross.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR PAYMENTS MADE OVER 3
-                INSTALLMENTS)</div>
-              <div class="text4">Up To 3 Consecutive And Equal Payments</div>
-            </div>
-
-            <div class="btndiv">
-              <ion-button class="btn" (click)="getQuote()">Get Quote</ion-button>
-            </div>
-          </div>
-
-
-          <div style="text-align: center;margin-top:8%;">
-            <img src="assets/images/uparrow.svg" *ngIf="showPlus==true" (click)="showAutoPlus()">
-            <img src="assets/images/downarrow.svg" *ngIf="showPlus==false" (click)="showAutoPlus()">
-          </div>
         </div>
 
       </div>
 
-      <!------------------------------UBER CLASSIC--------------------------->
-      <div *ngIf="value=='Enhanced Comprehensive'" style="border: 1px solid #A8B400;border-radius: 12px; margin-top: 20px;">
-        <div class="main">
-          <div class="cflex">
-            <div class="text" style="text-align: center;"><b>UBER CLASSIC</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive for Uber Drivers Only</span></div>
-            <div class="text1">2.5%<br><span class="cspan">Of vehicle value</span></div>
-          </div>
-          <div *ngIf="showClassic==true" >
-            <div class="cflex1">
-              <div class="text3">3RD PARTY PROPERTY DAMAGE</div>
-              <div class="text4">Up To N1 Million</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">3RD PARTY BODILY INJURY</div>
-              <div class="text4">Up To N60 Million</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">THEFT</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">FIRE</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">ACCIDENTAL DAMAGE</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">AUTHORIZED REPAIR LIMIT</div>
-              <div class="text4">5% Of The Car Value</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">TOWING LIMIT</div>
-              <div class="text4">N 12,500</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">DEPRECIATION RATE</div>
-              <div class="text4">Flat</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">MINIMUM SUM INSURED</div>
-              <div class="text4">₦1,500,000</div>
-            </div>
-
-            <div class="headtext">ADDITIONAL COVERS AT NO EXTRA COST</div>
-
-            <div class="cflex1">
-              <div class="text3">REFUND OF MEDICAL EXPENSES</div>
-              <div class="imgdiv">
-                <img src="assets/images/cross.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">LOSS OF PERSONAL EFFECT</div>
-              <div class="imgdiv">
-                <img src="assets/images/cross.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">TRACKING INSTALLATION</div>
-              <div class="imgdiv">
-                <img src="assets/images/cross.svg">
-              </div>
-            </div>
-
-            <div class="headtext">TOP UP COVERS AVAILABLE AT EXTRA COST</div>
-
-            <div class="cflex1">
-              <div class="text3">INCREASE IN TPPD</div>
-              <div class="text4">0.2% On Additional Value Above ₦1,000,000 Limit </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">EXCESS BUY BACK</div>
-              <div class="text4">1% Of Sum Insured</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">FLOOD EXTENSION</div>
-              <div class="text4">0.25% Of Sum Insured</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF N 2,000,000</div>
-              <div class="imgdiv">
-                <img src="assets/images/tick.svg">
-              </div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text5">INCREASE IN PASSENGER LIABILITY</div>
-              <div class="text4">@ 0.375% of increased benefit</div>
-            </div>
-
-            <div class="cflex1">
-              <div class="text3">PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR PAYMENTS MADE OVER 3
-                INSTALLMENTS)</div>
-              <div class="text4">Once</div>
-            </div>
-
-            <div class="btndiv">
-              <ion-button class="btn" (click)="getQuote()">Get Quote</ion-button>
-            </div>
-          </div>
-
-
-          <div style="text-align: center;margin-top:8%;">
-            <img src="assets/images/uparrow.svg" *ngIf="showClassic==true" (click)="showUberClassic()">
-            <img src="assets/images/downarrow.svg" *ngIf="showClassic==false" (click)="showUberClassic()">
-          </div>
-        </div>
-
-      </div>
 
 
 

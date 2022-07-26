@@ -86,7 +86,7 @@ slideOpts = {
         localStorage.setItem('subProName',data.data.name);
         console.log(data.data.id);
         console.log(data.data.name);
-        console.log(data.data.description);
+        // console.log(data.data.description);
         console.log(data.data.subtitle); 
       }
       else if (data.data.name == 'Enhanced Comprehensive'){
@@ -95,7 +95,7 @@ slideOpts = {
         localStorage.setItem('subProName',data.data.name);
         console.log(data.data.id);
         console.log(data.data.name);
-        console.log(data.data.description);
+        // console.log(data.data.description);
         console.log(data.data.subtitle); 
       }
       else if(data.data.name == "Auto Variants"){
@@ -104,7 +104,7 @@ slideOpts = {
         localStorage.setItem('subProName',data.data.name);
         console.log(data.data.id);
         console.log(data.data.name);
-        console.log(data.data.description);
+        // console.log(data.data.description);
         console.log(data.data.subtitle); 
       }
     });

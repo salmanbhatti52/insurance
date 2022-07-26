@@ -26,11 +26,11 @@ export class AppComponent {
     public route: Router) {
 
 
-    if (localStorage.getItem('userid') != null) {
-      this.route.navigate(['home-page-screen-after-login'])
-    } else {
-      this.route.navigate(['sign-in-screen'])
-    }
+    // if (localStorage.getItem('userid') != null) {
+    //   this.route.navigate(['home-page-screen-after-login'])
+    // } else {
+    //   this.route.navigate(['sign-in-screen'])
+    // }
   }
 
 
