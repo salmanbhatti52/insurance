@@ -14,50 +14,44 @@ slideOpts = {
     initialSlide: 0,
     speed: 400
   };
-  // products=[
-  //   // {id:8,name:'Travel Insurance',img:'assets/images/travel.svg'},
-  //   // {id:2,name:'Home Insurance',img:'assets/images/safe-hand.svg'},
-  //   // {id:2,name:'School Fees Guarantee',img:'assets/images/mortarboard.svg'},
-  //   // {id:2,name:'Verify Policy',img:'assets/images/sec-doc.svg'},
-  //   // {id:2,name:'Get in Touch',img:'assets/images/helping-staff.svg'}
-  // ]
-  products:any;
-  constructor(public navCtrl:NavController, public menuCtrl:MenuController,
+
+  products: any;
+  constructor(public navCtrl: NavController, public menuCtrl: MenuController,
     public router: Router,
     public modal: ModalController,
-    public api:InsuranceAppService) { }
+    public api: InsuranceAppService) { }
 
   ngOnInit() {
     this.getProducts();
   }
   getProducts(){
-    let myData =  "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"method\":\"get_avilable_products\"}";
-    this.api.insertData(myData).subscribe((res:any)=>{
+    const myData =  'myData={"verify_token":"'+localStorage.getItem('token')+'","method":"get_avilable_products"}';
+    this.api.insertData(myData).subscribe((res: any)=>{
       console.log(res);
       if(res.message=='success'){
-        this.products=res.myproduct
+        this.products=res.myproduct;
       }
     },(err)=>{
       console.log(err);
-    })
+    });
   }
   subProducts(id){
-    let myData = "myData={\"verify_token\":\""+localStorage.getItem('token')+"\",\"product_id\":\""+id+"\",\"method\":\"get_avilable_subproducts\"}"
-    this.api.insertData(myData).subscribe((res:any)=>{
-      console.log(res);
+    const myData = 'myData={"verify_token":"'+localStorage.getItem('token')+'","product_id":"'+id+'","method":"get_avilable_subproducts"}';
+    this.api.insertData(myData).subscribe((res: any)=>{
+      console.log("subProducts---------",res);
       localStorage.setItem('subProducts',JSON.stringify(res.subproducts) ) ;
       this.PopupCust();
-      
+
     },(err)=>{
       console.log(err);
-      
-    })
+
+    });
   }
   tab1Click(){
     this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
   }
   tab2Click(){
-    this.navCtrl.navigateRoot('home-page-screen-after-login')
+    this.navCtrl.navigateRoot('home-page-screen-after-login');
   }
   tab3Click(){
     this.navCtrl.navigateRoot('contactus');
@@ -65,49 +59,19 @@ slideOpts = {
   updateProfile(){
     this.navCtrl.navigateRoot('profile-update');
   }
-  // openQuote(p){
-  //   console.log(p);
-  //   localStorage.setItem('product-details',JSON.stringify(p)) ;
-  //   this.PopupCust();
-  // }
   async PopupCust() {
     const modal = await this.modal.create({
       component: QuotePopupPage,
       cssClass: 'QuotePopup',
-      // componentProps:{
-      //   prod_id:localStorage.getItem('prod_id')
-      // }
     });
-    modal.onDidDismiss().then((data) => {
-      console.log('data', data);
-      if(data.data.name == 'Third Party' ){
+    modal.onDidDismiss().then((res) => {
+      console.log('data-------', res);
+      if(res.data){
         this.router.navigate(['/mypolicies']);
-        localStorage.setItem('subProId',data.data.id);
-        localStorage.setItem('subProName',data.data.name);
-        console.log(data.data.id);
-        console.log(data.data.name);
-        // console.log(data.data.description);
-        console.log(data.data.subtitle); 
+        localStorage.setItem('subProId',res.data.id);
+        localStorage.setItem('subProName',res.data.name);
       }
-      else if (data.data.name == 'Enhanced Comprehensive'){
-        this.router.navigate(['/mypolicies']);
-        localStorage.setItem('subProId',data.data.id);
-        localStorage.setItem('subProName',data.data.name);
-        console.log(data.data.id);
-        console.log(data.data.name);
-        // console.log(data.data.description);
-        console.log(data.data.subtitle); 
-      }
-      else if(data.data.name == "Auto Variants"){
-        this.router.navigate(['/mypolicies']);
-        localStorage.setItem('subProId',data.data.id);
-        localStorage.setItem('subProName',data.data.name);
-        console.log(data.data.id);
-        console.log(data.data.name);
-        // console.log(data.data.description);
-        console.log(data.data.subtitle); 
-      }
-    });
+    }).catch(error=>console.log("error----",error));
     return await modal.present();
   }
 }

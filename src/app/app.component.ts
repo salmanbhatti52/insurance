@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Location } from '@angular/common';
 import { MenuController, NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
@@ -27,9 +28,9 @@ export class AppComponent {
 
 
     // if (localStorage.getItem('userid') != null) {
-    //   this.route.navigate(['home-page-screen-after-login'])
+    //   this.route.navigate(['home-page-screen-after-login']);
     // } else {
-    //   this.route.navigate(['sign-in-screen'])
+    //   this.route.navigate(['sign-in-screen']);
     // }
   }
 
@@ -37,12 +38,12 @@ export class AppComponent {
 
   selected(p) {
     this.appPages.map((value) => {
-      value.status = 'unchecked'
-    })
+      value.status = 'unchecked';
+    });
     console.log('stataus--', p.status);
 
 
-    p.status = 'checked'
+    p.status = 'checked';
 
   }
   closeMenu() {

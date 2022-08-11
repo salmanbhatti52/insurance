@@ -1,3 +1,4 @@
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
     <ion-row>
@@ -27,86 +28,20 @@
       <img height="50px" src="assets/images/access_point.png">
       <h1 style="margin:0px;"> Your quote is ready. </h1>
     </div>
-
-    <div class="box box-success" *ngIf="value=='Third Party'">
+    <div class="box box-success" >
       <div class="panel-body">
         <div class="table-responsive">
           <table class="table quotetable table-bordered">
             <tbody>
-              <tr *ngIf="quoteArrayLength=='5'">
-                <td style="width: 30%; color: black;">First Name</td>
-                <td style="color: black;">{{firstName}}</td>
-              </tr>
-              <tr *ngIf="quoteArrayLength=='5'">
-                <td style="color: black;">Last Name</td>
-                <td style="color: black;">{{lastName}}</td>
-              </tr>
-              <tr *ngIf="quoteArrayLength=='4'">
-                <td style="width: 40%; color: black;">Name of Company</td>
-                <td style="color: black;">{{companyName}}</td>
-              </tr>
-              <tr>
-                <td style="color: black;">Vehicle Make</td>
-                <td style="color: black;">{{vehicleMake}}</td>
-              </tr>
-              <tr>
-                <td style="color: black;">Vehicle Class</td>
-                <td style="color: black;">{{vehicleClass}}</td>
-              </tr>
-              <tr>
-                <td style="color: black;">Quote</td>
-                <td style="color: black;">{{quote}}</td>
+              <tr *ngFor="let items of quoteItems" >
+                <td style="width: 30%; color: black;">{{items.label}}</td>
+                <td style="color: black;">{{items.value}}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-
-    <div class="box box-success" *ngIf="value=='Enhanced Comprehensive'">
-      <div class="panel-body">
-        <div class="table-responsive">
-          <table class="table quotetable table-bordered">
-            <tbody>
-              <tr >
-                <td style="width: 30%; color: black;">Vehicle Make</td>
-                <td style="color: black;">{{vehicleMake}}</td>
-              </tr>
-              <tr >
-                <td style="color: black;">Vehicle Class</td>
-                <td style="color: black;">{{vehicleClass}}</td>
-              </tr>
-              <tr >
-                <td style="width: 40%; color: black;">Value of Vehicle</td>
-                <td style="color: black;">{{valueOfVehice}}</td>
-              </tr>
-              <tr>
-                <td style="color: black;">Actual Premium</td>
-                <td style="color: black;">{{actualPremium}}</td>
-              </tr>
-              <tr>
-                <td style="color: black;">Flood Extension</td>
-                <td style="color: black;">{{floodExtension}}</td>
-              </tr>
-              <tr>
-                <td style="color: black;">Excess Buy Back</td>
-                <td style="color: black;">{{excessBuyBack}}</td>
-              </tr>
-              <tr>
-                <td style="color: black;">Tracking Charge</td>
-                <td style="color: black;">{{trackingCharge}}</td>
-              </tr>
-              <tr>
-                <td style="color: black;">Quote</td>
-                <td style="color: black;">{{quote}}</td>
-              </tr>
-              
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
     <div class="btndiv">
       <ion-button class="btn" (click)="buyOnlineQuote()">Buy Online Now </ion-button>
       <ion-button class="btn1" (click)="getAnewQuote()">Get a new quote </ion-button>
