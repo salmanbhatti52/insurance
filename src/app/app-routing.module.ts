@@ -160,6 +160,10 @@ const routes: Routes = [
   {
     path: 'payment',
     loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+  },
+  {
+    path: 'payquote',
+    loadChildren: () => import('./payquote/payquote.module').then( m => m.PayquotePageModule)
   }
 
 

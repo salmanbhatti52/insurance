@@ -1,0 +1,64 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row>
+      <ion-col size="2" style="padding-left: 25px;">
+        <ion-buttons>
+          <div style="width:100% ;">
+            <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
+          </div>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Payment Quote</div>
+      </ion-col>
+      <ion-col class="titleclass" size="2">
+      </ion-col>
+
+
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div style="display:flex;align-items: center;">
+      <img height="50px" src="assets/images/access_point.png">
+      <div style="margin-left:5%;font-size:35px;">Thank You</div>
+    </div>
+    <p>Please make payments to any of the following bank accounts. Your transaction code is TP0813044857646; Kindly use
+      your transaction code as the payment reference. <br> <br>Your policy details will be sent to you once payment is
+      confirmed. Once payment is made, please send an email to enquiries@cornerstone.com.ng or call 07038764536</p>
+
+    <table class="table table-bordered watch">
+
+      <tbody>
+        <tr>
+
+          <td> Amount to pay: <br><strong>₦ {{amount}}</strong></td>
+
+
+
+        </tr>
+
+        <tr>
+
+          <td> Transaction Reference: <br><strong>{{transaction_ref}}</strong></td>
+
+
+
+        </tr>
+
+        <tr>
+
+          <td> Policy Id: <br><strong>{{policyId}}</strong></td>
+
+
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</ion-content>
