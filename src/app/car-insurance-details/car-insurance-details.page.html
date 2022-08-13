@@ -25,16 +25,13 @@
   <div class="wrapper">
     <div class="htext">Your Details</div>
     <div class="flex-cls">
-      <!-- <div>
-        <img src="assets/images/slider/1.svg">
-      </div> -->
-      <div style="width:80%;margin:0% auto;">
 
+      <div style="width:80%;margin:0% auto;" *ngIf="productname=='Motor Insurance'">
         <!----------- fifth form ---------------------------->
         <div class="label">Full Name <span style="color:#A8B400;">*Please re-enter your full name as you want it to appear on your certificate.</span></div>
         <div class="inputfield">
           <div class="innerdropbox">
-            <ion-input [(ngModel)]="fullName" style="height:48px;" type="text" placeholder="" class="in-text"></ion-input>
+            <ion-input [(ngModel)]="fullName" style="height:48px;" type="text" placeholder="Full name" class="in-text"></ion-input>
           </div>
         </div>
 
@@ -145,8 +142,6 @@
         <div class="label">Vehicle Licence  <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
 
         <div class="inputfield" style="display:flex ; height: 48px;">
-          <!-- <ion-input style="width:100% ;" disabled="true" >{{imgurl}}</ion-input>
-          <ion-button style="height: 40px;--background: white; color: #1A206D;" (click)="selectImage('license')"> Choose file</ion-button> -->
           <input type="file" (change)="selectFile($event,'vehicleLicence')" accept="image/x-png,image/gif,image/jpeg">
         </div>
         <div style="height: 100px; width:100px; text-align: center;" *ngIf="vehicleLicence.base64"><img style="height: 100px; width:100px" src="{{vehicleLicence.base64}}" alt=""></div>
@@ -155,8 +150,6 @@
         <div class="label">Valid Drivers license/National Identity Card/International Pasport  <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
 
         <div class="inputfield" style="display:flex ; height: 48px;">
-          <!-- <ion-input style="width:100% ;" disabled="true" >{{imgurl1}}</ion-input>
-          <ion-button style="height: 40px;--background: white; color: #1A206D;" (click)="selectImage('nic')"> Choose file</ion-button> -->
           <input type="file" (change)="selectFile($event,'driverLicence')" accept="image/x-png,image/gif,image/jpeg">
         </div>
         <div style="height: 100px; width:100px; text-align: center;" *ngIf="driverLicence.base64"><img style="height: 100px; width:100px" src="{{driverLicence.base64}}" alt=""></div>
@@ -169,8 +162,6 @@
         <div class="label">Vehicle picture front view <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
 
         <div class="inputfield" style="display:flex ; height: 48px;">
-          <!-- <ion-input style="width:100% ;" disabled="true" >{{imgurl1}}</ion-input>
-          <ion-button style="height: 40px;--background: white; color: #1A206D;" (click)="selectImage('nic')"> Choose file</ion-button> -->
           <input type="file" (change)="selectFile($event,'vehFrontPic')" accept="image/x-png,image/gif,image/jpeg">
         </div>
         <div style="height: 100px; width:100px; text-align: center;" *ngIf="vehFrontPic.base64"><img style="height: 100px; width:100px" src="{{vehFrontPic.base64}}" alt=""></div>
@@ -181,8 +172,6 @@
         <div class="label">Vehicle picture rear view <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
 
         <div class="inputfield" style="display:flex ; height: 48px;">
-          <!-- <ion-input style="width:100% ;" disabled="true" >{{imgurl1}}</ion-input>
-          <ion-button style="height: 40px;--background: white; color: #1A206D;" (click)="selectImage('nic')"> Choose file</ion-button> -->
           <input type="file" (change)="selectFile($event,'vehRearPic')" accept="image/x-png,image/gif,image/jpeg">
         </div>
         <div style="height: 100px; width:100px; text-align: center;" *ngIf="vehRearPic.base64"><img style="height: 100px; width:100px" src="{{vehRearPic.base64}}" alt=""></div>
@@ -193,8 +182,6 @@
          <div class="label">Vehicle picture side view left <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
 
          <div class="inputfield" style="display:flex ; height: 48px;">
-           <!-- <ion-input style="width:100% ;" disabled="true" >{{imgurl1}}</ion-input>
-           <ion-button style="height: 40px;--background: white; color: #1A206D;" (click)="selectImage('nic')"> Choose file</ion-button> -->
            <input type="file" (change)="selectFile($event,'vehPicSideViewLeft')" accept="image/x-png,image/gif,image/jpeg">
          </div>
          <div style="height: 100px; width:100px; text-align: center;" *ngIf="vehPicSideViewLeft.base64"><img style="height: 100px; width:100px" src="{{vehPicSideViewLeft.base64}}" alt=""></div>
@@ -218,8 +205,6 @@
            <div class="label">Dashboard (displaying Kilometer of vehicle) <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
 
            <div class="inputfield" style="display:flex ; height: 48px;">
-             <!-- <ion-input style="width:100% ;" disabled="true" >{{imgurl1}}</ion-input>
-             <ion-button style="height: 40px;--background: white; color: #1A206D;" (click)="selectImage('nic')"> Choose file</ion-button> -->
              <input type="file" (change)="selectFile($event,'vehPicDashboard')" accept="image/x-png,image/gif,image/jpeg">
            </div>
            <div style="height: 100px; width:100px; text-align: center;" *ngIf="vehPicDashboard.base64"><img style="height: 100px; width:100px" src="{{vehPicDashboard.base64}}" alt=""></div>
@@ -230,8 +215,6 @@
           <div class="label">Vehicle Inspection form <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
 
           <div class="inputfield" style="display:flex ; height: 48px;">
-            <!-- <ion-input style="width:100% ;" disabled="true" >{{imgurl1}}</ion-input>
-            <ion-button style="height: 40px;--background: white; color: #1A206D;" (click)="selectImage('nic')"> Choose file</ion-button> -->
             <input type="file" (change)="selectFile($event,'inspectionForm')" accept="image/x-png,image/gif,image/jpeg">
           </div>
           <div style="height: 100px; width:100px; text-align: center;" *ngIf="inspectionForm.base64"><img style="height: 100px; width:100px" src="{{inspectionForm.base64}}" alt=""></div>
@@ -242,16 +225,135 @@
            <div class="label">Utility bills <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
 
            <div class="inputfield" style="display:flex ; height: 48px;">
-             <!-- <ion-input style="width:100% ;" disabled="true" >{{imgurl1}}</ion-input>
-             <ion-button style="height: 40px;--background: white; color: #1A206D;" (click)="selectImage('nic')"> Choose file</ion-button> -->
              <input type="file" (change)="selectFile($event,'utilityBills')" accept="image/x-png,image/gif,image/jpeg">
            </div>
            <div style="height: 100px; width:100px; text-align: center;" *ngIf="utilityBills.base64"><img style="height: 100px; width:100px" src="{{utilityBills.base64}}" alt=""></div>
 
            <!----------- Fourteenth FIELD ---------------------------->
-
+        </div>
+        <div class="label">Who referred you? <span style="color:#A8B400;">*Please enter the name and if possible phone number of the referrer.</span></div>
+        <div class="dropbox">
+          <div class="innerdropbox" (click)="openReferrerList()">
+            <div class="euro-text">{{referrerVal}}</div>
+            <div class="imgdiv" style="padding-bottom: 2px;">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showReferrer==false">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showReferrer==true">
+            </div>
+          </div>
+          <div *ngIf="showReferrer==true" style="height: 120px; overflow: scroll;">
+            <div *ngFor="let list of referrerList" (click)="selectReferrerType(list)">
+              <div class="euro-text1">{{list}}</div>
+            </div>
+          </div>
+        </div>
+        <!----------- fifth form ---------------------------->
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="referrerData" style="height:48px;" type="text" placeholder="Enter name, Branch and mobile number" class="in-text"></ion-input>
+          </div>
         </div>
 
+        <div style="width: 90%;margin:8% auto;" (click)="createProposal(productname)">
+          <ion-button class="btn">Submit Proposal</ion-button>
+        </div>
+
+      </div>
+      <div style="width:80%;margin:0% auto;" *ngIf="productname=='Travel Insurance'">
+        <!----------- Full Name  ---------------------------->
+        <div class="label">Full Name <span style="color:#A8B400;">*Please re-enter your full name as you want it to appear on your certificate.</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="fullName" style="height:48px;" type="text" placeholder="Full name" class="in-text"></ion-input>
+          </div>
+        </div>
+        <!----------- Full Name  ---------------------------->
+
+        <!----------- Passport Number ---------------------------->
+        <div class="label">Passport Number <span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="passPortNo" style="height:48px;" type="text" placeholder="123Mnnn2" class="in-text"></ion-input>
+          </div>
+        </div>
+        <!----------- Passport Number ---------------------------->
+
+
+        <!----------- Nationality Field ---------------------------->
+        <div class="label">Nationality<span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="nationality" style="height:48px;" type="text" placeholder="Enter nationality" class="in-text"></ion-input>
+          </div>
+        </div>
+        <!----------- Nationality Field ---------------------------->
+
+        <!----------- Destination Field ---------------------------->
+        <div class="label">Destination<span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="destination" style="height:48px;" type="text" placeholder="JMTBK426481418844" class="in-text"></ion-input>
+          </div>
+        </div>
+        <!----------- Destination Field ---------------------------->
+
+        <!----------- Kin info Field ---------------------------->
+        <div class="label">Kin info<span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="kinInfo" style="height:48px;" type="text" placeholder="" class="in-text"></ion-input>
+          </div>
+        </div>
+         <!----------- Kin info Field ---------------------------->
+
+        <!----------- Address Field ---------------------------->
+        <div class="label">Address<span style="color:#A8B400;">*</span></div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="clientAddress" style="height:48px;" type="text" placeholder="e.g:136, LEWIS STREET, OBALENDE, LAGOS ISLAND,LAGOS STATE" class="in-text"></ion-input>
+          </div>
+        </div>
+        <!----------- Address Field ---------------------------->
+
+        <!----------- gender Field ---------------------------->
+        <div class="label">Gender <span style="color:#A8B400;">*</span></div>
+        <div class="dropbox">
+          <div class="innerdropbox" (click)="openGenderList()">
+            <div class="euro-text">{{genderVal}}</div>
+            <div class="imgdiv" style="padding-bottom: 2px;">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showGender===false">
+              <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showGender==true">
+            </div>
+          </div>
+          <div *ngIf="showGender==true">
+            <div *ngFor="let list of genderType" (click)="selectGenderType(list)">
+              <div class="euro-text1">{{list.gender}}</div>
+            </div>
+
+          </div>
+
+        </div>
+        <!----------- gender Field ---------------------------->
+
+        <!----------- Date of Birth Field ---------------------------->
+        <div class="label">Date of Birth <span style="color:#A8B400;">*This is a NAICOM KYC Reqirement.</span></div>
+
+        <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerDob = !showPickerDob">
+          <div style="display: flex; align-items:center">
+
+            <ion-text class="ion-txt" style="margin-left: 14px" >{{ dobValue }}</ion-text>
+          </div>
+
+        </div>
+        <ion-datetime  class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date" *ngIf="showPickerDob" #datetime [value]="dobValue" size="cover" (ionChange)="dobChanged(datetime.value)" showDefaultButtons="true"  (ionCancel)="showPickerDob=false"></ion-datetime>
+        <!----------- Date of Birth Field ---------------------------->
+
+        <!----------- International passport Field ---------------------------->
+        <div class="label">International passport <span style="color:#A8B400;">*Maximum file size 2MB</span></div>
+        <div class="inputfield" style="display:flex ; height: 48px;">
+          <input type="file" (change)="selectFile($event,'passPort')" accept="image/x-png,image/gif,image/jpeg">
+        </div>
+        <div style="height: 100px; width:100px; text-align: center;" *ngIf="passPort.base64"><img style="height: 100px; width:100px" src="{{passPort.base64}}" alt=""></div>
+        <!----------- International passport Field ---------------------------->
 
 
         <div class="label">Who referred you? <span style="color:#A8B400;">*Please enter the name and if possible phone number of the referrer.</span></div>
@@ -267,20 +369,16 @@
             <div *ngFor="let list of referrerList" (click)="selectReferrerType(list)">
               <div class="euro-text1">{{list}}</div>
             </div>
-
           </div>
-
         </div>
-
         <!----------- fifth form ---------------------------->
-
         <div class="inputfield">
           <div class="innerdropbox">
             <ion-input [(ngModel)]="referrerData" style="height:48px;" type="text" placeholder="Enter name, Branch and mobile number" class="in-text"></ion-input>
           </div>
         </div>
 
-        <div style="width: 90%;margin:8% auto;" (click)="submitProposal()">
+        <div style="width: 90%;margin:8% auto;" (click)="createProposal(productname)">
           <ion-button class="btn">Submit Proposal</ion-button>
         </div>
 

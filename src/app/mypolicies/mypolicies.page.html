@@ -41,7 +41,7 @@
       <!-------------- third party discription ------------------->
       <div *ngIf="subProName=='Third Party'">
         <div class="thirdParty-wrapper">
-          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt=""> Third Party</div>
+          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt="">{{subProName}}</div>
           <div class="htext" style="color: black; font-size: 18px;">Your Details</div>
           <div class="flex-cls">
             <!-- <div>
@@ -184,7 +184,7 @@
       <div *ngIf="subProName=='Enhanced Comprehensive'" >
 
         <div class="thirdParty-wrapper">
-          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt=""> Enhanced Comprehensive</div>
+          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt="">{{subProName}}</div>
           <div class="htext" style="color: black; font-size: 18px;">Your Details</div>
           <div class="flex-cls">
             <div style="width:80%;margin:0% auto;">
@@ -291,8 +291,6 @@
                   </div>
                 </div>
               </div>
-
-
               <!----------- fifth form ---------------------------->
               <div class="label">Email Address<span style="color:#A8B400;">*</span></div>
               <div class="inputfield">
@@ -301,7 +299,6 @@
                     class="in-text"></ion-input>
                 </div>
               </div>
-
               <!----------- sixth form ---------------------------->
               <div class="label">Phone Number <span style="color:#A8B400;">*</span></div>
               <div class="inputfield">
@@ -366,7 +363,7 @@
                 </div>
               </div>
               <!-- ---------------------------------------------------------------- -->
-              <div style="width: 90%;margin:8% auto;" (click)="enhancedCompQ()">
+              <div style="width: 90%;margin:8% auto;" (click)="createQuote(subProName)">
                 <ion-button class="btn">Continue</ion-button>
               </div>
             </div>
@@ -574,7 +571,7 @@
               </div>
 
               <!-- ---------------------------------------------------------------- -->
-              <div style="width: 90%;margin:8% auto;" (click)="autoVarientQ()">
+              <div style="width: 90%;margin:8% auto;" (click)="createQuote(subProName)">
                 <ion-button class="btn">Continue</ion-button>
               </div>
             </div>
@@ -584,7 +581,7 @@
 
       </div>
        <!-- ------------Enhanced-comprehensive----------------------- -->
-       <div *ngIf="subProName=='International Travel Insurance'" >
+       <div *ngIf="subProName=='Worldwide TRAVELLER' || subProName== 'Worldwide PEARL' || subProName== 'Worldwide ECONOMY'"  >
 
         <div class="thirdParty-wrapper">
           <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt="">{{subProName}}</div>
@@ -690,7 +687,7 @@
                 </div>
               </div>
               <!-- AGE GROUP FIELD -->
-              <div style="width: 90%;margin:8% auto;" (click)="createQuote(subProName)">
+              <div style="width: 90%;margin:8% auto;" (click)="createQuote('International')">
                 <ion-button class="btn">Continue</ion-button>
               </div>
             </div>

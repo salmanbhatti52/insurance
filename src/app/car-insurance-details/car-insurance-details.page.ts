@@ -30,7 +30,16 @@ export class CarInsuranceDetailsPage implements OnInit {
   propsalResponse: any;
   quoteItems: any;
   fullName = '';
+
+  // -- For Travel insurance -- //
+  passPortNo = '';
+  nationality = '';
+  destination = '';
+  kinInfo = '';
+  // -- For Travel insurance -- //
+
   regNo = '';
+
   engNo = '';
   chasisNo = '';
   vehclr = '';
@@ -52,6 +61,7 @@ export class CarInsuranceDetailsPage implements OnInit {
   show = false;
   showGender = false;
   subProductName = localStorage.getItem('subProName');
+  productname = localStorage.getItem('productName');
   genderVal = 'Please Select';
   referrerVal='Please Select';
   genderType = [{gender: 'Male'},{gender: 'Female'}]
@@ -59,6 +69,10 @@ export class CarInsuranceDetailsPage implements OnInit {
   imgURLBase: string;
 
   // For file images //
+  passPort = {
+    file:"",
+    base64: "",
+  };
   vehicleLicence = {
     file:"",
     base64: "",
@@ -106,18 +120,8 @@ export class CarInsuranceDetailsPage implements OnInit {
     ) { }
 
   ngOnInit() {
-     if(this.subProductName == 'Third Party') {
-      this.quoteItems =  JSON.parse(localStorage.getItem('thirdPartyQuoteItems'));
-    }
-    else if(this.subProductName == 'Enhanced Comprehensive'){
-
-      this.quoteItems =  JSON.parse(localStorage.getItem('enhancedCompQuoteItems'));
-
-    }
-    console.log(this.dobValue);
-    console.log(this.corpValue);
-    console.log(this.yopValue);
-    console.log(this.yomValue);
+    this.quoteItems =  JSON.parse(localStorage.getItem('quoteItems'));
+    this.quoteItems =  JSON.parse(localStorage.getItem('quoteItems'));
     this.getReferrerList();
   }
 
@@ -266,71 +270,199 @@ export class CarInsuranceDetailsPage implements OnInit {
    this.location.back();
   }
 
-  submitProposal(){
+  motorValidation(){
+    let response = {message:"message",status:false};
     if(this.fullName==''){
-      this.api.presenttoast('Full Name required')
+      response.message = 'Full Name required';
     }
     else if(this.regNo==''){
-      this.api.presenttoast('Vehicle Reg. No. required')
+      response.message = 'Vehicle Reg. No. required';
     }
     else if(this.engNo==''){
-      this.api.presenttoast('Engine No. required')
+      response.message = 'Engine No. required';
     }
     else if(this.chasisNo==''){
-      this.api.presenttoast('Chasis No. required');
-
+      response.message = 'Chasis No. required';
     }
     else if(this.vehclr==''){
-      this.api.presenttoast('Vehicle Colour required');
-
+      response.message = 'Vehicle Colour required';
     }
     else if(this.clientAddress==''){
-      this.api.presenttoast('Address required');
-
+      response.message = 'Address required';
     }
     else if(this.genderVal=='Please Select'){
-      this.api.presenttoast('Please Select Gender');
-
+      response.message = 'Please Select Gender';
     }
     else if(this.vehicleLicence.file==''){
-      this.api.presenttoast('Vehicle License required');
+      response.message = 'Vehicle License required';
     }
-
     else if(this.driverLicence.file==''){
-      this.api.presenttoast('Driver License/N.I.C required');
+      response.message = 'Driver License/N.I.C required';
     }
     else if(this.vehFrontPic.file=='' && (this.subProductName =="Enhanced Comprehensive" || this.subProductName=="Auto Variants" ) ){
-      this.api.presenttoast('Vehicle Picture Front View required');
+      response.message = 'Vehicle Picture Front View required';
     }
     else if(this.vehRearPic.file=='' && (this.subProductName =="Enhanced Comprehensive" || this.subProductName=="Auto Variants" ) ){
-      this.api.presenttoast('Vehicle Picture Rear View required');
+      response.message = 'Vehicle Picture Rear View required';
     }
     else if(this.vehPicSideViewLeft.file=='' && (this.subProductName =="Enhanced Comprehensive" || this.subProductName=="Auto Variants" ) ){
-      this.api.presenttoast('Vehicle Picture Side View(Left) required');
+      response.message = 'Vehicle Picture Side View(Left) required';
     }
     else if(this.vehPicSideViewRight.file=='' && (this.subProductName =="Enhanced Comprehensive" || this.subProductName=="Auto Variants" ) ){
-      this.api.presenttoast('Vehicle Picture Side View(Right) required');
+      response.message = 'Vehicle Picture Side View(Right) required';
     }
     else if(this.vehPicDashboard.file=='' && (this.subProductName =="Enhanced Comprehensive" || this.subProductName=="Auto Variants" ) ){
-      this.api.presenttoast('Dashboard (displaying Kilometer of vehicle) required');
+      response.message = 'Dashboard (displaying Kilometer of vehicle) required';
     }
     else if(this.utilityBills.file=='' && (this.subProductName =="Enhanced Comprehensive" || this.subProductName=="Auto Variants" ) ){
-      this.api.presenttoast('Utility Bill required');
+      response.message = 'Utility Bill required';
     }
     else if(this.inspectionForm.file=='' && (this.subProductName =="Enhanced Comprehensive" || this.subProductName=="Auto Variants" ) ){
-      this.api.presenttoast('Form inspection required');
+      response.message = 'Form inspection required';
     }
     else if(this.referrerVal=='Please Select'){
-      this.api.presenttoast('Please Select Referrer');
+      response.message = 'Please Select Referrer';
     }
     else if(this.referrerData==''){
-      this.api.presenttoast('Referrer Details required');
+      response.message = 'Referrer Details required';
     }
     else{
-      this.callingApi();
+      response.message = 'Motor validated';
+      response.status = true;
+    }
+    return response;
+  }
+  travelValidation(){
+    let response = {message:"message",status:false};
+    if(this.fullName==''){
+      response.message = 'Full Name required';
+    }
+    else if(this.passPortNo==''){
+      response.message = 'Passport number required';
+    }
+    else if(this.nationality==''){
+      response.message = 'Nationality required';
+    }
+    else if(this.destination==''){
+      response.message = 'Destination required';
+    }
+    else if(this.kinInfo==''){
+      response.message = 'kin info required';
+    }
+    else if(this.clientAddress==''){
+      response.message = 'Address required';
+    }
+    else if(this.genderVal=='Please Select'){
+      response.message = 'Please Select Gender';
+    }
+    else if(this.passPort.file==''){
+      response.message = 'Passport image required';
+    }
+    else if(this.referrerVal=='Please Select'){
+      response.message = 'Please Select Referrer';
+    }
+    else if(this.referrerData==''){
+      response.message = 'Referrer Details required';
+    }
+    else{
+      response.message = 'Travel validated';
+      response.status = true;
+    }
+    return response;
+  }
+  createProposal(propsalType){
+    console.log("propsalType---formValidationResult",propsalType);
+
+    let formValidationResult = {message:"This product is under developement",status:false};
+    const headers= new HttpHeaders();
+    var form = new FormData();
+    form.append('method', 'save_product_proposal');
+
+    switch (propsalType) {
+      case "Motor Insurance":
+        formValidationResult = this.motorValidation();
+        form.append('product_id', localStorage.getItem('subProId'));
+        form.append('quote_id', localStorage.getItem('quote_id'));
+        form.append('name', this.fullName);
+        form.append('registration_number', this.regNo);
+        form.append('engine_number', this.engNo);
+        form.append('chasis_number', this.chasisNo);
+        form.append('vehicle_colour', this.vehclr);
+        form.append('address', this.clientAddress);
+        form.append('gender', this.genderVal);
+        form.append('date_of_birth', this.dobValue);
+        form.append('incorporation', this.corpValue);
+        form.append('year_of_purchase', this.yopValue);
+        form.append('year_of_manufacture', this.yomValue);
+        form.append('referred_by', this.referrerVal);
+        form.append('referrer_details', this.referrerData);
+        form.append('means_of_id', this.driverLicence.file);
+        form.append('vehicle_licence', this.vehicleLicence.file);
+        form.append('verify_token', localStorage.getItem('token'));
+        if(this.subProductName=="Enhanced Comprehensive" || this.subProductName=="Auto Variants"){
+          form.append('vehicle_picture_front_view', this.vehFrontPic.file);
+          form.append('vehicle_picture_rear_view', this.vehRearPic.file);
+          form.append('vehicle_picture_side_view_left', this.vehPicSideViewLeft.file);
+          form.append('vehicle_picture_side_view_right', this.vehPicSideViewRight.file);
+          form.append('vehicle_picture_dashboard', this.vehPicDashboard.file);
+          form.append('inspection_form', this.inspectionForm.file);
+          form.append('utility_bill', this.utilityBills.file);
+        }
+      break;
+      case "Travel Insurance":
+        formValidationResult = this.travelValidation();
+        form.append('product_id', localStorage.getItem('subProId'));
+        form.append('quote_id', localStorage.getItem('quote_id'));
+        form.append('name', this.fullName);
+        form.append('passport_number', this.passPortNo);
+        form.append('nationality', this.nationality);
+        form.append('destination', this.destination);
+        form.append('kin_info', this.kinInfo);
+        form.append('address', this.clientAddress);
+        form.append('gender', this.genderVal);
+        form.append('date_of_birth', this.dobValue);
+        form.append('international_passport',this.passPort.file);
+        form.append('referred_by', this.referrerVal);
+        form.append('referrer_details', this.referrerData);
+        form.append('verify_token', localStorage.getItem('token'));
+      break;
+
+      default:
+
+    }
+    console.log("formValidationResult----",formValidationResult);
+    if(formValidationResult.status){
+      const config = {
+        method: 'post',
+        url: 'https://www.cornerstone.com.ng/devtest/webservice',
+        headers: headers,
+        data : form
+      };
+      console.log('form form config',config);
+      this.http.post(config.url,config.data , {
+        headers: config.headers,
+      }).subscribe((res)=>{
+        this.propsalResponse = res;
+        if(this.propsalResponse.status_no==0){
+          this.api.presenttoast(this.propsalResponse.message);
+        }
+        else{
+          // this.api.presenttoast("Proposal completed start payment");
+          this.router.navigate(['/payment']);
+        }
+        console.log('Response after propsal',JSON.stringify(res));
+      },err=>{
+        console.log('err===',err);
+
+      });
+    }
+    else{
+      this.api.presenttoast(formValidationResult.message);
     }
 
   }
+
+
   selectFile(event,type){
 
     console.log("type --- ",type);
@@ -376,6 +508,13 @@ export class CarInsuranceDetailsPage implements OnInit {
       this.utilityBills.file = file;
       this.utilityBills.base64 =  base64;
     }
+    // -- For travel insurance -- //
+    else if(type=='passPort'){
+      this.passPort.file = file;
+      this.passPort.base64 =  base64;
+    }
+    // -- For travel insurance -- //
+
 
 
 
@@ -391,63 +530,5 @@ export class CarInsuranceDetailsPage implements OnInit {
       reader.onload = () => resolve(reader.result);
       reader.onerror = error => reject(error);
     });
-  }
-
-  callingApi(){
-    const headers= new HttpHeaders();
-    var form = new FormData();
-    form.append('product_id', localStorage.getItem('subProId'));
-    form.append('quote_id', localStorage.getItem('quote_id'));
-    form.append('name', this.fullName);
-    form.append('registration_number', this.regNo);
-    form.append('engine_number', this.engNo);
-    form.append('chasis_number', this.chasisNo);
-    form.append('vehicle_colour', this.vehclr);
-    form.append('address', this.clientAddress);
-    form.append('gender', this.genderVal);
-    form.append('date_of_birth', this.dobValue);
-    form.append('incorporation', this.corpValue);
-    form.append('year_of_purchase', this.yopValue);
-    form.append('year_of_manufacture', this.yomValue);
-    form.append('referred_by', this.referrerVal);
-    form.append('referrer_details', this.referrerData);
-    form.append('means_of_id', this.driverLicence.file);
-    form.append('vehicle_licence', this.vehicleLicence.file);
-    form.append('verify_token', localStorage.getItem('token'));
-    if(this.subProductName=="Enhanced Comprehensive" || this.subProductName=="Auto Variants"){
-      form.append('vehicle_picture_front_view', this.vehFrontPic.file);
-      form.append('vehicle_picture_rear_view', this.vehRearPic.file);
-      form.append('vehicle_picture_side_view_left', this.vehPicSideViewLeft.file);
-      form.append('vehicle_picture_side_view_right', this.vehPicSideViewRight.file);
-      form.append('vehicle_picture_dashboard', this.vehPicDashboard.file);
-      form.append('inspection_form', this.inspectionForm.file);
-      form.append('utility_bill', this.utilityBills.file);
-    }
-    form.append('method', 'save_product_proposal');
-    const config = {
-      method: 'post',
-      url: 'https://www.cornerstone.com.ng/devtest/webservice',
-      headers: headers,
-      data : form
-    };
-
-
-    console.log('form form config',config)
-    this.http.post(config.url,config.data , {
-      headers: config.headers,
-    }).subscribe((res)=>{
-      this.propsalResponse = res;
-      if(this.propsalResponse.status_no==0){
-        this.api.presenttoast(this.propsalResponse.message);
-      }
-      else{
-        this.api.presenttoast("Proposal completed start payment");
-      }
-      console.log('Response after propsal',JSON.stringify(res));
-    },err=>{
-      console.log('err===',err);
-
-    });
-
   }
 }

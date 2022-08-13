@@ -16,15 +16,6 @@ export class QuotePopupPage implements OnInit {
 
   ngOnInit() {
       this.subProducts = JSON.parse(localStorage.getItem('subProducts'));
-    //  console.log(product_record);
-    //  console.log(product_record.image);
-    //  console.log(product_record.name);
-    //  console.log(product_record.id);
-     
-    //  this.imgPath = product_record.image;
-    //  this.Insurace_name = product_record.name;
-    //  this.prod_id = product_record.id;
-    //  localStorage.setItem('prod_id',this.prod_id);
   }
 
   dismiss() {
@@ -33,7 +24,7 @@ export class QuotePopupPage implements OnInit {
 
   seeDetails(sp) {
     console.log(sp);
-    
+
     this.modal.dismiss(sp).then(data => {
       console.log('data came back from modal');
       console.log(data);

@@ -156,6 +156,10 @@ const routes: Routes = [
   {
     path: 'thirdpartydetails',
     loadChildren: () => import('./thirdpartydetails/thirdpartydetails.module').then( m => m.ThirdpartydetailsPageModule)
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   }
 
 

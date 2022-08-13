@@ -35,11 +35,24 @@ slideOpts = {
       console.log(err);
     });
   }
+  openProduct(product){
+       console.log("seleted product",product);
+       localStorage.setItem('productName',product.name);
+       this.subProducts(product.id);
+  }
   subProducts(id){
     const myData = 'myData={"verify_token":"'+localStorage.getItem('token')+'","product_id":"'+id+'","method":"get_avilable_subproducts"}';
     this.api.insertData(myData).subscribe((res: any)=>{
+      let subproducts = [];
       console.log("subProducts---------",res);
-      localStorage.setItem('subProducts',JSON.stringify(res.subproducts) ) ;
+        res.subproducts.map((value,index)=>{
+        if(value.name!="Local Travel Insurance" && value.name!="Pilgrimage Plans" && value.name!="Student Plan"  && value.name!="Europe / Shengen" ){
+          subproducts.push(value);
+        }
+      });
+      console.log('subproducts after check---',subproducts);
+      // return;
+      localStorage.setItem('subProducts',JSON.stringify(subproducts) ) ;
       this.PopupCust();
 
     },(err)=>{
@@ -66,10 +79,13 @@ slideOpts = {
     });
     modal.onDidDismiss().then((res) => {
       console.log('data-------', res);
-      if(res.data){
+      if(res.data.product_for_quote==1){
         this.router.navigate(['/mypolicies']);
         localStorage.setItem('subProId',res.data.id);
         localStorage.setItem('subProName',res.data.name);
+      }
+      else{
+        this.subProducts(res.data.id);
       }
     }).catch(error=>console.log("error----",error));
     return await modal.present();
