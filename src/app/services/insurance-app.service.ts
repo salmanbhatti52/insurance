@@ -83,6 +83,18 @@ export class InsuranceAppService {
       headers: header,
     });
   }
+
+
+
+  get(url, token) {
+    console.log('token in api ervice====', token);
+    let headers
+    headers = new Headers();
+    headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");
+    return this.http.get(url, {
+      headers: headers
+    });
+  }
   // waGetData(action,token) {
   //   let header;
 

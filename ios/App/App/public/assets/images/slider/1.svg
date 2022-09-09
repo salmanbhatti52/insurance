@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="682" viewBox="0 0 46 682">
+  <g id="Group_473" data-name="Group 473" transform="translate(-10060 -1185)">
+    <line id="Line_57" data-name="Line 57" y2="162" transform="translate(10083.5 1202)" fill="none" stroke="#e8e8e7" stroke-linecap="round" stroke-width="2" stroke-dasharray="5"/>
+    <line id="Line_58" data-name="Line 58" y2="162" transform="translate(10083.5 1695.5)" fill="none" stroke="#b0b500" stroke-linecap="round" stroke-width="2" stroke-dasharray="5"/>
+    <line id="Line_59" data-name="Line 59" y2="162" transform="translate(10083.5 1519.5)" fill="none" stroke="#e8e8e7" stroke-linecap="round" stroke-width="2" stroke-dasharray="5"/>
+    <g id="Group_468" data-name="Group 468" transform="translate(10034 1545)">
+      <g id="Ellipse_36" data-name="Ellipse 36" transform="translate(26 117)" fill="#fff" stroke="#e8e8e7" stroke-width="1">
+        <circle cx="23" cy="23" r="23" stroke="none"/>
+        <circle cx="23" cy="23" r="22.5" fill="none"/>
+      </g>
+      <text id="_2" data-name="2" transform="translate(49 146)" fill="#85858a" font-size="16" font-family="BlissPro, Bliss Pro" letter-spacing="0em"><tspan x="-4.12" y="0">2</tspan></text>
+    </g>
+    <line id="Line_60" data-name="Line 60" y2="162" transform="translate(10083.5 1364)" fill="none" stroke="#e8e8e7" stroke-linecap="round" stroke-width="2" stroke-dasharray="5"/>
+    <g id="Group_469" data-name="Group 469" transform="translate(10034 1386)">
+      <g id="Ellipse_36-2" data-name="Ellipse 36" transform="translate(26 117)" fill="#fff" stroke="#e8e8e7" stroke-width="1">
+        <circle cx="23" cy="23" r="23" stroke="none"/>
+        <circle cx="23" cy="23" r="22.5" fill="none"/>
+      </g>
+      <text id="_3" data-name="3" transform="translate(49 146)" fill="#85858a" font-size="16" font-family="BlissPro, Bliss Pro" letter-spacing="0em"><tspan x="-4.288" y="0">3</tspan></text>
+    </g>
+    <g id="Group_470" data-name="Group 470" transform="translate(10034 1227)">
+      <g id="Ellipse_36-3" data-name="Ellipse 36" transform="translate(26 117)" fill="#fff" stroke="#e8e8e7" stroke-width="1">
+        <circle cx="23" cy="23" r="23" stroke="none"/>
+        <circle cx="23" cy="23" r="22.5" fill="none"/>
+      </g>
+      <text id="_4" data-name="4" transform="translate(49 146)" fill="#85858a" font-size="16" font-family="BlissPro, Bliss Pro" letter-spacing="0em"><tspan x="-4.48" y="0">4</tspan></text>
+    </g>
+    <g id="Group_471" data-name="Group 471" transform="translate(10034 1068)">
+      <g id="Ellipse_36-4" data-name="Ellipse 36" transform="translate(26 117)" fill="#fff" stroke="#e8e8e7" stroke-width="1">
+        <circle cx="23" cy="23" r="23" stroke="none"/>
+        <circle cx="23" cy="23" r="22.5" fill="none"/>
+      </g>
+      <text id="_5" data-name="5" transform="translate(49 146)" fill="#85858a" font-size="16" font-family="BlissPro, Bliss Pro" letter-spacing="0em"><tspan x="-4.104" y="0">5</tspan></text>
+    </g>
+    <g id="Group_472" data-name="Group 472" transform="translate(10034 1704)">
+      <g id="Ellipse_36-5" data-name="Ellipse 36" transform="translate(26 117)" fill="#fff" stroke="#b0b500" stroke-width="1">
+        <circle cx="23" cy="23" r="23" stroke="none"/>
+        <circle cx="23" cy="23" r="22.5" fill="none"/>
+      </g>
+      <text id="_1" data-name="1" transform="translate(49 146)" fill="#b0b500" font-size="16" font-family="BlissPro, Bliss Pro" letter-spacing="0em"><tspan x="-3.368" y="0">1</tspan></text>
+    </g>
+  </g>
+</svg>

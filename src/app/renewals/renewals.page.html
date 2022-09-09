@@ -21,7 +21,7 @@
 
 <ion-content>
   <div class="wrapper">
-    <ion-segment mode="ios" (ionChange)="segmentChanged($event)" #mySegment scrollable="true" class="segment1">
+    <!-- <ion-segment mode="ios" (ionChange)="segmentChanged($event)" #mySegment scrollable="true" class="segment1">
       <ion-segment-button mode="ios" value="renewals" class="sbtn">
         <ion-label>Renewals</ion-label>
       </ion-segment-button>
@@ -29,9 +29,9 @@
         style="margin-left: 5%;">
         <ion-label>Subsequent</ion-label>
       </ion-segment-button>
-    </ion-segment>
+    </ion-segment> -->
 
-    <div style="margin-top:30px;">
+    <!-- <div style="margin-top:30px;">
       <label class="con-l1">Policy Type</label>
       <div class="dropbox">
         <div class="innerdropbox" (click)="openlist()">
@@ -96,9 +96,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!----------------- request type subsequent-------------------->
-    <div *ngIf="requestsType=='subsequent'" >
+    <!-- <div *ngIf="requestsType=='subsequent'" >
       <div class="flex-c">
         <div>
           <img src="assets/images/car.svg">
@@ -143,9 +143,47 @@
           </div>
         </div>
       </div>
+    </div> -->
+
+    <div class="label">First Name</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="text" placeholder="John" class="in-text"></ion-input>
     </div>
-    
-    
+
+    <div class="label">Last Name</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="text" placeholder="Doe" class="in-text"></ion-input>
+    </div>
+
+    <div class="label">Vehicle Make</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="text" placeholder="Honda " class="in-text"></ion-input>
+    </div>
+
+    <div class="label">Vehicle Model</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="text" placeholder="Accord" class="in-text"></ion-input>
+    </div>
+
+    <div class="label">Sum Insured</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="number" placeholder="3,200,000" class="in-text"></ion-input>
+    </div>
+
+    <div class="label">Review Sum Insured </div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="text" placeholder="" class="in-text"></ion-input>
+    </div>
+
+    <div class="label">Premium</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="text" placeholder="3,000" class="in-text"></ion-input>
+    </div>
+
+    <div class="btndiv">
+      <ion-button class="btn1">Renew Policy Now</ion-button>
+      <ion-button class="btn2">Schedule a reminder</ion-button>
+    </div>
   </div>
 
 </ion-content>

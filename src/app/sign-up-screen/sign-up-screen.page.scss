@@ -1,12 +1,12 @@
 .container {
     width: 85%;
-    margin: 10% auto 5%;
+    margin:0% auto;
 }
 p.cont-p1 {
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 500;
     color: #A8B400;
-    margin: 20px auto;
+    margin:0px;
 }
 .input{
     height: 48px;
@@ -70,7 +70,7 @@ ion-input {
     border-radius: 12px;
     background: #E8E8E7;
     // box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 16px 0px;
-    
+
 }
 
 .item-native {
@@ -101,7 +101,7 @@ img.plchldr-css {
   {
     padding-left: 7px;
     width: 100%;
-    padding-right: 13px; 
+    padding-right: 13px;
   }
   .ph-css{
     --placeholder-color: #656565;
@@ -145,7 +145,7 @@ span.span-end {
   align-items: center;
 }
 .alertIcon{
-  
+
   width: 13px;
 }
 .error-msg{

@@ -2,12 +2,16 @@
 //     width: 85%;
 //     margin:0px auto;
 // }
-ion-header{
-  background: white;
+.cheader{
+  background: #1A206D !important;
+}
+.top-container{
+  width: 85%;
+  margin: 0% auto;
 }
 .container{
   width: 85%;
-  margin: 0px auto 20%;
+  margin: 5% auto;
 }
 .circle {
     width: 36.06px;
@@ -41,7 +45,7 @@ p.name-para {
     margin: 20px auto 0px;
     font-size: 24px;
     font-weight: 600;
-    color: #A8B400;
+    color: #FFFFFF;
     text-transform: capitalize;
 }
 p.wc-para {
@@ -49,7 +53,7 @@ p.wc-para {
     margin: 0px auto;
     font-size: 32px;
     font-weight: 500;
-    color: #1A206D;
+    color: #FFFFFF;
     text-transform: uppercase;
     line-height: 1.6;
 }
@@ -60,14 +64,14 @@ ion-slides{
 .mid-div {
     height: 170px;
     border-radius: 12px 56px 12px 12px;
-    background-color: rgba(176,181,0,32%);
+    background-color:#FFFFFF;
     box-shadow: 0px 0px 20px rgb(169 187 70 / 15%);
     margin-top: 24px;
 }
 .mid-sub-div{
     display:flex;
     padding: 22px 15.5px 13px 14px;
-    justify-content: space-between; 
+    justify-content: space-between;
     text-align: left;
 }
 p.p1 {
@@ -163,7 +167,7 @@ p.mid-p2 {
     padding: 20px;
     border-radius: 12px;
     background-color: white;
-    box-shadow: 0px 0px 20px rgb(176 181 0 / 10%);
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
 }
 p.gp-div {
     margin: 0px;
@@ -299,6 +303,10 @@ hr{
     right: 47.4%;
     border-radius: 6px;
   }
+  .container{
+    width: 85%;
+    margin: 5% auto 20%;
+  }
 }
 @media only screen and (max-width:375px) and (min-height:812px){
   hr{
@@ -309,6 +317,12 @@ hr{
     top: 55px;
     right: 47.2%;
     border-radius: 6px;
+  }
+}
+@media only screen and (max-width:375px) and (min-height:667px){
+  .container{
+    width: 85%;
+    margin: 5% auto 25%;
   }
 }
 

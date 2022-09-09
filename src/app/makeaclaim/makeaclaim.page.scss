@@ -1,0 +1,129 @@
+.title{
+  text-align: center;
+  font-family: Bliss Pro;
+  font-size: 20px;
+  color: #1A206D;
+  font-weight: bold;
+}
+.container{
+  width: 85%;
+  margin: 10% auto 0%;
+}
+.segment1 {
+  padding: 5px 3px;
+  border-radius: 12px;
+  margin-top: 10px;
+  --background: transparent;
+  width:100%;
+  .sbtn {
+    --border-width: 0;
+    --margin-bottom: 5px;
+    --margin-top: 5px;
+    border-radius: 25px;
+    --background-checked: #1A206D;
+    --indicator-color: transparent !important;
+    --color: #85858A;
+    --color-checked: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    --background: #85858a;
+    color: #fff;
+    margin-right: 5%;
+    height: 45px;
+  }
+}
+
+.dropbox{
+    margin: 4% 0%;
+    background: #E8E8E7;
+    border-radius: 12px;
+    padding: 12px 15px;
+
+  }
+  .innerdropbox{
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 2px;
+    padding-bottom: 2.8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+  .euro-text{
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+
+  }
+  .euro-text1{
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 5%;
+  }
+  .label{
+    font-size: 14px;
+  }
+  ion-input {
+    --ion-font-family: Bliss Pro;
+  }
+
+  .inputfield {
+    margin: 2% 0% 4% 0%;
+    background: #E8E8E7;
+    border-radius: 12px;
+  }
+
+  .in-text {
+    --color: #5D5D5D;
+    --placeholder-color: #5D5D5D;
+    --padding-start: 7%;
+    --padding-top: 5%;
+    --padding-bottom: 5%;
+    font-size: 16px;
+    font-weight: 400;
+    --placeholder-font-weight: 400;
+    // --placeholder-opacity: 100%;
+  }
+  .custom-file-input {
+    color: transparent;
+    width: 100%;
+    margin-top: 2%;
+  }
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: "Choose";
+
+    display: inline-block;
+    background: #1A206D;
+    border-radius: 5px;
+    padding: 12px 8px;
+    outline: none;
+
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    width: 100%;
+    text-transform: capitalize;
+
+    text-align: center;
+  }
+  .btndiv{
+    padding-bottom: 4%;
+    width: 85%;
+    margin: 0% auto;
+  }
+  .btn1{
+    --background: #1A206D;
+    --border-radius: 12px;
+    width: 100%;
+    height: 48px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 500;
+    text-transform: capitalize;
+  }

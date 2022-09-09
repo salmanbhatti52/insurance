@@ -4,13 +4,9 @@
     <ion-row style="display: flex;
     align-items: center;">
       <ion-col size="2" style="padding-left: 25px;">
-        <ion-menu-toggle>
-          <ion-buttons>
-            <div style="width:100% ;">
-              <img src="assets/images/sb-button.svg" alt="sb-btn">
-            </div>
-          </ion-buttons>
-        </ion-menu-toggle>
+        <div style="width:100% ;">
+          <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
+        </div>
       </ion-col>
       <ion-col size="8">
         <div class="title">Product Offering or Details</div>
@@ -26,22 +22,23 @@
 
 <ion-content>
   <div class="wrapper">
-    <ion-segment mode="ios" (ionChange)="segmentChanged($event)" #mySegment scrollable="true" class="segment1">
+    <!-- <ion-segment mode="ios" (ionChange)="segmentChanged($event)" #mySegment scrollable="true" class="segment1">
       <ion-segment-button mode="ios" value="PurchasePolicies" class="sbtn">
         <ion-label>General Bussines</ion-label>
       </ion-segment-button>
       <ion-segment-button checked mode="ios" value="InvestmentPlan" class="sbtn">
         <ion-label>Life Insurance Plan</ion-label>
       </ion-segment-button>
-    </ion-segment>
+    </ion-segment> -->
 
     <!------------- Purchase Policies -------------------->
-    <div *ngIf="requestsType=='PurchasePolicies'">
+    <div>
 
       <!-------------- third party discription ------------------->
       <div *ngIf="subProName=='Third Party'">
         <div class="thirdParty-wrapper">
-          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt="">{{subProName}}</div>
+          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg"
+              alt="">{{subProName}}</div>
           <div class="htext" style="color: black; font-size: 18px;">Your Details</div>
           <div class="flex-cls">
             <!-- <div>
@@ -59,8 +56,8 @@
                   </div>
                 </div>
                 <div *ngIf="showVehicle==true" style="height:100px ; overflow: scroll; ">
-                  <div *ngFor="let list of vehicleClass" (click)="selectVehicleCls(list)">
-                    <div class="euro-text1">{{list}}</div>
+                  <div *ngFor="let list of vechilenewarray; let i=index" (click)="selectVehicleCls(list,i)">
+                    <div class="euro-text1" [class.activeproduct]="list.active==true">{{list.name}}</div>
                   </div>
 
                 </div>
@@ -72,29 +69,32 @@
                 <div class="innerdropbox" (click)="openVhclMakeList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleMakeVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showMaker==false">
                     <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
                   </div>
                 </div>
                 <div *ngIf="showMaker==true" style="height:100px ; overflow: scroll;">
-                  <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
-                    <div class="euro-text1">{{list.manufacturer}}</div>
+                  <div *ngFor="let list of vechileMakenew; let i=index" (click)="selectVehicleMaker(list,i)">
+                    <div class="euro-text1" [class.activeproduct]="list.active==true">{{list.manufacturer}}</div>
                   </div>
 
                 </div>
 
               </div>
-              <div class="dropbox" >
+              <div class="dropbox">
                 <div class="innerdropbox" (click)="opnenVehicleModelList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleModelVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg" *ngIf="showVehicleModel==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
+                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg"
+                      *ngIf="showVehicleModel==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showVehicleModel==true">
                   </div>
                 </div>
                 <div *ngIf="showVehicleModel==true" style="height:100px ; overflow: scroll;">
-                  <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
-                    <div class="euro-text1">{{list.model}}</div>
+                  <div *ngFor="let list of vehicleModelNew;let i=index" (click)="selectVehicleModel(list,i)">
+                    <div class="euro-text1" [class.activeproduct]="list.active==true">{{list.model}}</div>
                   </div>
 
                 </div>
@@ -181,15 +181,16 @@
       </div>
 
       <!-- ------------Enhanced-comprehensive----------------------- -->
-      <div *ngIf="subProName=='Enhanced Comprehensive'" >
+      <div *ngIf="subProName=='Enhanced Comprehensive'">
 
         <div class="thirdParty-wrapper">
-          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt="">{{subProName}}</div>
+          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg"
+              alt="">{{subProName}}</div>
           <div class="htext" style="color: black; font-size: 18px;">Your Details</div>
           <div class="flex-cls">
             <div style="width:80%;margin:0% auto;">
               <div class="label">Vehicle Class <span style="color:#A8B400;">*</span></div>
-              <div class="dropbox" >
+              <div class="dropbox">
                 <div class="innerdropbox" (click)="openVehicleList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
@@ -199,8 +200,8 @@
                   </div>
                 </div>
                 <div *ngIf="showVehicle==true" style="height:100px ; overflow: scroll; ">
-                  <div *ngFor="let list of eCcarClasses" (click)="selectVehicleCls(list)">
-                    <div class="euro-text1">{{list}}</div>
+                  <div *ngFor="let list of EnchancednewClasses;let i=index" (click)="selectVehicleCls(list,i)">
+                    <div class="euro-text1" [class.activeproduct]="list.active==true">{{list.name}}</div>
                   </div>
 
                 </div>
@@ -212,29 +213,32 @@
                 <div class="innerdropbox" (click)="openVhclMakeList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleMakeVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showMaker==false">
                     <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
                   </div>
                 </div>
                 <div *ngIf="showMaker==true" style="height:100px ; overflow: scroll;">
-                  <div *ngFor="let list of vehicleMake" (click)="selectVehicleMaker(list)">
-                    <div class="euro-text1">{{list.manufacturer}}</div>
+                  <div *ngFor="let list of vechileMakenew; let i=index" (click)="selectVehicleMaker(list,i)">
+                    <div class="euro-text1" [class.activeproduct]="list.active==true">{{list.manufacturer}}</div>
                   </div>
 
                 </div>
 
               </div>
-              <div class="dropbox" >
+              <div class="dropbox">
                 <div class="innerdropbox" (click)="opnenVehicleModelList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleModelVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg" *ngIf="showVehicleModel==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
+                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg"
+                      *ngIf="showVehicleModel==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showVehicleModel==true">
                   </div>
                 </div>
                 <div *ngIf="showVehicleModel==true" style="height:100px ; overflow: scroll;">
-                  <div *ngFor="let list of vehicleModel" (click)="selectVehicleModel(list)">
-                    <div class="euro-text1">{{list.model}}</div>
+                  <div *ngFor="let list of vehicleModelNew;let i=index" (click)="selectVehicleModel(list,i)">
+                    <div class="euro-text1" [class.activeproduct]="list.active==true">{{list.model}}</div>
                   </div>
 
                 </div>
@@ -311,7 +315,8 @@
               <div class="label">Value of Vehicle <span style="color:#A8B400;">*</span></div>
               <div class="inputfield">
                 <div class="innerdropbox">
-                  <ion-input [(ngModel)]="valOfVehicle" style="height: 48px;" type="tel" placeholder="" class="in-text"></ion-input>
+                  <ion-input [(ngModel)]="valOfVehicle" style="height: 48px;" type="tel" placeholder="" class="in-text">
+                  </ion-input>
                 </div>
               </div>
               <!----------- seventh form ---------------------------->
@@ -320,8 +325,10 @@
                 <div class="innerdropbox" (click)="openFloodExtension()">
                   <div class="euro-text" style="width: 100%;">{{floodExtVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showFloodExt==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showFloodExt==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showFloodExt==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showFloodExt==true">
                   </div>
                 </div>
                 <div *ngIf="showFloodExt==true">
@@ -336,8 +343,10 @@
                 <div class="innerdropbox" (click)="openExcessBuyBack()">
                   <div class="euro-text" style="width: 100%;">{{excessBuyBackVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px;  width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showExcessBuyBack==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showExcessBuyBack==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showExcessBuyBack==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showExcessBuyBack==true">
                   </div>
                 </div>
                 <div *ngIf="showExcessBuyBack==true">
@@ -352,8 +361,10 @@
                 <div class="innerdropbox" (click)="openVehicleTracking()">
                   <div class="euro-text" style="width: 100%;">{{vehicleTrackingVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showVehicleTracking==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleTracking==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showVehicleTracking==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showVehicleTracking==true">
                   </div>
                 </div>
                 <div *ngIf="showVehicleTracking==true">
@@ -371,14 +382,15 @@
         </div>
       </div>
       <!-- ------------Auto Variants----------------------- -->
-      <div *ngIf="subProName=='Auto Variants'" >
+      <div *ngIf="subProName=='Auto Variants'">
         <div class="thirdParty-wrapper">
-          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt=""> Auto Variants</div>
+          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt=""> Auto
+            Variants</div>
           <div class="htext" style="color: black; font-size: 18px;">Your Details</div>
           <div class="flex-cls">
             <div style="width:80%;margin:0% auto;">
               <div class="label">Auto Plan of Choice <span style="color:#A8B400;">*</span></div>
-              <div class="dropbox" >
+              <div class="dropbox">
                 <div class="innerdropbox" (click)="openAutoPlanList()">
                   <div class="euro-text" style="width: 100%;">{{autoPlanVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
@@ -398,7 +410,8 @@
                 <div class="innerdropbox" (click)="openVhclMakeList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleMakeVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showMaker==false">
                     <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
                   </div>
                 </div>
@@ -410,12 +423,14 @@
                 </div>
 
               </div>
-              <div class="dropbox" >
+              <div class="dropbox">
                 <div class="innerdropbox" (click)="opnenVehicleModelList()">
                   <div class="euro-text" style="width: 100%;">{{vehicleModelVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg" *ngIf="showVehicleModel==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleModel==true">
+                    <img style="height: 6.6px;width:11.36px " src="assets/images/down-arrow.svg"
+                      *ngIf="showVehicleModel==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showVehicleModel==true">
                   </div>
                 </div>
                 <div *ngIf="showVehicleModel==true" style="height:100px ; overflow: scroll;">
@@ -499,7 +514,8 @@
               <div class="label">Value of Vehicle <span style="color:#A8B400;">*</span></div>
               <div class="inputfield">
                 <div class="innerdropbox">
-                  <ion-input [(ngModel)]="valOfVehicle" style="height: 48px;" type="tel" placeholder="" class="in-text"></ion-input>
+                  <ion-input [(ngModel)]="valOfVehicle" style="height: 48px;" type="tel" placeholder="" class="in-text">
+                  </ion-input>
                 </div>
               </div>
 
@@ -509,8 +525,10 @@
                 <div class="innerdropbox" (click)="openFloodExtension()">
                   <div class="euro-text" style="width: 100%;">{{floodExtVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showFloodExt==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showFloodExt==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showFloodExt==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showFloodExt==true">
                   </div>
                 </div>
                 <div *ngIf="showFloodExt==true">
@@ -526,8 +544,10 @@
                 <div class="innerdropbox" (click)="openExcessBuyBack()">
                   <div class="euro-text" style="width: 100%;">{{excessBuyBackVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px;  width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showExcessBuyBack==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showExcessBuyBack==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showExcessBuyBack==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showExcessBuyBack==true">
                   </div>
                 </div>
                 <div *ngIf="showExcessBuyBack==true">
@@ -543,8 +563,10 @@
                 <div class="innerdropbox" (click)="openVehicleTracking()">
                   <div class="euro-text" style="width: 100%;">{{vehicleTrackingVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showVehicleTracking==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showVehicleTracking==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showVehicleTracking==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showVehicleTracking==true">
                   </div>
                 </div>
                 <div *ngIf="showVehicleTracking==true">
@@ -559,8 +581,10 @@
                 <div class="innerdropbox" (click)="openRoadSideAssistance()">
                   <div class="euro-text" style="width: 100%;">{{roadSideVal}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showRoadSide==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showRoadSide==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showRoadSide==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showRoadSide==true">
                   </div>
                 </div>
                 <div *ngIf="showRoadSide==true">
@@ -580,104 +604,118 @@
         </div>
 
       </div>
-       <!-- ------------Enhanced-comprehensive----------------------- -->
-       <div *ngIf="subProName=='Worldwide TRAVELLER' || subProName== 'Worldwide PEARL' || subProName== 'Worldwide ECONOMY'"  >
+      <!-- ------------Enhanced-comprehensive----------------------- -->
+      <div
+        *ngIf="subProName=='Worldwide TRAVELLER' || subProName== 'Worldwide PEARL' || subProName== 'Worldwide ECONOMY'">
 
         <div class="thirdParty-wrapper">
-          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg" alt="">{{subProName}}</div>
+          <div class="htext" style="margin-bottom: 10px;"><img src="assets/images/thirdPartyCorp.svg"
+              alt="">{{subProName}}</div>
           <div class="htext" style="color: black; font-size: 18px;">Your Details</div>
           <div class="flex-cls">
             <div style="width:80%;margin:0% auto;">
-                <!-- Title Field -->
-                <div class="label">Title<span style="color:#A8B400;">*</span></div>
-                <div class="dropbox" >
-                  <div class="innerdropbox" (click)="openDropDwon('title')">
-                    <div class="euro-text" style="width: 100%;">{{useTitle}}</div>
-                    <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                      <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showTitle==false">
-                      <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showTitle==true">
-                    </div>
-                  </div>
-                  <div *ngIf="showTitle==true" style="height:100px ; overflow: scroll; ">
-                    <div *ngFor="let list of titleList" (click)="selectDropDown(list,'title')">
-                      <div class="euro-text1">{{list.title}}</div>
-                    </div>
+              <!-- Title Field -->
+              <div class="label">Title<span style="color:#A8B400;">*</span></div>
+              <div class="dropbox">
+                <div class="innerdropbox" (click)="openDropDwon('title')">
+                  <div class="euro-text" style="width: 100%;">{{useTitle}}</div>
+                  <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showTitle==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showTitle==true">
                   </div>
                 </div>
-                <!-- Title Field -->
-
-                <!-- FIRST NAME FIELD NAME -->
-                <div class="label">First Name</div>
-                <div class="inputfield">
-                  <div class="innerdropbox">
-                    <ion-input [(ngModel)]="fName" style="height: 48px;" type="email" placeholder="John"
-                      class="in-text"></ion-input>
+                <div *ngIf="showTitle==true" style="height:100px ; overflow: scroll; ">
+                  <div *ngFor="let list of titleList" (click)="selectDropDown(list,'title')">
+                    <div class="euro-text1">{{list.title}}</div>
                   </div>
-                </div>
-                <!-- FIRST NAME FIELD NAME -->
-                <!-- LAST NAME FIELD -->
-                <div class="label">Last Name</div>
-                <div class="inputfield">
-                  <div class="innerdropbox">
-                    <ion-input [(ngModel)]="lName" style="height: 48px;" type="email" placeholder="Doe" class="in-text">
-                    </ion-input>
-                  </div>
-                </div>
-                <!-- LAST NAME FIELD -->
-                 <!-- OTHER NAME FIELD -->
-                 <div class="label">Other Name</div>
-                 <div class="inputfield">
-                   <div class="innerdropbox">
-                     <ion-input [(ngModel)]="otheName" style="height: 48px;" type="email" placeholder="Doe" class="in-text">
-                     </ion-input>
-                   </div>
-                 </div>
-                 <!-- OTHER NAME FIELD -->
-                 <!-- EMAIL FIELD -->
-                <div class="label">Email Address<span style="color:#A8B400;">*</span></div>
-                <div class="inputfield">
-                  <div class="innerdropbox">
-                    <ion-input [(ngModel)]="userEmail" style="height: 48px;" type="email" placeholder="johndoe@gmail.com"
-                      class="in-text"></ion-input>
-                  </div>
-                </div>
-                <!-- EMAIL FIELD -->
-                <!-- PHONE NUMBER FIELD -->
-                <div class="label">Phone Number<span style="color:#A8B400;">*</span></div>
-                <div class="inputfield">
-                  <div class="innerdropbox">
-                    <ion-input [(ngModel)]="mobNumber" style="height: 48px;" type="tel" placeholder="923565466554"
-                      class="in-text"></ion-input>
-                  </div>
-                </div>
-                <!-- PHONE NUMBER FIELD -->
-              <!-- Start Date  -->
-              <div class="label">Start date<span style="color:#A8B400;">*</span></div>
-              <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerStartDate = !showPickerStartDate">
-                <div style="display: flex; align-items:center">
-                  <ion-text class="ion-txt" style="margin-left: 14px" >{{ tourStartDate }}</ion-text>
                 </div>
               </div>
-              <ion-datetime  class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date" *ngIf="showPickerStartDate" #datetime [value]="tourStartDate" size="cover" (ionChange)="dateChanged(datetime.value,'start')" showDefaultButtons="true"  (ionCancel)="showPickerStartDate=false"></ion-datetime>
+              <!-- Title Field -->
+
+              <!-- FIRST NAME FIELD NAME -->
+              <div class="label">First Name</div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="fName" style="height: 48px;" type="email" placeholder="John" class="in-text">
+                  </ion-input>
+                </div>
+              </div>
+              <!-- FIRST NAME FIELD NAME -->
+              <!-- LAST NAME FIELD -->
+              <div class="label">Last Name</div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="lName" style="height: 48px;" type="email" placeholder="Doe" class="in-text">
+                  </ion-input>
+                </div>
+              </div>
+              <!-- LAST NAME FIELD -->
+              <!-- OTHER NAME FIELD -->
+              <div class="label">Other Name</div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="otheName" style="height: 48px;" type="email" placeholder="Doe"
+                    class="in-text">
+                  </ion-input>
+                </div>
+              </div>
+              <!-- OTHER NAME FIELD -->
+              <!-- EMAIL FIELD -->
+              <div class="label">Email Address<span style="color:#A8B400;">*</span></div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="userEmail" style="height: 48px;" type="email" placeholder="johndoe@gmail.com"
+                    class="in-text"></ion-input>
+                </div>
+              </div>
+              <!-- EMAIL FIELD -->
+              <!-- PHONE NUMBER FIELD -->
+              <div class="label">Phone Number<span style="color:#A8B400;">*</span></div>
+              <div class="inputfield">
+                <div class="innerdropbox">
+                  <ion-input [(ngModel)]="mobNumber" style="height: 48px;" type="tel" placeholder="923565466554"
+                    class="in-text"></ion-input>
+                </div>
+              </div>
+              <!-- PHONE NUMBER FIELD -->
+              <!-- Start Date  -->
+              <div class="label">Start date<span style="color:#A8B400;">*</span></div>
+              <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
+                (click)="showPickerStartDate = !showPickerStartDate">
+                <div style="display: flex; align-items:center">
+                  <ion-text class="ion-txt" style="margin-left: 14px">{{ tourStartDate }}</ion-text>
+                </div>
+              </div>
+              <ion-datetime class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date"
+                *ngIf="showPickerStartDate" #datetime [value]="tourStartDate" size="cover"
+                (ionChange)="dateChanged(datetime.value,'start')" showDefaultButtons="true"
+                (ionCancel)="showPickerStartDate=false"></ion-datetime>
               <!-- Start Date  -->
 
               <!-- End Date  -->
               <div class="label">End date <span style="color:#A8B400;">*</span></div>
-              <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;" (click)="showPickerEndDate = !showPickerEndDate">
+              <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
+                (click)="showPickerEndDate = !showPickerEndDate">
                 <div style="display: flex; align-items:center">
-                  <ion-text class="ion-txt" style="margin-left: 14px" >{{ tourEndDate }}</ion-text>
+                  <ion-text class="ion-txt" style="margin-left: 14px">{{ tourEndDate }}</ion-text>
                 </div>
               </div>
-              <ion-datetime  class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date" *ngIf="showPickerEndDate" #datetime [value]="tourEndDate" size="cover" (ionChange)="dateChanged(datetime.value,'end')" showDefaultButtons="true"  (ionCancel)="showPickerEndDate=false"></ion-datetime>
+              <ion-datetime class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date"
+                *ngIf="showPickerEndDate" #datetime [value]="tourEndDate" size="cover"
+                (ionChange)="dateChanged(datetime.value,'end')" showDefaultButtons="true"
+                (ionCancel)="showPickerEndDate=false"></ion-datetime>
               <!-- End Date  -->
               <!-- AGE GROUP FIELD -->
               <div class="label">Age group<span style="color:#A8B400;">*</span></div>
-              <div class="dropbox" >
+              <div class="dropbox">
                 <div class="innerdropbox" (click)="openDropDwon('age')">
                   <div class="euro-text" style="width: 100%;">{{ageGroup}}</div>
                   <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showAgeGroup==false">
-                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showAgeGroup==true">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg"
+                      *ngIf="showAgeGroup==false">
+                    <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg"
+                      *ngIf="showAgeGroup==true">
                   </div>
                 </div>
                 <div *ngIf="showAgeGroup==true" style="height:100px ; overflow: scroll; ">
@@ -696,11 +734,11 @@
       </div>
     </div>
     <!------------- Investment Plan -------------------->
-    <div *ngIf="requestsType=='InvestmentPlan'">
+    <!-- <div *ngIf="requestsType=='InvestmentPlan'">
       <ion-row style="margin-top:5%;">
         <ion-col size="6">
           <div class="box" [class.active]="box=='checked'" (click)="changed()">
-            <!-- <img src="assets/images/filltick.svg" class="tickimg" *ngIf="box=='checked'"> -->
+
             <div class="imgdiv">
 
               <img src="assets/images/all.svg" height="70" *ngIf="box=='unchecked'">
@@ -711,7 +749,7 @@
         </ion-col>
         <ion-col size="6">
           <div class="box">
-            <!-- <img src="assets/images/filltick.svg" class="tickimg"> -->
+
             <div class="imgdiv">
               <img src="assets/images/saveplan.svg" height="70">
               <div class="itext">iSave Plan</div>
@@ -722,7 +760,7 @@
       <ion-row style="margin-top:5%;">
         <ion-col size="6">
           <div class="box">
-            <!-- <img src="assets/images/filltick.svg" class="tickimg"> -->
+
             <div class="imgdiv">
               <img src="assets/images/family2.svg" height="70">
               <div class="itext">Maximum Investment Plan</div>
@@ -731,7 +769,7 @@
         </ion-col>
         <ion-col size="6">
           <div class="box">
-            <!-- <img src="assets/images/filltick.svg" class="tickimg"> -->
+
             <div class="imgdiv">
               <img src="assets/images/cornerstone.svg" height="70">
               <div class="itext">Cornerstone Universal Plan</div>
@@ -745,7 +783,6 @@
 
         <ion-col size="6">
           <div class="box">
-            <!-- <img src="assets/images/filltick.svg" class="tickimg"> -->
             <div class="imgdiv">
               <img src="assets/images/fullfamily.svg" height="70">
               <div class="itext">Children Education Plan</div>
@@ -762,6 +799,6 @@
       <div style="text-align:center;margin-top: 8%;">
         <ion-button class="btn1">Account Statement</ion-button>
       </div>
-    </div>
+    </div> -->
   </div>
 </ion-content>

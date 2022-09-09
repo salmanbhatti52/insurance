@@ -4,6 +4,7 @@ import { MenuController, NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { InsuranceAppService } from './services/insurance-app.service';
 import { Router } from '@angular/router';
+import { SplashScreen } from '@capacitor/splash-screen';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,7 +18,7 @@ export class AppComponent {
     { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
     { title: 'Verify Policy', url: 'verify-policy-screen-cust', img: '/assets/images/icons/policy.svg', img1: '/assets/images/icons/activepolicy.svg', status: 'unchecked' },
     { title: 'Renewals', url: 'renewals', img: '/assets/images/icons/renewals.svg', img1: '/assets/images/icons/activerenewls.svg', status: 'unchecked' },
-    { title: 'Make a Claim', url: '/make-a-claim', img: '/assets/images/icons/claim.svg', img1: '/assets/images/icons/activeclaim.svg', status: 'unchecked' },
+    { title: 'Make a Claim', url: '/makeaclaim', img: '/assets/images/icons/claim.svg', img1: '/assets/images/icons/activeclaim.svg', status: 'unchecked' },
   ];
 
   selectedtitle: any;
@@ -32,9 +33,17 @@ export class AppComponent {
     // } else {
     //   this.route.navigate(['sign-in-screen']);
     // }
+
+
+    this.initializeApp();
+
   }
 
-
+  async initializeApp() {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 4000);
+  }
 
   selected(p) {
     this.appPages.map((value) => {

@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class SignUpScreenPage implements OnInit {
   RegisterForm: FormGroup;
-  uTitle= '';
+  uTitle = '';
   fName = '';
   lName = '';
   dob = '';
@@ -29,22 +29,21 @@ export class SignUpScreenPage implements OnInit {
   showPass = false;
   cshowPass = false;
 
-  constructor(public router:Router,
-     public api:InsuranceAppService,
-     public location:Location)
-   {
+  constructor(public router: Router,
+    public api: InsuranceAppService,
+    public location: Location) {
     // this.setToday();
-   }
-   
-   ngOnInit() {
+  }
+
+  ngOnInit() {
     this.RegisterForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
       fname: new FormControl('', Validators.required),
-      lname: new FormControl('',Validators.required),
-      number: new FormControl('',Validators.required),
+      lname: new FormControl('', Validators.required),
+      number: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
-      password: new FormControl('',[Validators.required]),
-      cpassword: new FormControl('',[Validators.required])
+      password: new FormControl('', [Validators.required]),
+      cpassword: new FormControl('', [Validators.required])
     });
     console.log(this.dateValue);
     // console.log(this.formattedString);
@@ -63,15 +62,15 @@ export class SignUpScreenPage implements OnInit {
 
     this.cshowPass = !this.cshowPass;
   }
-  dateChanged(value){
-    this.dateValue=value;
+  dateChanged(value) {
+    this.dateValue = value;
     console.log(this.dateValue);
-    
+
     // this.formattedString = format(parseISO(value), ' MMM d, yyyy')
     this.showPicker = false;
   }
 
-  
+
   openlist() {
     if (this.show == true) {
       this.show = false
@@ -85,40 +84,40 @@ export class SignUpScreenPage implements OnInit {
     this.Title = list.Title
     this.show = false
   }
-  signUp(){
+  signUp() {
     // let myData = "myData={\r\n    \"email\": \""+this.userEmail+"\",\r\n    \"password\": \""+this.userPassword+"\",\r\n    \"method\": \"login\"\r\n}";
-    let myData = "myData={\r\n    \"title\":\""+this.uTitle+"\",\r\n    \"first_name\": \""+this.fName+"\",\r\n    \"last_name\":\""+this.lName+"\",\r\n    \"date_of_birth\":\""+this.dateValue+"\",\r\n    \"mobile\":\""+this.mobNumber+"\",\r\n    \"email\":\""+this.uEmail+"\",\r\n    \"password\":\""+this.userPassword+"\",\r\n    \"conf_password\":\""+this.cuserPassword+"\",\r\n    \"method\": \"save_user\" \r\n}";
-    if(this.userPassword===this.cuserPassword){
+    let myData = "myData={\r\n    \"title\":\"" + this.uTitle + "\",\r\n    \"first_name\": \"" + this.fName + "\",\r\n    \"last_name\":\"" + this.lName + "\",\r\n    \"date_of_birth\":\"" + this.dateValue + "\",\r\n    \"mobile\":\"" + this.mobNumber + "\",\r\n    \"email\":\"" + this.uEmail + "\",\r\n    \"password\":\"" + this.userPassword + "\",\r\n    \"conf_password\":\"" + this.cuserPassword + "\",\r\n    \"method\": \"save_user\" \r\n}";
+    if (this.userPassword === this.cuserPassword) {
       console.log(this.userPassword);
       console.log(this.cuserPassword);
-      this.api.insertData(myData).subscribe((res:any)=>{
-        console.log("res==",res);
-        if(res.message==='Email address already exist'){
+      this.api.insertData(myData).subscribe((res: any) => {
+        console.log("res==", res);
+        if (res.message === 'Email address already exist') {
           console.log(res.message);
 
           this.api.presenttoast(res.message);
-        }else{
+        } else {
           this.api.presenttoast(res.message);
           this.router.navigate(['/sign-in-screen']);
         }
-        
-      },(err)=>{
-        console.log('err==',err);
+
+      }, (err) => {
+        console.log('err==', err);
         this.api.presenttoast(err);
-        
+
       })
-      
-    }else{
+
+    } else {
       this.api.presenttoast('"Password" and "Confirm_password" not matched!')
     }
-    
-    
+
+
   }
-  signInPage(){
+  signInPage() {
     this.router.navigate(['/sign-in-screen']);
   }
-  goBack(){
+  goBack() {
     this.location.back();
   }
-  
+
 }

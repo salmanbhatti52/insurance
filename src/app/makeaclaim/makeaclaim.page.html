@@ -1,9 +1,71 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>makeaclaim</ion-title>
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 25px;">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Make a Claim</div>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
+  <div class="container">
+    <ion-segment mode="ios" (ionChange)="segmentChanged($event)" #mySegment scrollable="true" class="segment1">
+      <ion-segment-button mode="ios" value="NewClaim" class="sbtn">
+        <ion-label>New Claim</ion-label>
+      </ion-segment-button>
+      <ion-segment-button checked mode="ios" value="ClaimTracker" class="sbtn">
+        <ion-label>Claim Tracker</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="openlist()">
+        <div class="euro-text">{{Insurance}}</div>
+        <div class="imgdiv">
+          <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
+          <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
+        </div>
+      </div>
+      <div *ngIf="show==true">
+        <div *ngFor="let list of listarray" (click)="selectInsurance(list)">
+          <div class="euro-text1">{{list.Insurance}}</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="label">Policy Number or Registration Number</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="number" placeholder="2111" class="in-text"></ion-input>
+    </div>
+
+    <div class="label">Claims required information</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="text" placeholder="information" class="in-text"></ion-input>
+    </div>
+
+    <div class="label">Claims Supporting Document</div>
+
+    <input class="custom-file-input" type="file" (change)="selectFile($event,'vehFrontPic')"
+      accept="image/x-png,image/gif,image/jpeg">
+
+  </div>
 </ion-content>
+<ion-footer>
+  <div class="btndiv">
+    <ion-button class="btn1">Submit claim</ion-button>
+  </div>
+</ion-footer>

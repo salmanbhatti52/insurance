@@ -42,7 +42,7 @@ export class DashboardPage implements OnInit {
           pointHitRadius: 10,
           spanGaps: false,
           label: 'Series 1', // Name the s4eries
-          data: [5, 10, 20, 30, 40, 20, 60, 70, 20, 5], // Specify the data values array
+          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], // Specify the data values array
           fill: true,
           borderColor: '#A8B400', // Add custom color border (Line)
           backgroundColor: 'rgba(176,181,0,65%)', // Add custom color background (Points and Fill)

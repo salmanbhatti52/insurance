@@ -1,6 +1,17 @@
+.title{
+  text-align: center;
+  font-family: Bliss Pro;
+  font-size: 20px;
+  color: #1A0F55;
+  font-weight: bold;
+}
 .container{
   width: 90%;
   margin: 5% auto;
+}
+.boxdiv{
+  background: #fff;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
 }
 .icondiv{
   text-align: right;
@@ -19,6 +30,7 @@
   color: #1A206D;
   font-size: 20px;
   font-weight: 500;
+  margin: 6% 0% 0% 4%;
 }
 .inline-text{
   display: flex;

@@ -32,10 +32,11 @@
 
 
     <div class="slide-div">
-      <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide">
+      <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide"
+        class="slides1">
 
         <ion-slide>
-          <div class="mid-div" style="width: 99%;">
+          <div class=" mid-div" style="width: 99%;">
             <div class="mid-sub-div">
               <div>
                 <p class="p1">Get Immediate</p>
@@ -117,13 +118,37 @@
       </ion-row>
     </ion-grid>
 
-    <div class="lst-div">
-      <p class="lst-para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-        invidunt ut labore et dolore</p>
-      <div class="limg-div">
-        <img src="assets/images/damage-car.svg" alt="">
-      </div>
-    </div>
+    <div style="text-align:center;color: #1A206D;font-size:20px;">Insurance Tips</div>
+    <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide" class="slides2">
+      <ion-slide>
+        <div class="lst-div">
+          <p class="lst-para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore</p>
+          <div class="limg-div">
+            <img src="assets/images/damage-car.svg" alt="">
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="lst-div">
+          <p class="lst-para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore</p>
+          <div class="limg-div">
+            <img src="assets/images/damage-car.svg" alt="">
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="lst-div">
+          <p class="lst-para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore</p>
+          <div class="limg-div">
+            <img src="assets/images/damage-car.svg" alt="">
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
 
   </div>
 

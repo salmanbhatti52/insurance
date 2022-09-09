@@ -18,4 +18,4 @@ import { SignUpScreenPage } from './sign-up-screen.page';
   ],
   declarations: [SignUpScreenPage]
 })
-export class SignUpScreenPageModule {}
+export class SignUpScreenPageModule { }

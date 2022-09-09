@@ -1,13 +1,15 @@
 .main-div {
-    margin-top: 115%;
+    margin-top:15%;
+    position: absolute;
 }
-ion-content{
-    --background: url(../../assets/images/family.png) 0 0/100% no-repeat !important;
-}
+// ion-content{
+//     --background: url(../../assets/images/family.png) 0 0/100% no-repeat !important;
+// }
 .para-div{
     text-align: center;
     width: 72%;
-    margin: 0px auto 46px;
+    margin: 35% auto 20%;
+
 }
 .span1{
     font-size: 42px;
@@ -25,7 +27,7 @@ ion-content{
 
 }
 .btn{
-    margin: 0px auto 12px;
+    margin: 60px auto 12px;
     height: 48px;
     width: 75%;
     --border-radius: 12px;
@@ -34,4 +36,17 @@ ion-content{
     text-transform: capitalize;
     --background: #B0B500;
     font-family: Bliss Pro;
+}
+
+
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
 }

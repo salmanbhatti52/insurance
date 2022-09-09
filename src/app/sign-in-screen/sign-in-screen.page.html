@@ -1,24 +1,24 @@
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <!-- <ion-toolbar class="headBgGlobal"> -->
-    <ion-row style="display: flex;align-items: center; margin-top: 20px;" >
-      <ion-col size="10" style="padding-left: 27px;">
-        <!-- <ion-menu-toggle> -->
-          <!-- <ion-buttons> -->
-            <div style="width:100% ;">
-              <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
-            </div>
-          <!-- </ion-buttons> -->
-        <!-- </ion-menu-toggle> -->
-      </ion-col>
+  <ion-row style="display: flex;align-items: center; margin-top: 20px;">
+    <ion-col size="10" style="padding-left: 27px;">
+      <!-- <ion-menu-toggle> -->
+      <!-- <ion-buttons> -->
+      <div style="width:100% ;">
+        <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
+      </div>
+      <!-- </ion-buttons> -->
+      <!-- </ion-menu-toggle> -->
+    </ion-col>
 
-      <ion-col class="titleclass" size="2">
-        <!-- <div class="header-div" style="width: 85%; margin:20px auto 0px; text-align:end ;"> -->
-          <img src="assets/images/icons/notification.svg">
-        <!-- </div> -->
-      </ion-col>
+    <ion-col class="titleclass" size="2">
+      <!-- <div class="header-div" style="width: 85%; margin:20px auto 0px; text-align:end ;"> -->
+      <img src="assets/images/icons/notification.svg">
+      <!-- </div> -->
+    </ion-col>
 
 
-    </ion-row>
+  </ion-row>
   <!-- </ion-toolbar> -->
 
 </ion-header>
@@ -29,23 +29,26 @@
 <ion-content>
   <div class="container">
     <div style="text-align:center">
-      <img src="assets/images/logo.svg" style="text-align:center ; margin-top: 24.7px;" alt="">
+      <img src="assets/images/logo.svg" style="text-align:center ; margin-top:15px;" alt="">
     </div>
 
-    <div style="margin-top: 35px;">
+    <div style="margin-top:15px;">
       <p class="sign-in-para">Please Sign In to Continue</p>
     </div>
     <form [formGroup]="RegisterForm" (ngSubmit)="formSubmit()">
       <div class="input-div">
-        <ion-input formControlName="email" [(ngModel)]="userEmail" class="input" type="email" placeholder="Email" ><img style="margin:15px 7px 14px 15px;" src="assets/images/icons/email.svg" > </ion-input>
-          <div class="validation" *ngIf="RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched">
-            <img src="assets/images/alert-icon.png" class="alertIcon">
-            <span class="error-msg">Enter your email</span>
-          </div>
-          <div class="validation" *ngIf="RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched">
-            <img src="assets/images/alert-icon.png" class="alertIcon">
-            <span class="error-msg">This is invalid format</span>
-          </div>
+        <ion-input formControlName="email" [(ngModel)]="userEmail" class="input" type="email" placeholder="Email"><img
+            style="margin:15px 7px 14px 15px;" src="assets/images/icons/email.svg"> </ion-input>
+        <div class="validation"
+          *ngIf="RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched">
+          <img src="assets/images/alert-icon.png" class="alertIcon">
+          <span class="error-msg">Enter your email</span>
+        </div>
+        <div class="validation"
+          *ngIf="RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched">
+          <img src="assets/images/alert-icon.png" class="alertIcon">
+          <span class="error-msg">This is invalid format</span>
+        </div>
 
         <!-- <ion-input class="input" style="--padding-end: 40px;"  type="{{showPass ? 'text':'password' }}" placeholder="Password" ><img style="margin:15px 7px 15px 20px;" src="assets/images/pw-lock.svg" >
         <span class="arrow-span">
@@ -55,59 +58,70 @@
         </ion-input> -->
         <div class="fields">
           <div class="inputdiv">
-            <div >
+            <div>
               <img style="margin:16px 7px 14px 15px;" src="assets/images/icons/lock.svg">
             </div>
             <div class="pinput">
-              <ion-input formControlName="password" [(ngModel)]="userPassword"  class="ph-css" placeholder="Password" type="{{showPass ? 'text':'password' }}" ></ion-input>
+              <ion-input formControlName="password" [(ngModel)]="userPassword" class="ph-css" placeholder="Password"
+                type="{{showPass ? 'text':'password' }}"></ion-input>
               <!-- formControlName="password" [(ngModel)]="userPassword" -->
             </div>
             <div class="icondiv" style="margin-top: 4px;">
               <!-- <img src="assets/imgs/icons/eye.svg"> -->
-              <ion-icon style="color:black ; margin-right: 15px;" name="eye" *ngIf="!showPass" (click)="togglePass()"></ion-icon>
-              <ion-icon style="color:black ; margin-right: 15px;" name="eye-off" *ngIf="showPass" (click)="togglePass()"></ion-icon>
+              <ion-icon style="color:black ; margin-right: 15px;" name="eye" *ngIf="!showPass" (click)="togglePass()">
+              </ion-icon>
+              <ion-icon style="color:black ; margin-right: 15px;" name="eye-off" *ngIf="showPass"
+                (click)="togglePass()"></ion-icon>
             </div>
           </div>
         </div>
 
 
 
-          <div class="validation" *ngIf="RegisterForm.get('password').hasError('required') && RegisterForm.get('password').touched">
-            <img src="assets/images/alert-icon.png" class="alertIcon">
-            <span class="error-msg">Enter your password</span>
-          </div>
+        <div class="validation"
+          *ngIf="RegisterForm.get('password').hasError('required') && RegisterForm.get('password').touched">
+          <img src="assets/images/alert-icon.png" class="alertIcon">
+          <span class="error-msg">Enter your password</span>
+        </div>
 
       </div>
       <div class="row-div">
         <div class="bull-div" style="display:flex ;">
           <ion-radio class="radio" slot="start" value="Remember me"></ion-radio>
-          <p class="para" style="margin-left: 12px;" >Remember me</p>
+          <p class="para" style="margin-left: 12px;">Remember me</p>
         </div>
         <div class="para-div">
-          <p class="para" >Forget Password?</p>
+          <p class="para">Forget Password?</p>
         </div>
       </div>
 
       <div style="text-align:center ;">
-        <ion-button class="btn" type="submit" [disabled]="RegisterForm.invalid" (click)="signIn()" style="--background: #A8B400;">Sign In</ion-button>
+        <ion-button class="btn" type="submit" [disabled]="RegisterForm.invalid" (click)="signIn()"
+          style="--background: #A8B400;">Sign In</ion-button>
 
       </div>
 
 
     </form>
 
-    <p style="text-align:center ; margin: 20px 0px;">
+    <p style="text-align:center ; margin:10px 0px 0px 0px;">
       <span class="p-span" style="color: #1A206D;">Not Register Yet? </span>
       <span class="p-span" style="color: #A8B400;" (click)="signUpPage()">Sign Up</span>
     </p>
-      <div style="text-align:center ;">
-        <ion-button class="btn" style="--background: #1A206D;" (click)="PopupCust()">Agent ID Login</ion-button>
-      </div>
+    <div style="text-align:center ;">
+      <ion-button class="btn" type="submit" (click)="fflogin()" style="--background: #A8B400;">FingerPrint/Face Login
+      </ion-button>
 
+    </div>
+    <div style="text-align:center ;">
+      <ion-button class="btn" style="--background: #1A206D;" (click)="PopupCust()">Agent ID Login</ion-button>
+    </div>
+    <div class="explore-btn">
+      <ion-button fill="outline" class="btn" style="color: #A8B400; --border-color:#A8B400 ; margin-top:20px;"
+        (click)="exScBefLin()">Tap to Explore</ion-button>
+    </div>
   </div>
-  <div class="explore-btn">
-    <ion-button fill="outline" class="btn" style="color: #A8B400; --border-color:#A8B400 ; margin-top:40px" (click)="exScBefLin()">Tap to Explore</ion-button>
-  </div>
+
 </ion-content>
 
 

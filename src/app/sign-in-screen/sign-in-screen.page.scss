@@ -1,5 +1,5 @@
 .container {
-    width: 85%;
+    width: 75%;
     margin: 0px auto 0px;
 }
 .input-div{
@@ -14,6 +14,7 @@ p.sign-in-para {
     font-weight: 500;
     color: #1A206D;
     margin: 0px;
+    text-align: center;
 }
 .input{
     height: 44px;
@@ -63,7 +64,7 @@ ion-input {
     margin-top: 5px;
 }
 .btn {
-    width: 78%;
+    width: 100%;
     height: 48px;
     margin-top: 24px;
     --border-radius: 12px;
@@ -90,7 +91,7 @@ span.arrow-span {
     align-items: center;
 }
 .alertIcon{
-    
+
     width: 13px;
 }
 .error-msg{
@@ -117,7 +118,7 @@ span.arrow-span {
   {
     padding-left: 7px;
     width: 100%;
-    padding-right: 13px; 
+    padding-right: 13px;
   }
   .ph-css{
     --placeholder-color: #656565;
@@ -127,7 +128,5 @@ span.arrow-span {
     --padding-start: 5px;
   }
   .explore-btn {
-    width: 85%;
-    margin: 20px auto 30px;
-    text-align: center;
+    width: 100%;
 }
