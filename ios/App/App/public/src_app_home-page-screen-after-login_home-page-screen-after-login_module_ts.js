@@ -90,13 +90,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HomePageScreenAfterLoginPage": () => (/* binding */ HomePageScreenAfterLoginPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _home_page_screen_after_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home-page-screen-after-login.page.html?ngResource */ 9991);
-/* harmony import */ var _home_page_screen_after_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home-page-screen-after-login.page.scss?ngResource */ 9784);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
+/* harmony import */ var D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _home_page_screen_after_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home-page-screen-after-login.page.html?ngResource */ 9991);
+/* harmony import */ var _home_page_screen_after_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home-page-screen-after-login.page.scss?ngResource */ 9784);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
+
 
 
 
@@ -106,12 +108,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
-  constructor(navCtrl, menuCtrl, router, modal, api) {
+  constructor(navCtrl, menuCtrl, router, modal, api, alert) {
     this.navCtrl = navCtrl;
     this.menuCtrl = menuCtrl;
     this.router = router;
     this.modal = modal;
     this.api = api;
+    this.alert = alert;
     this.slideOpts = {
       initialSlide: 0,
       speed: 400
@@ -120,6 +123,37 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
 
   ngOnInit() {
     this.getProducts();
+    this.alertbox();
+  }
+
+  alertbox() {
+    var _this = this;
+
+    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      let fp = localStorage.getItem('fingerprint');
+      console.log('sASAsaSA', fp);
+
+      if (fp == null) {
+        const alert = yield _this.alert.create({
+          header: 'Do you want to add Finger Print login?',
+          cssClass: 'fgprintcls',
+          buttons: [{
+            text: 'Yes',
+            role: 'confirm',
+            handler: () => {
+              localStorage.setItem('fingerprint', 'true');
+            }
+          }, {
+            text: 'No',
+            role: 'cancel',
+            handler: () => {
+              localStorage.setItem('fingerprint', 'false');
+            }
+          }]
+        });
+        yield alert.present();
+      }
+    })();
   }
 
   getProducts() {
@@ -202,21 +236,23 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
 };
 
 HomePageScreenAfterLoginPage.ctorParameters = () => [{
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.NavController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.MenuController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.MenuController
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ModalController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController
 }, {
-  type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService
+  type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__.InsuranceAppService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.AlertController
 }];
 
-HomePageScreenAfterLoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+HomePageScreenAfterLoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
   selector: 'app-home-page-screen-after-login',
-  template: _home_page_screen_after_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-  styles: [_home_page_screen_after_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+  template: _home_page_screen_after_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_home_page_screen_after_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
 })], HomePageScreenAfterLoginPage);
 
 

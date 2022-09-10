@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
+import { AlertController, MenuController, NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { QuotePopupPage } from '../quote-popup/quote-popup.page';
 import { Router } from '@angular/router';
@@ -19,10 +19,40 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   constructor(public navCtrl: NavController, public menuCtrl: MenuController,
     public router: Router,
     public modal: ModalController,
-    public api: InsuranceAppService) { }
+    public api: InsuranceAppService,
+    public alert: AlertController) { }
 
   ngOnInit() {
     this.getProducts();
+    this.alertbox()
+  }
+
+  async alertbox() {
+    let fp = localStorage.getItem('fingerprint')
+    console.log('sASAsaSA', fp);
+    if (fp == null) {
+      const alert = await this.alert.create({
+        header: 'Do you want to add Finger Print login?',
+        cssClass: 'fgprintcls',
+        buttons: [
+          {
+            text: 'Yes',
+            role: 'confirm',
+            handler: () => {
+              localStorage.setItem('fingerprint', 'true')
+            },
+          },
+          {
+            text: 'No',
+            role: 'cancel',
+            handler: () => {
+              localStorage.setItem('fingerprint', 'false')
+            },
+          },
+        ],
+      });
+      await alert.present();
+    }
   }
   getProducts() {
     const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","method":"get_avilable_products"}';

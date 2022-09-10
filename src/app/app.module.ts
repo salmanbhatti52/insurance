@@ -12,8 +12,8 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
     ReactiveFormsModule,
-    FingerprintAIO,
     FormsModule,
+    FingerprintAIO,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

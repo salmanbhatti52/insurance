@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { Location } from '@angular/common';
+
 import { MenuController, NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
 import { InsuranceAppService } from './services/insurance-app.service';
@@ -61,10 +61,14 @@ export class AppComponent {
   logout() {
     localStorage.removeItem('userid');
     localStorage.removeItem('token');
-    localStorage.removeItem('password');
+
     console.log('userid==', localStorage.getItem('userid'));
     console.log('token==', localStorage.getItem('token'));
     this.api.presenttoast('You are successfully logged out!');
+    let fp = localStorage.getItem('fingerprint')
+    if (fp == 'false') {
+      localStorage.removeItem('fingerprint')
+    }
     this.menuCtrl.close();
     this.navCtrl.navigateRoot('sign-in-screen');
   }

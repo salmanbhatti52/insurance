@@ -217,6 +217,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/splash-screen */ 2239);
 
 
+/* eslint-disable max-len */
+
 
 
 
@@ -304,10 +306,15 @@ let AppComponent = class AppComponent {
   logout() {
     localStorage.removeItem('userid');
     localStorage.removeItem('token');
-    localStorage.removeItem('password');
     console.log('userid==', localStorage.getItem('userid'));
     console.log('token==', localStorage.getItem('token'));
     this.api.presenttoast('You are successfully logged out!');
+    let fp = localStorage.getItem('fingerprint');
+
+    if (fp == 'false') {
+      localStorage.removeItem('fingerprint');
+    }
+
     this.menuCtrl.close();
     this.navCtrl.navigateRoot('sign-in-screen');
   }
@@ -372,8 +379,8 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
         imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__.BrowserModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule.forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_7__.HttpClientModule],
         providers: [
             _angular_forms__WEBPACK_IMPORTED_MODULE_8__.ReactiveFormsModule,
-            _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_2__.FingerprintAIO,
             _angular_forms__WEBPACK_IMPORTED_MODULE_8__.FormsModule,
+            _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_2__.FingerprintAIO,
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_9__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicRouteStrategy }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent],

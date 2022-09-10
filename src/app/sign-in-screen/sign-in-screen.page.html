@@ -94,12 +94,22 @@
           <p class="para">Forget Password?</p>
         </div>
       </div>
-
-      <div style="text-align:center ;">
+      <div *ngIf="fingerprintlogo==false" style="text-align:center;">
         <ion-button class="btn" type="submit" [disabled]="RegisterForm.invalid" (click)="signIn()"
           style="--background: #A8B400;">Sign In</ion-button>
 
       </div>
+
+      <ion-row *ngIf="fingerprintlogo==true">
+        <ion-col size="11">
+          <ion-button class="btn" type="submit" [disabled]="RegisterForm.invalid" (click)="signIn()"
+            style="--background: #A8B400;">Sign In</ion-button>
+        </ion-col>
+        <ion-col size="1" style="padding-top: 40px;
+        text-align: center;">
+          <ion-icon name="finger-print-outline" style="font-size:30px;" (click)="fflogin()"></ion-icon>
+        </ion-col>
+      </ion-row>
 
 
     </form>
@@ -108,11 +118,11 @@
       <span class="p-span" style="color: #1A206D;">Not Register Yet? </span>
       <span class="p-span" style="color: #A8B400;" (click)="signUpPage()">Sign Up</span>
     </p>
-    <div style="text-align:center ;">
+    <!-- <div style="text-align:center ;">
       <ion-button class="btn" type="submit" (click)="fflogin()" style="--background: #A8B400;">FingerPrint/Face Login
       </ion-button>
 
-    </div>
+    </div> -->
     <div style="text-align:center ;">
       <ion-button class="btn" style="--background: #1A206D;" (click)="PopupCust()">Agent ID Login</ion-button>
     </div>
