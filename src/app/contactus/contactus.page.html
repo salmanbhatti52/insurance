@@ -3,19 +3,15 @@
     <ion-row style="display: flex;
     align-items: center;">
       <ion-col size="2" style="padding-left: 25px;">
-        <ion-menu-toggle>
-          <ion-buttons>
-            <div style="width:100% ;">
-              <img src="assets/images/sb-button.svg" alt="sb-btn">
-            </div>
-          </ion-buttons>
-        </ion-menu-toggle>
+        <div style="width: 100%;">
+          <img (click)="goBack()" src="assets/images/back-arrow.svg" alt="">
+        </div>
       </ion-col>
       <ion-col size="8">
         <div class="title">Conatct Us</div>
       </ion-col>
       <ion-col class="titleclass" size="2">
-        <img (click)="updateProfile()" class="pro-img"   src="assets/images/profile.svg" alt="profile">
+        <img (click)="updateProfile()" class="pro-img" src="assets/images/profile.svg" alt="profile">
       </ion-col>
 
 

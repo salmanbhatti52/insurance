@@ -4,7 +4,7 @@
   <div style="background:#1A206D;">
 
 
-    <ion-row style="display: flex;align-items: center;padding-top: 5%;">
+    <ion-row class="rowcls">
       <ion-col size="10" style="padding-left: 27px;">
 
         <div style="width:100% ;">
@@ -179,7 +179,30 @@
 </ion-content>
 
 <ion-footer>
-  <ion-tabs style="top:10px !important;">
+  <div style="display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 15px 0px;
+  background: #1A206D;
+  border-radius: 32px 32px 0px 0px;">
+    <hr>
+    <div (click)="tab1Click()">
+
+      <img src="assets/images/icons/login.svg" class="img">
+
+
+      <div class="font">Sign up</div>
+    </div>
+    <div (click)="tab2Click()">
+      <img src="assets/images/discover.svg" class="activeimg">
+      <div class="fontactive">Discover</div>
+    </div>
+    <div (click)="tab3Click()">
+      <img src="assets/images/icons/pro-ava.svg" class="img">
+      <div class="font">Sign In</div>
+    </div>
+  </div>
+  <!-- <ion-tabs style="top:10px !important;">
     <ion-tab-bar slot="bottom" class="ion-no-border">
       <hr>
       <ion-tab-button (click)="tab1Click()">
@@ -201,5 +224,5 @@
       </ion-tab-button>
 
     </ion-tab-bar>
-  </ion-tabs>
+  </ion-tabs> -->
 </ion-footer>

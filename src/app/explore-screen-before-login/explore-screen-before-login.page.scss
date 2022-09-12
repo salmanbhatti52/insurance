@@ -5,6 +5,18 @@
 .cheader{
   background: #1A206D !important;
 }
+.rowcls{
+  display: flex;
+  align-items: center;
+  padding-top: 5%;
+}
+.ios{
+  .rowcls{
+    display: flex;
+    align-items: center;
+    padding-top: 7.5%;
+  }
+}
 .top-container{
   width: 85%;
   margin: 0% auto;
@@ -305,7 +317,7 @@ hr{
   }
   .container{
     width: 85%;
-    margin: 5% auto 20%;
+    margin: 5% auto 10%;
   }
 }
 @media only screen and (max-width:375px) and (min-height:812px){
@@ -322,7 +334,7 @@ hr{
 @media only screen and (max-width:375px) and (min-height:667px){
   .container{
     width: 85%;
-    margin: 5% auto 25%;
+    margin: 5% auto 15%;
   }
 }
 

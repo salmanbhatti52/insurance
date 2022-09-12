@@ -132,30 +132,35 @@ let ProfileUpdatePage = class ProfileUpdatePage {
         this.i = 1;
     }
     ngOnInit() {
-        this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormGroup({
-            title: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
-            fname: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required),
-            lname: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required),
-            number: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required),
-            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
-            password: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
-            cpassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required])
-        });
-        this.RegisterForm.reset();
-        this.uTitle = localStorage.getItem('title');
-        this.fName = localStorage.getItem('fname');
-        this.lName = localStorage.getItem('lname');
-        this.mobNumber = localStorage.getItem('number');
-        this.userEmail = localStorage.getItem('email');
-        this.userPassword = localStorage.getItem('password');
-        this.cuserPassword = localStorage.getItem('password');
-        console.log(this.usertitle);
-        console.log(this.firstName);
-        console.log(this.lastName);
-        console.log(this.userNumber);
-        console.log(this.useremail);
-        console.log(this.userpwd);
-        console.log(this.cuserpwd);
+        if (localStorage.getItem('userid') == null) {
+            this.router.navigate(['/sign-in-screen']);
+        }
+        else {
+            this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormGroup({
+                title: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
+                fname: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required),
+                lname: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required),
+                number: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required),
+                email: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
+                password: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required]),
+                cpassword: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required])
+            });
+            this.RegisterForm.reset();
+            this.uTitle = localStorage.getItem('title');
+            this.fName = localStorage.getItem('fname');
+            this.lName = localStorage.getItem('lname');
+            this.mobNumber = localStorage.getItem('number');
+            this.userEmail = localStorage.getItem('email');
+            this.userPassword = localStorage.getItem('password');
+            this.cuserPassword = localStorage.getItem('password');
+            console.log(this.usertitle);
+            console.log(this.firstName);
+            console.log(this.lastName);
+            console.log(this.userNumber);
+            console.log(this.useremail);
+            console.log(this.userpwd);
+            console.log(this.cuserpwd);
+        }
     }
     togglePass() {
         this.showPass = !this.showPass;

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
@@ -7,22 +8,26 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./contactus.page.scss'],
 })
 export class ContactusPage implements OnInit {
-  cname:string = '';
-  constructor(public navCtrl:NavController,
-    public router: Router) { }
+  cname: string = '';
+  constructor(public navCtrl: NavController,
+    public router: Router,
+    public location: Location) { }
 
   ngOnInit() {
   }
-  tab1Click(){
+  goBack() {
+    this.location.back();
+  }
+  tab1Click() {
     this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
   }
-  tab2Click(){
+  tab2Click() {
     this.navCtrl.navigateRoot('home-page-screen-after-login')
   }
-  tab3Click(){
+  tab3Click() {
     this.navCtrl.navigateRoot('contactus');
   }
-  updateProfile(){
+  updateProfile() {
     this.router.navigate(['/profile-update']);
   }
 }

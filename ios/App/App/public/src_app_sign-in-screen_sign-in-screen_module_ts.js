@@ -92,17 +92,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SignInScreenPage": () => (/* binding */ SignInScreenPage)
 /* harmony export */ });
 /* harmony import */ var D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _sign_in_screen_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sign-in-screen.page.html?ngResource */ 4078);
 /* harmony import */ var _sign_in_screen_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sign-in-screen.page.scss?ngResource */ 1886);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _agentidpopup_agentidpopup_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../agentidpopup/agentidpopup.page */ 8483);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
-/* harmony import */ var _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/fingerprint-aio/ngx */ 3427);
 
 
 
@@ -121,16 +120,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 let SignInScreenPage = class SignInScreenPage {
-  constructor(router, modal, menuCtrl, alert, api, faio, location) {
+  constructor(router, modal, menuCtrl, alert, api, // public faio: FingerprintAIO,
+  location) {
     this.router = router;
     this.modal = modal;
     this.menuCtrl = menuCtrl;
     this.alert = alert;
     this.api = api;
-    this.faio = faio;
     this.location = location;
     this.userEmail = '';
     this.userPassword = '';
@@ -139,9 +138,9 @@ let SignInScreenPage = class SignInScreenPage {
   }
 
   ngOnInit() {
-    this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroup({
-      email: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
-      password: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required])
+    this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormGroup({
+      email: new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
+      password: new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required])
     });
   }
 
@@ -200,55 +199,48 @@ let SignInScreenPage = class SignInScreenPage {
     });
   }
 
-  fflogin() {
-    var _this = this;
+  fflogin() {// this.faio.isAvailable().then(() => {
+    //   this.faio.show({
+    //     cancelButtonTitle: 'Cancel',
+    //     description: "Some biometric description",
+    //     disableBackup: true,
+    //     // title: 'Scanner Title',
+    //     fallbackButtonTitle: 'FB Back Button',
+    //     // subtitle: 'This SubTitle'
+    //   }).then((result: any) => {
+    //     console.log(result);
+    //     let myData = 'myData={\r\n    "email": "' + this.getuserEmail + '",\r\n    "password": "' + this.getuserPassword + '",\r\n    "method": "login"\r\n}';
+    //     this.api.insertData(myData).subscribe((res: any) => {
+    //       console.log('res==', res);
+    //       if (res.email) {
+    //         this.api.presenttoast('Welcome!');
+    //         localStorage.setItem('userid', res.user_id);
+    //         localStorage.setItem('token', res.token);
+    //         localStorage.setItem('title', res.title);
+    //         localStorage.setItem('fname', res.first_name);
+    //         localStorage.setItem('lname', res.last_name);
+    //         localStorage.setItem('number', res.phone);
+    //         localStorage.setItem('email', res.email);
+    //         localStorage.setItem('password', this.getuserPassword);
+    //         console.log(localStorage.getItem('userid'));
+    //         console.log(localStorage.getItem('token'));
+    //         this.router.navigate(['/home-page-screen-after-login']);
+    //       }
+    //       else {
+    //         this.api.presenttoast(res.message);
+    //       }
+    //     }, (err) => {
+    //       console.log('err==', err);
+    //       this.api.presenttoast(err);
+    //     })
+    //   }, err => {
+    //     this.api.presenttoast(JSON.stringify(err));
+    //   })
+    // }, err => {
+    //   this.api.presenttoast('finger print no avaibale---' + err);
+    // })
 
-    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      _this.faio.isAvailable().then(() => {
-        _this.faio.show({
-          cancelButtonTitle: 'Cancel',
-          description: "Some biometric description",
-          disableBackup: true,
-          // title: 'Scanner Title',
-          fallbackButtonTitle: 'FB Back Button' // subtitle: 'This SubTitle'
-
-        }).then(result => {
-          console.log(result);
-          let myData = 'myData={\r\n    "email": "' + _this.getuserEmail + '",\r\n    "password": "' + _this.getuserPassword + '",\r\n    "method": "login"\r\n}';
-
-          _this.api.insertData(myData).subscribe(res => {
-            console.log('res==', res);
-
-            if (res.email) {
-              _this.api.presenttoast('Welcome!');
-
-              localStorage.setItem('userid', res.user_id);
-              localStorage.setItem('token', res.token);
-              localStorage.setItem('title', res.title);
-              localStorage.setItem('fname', res.first_name);
-              localStorage.setItem('lname', res.last_name);
-              localStorage.setItem('number', res.phone);
-              localStorage.setItem('email', res.email);
-              localStorage.setItem('password', _this.getuserPassword);
-              console.log(localStorage.getItem('userid'));
-              console.log(localStorage.getItem('token'));
-
-              _this.router.navigate(['/home-page-screen-after-login']);
-            } else {
-              _this.api.presenttoast(res.message);
-            }
-          }, err => {
-            console.log('err==', err);
-
-            _this.api.presenttoast(err);
-          });
-        }, err => {
-          _this.api.presenttoast(JSON.stringify(err));
-        });
-      }, err => {
-        _this.api.presenttoast('finger print no avaibale---' + err);
-      });
-    })();
+    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {})();
   }
 
   exScBefLin() {
@@ -256,10 +248,10 @@ let SignInScreenPage = class SignInScreenPage {
   }
 
   PopupCust() {
-    var _this2 = this;
+    var _this = this;
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const modal = yield _this2.modal.create({
+      const modal = yield _this.modal.create({
         component: _agentidpopup_agentidpopup_page__WEBPACK_IMPORTED_MODULE_3__.AgentidpopupPage,
         cssClass: 'AgentPopupclass'
       });
@@ -278,22 +270,20 @@ let SignInScreenPage = class SignInScreenPage {
 };
 
 SignInScreenPage.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ModalController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ModalController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.MenuController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.MenuController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.AlertController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.AlertController
 }, {
   type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_4__.InsuranceAppService
 }, {
-  type: _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_5__.FingerprintAIO
-}, {
-  type: _angular_common__WEBPACK_IMPORTED_MODULE_9__.Location
+  type: _angular_common__WEBPACK_IMPORTED_MODULE_8__.Location
 }];
 
-SignInScreenPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
+SignInScreenPage = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
   selector: 'app-sign-in-screen',
   template: _sign_in_screen_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_sign_in_screen_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]

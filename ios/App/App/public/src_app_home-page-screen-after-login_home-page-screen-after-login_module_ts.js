@@ -121,9 +121,15 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
     };
   }
 
-  ngOnInit() {
-    this.getProducts();
-    this.alertbox();
+  ngOnInit() {}
+
+  ionViewWillEnter() {
+    if (localStorage.getItem('userid') == null) {
+      this.router.navigate(['/sign-in-screen']);
+    } else {
+      this.getProducts();
+      this.alertbox();
+    }
   }
 
   alertbox() {

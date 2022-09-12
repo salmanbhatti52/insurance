@@ -23,8 +23,15 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     public alert: AlertController) { }
 
   ngOnInit() {
-    this.getProducts();
-    this.alertbox()
+
+  }
+  ionViewWillEnter() {
+    if (localStorage.getItem('userid') == null) {
+      this.router.navigate(['/sign-in-screen']);
+    } else {
+      this.getProducts();
+      this.alertbox()
+    }
   }
 
   async alertbox() {

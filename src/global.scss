@@ -20,6 +20,12 @@
   --padding-top: 3% !important;
   --background: #fff;
 }
+.ios{
+  .headBgGlobal{
+    --padding-top: 6% !important;
+    --background: #fff;
+  }
+}
 ion-header{
   font-family: Bliss Pro;
   background-color: white !important;
