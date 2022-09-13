@@ -15,18 +15,18 @@
     </div>
 
     <div class="title-para" style="text-align: center;">
-      <p class="cont-p1">Update Profile</p>
+      <p class="cont-p1">Customer Information Profile</p>
     </div>
 
     <form [formGroup]="RegisterForm">
-      <ion-input type="text" formControlName="title" [(ngModel)]="uTitle" class="input" placeholder="{{usertitle}}"><img
+      <!-- <ion-input type="text" formControlName="title" [(ngModel)]="uTitle" class="input" placeholder="{{usertitle}}"><img
           class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt=""></ion-input>
 
       <div class="validation"
         *ngIf="RegisterForm.get('title').hasError('required') && RegisterForm.get('title').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon">
         <span class="error-msg">Enter your title</span>
-      </div>
+      </div> -->
 
       <ion-input type="text" formControlName="fname" [(ngModel)]="fName" class="input" placeholder="{{firstName}}"><img
           class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt=""></ion-input>
@@ -47,7 +47,8 @@
       </div>
 
       <ion-input type="tel" formControlName="number" [(ngModel)]="mobNumber" class="input" placeholder="{{userNumber}}">
-        <img class="plchldr-css" src="assets/images/icons/phone.svg" alt=""></ion-input>
+        <img class="plchldr-css" src="assets/images/icons/phone.svg" alt="">
+      </ion-input>
 
       <div class="validation"
         *ngIf="RegisterForm.get('number').hasError('required') && RegisterForm.get('number').touched">
@@ -56,7 +57,8 @@
       </div>
 
       <ion-input type="email" formControlName="email" [(ngModel)]="userEmail" class="input" placeholder="{{useremail}}">
-        <img class="plchldr-css" src="assets/images/icons/email.svg" alt=""></ion-input>
+        <img class="plchldr-css" src="assets/images/icons/email.svg" alt="">
+      </ion-input>
 
       <div class="validation"
         *ngIf="RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched">
@@ -75,8 +77,9 @@
             <img style="margin:15px 10px 13px 15px;" src="assets/images/pw-lock.svg">
           </div>
           <div class="pinput">
-            <ion-input formControlName="password" [(ngModel)]="userPassword" class="ph-css" placeholder="{{userpwd}}"
-              type="{{showPass ? 'text':'password' }}"></ion-input>
+            <ion-input formControlName="password" [(ngModel)]="userPassword" class="ph-css"
+              placeholder="existing password " type="{{showPass ? 'text':'password' }}"
+              (ionChange)="currentpassword($event)"></ion-input>
 
           </div>
           <div class="icondiv" style="margin-top: 4px;">
@@ -101,8 +104,9 @@
             <img style="margin:15px 10px 13px 15px;" src="assets/images/pw-lock.svg">
           </div>
           <div class="pinput">
-            <ion-input formControlName="cpassword" [(ngModel)]="cuserPassword" class="ph-css" placeholder="{{cuserpwd}}"
-              type="{{cshowPass ? 'text':'password' }}"></ion-input>
+            <ion-input formControlName="cpassword" [(ngModel)]="cuserPassword" class="ph-css"
+              placeholder="new password " type="{{cshowPass ? 'text':'password' }}" (ionChange)="newpassword($event)">
+            </ion-input>
           </div>
           <div class="icondiv" style="margin-top: 4px;">
             <!-- <img src="assets/imgs/icons/eye.svg"> -->
@@ -119,7 +123,26 @@
         <img src="assets/images/alert-icon.png" class="alertIcon">
         <span class="error-msg">Confirm your password</span>
       </div>
+      <!-- //////////////--------------------------//////////////////////////// -->
+      <div class="texthead">KYC Documents</div>
+      <div style="font-size: 14px">valid driver license/national id card/international passport</div>
+      <div class="inputfield" style="display:flex ; height: 48px;">
+        <input type="file" (change)="selectFile($event,'Id')" accept="image/x-png,image/gif,image/jpeg">
+      </div>
 
+      <div style="font-size: 14px">utility bill</div>
+      <div style="height: 100px; width:100px; text-align: center;" *ngIf="customerId.base64"><img
+          style="height: 100px; width:100px" src="{{customerId.base64}}" alt=""></div>
+
+      <div class="inputfield" style="display:flex ; height: 48px;">
+        <input type="file" (change)="selectFile($event,'utilityBills')" accept="image/x-png,image/gif,image/jpeg">
+      </div>
+
+      <div style="height: 100px; width:100px; text-align: center;" *ngIf="utilityBills.base64"><img
+          style="height: 100px; width:100px" src="{{utilityBills.base64}}" alt="">
+      </div>
+
+      <!-- //////////////--------------------------//////////////////////////// -->
       <div style="width: 85%; margin: 30px auto 0px;">
         <div style="text-align:center;">
           <ion-button type="submit" [disabled]="RegisterForm.invalid" class="btn" (click)="updateProfile()"

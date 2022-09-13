@@ -9,7 +9,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./get-quote.page.scss'],
 })
 export class GetQuotePage implements OnInit {
-
+  result = '';
+  logo = false;
   constructor(public router: Router,
     // public modal: ModalController,
     public location: Location) { }
@@ -20,6 +21,17 @@ export class GetQuotePage implements OnInit {
 
   goback() {
     this.router.navigate(['/home-page-screen-after-login'])
+  }
+
+  crazyEvent(ev) {
+    this.result = ev.detail.value
+  }
+
+  GetQuote() {
+    if (this.result == '') {
+      this.logo = true
+    }
+
   }
   // async PopupCust() {
   //   const modal = await this.modal.create({

@@ -20,7 +20,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        redirectTo: 'start-screen',
+        redirectTo: '',
         pathMatch: 'full'
     },
     {
@@ -145,7 +145,7 @@ const routes = [
     },
     {
         path: 'sign-up-screen',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_sign-up-screen_sign-up-screen_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./sign-up-screen/sign-up-screen.module */ 8067)).then(m => m.SignUpScreenPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_sign-up-screen_sign-up-screen_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./sign-up-screen/sign-up-screen.module */ 8067)).then(m => m.SignUpScreenPageModule)
     },
     {
         path: 'profile-update',
@@ -178,6 +178,14 @@ const routes = [
     {
         path: 'payquote',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_payquote_payquote_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./payquote/payquote.module */ 2942)).then(m => m.PayquotePageModule)
+    },
+    {
+        path: 'splash',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_splash_splash_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./splash/splash.module */ 9623)).then(m => m.SplashPageModule)
+    },
+    {
+        path: 'splash1',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_splash1_splash1_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./splash1/splash1.module */ 9014)).then(m => m.Splash1PageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -227,7 +235,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-  constructor(navCtrl, menuCtrl, api, route) {
+  constructor(navCtrl, menuCtrl, api, route, platform) {
     // if (localStorage.getItem('userid') != null) {
     //   this.route.navigate(['home-page-screen-after-login']);
     // } else {
@@ -237,19 +245,15 @@ let AppComponent = class AppComponent {
     this.menuCtrl = menuCtrl;
     this.api = api;
     this.route = route;
+    this.platform = platform;
     this.appPages = [{
       title: 'Home',
       url: '/home-page-screen-after-login',
       img: '/assets/images/home.svg',
       img1: '/assets/images/homeicon.svg',
       status: 'unchecked'
-    }, {
-      title: 'Dashboard',
-      url: 'dashboard',
-      img: '/assets/images/icons/chart.svg',
-      img1: '/assets/images/icons/dashboard.svg',
-      status: 'unchecked'
-    }, {
+    }, // { title: 'Dashboard', url: 'dashboard', img: '/assets/images/icons/chart.svg', img1: '/assets/images/icons/dashboard.svg', status: 'unchecked' },
+    {
       title: 'Get Quote',
       url: '/get-quote',
       img: '/assets/images/icons/quote.svg',
@@ -284,10 +288,16 @@ let AppComponent = class AppComponent {
   }
 
   initializeApp() {
+    var _this = this;
+
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      setTimeout(() => {
-        _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__.SplashScreen.hide();
-      }, 4000);
+      _this.platform.ready().then(() => {
+        setTimeout(() => {
+          _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__.SplashScreen.hide();
+
+          _this.route.navigate(['splash']);
+        }, 4000);
+      });
     })();
   }
 
@@ -329,6 +339,8 @@ AppComponent.ctorParameters = () => [{
   type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__.InsuranceAppService
 }, {
   type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.Platform
 }];
 
 AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
@@ -918,7 +930,7 @@ module.exports = "ion-menu ion-content {\n  --background:#1A206D;\n}\n\nion-menu
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-app>\r\n  <ion-split-pane contentId=\"main-content\">\r\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\r\n      <ion-header style=\"background-color:#1A206D !important;\">\r\n        <div style=\"width: 80%; margin: 20% auto 10px;\">\r\n          <div style=\"width: 100%;\">\r\n            <img (click)=\"closeMenu()\" src=\"assets/images/icons/backwhite-arrow.svg\" alt=\"\">\r\n          </div>\r\n        </div>\r\n\r\n      </ion-header>\r\n      <ion-content style=\"--background: #1A206D !important;\">\r\n        <div style=\"text-align:center;\">\r\n          <img src=\"assets/images/logo1.svg\">\r\n        </div>\r\n        <div style=\"display: flex;flex-direction: row;align-items: center; width: 80%;\r\n          margin:5% auto 0%;\">\r\n          <div class=\"imgdiv\">\r\n            <img src=\"assets/images/icons/userimg.svg\">\r\n          </div>\r\n          <div class=\"textdiv\">\r\n            <div class=\"text1\">Kola Adekoya</div>\r\n          </div>\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </div>\r\n\r\n\r\n      </ion-content>\r\n      <ion-footer class=\"ion-no-border fc\" no-border style=\"background-color:#1A206D !important;\">\r\n        <div style=\"display: flex;\r\n        width: 100%;\r\n        margin-bottom: 10%;\r\n        margin-left: 10%;\" (click)=\"logout()\">\r\n          <div class=\"bottom\">\r\n            <img src=\"assets/images/icons/logout.svg\">\r\n          </div>\r\n          <div class=\"stext\">\r\n            <span style=\"padding-left:4% ;\">logout</span>\r\n          </div>\r\n        </div>\r\n\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>\r\n";
+module.exports = "<ion-app>\r\n  <ion-split-pane contentId=\"main-content\">\r\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\r\n      <ion-header style=\"background-color:#1A206D !important;\">\r\n        <div style=\"width: 80%; margin: 17% auto 10px;\">\r\n          <div style=\"width: 100%;\">\r\n            <img (click)=\"closeMenu()\" src=\"assets/images/icons/backwhite-arrow.svg\" alt=\"\">\r\n          </div>\r\n        </div>\r\n\r\n      </ion-header>\r\n      <ion-content style=\"--background: #1A206D !important;\">\r\n        <!-- <div style=\"text-align:center;\">\r\n          <img src=\"assets/images/logo1.svg\">\r\n        </div> -->\r\n        <div style=\"display: flex;flex-direction: row;align-items: center; width: 80%;\r\n          margin:2% auto\">\r\n          <div class=\"imgdiv\">\r\n            <img src=\"assets/images/icons/userimg.svg\">\r\n          </div>\r\n          <div class=\"textdiv\">\r\n            <div class=\"text1\">Kola Adekoya</div>\r\n          </div>\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </div>\r\n\r\n\r\n      </ion-content>\r\n      <ion-footer class=\"ion-no-border fc\" no-border style=\"background-color:#1A206D !important;\">\r\n        <div style=\"display: flex;\r\n        width: 100%;\r\n        margin-bottom: 10%;\r\n        margin-left: 10%;\" (click)=\"logout()\">\r\n          <div class=\"bottom\">\r\n            <img src=\"assets/images/icons/logout.svg\">\r\n          </div>\r\n          <div class=\"stext\">\r\n            <span style=\"padding-left:4% ;\">logout</span>\r\n          </div>\r\n        </div>\r\n\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>\r\n";
 
 /***/ })
 

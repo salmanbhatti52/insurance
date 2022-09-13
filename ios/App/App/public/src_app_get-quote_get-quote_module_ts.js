@@ -110,11 +110,21 @@ let GetQuotePage = class GetQuotePage {
     location) {
         this.router = router;
         this.location = location;
+        this.result = '';
+        this.logo = false;
     }
     ngOnInit() {
     }
     goback() {
         this.router.navigate(['/home-page-screen-after-login']);
+    }
+    crazyEvent(ev) {
+        this.result = ev.detail.value;
+    }
+    GetQuote() {
+        if (this.result == '') {
+            this.logo = true;
+        }
     }
 };
 GetQuotePage.ctorParameters = () => [
@@ -149,7 +159,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \**********************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width:100% ;\">\r\n              <img src=\"assets/images/sb-button.svg\" alt=\"sb-btn\">\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Get Quote</div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <p class=\"con-p1\">Enter Customer Email ID</p>\r\n\r\n    <ion-input class=\"input\" type=\"email\" placeholder=\"Example@Gmail.com\"><img style=\"margin:15px 7px 14px 15px;\" src=\"assets/images/icons/email.svg\" ></ion-input>\r\n\r\n    <div style=\"width: 60%;text-align: center;margin: 70px auto 0px;\">\r\n      <p class=\"con-p2\">Record Doesn't Exist</p>\r\n    </div>\r\n\r\n    <div class=\"img-div\">\r\n      <img src=\"assets/images/file-not-found.svg\">\r\n    </div>\r\n\r\n\r\n\r\n  </div>\r\n</ion-content>\r\n<ion-footer>\r\n  <div class=\"btn-footer\" style=\"text-align: center;\">\r\n    <ion-button class=\"btn\" >Get Quote</ion-button>\r\n  </div>\r\n</ion-footer>\r\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width:100% ;\">\r\n              <img src=\"assets/images/sb-button.svg\" alt=\"sb-btn\">\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Get Quote</div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <p class=\"con-p1\">Enter Customer Email ID</p>\r\n\r\n    <ion-input class=\"input\" type=\"email\" placeholder=\"Example@Gmail.com\"><img style=\"margin:15px 7px 14px 15px;\"\r\n        src=\"assets/images/icons/email.svg\" (ionChange)=\"crazyEvent($event)\"></ion-input>\r\n\r\n    <div style=\"width: 60%;text-align: center;margin:30px auto 0px;\" *ngIf=\"logo==true\">\r\n      <p class=\"con-p2\">Record Doesn't Exist</p>\r\n    </div>\r\n\r\n    <div class=\"img-div\" *ngIf=\"logo==true\">\r\n      <img src=\"assets/images/file-not-found.svg\">\r\n    </div>\r\n\r\n\r\n\r\n  </div>\r\n</ion-content>\r\n<ion-footer>\r\n  <div class=\"btn-footer\" style=\"text-align: center;\">\r\n    <ion-button class=\"btn\" (click)=\"GetQuote()\">Get Quote</ion-button>\r\n  </div>\r\n</ion-footer>\r\n";
 
 /***/ })
 

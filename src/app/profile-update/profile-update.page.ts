@@ -29,6 +29,17 @@ export class ProfileUpdatePage implements OnInit {
   userpwd = '';
   cuserpwd = '';
   i = 1;
+  newpass: any;
+  existingpas: any;
+  customerId = {
+    file: "",
+    base64: "",
+  };
+  utilityBills = {
+    file: "",
+    base64: "",
+  };
+
   constructor(public router: Router,
     public api: InsuranceAppService,
     public location: Location) { }
@@ -38,7 +49,7 @@ export class ProfileUpdatePage implements OnInit {
       this.router.navigate(['/sign-in-screen']);
     } else {
       this.RegisterForm = new FormGroup({
-        title: new FormControl('', [Validators.required]),
+        // title: new FormControl('', [Validators.required]),
         fname: new FormControl('', Validators.required),
         lname: new FormControl('', Validators.required),
         number: new FormControl('', Validators.required),
@@ -54,7 +65,7 @@ export class ProfileUpdatePage implements OnInit {
       this.mobNumber = localStorage.getItem('number');
       this.userEmail = localStorage.getItem('email');
       this.userPassword = localStorage.getItem('password');
-      this.cuserPassword = localStorage.getItem('password');
+      // this.cuserPassword = localStorage.getItem('password');
 
       console.log(this.usertitle);
       console.log(this.firstName);
@@ -89,32 +100,69 @@ export class ProfileUpdatePage implements OnInit {
 
     }
   }
+  currentpassword(ev) {
+    console.log('currentpassword', ev.detail.value);
+    this.userPassword = ev.detail.value
+  }
+  newpassword(ev) {
+    console.log('value', ev.detail.value);
+    this.newpass = ev.detail.value
+  }
 
   updateProfile() {
     let myData = "myData={\r\n    \"user_id\":\"" + localStorage.getItem('userid') + "\",\r\n    \"title\":\"" + this.uTitle + "\",\r\n    \"first_name\": \"" + this.fName + "\",\r\n    \"last_name\":\"" + this.lName + "\",\r\n    \"phone\":\"" + this.mobNumber + "\",\r\n    \"email\":\"" + this.userEmail + "\",\r\n    \"password\":\"" + this.userPassword + "\",\r\n    \"conf_password\":\"" + this.cuserPassword + "\",\r\n    \"verify_token\":\"" + localStorage.getItem('token') + "\",\r\n    \"method\": \"update_user\" \r\n}"
 
-    if (this.userPassword === this.cuserPassword) {
-      console.log(this.userPassword);
-      console.log(this.cuserPassword);
-      this.api.insertData(myData).subscribe((res: any) => {
-        console.log("res==", res);
-        if (res.message === 'Updated done') {
-          console.log(res.message);
-          this.api.presenttoast("Profile updated successfully!");
-          this.router.navigate(['/home-page-screen-after-login']);
-        } else {
-          this.api.presenttoast(res.message);
-        }
 
-      }, (err) => {
-        console.log('err==', err);
-        this.api.presenttoast(err);
+    this.api.insertData(myData).subscribe((res: any) => {
+      console.log("res==", res);
+      if (res.message === 'Updated done') {
+        console.log(res.message);
+        this.api.presenttoast("Profile updated successfully!");
+        this.router.navigate(['/home-page-screen-after-login']);
+      } else {
+        this.api.presenttoast(res.message);
+      }
 
-      })
+    }, (err) => {
+      console.log('err==', err);
+      this.api.presenttoast(err);
 
-    } else {
-      this.api.presenttoast('"Password" and "Confirm_password" not matched!')
-    }
+    })
+
+
+  }
+
+  selectFile(event, type) {
+
+    console.log("type --- ", type);
+    console.log("linceise --- ", event.target.files[0]);
+
+
+    this.getBase64(event.target.files[0]).then(data => {
+      let file = event.target.files[0];
+      let base64 = data as string;
+      if (type == 'Id') {
+        this.customerId.file = file;
+        this.customerId.base64 = base64;
+      }
+      else if (type == 'utilityBills') {
+        this.utilityBills.file = file;
+        this.utilityBills.base64 = base64;
+      }
+
+
+    }).catch(err => console.log('Errrrrr', err));
+
+
+
+  }
+  getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
   }
   // signInPage(){
   //   this.router.navigate(['/sign-in-screen']);

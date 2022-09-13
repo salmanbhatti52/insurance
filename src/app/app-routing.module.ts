@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'start-screen',
+    redirectTo: '',
     pathMatch: 'full'
   },
   {
@@ -129,41 +129,50 @@ const routes: Routes = [
   {
     path: 'agentloginscreen',
     loadChildren: () => import('./agentloginscreen/agentloginscreen.module').then(m => m.AgentloginscreenPageModule)
-  },  {
+  },
+  {
     path: 'sign-up-screen',
-    loadChildren: () => import('./sign-up-screen/sign-up-screen.module').then( m => m.SignUpScreenPageModule)
+    loadChildren: () => import('./sign-up-screen/sign-up-screen.module').then(m => m.SignUpScreenPageModule)
   },
   {
     path: 'profile-update',
-    loadChildren: () => import('./profile-update/profile-update.module').then( m => m.ProfileUpdatePageModule)
+    loadChildren: () => import('./profile-update/profile-update.module').then(m => m.ProfileUpdatePageModule)
   },
   {
     path: 'car-insurance-details',
-    loadChildren: () => import('./car-insurance-details/car-insurance-details.module').then( m => m.CarInsuranceDetailsPageModule)
+    loadChildren: () => import('./car-insurance-details/car-insurance-details.module').then(m => m.CarInsuranceDetailsPageModule)
   },
   {
     path: 'yourquote',
-    loadChildren: () => import('./yourquote/yourquote.module').then( m => m.YourquotePageModule)
+    loadChildren: () => import('./yourquote/yourquote.module').then(m => m.YourquotePageModule)
   },
   {
     path: 'sub-products',
-    loadChildren: () => import('./sub-products/sub-products.module').then( m => m.SubProductsPageModule)
+    loadChildren: () => import('./sub-products/sub-products.module').then(m => m.SubProductsPageModule)
   },
   {
     path: 'comprehensivequote',
-    loadChildren: () => import('./comprehensivequote/comprehensivequote.module').then( m => m.ComprehensivequotePageModule)
+    loadChildren: () => import('./comprehensivequote/comprehensivequote.module').then(m => m.ComprehensivequotePageModule)
   },
   {
     path: 'thirdpartydetails',
-    loadChildren: () => import('./thirdpartydetails/thirdpartydetails.module').then( m => m.ThirdpartydetailsPageModule)
+    loadChildren: () => import('./thirdpartydetails/thirdpartydetails.module').then(m => m.ThirdpartydetailsPageModule)
   },
   {
     path: 'payment',
-    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+    loadChildren: () => import('./payment/payment.module').then(m => m.PaymentPageModule)
   },
   {
     path: 'payquote',
-    loadChildren: () => import('./payquote/payquote.module').then( m => m.PayquotePageModule)
+    loadChildren: () => import('./payquote/payquote.module').then(m => m.PayquotePageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then(m => m.SplashPageModule)
+  },
+  {
+    path: 'splash1',
+    loadChildren: () => import('./splash1/splash1.module').then(m => m.Splash1PageModule)
   }
 
 

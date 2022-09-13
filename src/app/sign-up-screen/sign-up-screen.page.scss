@@ -25,6 +25,26 @@ p.cont-p1 {
 ion-input {
   --ion-font-family: Bliss Pro;
 }
+.dropbox1{
+  border-radius: 12px;
+  background: #E8E8E7;
+
+}
+.innerbox{
+  display: flex;
+  align-items: center;
+  padding-right: 12px;
+}
+.boxinput{
+  height: 48px;
+  border-radius: 12px;
+  color: black;
+  --placeholder-color: #5D5D5D;
+  --placeholder-font-weight: 500;
+  --placeholder-font-size: 16px;
+  --padding-end: 15px;
+    --padding-start: 2px;
+}
 .dropbox{
     margin: 4% 0%;
     background: #E8E8E7;
@@ -54,8 +74,9 @@ ion-input {
     color: #000000;
     font-size: 14px;
     font-weight: 400;
-    margin-top: 5%;
-    // padding-left: 31px;
+
+    padding: 0px 0px 10px 20px;
+
   }
 .ion-txt{
   font-family: Bliss Pro;

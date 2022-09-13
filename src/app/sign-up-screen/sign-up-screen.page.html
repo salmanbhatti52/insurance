@@ -15,8 +15,24 @@
       <p class="cont-p1">Hi there <br> <span>Create an account to get started</span></p>
     </div>
     <form [formGroup]="RegisterForm">
-      <ion-input type="text" formControlName="title" [(ngModel)]="uTitle" class="input" placeholder="Mr/Mrs"><img
-          class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt=""></ion-input>
+      <div class="dropbox1">
+        <div class="innerbox">
+          <ion-input type="text" formControlName="title" [(ngModel)]="uTitle" class="boxinput" placeholder="Title"
+            (click)="openlist()"><img class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt=""></ion-input>
+          <div class="imgdiv" (click)="openlist()">
+            <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
+            <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
+          </div>
+
+        </div>
+        <div *ngIf="show==true">
+          <div *ngFor="let list of listarray" (click)="selectTitle(list)">
+            <div class="euro-text1">{{list.Title}}</div>
+          </div>
+
+        </div>
+      </div>
+
 
       <div class="validation"
         *ngIf="RegisterForm.get('title').hasError('required') && RegisterForm.get('title').touched">
@@ -54,7 +70,7 @@
         *ngIf="showPicker" #datetime [value]="dateValue" size="cover" (ionChange)="dateChanged(datetime.value)"
         showDefaultButtons="true" (ionCancel)="showPicker=false"></ion-datetime>
 
-      <ion-input formControlName="number" [(ngModel)]="mobNumber" type="tel" class="input" placeholder="234569789"><img
+      <ion-input formControlName="number" [(ngModel)]="mobNumber" type="tel" class="input" placeholder="Phone"><img
           class="plchldr-css" src="assets/images/icons/phone.svg" alt=""></ion-input>
 
       <div class="validation"
@@ -63,8 +79,8 @@
         <span class="error-msg">Enter your mobile number</span>
       </div>
 
-      <ion-input formControlName="email" [(ngModel)]="uEmail" type="email" class="input"
-        placeholder="Jhondeo@example.com"><img class="plchldr-css" src="assets/images/icons/email.svg" alt="">
+      <ion-input formControlName="email" [(ngModel)]="uEmail" type="email" class="input" placeholder="Email"><img
+          class="plchldr-css" src="assets/images/icons/email.svg" alt="">
       </ion-input>
 
       <div class="validation"

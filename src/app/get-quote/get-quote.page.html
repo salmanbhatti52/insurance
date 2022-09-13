@@ -23,13 +23,14 @@
   <div class="container">
     <p class="con-p1">Enter Customer Email ID</p>
 
-    <ion-input class="input" type="email" placeholder="Example@Gmail.com"><img style="margin:15px 7px 14px 15px;" src="assets/images/icons/email.svg" ></ion-input>
+    <ion-input class="input" type="email" placeholder="Example@Gmail.com"><img style="margin:15px 7px 14px 15px;"
+        src="assets/images/icons/email.svg" (ionChange)="crazyEvent($event)"></ion-input>
 
-    <div style="width: 60%;text-align: center;margin: 70px auto 0px;">
+    <div style="width: 60%;text-align: center;margin:30px auto 0px;" *ngIf="logo==true">
       <p class="con-p2">Record Doesn't Exist</p>
     </div>
 
-    <div class="img-div">
+    <div class="img-div" *ngIf="logo==true">
       <img src="assets/images/file-not-found.svg">
     </div>
 
@@ -39,6 +40,6 @@
 </ion-content>
 <ion-footer>
   <div class="btn-footer" style="text-align: center;">
-    <ion-button class="btn" >Get Quote</ion-button>
+    <ion-button class="btn" (click)="GetQuote()">Get Quote</ion-button>
   </div>
 </ion-footer>
