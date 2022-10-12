@@ -12,29 +12,35 @@ export class ExploreScreenBeforeLoginPage implements OnInit {
     initialSlide: 0,
     speed: 400
   };
-  constructor(public router:Router,public navCtrl:NavController, public menuCtrl:MenuController) { }
+  constructor(public router: Router,public navCtrl: NavController, public menuCtrl: MenuController) { }
+
+  openMenu(){
+    console.log('open menu');
+    this.menuCtrl.enable(true);
+  }
 
   ngOnInit() {
+    this.menuCtrl.enable(true);
   }
-  // ionViewDidEnter() {
-  //   this.menuCtrl.enable(false);
-  //   // this.RegisterForm.reset();
-  // }
-  // ionViewWillLeave() {
-  //   // enable the root left menu when leaving this page
-  //   this.menuCtrl.enable(true);
-  // }
+  ionViewDidEnter() {
+    this.menuCtrl.enable(true);
+    // this.RegisterForm.reset();
+  }
+  ionViewWillLeave() {
+    // enable the root left menu when leaving this page
+    this.menuCtrl.enable(false);
+  }
   tab1Click(){
     this.navCtrl.navigateRoot('sign-up-screen');
   }
   tab2Click(){
-    this.navCtrl.navigateRoot('home-page-screen-after-login')
+    this.navCtrl.navigateRoot('home-page-screen-after-login');
   }
   tab3Click(){
     this.navCtrl.navigateRoot('sign-in-screen');
   }
   toogleShow(){
-    this.show= !this.show
+    this.show= !this.show;
   }
   signInScreen(){
     this.router.navigate(['/sign-in-screen']);

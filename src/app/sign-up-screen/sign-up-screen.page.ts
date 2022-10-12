@@ -21,8 +21,8 @@ export class SignUpScreenPage implements OnInit {
   userPassword = '';
   cuserPassword = '';
   show = false;
-  Title = 'Select Title'
-  listarray = [{ Title: 'Mr' }, { Title: 'Mrs.' }]
+  Title = 'Select Title';
+  listarray = [{ Title: 'Mr' }, { Title: 'Mrs.' }];
   showPicker = false;
   // dateValue = format(new Date(), 'yyyy-MM-dd');
   dateValue = 'Date of birth';
@@ -76,7 +76,7 @@ export class SignUpScreenPage implements OnInit {
     console.log('show value====', this.show);
 
     if (this.show == false) {
-      this.show = true
+      this.show = true;
     } else {
       this.show = false;
 
@@ -84,20 +84,20 @@ export class SignUpScreenPage implements OnInit {
   }
 
   selectTitle(list) {
-    this.uTitle = list.Title
-    this.show = false
+    this.uTitle = list.Title;
+    this.show = false;
   }
   signUp() {
     // let myData = "myData={\r\n    \"email\": \""+this.userEmail+"\",\r\n    \"password\": \""+this.userPassword+"\",\r\n    \"method\": \"login\"\r\n}";
-    let myData = "myData={\r\n    \"title\":\"" + this.uTitle + "\",\r\n    \"first_name\": \"" + this.fName + "\",\r\n    \"last_name\":\"" + this.lName + "\",\r\n    \"date_of_birth\":\"" + this.dateValue + "\",\r\n    \"mobile\":\"" + this.mobNumber + "\",\r\n    \"email\":\"" + this.uEmail + "\",\r\n    \"password\":\"" + this.userPassword + "\",\r\n    \"conf_password\":\"" + this.cuserPassword + "\",\r\n    \"method\": \"save_user\" \r\n}";
+    const myData = 'myData={\r\n    "title":"' + this.uTitle + '",\r\n    "first_name": "' + this.fName + '",\r\n    "last_name":"' + this.lName + '",\r\n    "date_of_birth":"' + this.dateValue + '",\r\n    "mobile":"' + this.mobNumber + '",\r\n    "email":"' + this.uEmail + '",\r\n    "password":"' + this.userPassword + '",\r\n    "conf_password":"' + this.cuserPassword + '",\r\n    "method": "save_user" \r\n}';
     if (this.dateValue == 'Date of birth') {
-      this.api.presenttoast('Please select date of birth')
+      this.api.presenttoast('Please select date of birth');
     } else if (this.userPassword != this.cuserPassword) {
-      this.api.presenttoast('"Password" and "Confirm_password" not matched!')
+      this.api.presenttoast('"Password" and "Confirm_password" not matched!');
     }
     else {
       this.api.insertData(myData).subscribe((res: any) => {
-        console.log("res==", res);
+        console.log('res==', res);
         if (res.message === 'Email address already exist') {
           console.log(res.message);
 
@@ -111,7 +111,7 @@ export class SignUpScreenPage implements OnInit {
         console.log('err==', err);
         this.api.presenttoast(err);
 
-      })
+      });
 
     }
 
@@ -123,6 +123,10 @@ export class SignUpScreenPage implements OnInit {
   }
   goBack() {
     this.location.back();
+  }
+
+  showPickerDate(){
+    this.showPicker = true;
   }
 
 }

@@ -12,9 +12,10 @@
   <div class="container">
 
     <div class="title-para" style="text-align: center;">
-      <p class="cont-p1">Hi there <br> <span>Create an account to get started</span></p>
+      <!-- <p class="cont-p1">Hi there <br> -->
+        <p class="cont-p1"> <span>Create an account to get started</span></p>
     </div>
-    <form [formGroup]="RegisterForm">
+    <form [formGroup]="RegisterForm" style="margin-top: 11px;">
       <div class="dropbox1">
         <div class="innerbox">
           <ion-input type="text" formControlName="title" [(ngModel)]="uTitle" class="boxinput" placeholder="Title"
