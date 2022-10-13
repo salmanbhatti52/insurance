@@ -22,7 +22,7 @@ export class SignUpScreenPage implements OnInit {
   cuserPassword = '';
   show = false;
   Title = 'Select Title';
-  listarray = [{ Title: 'Mr' }, { Title: 'Mrs.' }];
+  listarray = [{ Title: 'Mr' }, { Title: 'Miss' }, { Title: 'Mrs.' }];
   showPicker = false;
   dateformat = format(new Date(), 'yyyy-MM-dd');
   dateValue = 'Date of birth';
@@ -44,9 +44,8 @@ export class SignUpScreenPage implements OnInit {
       lname: new FormControl('', Validators.required),
       number: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
-      password: new FormControl('', [Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{9,}')]),
-      cpassword: new FormControl('', [Validators.required, Validators.minLength(6),
-      Validators.maxLength(12)]),
+      password: new FormControl('', [Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#])[A-Za-z\d$@$!%*?&].{5,}')]),
+      cpassword: new FormControl('', [Validators.required]),
       date: new FormControl('', [Validators.required]),
       terms: new FormControl('', [Validators.required])
     });
@@ -68,7 +67,7 @@ export class SignUpScreenPage implements OnInit {
     this.cshowPass = !this.cshowPass;
   }
   dateChanged(value) {
-    this.dateValue = value;
+    this.dateofbirth = value;
     console.log('date value', this.dateValue);
 
     // this.formattedString = format(parseISO(value), ' MMM d, yyyy')
@@ -94,9 +93,7 @@ export class SignUpScreenPage implements OnInit {
   signUp() {
     // let myData = "myData={\r\n    \"email\": \""+this.userEmail+"\",\r\n    \"password\": \""+this.userPassword+"\",\r\n    \"method\": \"login\"\r\n}";
     const myData = 'myData={\r\n    "title":"' + this.uTitle + '",\r\n    "first_name": "' + this.fName + '",\r\n    "last_name":"' + this.lName + '",\r\n    "date_of_birth":"' + this.dateValue + '",\r\n    "mobile":"' + this.mobNumber + '",\r\n    "email":"' + this.uEmail + '",\r\n    "password":"' + this.userPassword + '",\r\n    "conf_password":"' + this.cuserPassword + '",\r\n    "method": "save_user" \r\n}';
-    if (this.dateValue == 'Date of birth') {
-      this.api.presenttoast('Please select date of birth');
-    } else if (this.userPassword != this.cuserPassword) {
+    if (this.userPassword != this.cuserPassword) {
       this.api.presenttoast('"Password" and "Confirm_password" not matched!');
     }
     else if (this.checkbox == false) {

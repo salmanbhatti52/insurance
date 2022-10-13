@@ -22,8 +22,8 @@ export class StartScreenPage implements OnInit {
     this.menuCtrl.enable(true);
   }
   gotoSignIn() {
-    
-    this.router.navigate(['/explore-screen-before-login']);
+
+    this.router.navigate(['/sign-in-screen']);
   }
 
 

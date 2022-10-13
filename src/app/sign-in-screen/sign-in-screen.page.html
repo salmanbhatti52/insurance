@@ -22,9 +22,7 @@
   <!-- </ion-toolbar> -->
 
 </ion-header>
-<ion-header>
 
-</ion-header>
 
 <ion-content>
   <div class="container">
@@ -91,7 +89,7 @@
           <p class="para" style="margin-left: 12px;">Remember me</p>
         </div>
         <div class="para-div">
-          <p class="para">Forgot Password?</p>
+          <p class="para" (click)="forgot()">Forgot Password?</p>
         </div>
       </div>
       <div *ngIf="fingerprintlogo==false" style="text-align:center;">

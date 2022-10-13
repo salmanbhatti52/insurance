@@ -59,7 +59,8 @@
         <span class="error-msg">Enter your last name</span>
       </div>
 
-      <ion-input type="text" formControlName="date" [(ngModel)]="dateofbirth" class="input" placeholder="YYYY-MM-DD">
+      <ion-input type="text" formControlName="date" [(ngModel)]="dateofbirth" class="input" placeholder="YYYY-MM-DD"
+        (click)="showPicker = !showPicker">
         <img class="plchldr-css" src="assets/images/icons/calendar.svg" alt="">
       </ion-input>
 
@@ -74,10 +75,10 @@
           <ion-text class="ion-txt" style="margin-left: 14px">{{ dateValue }}</ion-text>
         </div>
 
-      </div>
+      </div> -->
       <ion-datetime class="item-picker" style="margin:10px auto 0px; color: black;" presentation="date"
         *ngIf="showPicker" #datetime [value]="dateformat" size="cover" (ionChange)="dateChanged(datetime.value)"
-        showDefaultButtons="true" (ionCancel)="showPicker=false"></ion-datetime> -->
+        showDefaultButtons="true" (ionCancel)="showPicker=false"></ion-datetime>
 
       <ion-input formControlName="number" [(ngModel)]="mobNumber" type="tel" class="input" placeholder="Phone"><img
           class="plchldr-css" src="assets/images/icons/phone.svg" alt=""></ion-input>
@@ -127,14 +128,7 @@
         <img src="assets/images/alert-icon.png" class="alertIcon">
         <span class="error-msg">Enter your password</span>
       </div>
-      <div class="validation"
-        *ngIf="RegisterForm.get('password').hasError('minlength') && RegisterForm.get('password').touched">
-        <span class="error-msg"> Minimum 6 characters</span>
-      </div>
-      <div class="validation"
-        *ngIf="RegisterForm.get('password').hasError('maxlength') && RegisterForm.get('password').touched">
-        <span class="error-msg"> Maximum 12 characters</span>
-      </div>
+
       <div class="validation"
         *ngIf="RegisterForm.get('password').hasError('pattern') && RegisterForm.get('password').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon">
@@ -171,14 +165,6 @@
         <span class="error-msg">Confirm your password</span>
       </div>
 
-      <div class="validation"
-        *ngIf="RegisterForm.get('cpassword').hasError('minlength') && RegisterForm.get('cpassword').touched">
-        <span class="error-msg"> Minimum 6 characters</span>
-      </div>
-      <div class="validation"
-        *ngIf="RegisterForm.get('cpassword').hasError('maxlength') && RegisterForm.get('cpassword').touched">
-        <span class="error-msg"> Maximum 12 characters</span>
-      </div>
       <div class="flex-c">
         <ion-checkbox mode="md" class="check" (ionChange)="verifyEvent($event)" formControlName="terms">
         </ion-checkbox>

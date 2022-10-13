@@ -181,6 +181,10 @@ const routes: Routes = [
   },  {
     path: 'policylookup',
     loadChildren: () => import('./policylookup/policylookup.module').then( m => m.PolicylookupPageModule)
+  },
+  {
+    path: 'forgotpassword',
+    loadChildren: () => import('./forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
   }
 
 

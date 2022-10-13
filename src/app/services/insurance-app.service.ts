@@ -237,7 +237,7 @@ export class InsuranceAppService {
     this.toastctrl.create({
       message: message,
       duration: 2000,
-      position: 'bottom'
+      position: 'top'
     }).then(res => res.present());
   }
 

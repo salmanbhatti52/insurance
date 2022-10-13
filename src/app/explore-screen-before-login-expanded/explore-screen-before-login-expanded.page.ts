@@ -13,23 +13,34 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     initialSlide: 0,
     speed: 400
   };
-  constructor(public navCtrl: NavController,public router:Router, public location:Location) { }
+
+  btnshow = false;
+  constructor(public navCtrl: NavController, public router: Router, public location: Location) { }
 
   ngOnInit() {
+    if (localStorage.getItem('userid') == null) {
+      this.btnshow = false
+    } else {
+      this.btnshow = true
+    }
   }
-  toogleShow(){
-    this.show= !this.show
+
+  claim() {
+    this.navCtrl.navigateForward('makeaclaim')
   }
-  tab1Click(){
+  toogleShow() {
+    this.show = !this.show
+  }
+  tab1Click() {
     this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
   }
-  tab2Click(){
+  tab2Click() {
     this.navCtrl.navigateRoot('home-page-screen-after-login')
   }
-  tab3Click(){
+  tab3Click() {
     this.navCtrl.navigateRoot('contactus');
   }
-  updateProfile(){
+  updateProfile() {
     this.router.navigate(['/profile-update']);
   }
 }

@@ -162,4 +162,9 @@ export class SignInScreenPage implements OnInit {
   goback() {
     this.location.back();
   }
+
+  forgot() {
+    this.router.navigate(['/forgotpassword']);
+  }
+
 }

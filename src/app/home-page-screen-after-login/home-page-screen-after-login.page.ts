@@ -29,6 +29,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   ionViewWillEnter() {
 
     if (localStorage.getItem('userid') == null) {
+      this.api.presenttoast('Please Login First')
       this.router.navigate(['/sign-in-screen']);
     } else {
       this.getProducts();
