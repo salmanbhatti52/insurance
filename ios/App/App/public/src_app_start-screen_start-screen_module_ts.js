@@ -117,7 +117,7 @@ let StartScreenPage = class StartScreenPage {
         this.menuCtrl.enable(true);
     }
     gotoSignIn() {
-        this.router.navigate(['/explore-screen-before-login']);
+        this.router.navigate(['/sign-in-screen']);
     }
 };
 StartScreenPage.ctorParameters = () => [

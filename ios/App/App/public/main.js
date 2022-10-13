@@ -53,7 +53,7 @@ const routes = [
     },
     {
         path: 'explore-screen-before-login',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_explore-screen-before-login_explore-screen-before-login_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./explore-screen-before-login/explore-screen-before-login.module */ 1741)).then(m => m.ExploreScreenBeforeLoginPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_explore-screen-before-login_explore-screen-before-login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./explore-screen-before-login/explore-screen-before-login.module */ 1741)).then(m => m.ExploreScreenBeforeLoginPageModule)
     },
     {
         path: 'get-quote',
@@ -105,7 +105,7 @@ const routes = [
     },
     {
         path: 'explore-screen-before-login',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_explore-screen-before-login_explore-screen-before-login_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./explore-screen-before-login/explore-screen-before-login.module */ 1741)).then(m => m.ExploreScreenBeforeLoginPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_explore-screen-before-login_explore-screen-before-login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./explore-screen-before-login/explore-screen-before-login.module */ 1741)).then(m => m.ExploreScreenBeforeLoginPageModule)
     },
     {
         path: 'get-quote',
@@ -194,6 +194,10 @@ const routes = [
     {
         path: 'policylookup',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_policylookup_policylookup_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./policylookup/policylookup.module */ 3035)).then(m => m.PolicylookupPageModule)
+    },
+    {
+        path: 'forgotpassword',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_forgotpassword_forgotpassword_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./forgotpassword/forgotpassword.module */ 2488)).then(m => m.ForgotpasswordPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -654,7 +658,7 @@ let InsuranceAppService = class InsuranceAppService {
     this.toastctrl.create({
       message: message,
       duration: 2000,
-      position: 'bottom'
+      position: 'top'
     }).then(res => res.present());
   }
 

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { ModalController, MenuController, AlertController } from '@ionic/angular';
 import { AgentidpopupPage } from '../agentidpopup/agentidpopup.page';
 import { InsuranceAppService } from '../services/insurance-app.service';
-// import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class SignInScreenPage implements OnInit {
     public menuCtrl: MenuController,
     public alert: AlertController,
     public api: InsuranceAppService,
-    // public faio: FingerprintAIO,
+    public faio: FingerprintAIO,
     public location: Location) { }
 
   ngOnInit() {
@@ -102,48 +102,48 @@ export class SignInScreenPage implements OnInit {
   }
 
   async fflogin() {
-    // this.faio.isAvailable().then(() => {
-    //   this.faio.show({
-    //     cancelButtonTitle: 'Cancel',
-    //     description: "Some biometric description",
-    //     disableBackup: true,
-    //     // title: 'Scanner Title',
-    //     fallbackButtonTitle: 'FB Back Button',
-    //     // subtitle: 'This SubTitle'
-    //   }).then((result: any) => {
-    //     console.log(result);
-    //     let myData = 'myData={\r\n    "email": "' + this.getuserEmail + '",\r\n    "password": "' + this.getuserPassword + '",\r\n    "method": "login"\r\n}';
-    //     this.api.insertData(myData).subscribe((res: any) => {
-    //       console.log('res==', res);
-    //       if (res.email) {
-    //         this.api.presenttoast('Welcome!');
-    //         localStorage.setItem('userid', res.user_id);
-    //         localStorage.setItem('token', res.token);
-    //         localStorage.setItem('title', res.title);
-    //         localStorage.setItem('fname', res.first_name);
-    //         localStorage.setItem('lname', res.last_name);
-    //         localStorage.setItem('number', res.phone);
-    //         localStorage.setItem('email', res.email);
-    //         localStorage.setItem('password', this.getuserPassword);
-    //         console.log(localStorage.getItem('userid'));
-    //         console.log(localStorage.getItem('token'));
+    this.faio.isAvailable().then(() => {
+      this.faio.show({
+        cancelButtonTitle: 'Cancel',
+        description: "Some biometric description",
+        disableBackup: true,
+        // title: 'Scanner Title',
+        fallbackButtonTitle: 'FB Back Button',
+        // subtitle: 'This SubTitle'
+      }).then((result: any) => {
+        console.log(result);
+        let myData = 'myData={\r\n    "email": "' + this.getuserEmail + '",\r\n    "password": "' + this.getuserPassword + '",\r\n    "method": "login"\r\n}';
+        this.api.insertData(myData).subscribe((res: any) => {
+          console.log('res==', res);
+          if (res.email) {
+            this.api.presenttoast('Welcome!');
+            localStorage.setItem('userid', res.user_id);
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('title', res.title);
+            localStorage.setItem('fname', res.first_name);
+            localStorage.setItem('lname', res.last_name);
+            localStorage.setItem('number', res.phone);
+            localStorage.setItem('email', res.email);
+            localStorage.setItem('password', this.getuserPassword);
+            console.log(localStorage.getItem('userid'));
+            console.log(localStorage.getItem('token'));
 
-    //         this.router.navigate(['/home-page-screen-after-login']);
-    //       }
-    //       else {
-    //         this.api.presenttoast(res.message);
-    //       }
-    //     }, (err) => {
-    //       console.log('err==', err);
-    //       this.api.presenttoast(err);
-    //     })
-    //   }, err => {
-    //     this.api.presenttoast(JSON.stringify(err));
-    //   })
+            this.router.navigate(['/home-page-screen-after-login']);
+          }
+          else {
+            this.api.presenttoast(res.message);
+          }
+        }, (err) => {
+          console.log('err==', err);
+          this.api.presenttoast(err);
+        })
+      }, err => {
+        this.api.presenttoast(JSON.stringify(err));
+      })
 
-    // }, err => {
-    //   this.api.presenttoast('finger print no avaibale---' + err);
-    // })
+    }, err => {
+      this.api.presenttoast('finger print no avaibale---' + err);
+    })
   }
   exScBefLin() {
     this.router.navigate(['/explore-screen-before-login-expanded']);

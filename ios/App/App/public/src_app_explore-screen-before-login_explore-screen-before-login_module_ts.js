@@ -90,13 +90,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ExploreScreenBeforeLoginPage": () => (/* binding */ ExploreScreenBeforeLoginPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _explore_screen_before_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./explore-screen-before-login.page.html?ngResource */ 2329);
-/* harmony import */ var _explore_screen_before_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./explore-screen-before-login.page.scss?ngResource */ 9942);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
+/* harmony import */ var D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _explore_screen_before_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./explore-screen-before-login.page.html?ngResource */ 2329);
+/* harmony import */ var _explore_screen_before_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./explore-screen-before-login.page.scss?ngResource */ 9942);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _agentidpopup_agentidpopup_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../agentidpopup/agentidpopup.page */ 8483);
+
 
 
 
@@ -105,116 +107,135 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ExploreScreenBeforeLoginPage = class ExploreScreenBeforeLoginPage {
-    constructor(router, navCtrl, menuCtrl, api) {
-        this.router = router;
-        this.navCtrl = navCtrl;
-        this.menuCtrl = menuCtrl;
-        this.api = api;
-        this.show = false;
-        this.slideOpts = {
-            initialSlide: 0,
-            speed: 400
-        };
-    }
-    ngOnInit() {
-        this.userID = localStorage.getItem('userid');
-        console.log('userid---', this.userID);
-    }
-    // ionViewDidEnter() {
-    //   this.menuCtrl.enable(false);
-    //   // this.RegisterForm.reset();
-    // }
-    // ionViewWillLeave() {
-    //   // enable the root left menu when leaving this page
-    //   this.menuCtrl.enable(true);
-    // }
-    insured() {
-        if (this.userID != null) {
-            this.navCtrl.navigateRoot('home-page-screen-after-login');
-        }
-        else {
-            this.api.presenttoast('You are not loggedIn');
-            this.navCtrl.navigateRoot('sign-in-screen');
-        }
-    }
-    ReportaClaim() {
-        if (this.userID != null) {
-            this.navCtrl.navigateRoot('makeaclaim');
-        }
-        else {
-            this.api.presenttoast('You are not loggedIn');
-            this.navCtrl.navigateRoot('sign-in-screen');
-        }
-    }
-    RenewPolicy() {
-        if (this.userID != null) {
-            this.navCtrl.navigateRoot('renewals');
-        }
-        else {
-            this.api.presenttoast('You are not loggedIn');
-            this.navCtrl.navigateRoot('sign-in-screen');
-        }
-    }
-    verifyPolicy() {
-        if (this.userID != null) {
-            this.navCtrl.navigateRoot('verify-policy-screen-cust');
-        }
-        else {
-            this.api.presenttoast('You are not loggedIn');
-            this.navCtrl.navigateRoot('sign-in-screen');
-        }
-    }
-    agentlogin() {
-        if (this.userID != null) {
-            this.navCtrl.navigateRoot('agentidpopup');
-        }
-        else {
-            this.api.presenttoast('You are not loggedIn');
-            this.navCtrl.navigateRoot('sign-in-screen');
-        }
-    }
-    getintouch() {
-        if (this.userID != null) {
-            this.navCtrl.navigateRoot('contactus');
-        }
-        else {
-            this.api.presenttoast('You are not loggedIn');
-            this.navCtrl.navigateRoot('sign-in-screen');
-        }
-    }
-    tab1Click() {
-        this.navCtrl.navigateRoot('sign-up-screen');
-    }
-    tab2Click() {
-        this.navCtrl.navigateRoot('home-page-screen-after-login');
-    }
-    tab3Click() {
-        this.navCtrl.navigateRoot('sign-in-screen');
-    }
-    toogleShow() {
-        this.show = !this.show;
-    }
-    signInScreen() {
-        this.router.navigate(['/sign-in-screen']);
-    }
-    signUpScreen() {
-        this.router.navigate(['/sign-up-screen']);
-    }
-};
-ExploreScreenBeforeLoginPage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.MenuController },
-    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService }
-];
-ExploreScreenBeforeLoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
-        selector: 'app-explore-screen-before-login',
-        template: _explore_screen_before_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_explore_screen_before_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], ExploreScreenBeforeLoginPage);
+  constructor(router, navCtrl, menuCtrl, modal) {
+    this.router = router;
+    this.navCtrl = navCtrl;
+    this.menuCtrl = menuCtrl;
+    this.modal = modal;
+    this.show = false;
+    this.slideOpts = {
+      initialSlide: 0,
+      speed: 400
+    };
+    this.userID = localStorage.getItem('userid');
+    console.log(this.userID, 'dsadsadddddddddd----');
+  }
 
+  openMenu() {
+    console.log('open menu');
+    this.menuCtrl.enable(true);
+  }
+
+  ngOnInit() {
+    this.menuCtrl.enable(true);
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(true); // this.RegisterForm.reset();
+  }
+
+  ionViewWillLeave() {
+    // enable the root left menu when leaving this page
+    this.menuCtrl.enable(false);
+  }
+
+  profileupdate() {
+    if (this.userID == null) {
+      this.navCtrl.navigateRoot('sign-in-screen');
+    } else {
+      this.navCtrl.navigateRoot('profile-update');
+    }
+  }
+
+  insured() {
+    if (this.userID == null) {
+      this.navCtrl.navigateRoot('sign-in-screen');
+    } else {
+      this.navCtrl.navigateRoot('home-page-screen-after-login');
+    }
+  }
+
+  ReportaClaim() {
+    if (this.userID == null) {
+      this.navCtrl.navigateRoot('sign-in-screen');
+    } else {
+      this.navCtrl.navigateRoot('makeaclaim');
+    }
+  }
+
+  RenewPolicy() {
+    if (this.userID == null) {
+      this.navCtrl.navigateRoot('sign-in-screen');
+    } else {
+      this.navCtrl.navigateRoot('verify-policy-screen-cust');
+    }
+  }
+
+  agentlogin() {
+    var _this = this;
+
+    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this.modal.create({
+        component: _agentidpopup_agentidpopup_page__WEBPACK_IMPORTED_MODULE_3__.AgentidpopupPage,
+        cssClass: 'AgentPopupclass'
+      });
+      return yield modal.present();
+    })();
+  }
+
+  verifyPolicy() {
+    if (this.userID == null) {
+      this.navCtrl.navigateRoot('sign-in-screen');
+    } else {
+      this.navCtrl.navigateRoot('policylookup');
+    }
+  }
+
+  getintouch() {
+    this.navCtrl.navigateRoot('contactus');
+  }
+
+  tab1Click() {
+    this.navCtrl.navigateRoot('sign-up-screen');
+  }
+
+  tab2Click() {
+    this.navCtrl.navigateRoot('home-page-screen-after-login');
+  }
+
+  tab3Click() {
+    this.navCtrl.navigateRoot('sign-in-screen');
+  }
+
+  toogleShow() {
+    this.show = !this.show;
+  }
+
+  signInScreen() {
+    this.router.navigate(['/sign-in-screen']);
+  }
+
+  signUpScreen() {
+    this.router.navigate(['/sign-up-screen']);
+  }
+
+};
+
+ExploreScreenBeforeLoginPage.ctorParameters = () => [{
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.MenuController
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ModalController
+}];
+
+ExploreScreenBeforeLoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+  selector: 'app-explore-screen-before-login',
+  template: _explore_screen_before_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_explore_screen_before_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], ExploreScreenBeforeLoginPage);
 
 
 /***/ }),
@@ -235,7 +256,7 @@ module.exports = ".cheader {\n  background: #1A206D !important;\n}\n\n.rowcls {\
   \**********************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content style=\"--background: #e9e7e7 !important;\">\r\n\r\n\r\n  <div style=\"background:#1A206D;height: 275px;\">\r\n\r\n\r\n    <ion-row class=\"rowcls\">\r\n      <ion-col size=\"10\" style=\"padding-left: 27px;\">\r\n\r\n        <div style=\"width:100% ;\">\r\n          <img src=\"assets/images/menuicon.svg\" alt=\"sb-btn\">\r\n        </div>\r\n\r\n      </ion-col>\r\n\r\n      <ion-col class=\"titleclass\" size=\"2\">\r\n        <img class=\"pro-img\" src=\"assets/images/user-Filled1.svg\" alt=\"profile\">\r\n      </ion-col>\r\n\r\n\r\n    </ion-row>\r\n\r\n\r\n    <div class=\"top-container\">\r\n      <p class=\"name-para\">Lets!</p>\r\n      <p class=\"wc-para\">Explore</p>\r\n\r\n\r\n\r\n\r\n      <div class=\"slide-div\">\r\n        <ion-slides pager=\"true\" [options]=\"slideOpts\" scrollbar=\"true\" (ionSlideDidChange)=\"active-slide\">\r\n\r\n          <ion-slide>\r\n            <div class=\"mid-div\" style=\"width:100%;\">\r\n              <div class=\"mid-sub-div\">\r\n                <div>\r\n                  <p class=\"p1\">Get Immediate</p>\r\n                  <p class=\"p2\">Claim assistance</p>\r\n                  <ion-progress-bar class=\"p-bar\" value=\"0.38\" style=\"--progress-background:#1A206D;\">\r\n                  </ion-progress-bar>\r\n                  <p class=\"p3\">We have got you covered</p>\r\n                  <ion-button class=\"btn-sm\">Learn more</ion-button>\r\n                </div>\r\n                <div>\r\n                  <div style=\"width:100% ;\">\r\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\">\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </ion-slide>\r\n\r\n          <ion-slide>\r\n            <div class=\"mid-div\" style=\"width: 99%;\">\r\n              <div class=\"mid-sub-div\">\r\n                <div>\r\n                  <p class=\"p1\">Get Immediate</p>\r\n                  <p class=\"p2\">Claim assistance</p>\r\n                  <ion-progress-bar class=\"p-bar\" value=\"0.38\" style=\"--progress-background:#1A206D;\">\r\n                  </ion-progress-bar>\r\n                  <p class=\"p3\">We have got you covered</p>\r\n                  <ion-button class=\"btn-sm\">Learn more</ion-button>\r\n                </div>\r\n                <div>\r\n                  <div style=\"width:100% ;\">\r\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\">\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </ion-slide>\r\n\r\n          <ion-slide>\r\n            <div class=\"mid-div\" style=\"width: 99%;\">\r\n              <div class=\"mid-sub-div\">\r\n                <div>\r\n                  <p class=\"p1\">Get Immediate</p>\r\n                  <p class=\"p2\">Claim assistance</p>\r\n                  <ion-progress-bar class=\"p-bar\" value=\"0.38\" style=\"--progress-background:#1A206D;\">\r\n                  </ion-progress-bar>\r\n                  <p class=\"p3\">We have got you covered</p>\r\n                  <ion-button class=\"btn-sm\">Learn more</ion-button>\r\n                </div>\r\n                <div>\r\n                  <div style=\"width:100% ;\">\r\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\">\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </ion-slide>\r\n\r\n        </ion-slides>\r\n      </div>\r\n    </div>\r\n\r\n\r\n  </div>\r\n  <div class=\"container\">\r\n    <div style=\"display:flex; align-items: center;\">\r\n      <!-- margin-top: 26px; -->\r\n      <p class=\"mid-p1\">Services</p>\r\n      <p class=\"mid-p2\">See more <img class=\"arrow\" src=\"assets/images/down-arrow.svg\"> </p>\r\n    </div>\r\n\r\n    <ion-grid style=\"padding:0px; width: 100%;\">\r\n\r\n      <ion-row style=\"margin-top:16px ;\">\r\n        <ion-col size=\"4\" style=\"padding:6px 6px 6px 0px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"insured()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/get-insured.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Get Insured</p>\r\n          </div>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"4\" style=\"padding:6px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"ReportaClaim()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/report-claim.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Report a Claim</p>\r\n          </div>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"4\" style=\"padding:6px 0px 6px 6px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"RenewPolicy()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/renew-policy.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Renew Policy</p>\r\n          </div>\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n      <ion-row style=\"margin-top:16px ;\">\r\n        <ion-col size=\"4\" style=\"padding:6px 6px 6px 0px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"agentlogin()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/agent-login.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Agent Login</p>\r\n          </div>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"4\" style=\"padding:6px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"verifyPolicy()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/sec-doc.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Verify Policy</p>\r\n          </div>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"4\" style=\"padding:6px 0px 6px 6px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"getintouch()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/helping-staff.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Get in Touch</p>\r\n          </div>\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n    </ion-grid>\r\n\r\n\r\n    <!-- <div style=\"text-align:center ;\">\r\n      <ion-button class=\"btn\" (click)=\"signInScreen()\">Login</ion-button>\r\n      <ion-button class=\"btn2\" (click)=\"signUpScreen()\" fill=\"outline\">Sign up</ion-button>\r\n    </div> -->\r\n  </div>\r\n\r\n</ion-content>\r\n\r\n<ion-footer>\r\n  <div style=\"display: flex;\r\n  justify-content: space-around;\r\n  text-align: center;\r\n  padding: 15px 0px;\r\n  background: #1A206D;\r\n  border-radius: 32px 32px 0px 0px;\">\r\n    <hr>\r\n    <div (click)=\"tab1Click()\">\r\n\r\n      <img src=\"assets/images/icons/login.svg\" class=\"img\">\r\n\r\n\r\n      <div class=\"font\">Sign up</div>\r\n    </div>\r\n    <div (click)=\"tab2Click()\">\r\n      <img src=\"assets/images/discover.svg\" class=\"activeimg\">\r\n      <div class=\"fontactive\">Discover</div>\r\n    </div>\r\n    <div (click)=\"tab3Click()\">\r\n      <img src=\"assets/images/icons/pro-ava.svg\" class=\"img\">\r\n      <div class=\"font\">Sign In</div>\r\n    </div>\r\n  </div>\r\n  <!-- <ion-tabs style=\"top:10px !important;\">\r\n    <ion-tab-bar slot=\"bottom\" class=\"ion-no-border\">\r\n      <hr>\r\n      <ion-tab-button (click)=\"tab1Click()\">\r\n        <img src=\"assets/images/icons/login.svg\" class=\"img\">\r\n        <ion-label class=\"font\">Sign up</ion-label>\r\n      </ion-tab-button>\r\n\r\n\r\n      <ion-tab-button (click)=\"tab2Click()\">\r\n        <img src=\"assets/images/discover.svg\" class=\"activeimg\">\r\n        <ion-label class=\"fontactive\">Discover</ion-label>\r\n      </ion-tab-button>\r\n\r\n\r\n      <ion-tab-button (click)=\"tab3Click()\">\r\n        <img src=\"assets/images/icons/pro-ava.svg\" class=\"img\">\r\n        <ion-label class=\"font\">Sign In</ion-label>\r\n\r\n      </ion-tab-button>\r\n\r\n    </ion-tab-bar>\r\n  </ion-tabs> -->\r\n</ion-footer>\r\n";
+module.exports = "<ion-content style=\"--background: #e9e7e7 !important;\">\r\n\r\n\r\n  <div style=\"background:#1A206D;height: 275px;\">\r\n\r\n\r\n    <ion-row class=\"rowcls\">\r\n      <ion-col size=\"10\" style=\"padding-left: 27px;\">\r\n        <!-- <ion-buttons >\r\n          <ion-menu-button>  <img  src=\"assets/images/menuicon.svg\" alt=\"sb-btn\"></ion-menu-button>\r\n        </ion-buttons> -->\r\n        <!-- <div style=\"width:100% ;\">\r\n          <img (click)=\"openMenu()\" src=\"assets/images/menuicon.svg\" alt=\"sb-btn\">\r\n        </div> -->\r\n\r\n      </ion-col>\r\n\r\n      <ion-col class=\"titleclass\" size=\"2\" (click)=\"profileupdate()\">\r\n        <img class=\"pro-img\" src=\"assets/images/user-Filled1.svg\" alt=\"profile\">\r\n      </ion-col>\r\n\r\n\r\n    </ion-row>\r\n\r\n\r\n    <div class=\"top-container\">\r\n      <p class=\"name-para\">Lets!</p>\r\n      <p class=\"wc-para\">Explore</p>\r\n\r\n\r\n\r\n\r\n      <div class=\"slide-div\">\r\n        <ion-slides pager=\"true\" [options]=\"slideOpts\" scrollbar=\"true\" (ionSlideDidChange)=\"active-slide\">\r\n\r\n          <ion-slide>\r\n            <div class=\"mid-div\" style=\"width:100%;\">\r\n              <div class=\"mid-sub-div\">\r\n                <div>\r\n                  <p class=\"p1\">Get Immediate</p>\r\n                  <p class=\"p2\">Claim assistance</p>\r\n                  <ion-progress-bar class=\"p-bar\" value=\"0.38\" style=\"--progress-background:#1A206D;\">\r\n                  </ion-progress-bar>\r\n                  <p class=\"p3\">We have got you covered</p>\r\n                  <ion-button class=\"btn-sm\">Learn more</ion-button>\r\n                </div>\r\n                <div>\r\n                  <div style=\"width:100% ;\">\r\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\">\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </ion-slide>\r\n\r\n          <ion-slide>\r\n            <div class=\"mid-div\" style=\"width: 99%;\">\r\n              <div class=\"mid-sub-div\">\r\n                <div>\r\n                  <p class=\"p1\">Get Immediate</p>\r\n                  <p class=\"p2\">Claim assistance</p>\r\n                  <ion-progress-bar class=\"p-bar\" value=\"0.38\" style=\"--progress-background:#1A206D;\">\r\n                  </ion-progress-bar>\r\n                  <p class=\"p3\">We have got you covered</p>\r\n                  <ion-button class=\"btn-sm\">Learn more</ion-button>\r\n                </div>\r\n                <div>\r\n                  <div style=\"width:100% ;\">\r\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\">\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </ion-slide>\r\n\r\n          <ion-slide>\r\n            <div class=\"mid-div\" style=\"width: 99%;\">\r\n              <div class=\"mid-sub-div\">\r\n                <div>\r\n                  <p class=\"p1\">Get Immediate</p>\r\n                  <p class=\"p2\">Claim assistance</p>\r\n                  <ion-progress-bar class=\"p-bar\" value=\"0.38\" style=\"--progress-background:#1A206D;\">\r\n                  </ion-progress-bar>\r\n                  <p class=\"p3\">We have got you covered</p>\r\n                  <ion-button class=\"btn-sm\">Learn more</ion-button>\r\n                </div>\r\n                <div>\r\n                  <div style=\"width:100% ;\">\r\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\">\r\n                  </div>\r\n\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </ion-slide>\r\n\r\n        </ion-slides>\r\n      </div>\r\n    </div>\r\n\r\n\r\n  </div>\r\n  <div class=\"container\">\r\n    <div style=\"display:flex; align-items: center;\">\r\n      <!-- margin-top: 26px; -->\r\n      <p class=\"mid-p1\">Services</p>\r\n      <!-- <p class=\"mid-p2\">See more <img class=\"arrow\" src=\"assets/images/down-arrow.svg\"> </p> -->\r\n    </div>\r\n\r\n    <ion-grid style=\"padding:0px; width: 100%;\">\r\n\r\n      <ion-row style=\"margin-top:16px ;\">\r\n        <ion-col size=\"4\" style=\"padding:6px 6px 6px 0px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"insured()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/get-insured.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Get Insured</p>\r\n          </div>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"4\" style=\"padding:6px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"ReportaClaim()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/report-claim.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Report a Claim</p>\r\n          </div>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"4\" style=\"padding:6px 0px 6px 6px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"RenewPolicy()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/renew-policy.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Renew Policy</p>\r\n          </div>\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n      <ion-row style=\"margin-top:16px ;\">\r\n        <ion-col size=\"4\" style=\"padding:6px 6px 6px 0px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"agentlogin()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/agent-login.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Agent Login</p>\r\n          </div>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"4\" style=\"padding:6px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"verifyPolicy()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/sec-doc.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Verify Policy</p>\r\n          </div>\r\n        </ion-col>\r\n\r\n        <ion-col size=\"4\" style=\"padding:6px 0px 6px 6px; width: 100%;\">\r\n          <div class=\"gc-div\" (click)=\"getintouch()\">\r\n            <div class=\"gimg-div\">\r\n              <img class=\"imgclass\" src=\"assets/images/helping-staff.svg\" alt=\"\">\r\n            </div>\r\n            <p class=\"gp-div\">Get in Touch</p>\r\n          </div>\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n    </ion-grid>\r\n\r\n\r\n    <!-- <div style=\"text-align:center ;\">\r\n      <ion-button class=\"btn\" (click)=\"signInScreen()\">Login</ion-button>\r\n      <ion-button class=\"btn2\" (click)=\"signUpScreen()\" fill=\"outline\">Sign up</ion-button>\r\n    </div> -->\r\n  </div>\r\n\r\n</ion-content>\r\n\r\n<ion-footer>\r\n  <div style=\"display: flex;\r\n  justify-content: space-around;\r\n  text-align: center;\r\n  padding: 15px 0px;\r\n  background: #1A206D;\r\n  border-radius: 32px 32px 0px 0px;\">\r\n    <hr>\r\n    <div (click)=\"tab1Click()\">\r\n\r\n      <img src=\"assets/images/icons/login.svg\" class=\"img\">\r\n\r\n\r\n      <div class=\"font\">Sign up</div>\r\n    </div>\r\n    <div (click)=\"tab2Click()\">\r\n      <img src=\"assets/images/discover.svg\" class=\"activeimg\">\r\n      <div class=\"fontactive\">Discover</div>\r\n    </div>\r\n    <div (click)=\"tab3Click()\">\r\n      <img src=\"assets/images/icons/pro-ava.svg\" class=\"img\">\r\n      <div class=\"font\">Sign In</div>\r\n    </div>\r\n  </div>\r\n  <!-- <ion-tabs style=\"top:10px !important;\">\r\n    <ion-tab-bar slot=\"bottom\" class=\"ion-no-border\">\r\n      <hr>\r\n      <ion-tab-button (click)=\"tab1Click()\">\r\n        <img src=\"assets/images/icons/login.svg\" class=\"img\">\r\n        <ion-label class=\"font\">Sign up</ion-label>\r\n      </ion-tab-button>\r\n\r\n\r\n      <ion-tab-button (click)=\"tab2Click()\">\r\n        <img src=\"assets/images/discover.svg\" class=\"activeimg\">\r\n        <ion-label class=\"fontactive\">Discover</ion-label>\r\n      </ion-tab-button>\r\n\r\n\r\n      <ion-tab-button (click)=\"tab3Click()\">\r\n        <img src=\"assets/images/icons/pro-ava.svg\" class=\"img\">\r\n        <ion-label class=\"font\">Sign In</ion-label>\r\n\r\n      </ion-tab-button>\r\n\r\n    </ion-tab-bar>\r\n  </ion-tabs> -->\r\n</ion-footer>\r\n";
 
 /***/ })
 

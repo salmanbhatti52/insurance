@@ -11,20 +11,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AgentidpopupPage": () => (/* binding */ AgentidpopupPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _agentidpopup_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./agentidpopup.page.html?ngResource */ 2832);
 /* harmony import */ var _agentidpopup_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./agentidpopup.page.scss?ngResource */ 9735);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
+
 
 
 
 
 
 let AgentidpopupPage = class AgentidpopupPage {
-    constructor(modal, navCtrl) {
+    constructor(modal, navCtrl, api) {
         this.modal = modal;
         this.navCtrl = navCtrl;
+        this.api = api;
+        this.agentId = '';
     }
     ngOnInit() {
     }
@@ -32,19 +36,25 @@ let AgentidpopupPage = class AgentidpopupPage {
         this.modal.dismiss();
     }
     search() {
-        this.modal.dismiss().then(data => {
-            console.log('data came back from modal');
-            console.log(data);
-            this.navCtrl.navigateForward('agentloginscreen');
-        });
+        if (this.agentId == '') {
+            this.api.presenttoast('Enter Agent ID');
+        }
+        else {
+            this.modal.dismiss().then(data => {
+                console.log('data came back from modal');
+                console.log(data);
+                this.navCtrl.navigateForward('agentloginscreen');
+            });
+        }
     }
 };
 AgentidpopupPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__.ModalController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__.NavController }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ModalController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.NavController },
+    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService }
 ];
-AgentidpopupPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+AgentidpopupPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
         selector: 'app-agentidpopup',
         template: _agentidpopup_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_agentidpopup_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -1411,7 +1421,7 @@ module.exports = ".bg {\n  --background: #A8B400 !important;\n  border-radius: 3
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content class=\"bg\">\r\n\r\n  <div class=\"container\">\r\n\r\n    <div class=\"icondiv\" (click)=\"dismiss()\">\r\n      <img src=\"assets/images/close-circle.svg\" alt=\"\">\r\n    </div>\r\n\r\n    <div class=\"main\">\r\n      <div class=\"label\">Enter Agent ID</div>\r\n      <ion-input type=\"text\" class=\"input1\" placeholder=\"1254PAG\"></ion-input>\r\n\r\n      <div class=\"btndiv\" (click)=\"search()\">\r\n        <ion-button class=\"btn\"><img style=\"margin-right: 6px;\" src=\"assets/images/search-normal.svg\" alt=\"\"> SEARCH</ion-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n";
+module.exports = "<ion-content class=\"bg\">\r\n\r\n  <div class=\"container\">\r\n\r\n    <div class=\"icondiv\" (click)=\"dismiss()\">\r\n      <img src=\"assets/images/close-circle.svg\" alt=\"\">\r\n    </div>\r\n\r\n    <div class=\"main\">\r\n      <div class=\"label\">Enter Agent ID</div>\r\n      <ion-input type=\"text\" class=\"input1\" placeholder=\"1254PAG\" [(ngModel)]=\"agentId\"></ion-input>\r\n\r\n      <div class=\"btndiv\" (click)=\"search()\">\r\n        <ion-button class=\"btn\"><img style=\"margin-right: 6px;\" src=\"assets/images/search-normal.svg\" alt=\"\"> SEARCH\r\n        </ion-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n";
 
 /***/ })
 

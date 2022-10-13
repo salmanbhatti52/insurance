@@ -92,16 +92,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SignInScreenPage": () => (/* binding */ SignInScreenPage)
 /* harmony export */ });
 /* harmony import */ var D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _sign_in_screen_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sign-in-screen.page.html?ngResource */ 4078);
 /* harmony import */ var _sign_in_screen_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sign-in-screen.page.scss?ngResource */ 1886);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _agentidpopup_agentidpopup_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../agentidpopup/agentidpopup.page */ 8483);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
+/* harmony import */ var _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/fingerprint-aio/ngx */ 3427);
 
 
 
@@ -120,16 +121,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+
 
 let SignInScreenPage = class SignInScreenPage {
-  constructor(router, modal, menuCtrl, alert, api, // public faio: FingerprintAIO,
-  location) {
+  constructor(router, modal, menuCtrl, alert, api, faio, location) {
     this.router = router;
     this.modal = modal;
     this.menuCtrl = menuCtrl;
     this.alert = alert;
     this.api = api;
+    this.faio = faio;
     this.location = location;
     this.userEmail = '';
     this.userPassword = '';
@@ -138,9 +139,9 @@ let SignInScreenPage = class SignInScreenPage {
   }
 
   ngOnInit() {
-    this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormGroup({
-      email: new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
-      password: new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required])
+    this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroup({
+      email: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
+      password: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required])
     });
   }
 
@@ -203,48 +204,55 @@ let SignInScreenPage = class SignInScreenPage {
     });
   }
 
-  fflogin() {// this.faio.isAvailable().then(() => {
-    //   this.faio.show({
-    //     cancelButtonTitle: 'Cancel',
-    //     description: "Some biometric description",
-    //     disableBackup: true,
-    //     // title: 'Scanner Title',
-    //     fallbackButtonTitle: 'FB Back Button',
-    //     // subtitle: 'This SubTitle'
-    //   }).then((result: any) => {
-    //     console.log(result);
-    //     let myData = 'myData={\r\n    "email": "' + this.getuserEmail + '",\r\n    "password": "' + this.getuserPassword + '",\r\n    "method": "login"\r\n}';
-    //     this.api.insertData(myData).subscribe((res: any) => {
-    //       console.log('res==', res);
-    //       if (res.email) {
-    //         this.api.presenttoast('Welcome!');
-    //         localStorage.setItem('userid', res.user_id);
-    //         localStorage.setItem('token', res.token);
-    //         localStorage.setItem('title', res.title);
-    //         localStorage.setItem('fname', res.first_name);
-    //         localStorage.setItem('lname', res.last_name);
-    //         localStorage.setItem('number', res.phone);
-    //         localStorage.setItem('email', res.email);
-    //         localStorage.setItem('password', this.getuserPassword);
-    //         console.log(localStorage.getItem('userid'));
-    //         console.log(localStorage.getItem('token'));
-    //         this.router.navigate(['/home-page-screen-after-login']);
-    //       }
-    //       else {
-    //         this.api.presenttoast(res.message);
-    //       }
-    //     }, (err) => {
-    //       console.log('err==', err);
-    //       this.api.presenttoast(err);
-    //     })
-    //   }, err => {
-    //     this.api.presenttoast(JSON.stringify(err));
-    //   })
-    // }, err => {
-    //   this.api.presenttoast('finger print no avaibale---' + err);
-    // })
+  fflogin() {
+    var _this = this;
 
-    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {})();
+    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _this.faio.isAvailable().then(() => {
+        _this.faio.show({
+          cancelButtonTitle: 'Cancel',
+          description: "Some biometric description",
+          disableBackup: true,
+          // title: 'Scanner Title',
+          fallbackButtonTitle: 'FB Back Button' // subtitle: 'This SubTitle'
+
+        }).then(result => {
+          console.log(result);
+          let myData = 'myData={\r\n    "email": "' + _this.getuserEmail + '",\r\n    "password": "' + _this.getuserPassword + '",\r\n    "method": "login"\r\n}';
+
+          _this.api.insertData(myData).subscribe(res => {
+            console.log('res==', res);
+
+            if (res.email) {
+              _this.api.presenttoast('Welcome!');
+
+              localStorage.setItem('userid', res.user_id);
+              localStorage.setItem('token', res.token);
+              localStorage.setItem('title', res.title);
+              localStorage.setItem('fname', res.first_name);
+              localStorage.setItem('lname', res.last_name);
+              localStorage.setItem('number', res.phone);
+              localStorage.setItem('email', res.email);
+              localStorage.setItem('password', _this.getuserPassword);
+              console.log(localStorage.getItem('userid'));
+              console.log(localStorage.getItem('token'));
+
+              _this.router.navigate(['/home-page-screen-after-login']);
+            } else {
+              _this.api.presenttoast(res.message);
+            }
+          }, err => {
+            console.log('err==', err);
+
+            _this.api.presenttoast(err);
+          });
+        }, err => {
+          _this.api.presenttoast(JSON.stringify(err));
+        });
+      }, err => {
+        _this.api.presenttoast('finger print no avaibale---' + err);
+      });
+    })();
   }
 
   exScBefLin() {
@@ -252,10 +260,10 @@ let SignInScreenPage = class SignInScreenPage {
   }
 
   PopupCust() {
-    var _this = this;
+    var _this2 = this;
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const modal = yield _this.modal.create({
+      const modal = yield _this2.modal.create({
         component: _agentidpopup_agentidpopup_page__WEBPACK_IMPORTED_MODULE_3__.AgentidpopupPage,
         cssClass: 'AgentPopupclass'
       });
@@ -271,23 +279,29 @@ let SignInScreenPage = class SignInScreenPage {
     this.location.back();
   }
 
+  forgot() {
+    this.router.navigate(['/forgotpassword']);
+  }
+
 };
 
 SignInScreenPage.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ModalController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ModalController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.MenuController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.MenuController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.AlertController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.AlertController
 }, {
   type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_4__.InsuranceAppService
 }, {
-  type: _angular_common__WEBPACK_IMPORTED_MODULE_8__.Location
+  type: _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_5__.FingerprintAIO
+}, {
+  type: _angular_common__WEBPACK_IMPORTED_MODULE_9__.Location
 }];
 
-SignInScreenPage = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
+SignInScreenPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
   selector: 'app-sign-in-screen',
   template: _sign_in_screen_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_sign_in_screen_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -312,7 +326,7 @@ module.exports = ".rowcls {\n  display: flex;\n  align-items: center;\n  margin-
   \********************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <!-- <ion-toolbar class=\"headBgGlobal\"> -->\r\n  <ion-row class=\"rowcls\">\r\n    <ion-col size=\"10\" style=\"padding-left: 27px;\">\r\n      <!-- <ion-menu-toggle> -->\r\n      <!-- <ion-buttons> -->\r\n      <div style=\"width:100% ;\">\r\n        <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n      </div>\r\n      <!-- </ion-buttons> -->\r\n      <!-- </ion-menu-toggle> -->\r\n    </ion-col>\r\n\r\n    <ion-col class=\"titleclass\" size=\"2\">\r\n      <!-- <div class=\"header-div\" style=\"width: 85%; margin:20px auto 0px; text-align:end ;\"> -->\r\n      <!-- <img src=\"assets/images/icons/notification.svg\"> -->\r\n      <!-- </div> -->\r\n    </ion-col>\r\n\r\n\r\n  </ion-row>\r\n  <!-- </ion-toolbar> -->\r\n\r\n</ion-header>\r\n<ion-header>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <div style=\"text-align:center\">\r\n      <img src=\"assets/images/logo.svg\" style=\"text-align:center ; margin-top:15px;\" alt=\"\">\r\n    </div>\r\n\r\n    <div style=\"margin-top:15px;\">\r\n      <p class=\"sign-in-para\">Please sign in to continue</p>\r\n    </div>\r\n    <form [formGroup]=\"RegisterForm\" (ngSubmit)=\"formSubmit()\">\r\n      <div class=\"input-div\">\r\n        <ion-input formControlName=\"email\" [(ngModel)]=\"userEmail\" class=\"input\" type=\"email\" placeholder=\"Email\"><img\r\n            style=\"margin:15px 7px 14px 15px;\" src=\"assets/images/icons/email.svg\"> </ion-input>\r\n        <div class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched\">\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\r\n          <span class=\"error-msg\">Enter your email</span>\r\n        </div>\r\n        <div class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched\">\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\r\n          <span class=\"error-msg\">This is invalid format</span>\r\n        </div>\r\n\r\n        <!-- <ion-input class=\"input\" style=\"--padding-end: 40px;\"  type=\"{{showPass ? 'text':'password' }}\" placeholder=\"Password\" ><img style=\"margin:15px 7px 15px 20px;\" src=\"assets/images/pw-lock.svg\" >\r\n        <span class=\"arrow-span\">\r\n          <ion-icon style=\"color:black ;\" name=\"eye\" *ngIf=\"!showPass\" (click)=\"togglePass()\"></ion-icon>\r\n          <ion-icon style=\"color:black ;\" name=\"eye-off\" *ngIf=\"showPass\" (click)=\"togglePass()\"></ion-icon>\r\n        </span>\r\n        </ion-input> -->\r\n        <div class=\"fields\">\r\n          <div class=\"inputdiv\">\r\n            <div>\r\n              <img style=\"margin:16px 7px 14px 15px;\" src=\"assets/images/icons/lock.svg\">\r\n            </div>\r\n            <div class=\"pinput\">\r\n              <ion-input formControlName=\"password\" [(ngModel)]=\"userPassword\" class=\"ph-css\" placeholder=\"Password\"\r\n                type=\"{{showPass ? 'text':'password' }}\"></ion-input>\r\n              <!-- formControlName=\"password\" [(ngModel)]=\"userPassword\" -->\r\n            </div>\r\n            <div class=\"icondiv\" style=\"margin-top: 4px;\">\r\n              <!-- <img src=\"assets/imgs/icons/eye.svg\"> -->\r\n              <ion-icon style=\"color:black ; margin-right: 15px;\" name=\"eye\" *ngIf=\"!showPass\" (click)=\"togglePass()\">\r\n              </ion-icon>\r\n              <ion-icon style=\"color:black ; margin-right: 15px;\" name=\"eye-off\" *ngIf=\"showPass\"\r\n                (click)=\"togglePass()\"></ion-icon>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n\r\n\r\n        <div class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('password').hasError('required') && RegisterForm.get('password').touched\">\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\r\n          <span class=\"error-msg\">Enter your password</span>\r\n        </div>\r\n\r\n      </div>\r\n      <div class=\"row-div\">\r\n        <div class=\"bull-div\" style=\"display:flex ;\">\r\n          <ion-radio class=\"radio\" slot=\"start\" value=\"Remember me\"></ion-radio>\r\n          <p class=\"para\" style=\"margin-left: 12px;\">Remember me</p>\r\n        </div>\r\n        <div class=\"para-div\">\r\n          <p class=\"para\">Forget Password?</p>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"fingerprintlogo==false\" style=\"text-align:center;\">\r\n        <ion-button class=\"btn\" type=\"submit\" [disabled]=\"RegisterForm.invalid\" (click)=\"signIn()\"\r\n          style=\"--background: #A8B400;\">Sign In</ion-button>\r\n\r\n      </div>\r\n\r\n      <ion-row *ngIf=\"fingerprintlogo==true\">\r\n        <ion-col size=\"11\">\r\n          <ion-button class=\"btn\" type=\"submit\" [disabled]=\"RegisterForm.invalid\" (click)=\"signIn()\"\r\n            style=\"--background: #A8B400;\">Sign In</ion-button>\r\n        </ion-col>\r\n        <ion-col size=\"1\" style=\"padding-top: 40px;\r\n        text-align: center;\">\r\n          <ion-icon name=\"finger-print-outline\" style=\"font-size:30px;color:gray\" (click)=\"fflogin()\"></ion-icon>\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n\r\n    </form>\r\n\r\n    <p style=\"text-align:center ; margin:10px 0px 0px 0px;\">\r\n      <span class=\"p-span\" style=\"color: #1A206D;\">Not Register Yet? </span>\r\n      <span class=\"p-span\" style=\"color: #A8B400;\" (click)=\"signUpPage()\">Sign Up</span>\r\n    </p>\r\n    <!-- <div style=\"text-align:center ;\">\r\n      <ion-button class=\"btn\" type=\"submit\" (click)=\"fflogin()\" style=\"--background: #A8B400;\">FingerPrint/Face Login\r\n      </ion-button>\r\n\r\n    </div> -->\r\n    <div style=\"text-align:center ;\">\r\n      <ion-button class=\"btn\" style=\"--background: #1A206D;\" (click)=\"PopupCust()\">Agent ID Login</ion-button>\r\n    </div>\r\n    <div class=\"explore-btn\">\r\n      <ion-button fill=\"outline\" class=\"btn\" style=\"color: #A8B400; --border-color:#A8B400 ; margin-top:20px;\"\r\n        (click)=\"exScBefLin()\">Tap to Explore</ion-button>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n\r\n\r\n<!-- <ion-footer>\r\n  <div class=\"explore-btn\">\r\n    <ion-button fill=\"outline\" class=\"btn\" style=\"color: #A8B400; --border-color:#A8B400 ; margin-top:40px\" (click)=\"exScBefLin()\">Tap to Explore</ion-button>\r\n  </div>\r\n</ion-footer> -->\r\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <!-- <ion-toolbar class=\"headBgGlobal\"> -->\r\n  <ion-row class=\"rowcls\">\r\n    <ion-col size=\"10\" style=\"padding-left: 27px;\">\r\n      <!-- <ion-menu-toggle> -->\r\n      <!-- <ion-buttons> -->\r\n      <div style=\"width:100% ;\">\r\n        <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n      </div>\r\n      <!-- </ion-buttons> -->\r\n      <!-- </ion-menu-toggle> -->\r\n    </ion-col>\r\n\r\n    <ion-col class=\"titleclass\" size=\"2\">\r\n      <!-- <div class=\"header-div\" style=\"width: 85%; margin:20px auto 0px; text-align:end ;\"> -->\r\n      <!-- <img src=\"assets/images/icons/notification.svg\"> -->\r\n      <!-- </div> -->\r\n    </ion-col>\r\n\r\n\r\n  </ion-row>\r\n  <!-- </ion-toolbar> -->\r\n\r\n</ion-header>\r\n\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <div style=\"text-align:center\">\r\n      <img src=\"assets/images/logo.svg\" style=\"text-align:center ; margin-top:15px;\" alt=\"\">\r\n    </div>\r\n\r\n    <div style=\"margin-top:15px;\">\r\n      <p class=\"sign-in-para\">Please sign in to continue</p>\r\n    </div>\r\n    <form [formGroup]=\"RegisterForm\" (ngSubmit)=\"formSubmit()\">\r\n      <div class=\"input-div\">\r\n        <ion-input formControlName=\"email\" [(ngModel)]=\"userEmail\" class=\"input\" type=\"email\" placeholder=\"Email\"><img\r\n            style=\"margin:15px 7px 14px 15px;\" src=\"assets/images/icons/email.svg\"> </ion-input>\r\n        <div class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched\">\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\r\n          <span class=\"error-msg\">Enter your email</span>\r\n        </div>\r\n        <div class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched\">\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\r\n          <span class=\"error-msg\">This is invalid format</span>\r\n        </div>\r\n\r\n        <!-- <ion-input class=\"input\" style=\"--padding-end: 40px;\"  type=\"{{showPass ? 'text':'password' }}\" placeholder=\"Password\" ><img style=\"margin:15px 7px 15px 20px;\" src=\"assets/images/pw-lock.svg\" >\r\n        <span class=\"arrow-span\">\r\n          <ion-icon style=\"color:black ;\" name=\"eye\" *ngIf=\"!showPass\" (click)=\"togglePass()\"></ion-icon>\r\n          <ion-icon style=\"color:black ;\" name=\"eye-off\" *ngIf=\"showPass\" (click)=\"togglePass()\"></ion-icon>\r\n        </span>\r\n        </ion-input> -->\r\n        <div class=\"fields\">\r\n          <div class=\"inputdiv\">\r\n            <div>\r\n              <img style=\"margin:16px 7px 14px 15px;\" src=\"assets/images/icons/lock.svg\">\r\n            </div>\r\n            <div class=\"pinput\">\r\n              <ion-input formControlName=\"password\" [(ngModel)]=\"userPassword\" class=\"ph-css\" placeholder=\"Password\"\r\n                type=\"{{showPass ? 'text':'password' }}\"></ion-input>\r\n              <!-- formControlName=\"password\" [(ngModel)]=\"userPassword\" -->\r\n            </div>\r\n            <div class=\"icondiv\" style=\"margin-top: 4px;\">\r\n              <!-- <img src=\"assets/imgs/icons/eye.svg\"> -->\r\n              <ion-icon style=\"color:black ; margin-right: 15px;\" name=\"eye\" *ngIf=\"!showPass\" (click)=\"togglePass()\">\r\n              </ion-icon>\r\n              <ion-icon style=\"color:black ; margin-right: 15px;\" name=\"eye-off\" *ngIf=\"showPass\"\r\n                (click)=\"togglePass()\"></ion-icon>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n\r\n\r\n        <div class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('password').hasError('required') && RegisterForm.get('password').touched\">\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\r\n          <span class=\"error-msg\">Enter your password</span>\r\n        </div>\r\n\r\n      </div>\r\n      <div class=\"row-div\">\r\n        <div class=\"bull-div\" style=\"display:flex ;\">\r\n          <ion-radio class=\"radio\" slot=\"start\" value=\"Remember me\"></ion-radio>\r\n          <p class=\"para\" style=\"margin-left: 12px;\">Remember me</p>\r\n        </div>\r\n        <div class=\"para-div\">\r\n          <p class=\"para\" (click)=\"forgot()\">Forgot Password?</p>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"fingerprintlogo==false\" style=\"text-align:center;\">\r\n        <ion-button class=\"btn\" type=\"submit\" [disabled]=\"RegisterForm.invalid\" (click)=\"signIn()\"\r\n          style=\"--background: #A8B400;\">Sign In</ion-button>\r\n\r\n      </div>\r\n\r\n      <ion-row *ngIf=\"fingerprintlogo==true\">\r\n        <ion-col size=\"11\">\r\n          <ion-button class=\"btn\" type=\"submit\" [disabled]=\"RegisterForm.invalid\" (click)=\"signIn()\"\r\n            style=\"--background: #A8B400;\">Sign In</ion-button>\r\n        </ion-col>\r\n        <ion-col size=\"1\" style=\"padding-top: 40px;\r\n        text-align: center;\">\r\n          <ion-icon name=\"finger-print-outline\" style=\"font-size:30px;color:gray\" (click)=\"fflogin()\"></ion-icon>\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n\r\n    </form>\r\n\r\n    <p style=\"text-align:center ; margin:10px 0px 0px 0px;\">\r\n      <span class=\"p-span\" style=\"color: #1A206D;\">Not registered yet?</span>\r\n      <span class=\"p-span\" style=\"color: #A8B400;\" (click)=\"signUpPage()\">Sign Up</span>\r\n    </p>\r\n    <!-- <div style=\"text-align:center ;\">\r\n      <ion-button class=\"btn\" type=\"submit\" (click)=\"fflogin()\" style=\"--background: #A8B400;\">FingerPrint/Face Login\r\n      </ion-button>\r\n\r\n    </div> -->\r\n    <div style=\"text-align:center ;\">\r\n      <ion-button class=\"btn\" style=\"--background: #1A206D;\" (click)=\"PopupCust()\">Agent ID Login</ion-button>\r\n    </div>\r\n    <div class=\"explore-btn\">\r\n      <ion-button fill=\"outline\" class=\"btn\" style=\"color: #A8B400; --border-color:#A8B400 ; margin-top:20px;\"\r\n        (click)=\"exScBefLin()\">Tap to Explore</ion-button>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n\r\n\r\n<!-- <ion-footer>\r\n  <div class=\"explore-btn\">\r\n    <ion-button fill=\"outline\" class=\"btn\" style=\"color: #A8B400; --border-color:#A8B400 ; margin-top:40px\" (click)=\"exScBefLin()\">Tap to Explore</ion-button>\r\n  </div>\r\n</ion-footer> -->\r\n";
 
 /***/ })
 
