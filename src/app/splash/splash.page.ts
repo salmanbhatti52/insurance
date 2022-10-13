@@ -10,7 +10,12 @@ export class SplashPage implements OnInit {
 
   constructor(public router: Router) {
     setTimeout(() => {
-      this.router.navigate(['start-screen']);
+      if (localStorage.getItem('userid') == null) {
+        this.router.navigate(['start-screen']);
+      } else {
+        this.router.navigate(['home-page-screen-after-login']);
+      }
+
     }, 3000);
   }
 

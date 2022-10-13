@@ -16,6 +16,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   };
 
   products: any;
+  username: any;
   constructor(public navCtrl: NavController, public menuCtrl: MenuController,
     public router: Router,
     public modal: ModalController,
@@ -23,9 +24,10 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     public alert: AlertController) { }
 
   ngOnInit() {
-
+    this.username = localStorage.getItem('fname');
   }
   ionViewWillEnter() {
+
     if (localStorage.getItem('userid') == null) {
       this.router.navigate(['/sign-in-screen']);
     } else {
@@ -46,14 +48,16 @@ export class HomePageScreenAfterLoginPage implements OnInit {
             text: 'Yes',
             role: 'confirm',
             handler: () => {
-              localStorage.setItem('fingerprint', 'true')
+              localStorage.setItem('fingerprint', 'true');
+              this.api.fpval = 'true';
             },
           },
           {
             text: 'No',
             role: 'cancel',
             handler: () => {
-              localStorage.setItem('fingerprint', 'false')
+              localStorage.setItem('fingerprint', 'false');
+              this.api.fpval = 'false';
             },
           },
         ],

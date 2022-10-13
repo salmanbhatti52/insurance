@@ -12,9 +12,9 @@ import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
   styleUrls: ['./mypolicies.page.scss'],
 })
 export class MypoliciesPage implements OnInit {
-  @ViewChild('mySegment', { read: ElementRef }) private mySegment: ElementRef;
+  // @ViewChild('mySegment', { read: ElementRef }) private mySegment: ElementRef;
   requestsType: any;
-  subProName = localStorage.getItem('subProName');
+  subProName: any;
   show = false;
   box = 'unchecked';
 
@@ -156,7 +156,7 @@ export class MypoliciesPage implements OnInit {
     public location: Location) { }
 
   ngOnInit() {
-
+    this.subProName = localStorage.getItem('subProName');
     this.getCarVehicleTypeCls();
     this.getCarMakeCompanies();
 
@@ -168,20 +168,20 @@ export class MypoliciesPage implements OnInit {
     this.location.back();
   }
   ionViewWillEnter() {
-    if (this.requestsType) {
-      if (this.requestsType === 'PurchasePolicies') {
-        this.mySegment.nativeElement.children[0].click();
+    // if (this.requestsType) {
+    //   if (this.requestsType === 'PurchasePolicies') {
+    //     this.mySegment.nativeElement.children[0].click();
 
-      }
-      if (this.requestsType === 'InvestmentPlan') {
-        this.mySegment.nativeElement.children[1].click();
+    //   }
+    //   if (this.requestsType === 'InvestmentPlan') {
+    //     this.mySegment.nativeElement.children[1].click();
 
-      }
-    } else {
-      this.requestsType = 'PurchasePolicies';
-      this.mySegment.nativeElement.children[0].click();
+    //   }
+    // } else {
+    //   this.requestsType = 'PurchasePolicies';
+    //   this.mySegment.nativeElement.children[0].click();
 
-    }
+    // }
     this.vehicleVal = 'Please Select';
     this.vehicleMakeVal = 'Manufacturer';
     this.policyhldrVal = 'Please Select';

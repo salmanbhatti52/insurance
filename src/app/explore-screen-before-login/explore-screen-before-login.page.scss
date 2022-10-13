@@ -23,7 +23,7 @@
 }
 .container{
   width: 85%;
-  margin: 5% auto;
+  margin: 13% auto;
 }
 .circle {
     width: 36.06px;
@@ -348,6 +348,23 @@ hr{
     right: 47.2%;
     border-radius: 6px;
   }
+
 }
+@media only screen and (max-width:360px) and (min-height:640px){
+  hr{
+    background: #A8B400;
+    width: 20px;
+    height: 6px;
+    position: absolute;
+    top: 55px;
+    right: 47.2%;
+    border-radius: 6px;
+  }
+  .container{
+    width: 85%;
+    margin: 25% auto 5%;
+  }
+}
+
 
 

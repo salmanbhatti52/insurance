@@ -5,7 +5,9 @@ import { ModalController } from '@ionic/angular';
 import { VerifyPolicyPopupCustPage } from '../verify-policy-popup-cust/verify-policy-popup-cust.page';
 import axios from 'axios';
 import { InsuranceAppService } from '../services/insurance-app.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpParams, HttpClient, HttpParamsOptions } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-verify-policy-screen-cust',
   templateUrl: './verify-policy-screen-cust.page.html',
@@ -15,8 +17,16 @@ export class VerifyPolicyScreenCustPage implements OnInit {
   show = false;
   Insurance = 'Car Insurance'
   listarray = [{ Insurance: 'Car Insurance' }, { Insurance: 'Car Insurance' }, { Insurance: 'Car Insurance' }]
-  pnumber: any;
+  pnumber = '';
   config: { method: string; url: string; headers: { Authorization: string; Cookie: string; 'Content-Type': string; }; };
+  policy = false;
+  verifypolicy: any;
+  first_name: any;
+  last_name: any;
+  dob: any;
+  phone_number: any;
+  email: any;
+  address: any;
   constructor(public modal: ModalController,
     public location: Location,
     public router: Router,
@@ -43,9 +53,74 @@ export class VerifyPolicyScreenCustPage implements OnInit {
     this.show = false
   }
   async PopupCust() {
-    this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=160&polnum2=CHEF/2011/04/02072', localStorage.getItem('token')).subscribe((response) => {
-      console.log(response);
-    });
+    let token = '39109f7df56e1CORNERStone9e685066bb852'
+    if (this.pnumber == '') {
+      this.api.presenttoast('Policy Number Field is required!')
+    } else {
+      this.api.showLoader();
+      this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=160&polnum2=' + this.pnumber, token).subscribe((response: any) => {
+
+        console.log(response.result);
+        this.verifypolicy = response.result
+        localStorage.setItem('policydata', JSON.stringify(this.verifypolicy));
+
+
+        this.api.hideLoader();
+        if (this.verifypolicy) {
+          if (this.verifypolicy.status == 1) {
+            this.router.navigate(['renewals'])
+            // this.policy = true;
+            // this.first_name = this.verifypolicy.first_name
+            // this.last_name = this.verifypolicy.last_name
+            // this.dob = this.verifypolicy.dob
+            // this.phone_number = this.verifypolicy.phone_number
+            // this.email = this.verifypolicy.email
+            // this.address = this.verifypolicy.address
+          } else {
+            this.api.presenttoast(this.verifypolicy.message)
+          }
+        } else {
+          this.api.presenttoast('Policy record not found');
+        }
+      });
+    }
+
+
+    // const params = {
+    //   process: 'Processopenledapi',
+    //   process_code: '160',
+    //   polnum2: 'CHEF/2011/04/02072'
+    // }
+    // this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php', { params }, localStorage.getItem('token')).pipe(map(data => { })).subscribe(result => {
+    //   console.log(result);
+    // }, err => {
+    //   console.log('error', err);
+
+    // });
+
+    // const headers = new HttpHeaders()
+    // headers.set('Authorization', 'Bearer 39109f7df56e1CORNERStone9e685066bb852');
+    // headers.set("Access-Control-Allow-Origin", "*");
+
+    // headers.set("Content-Type", "application/json")
+    // const myObject = {
+    //   process: 'Processopenledapi',
+    //   process_code: '160',
+    //   polnum2: 'CHEF/2011/04/02072'
+    // }
+    // const httpParams: HttpParamsOptions = { fromObject: myObject } as HttpParamsOptions;
+
+    // const options = { params: new HttpParams(httpParams), headers: headers, };
+
+    // this.http.get<any>('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php', options)
+    //   .subscribe((data: any) => {
+    //     // this.localvar = data;
+    //     console.log('data====', data);
+
+    //   }, err => {
+    //     console.log('errr====', err);
+
+    //   });
 
     // const modal = await this.modal.create({
     //   component: VerifyPolicyPopupCustPage,

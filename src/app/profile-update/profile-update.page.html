@@ -10,9 +10,9 @@
 <ion-content>
   <div class="container">
 
-    <div style="text-align:center">
+    <!-- <div style="text-align:center">
       <img src="assets/images/logo.svg" style="text-align:center ;" alt="">
-    </div>
+    </div> -->
 
     <div class="title-para" style="text-align: center;">
       <p class="cont-p1">Customer Information Profile</p>
@@ -125,12 +125,14 @@
       </div>
       <!-- //////////////--------------------------//////////////////////////// -->
       <div class="texthead">KYC Documents</div>
-      <div style="font-size: 14px">valid driver license/national id card/international passport</div>
+      <div style="font-size: 14px;text-transform:capitalize;color:#000;">valid driver license/national id
+        card/international
+        passport</div>
       <div class="inputfield" style="display:flex ; height: 48px;">
         <input type="file" (change)="selectFile($event,'Id')" accept="image/x-png,image/gif,image/jpeg">
       </div>
 
-      <div style="font-size: 14px">utility bill</div>
+      <div style="font-size: 14px;text-transform:capitalize;color:#000;">utility bill</div>
       <div style="height: 100px; width:100px; text-align: center;" *ngIf="customerId.base64"><img
           style="height: 100px; width:100px" src="{{customerId.base64}}" alt=""></div>
 

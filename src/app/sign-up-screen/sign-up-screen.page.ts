@@ -24,12 +24,13 @@ export class SignUpScreenPage implements OnInit {
   Title = 'Select Title';
   listarray = [{ Title: 'Mr' }, { Title: 'Mrs.' }];
   showPicker = false;
-  // dateValue = format(new Date(), 'yyyy-MM-dd');
+  dateformat = format(new Date(), 'yyyy-MM-dd');
   dateValue = 'Date of birth';
+  dateofbirth = '';
   // formattedString = '';
   showPass = false;
   cshowPass = false;
-
+  checkbox = false;
   constructor(public router: Router,
     public api: InsuranceAppService,
     public location: Location) {
@@ -43,8 +44,11 @@ export class SignUpScreenPage implements OnInit {
       lname: new FormControl('', Validators.required),
       number: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
-      password: new FormControl('', [Validators.required]),
-      cpassword: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{9,}')]),
+      cpassword: new FormControl('', [Validators.required, Validators.minLength(6),
+      Validators.maxLength(12)]),
+      date: new FormControl('', [Validators.required]),
+      terms: new FormControl('', [Validators.required])
     });
     console.log(this.dateValue);
     // console.log(this.formattedString);
@@ -65,7 +69,7 @@ export class SignUpScreenPage implements OnInit {
   }
   dateChanged(value) {
     this.dateValue = value;
-    console.log(this.dateValue);
+    console.log('date value', this.dateValue);
 
     // this.formattedString = format(parseISO(value), ' MMM d, yyyy')
     this.showPicker = false;
@@ -95,7 +99,11 @@ export class SignUpScreenPage implements OnInit {
     } else if (this.userPassword != this.cuserPassword) {
       this.api.presenttoast('"Password" and "Confirm_password" not matched!');
     }
+    else if (this.checkbox == false) {
+      this.api.presenttoast('Accept terms and condition');
+    }
     else {
+
       this.api.insertData(myData).subscribe((res: any) => {
         console.log('res==', res);
         if (res.message === 'Email address already exist') {
@@ -118,6 +126,11 @@ export class SignUpScreenPage implements OnInit {
 
 
   }
+
+  verifyEvent(ev) {
+    console.log(ev.detail);
+    this.checkbox = ev.detail.checked
+  }
   signInPage() {
     this.router.navigate(['/sign-in-screen']);
   }
@@ -125,7 +138,7 @@ export class SignUpScreenPage implements OnInit {
     this.location.back();
   }
 
-  showPickerDate(){
+  showPickerDate() {
     this.showPicker = true;
   }
 

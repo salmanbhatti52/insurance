@@ -10,6 +10,8 @@ import { ModalController, MenuController, AlertController } from '@ionic/angular
 import { AgentidpopupPage } from '../agentidpopup/agentidpopup.page';
 import { InsuranceAppService } from '../services/insurance-app.service';
 // import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+
+
 @Component({
   selector: 'app-sign-in-screen',
   templateUrl: './sign-in-screen.page.html',
@@ -66,10 +68,13 @@ export class SignInScreenPage implements OnInit {
     this.showPass = !this.showPass;
   }
   signIn() {
+    this.api.showLoader();
     let myData = 'myData={\r\n    "email": "' + this.userEmail + '",\r\n    "password": "' + this.userPassword + '",\r\n    "method": "login"\r\n}';
     this.api.insertData(myData).subscribe((res: any) => {
       console.log('res==', res);
+
       if (res.email) {
+        this.api.hideLoader();
         this.api.presenttoast('Welcome!');
         localStorage.setItem('userid', res.user_id);
         localStorage.setItem('token', res.token);
@@ -85,10 +90,12 @@ export class SignInScreenPage implements OnInit {
         this.router.navigate(['/home-page-screen-after-login']);
       }
       else {
+        this.api.hideLoader();
         this.api.presenttoast(res.message);
       }
     }, (err) => {
       console.log('err==', err);
+      this.api.hideLoader();
       this.api.presenttoast(err);
     })
 

@@ -30,42 +30,162 @@
       </ion-segment-button>
     </ion-segment>
 
-    <div class="dropbox">
-      <div class="innerdropbox" (click)="openlist()">
-        <div class="euro-text">{{Insurance}}</div>
-        <div class="imgdiv">
-          <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
-          <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
+    <div *ngIf="requestsType=='NewClaim'">
+      <!-- <div class="dropbox">
+        <div class="innerdropbox" (click)="openlist()">
+          <div class="euro-text">{{Insurance}}</div>
+          <div class="imgdiv">
+            <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
+            <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
+          </div>
         </div>
-      </div>
-      <div *ngIf="show==true">
-        <div *ngFor="let list of listarray" (click)="selectInsurance(list)">
-          <div class="euro-text1">{{list.Insurance}}</div>
+        <div *ngIf="show==true">
+          <div *ngFor="let list of listarray" (click)="selectInsurance(list)">
+            <div class="euro-text1">{{list.Insurance}}</div>
+          </div>
+
         </div>
 
+      </div> -->
+
+      <div class="label">Policy Number or Registration Number</div>
+      <div class="inputfield">
+        <ion-input style="height: 48px;" type="text" placeholder="Policy Number or Registration Number" class="in-text"
+          [(ngModel)]="polnum">
+        </ion-input>
       </div>
 
+      <div class="label">Client Surname</div>
+      <div class="inputfield">
+        <ion-input style="height: 48px;" type="text" placeholder="Client Surname" class="in-text"
+          [(ngModel)]="csurname">
+        </ion-input>
+      </div>
+
+      <div class="label">Coth name</div>
+      <div class="inputfield">
+        <ion-input style="height: 48px;" type="text" placeholder="Coth name" class="in-text" [(ngModel)]="cothname">
+        </ion-input>
+      </div>
+
+      <div class="label">DD Liabtype</div>
+      <div class="inputfield">
+        <ion-input style="height: 48px;" type="text" placeholder="DD Liabtype" class="in-text"
+          [(ngModel)]="dd_liabtype"></ion-input>
+      </div>
+
+      <div class="label">Text message claim</div>
+      <div class="inputfield">
+        <ion-input style="height: 48px;" type="text" placeholder="Text message claim" class="in-text"
+          [(ngModel)]="txt_message_clm"></ion-input>
+      </div>
+
+      <div class="label">Claims Supporting Document</div>
+
+      <input class="custom-file-input" type="file" (change)="selectFile($event,'vehFrontPic')"
+        accept="image/x-png,image/gif,image/jpeg">
+
+      <div style="height: 100px; width:100px; text-align: center;" *ngIf="claimdoc.base64"><img
+          style="height: 100px; width:100px" src="{{claimdoc.base64}}" alt=""></div>
     </div>
 
-    <div class="label">Policy Number or Registration Number</div>
-    <div class="inputfield">
-      <ion-input style="height: 48px;" type="number" placeholder="2111" class="in-text"></ion-input>
+    <div *ngIf="requestsType=='ClaimTracker'">
+
+
+      <ion-row>
+        <ion-col size="2" style="text-align: -webkit-center;">
+          <img style="    width: 26px;
+          margin-top: 24px;" src="assets/tracking/01.svg">
+
+        </ion-col>
+
+
+        <ion-col size="10">
+          <ion-row>
+            <ion-col size="3">
+              <img style="    height: 68px;
+              width: 50px;
+              border: 1px solid #A2BB06;
+              border-radius: 10px;
+              padding: 10px;" src="assets/tracking/s1.svg">
+            </ion-col>
+            <ion-col size="9">
+
+              <p>Claims received and under verification</p>
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row style="margin-top: 32px;">
+            <ion-col size="3">
+              <img style="    height: 68px;
+              width: 50px;
+              border: 1px solid #A2BB06;
+              border-radius: 10px;
+              padding: 10px;" src="assets/tracking/s2.svg">
+            </ion-col>
+            <ion-col size="9">
+
+              <p>Claim verified and being processed</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row style="margin-top: 32px;">
+            <ion-col size="3">
+              <img style="    height: 68px;
+              width: 50px;
+              border: 1px solid #A2BB06;
+              border-radius: 10px;
+              padding: 10px;" src="assets/tracking/s3.svg">
+            </ion-col>
+            <ion-col size="9">
+
+              <p>EDV sent to you and awaiting submission</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row style="margin-top: 32px;">
+            <ion-col size="3">
+              <img style="    height: 68px;
+              width: 50px;
+              border: 1px solid #A2BB06;
+              border-radius: 10px;
+              padding: 10px;" src="assets/tracking/s4.svg">
+            </ion-col>
+            <ion-col size="9">
+
+              <p>Final Approval</p>
+            </ion-col>
+          </ion-row>
+
+
+          <ion-row style="margin-top: 32px;">
+            <ion-col size="3">
+              <img style="    height: 68px;
+              width: 50px;
+              border: 1px solid #A2BB06;
+              border-radius: 10px;
+              padding: 10px;" src="assets/tracking/s5.svg">
+            </ion-col>
+            <ion-col size="9">
+
+              <p>Payment in progress</p>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+      </ion-row>
+
+
+
+
     </div>
 
-    <div class="label">Claims required information</div>
-    <div class="inputfield">
-      <ion-input style="height: 48px;" type="text" placeholder="information" class="in-text"></ion-input>
-    </div>
-
-    <div class="label">Claims Supporting Document</div>
-
-    <input class="custom-file-input" type="file" (change)="selectFile($event,'vehFrontPic')"
-      accept="image/x-png,image/gif,image/jpeg">
 
   </div>
 </ion-content>
-<ion-footer>
+<ion-footer *ngIf="requestsType=='NewClaim'">
   <div class="btndiv">
-    <ion-button class="btn1">Submit claim</ion-button>
+    <ion-button class="btn1" (click)="reportclaim()">Submit claim</ion-button>
   </div>
 </ion-footer>

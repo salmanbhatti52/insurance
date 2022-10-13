@@ -104,7 +104,12 @@ let SplashPage = class SplashPage {
     constructor(router) {
         this.router = router;
         setTimeout(() => {
-            this.router.navigate(['start-screen']);
+            if (localStorage.getItem('userid') == null) {
+                this.router.navigate(['start-screen']);
+            }
+            else {
+                this.router.navigate(['home-page-screen-after-login']);
+            }
         }, 3000);
     }
     ngOnInit() {
@@ -141,7 +146,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \****************************************************/
 /***/ ((module) => {
 
-module.exports = "<!-- <ion-header>\n  <ion-toolbar>\n    <ion-title>splash</ion-title>\n  </ion-toolbar>\n</ion-header> -->\n\n<ion-content style=\"--background: #1e1244 !important\">\n  <img src=\"assets/02.png\" style=\"margin-top:30%;\">\n\n</ion-content>\n";
+module.exports = "<!-- <ion-header>\n  <ion-toolbar>\n    <ion-title>splash</ion-title>\n  </ion-toolbar>\n</ion-header> -->\n\n<ion-content>\n  <img src=\"assets/splashsreen.png\" style=\"width: 100%;\n  height: 100%;\">\n\n</ion-content>\n";
 
 /***/ })
 

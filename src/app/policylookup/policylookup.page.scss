@@ -1,0 +1,109 @@
+.title{
+  text-align: center;
+    font-family: Bliss Pro;
+    font-size: 20px;
+    color: #1A206D;
+    font-weight: bold;
+}
+.wrapper{
+  width: 85%;
+  margin:0% auto;
+}
+.para{
+  color: #1A206D;
+  font-size: 15px;
+    font-weight: bold;
+}
+.dropbox1{
+  border-radius: 12px;
+  background: #E8E8E7;
+
+}
+.innerbox{
+  display: flex;
+  align-items: center;
+  padding-right: 12px;
+  margin-bottom: 5%;
+}
+.boxinput{
+  height: 48px;
+  border-radius: 12px;
+  color: black;
+  --placeholder-color: #5D5D5D;
+  --placeholder-font-weight: 500;
+  --placeholder-font-size: 14px;
+  --padding-end: 15px;
+    --padding-start: 14px;
+    font-size: 14px;
+}
+.euro-text1{
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+
+  padding: 0px 0px 10px 20px;
+
+}
+.htxt{
+  padding-bottom: 2%;
+  padding-left: 2%;
+  color: #000;
+}
+.btndiv{
+  padding-bottom: 4%;
+  width: 85%;
+  margin: 0% auto;
+}
+.btn1{
+  --background: #1A206D;
+  --border-radius: 12px;
+  width: 100%;
+  height: 48px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.box-success{
+  border-color: #d6e9c6;
+  margin-top: 5%;
+}
+.htxt1{
+  font-size: 18px;
+    font-weight: bold;
+    margin-top: 10%;
+    color: #000;
+}
+.panel-body {
+
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-family: Bliss Pro;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+
+}
+.table-responsive {
+  width: 100%;
+  margin-bottom: 15px;
+  overflow-y: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  border: 1px solid #ddd;
+}
+.table-responsive .table-bordered {
+  border: 0;
+}
+.table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+  border: 1px solid #b8b988;
+}
+.table > tbody > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}

@@ -1,15 +1,9 @@
-<ion-header [translucent]="true" class="ion-no-border cheader">
+<!-- <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
     <ion-row style="display: flex;
     align-items: center;">
       <ion-col size="10" style="padding-left: 27px;">
-        <!-- <ion-menu-toggle>
-          <ion-buttons>
-            <div style="width:100% ;">
-              <img src="assets/images/sb-button.svg" alt="sb-btn">
-            </div>
-          </ion-buttons>
-        </ion-menu-toggle> -->
+
       </ion-col>
 
       <ion-col class="titleclass" size="2">
@@ -20,86 +14,105 @@
     </ion-row>
   </ion-toolbar>
 
-</ion-header>
+</ion-header> -->
 <ion-content>
+  <div style="background:#1A206D;height: 250px;">
+    <ion-row style="display: flex;
+    align-items: center;padding-top:5%;">
+      <ion-col size="10" style="padding-left: 27px;">
 
-  <div class="container">
+      </ion-col>
 
-    <p class="name-para">Lets!</p>
-    <p class="wc-para">Explore</p>
+      <ion-col class="titleclass" size="2">
+        <!-- <img class="pro-img" (click)="updateProfile()" src="assets/images/profile.svg" alt="profile"> -->
+      </ion-col>
+
+
+    </ion-row>
+    <div class="top-container">
+      <p class="name-para">Lets!</p>
+      <p class="wc-para">Explore</p>
 
 
 
 
-    <div class="slide-div" >
-      <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide">
+      <div class="slide-div">
+        <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide">
 
-        <ion-slide>
-          <div class="mid-div" style="width: 99%;">
-            <div class="mid-sub-div" >
-              <div>
-                <p class="p1">Get Immediate</p>
-                <p class="p2">Claim assistance</p>
-                <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;"></ion-progress-bar>
-                <p class="p3">We have got you covered</p>
-                <ion-button class="btn-sm">Learn more</ion-button>
-              </div>
-              <div >
-                <div style="width:100% ;" >
-                  <img  class="ins-nce" src="assets/images/insurance.svg" >
+          <ion-slide>
+            <div class="mid-div" style="width: 99%;">
+              <div class="mid-sub-div">
+                <div>
+                  <p class="p1">Get Immediate</p>
+                  <p class="p2">Claim assistance</p>
+                  <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
+                  </ion-progress-bar>
+                  <p class="p3">We have got you covered</p>
+                  <ion-button class="btn-sm">Learn more</ion-button>
                 </div>
+                <div>
+                  <div style="width:100% ;">
+                    <img class="ins-nce" src="assets/images/insurance.svg">
+                  </div>
 
+                </div>
               </div>
             </div>
-          </div>
-        </ion-slide>
+          </ion-slide>
 
-        <ion-slide>
-          <div class="mid-div" style="width: 99%;" >
-            <div class="mid-sub-div">
-              <div>
-                <p class="p1">Get Immediate</p>
-                <p class="p2">Claim assistance</p>
-                <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;"></ion-progress-bar>
-                <p class="p3">We have got you covered</p>
-                <ion-button class="btn-sm">Learn more</ion-button>
-              </div>
-              <div >
-                <div style="width:100% ;" >
-                  <img  class="ins-nce" src="assets/images/insurance.svg" >
+          <ion-slide>
+            <div class="mid-div" style="width: 99%;">
+              <div class="mid-sub-div">
+                <div>
+                  <p class="p1">Get Immediate</p>
+                  <p class="p2">Claim assistance</p>
+                  <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
+                  </ion-progress-bar>
+                  <p class="p3">We have got you covered</p>
+                  <ion-button class="btn-sm">Learn more</ion-button>
                 </div>
+                <div>
+                  <div style="width:100% ;">
+                    <img class="ins-nce" src="assets/images/insurance.svg">
+                  </div>
 
+                </div>
               </div>
             </div>
-          </div>
-        </ion-slide>
+          </ion-slide>
 
-        <ion-slide>
-          <div class="mid-div" style="width: 99%;" >
-            <div class="mid-sub-div">
-              <div>
-                <p class="p1">Get Immediate</p>
-                <p class="p2">Claim assistance</p>
-                <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;"></ion-progress-bar>
-                <p class="p3">We have got you covered</p>
-                <ion-button class="btn-sm">Learn more</ion-button>
-              </div>
-              <div >
-                <div style="width:100% ;" >
-                  <img  class="ins-nce" src="assets/images/insurance.svg" >
+          <ion-slide>
+            <div class="mid-div" style="width: 99%;">
+              <div class="mid-sub-div">
+                <div>
+                  <p class="p1">Get Immediate</p>
+                  <p class="p2">Claim assistance</p>
+                  <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
+                  </ion-progress-bar>
+                  <p class="p3">We have got you covered</p>
+                  <ion-button class="btn-sm">Learn more</ion-button>
                 </div>
+                <div>
+                  <div style="width:100% ;">
+                    <img class="ins-nce" src="assets/images/insurance.svg">
+                  </div>
 
+                </div>
               </div>
             </div>
-          </div>
-        </ion-slide>
+          </ion-slide>
 
-      </ion-slides>
+        </ion-slides>
+      </div>
     </div>
+
+  </div>
+  <div class="container">
 
     <div style="display:flex; align-items: center;">
       <p class="mid-p1">PRODUCTS</p>
-      <p class="mid-p2" (click)="toogleShow()">See more <img class="arrow" src="assets/images/down-arrow.svg" *ngIf="!show"> <img class="arrow" src="assets/images/arrow-up.svg" alt="" *ngIf="show"> </p>
+      <p class="mid-p2" (click)="toogleShow()">See more <img class="arrow" src="assets/images/down-arrow.svg"
+          *ngIf="!show"> <img class="arrow" src="assets/images/arrow-up.svg" alt="" *ngIf="show"> </p>
     </div>
 
     <ion-grid style="padding:0px; width: 100%;">
@@ -260,7 +273,7 @@
 
         <ion-col size="4" style="padding:6px; width: 100%;">
           <div class="gc-div">
-            <div class="gimg-div" >
+            <div class="gimg-div">
               <img class="imgclass" src="assets/images/sec-doc.svg" alt="">
             </div>
             <p class="gp-div">Verify Policy</p>

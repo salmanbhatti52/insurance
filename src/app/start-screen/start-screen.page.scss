@@ -6,9 +6,12 @@
 //     --background: url(../../assets/images/family.png) 0 0/100% no-repeat !important;
 // }
 .para-div{
-    text-align: center;
-    width: 90%;
-    margin: 40% auto 20%;
+    // text-align: center;
+    // width: 90%;
+    // margin: 55% auto 20%;
+    position: fixed;
+    bottom: 33%;
+    left: 15%;
 
 }
 .span1{
@@ -27,15 +30,18 @@
 
 }
 .btn{
-    margin: 60px auto 12px;
+    // margin: 60px auto 12px;
     height: 48px;
-    width: 40%;
+    width: 45%;
     --border-radius: 12px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 500;
     text-transform: capitalize;
     --background: #B0B500;
     font-family: Bliss Pro;
+    position: fixed;
+    bottom: 40px;
+    left: 100px;
 }
 
 

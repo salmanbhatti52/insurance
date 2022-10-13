@@ -3,13 +3,11 @@
     <ion-row style="display: flex;
     align-items: center;">
       <ion-col size="2" style="padding-left: 25px;">
-        <ion-menu-toggle>
-          <ion-buttons>
-            <div style="width:100% ;">
-              <img src="assets/images/sb-button.svg" alt="sb-btn">
-            </div>
-          </ion-buttons>
-        </ion-menu-toggle>
+
+        <div style="width:100% ;" (click)="goback()">
+          <img src="assets/images/back-arrow.svg" alt="sb-btn">
+        </div>
+
       </ion-col>
       <ion-col size="8">
         <div class="title">Renewals</div>
@@ -147,15 +145,41 @@
 
     <div class="label">First Name</div>
     <div class="inputfield">
-      <ion-input style="height: 48px;" type="text" placeholder="John" class="in-text"></ion-input>
+      <ion-input style="height: 48px;" type="text" placeholder="John" class="in-text" [(ngModel)]="first_name">
+      </ion-input>
     </div>
 
     <div class="label">Last Name</div>
     <div class="inputfield">
-      <ion-input style="height: 48px;" type="text" placeholder="Doe" class="in-text"></ion-input>
+      <ion-input style="height: 48px;" type="text" placeholder="Doe" class="in-text" [(ngModel)]="last_name">
+      </ion-input>
     </div>
 
-    <div class="label">Vehicle Make</div>
+    <div class="label">Email</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="email" placeholder="email" class="in-text" [(ngModel)]="email"></ion-input>
+    </div>
+
+    <div class="label">Date Of Birth</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="text" placeholder="YYYY-MM-DD" class="in-text" [(ngModel)]="dob"
+        value="dob">
+      </ion-input>
+    </div>
+
+    <div class="label">Phone Number</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="tel" placeholder="32154....." class="in-text" [(ngModel)]="phone_number">
+      </ion-input>
+    </div>
+
+    <div class="label">Address</div>
+    <div class="inputfield">
+      <ion-input style="height: 48px;" type="text" placeholder=" Ligali Ayorinde Street" class="in-text"
+        [(ngModel)]="address"></ion-input>
+    </div>
+
+    <!-- <div class="label">Vehicle Make</div>
     <div class="inputfield">
       <ion-input style="height: 48px;" type="text" placeholder="Honda " class="in-text"></ion-input>
     </div>
@@ -178,10 +202,10 @@
     <div class="label">Premium</div>
     <div class="inputfield">
       <ion-input style="height: 48px;" type="text" placeholder="3,000" class="in-text"></ion-input>
-    </div>
+    </div> -->
 
     <div class="btndiv">
-      <ion-button class="btn1">Renew Policy Now</ion-button>
+      <ion-button class="btn1" (click)="renewals()">Renew Policy Now</ion-button>
       <ion-button class="btn2">Schedule a reminder</ion-button>
     </div>
   </div>

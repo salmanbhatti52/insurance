@@ -9,6 +9,9 @@ import { LoadingController } from '@ionic/angular';
 })
 export class InsuranceAppService {
   url = 'https://www.cornerstone.com.ng/devtest/webservice';
+  authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
+
+  fpval: any;
   constructor(private toastctrl: ToastController,
     private http: HttpClient,
     private loadingController: LoadingController) { }
@@ -22,6 +25,21 @@ export class InsuranceAppService {
     });
 
     return this.http.post(this.url, myData, {
+      headers: header,
+    });
+  }
+  gettoken(myData) {
+    let header;
+
+    header = new HttpHeaders({
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    });
+
+    header.append("Access-Control-Allow-Origin", "*");
+    header.append("Access-Control-Allow-Methods", '*');
+    header.append('Access-Control-Allow-Headers');
+    return this.http.post(this.authurl, myData, {
       headers: header,
     });
   }
@@ -86,13 +104,73 @@ export class InsuranceAppService {
 
 
 
-  get(url, token) {
+  get(url, token?) {
+    let header;
+    // console.log('token in api ervice====', token);
+    // let headers
+    // headers = new Headers();
+    // headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");
+    // return this.http.get(url, {
+    //   headers: headers
+    // });
+
+    header = new HttpHeaders({
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': "Bearer " + token,
+    })
+    // header.append("Access-Control-Allow-Origin", "*");
+    // header.append(
+    //   "Access-Control-Allow-Methods",
+    //   "POST, GET, DELETE, PUT,OPTIONS"
+    // );
+
+    return this.http.get(`${url}`, {
+      headers: header
+    });
+  }
+  getpolicy(url, token?) {
+    let header;
     console.log('token in api ervice====', token);
-    let headers
-    headers = new Headers();
-    headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");
-    return this.http.get(url, {
-      headers: headers
+    // let headers
+    // headers = new Headers();
+    // headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");
+    // return this.http.get(url, {
+    //   headers: headers
+    // });
+
+    header = new HttpHeaders({
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      'Authorization': "Bearer " + token,
+    })
+    // header.append("Access-Control-Allow-Origin", "*");
+    // header.append(
+    //   "Access-Control-Allow-Methods",
+    //   "POST, GET, DELETE, PUT,OPTIONS"
+    // );
+
+    return this.http.get(`${url}`, {
+      headers: header
+    });
+  }
+  postdata(url, data, token?) {
+    let header;
+    console.log('token in api ervice====', token);
+    // let headers
+    // headers = new Headers();
+    // headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");
+    // return this.http.get(url, {
+    //   headers: headers
+    // });
+
+    header = new HttpHeaders({
+
+      'Authorization': "Bearer " + token,
+    })
+
+
+    return this.http.post(`${url}`, data, {
+      headers: header
     });
   }
   // waGetData(action,token) {
@@ -168,7 +246,6 @@ export class InsuranceAppService {
     this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
-      duration: 2000
     }).then((res) => {
       res.present();
     });

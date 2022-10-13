@@ -14,14 +14,16 @@ export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/home-page-screen-after-login', img: '/assets/images/home.svg', img1: '/assets/images/homeicon.svg', status: 'unchecked' },
     // { title: 'Dashboard', url: 'dashboard', img: '/assets/images/icons/chart.svg', img1: '/assets/images/icons/dashboard.svg', status: 'unchecked' },
-    { title: 'Get Quote', url: '/get-quote', img: '/assets/images/icons/quote.svg', img1: '/assets/images/icons/activequote.svg', status: 'unchecked' },
-    { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
-    { title: 'Verify Policy', url: 'verify-policy-screen-cust', img: '/assets/images/icons/policy.svg', img1: '/assets/images/icons/activepolicy.svg', status: 'unchecked' },
-    { title: 'Renewals', url: 'renewals', img: '/assets/images/icons/renewals.svg', img1: '/assets/images/icons/activerenewls.svg', status: 'unchecked' },
+    { title: 'Retrieve Quote', url: '/get-quote', img: '/assets/images/icons/quote.svg', img1: '/assets/images/icons/activequote.svg', status: 'unchecked' },
+    // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
+    { title: 'My Policies', url: 'verify-policy-screen-cust', img: '/assets/images/icons/policy.svg', img1: '/assets/images/icons/activepolicy.svg', status: 'unchecked' },
+    { title: 'Verify Policy', url: 'policylookup', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
+    { title: 'Renewals', url: 'verify-policy-screen-cust', img: '/assets/images/icons/renewals.svg', img1: '/assets/images/icons/activerenewls.svg', status: 'unchecked' },
     { title: 'Make a Claim', url: '/makeaclaim', img: '/assets/images/icons/claim.svg', img1: '/assets/images/icons/activeclaim.svg', status: 'unchecked' },
   ];
 
   selectedtitle: any;
+  fp: any;
   constructor(public navCtrl: NavController,
     public menuCtrl: MenuController,
     public api: InsuranceAppService,
@@ -41,11 +43,14 @@ export class AppComponent {
   }
 
   async initializeApp() {
+    this.fp = localStorage.getItem('fingerprint');
+    console.log('fingerprint====', this.fp);
+    this.api.fpval = this.fp
     this.platform.ready().then(() => {
       setTimeout(() => {
         SplashScreen.hide();
-        this.route.navigate(['splash']);
-      }, 4000);
+        // this.route.navigate(['splash']);
+      }, 3600);
 
     });
 
@@ -63,6 +68,21 @@ export class AppComponent {
   }
   closeMenu() {
     this.menuCtrl.close();
+  }
+
+  toogle(ev) {
+
+
+    console.log(ev);
+    if (ev.detail.checked == true) {
+
+      this.api.fpval = 'true'
+      localStorage.setItem('fingerprint', 'true')
+    } else {
+      this.api.fpval = 'false';
+      localStorage.setItem('fingerprint', 'false')
+    }
+
   }
   logout() {
     localStorage.removeItem('userid');

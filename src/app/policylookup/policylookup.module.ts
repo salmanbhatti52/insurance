@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Splash1PageRoutingModule } from './splash1-routing.module';
+import { PolicylookupPageRoutingModule } from './policylookup-routing.module';
 
-import { Splash1Page } from './splash1.page';
+import { PolicylookupPage } from './policylookup.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Splash1PageRoutingModule
+    PolicylookupPageRoutingModule
   ],
-  declarations: [Splash1Page]
+  declarations: [PolicylookupPage]
 })
-export class Splash1PageModule {}
+export class PolicylookupPageModule {}

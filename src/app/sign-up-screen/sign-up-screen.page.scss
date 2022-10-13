@@ -176,3 +176,20 @@ span.span-end {
   font-family: 'Rubik', sans-serif;
   color: #d93025;
 }
+.flex-c{
+  display:flex;
+  align-items:center;
+  margin-top:6%;
+}
+.lbl{
+  margin-left:3%;
+  font-size: 15.5px;
+}
+.check{
+  --background: #fff;
+  --background-checked: #fff;
+  --checkmark-color: #A8B400;
+  --border-color-checked: #A8B400;
+  --size: 17px;
+  --border-color: #A8B400;
+}

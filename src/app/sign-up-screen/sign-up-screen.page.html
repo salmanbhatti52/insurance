@@ -13,7 +13,7 @@
 
     <div class="title-para" style="text-align: center;">
       <!-- <p class="cont-p1">Hi there <br> -->
-        <p class="cont-p1"> <span>Create an account to get started</span></p>
+      <p class="cont-p1"> <span>Create an account to get started</span></p>
     </div>
     <form [formGroup]="RegisterForm" style="margin-top: 11px;">
       <div class="dropbox1">
@@ -59,7 +59,15 @@
         <span class="error-msg">Enter your last name</span>
       </div>
 
-      <div class="item-picker" style="margin: 15px auto 0px; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
+      <ion-input type="text" formControlName="date" [(ngModel)]="dateofbirth" class="input" placeholder="YYYY-MM-DD">
+        <img class="plchldr-css" src="assets/images/icons/calendar.svg" alt="">
+      </ion-input>
+
+      <div class="validation" *ngIf="RegisterForm.get('date').hasError('required') && RegisterForm.get('date').touched">
+        <img src="assets/images/alert-icon.png" class="alertIcon">
+        <span class="error-msg">Enter your date of birth</span>
+      </div>
+      <!-- <div class="item-picker" style="margin: 15px auto 0px; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
         (click)="showPicker = !showPicker">
         <div style="display: flex; align-items:center">
           <img class="cal-css" src="assets/images/icons/calendar.svg" alt="">
@@ -68,8 +76,8 @@
 
       </div>
       <ion-datetime class="item-picker" style="margin:10px auto 0px; color: black;" presentation="date"
-        *ngIf="showPicker" #datetime [value]="dateValue" size="cover" (ionChange)="dateChanged(datetime.value)"
-        showDefaultButtons="true" (ionCancel)="showPicker=false"></ion-datetime>
+        *ngIf="showPicker" #datetime [value]="dateformat" size="cover" (ionChange)="dateChanged(datetime.value)"
+        showDefaultButtons="true" (ionCancel)="showPicker=false"></ion-datetime> -->
 
       <ion-input formControlName="number" [(ngModel)]="mobNumber" type="tel" class="input" placeholder="Phone"><img
           class="plchldr-css" src="assets/images/icons/phone.svg" alt=""></ion-input>
@@ -119,6 +127,24 @@
         <img src="assets/images/alert-icon.png" class="alertIcon">
         <span class="error-msg">Enter your password</span>
       </div>
+      <div class="validation"
+        *ngIf="RegisterForm.get('password').hasError('minlength') && RegisterForm.get('password').touched">
+        <span class="error-msg"> Minimum 6 characters</span>
+      </div>
+      <div class="validation"
+        *ngIf="RegisterForm.get('password').hasError('maxlength') && RegisterForm.get('password').touched">
+        <span class="error-msg"> Maximum 12 characters</span>
+      </div>
+      <div class="validation"
+        *ngIf="RegisterForm.get('password').hasError('pattern') && RegisterForm.get('password').touched">
+        <img src="assets/images/alert-icon.png" class="alertIcon">
+        <span class="error-msg">Password must atleast 6 characters in length one uppercase one lowercase letter one
+          special character and
+          number also</span><br>
+        <!-- <span class="error-msg">Lowercase letters</span><br>
+        <span class="error-msg">Uppercase letters</span><br>
+        <span class="error-msg">Numbers</span> -->
+      </div>
 
       <div class="fields">
         <div class="inputdiv">
@@ -145,6 +171,25 @@
         <span class="error-msg">Confirm your password</span>
       </div>
 
+      <div class="validation"
+        *ngIf="RegisterForm.get('cpassword').hasError('minlength') && RegisterForm.get('cpassword').touched">
+        <span class="error-msg"> Minimum 6 characters</span>
+      </div>
+      <div class="validation"
+        *ngIf="RegisterForm.get('cpassword').hasError('maxlength') && RegisterForm.get('cpassword').touched">
+        <span class="error-msg"> Maximum 12 characters</span>
+      </div>
+      <div class="flex-c">
+        <ion-checkbox mode="md" class="check" (ionChange)="verifyEvent($event)" formControlName="terms">
+        </ion-checkbox>
+        <span class="lbl">Terms and Conditions</span>
+      </div>
+
+      <div class="validation"
+        *ngIf="RegisterForm.get('terms').hasError('required') && RegisterForm.get('terms').touched">
+        <img src="assets/images/alert-icon.png" class="alertIcon">
+        <span class="error-msg">Accept terms and condition</span>
+      </div>
       <div style="text-align:center ; padding-bottom: 5px; margin: 20px auto 0px;">
         <ion-button class="btn" [disabled]="RegisterForm.invalid" (click)="signUp()" style="--background: #A8B400;">
           Register</ion-button>
@@ -152,6 +197,7 @@
       </div>
 
     </form>
+
 
 
   </div>

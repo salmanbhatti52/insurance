@@ -1,102 +1,110 @@
-<ion-header [translucent]="true" class="ion-no-border cheader">
+<!-- <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
+
+
+  </ion-toolbar>
+
+</ion-header> -->
+
+<ion-content>
+  <div style="background:#1A206D;height: 250px;">
     <ion-row style="display: flex;
-    align-items: center;">
+    align-items: center; padding-top:5%;">
       <ion-col size="8" style="padding-left: 27px;">
         <ion-menu-toggle>
           <ion-buttons>
             <div style="width:100% ;">
-              <img src="assets/images/sb-button.svg" alt="sb-btn">
+              <img src="assets/images/menuicon.svg" alt="sb-btn">
             </div>
           </ion-buttons>
         </ion-menu-toggle>
       </ion-col>
       <ion-col size="2"></ion-col>
       <ion-col class="titleclass" size="2">
-        <img (click)="updateProfile()" class="pro-img" src="assets/images/profile.svg" alt="profile">
+        <img (click)="updateProfile()" class="pro-img" src="assets/images/edit.png" alt="profile">
       </ion-col>
 
 
     </ion-row>
-  </ion-toolbar>
-
-</ion-header>
-<ion-content>
-
-  <div class="container">
-
-    <p class="name-para">Hi John!</p>
-    <p class="wc-para">Welcome</p>
+    <div class="top-container">
+      <p class="name-para">Hi {{username}}!</p>
+      <p class="wc-para">Welcome</p>
 
 
 
 
-    <div class="slide-div">
-      <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide"
-        class="slides1">
+      <div class="slide-div">
+        <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide"
+          class="slides1">
 
-        <ion-slide>
-          <div class=" mid-div" style="width: 99%;">
-            <div class="mid-sub-div">
-              <div>
-                <p class="p1">Get Immediate</p>
-                <p class="p2">Claim assistance</p>
-                <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;"></ion-progress-bar>
-                <p class="p3">We have got you covered</p>
-                <ion-button class="btn-sm">Learn more</ion-button>
-              </div>
-              <div>
-                <div style="width:100% ;">
-                  <img class="ins-nce" src="assets/images/insurance.svg">
+          <ion-slide>
+            <div class=" mid-div" style="width: 99%;">
+              <div class="mid-sub-div">
+                <div>
+                  <p class="p1">Get Immediate</p>
+                  <p class="p2">Claim assistance</p>
+                  <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
+                  </ion-progress-bar>
+                  <p class="p3">We have got you covered</p>
+                  <ion-button class="btn-sm">Learn more</ion-button>
                 </div>
+                <div>
+                  <div style="width:100% ;">
+                    <img class="ins-nce" src="assets/images/insurance.svg">
+                  </div>
 
+                </div>
               </div>
             </div>
-          </div>
-        </ion-slide>
+          </ion-slide>
 
-        <ion-slide>
-          <div class="mid-div" style="width: 99%;">
-            <div class="mid-sub-div">
-              <div>
-                <p class="p1">Get Immediate</p>
-                <p class="p2">Claim assistance</p>
-                <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;"></ion-progress-bar>
-                <p class="p3">We have got you covered</p>
-                <ion-button class="btn-sm">Learn more</ion-button>
-              </div>
-              <div>
-                <div style="width:100% ;">
-                  <img class="ins-nce" src="assets/images/insurance.svg">
+          <ion-slide>
+            <div class="mid-div" style="width: 99%;">
+              <div class="mid-sub-div">
+                <div>
+                  <p class="p1">Get Immediate</p>
+                  <p class="p2">Claim assistance</p>
+                  <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
+                  </ion-progress-bar>
+                  <p class="p3">We have got you covered</p>
+                  <ion-button class="btn-sm">Learn more</ion-button>
                 </div>
+                <div>
+                  <div style="width:100% ;">
+                    <img class="ins-nce" src="assets/images/insurance.svg">
+                  </div>
 
+                </div>
               </div>
             </div>
-          </div>
-        </ion-slide>
+          </ion-slide>
 
-        <ion-slide>
-          <div class="mid-div" style="width: 99%;">
-            <div class="mid-sub-div">
-              <div>
-                <p class="p1">Get Immediate</p>
-                <p class="p2">Claim assistance</p>
-                <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;"></ion-progress-bar>
-                <p class="p3">We have got you covered</p>
-                <ion-button class="btn-sm">Learn more</ion-button>
-              </div>
-              <div>
-                <div style="width:100% ;">
-                  <img class="ins-nce" src="assets/images/insurance.svg">
+          <ion-slide>
+            <div class="mid-div" style="width: 99%;">
+              <div class="mid-sub-div">
+                <div>
+                  <p class="p1">Get Immediate</p>
+                  <p class="p2">Claim assistance</p>
+                  <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
+                  </ion-progress-bar>
+                  <p class="p3">We have got you covered</p>
+                  <ion-button class="btn-sm">Learn more</ion-button>
                 </div>
+                <div>
+                  <div style="width:100% ;">
+                    <img class="ins-nce" src="assets/images/insurance.svg">
+                  </div>
 
+                </div>
               </div>
             </div>
-          </div>
-        </ion-slide>
+          </ion-slide>
 
-      </ion-slides>
+        </ion-slides>
+      </div>
     </div>
+  </div>
+  <div class="container">
 
     <div style="display:flex; align-items: center;">
       <p class="mid-p1">PRODUCTS</p>

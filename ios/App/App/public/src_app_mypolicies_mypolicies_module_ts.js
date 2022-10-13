@@ -90,11 +90,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MypoliciesPage": () => (/* binding */ MypoliciesPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _mypolicies_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mypolicies.page.html?ngResource */ 551);
 /* harmony import */ var _mypolicies_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mypolicies.page.scss?ngResource */ 5866);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ 6712);
@@ -115,7 +115,6 @@ let MypoliciesPage = class MypoliciesPage {
         this.router = router;
         this.api = api;
         this.location = location;
-        this.subProName = localStorage.getItem('subProName');
         this.show = false;
         this.box = 'unchecked';
         this.fName = '';
@@ -249,6 +248,7 @@ let MypoliciesPage = class MypoliciesPage {
     ;
     ;
     ngOnInit() {
+        this.subProName = localStorage.getItem('subProName');
         this.getCarVehicleTypeCls();
         this.getCarMakeCompanies();
         this.userEmail = localStorage.getItem('email');
@@ -258,18 +258,17 @@ let MypoliciesPage = class MypoliciesPage {
         this.location.back();
     }
     ionViewWillEnter() {
-        if (this.requestsType) {
-            if (this.requestsType === 'PurchasePolicies') {
-                this.mySegment.nativeElement.children[0].click();
-            }
-            if (this.requestsType === 'InvestmentPlan') {
-                this.mySegment.nativeElement.children[1].click();
-            }
-        }
-        else {
-            this.requestsType = 'PurchasePolicies';
-            this.mySegment.nativeElement.children[0].click();
-        }
+        // if (this.requestsType) {
+        //   if (this.requestsType === 'PurchasePolicies') {
+        //     this.mySegment.nativeElement.children[0].click();
+        //   }
+        //   if (this.requestsType === 'InvestmentPlan') {
+        //     this.mySegment.nativeElement.children[1].click();
+        //   }
+        // } else {
+        //   this.requestsType = 'PurchasePolicies';
+        //   this.mySegment.nativeElement.children[0].click();
+        // }
         this.vehicleVal = 'Please Select';
         this.vehicleMakeVal = 'Manufacturer';
         this.policyhldrVal = 'Please Select';
@@ -901,11 +900,8 @@ MypoliciesPage.ctorParameters = () => [
     { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService },
     { type: _angular_common__WEBPACK_IMPORTED_MODULE_5__.Location }
 ];
-MypoliciesPage.propDecorators = {
-    mySegment: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_6__.ViewChild, args: ['mySegment', { read: _angular_core__WEBPACK_IMPORTED_MODULE_6__.ElementRef },] }]
-};
-MypoliciesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+MypoliciesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-mypolicies',
         template: _mypolicies_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_mypolicies_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]

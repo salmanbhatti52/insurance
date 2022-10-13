@@ -170,10 +170,20 @@ const routes: Routes = [
     path: 'splash',
     loadChildren: () => import('./splash/splash.module').then(m => m.SplashPageModule)
   },
+
   {
-    path: 'splash1',
-    loadChildren: () => import('./splash1/splash1.module').then(m => m.Splash1PageModule)
+    path: 'policyquote',
+    loadChildren: () => import('./policyquote/policyquote.module').then(m => m.PolicyquotePageModule)
+  },
+  {
+    path: 'verify-policy-popup-cust',
+    loadChildren: () => import('./verify-policy-popup-cust/verify-policy-popup-cust.module').then(m => m.VerifyPolicyPopupCustPageModule)
+  },  {
+    path: 'policylookup',
+    loadChildren: () => import('./policylookup/policylookup.module').then( m => m.PolicylookupPageModule)
   }
+
+
 
 
 

@@ -161,3 +161,17 @@ ion-menu::part(container) {
    .fc{
     background:#1A206D;
    }
+  .toogleclass{
+    padding: 0px;
+    float: right;
+    --handle-width: 16px;
+    --handle-height: 16px;
+    width: 40px;
+    height: 24px;
+    --background: #5d5d5d;
+    --background-checked: #fff;
+    --handle-background-checked: #1A206D;
+    --handle-background: #c8c7cc;
+    margin-top: 1.5%;
+    --handle-spacing: 4px;
+  }
