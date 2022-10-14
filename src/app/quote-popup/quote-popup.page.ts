@@ -55,14 +55,19 @@ export class QuotePopupPage implements OnInit {
   }
   seeDetails(sp) {
     console.log(sp);
-    if (sp.product_for_quote == 1) {
-      this.router.navigate(['/mypolicies']);
-      localStorage.setItem('subProId', sp.id);
-      localStorage.setItem('subProName', sp.name);
+    if (sp == 'null') {
+      this.api.presenttoast('Product details not defined')
+    } else {
+      if (sp.product_for_quote == 1) {
+        this.router.navigate(['/mypolicies']);
+        localStorage.setItem('subProId', sp.id);
+        localStorage.setItem('subProName', sp.name);
+      }
+      else {
+        this.subProductsshow(sp.id);
+      }
     }
-    else {
-      this.subProductsshow(sp.id);
-    }
+
 
     // this.modal.dismiss(sp).then(data => {
     //   console.log('data came back from modal');

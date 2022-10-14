@@ -234,10 +234,11 @@ export class MypoliciesPage implements OnInit {
   getCarVehicleTypeCls() {
     this.api.showLoader()
     if (this.subProName === 'Third Party') {
+
       const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","product_class":"vehicle_class_thirdparty","method":"get_car_classes"}';
       this.api.insertData(myData).subscribe((res: any) => {
         console.log(res);
-
+        this.api.hideLoader();
         if (res.values !== '') {
           this.vehicleClass = res.values;
           console.log(this.vehicleClass);
@@ -247,15 +248,15 @@ export class MypoliciesPage implements OnInit {
               active: false
             }
             this.vechilenewarray.push(data);
-            this.api.hideLoader();
+
           })
           console.log('dadasdsadsa======', this.vechilenewarray);
 
         }
 
       }, (err) => {
-        console.log(err);
-
+        console.log('err', err);
+        this.api.hideLoader();
       });
     }
 
@@ -263,6 +264,7 @@ export class MypoliciesPage implements OnInit {
       const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","method":"get_car_classes","product_class":"vehicle_class_enhanced_comprehensive"}';
       this.api.insertData(myData).subscribe((res: any) => {
         console.log(res);
+        this.api.hideLoader();
         if (res.values != '') {
           this.eCcarClasses = res.values;
           console.log('Enhanced Comprehensive car classes==', this.eCcarClasses);
@@ -272,7 +274,7 @@ export class MypoliciesPage implements OnInit {
               active: false
             }
             this.EnchancednewClasses.push(data);
-            this.api.hideLoader();
+
           })
           // console.log('EnchancednewClasses======', this.EnchancednewClasses);
         }
