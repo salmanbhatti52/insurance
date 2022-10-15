@@ -271,7 +271,10 @@ ion-footer{
   }
 
 }
-
+.terms{
+  --max-height: 75%;
+    --max-width: 90%;
+}
 
 @import "~@ionic/angular/css/core.css";
 

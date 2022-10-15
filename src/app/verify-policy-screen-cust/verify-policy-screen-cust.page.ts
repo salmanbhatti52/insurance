@@ -53,12 +53,12 @@ export class VerifyPolicyScreenCustPage implements OnInit {
     this.show = false
   }
   async PopupCust() {
-    let token = '39109f7df56e1CORNERStone9e685066bb852'
+    // let token = '39109f7df56e1CORNERStone9e685066bb852'
     if (this.pnumber == '') {
       this.api.presenttoast('Policy Number Field is required!')
     } else {
       this.api.showLoader();
-      this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=160&polnum2=' + this.pnumber, token).subscribe((response: any) => {
+      this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=160&polnum2=' + this.pnumber, localStorage.getItem('token')).subscribe((response: any) => {
 
         console.log(response.result);
         this.verifypolicy = response.result

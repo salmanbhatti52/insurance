@@ -153,14 +153,13 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
     var _this = this;
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      let token = '39109f7df56e1CORNERStone9e685066bb852';
-
+      // let token = '39109f7df56e1CORNERStone9e685066bb852'
       if (_this.pnumber == '') {
         _this.api.presenttoast('Policy Number Field is required!');
       } else {
         _this.api.showLoader();
 
-        _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=160&polnum2=' + _this.pnumber, token).subscribe(response => {
+        _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=160&polnum2=' + _this.pnumber, localStorage.getItem('token')).subscribe(response => {
           console.log(response.result);
           _this.verifypolicy = response.result;
           localStorage.setItem('policydata', JSON.stringify(_this.verifypolicy));

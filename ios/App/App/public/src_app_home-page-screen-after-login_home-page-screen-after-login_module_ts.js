@@ -193,7 +193,12 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
       let subproducts = [];
       console.log("subProducts---------", res);
       res.subproducts.map((value, index) => {
-        if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen") {
+        //old code..
+        // if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen" && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
+        //   subproducts.push(value);
+        // }
+        //new code to add local travel insurance
+        if (value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen" && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
           subproducts.push(value);
         }
       });

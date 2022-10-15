@@ -145,7 +145,7 @@ const routes = [
     },
     {
         path: 'sign-up-screen',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_sign-up-screen_sign-up-screen_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./sign-up-screen/sign-up-screen.module */ 8067)).then(m => m.SignUpScreenPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_sign-up-screen_sign-up-screen_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./sign-up-screen/sign-up-screen.module */ 8067)).then(m => m.SignUpScreenPageModule)
     },
     {
         path: 'profile-update',
@@ -198,6 +198,10 @@ const routes = [
     {
         path: 'forgotpassword',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_forgotpassword_forgotpassword_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./forgotpassword/forgotpassword.module */ 2488)).then(m => m.ForgotpasswordPageModule)
+    },
+    {
+        path: 'termsandcondition',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_termsandcondition_termsandcondition_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./termsandcondition/termsandcondition.module */ 9857)).then(m => m.TermsandconditionPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -272,13 +276,8 @@ let AppComponent = class AppComponent {
       img1: '/assets/images/icons/activequote.svg',
       status: 'unchecked'
     }, // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
+    // { title: 'My Policies', url: 'verify-policy-screen-cust', img: '/assets/images/icons/policy.svg', img1: '/assets/images/icons/activepolicy.svg', status: 'unchecked' },
     {
-      title: 'My Policies',
-      url: 'verify-policy-screen-cust',
-      img: '/assets/images/icons/policy.svg',
-      img1: '/assets/images/icons/activepolicy.svg',
-      status: 'unchecked'
-    }, {
       title: 'Verify Policy',
       url: 'policylookup',
       img: '/assets/images/icons/mypolicy.svg',
@@ -313,7 +312,7 @@ let AppComponent = class AppComponent {
           _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__.SplashScreen.hide();
 
           _this.route.navigate(['splash']);
-        }, 3600);
+        }, 3500);
       });
     })();
   }

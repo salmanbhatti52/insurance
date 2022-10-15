@@ -1611,6 +1611,10 @@ ion-footer {
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
 }
+.terms {
+  --max-height: 75%;
+  --max-width: 90%;
+}
 /* Basic CSS for apps built with Ionic */
 /* Optional CSS utils that can be commented out */
 

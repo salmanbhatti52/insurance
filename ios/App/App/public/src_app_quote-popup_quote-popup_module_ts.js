@@ -130,9 +130,10 @@ let QuotePopupPage = class QuotePopupPage {
             let subproducts = [];
             console.log("subProducts---------", res);
             res.subproducts.map((value, index) => {
-                if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen") {
-                    subproducts.push(value);
-                }
+                // if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen") {
+                //   subproducts.push(value);
+                // }
+                subproducts.push(value);
             });
             console.log('subproducts after check---', subproducts);
             // return;
@@ -144,13 +145,18 @@ let QuotePopupPage = class QuotePopupPage {
     }
     seeDetails(sp) {
         console.log(sp);
-        if (sp.product_for_quote == 1) {
-            this.router.navigate(['/mypolicies']);
-            localStorage.setItem('subProId', sp.id);
-            localStorage.setItem('subProName', sp.name);
+        if (sp == 'null') {
+            this.api.presenttoast('Product details not defined');
         }
         else {
-            this.subProductsshow(sp.id);
+            if (sp.product_for_quote == 1) {
+                this.router.navigate(['/mypolicies']);
+                localStorage.setItem('subProId', sp.id);
+                localStorage.setItem('subProName', sp.name);
+            }
+            else {
+                this.subProductsshow(sp.id);
+            }
         }
         // this.modal.dismiss(sp).then(data => {
         //   console.log('data came back from modal');
@@ -192,7 +198,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \**************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Insurance</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\">\r\n      </ion-col>\r\n\r\n\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n<ion-content>\r\n\r\n  <div class=\"container\">\r\n\r\n    <div class=\"c-center\">\r\n      <p class=\"con-p1\">Make a Quote</p>\r\n    </div>\r\n\r\n    <div class=\"boxdiv\" *ngFor=\"let sp of subProducts\">\r\n      <div style=\"display:flex;margin-bottom: 7%;\" (click)=\"seeDetails(sp)\">\r\n        <img src=\"{{sp.image}}\" alt=\"\" style=\"width: 170px; height: 83px;\">\r\n        <p class=\"con-p2\">{{sp.name}}</p>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- <div *ngFor=\"let sp of subProducts\">\r\n      <div class=\"c-center\">\r\n        <img src=\"{{sp.image}}\" alt=\"\" style=\"margin-top:5%; width: 170px; height: 83px;\">\r\n        <p class=\"con-p2\">{{sp.name}}</p>\r\n      </div>\r\n\r\n      <div class=\"btndiv\">\r\n        <ion-button class=\"btn\" (click)=\"seeDetails(sp)\">QUOTE</ion-button>\r\n      </div>\r\n      <hr style=\"margin-top:25px; border-top: 5px solid #A8B400; width:70%\">\r\n    </div> -->\r\n\r\n\r\n  </div>\r\n\r\n</ion-content>\r\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Insurance</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\">\r\n      </ion-col>\r\n\r\n\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n<ion-content>\r\n\r\n  <div class=\"container\">\r\n\r\n    <div class=\"c-center\">\r\n      <p class=\"con-p1\">Make a Quote</p>\r\n    </div>\r\n\r\n    <div class=\"boxdiv\" *ngFor=\"let sp of subProducts\">\r\n      <div style=\"display:flex;margin-bottom: 7%;\" (click)=\"seeDetails(sp)\">\r\n        <img src=\"{{sp.image}}\" alt=\"\" style=\"width: 170px; height: 83px;\">\r\n        <p class=\"con-p2\">{{sp.name}}</p>\r\n      </div>\r\n\r\n    </div>\r\n    <div class=\"boxdiv\" *ngIf=\"productID==1\">\r\n      <div style=\"display:flex;margin-bottom: 7%;\" (click)=\"seeDetails('null')\">\r\n        <img src=\"assets/images/carimg.png\" alt=\"\" style=\"width: 170px; height: 83px;\">\r\n        <p style=\"color: #1A206D;\r\n        font-size: 17px;\r\n        font-weight: 500;\r\n        margin: 6% 0% 0% 4%;\">COMPREHENSIVE MOTOR INSURANCE</p>\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <!-- <div *ngFor=\"let sp of subProducts\">\r\n      <div class=\"c-center\">\r\n        <img src=\"{{sp.image}}\" alt=\"\" style=\"margin-top:5%; width: 170px; height: 83px;\">\r\n        <p class=\"con-p2\">{{sp.name}}</p>\r\n      </div>\r\n\r\n      <div class=\"btndiv\">\r\n        <ion-button class=\"btn\" (click)=\"seeDetails(sp)\">QUOTE</ion-button>\r\n      </div>\r\n      <hr style=\"margin-top:25px; border-top: 5px solid #A8B400; width:70%\">\r\n    </div> -->\r\n\r\n\r\n  </div>\r\n\r\n</ion-content>\r\n";
 
 /***/ })
 

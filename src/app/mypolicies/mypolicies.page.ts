@@ -157,6 +157,8 @@ export class MypoliciesPage implements OnInit {
 
   ngOnInit() {
     this.subProName = localStorage.getItem('subProName');
+    console.log('subproduct name-----', this.subProName);
+
     this.getCarVehicleTypeCls();
     this.getCarMakeCompanies();
 
@@ -232,7 +234,7 @@ export class MypoliciesPage implements OnInit {
   vechilenewarray = [];
   EnchancednewClasses = [];
   getCarVehicleTypeCls() {
-    this.api.showLoader()
+    // this.api.showLoader()
     if (this.subProName === 'Third Party') {
 
       const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","product_class":"vehicle_class_thirdparty","method":"get_car_classes"}';
@@ -890,6 +892,8 @@ export class MypoliciesPage implements OnInit {
     if (formValidationResult.status) {
       // --- Calling API To create quote --- //
       this.api.insertData(myData).subscribe((data: any) => {
+        console.log('data response for products----', data);
+
         if (data.message == 'success') {
           this.api.presenttoast(data.info.message);
           localStorage.setItem('product_id', data.info.product_id);

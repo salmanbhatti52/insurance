@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { IonDatetime } from '@ionic/angular';
+import { IonDatetime, ModalController } from '@ionic/angular';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { Location } from '@angular/common';
+import { TermsandconditionPage } from '../termsandcondition/termsandcondition.page';
 @Component({
   selector: 'app-sign-up-screen',
   templateUrl: './sign-up-screen.page.html',
@@ -33,7 +34,8 @@ export class SignUpScreenPage implements OnInit {
   checkbox = false;
   constructor(public router: Router,
     public api: InsuranceAppService,
-    public location: Location) {
+    public location: Location,
+    public modal: ModalController) {
     // this.setToday();
   }
 
@@ -137,6 +139,14 @@ export class SignUpScreenPage implements OnInit {
 
   showPickerDate() {
     this.showPicker = true;
+  }
+  async check() {
+
+    const modal = await this.modal.create({
+      component: TermsandconditionPage,
+      cssClass: 'terms'
+    });
+    modal.present();
   }
 
 }

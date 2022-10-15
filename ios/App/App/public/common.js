@@ -65,6 +65,55 @@ AgentidpopupPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
+/***/ 5713:
+/*!*************************************************************!*\
+  !*** ./src/app/termsandcondition/termsandcondition.page.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TermsandconditionPage": () => (/* binding */ TermsandconditionPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _termsandcondition_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./termsandcondition.page.html?ngResource */ 9266);
+/* harmony import */ var _termsandcondition_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./termsandcondition.page.scss?ngResource */ 3326);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 3819);
+
+
+
+
+
+
+let TermsandconditionPage = class TermsandconditionPage {
+    constructor(location, modal) {
+        this.location = location;
+        this.modal = modal;
+    }
+    ngOnInit() {
+    }
+    goback() {
+        this.modal.dismiss();
+    }
+};
+TermsandconditionPage.ctorParameters = () => [
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_2__.Location },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ModalController }
+];
+TermsandconditionPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+        selector: 'app-termsandcondition',
+        template: _termsandcondition_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_termsandcondition_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], TermsandconditionPage);
+
+
+
+/***/ }),
+
 /***/ 3696:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-8937ead0.js ***!
@@ -1415,6 +1464,16 @@ module.exports = ".bg {\n  --background: #A8B400 !important;\n  border-radius: 3
 
 /***/ }),
 
+/***/ 3326:
+/*!**************************************************************************!*\
+  !*** ./src/app/termsandcondition/termsandcondition.page.scss?ngResource ***!
+  \**************************************************************************/
+/***/ ((module) => {
+
+module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  font-size: 20px;\n  color: #1A0F55;\n  font-weight: bold;\n}\n\n.container {\n  width: 90%;\n  margin: 5% auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlcm1zYW5kY29uZGl0aW9uLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBQ0Esc0JBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxVQUFBO0VBQ0EsZUFBQTtBQUVGIiwiZmlsZSI6InRlcm1zYW5kY29uZGl0aW9uLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50aXRsZXtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgZm9udC1mYW1pbHk6IEJsaXNzIFBybztcclxuICBmb250LXNpemU6IDIwcHg7XHJcbiAgY29sb3I6ICMxQTBGNTU7XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuLmNvbnRhaW5lcntcclxuICB3aWR0aDogOTAlO1xyXG4gIG1hcmdpbjogNSUgYXV0bztcclxufVxyXG4iXX0= */";
+
+/***/ }),
+
 /***/ 2832:
 /*!****************************************************************!*\
   !*** ./src/app/agentidpopup/agentidpopup.page.html?ngResource ***!
@@ -1422,6 +1481,16 @@ module.exports = ".bg {\n  --background: #A8B400 !important;\n  border-radius: 3
 /***/ ((module) => {
 
 module.exports = "<ion-content class=\"bg\">\r\n\r\n  <div class=\"container\">\r\n\r\n    <div class=\"icondiv\" (click)=\"dismiss()\">\r\n      <img src=\"assets/images/close-circle.svg\" alt=\"\">\r\n    </div>\r\n\r\n    <div class=\"main\">\r\n      <div class=\"label\">Enter Agent ID</div>\r\n      <ion-input type=\"text\" class=\"input1\" placeholder=\"1254PAG\" [(ngModel)]=\"agentId\"></ion-input>\r\n\r\n      <div class=\"btndiv\" (click)=\"search()\">\r\n        <ion-button class=\"btn\"><img style=\"margin-right: 6px;\" src=\"assets/images/search-normal.svg\" alt=\"\"> SEARCH\r\n        </ion-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n";
+
+/***/ }),
+
+/***/ 9266:
+/*!**************************************************************************!*\
+  !*** ./src/app/termsandcondition/termsandcondition.page.html?ngResource ***!
+  \**************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n  <ion-toolbar class=\"headBgGlobal\">\n    <ion-row>\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\n        <ion-buttons>\n          <div style=\"width:100% ;\">\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\n          </div>\n        </ion-buttons>\n      </ion-col>\n      <ion-col size=\"8\">\n        <div class=\"title\">Terms and Condition</div>\n      </ion-col>\n      <ion-col class=\"titleclass\" size=\"2\">\n      </ion-col>\n\n\n    </ion-row>\n  </ion-toolbar>\n\n</ion-header>\n\n<ion-content>\n  <div class=\"container\">\n    <p style=\"color: #000;\">\n      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's\n      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a\n      type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,\n      remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing\n      Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions\n      of\n      Lorem Ipsum.\n    </p>\n  </div>\n\n\n</ion-content>\n";
 
 /***/ })
 
