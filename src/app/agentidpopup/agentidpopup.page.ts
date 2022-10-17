@@ -24,11 +24,19 @@ export class AgentidpopupPage implements OnInit {
     if (this.agentId == '') {
       this.api.presenttoast('Enter Agent ID')
     } else {
-      this.modal.dismiss().then(data => {
-        console.log('data came back from modal');
-        console.log(data);
-        this.navCtrl.navigateForward('agentloginscreen')
-      })
+      this.api.gibsapi('7382').subscribe((res: any) => {
+        console.log(res);
+        let token = res.accessToken
+
+      }, (err) => {
+        console.log(err);
+        this.api.hideLoader()
+      });
+      // this.modal.dismiss().then(data => {
+      //   console.log('data came back from modal');
+      //   console.log(data);
+      //   this.navCtrl.navigateForward('agentloginscreen')
+      // })
     }
 
   }

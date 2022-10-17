@@ -91,12 +91,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ForgotpasswordPage": () => (/* binding */ ForgotpasswordPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _forgotpassword_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./forgotpassword.page.html?ngResource */ 3382);
 /* harmony import */ var _forgotpassword_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./forgotpassword.page.scss?ngResource */ 7599);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
+
 
 
 
@@ -104,25 +106,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ForgotpasswordPage = class ForgotpasswordPage {
-    constructor(location) {
+    constructor(location, api) {
         this.location = location;
+        this.api = api;
         this.userEmail = '';
     }
     ngOnInit() {
-        this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormGroup({
-            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
-            password: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__.Validators.required])
+        this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormGroup({
+            email: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)])
         });
     }
     goback() {
         this.location.back();
     }
+    formSubmit() {
+        let myData = 'myData={\r\n "email": "' + this.userEmail + '",\r\n + "method": "forgot_password"\r\n}';
+        this.api.insertData(myData).subscribe((res) => {
+            console.log('res==', res);
+            if (res.status_no == 1) {
+                this.api.presenttoast(res.message);
+            }
+            else {
+                this.api.presenttoast(res.message);
+            }
+        }, (err) => {
+            console.log('err==', err);
+            this.api.presenttoast(err);
+        });
+    }
 };
 ForgotpasswordPage.ctorParameters = () => [
-    { type: _angular_common__WEBPACK_IMPORTED_MODULE_3__.Location }
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__.Location },
+    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService }
 ];
-ForgotpasswordPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+ForgotpasswordPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
         selector: 'app-forgotpassword',
         template: _forgotpassword_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_forgotpassword_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -149,7 +167,7 @@ module.exports = ".rowcls {\n  display: flex;\n  align-items: center;\n  margin-
   \********************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n\n  <ion-row class=\"rowcls\">\n    <ion-col size=\"10\" style=\"padding-left: 27px;\">\n\n      <div style=\"width:100% ;\">\n        <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\n      </div>\n\n    </ion-col>\n\n    <ion-col class=\"titleclass\" size=\"2\">\n\n    </ion-col>\n\n\n  </ion-row>\n\n\n</ion-header>\n\n<ion-content>\n  <div class=\"container\">\n    <div style=\"text-align:center\">\n      <img src=\"assets/images/logo.svg\" style=\"text-align:center ; margin-top:15px;\" alt=\"\">\n    </div>\n\n    <div style=\"margin-top:15px;\">\n      <p class=\"sign-in-para\">Enter your Email Address</p>\n    </div>\n    <form [formGroup]=\"RegisterForm\" (ngSubmit)=\"formSubmit()\">\n      <div class=\"input-div\">\n        <ion-input formControlName=\"email\" [(ngModel)]=\"userEmail\" class=\"input\" type=\"email\" placeholder=\"Email\"><img\n            style=\"margin:15px 7px 14px 15px;\" src=\"assets/images/icons/email.svg\"> </ion-input>\n        <div class=\"validation\"\n          *ngIf=\"RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched\">\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\n          <span class=\"error-msg\">Enter your email</span>\n        </div>\n        <div class=\"validation\"\n          *ngIf=\"RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched\">\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\n          <span class=\"error-msg\">This is invalid format</span>\n        </div>\n      </div>\n\n      <ion-button class=\"btn\" type=\"submit\" [disabled]=\"RegisterForm.invalid\" (click)=\"signIn()\"\n        style=\"--background: #A8B400;\">Forgot Password</ion-button>\n    </form>\n  </div>\n\n</ion-content>\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n\n  <ion-row class=\"rowcls\">\n    <ion-col size=\"10\" style=\"padding-left: 27px;\">\n\n      <div style=\"width:100% ;\">\n        <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\n      </div>\n\n    </ion-col>\n\n    <ion-col class=\"titleclass\" size=\"2\">\n\n    </ion-col>\n\n\n  </ion-row>\n\n\n</ion-header>\n\n<ion-content>\n  <div class=\"container\">\n    <div style=\"text-align:center\">\n      <img src=\"assets/images/logo.svg\" style=\"text-align:center ; margin-top:15px;\" alt=\"\">\n    </div>\n\n    <div style=\"margin-top:15px;\">\n      <p class=\"sign-in-para\">Enter your Email Address</p>\n    </div>\n    <form [formGroup]=\"RegisterForm\" (ngSubmit)=\"formSubmit()\">\n      <div class=\"input-div\">\n        <ion-input formControlName=\"email\" [(ngModel)]=\"userEmail\" class=\"input\" type=\"email\" placeholder=\"Email\"><img\n            style=\"margin:15px 7px 14px 15px;\" src=\"assets/images/icons/email.svg\"> </ion-input>\n        <div class=\"validation\"\n          *ngIf=\"RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched\">\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\n          <span class=\"error-msg\">Enter your email</span>\n        </div>\n        <div class=\"validation\"\n          *ngIf=\"RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched\">\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\">\n          <span class=\"error-msg\">This is invalid format</span>\n        </div>\n      </div>\n\n      <ion-button class=\"btn\" type=\"submit\" [disabled]=\"RegisterForm.invalid\" style=\"--background: #A8B400;\">Forgot\n        Password</ion-button>\n    </form>\n  </div>\n\n</ion-content>\n";
 
 /***/ })
 

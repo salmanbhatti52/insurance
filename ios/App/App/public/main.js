@@ -460,6 +460,7 @@ let InsuranceAppService = class InsuranceAppService {
     this.loadingController = loadingController;
     this.url = 'https://www.cornerstone.com.ng/devtest/webservice';
     this.authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
+    this.url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/';
   }
 
   insertData(myData) {
@@ -474,7 +475,7 @@ let InsuranceAppService = class InsuranceAppService {
     });
   }
 
-  gettoken(myData) {
+  gibsapi(agentid, myData) {
     let header;
     header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
       "Accept": "application/json",
@@ -483,9 +484,16 @@ let InsuranceAppService = class InsuranceAppService {
     header.append("Access-Control-Allow-Origin", "*");
     header.append("Access-Control-Allow-Methods", '*');
     header.append('Access-Control-Allow-Headers');
-    return this.http.post(this.authurl, myData, {
-      headers: header
-    });
+
+    if (myData) {
+      return this.http.post(this.authurl, myData, {
+        headers: header
+      });
+    } else {
+      return this.http.get(this.url1 + agentid, {
+        headers: header
+      });
+    }
   }
 
   insertFormData(Data) {

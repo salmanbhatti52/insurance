@@ -98,7 +98,7 @@ export class RenewalsPage implements OnInit {
       "sid": "ECHANNEL2",
       "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
     }
-    this.api.gettoken(myData).subscribe((res: any) => {
+    this.api.gibsapi(myData).subscribe((res: any) => {
       console.log(res);
       this.bearertoken = res.accessToken
       this.result(this.bearertoken)

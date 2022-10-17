@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.cornerstone.app;
 
 import com.getcapacitor.BridgeActivity;
 

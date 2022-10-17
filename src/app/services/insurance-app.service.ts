@@ -10,6 +10,7 @@ import { LoadingController } from '@ionic/angular';
 export class InsuranceAppService {
   url = 'https://www.cornerstone.com.ng/devtest/webservice';
   authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
+  url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/'
 
   fpval: any;
   constructor(private toastctrl: ToastController,
@@ -28,7 +29,7 @@ export class InsuranceAppService {
       headers: header,
     });
   }
-  gettoken(myData) {
+  gibsapi(agentid?, myData?) {
     let header;
 
     header = new HttpHeaders({
@@ -39,9 +40,16 @@ export class InsuranceAppService {
     header.append("Access-Control-Allow-Origin", "*");
     header.append("Access-Control-Allow-Methods", '*');
     header.append('Access-Control-Allow-Headers');
-    return this.http.post(this.authurl, myData, {
-      headers: header,
-    });
+    if (myData) {
+      return this.http.post(this.authurl, myData, {
+        headers: header,
+      });
+    } else {
+      return this.http.get(this.url1 + agentid, {
+        headers: header,
+      });
+    }
+
   }
   insertFormData(Data) {
     let header;

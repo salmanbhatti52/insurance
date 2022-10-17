@@ -156,7 +156,7 @@ let PolicylookupPage = class PolicylookupPage {
             "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
           };
 
-          _this.api.gettoken(myData).subscribe(res => {
+          _this.api.gibsapi(myData).subscribe(res => {
             console.log(res);
             let token = res.accessToken;
 
