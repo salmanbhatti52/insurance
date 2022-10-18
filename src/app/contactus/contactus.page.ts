@@ -9,11 +9,20 @@ import { NavController } from '@ionic/angular';
 })
 export class ContactusPage implements OnInit {
   cname: string = '';
+  userId: any;
   constructor(public navCtrl: NavController,
     public router: Router,
     public location: Location) { }
 
   ngOnInit() {
+    this.userId = localStorage.getItem('userid');
+    console.log('userid====', this.userId);
+
+    if (this.userId === null) {
+      this.cname == ''
+    } else {
+      this.cname = localStorage.getItem('fname');
+    }
   }
   goBack() {
     this.location.back();

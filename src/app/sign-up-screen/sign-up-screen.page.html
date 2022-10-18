@@ -132,9 +132,9 @@
       <div class="validation"
         *ngIf="RegisterForm.get('password').hasError('pattern') && RegisterForm.get('password').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon">
-        <span class="error-msg">Password must atleast 6 characters in length one uppercase one lowercase letter one
-          special character and
-          number also</span><br>
+        <span class="error-msg">Password must be at least 6
+          characters long and should contain uppercase and lowercase letters, special
+          characters and numbers</span><br>
         <!-- <span class="error-msg">Lowercase letters</span><br>
         <span class="error-msg">Uppercase letters</span><br>
         <span class="error-msg">Numbers</span> -->
@@ -168,7 +168,7 @@
       <div class="flex-c">
         <ion-checkbox mode="md" class="check" (ionChange)="verifyEvent($event)" formControlName="terms">
         </ion-checkbox>
-        <span class="lbl" (click)="check()">Terms and Conditions</span>
+        <span class="lbl" (click)="check()">I agree to the Terms and Conditions</span>
       </div>
 
       <div class="validation"

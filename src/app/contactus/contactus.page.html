@@ -11,7 +11,7 @@
         <div class="title">Contact Us</div>
       </ion-col>
       <ion-col class="titleclass" size="2">
-        <img (click)="updateProfile()" class="pro-img" src="assets/images/profile.svg" alt="profile">
+        <img (click)="updateProfile()" class="pro-img" src="assets/images/user.png">
       </ion-col>
 
 
@@ -23,7 +23,7 @@
 <ion-content>
   <div class="wrapper">
 
-    <p class="name-para">Hi John!</p>
+    <p class="name-para">Hi <span *ngIf="userId!=null">{{cname}}!</span></p>
     <p class="wc-para">Welcome</p>
     <div class="logo">
       <img src="assets/images/contactlogo.svg">

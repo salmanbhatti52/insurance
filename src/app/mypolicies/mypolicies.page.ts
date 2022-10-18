@@ -185,7 +185,7 @@ export class MypoliciesPage implements OnInit {
 
     // }
     this.vehicleVal = 'Please Select';
-    this.vehicleMakeVal = 'Manufacturer';
+    this.vehicleMakeVal = 'Select Manufacturer';
     this.policyhldrVal = 'Please Select';
     this.vehicleModelVal = 'Select Model';
     this.fName = '';

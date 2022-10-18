@@ -1,0 +1,34 @@
+.title{
+  text-align: center;
+    font-family: Bliss Pro;
+    font-size: 20px;
+    color: #1A206D;
+    font-weight: bold;
+}
+ion-list {
+  a {
+      text-decoration-line: none;
+  }
+  @media (min-width: 700px) {
+      max-width: 600px;
+      margin: auto;
+      margin-top: 40px;
+  }
+  ion-item:first-child {
+      --border-width: 0.55px 0 0 0;
+  }
+  ion-item:last-child {
+      --border-width: 0 0 0.55px 0;
+      --inner-border-width: 0 0 0 0;
+  }
+  ion-icon{
+      padding: 4px;
+      //background-color: var(--ion-color-primary, #428xff);
+      border-radius: 4px;
+      font-size: 16px;
+  }
+}
+.list-md {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}

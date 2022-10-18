@@ -14,12 +14,12 @@
           <img src="assets/images/logo1.svg">
         </div> -->
         <div style="display: flex;flex-direction: row;align-items: center; width: 80%;
-          margin:2% auto">
-          <div class="imgdiv">
+          margin:0% auto 5%">
+          <!-- <div class="imgdiv">
             <img src="assets/images/icons/userimg.svg">
-          </div>
+          </div> -->
           <div class="textdiv">
-            <div class="text1">Kola Adekoya</div>
+            <div class="text1">Username: {{api.username}}</div>
           </div>
         </div>
         <div style="width:90%;margin:0% auto;">
@@ -31,7 +31,7 @@
               <ion-label class="title">{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
-          <ion-row>
+          <!-- <ion-row>
             <ion-col size="9">
               <ion-label style="color: #fff;">Enable Face/Fingerprint ID</ion-label>
             </ion-col>
@@ -40,7 +40,7 @@
               </ion-toggle>
               <ion-toggle class="toogleclass" (ionChange)="toogle($event)" *ngIf="api.fpval=='false'"></ion-toggle>
             </ion-col>
-          </ion-row>
+          </ion-row> -->
 
         </div>
 

@@ -13,6 +13,7 @@ export class InsuranceAppService {
   url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/'
 
   fpval: any;
+  username: any;
   constructor(private toastctrl: ToastController,
     private http: HttpClient,
     private loadingController: LoadingController) { }
