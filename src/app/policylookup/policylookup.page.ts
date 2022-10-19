@@ -33,6 +33,8 @@ export class PolicylookupPage implements OnInit {
     var stringValue = number.replace(/,/g, '');
 
     console.log(stringValue, "using String");
+
+
   }
 
   openlist() {
@@ -143,6 +145,11 @@ export class PolicylookupPage implements OnInit {
       this.api.presenttoast(err.error.title);
       this.api.hideLoader();
     });
+
+    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Policies/Motor', Bearertoken).subscribe((res: any) => {
+      console.log('ressssss', res);
+
+    })
   }
 
 }

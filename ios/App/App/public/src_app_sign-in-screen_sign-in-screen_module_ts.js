@@ -190,6 +190,7 @@ let SignInScreenPage = class SignInScreenPage {
         localStorage.setItem('number', res.phone);
         localStorage.setItem('email', res.email);
         localStorage.setItem('password', this.userPassword);
+        this.api.username = res.first_name;
         console.log(localStorage.getItem('userid'));
         console.log(localStorage.getItem('token'));
         this.router.navigate(['/home-page-screen-after-login']);

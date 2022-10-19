@@ -77,6 +77,9 @@ export class HomePageScreenAfterLoginPage implements OnInit {
       console.log(err);
     });
   }
+  investmentsubProducts() {
+    this.router.navigate(['/sub-products']);
+  }
   openProduct(product) {
     console.log("seleted product", product);
     localStorage.setItem('productName', product.name);

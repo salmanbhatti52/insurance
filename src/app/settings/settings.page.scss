@@ -14,10 +14,14 @@ ion-list {
       margin: auto;
       margin-top: 40px;
   }
-  ion-item:first-child {
-      --border-width: 0.55px 0 0 0;
+  ion-item{
+    --background:#fff;
+    color: #000;;
   }
-  ion-item:last-child {
+  // ion-item:first-child {
+  //     --border-width: 0.55px 0 0 0;
+  // }
+  ion-item{
       --border-width: 0 0 0.55px 0;
       --inner-border-width: 0 0 0 0;
   }

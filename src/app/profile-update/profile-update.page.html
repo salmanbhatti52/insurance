@@ -125,19 +125,38 @@
       </div>
       <!-- //////////////--------------------------//////////////////////////// -->
       <div class="texthead">KYC Documents</div>
-      <div style="font-size: 14px;text-transform:capitalize;color:#000;">valid driver license/national id
-        card/international
-        passport</div>
-      <div class="inputfield" style="display:flex ; height: 48px;">
-        <input type="file" (change)="selectFile($event,'Id')" accept="image/x-png,image/gif,image/jpeg">
+      <div style="font-size: 16px;text-transform:capitalize;color:#000;font-weight:600;">Proof of ID</div>
+      <div class="inputfield" style="
+      padding: 10px 15px;">
+        <!-- <input type="file" (change)="selectFile($event,'Id')" accept="image/x-png,image/gif,image/jpeg"> -->
+        <div style="display:flex;align-items: center;
+        justify-content: space-between;">
+          <div style="color:#000;">Choose File</div>
+
+          <div (click)="openlist()">
+            <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
+            <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
+          </div>
+        </div>
+
+        <div *ngIf="show==true">
+          <input type="file" (change)="selectFile($event,'driverlicense')" accept="image/x-png,image/gif,image/jpeg"
+            class="file-input" value="" title=" ">
+          <input type="file" (change)="selectFile($event,'Idcard')" accept="image/x-png,image/gif,image/jpeg"
+            class="file-input2" value="" title=" ">
+          <input type="file" (change)="selectFile($event,'passport')" accept="image/x-png,image/gif,image/jpeg"
+            class="file-input3" value="" title=" ">
+        </div>
       </div>
 
-      <div style="font-size: 14px;text-transform:capitalize;color:#000;">utility bill</div>
-      <div style="height: 100px; width:100px; text-align: center;" *ngIf="customerId.base64"><img
-          style="height: 100px; width:100px" src="{{customerId.base64}}" alt=""></div>
+      <div style="height: 100px; width:100px; text-align: center;margin-bottom: 4%" *ngIf="base64"><img
+          style="height: 100px; width:100px" src="{{base64}}" alt=""></div>
 
-      <div class="inputfield" style="display:flex ; height: 48px;">
-        <input type="file" (change)="selectFile($event,'utilityBills')" accept="image/x-png,image/gif,image/jpeg">
+      <div style="font-size: 16px;text-transform:capitalize;color:#000;font-weight:600;">Proof of Address</div>
+      <div class="inputfield" style="display:flex ; height: 44px;align-items: center;
+      padding: 0px 15px;">
+        <input type="file" (change)="selectFile($event,'utilityBills')" accept="image/x-png,image/gif,image/jpeg"
+          class="file-input4" value="" title=" ">
       </div>
 
       <div style="height: 100px; width:100px; text-align: center;" *ngIf="utilityBills.base64"><img

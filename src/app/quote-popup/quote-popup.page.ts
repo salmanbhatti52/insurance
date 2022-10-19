@@ -14,6 +14,7 @@ export class QuotePopupPage implements OnInit {
   prod_id: any;
   subProducts: any;
   productID: any;
+  insurancename: any;
   constructor(public router: Router,
     public modal: ModalController,
     public location: Location,
@@ -21,8 +22,10 @@ export class QuotePopupPage implements OnInit {
 
   ngOnInit() {
     this.subProducts = JSON.parse(localStorage.getItem('subProducts'));
+
     this.productID = localStorage.getItem('productid');
     console.log('productid', this.productID);
+    this.insurancename = localStorage.getItem('productName');
 
   }
 

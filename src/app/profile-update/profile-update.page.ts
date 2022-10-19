@@ -32,13 +32,20 @@ export class ProfileUpdatePage implements OnInit {
   newpass: any;
   existingpas: any;
   customerId = {
-    file: "",
-    base64: "",
+    file: ""
   };
   utilityBills = {
     file: "",
     base64: "",
   };
+  driverlicense = {
+    file: "",
+  };
+  passport = {
+    file: "",
+  };
+  base64 = '';
+
 
   constructor(public router: Router,
     public api: InsuranceAppService,
@@ -141,9 +148,17 @@ export class ProfileUpdatePage implements OnInit {
     this.getBase64(event.target.files[0]).then(data => {
       let file = event.target.files[0];
       let base64 = data as string;
-      if (type == 'Id') {
+      if (type == 'driverlicense') {
+        this.driverlicense.file = file;
+        this.base64 = base64;
+      }
+      else if (type == 'Idcard') {
         this.customerId.file = file;
-        this.customerId.base64 = base64;
+        this.base64 = base64;
+      }
+      else if (type == 'passport') {
+        this.passport.file = file;
+        this.base64 = base64;
       }
       else if (type == 'utilityBills') {
         this.utilityBills.file = file;
