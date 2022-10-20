@@ -77,6 +77,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
       console.log(err);
     });
   }
+
   investmentsubProducts() {
     this.router.navigate(['/sub-products']);
   }

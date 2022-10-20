@@ -15,6 +15,7 @@ export class QuotePopupPage implements OnInit {
   subProducts: any;
   productID: any;
   insurancename: any;
+  motorsubproducts = []
   constructor(public router: Router,
     public modal: ModalController,
     public location: Location,
@@ -26,9 +27,53 @@ export class QuotePopupPage implements OnInit {
     this.productID = localStorage.getItem('productid');
     console.log('productid', this.productID);
     this.insurancename = localStorage.getItem('productName');
+    this.gibsproduct()
+  }
+  gibsproduct() {
+    var myData = {
+      "sid": "ECHANNEL2",
+      "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
+    }
+    this.api.gibsapi(myData).subscribe((res: any) => {
+      console.log(res);
+      let token = res.accessToken
+      this.motorproductonly(token)
+    }, (err) => {
+      console.log(err);
+      this.api.hideLoader()
+    });
+  }
+  motorproductonly(token) {
+    let Bearertoken = token
+    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products', Bearertoken).subscribe((res: any) => {
+
+      console.log('ressssss', res);
+      res.map((value, index) => {
+        if (value.productName == "PRIVATE MOTOR-AUTO CLASSIC" || value.productName == "PRIVATE MOTOR-AUTO PLUS" || value.productName == "UBER CLASSIC MOTOR") {
+          this.motorsubproducts.push(value);
+        }
+      });
+      console.log('subproducts after check---', this.motorsubproducts);
+    })
+  }
+  GProductdetail(ID) {
+    var myData = {
+      "sid": "ECHANNEL2",
+      "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
+    }
+    this.api.gibsapi(myData).subscribe((res: any) => {
+      // console.log(res);
+      let token = res.accessToken
+      this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products/' + ID, token).subscribe((res: any) => {
+
+        console.log('gibs product detail', res);
+      })
+    }, (err) => {
+      console.log(err);
+      this.api.hideLoader()
+    });
 
   }
-
   goback() {
     this.location.back();
   }

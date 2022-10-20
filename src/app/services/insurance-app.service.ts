@@ -135,7 +135,7 @@ export class InsuranceAppService {
   }
   getpolicy(url, token?) {
     let header;
-    console.log('token in api ervice====', token);
+    // console.log('token in api ervice====', token);
     // let headers
     // headers = new Headers();
     // headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");

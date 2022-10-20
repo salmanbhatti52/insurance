@@ -26,6 +26,10 @@
     <div class="c-center">
       <p class="con-p1">Make a Quote</p>
     </div>
+    <div style="font-size: 20px;
+    color: #000;
+    font-weight: 500;
+    margin-bottom: 3%;">The products for mobile are:</div>
 
     <div class="boxdiv" *ngFor="let sp of subProducts">
       <div style="display:flex;margin-bottom: 7%;" (click)="seeDetails(sp)">
@@ -34,7 +38,7 @@
       </div>
 
     </div>
-    <div class="boxdiv" *ngIf="productID==1">
+    <!-- <div class="boxdiv" *ngIf="productID==1">
       <div style="display:flex;margin-bottom: 7%;" (click)="seeDetails('null')">
         <img src="assets/images/carimg.png" alt="" style="width: 170px; height: 83px;">
         <p style="color: #1A206D;
@@ -42,9 +46,17 @@
         font-weight: 500;
         margin: 6% 0% 0% 4%;">COMPREHENSIVE MOTOR INSURANCE</p>
       </div>
+    </div> -->
+
+    <div class="boxdiv" *ngFor="let gibs of motorsubproducts">
+      <div style="display:flex;margin-bottom: 7%;" (click)="GProductdetail(gibs.productID)">
+        <img src="assets/images/carimg.png" alt="" style="width: 170px; height: 83px;">
+        <p style="color: #1A206D;
+        font-size: 17px;
+        font-weight: 500;
+        margin: 6% 0% 0% 4%;">{{gibs.productName}}</p>
+      </div>
     </div>
-
-
     <!-- <div *ngFor="let sp of subProducts">
       <div class="c-center">
         <img src="{{sp.image}}" alt="" style="margin-top:5%; width: 170px; height: 83px;">

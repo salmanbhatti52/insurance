@@ -112,12 +112,56 @@ let QuotePopupPage = class QuotePopupPage {
         this.modal = modal;
         this.location = location;
         this.api = api;
+        this.motorsubproducts = [];
     }
     ngOnInit() {
         this.subProducts = JSON.parse(localStorage.getItem('subProducts'));
         this.productID = localStorage.getItem('productid');
         console.log('productid', this.productID);
         this.insurancename = localStorage.getItem('productName');
+        this.gibsproduct();
+    }
+    gibsproduct() {
+        var myData = {
+            "sid": "ECHANNEL2",
+            "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
+        };
+        this.api.gibsapi(myData).subscribe((res) => {
+            console.log(res);
+            let token = res.accessToken;
+            this.motorproductonly(token);
+        }, (err) => {
+            console.log(err);
+            this.api.hideLoader();
+        });
+    }
+    motorproductonly(token) {
+        let Bearertoken = token;
+        this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products', Bearertoken).subscribe((res) => {
+            console.log('ressssss', res);
+            res.map((value, index) => {
+                if (value.productName == "PRIVATE MOTOR-AUTO CLASSIC" || value.productName == "PRIVATE MOTOR-AUTO PLUS" || value.productName == "UBER CLASSIC MOTOR") {
+                    this.motorsubproducts.push(value);
+                }
+            });
+            console.log('subproducts after check---', this.motorsubproducts);
+        });
+    }
+    GProductdetail(ID) {
+        var myData = {
+            "sid": "ECHANNEL2",
+            "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
+        };
+        this.api.gibsapi(myData).subscribe((res) => {
+            // console.log(res);
+            let token = res.accessToken;
+            this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products/' + ID, token).subscribe((res) => {
+                console.log('gibs product detail', res);
+            });
+        }, (err) => {
+            console.log(err);
+            this.api.hideLoader();
+        });
     }
     goback() {
         this.location.back();
@@ -199,7 +243,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \**************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">{{insurancename}}</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\">\r\n      </ion-col>\r\n\r\n\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n<ion-content>\r\n\r\n  <div class=\"container\">\r\n\r\n    <div class=\"c-center\">\r\n      <p class=\"con-p1\">Make a Quote</p>\r\n    </div>\r\n\r\n    <div class=\"boxdiv\" *ngFor=\"let sp of subProducts\">\r\n      <div style=\"display:flex;margin-bottom: 7%;\" (click)=\"seeDetails(sp)\">\r\n        <img src=\"{{sp.image}}\" alt=\"\" style=\"width: 170px; height: 83px;\">\r\n        <p class=\"con-p2\">{{sp.name}}</p>\r\n      </div>\r\n\r\n    </div>\r\n    <div class=\"boxdiv\" *ngIf=\"productID==1\">\r\n      <div style=\"display:flex;margin-bottom: 7%;\" (click)=\"seeDetails('null')\">\r\n        <img src=\"assets/images/carimg.png\" alt=\"\" style=\"width: 170px; height: 83px;\">\r\n        <p style=\"color: #1A206D;\r\n        font-size: 17px;\r\n        font-weight: 500;\r\n        margin: 6% 0% 0% 4%;\">COMPREHENSIVE MOTOR INSURANCE</p>\r\n      </div>\r\n    </div>\r\n\r\n\r\n    <!-- <div *ngFor=\"let sp of subProducts\">\r\n      <div class=\"c-center\">\r\n        <img src=\"{{sp.image}}\" alt=\"\" style=\"margin-top:5%; width: 170px; height: 83px;\">\r\n        <p class=\"con-p2\">{{sp.name}}</p>\r\n      </div>\r\n\r\n      <div class=\"btndiv\">\r\n        <ion-button class=\"btn\" (click)=\"seeDetails(sp)\">QUOTE</ion-button>\r\n      </div>\r\n      <hr style=\"margin-top:25px; border-top: 5px solid #A8B400; width:70%\">\r\n    </div> -->\r\n\r\n\r\n  </div>\r\n\r\n</ion-content>\r\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">{{insurancename}}</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\">\r\n      </ion-col>\r\n\r\n\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n<ion-content>\r\n\r\n  <div class=\"container\">\r\n\r\n    <div class=\"c-center\">\r\n      <p class=\"con-p1\">Make a Quote</p>\r\n    </div>\r\n    <div style=\"font-size: 20px;\r\n    color: #000;\r\n    font-weight: 500;\r\n    margin-bottom: 3%;\">The products for mobile are:</div>\r\n\r\n    <div class=\"boxdiv\" *ngFor=\"let sp of subProducts\">\r\n      <div style=\"display:flex;margin-bottom: 7%;\" (click)=\"seeDetails(sp)\">\r\n        <img src=\"{{sp.image}}\" alt=\"\" style=\"width: 170px; height: 83px;\">\r\n        <p class=\"con-p2\">{{sp.name}}</p>\r\n      </div>\r\n\r\n    </div>\r\n    <!-- <div class=\"boxdiv\" *ngIf=\"productID==1\">\r\n      <div style=\"display:flex;margin-bottom: 7%;\" (click)=\"seeDetails('null')\">\r\n        <img src=\"assets/images/carimg.png\" alt=\"\" style=\"width: 170px; height: 83px;\">\r\n        <p style=\"color: #1A206D;\r\n        font-size: 17px;\r\n        font-weight: 500;\r\n        margin: 6% 0% 0% 4%;\">COMPREHENSIVE MOTOR INSURANCE</p>\r\n      </div>\r\n    </div> -->\r\n\r\n    <div class=\"boxdiv\" *ngFor=\"let gibs of motorsubproducts\">\r\n      <div style=\"display:flex;margin-bottom: 7%;\" (click)=\"GProductdetail(gibs.productID)\">\r\n        <img src=\"assets/images/carimg.png\" alt=\"\" style=\"width: 170px; height: 83px;\">\r\n        <p style=\"color: #1A206D;\r\n        font-size: 17px;\r\n        font-weight: 500;\r\n        margin: 6% 0% 0% 4%;\">{{gibs.productName}}</p>\r\n      </div>\r\n    </div>\r\n    <!-- <div *ngFor=\"let sp of subProducts\">\r\n      <div class=\"c-center\">\r\n        <img src=\"{{sp.image}}\" alt=\"\" style=\"margin-top:5%; width: 170px; height: 83px;\">\r\n        <p class=\"con-p2\">{{sp.name}}</p>\r\n      </div>\r\n\r\n      <div class=\"btndiv\">\r\n        <ion-button class=\"btn\" (click)=\"seeDetails(sp)\">QUOTE</ion-button>\r\n      </div>\r\n      <hr style=\"margin-top:25px; border-top: 5px solid #A8B400; width:70%\">\r\n    </div> -->\r\n\r\n\r\n  </div>\r\n\r\n</ion-content>\r\n";
 
 /***/ })
 
