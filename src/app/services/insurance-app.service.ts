@@ -191,10 +191,16 @@ export class InsuranceAppService {
     // });
 
     header = new HttpHeaders({
-
-      Authorization: 'Bearer ' + data,
+      Authorization:  token,
     });
-
+    header.append('Access-Control-Allow-Origin', '*');
+ //   header.append('Authorization', 'Bearer' + token);
+    header.append('Access-Control-Allow-Credentials', 'true');
+    header.append('Access-Control-Allow-Headers: Authorization, Content-Type');
+    header.append(
+      'Access-Control-Allow-Methods',
+      'POST, GET, DELETE, PUT,OPTIONS'
+    );
 
     return this.http.post(`${url}`, data, {
       headers: header

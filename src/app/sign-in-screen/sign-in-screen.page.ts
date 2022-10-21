@@ -25,6 +25,8 @@ export class SignInScreenPage implements OnInit {
   fingerprintlogo: boolean = false;
   getuserEmail: any;
   getuserPassword: any;
+  errormessage: any;
+  error = false;
   constructor(public router: Router,
     public modal: ModalController,
     public menuCtrl: MenuController,
@@ -92,7 +94,9 @@ export class SignInScreenPage implements OnInit {
       }
       else {
         this.api.hideLoader();
-        this.api.presenttoast(res.message);
+        // this.api.presenttoast(res.message);
+        this.error = true
+        this.errormessage = 'Email or password is incorrect'
       }
     }, (err) => {
       console.log('err==', err);
@@ -132,6 +136,7 @@ export class SignInScreenPage implements OnInit {
             this.router.navigate(['/home-page-screen-after-login']);
           }
           else {
+
             this.api.presenttoast(res.message);
           }
         }, (err) => {
