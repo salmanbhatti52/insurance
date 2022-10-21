@@ -178,26 +178,29 @@ export class InsuranceAppService {
       headers: header
     });
   }
-  postparam(url, token) {
+
+
+  postparam(url, data?, token?) {
     let header;
     console.log('token in api ervice====', token);
+    // let headers
+    // headers = new Headers();
+    // headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");
+    // return this.http.get(url, {
+    //   headers: headers
+    // });
 
     header = new HttpHeaders({
-      Authorization:  token,
-    });
-    header.append('Access-Control-Allow-Origin', '*');
- //   header.append('Authorization', 'Bearer' + token);
-    header.append('Access-Control-Allow-Credentials', 'true');
-    header.append('Access-Control-Allow-Headers: Authorization, Content-Type');
-    header.append(
-      'Access-Control-Allow-Methods',
-      'POST, GET, DELETE, PUT,OPTIONS'
-    );
 
-    return this.http.post(url, {
+      Authorization: 'Bearer ' + data,
+    });
+
+
+    return this.http.post(`${url}`, data, {
       headers: header
     });
   }
+
   // waGetData(action,token) {
   //   let header;
 
