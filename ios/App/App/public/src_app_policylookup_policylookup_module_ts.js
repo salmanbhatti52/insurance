@@ -173,7 +173,7 @@ let PolicylookupPage = class PolicylookupPage {
 
           _this.api.showLoader();
 
-          _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + _this.policynum + '&process_code=140', token).subscribe(response => {
+          _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + _this.policynum + '&process_code=140', localStorage.getItem('token')).subscribe(response => {
             _this.api.hideLoader();
 
             console.log(response);

@@ -33,14 +33,18 @@
 
     <div class="boxdiv" *ngFor="let sp of subProducts">
       <div style="display:flex;margin-bottom: 7%;" (click)="seeDetails(sp)">
-        <img  (error)="handleImgError($event, userIMG)" src="{{sp.image}}" alt="" style="width: 170px; height: 83px;">
+        <img (error)="handleImgError($event, userIMG)" src="{{sp.image}}" alt="" style="    width: 100px;
+        height: 100px;
+        object-fit: cover;">
         <p class="con-p2">{{sp.name}}</p>
       </div>
 
     </div>
     <!-- <div class="boxdiv" *ngIf="productID==1">
       <div style="display:flex;margin-bottom: 7%;" (click)="seeDetails('null')">
-        <img src="assets/images/carimg.png" alt="" style="width: 170px; height: 83px;">
+        <img src="assets/images/carimg.png" alt="" style="    width: 100px;
+    height: 100px;
+    object-fit: cover;">
         <p style="color: #1A206D;
         font-size: 17px;
         font-weight: 500;
@@ -49,8 +53,11 @@
     </div> -->
 
     <div class="boxdiv" *ngFor="let gibs of motorsubproducts">
-      <div *ngIf="api.comingFrom === 'Motor Insurance'" style="display:flex;margin-bottom: 7%;" (click)="GProductdetail(gibs.productID)">
-        <img src="assets/images/carimg.png" alt="" style="width: 170px; height: 83px;">
+      <div *ngIf="api.comingFrom === 'Motor Insurance'" style="display:flex;margin-bottom: 7%;"
+        (click)="GProductdetail(gibs.productID)">
+        <img src="assets/images/carimg.png" alt="" style="    width: 100px;
+        height: 100px;
+        object-fit: cover;">
         <p style="color: #1A206D;
         font-size: 17px;
         font-weight: 500;
@@ -59,7 +66,9 @@
     </div>
     <!-- <div *ngFor="let sp of subProducts">
       <div class="c-center">
-        <img src="{{sp.image}}" alt="" style="margin-top:5%; width: 170px; height: 83px;">
+        <img src="{{sp.image}}" alt="" style="margin-top:5%;     width: 100px;
+    height: 100px;
+    object-fit: cover;">
         <p class="con-p2">{{sp.name}}</p>
       </div>
 

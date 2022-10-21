@@ -497,6 +497,7 @@ let InsuranceAppService = class InsuranceAppService {
     this.loadingController = loadingController;
     this.url = 'https://www.cornerstone.com.ng/devtest/webservice';
     this.authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
+    this.comingFrom = 0;
   }
 
   insertData(myData) {
@@ -504,7 +505,7 @@ let InsuranceAppService = class InsuranceAppService {
     header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
       // "Content-Type": "application/json",
       // "Accept": "application/json"
-      "Content-Type": "application/x-www-form-urlencoded"
+      'Content-Type': 'application/x-www-form-urlencoded'
     });
     return this.http.post(this.url, myData, {
       headers: header
@@ -514,11 +515,11 @@ let InsuranceAppService = class InsuranceAppService {
   gibsapi(myData) {
     let header;
     header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-      "Accept": "application/json",
-      "Content-Type": "application/json"
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
     });
-    header.append("Access-Control-Allow-Origin", "*");
-    header.append("Access-Control-Allow-Methods", '*');
+    header.append('Access-Control-Allow-Origin', '*');
+    header.append('Access-Control-Allow-Methods', '*');
     header.append('Access-Control-Allow-Headers');
     return this.http.post(this.authurl, myData, {
       headers: header
@@ -528,8 +529,8 @@ let InsuranceAppService = class InsuranceAppService {
   insertFormData(Data) {
     let header;
     header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Cookie": "corci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%229067b6add23324d21220d8f7d5c649c0%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A12%3A%2239.40.231.23%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A21%3A%22PostmanRuntime%2F7.29.0%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1656587499%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7D87fb653bf23ba596c9ade5a76135fe0a7557093d"
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Cookie: 'corci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%229067b6add23324d21220d8f7d5c649c0%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A12%3A%2239.40.231.23%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A21%3A%22PostmanRuntime%2F7.29.0%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1656587499%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7D87fb653bf23ba596c9ade5a76135fe0a7557093d'
     });
     return this.http.post(this.url, Data, {
       headers: header
@@ -541,14 +542,14 @@ let InsuranceAppService = class InsuranceAppService {
 
     if (token) {
       header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-        "Authorization": "Bearer " + token
+        Authorization: 'Bearer ' + token
       });
-      header.append("Access-Control-Allow-Origin", "*");
-      header.append("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT,OPTIONS");
+      header.append('Access-Control-Allow-Origin', '*');
+      header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     } else {
       header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-      header.append("Access-Control-Allow-Origin", "*");
-      header.append("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT,OPTIONS");
+      header.append('Access-Control-Allow-Origin', '*');
+      header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     }
 
     return this.http.post(`${this.url}/${action}`, {
@@ -561,14 +562,14 @@ let InsuranceAppService = class InsuranceAppService {
 
     if (token) {
       header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-        "auth-key": token
+        'auth-key': token
       });
-      header.append("Access-Control-Allow-Origin", "*");
-      header.append("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT,OPTIONS");
+      header.append('Access-Control-Allow-Origin', '*');
+      header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     } else {
       header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
-      header.append("Access-Control-Allow-Origin", "*");
-      header.append("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT,OPTIONS");
+      header.append('Access-Control-Allow-Origin', '*');
+      header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     }
 
     return this.http.get(`${this.url}/${action}`, {
@@ -587,7 +588,7 @@ let InsuranceAppService = class InsuranceAppService {
 
     header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
       // 'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': "Bearer " + token
+      Authorization: 'Bearer ' + token
     }); // header.append("Access-Control-Allow-Origin", "*");
     // header.append(
     //   "Access-Control-Allow-Methods",
@@ -609,9 +610,9 @@ let InsuranceAppService = class InsuranceAppService {
     // });
 
     header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-      'Authorization': "Bearer " + token
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token
     }); // header.append("Access-Control-Allow-Origin", "*");
     // header.append(
     //   "Access-Control-Allow-Methods",
@@ -633,7 +634,24 @@ let InsuranceAppService = class InsuranceAppService {
     // });
 
     header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-      'Authorization': "Bearer " + token
+      Authorization: 'Bearer ' + token
+    });
+    return this.http.post(`${url}`, data, {
+      headers: header
+    });
+  }
+
+  postparam(url, data, token) {
+    let header;
+    console.log('token in api ervice====', token); // let headers
+    // headers = new Headers();
+    // headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");
+    // return this.http.get(url, {
+    //   headers: headers
+    // });
+
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+      Authorization: 'Bearer ' + data
     });
     return this.http.post(`${url}`, data, {
       headers: header
@@ -674,15 +692,15 @@ let InsuranceAppService = class InsuranceAppService {
 
     if (token) {
       header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-        "auth-key": token
+        'auth-key': token
       });
-      header.append("Access-Control-Allow-Origin", "*");
-      header.append("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT,OPTIONS");
+      header.append('Access-Control-Allow-Origin', '*');
+      header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     } else {
       header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({// "content-type":"text/html"
       });
-      header.append("Access-Control-Allow-Origin", "*");
-      header.append("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT,OPTIONS");
+      header.append('Access-Control-Allow-Origin', '*');
+      header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     }
 
     return this.http.get(`${this.url}`, {
@@ -692,9 +710,9 @@ let InsuranceAppService = class InsuranceAppService {
 
   presenttoast(message) {
     this.toastctrl.create({
-      message: message,
+      message,
       duration: 2000,
-      position: 'top'
+      position: 'bottom'
     }).then(res => res.present());
   }
 

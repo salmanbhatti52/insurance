@@ -1,11 +1,35 @@
-<ion-header>
+<!-- <ion-header>
   <div class="headercls">
     <div style="width: 100%;">
       <img (click)="goBack()" src="assets/images/back-arrow.svg" alt="">
     </div>
   </div>
 
+</ion-header> -->
+
+
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 25px;">
+        <div style="width:100% ;">
+          <img (click)="goBack()" src="assets/images/back-arrow.svg" alt="sb-btn">
+        </div>
+      </ion-col>
+      <ion-col size="8" style="padding-top: 0px;">
+        <div class="title">Customer Information Profile</div>
+      </ion-col>
+      <ion-col size="2" style="text-align: center;
+      padding-top: 3%;">
+
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
 </ion-header>
+
 
 <ion-content>
   <div class="container">
@@ -14,9 +38,9 @@
       <img src="assets/images/logo.svg" style="text-align:center ;" alt="">
     </div> -->
 
-    <div class="title-para" style="text-align: center;">
+    <!-- <div class="title-para" style="text-align: center;">
       <p class="cont-p1">Customer Information Profile</p>
-    </div>
+    </div> -->
 
     <form [formGroup]="RegisterForm">
       <!-- <ion-input type="text" formControlName="title" [(ngModel)]="uTitle" class="input" placeholder="{{usertitle}}"><img

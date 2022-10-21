@@ -146,11 +146,11 @@ export class PolicylookupPage implements OnInit {
       this.api.hideLoader();
     });
 
-    // this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products', Bearertoken).subscribe((res: any) => {
+    // this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Policies/Motor', Bearertoken).subscribe((res: any) => {
     //   console.log('ressssss', res);
 
     //   let postdata = {
-    //     "productID": "1111",
+    //     "productID": "3034",
     //     "entryDate": "2022-10-20T04:29:31.261Z",
     //     "startDate": "2018-03-13T00:00:00",
     //     "endDate": "2019-03-12T00:00:00",
