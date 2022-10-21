@@ -29,16 +29,16 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   ionViewWillEnter() {
 
     if (localStorage.getItem('userid') == null) {
-      this.api.presenttoast('Please Login First')
+      this.api.presenttoast('Please Login First');
       this.router.navigate(['/sign-in-screen']);
     } else {
       this.getProducts();
-      this.alertbox()
+      this.alertbox();
     }
   }
 
   async alertbox() {
-    let fp = localStorage.getItem('fingerprint')
+    const fp = localStorage.getItem('fingerprint');
     console.log('sASAsaSA', fp);
     if (fp == null) {
       const alert = await this.alert.create({
@@ -81,31 +81,31 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   investmentsubProducts() {
     this.router.navigate(['/sub-products']);
   }
-  openProduct(product) {
-    console.log("seleted product", product);
+  openProduct(product,comingFrom) {
+    console.log('seleted product', product);
     localStorage.setItem('productName', product.name);
-    localStorage.setItem('productid', product.id)
-    this.subProducts(product.id);
+    localStorage.setItem('productid', product.id);
+    this.subProducts(product.id,comingFrom);
   }
-  subProducts(id) {
+  subProducts(id,comingFrom) {
     const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","product_id":"' + id + '","method":"get_avilable_subproducts"}';
     this.api.insertData(myData).subscribe((res: any) => {
-      let subproducts = [];
-      console.log("subProducts---------", res);
+      const subproducts = [];
+      console.log('subProducts---------', res);
       res.subproducts.map((value, index) => {
         //old code..
         // if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen" && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
         //   subproducts.push(value);
         // }
         //new code to add local travel insurance
-        if (value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen" && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
+        if (value.name != 'Pilgrimage Plans' && value.name != 'Student Plan' && value.name != 'Europe / Shengen' && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
           subproducts.push(value);
         }
       });
       console.log('subproducts after check---', subproducts);
       // return;
       localStorage.setItem('subProducts', JSON.stringify(subproducts));
-      this.PopupCust();
+      this.PopupCust(comingFrom);
 
     }, (err) => {
       console.log(err);
@@ -143,7 +143,10 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   //   return await modal.present();
   // }
 
-  PopupCust() {
+  PopupCust(comingFrom) {
+
+    this.api.comingFrom = comingFrom;
+
     this.router.navigate(['/quote-popup']);
 
   }

@@ -14,6 +14,9 @@ export class InsuranceAppService {
 
   fpval: any;
   username: any;
+
+  comingFrom: any = 0;
+
   constructor(private toastctrl: ToastController,
     private http: HttpClient,
     private loadingController: LoadingController) { }

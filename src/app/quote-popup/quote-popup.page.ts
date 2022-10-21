@@ -15,7 +15,7 @@ export class QuotePopupPage implements OnInit {
   subProducts: any;
   productID: any;
   insurancename: any;
-  motorsubproducts = []
+  motorsubproducts = [];
   constructor(public router: Router,
     public modal: ModalController,
     public location: Location,
@@ -27,50 +27,50 @@ export class QuotePopupPage implements OnInit {
     this.productID = localStorage.getItem('productid');
     console.log('productid', this.productID);
     this.insurancename = localStorage.getItem('productName');
-    this.gibsproduct()
+    this.gibsproduct();
   }
   gibsproduct() {
-    var myData = {
-      "sid": "ECHANNEL2",
-      "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
-    }
+    const myData = {
+      sid: 'ECHANNEL2',
+      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
+    };
     this.api.gibsapi(myData).subscribe((res: any) => {
       console.log(res);
-      let token = res.accessToken
-      this.motorproductonly(token)
+      const token = res.accessToken;
+      this.motorproductonly(token);
     }, (err) => {
       console.log(err);
-      this.api.hideLoader()
+      this.api.hideLoader();
     });
   }
   motorproductonly(token) {
-    let Bearertoken = token
+    const Bearertoken = token;
     this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products', Bearertoken).subscribe((res: any) => {
 
       console.log('ressssss', res);
       res.map((value, index) => {
-        if (value.productName == "PRIVATE MOTOR-AUTO CLASSIC" || value.productName == "PRIVATE MOTOR-AUTO PLUS" || value.productName == "UBER CLASSIC MOTOR") {
+        if (value.productName == 'PRIVATE MOTOR-AUTO CLASSIC' || value.productName == 'PRIVATE MOTOR-AUTO PLUS' || value.productName == 'UBER CLASSIC MOTOR') {
           this.motorsubproducts.push(value);
         }
       });
       console.log('subproducts after check---', this.motorsubproducts);
-    })
+    });
   }
   GProductdetail(ID) {
-    var myData = {
-      "sid": "ECHANNEL2",
-      "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
-    }
+    const myData = {
+      sid: 'ECHANNEL2',
+      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
+    };
     this.api.gibsapi(myData).subscribe((res: any) => {
       // console.log(res);
-      let token = res.accessToken
+      const token = res.accessToken;
       this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products/' + ID, token).subscribe((res: any) => {
 
         console.log('gibs product detail', res);
-      })
+      });
     }, (err) => {
       console.log(err);
-      this.api.hideLoader()
+      this.api.hideLoader();
     });
 
   }
@@ -84,8 +84,8 @@ export class QuotePopupPage implements OnInit {
   subProductsshow(id) {
     const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","product_id":"' + id + '","method":"get_avilable_subproducts"}';
     this.api.insertData(myData).subscribe((res: any) => {
-      let subproducts = [];
-      console.log("subProducts---------", res);
+      const subproducts = [];
+      console.log('subProducts---------', res);
       res.subproducts.map((value, index) => {
         // if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen") {
         //   subproducts.push(value);
@@ -94,7 +94,7 @@ export class QuotePopupPage implements OnInit {
       });
       console.log('subproducts after check---', subproducts);
       // return;
-      this.subProducts = subproducts
+      this.subProducts = subproducts;
       localStorage.setItem('subProducts', JSON.stringify(subproducts));
 
     }, (err) => {
@@ -105,7 +105,7 @@ export class QuotePopupPage implements OnInit {
   seeDetails(sp) {
     console.log(sp);
     if (sp == 'null') {
-      this.api.presenttoast('Product details not defined')
+      this.api.presenttoast('Product details not defined');
     } else {
       if (sp.product_for_quote == 1) {
         this.router.navigate(['/mypolicies']);
@@ -122,6 +122,15 @@ export class QuotePopupPage implements OnInit {
     //   console.log('data came back from modal');
     //   console.log(data);
     // })
+  }
+
+
+  handleImgError(ev: any, item: any, url) {
+    const source = ev.srcElement;
+
+    const imgSrc = `assets/images/placeholder.jpg`;
+
+    source.src = imgSrc;
   }
 
 }

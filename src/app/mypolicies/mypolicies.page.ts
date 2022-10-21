@@ -38,7 +38,7 @@ export class MypoliciesPage implements OnInit {
   showRoadSide = false;
   tourStartDate = format(new Date(), 'yyyy-MM-dd');;
   tourEndDate = format(new Date(), 'yyyy-MM-dd');;
-  otheName = "";
+  otheName = '';
   showPickerStartDate = false;
   showPickerEndDate = false;
   ageGroup = 'Please Select';
@@ -71,43 +71,43 @@ export class MypoliciesPage implements OnInit {
       id: 1,
       title: 'Mrs',
     },
+    // {
+    //   id: 2,
+    //   title: 'Mrs',
+    // },
+    // {
+    //   i: 3,
+    //   title: 'Miss',
+    // },
     {
-      id: 2,
-      title: 'Mrs',
-    },
-    {
-      i: 3,
-      title: 'Miss',
-    },
-    {
-      autoPlan: 4,
+      autoPlan: 2,
       title: 'Ms',
     },
     {
-      autoPlan: 5,
+      autoPlan: 3,
       title: 'Chief',
     },
 
     {
-      id: 6,
+      id: 4,
       title: 'Dr',
     },
     {
-      autoPlan: 7,
+      autoPlan: 5,
       title: 'Air Vice Marshall',
     },
     {
-      autoPlan: 8,
+      autoPlan: 6,
       title: 'Alhaji',
     },
-    {
-      autoPlan: 9,
-      title: 'Ms',
-    },
-    {
-      autoPlan: 10,
-      title: 'Chief',
-    }
+    // {
+    //   autoPlan: 9,
+    //   title: 'Ms',
+    // },
+    // {
+    //   autoPlan: 10,
+    //   title: 'Chief',
+    // }
   ];
   autoPlansOfChoice = [
     {
@@ -245,13 +245,13 @@ export class MypoliciesPage implements OnInit {
           this.vehicleClass = res.values;
           console.log(this.vehicleClass);
           this.vehicleClass.map((val, index) => {
-            let data = {
+            const data = {
               name: val,
               active: false
-            }
+            };
             this.vechilenewarray.push(data);
 
-          })
+          });
           console.log('dadasdsadsa======', this.vechilenewarray);
 
         }
@@ -271,13 +271,13 @@ export class MypoliciesPage implements OnInit {
           this.eCcarClasses = res.values;
           console.log('Enhanced Comprehensive car classes==', this.eCcarClasses);
           this.eCcarClasses.map((val, index) => {
-            let data = {
+            const data = {
               name: val,
               active: false
-            }
+            };
             this.EnchancednewClasses.push(data);
 
-          })
+          });
           // console.log('EnchancednewClasses======', this.EnchancednewClasses);
         }
 
@@ -303,12 +303,12 @@ export class MypoliciesPage implements OnInit {
         this.vehicleMake = res.values;
         console.log(this.vehicleMake);
         this.vehicleMake.map((val, index) => {
-          let data = {
+          const data = {
             manufacturer: val.manufacturer,
             active: false
-          }
+          };
           this.vechileMakenew.push(data);
-        })
+        });
         // console.log('vechileMakenew array====', this.vechileMakenew);
 
       }
@@ -327,12 +327,12 @@ export class MypoliciesPage implements OnInit {
         this.vehicleModel = res.values;
         console.log(this.vehicleModel);
         this.vehicleModel.map((val, index) => {
-          let data = {
+          const data = {
             model: val.model,
             active: false
-          }
+          };
           this.vehicleModelNew.push(data);
-        })
+        });
         console.log('vehicleModelNew', this.vehicleModelNew);
 
       }
@@ -359,11 +359,11 @@ export class MypoliciesPage implements OnInit {
     }
   }
   openDropDwon(type) {
-    console.log("DROPDOWN TYPE ----", type);
-    if (type == "title") {
+    console.log('DROPDOWN TYPE ----', type);
+    if (type == 'title') {
       this.showTitle = !this.showTitle;
     }
-    else if (type == "age") {
+    else if (type == 'age') {
       this.showAgeGroup = !this.showAgeGroup;
     }
 
@@ -470,7 +470,7 @@ export class MypoliciesPage implements OnInit {
         if (index != i) {
           this.vechilenewarray[i].active = false;
         }
-      })
+      });
       // console.log('ddddddddddddddddd', this.vechilenewarray);
     }
     if (this.subProName == 'Enhanced Comprehensive') {
@@ -483,14 +483,14 @@ export class MypoliciesPage implements OnInit {
         if (index != i) {
           this.EnchancednewClasses[i].active = false;
         }
-      })
+      });
       // console.log('ddddddddddddddddd', this.EnchancednewClasses);
     }
 
   }
   selectDropDown(list, type) {
-    console.log("type----", type);
-    console.log("List data ----", list);
+    console.log('type----', type);
+    console.log('List data ----', list);
     if (type == 'title') {
       this.useTitle = list.title;
       this.showTitle = false;
@@ -514,7 +514,7 @@ export class MypoliciesPage implements OnInit {
       if (index != i) {
         this.vechileMakenew[i].active = false;
       }
-    })
+    });
 
     this.getVehicleModels();
   }
@@ -536,54 +536,54 @@ export class MypoliciesPage implements OnInit {
       if (index != i) {
         this.vehicleModelNew[i].active = false;
       }
-    })
+    });
     console.log('vechileMakenew--------', this.vehicleModelNew);
   }
   dateChanged(value, type) {
     if (type == 'start') {
       this.tourStartDate = value;
-      console.log("this.tourStartDate ----", this.tourStartDate);
+      console.log('this.tourStartDate ----', this.tourStartDate);
       this.showPickerStartDate = false;
     }
     else {
       this.tourEndDate = value;
-      console.log("this.tourEndDate ----", this.tourEndDate);
+      console.log('this.tourEndDate ----', this.tourEndDate);
       this.showPickerEndDate = false;
     }
 
   }
   validateIntertaionTravel() {
-    let response = { message: "message", status: false };
+    const response = { message: 'message', status: false };
 
     if (this.useTitle == 'Please Select') {
-      response.message = "Title required";
+      response.message = 'Title required';
     }
     else if (this.ageGroup == 'Please Select') {
-      response.message = "Age group required";
+      response.message = 'Age group required';
     }
     else if (this.fName == '') {
-      response.message = "First name required";
+      response.message = 'First name required';
     }
     else if (this.lName == '') {
-      response.message = "Last name required";
+      response.message = 'Last name required';
     }
     else if (this.otheName == '') {
-      response.message = "Other name required";
+      response.message = 'Other name required';
     }
     else if (this.mobNumber == '') {
-      response.message = "Phone required";
+      response.message = 'Phone required';
     }
     else if (this.userEmail == '') {
-      response.message = "Email required";
+      response.message = 'Email required';
     }
     else {
-      response.message = "Form validated.";
+      response.message = 'Form validated.';
       response.status = true;
     }
     return response;
   }
   validateThirdParty() {
-    let response = { message: "message", status: false };
+    const response = { message: 'message', status: false };
     if (this.vehicleVal == 'Please Select') {
       response.message = 'Vehicle Class required';
     }
@@ -634,7 +634,7 @@ export class MypoliciesPage implements OnInit {
     return response;
   }
   validateEnhancedCom() {
-    let response = { message: "message", status: false };
+    const response = { message: 'message', status: false };
     if (this.vehicleVal == 'Please Select') {
       response.message = 'Vehicle Class required';
     }
@@ -746,7 +746,7 @@ export class MypoliciesPage implements OnInit {
     return response;
   }
   validateAutoVarient() {
-    let response = { message: "message", status: false };
+    const response = { message: 'message', status: false };
 
 
     if (this.autoPlanVal == 'Please Select') {
@@ -855,11 +855,11 @@ export class MypoliciesPage implements OnInit {
     return response;
   }
   createQuote(quoteType) {
-    console.log("quoteType---", quoteType);
-    let formValidationResult = { message: "This product is under developement", status: false };
-    console.log("checkTest---", formValidationResult);
+    console.log('quoteType---', quoteType);
+    let formValidationResult = { message: 'This product is under developement', status: false };
+    console.log('checkTest---', formValidationResult);
 
-    let myData = "";
+    let myData = '';
     switch (quoteType) {
       case 'International':
 
@@ -867,24 +867,24 @@ export class MypoliciesPage implements OnInit {
         myData = 'myData={"product_id":"' + localStorage.getItem('subProId') + '","first_name":"' + this.fName + '","last_name":"' + this.lName + '", "mobile":"' + this.mobNumber + '", "email":"' + this.userEmail + '", "start_date":"' + this.tourStartDate + '",\r\n"end_date":"' + this.tourEndDate + '", "title":"' + this.useTitle + '", "age_group": "' + this.ageGroup + '", "other_name":"' + this.otheName + '","verify_token":"' + localStorage.getItem('token') + '","method":"save_product_quote"}';
 
         break;
-      case "Third Party":
+      case 'Third Party':
 
         formValidationResult = this.validateThirdParty();
         myData = 'myData={\r\n    "product_id":"' + localStorage.getItem('subProId') + '",\r\n    "vehicle_class":"' + this.vehicleVal + '",\r\n    "first_name": "' + this.fName + '",\r\n    "last_name":"' + this.lName + '",\r\n    "vehicle_manufacturer":"' + this.vehicleMakeVal + '",\r\n    "vehicle_model":"' + this.vehicleModelVal + '",\r\n    "policyholder_type":"' + this.policyhldrVal + '",\r\n    "mobile":"' + this.mobNumber + '",\r\n    "company_name":"' + this.compName + '",\r\n    "email":"' + this.userEmail + '",\r\n    "verify_token":"' + localStorage.getItem('token') + '",\r\n    "method": "save_product_quote" \r\n}';
 
         break;
-      case "Enhanced Comprehensive":
+      case 'Enhanced Comprehensive':
 
         formValidationResult = this.validateEnhancedCom();
         myData = 'myData={"product_id":"' + localStorage.getItem('subProId') + '","vehicle_class":"' + this.vehicleVal + '","vehicle_manufacturer":"' + this.vehicleMakeVal + '", "vehicle_model":"' + this.vehicleModelVal + '", "first_name":"' + this.fName + '", "last_name":"' + this.lName + '",\r\n"policyholder_type":"' + this.policyhldrVal + '", "mobile":"' + this.mobNumber + '", "company_name": "' + this.compName + '", "email":"' + this.userEmail + '", "value_of_vehicle":"' + this.valOfVehicle + '", "flood_extension":"' + this.floodExtVal + '", "excess_buy_back":"' + this.excessBuyBackVal + '", "vehicle_tracking":"' + this.vehicleTrackingVal + '", "verify_token":"' + localStorage.getItem('token') + '","method":"save_product_quote"}';
 
         break;
-      case "Auto Variants":
+      case 'Auto Variants':
 
         formValidationResult = this.validateAutoVarient();
         myData = 'myData={"product_id":"' + localStorage.getItem('subProId') + '","insurance_type":"' + this.autoPlanName + '","vehicle_class":"' + this.vehicleVal + '","vehicle_manufacturer":"' + this.vehicleMakeVal + '", "vehicle_model":"' + this.vehicleModelVal + '", "first_name":"' + this.fName + '", "last_name":"' + this.lName + '",\r\n"policyholder_type":"' + this.policyhldrVal + '", "mobile":"' + this.mobNumber + '", "company_name": "' + this.compName + '", "email":"' + this.userEmail + '", "value_of_vehicle":"' + this.valOfVehicle + '", "flood_extension":"' + this.floodExtVal + '", "road_side_assistance":"' + this.roadSideVal + '", "excess_buy_back":"' + this.excessBuyBackVal + '", "vehicle_tracking":"' + this.vehicleTrackingVal + '", "verify_token":"' + localStorage.getItem('token') + '","method":"save_product_quote"}';
 
-        break
+        break;
 
       default:
       // code block
