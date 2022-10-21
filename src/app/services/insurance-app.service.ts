@@ -158,7 +158,7 @@ export class InsuranceAppService {
       headers: header
     });
   }
-  postdata(url, data, token?) {
+  postdata(url, data?, token?) {
     let header;
     console.log('token in api ervice====', token);
     // let headers
@@ -175,6 +175,25 @@ export class InsuranceAppService {
 
 
     return this.http.post(`${url}`, data, {
+      headers: header
+    });
+  }
+  postparam(url, token) {
+    let header;
+    console.log('token in api ervice====', token);
+
+    header = new HttpHeaders({
+      "Authorization": "Bearer " + token,
+    })
+    header.append("Access-Control-Allow-Origin", "*");
+    header.append("Access-Control-Allow-Credentials", "true");
+    header.append("Access-Control-Allow-Headers: Authorization, Content-Type");
+    header.append(
+      "Access-Control-Allow-Methods",
+      "POST, GET, DELETE, PUT,OPTIONS"
+    );
+
+    return this.http.post(url, {
       headers: header
     });
   }
