@@ -77,8 +77,30 @@
             <img style="margin:15px 10px 13px 15px;" src="assets/images/pw-lock.svg">
           </div>
           <div class="pinput">
+            <ion-input formControlName="existpassword" [(ngModel)]="existingpass" class="ph-css"
+              placeholder="Existing password " type="{{eshowPass ? 'text':'password' }}"
+              (ionChange)="existingpassword($event)"></ion-input>
+
+          </div>
+          <div class="icondiv" style="margin-top: 4px;">
+            <!-- <img src="assets/imgs/icons/eye.svg"> -->
+            <ion-icon style="color:black ; margin-right: 15px;" name="eye" *ngIf="!eshowPass" (click)="EtogglePass()">
+            </ion-icon>
+            <ion-icon style="color:black ; margin-right: 15px;" name="eye-off" *ngIf="eshowPass"
+              (click)="EtogglePass()">
+            </ion-icon>
+          </div>
+        </div>
+      </div>
+
+      <div class="fields">
+        <div class="inputdiv">
+          <div>
+            <img style="margin:15px 10px 13px 15px;" src="assets/images/pw-lock.svg">
+          </div>
+          <div class="pinput">
             <ion-input formControlName="password" [(ngModel)]="userPassword" class="ph-css"
-              placeholder="existing password " type="{{showPass ? 'text':'password' }}"
+              placeholder="Enter New password " type="{{showPass ? 'text':'password' }}"
               (ionChange)="currentpassword($event)"></ion-input>
 
           </div>
@@ -95,7 +117,7 @@
       <div class="validation"
         *ngIf="RegisterForm.get('password').hasError('required') && RegisterForm.get('password').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon">
-        <span class="error-msg">Enter your password</span>
+        <span class="error-msg">Enter your new password</span>
       </div>
 
       <div class="fields">
@@ -121,7 +143,7 @@
       <div class="validation"
         *ngIf="RegisterForm.get('cpassword').hasError('required') && RegisterForm.get('cpassword').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon">
-        <span class="error-msg">Confirm your password</span>
+        <span class="error-msg">Confirm your new password</span>
       </div>
       <!-- //////////////--------------------------//////////////////////////// -->
       <div class="texthead">KYC Documents</div>

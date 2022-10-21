@@ -97,6 +97,10 @@ export class SignInScreenPage implements OnInit {
         // this.api.presenttoast(res.message);
         this.error = true
         this.errormessage = 'Email or password is incorrect'
+        setTimeout(() => {
+          this.error = false
+        }, 3000);
+
       }
     }, (err) => {
       console.log('err==', err);
