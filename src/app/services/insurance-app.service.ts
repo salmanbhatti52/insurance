@@ -269,7 +269,7 @@ export class InsuranceAppService {
     this.toastctrl.create({
       message,
       duration: 2000,
-      position: 'top'
+      position: 'bottom'
     }).then(res => res.present());
   }
 

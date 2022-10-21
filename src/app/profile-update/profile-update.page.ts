@@ -16,9 +16,11 @@ export class ProfileUpdatePage implements OnInit {
   lName = '';
   mobNumber = '';
   userEmail = '';
+  existingpass = ''
   userPassword = '';
   cuserPassword = '';
   show = false;
+  eshowPass = false;
   showPass = false;
   cshowPass = false;
   usertitle = '';
@@ -61,6 +63,7 @@ export class ProfileUpdatePage implements OnInit {
         lname: new FormControl('', Validators.required),
         number: new FormControl('', Validators.required),
         email: new FormControl('', [Validators.required, Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
+        existpassword: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
         cpassword: new FormControl('', [Validators.required])
       });
@@ -71,7 +74,7 @@ export class ProfileUpdatePage implements OnInit {
       this.lName = localStorage.getItem('lname');
       this.mobNumber = localStorage.getItem('number');
       this.userEmail = localStorage.getItem('email');
-      this.userPassword = localStorage.getItem('password');
+      this.existingpass = localStorage.getItem('password');
       // this.cuserPassword = localStorage.getItem('password');
 
       console.log(this.usertitle);
@@ -86,6 +89,9 @@ export class ProfileUpdatePage implements OnInit {
 
   }
 
+  EtogglePass() {
+    this.eshowPass = !this.eshowPass;
+  }
   togglePass() {
 
     this.showPass = !this.showPass;
@@ -106,6 +112,10 @@ export class ProfileUpdatePage implements OnInit {
       this.show = true;
 
     }
+  }
+  existingpassword(ev) {
+    console.log('currentpassword', ev.detail.value);
+    this.existingpass = ev.detail.value
   }
   currentpassword(ev) {
     console.log('currentpassword', ev.detail.value);
