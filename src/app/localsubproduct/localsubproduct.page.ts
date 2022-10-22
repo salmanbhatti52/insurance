@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
 @Component({
-  selector: 'app-quote-popup',
-  templateUrl: './quote-popup.page.html',
-  styleUrls: ['./quote-popup.page.scss'],
+  selector: 'app-localsubproduct',
+  templateUrl: './localsubproduct.page.html',
+  styleUrls: ['./localsubproduct.page.scss'],
 })
-export class QuotePopupPage implements OnInit {
+export class LocalsubproductPage implements OnInit {
   imgPath: any;
   Insurace_name: any;
   prod_id: any;
@@ -39,59 +39,12 @@ export class QuotePopupPage implements OnInit {
     this.subProducts = JSON.parse(localStorage.getItem('subProducts'));
     this.arr1 =this.subProducts;
 
-    this.productID = localStorage.getItem('productid');
+    this.productID = localStorage.getItem('productid2');
     console.log('productid', this.productID);
     this.insurancename = localStorage.getItem('productName');
-    this.gibsproduct();
+    this.subProductsshow(this.productID);
   }
-  gibsproduct() {
-    const myData = {
-      sid: 'ECHANNEL2',
-      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
-    };
-    this.api.gibsapi(myData).subscribe((res: any) => {
-      console.log(res);
-      const token = res.accessToken;
-      this.motorproductonly(token);
-    }, (err) => {
-      console.log(err);
-      this.api.hideLoader();
-    });
-  }
-  motorproductonly(token) {
-    const Bearertoken = token;
-    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products', Bearertoken).subscribe((res: any) => {
 
-      console.log('ressssss', res);
-      res.map((value, index) => {
-        if (value.productName == 'PRIVATE MOTOR-AUTO CLASSIC' || value.productName == 'PRIVATE MOTOR-AUTO PLUS' || value.productName == 'UBER CLASSIC MOTOR') {
-          this.motorsubproducts.push(value);
-        }
-      });
-      console.log('subproducts after check---11', this.motorsubproducts);
-     // this.arr1 = this.motorsubproducts;
-      this.counter++;
-      console.log('this.counter++', this.counter);
-    });
-  }
-  GProductdetail(ID) {
-    const myData = {
-      sid: 'ECHANNEL2',
-      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
-    };
-    this.api.gibsapi(myData).subscribe((res: any) => {
-      // console.log(res);
-      const token = res.accessToken;
-      this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products/' + ID, token).subscribe((res: any) => {
-
-        console.log('gibs product detail', res);
-      });
-    }, (err) => {
-      console.log(err);
-      this.api.hideLoader();
-    });
-
-  }
   goback() {
 
 
@@ -163,7 +116,7 @@ export class QuotePopupPage implements OnInit {
      this.router.navigate(['/localsubproduct']);
     } else {
       if (sp.product_for_quote == 1) {
-        this.router.navigate(['/mypolicies']);
+        this.router.navigate(['/localpoliciesform']);
         localStorage.setItem('subProId', sp.id);
         localStorage.setItem('subProName', sp.name);
       }

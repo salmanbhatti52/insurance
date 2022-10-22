@@ -197,6 +197,14 @@ const routes: Routes = [
   {
     path: 'privacy',
     loadChildren: () => import('./privacy/privacy.module').then( m => m.PrivacyPageModule)
+  },
+  {
+    path: 'localsubproduct',
+    loadChildren: () => import('./localsubproduct/localsubproduct.module').then( m => m.LocalsubproductPageModule)
+  },
+  {
+    path: 'localpoliciesform',
+    loadChildren: () => import('./localpoliciesform/localpoliciesform.module').then( m => m.LocalpoliciesformPageModule)
   }
 
 
