@@ -228,80 +228,79 @@ let PolicylookupPage = class PolicylookupPage {
       console.log(err);
       this.api.presenttoast(err.error.title);
       this.api.hideLoader();
-    }); // this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products', Bearertoken).subscribe((res: any) => {
-    //   console.log('ressssss', res);
-    //   let postdata = {
-    //     "productID": "1111",
-    //     "entryDate": "2022-10-20T04:29:31.261Z",
-    //     "startDate": "2018-03-13T00:00:00",
-    //     "endDate": "2019-03-12T00:00:00",
-    //     "fxCurrency": "NGN",
-    //     "fxRate": 1,
-    //     "referrerSource": "AGENT",
-    //     "referrerDetails": "string",
-    //     "paymentProviderID": "string",
-    //     "paymentReferenceID": "string",
-    //     "insured": {
-    //       "title": "string",
-    //       "lastName": "string",
-    //       "firstName": "string",
-    //       "otherName": "string",
-    //       "gender": "MALE",
-    //       "email": "user@example.com",
-    //       "address": "string",
-    //       "phoneLine1": "0803 502 6956",
-    //       "phoneLine2": "0803 502 6956",
-    //       "isOrg": true,
-    //       "orgName": "string",
-    //       "orgRegNumber": "string",
-    //       "orgRegDate": "2022-10-20T04:29:31.261Z",
-    //       "taxIdNumber": "string",
-    //       "cityLGA": "string",
-    //       "stateID": "string",
-    //       "nationality": "string",
-    //       "dateOfBirth": "2022-10-20T04:29:31.261Z",
-    //       "kycType": "NOT_AVAILABLE",
-    //       "kycNumber": "string",
-    //       "kycIssueDate": "2022-10-20T04:29:31.261Z",
-    //       "kycExpiryDate": "2022-10-20T04:29:31.261Z",
-    //       "nextOfKin": {
-    //         "title": "string",
-    //         "lastName": "string",
-    //         "firstName": "string",
-    //         "otherName": "string",
-    //         "gender": "MALE",
-    //         "email": "user@example.com",
-    //         "address": "string",
-    //         "phoneLine1": "123456",
-    //         "phoneLine2": "123456"
-    //       }
-    //     },
-    //     "policySections": [
-    //       {
-    //         "sectionID": "string",
-    //         "sectionSumInsured": 0,
-    //         "sectionPremium": 0,
-    //         "vehicleRegNo": "string",
-    //         "vehicleTypeID": "VAN",
-    //         "vehicleUser": "string",
-    //         "engineNumber": "string",
-    //         "chasisNumber": "string",
-    //         "vehicleUsage": "PRIVATE",
-    //         "numberOfSeats": 0,
-    //         "stateOfIssue": "string",
-    //         "vehicleMake": "string",
-    //         "vehicleModel": "string",
-    //         "manufactureYear": 0,
-    //         "vehicleColour": "string",
-    //         "engineCapacityHP": "string",
-    //         "coverType": "COMPREHENSIVE"
-    //       }
-    //     ]
-    //   }
-    //   this.api.postdata('http://testcipapiservices.gibsonline.com/api/Policies/Motor', postdata, Bearertoken).subscribe((res: any) => {
-    //     console.log('motor response---', res);
-    //   })
-    // })
+    });
+    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Policies/Motor', Bearertoken).subscribe(res => {
+      console.log('ressssss', res);
+      let postdata = {
+        "productID": "1103",
+        "entryDate": "2022-10-20T04:29:31.261Z",
+        "startDate": "2018-03-13T00:00:00",
+        "endDate": "2019-03-12T00:00:00",
+        "fxCurrency": "NGN",
+        "fxRate": 1,
+        "referrerSource": "AGENT",
+        "referrerDetails": "string",
+        "paymentProviderID": "string",
+        "paymentReferenceID": "string",
+        "insured": {
+          "title": "string",
+          "lastName": "string",
+          "firstName": "string",
+          "otherName": "string",
+          "gender": "MALE",
+          "email": "user@example.com",
+          "address": "string",
+          "phoneLine1": "0803 502 6956",
+          "phoneLine2": "0803 502 6956",
+          "isOrg": true,
+          "orgName": "string",
+          "orgRegNumber": "string",
+          "orgRegDate": "2022-10-20T04:29:31.261Z",
+          "taxIdNumber": "string",
+          "cityLGA": "string",
+          "stateID": "string",
+          "nationality": "string",
+          "dateOfBirth": "2022-10-20T04:29:31.261Z",
+          "kycType": "NOT_AVAILABLE",
+          "kycNumber": "string",
+          "kycIssueDate": "2022-10-20T04:29:31.261Z",
+          "kycExpiryDate": "2022-10-20T04:29:31.261Z",
+          "nextOfKin": {
+            "title": "string",
+            "lastName": "string",
+            "firstName": "string",
+            "otherName": "string",
+            "gender": "MALE",
+            "email": "user@example.com",
+            "address": "string",
+            "phoneLine1": "123456",
+            "phoneLine2": "123456"
+          }
+        },
+        "policySections": [{
+          "sectionID": "string",
+          "sectionSumInsured": 0,
+          "sectionPremium": 0,
+          "vehicleRegNo": "string",
+          "vehicleTypeID": "VAN",
+          "vehicleUser": "string",
+          "engineNumber": "string",
+          "chasisNumber": "string",
+          "vehicleUsage": "PRIVATE",
+          "numberOfSeats": 0,
+          "stateOfIssue": "string",
+          "vehicleMake": "string",
+          "vehicleModel": "string",
+          "manufactureYear": 0,
+          "vehicleColour": "string",
+          "engineCapacityHP": "string",
+          "coverType": "COMPREHENSIVE"
+        }]
+      };
+      this.api.postdata('http://testcipapiservices.gibsonline.com/api/Policies/Motor', postdata, Bearertoken).subscribe(res => {
+        console.log('motor response---', res);
+      });
+    });
   }
 
 };

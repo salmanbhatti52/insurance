@@ -210,6 +210,18 @@ const routes = [
     {
         path: 'privacy',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_privacy_privacy_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./privacy/privacy.module */ 5489)).then(m => m.PrivacyPageModule)
+    },
+    {
+        path: 'localsubproduct',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_localsubproduct_localsubproduct_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./localsubproduct/localsubproduct.module */ 2035)).then(m => m.LocalsubproductPageModule)
+    },
+    {
+        path: 'localpoliciesform',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_localpoliciesform_localpoliciesform_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./localpoliciesform/localpoliciesform.module */ 3434)).then(m => m.LocalpoliciesformPageModule)
+    },
+    {
+        path: 'gibsplans',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_gibsplans_gibsplans_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./gibsplans/gibsplans.module */ 2628)).then(m => m.GibsplansPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

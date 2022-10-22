@@ -101,6 +101,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable eqeqeq */
+/* eslint-disable max-len */
 
 
 
@@ -113,9 +117,16 @@ let QuotePopupPage = class QuotePopupPage {
         this.location = location;
         this.api = api;
         this.motorsubproducts = [];
+        this.arr1 = [];
+        this.arr2 = [];
+        this.arr3 = [];
+        this.arr4 = [];
+        this.arr5 = [];
+        this.counter = 0;
     }
     ngOnInit() {
         this.subProducts = JSON.parse(localStorage.getItem('subProducts'));
+        this.arr1 = this.subProducts;
         this.productID = localStorage.getItem('productid');
         console.log('productid', this.productID);
         this.insurancename = localStorage.getItem('productName');
@@ -144,7 +155,10 @@ let QuotePopupPage = class QuotePopupPage {
                     this.motorsubproducts.push(value);
                 }
             });
-            console.log('subproducts after check---', this.motorsubproducts);
+            console.log('subproducts after check---11', this.motorsubproducts);
+            // this.arr1 = this.motorsubproducts;
+            this.counter++;
+            console.log('this.counter++', this.counter);
         });
     }
     GProductdetail(ID) {
@@ -157,6 +171,8 @@ let QuotePopupPage = class QuotePopupPage {
             const token = res.accessToken;
             this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products/' + ID, token).subscribe((res) => {
                 console.log('gibs product detail', res);
+                localStorage.setItem('gibsproduct', JSON.stringify(res));
+                this.router.navigate(['gibsplans']);
             });
         }, (err) => {
             console.log(err);
@@ -164,7 +180,25 @@ let QuotePopupPage = class QuotePopupPage {
         });
     }
     goback() {
-        this.location.back();
+        if (this.counter == 1) {
+            this.location.back();
+        }
+        else {
+            if (this.counter == 2) {
+                this.subProducts = this.arr1;
+            }
+            if (this.counter == 3) {
+                this.subProducts = this.arr2;
+            }
+            if (this.counter == 4) {
+                this.subProducts = this.arr3;
+            }
+            if (this.counter == 5) {
+                this.subProducts = this.arr4;
+            }
+            this.counter--;
+        }
+        console.log('this.counter--', this.counter);
     }
     dismiss() {
         this.modal.dismiss();
@@ -173,14 +207,31 @@ let QuotePopupPage = class QuotePopupPage {
         const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","product_id":"' + id + '","method":"get_avilable_subproducts"}';
         this.api.insertData(myData).subscribe((res) => {
             const subproducts = [];
-            console.log('subProducts---------', res);
+            console.log('subProducts---------11111', res);
             res.subproducts.map((value, index) => {
                 // if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen") {
                 //   subproducts.push(value);
                 // }
                 subproducts.push(value);
             });
-            console.log('subproducts after check---', subproducts);
+            console.log('subproducts after check---22', subproducts);
+            this.counter++;
+            console.log('this.counter++', this.counter);
+            if (this.counter == 1) {
+                this.arr1 = subproducts;
+            }
+            if (this.counter == 2) {
+                this.arr2 = subproducts;
+            }
+            if (this.counter == 3) {
+                this.arr3 = subproducts;
+            }
+            if (this.counter == 4) {
+                this.arr4 = subproducts;
+            }
+            if (this.counter == 5) {
+                this.arr5 = subproducts;
+            }
             // return;
             this.subProducts = subproducts;
             localStorage.setItem('subProducts', JSON.stringify(subproducts));
@@ -190,8 +241,9 @@ let QuotePopupPage = class QuotePopupPage {
     }
     seeDetails(sp) {
         console.log(sp);
-        if (sp == 'null') {
-            this.api.presenttoast('Product details not defined');
+        if (sp.name == 'Local Travel Insurance') {
+            localStorage.setItem('productid2', sp.id);
+            this.router.navigate(['/localsubproduct']);
         }
         else {
             if (sp.product_for_quote == 1) {
