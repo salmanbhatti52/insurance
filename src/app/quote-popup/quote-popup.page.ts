@@ -85,6 +85,8 @@ export class QuotePopupPage implements OnInit {
       this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products/' + ID, token).subscribe((res: any) => {
 
         console.log('gibs product detail', res);
+        localStorage.setItem('gibsproduct', JSON.stringify(res))
+        this.router.navigate(['gibsplans']);
       });
     }, (err) => {
       console.log(err);

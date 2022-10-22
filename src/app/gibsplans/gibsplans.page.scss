@@ -1,0 +1,98 @@
+.title {
+  text-align: center;
+  font-family: Bliss Pro;
+  font-size: 20px;
+  color: #1A206D;
+  font-weight: bold;
+}
+.wrapper {
+  width: 85%;
+  margin: 0% auto 5%;
+}
+.label {
+  color: #000000;
+  font-size: 16px;
+}
+
+.dropbox {
+  margin: 4% 0%;
+  background: #E8E8E7;
+  border-radius: 12px;
+  padding: 13.41px 15px;
+
+}
+.innerdropbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.euro-text {
+  color: #5D5D5D;
+  font-size: 14px;
+  font-weight: 600;
+
+}
+.euro-text1 {
+  color: #5D5D5D;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 5%;
+}
+.imgdiv {
+  width: 100%;
+  text-align: center;
+}
+ion-input {
+  --ion-font-family: Bliss Pro;
+}
+
+.inputfield {
+  margin: 3% 0%;
+  background: #E8E8E7;
+  border-radius: 12px;
+}
+.in-text {
+  --color: #5D5D5D;
+  --placeholder-color: #5D5D5D;
+  --padding-start: 7%;
+  --padding-top: 5%;
+  --padding-bottom: 5%;
+  font-size: 14px;
+  font-weight: 400;
+  --placeholder-font-weight: 400;
+  // --placeholder-opacity: 100%;
+}
+
+.btn {
+  --background: #1A206D;
+  --border-radius: 12px;
+  width: 100%;
+  height: 48px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.activeproduct{
+  background: #f5f6f9;
+  padding:4px 0px;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+}
+.item-picker{
+  // width: 85%;
+  // height: 48px;
+  border-color: white;
+  border-radius: 12px;
+  background: #E8E8E7;
+  // box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 16px 0px;
+
+}
+.ion-txt{
+  font-family: Bliss Pro;
+  font-size: 14px;
+  font-weight: 400;
+  color:black;
+  }

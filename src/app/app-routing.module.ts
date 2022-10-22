@@ -178,33 +178,38 @@ const routes: Routes = [
   {
     path: 'verify-policy-popup-cust',
     loadChildren: () => import('./verify-policy-popup-cust/verify-policy-popup-cust.module').then(m => m.VerifyPolicyPopupCustPageModule)
-  },  {
+  },
+  {
     path: 'policylookup',
-    loadChildren: () => import('./policylookup/policylookup.module').then( m => m.PolicylookupPageModule)
+    loadChildren: () => import('./policylookup/policylookup.module').then(m => m.PolicylookupPageModule)
   },
   {
     path: 'forgotpassword',
-    loadChildren: () => import('./forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
+    loadChildren: () => import('./forgotpassword/forgotpassword.module').then(m => m.ForgotpasswordPageModule)
   },
   {
     path: 'termsandcondition',
-    loadChildren: () => import('./termsandcondition/termsandcondition.module').then( m => m.TermsandconditionPageModule)
+    loadChildren: () => import('./termsandcondition/termsandcondition.module').then(m => m.TermsandconditionPageModule)
   },
   {
     path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
   },
   {
     path: 'privacy',
-    loadChildren: () => import('./privacy/privacy.module').then( m => m.PrivacyPageModule)
+    loadChildren: () => import('./privacy/privacy.module').then(m => m.PrivacyPageModule)
   },
   {
     path: 'localsubproduct',
-    loadChildren: () => import('./localsubproduct/localsubproduct.module').then( m => m.LocalsubproductPageModule)
+    loadChildren: () => import('./localsubproduct/localsubproduct.module').then(m => m.LocalsubproductPageModule)
   },
   {
     path: 'localpoliciesform',
-    loadChildren: () => import('./localpoliciesform/localpoliciesform.module').then( m => m.LocalpoliciesformPageModule)
+    loadChildren: () => import('./localpoliciesform/localpoliciesform.module').then(m => m.LocalpoliciesformPageModule)
+  },
+  {
+    path: 'gibsplans',
+    loadChildren: () => import('./gibsplans/gibsplans.module').then(m => m.GibsplansPageModule)
   }
 
 

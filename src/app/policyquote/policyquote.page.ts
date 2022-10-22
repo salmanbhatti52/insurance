@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-policyquote',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./policyquote.page.scss'],
 })
 export class PolicyquotePage implements OnInit {
+  getproduct: any;
+  Gproduct: any;
+  constructor(public location: Location) { }
 
-  constructor() { }
-
+  goback() {
+    this.location.back()
+  }
   ngOnInit() {
+    this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'))
+    console.log('', this.Gproduct);
+    this.getproduct = JSON.parse(localStorage.getItem('gibsProductres'));
+    console.log('dsadsads', this.getproduct);
+
   }
 
 }
