@@ -19,7 +19,9 @@ export class PolicyquotePage implements OnInit {
     this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'))
     console.log('', this.Gproduct);
     this.getproduct = JSON.parse(localStorage.getItem('gibsProductres'));
+
     console.log('dsadsads', this.getproduct);
+    console.log('dsadsads', localStorage.getItem('gibsProductres'));
 
   }
 
