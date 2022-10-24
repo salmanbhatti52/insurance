@@ -2,19 +2,19 @@
   <ion-toolbar class="headBgGlobal">
     <ion-row>
       <ion-col size="2" style="padding-left: 25px;">
-        <ion-buttons>
-          <div style="width:100% ;">
-            <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
-          </div>
-        </ion-buttons>
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
       </ion-col>
       <ion-col size="8">
-        <!-- <div class="title">Make a Quote</div> -->
+        <div class="title">Insurance Request</div>
       </ion-col>
       <ion-col class="titleclass" size="2">
       </ion-col>
-
-
     </ion-row>
   </ion-toolbar>
 
@@ -29,20 +29,55 @@
     </div>
     <div class="box box-success">
       <div class="panel-body">
-        <div class="table-responsive">
-          <table class="table quotetable table-bordered">
-            <tbody>
-              <tr>
-                <td style="width: 30%; color: black;">Policy Number</td>
-                <td style="color: black;">{{getproduct.policyNo}}</td>
-              </tr>
-              <tr>
-                <td style="width: 30%; color: black;">Plan of Choice</td>
-                <td style="color: black;">{{Gproduct.productName}}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="main">
+        <div class="title1">First Name</div>
+        <div class="inner1">
+          <div class="para">{{getproduct.insured.firstName}}</div>
         </div>
+
+        <div class="title1">Last Name</div>
+        <div class="inner1">
+          <div class="para">{{getproduct.insured.lastName}}</div>
+        </div>
+
+        <div class="title1">Email</div>
+        <div class="inner1">
+          <div class="para">{{getproduct.insured.email}}</div>
+        </div>
+
+
+        <div class="title1">Address</div>
+        <div class="inner1">
+          <div class="para">{{getproduct.insured.address}}</div>
+        </div>
+
+        <div class="title1">Gender</div>
+        <div class="inner1">
+          <div class="para">{{getproduct.insured.gender}}</div>
+        </div>
+
+        <div class="title1">Phone 1</div>
+        <div class="inner1">
+          <div class="para">{{getproduct.insured.phoneLine1}}</div>
+        </div>
+
+        <!-- <div class="title1">Phone 2</div>
+        <div class="inner1">
+          <div class="para">{{getproduct.insured.phoneLine2}}</div>
+        </div> -->
+
+
+        <div class="title1">Policy Number</div>
+        <div class="inner1">
+          <div class="para">{{getproduct.policyNo}}</div>
+        </div>
+
+        <div class="title1">Plan of Choice</div>
+        <div class="inner1">
+          <div class="para">{{Gproduct.productName}}</div>
+        </div>
+      </div>
+
       </div>
     </div>
     <!-- <div class="btndiv">
