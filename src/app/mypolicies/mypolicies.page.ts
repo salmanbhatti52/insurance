@@ -36,7 +36,8 @@ export class MypoliciesPage implements OnInit {
   showExcessBuyBack = false;
   showVehicleTracking = false;
   showRoadSide = false;
-  tourStartDate = format(new Date(), 'yyyy-MM-dd');;
+  tourStartDate = format(new Date(), 'yyyy-MM-dd');
+  ;
   tourEndDate = format(new Date(), 'yyyy-MM-dd');;
   otheName = '';
   showPickerStartDate = false;
@@ -109,6 +110,7 @@ export class MypoliciesPage implements OnInit {
     //   title: 'Chief',
     // }
   ];
+  isavetitle = [{ id: '0', title: 'Mr', active: false }, { id: '1', title: 'Ms', active: false }, { id: '2', title: 'Dr, active: false' }, { id: '3', title: 'Air Vice Marshall', active: false }, { id: '4', title: 'Alhaji', active: false }, { id: '5', title: 'Ambassador', active: false }, { id: '6', title: 'Architect', active: false }, { id: '7', title: 'Barr', active: false }, { id: '8', title: 'Bishop', active: false }, { id: '9', title: 'Brig', active: false }, { id: '10', title: 'Brig GEN', active: false }, { id: '11', title: 'CAPT', active: false }, { id: '12', title: 'Chief(Mrs)', active: false }, { id: '13', title: 'Commander ', active: false }, { id: '14', title: 'Dr(Mrs)', active: false }, { id: '15', title: 'Elder', active: false }, { id: '16', title: 'Hajia', active: false }, { id: '17', title: 'Hajia(Chief)', active: false }, { id: '18', title: 'His Excellency', active: false }, { id: '19', title: 'Lt Col', active: false }, { id: '21', title: 'Major', active: false }, { id: '22', title: 'Major Gen', active: false }, { id: '23', title: 'Master', active: false }, { id: '24', title: 'Professor', active: false }, { id: '25', title: 'Rev Sis', active: false }, { id: '26', title: 'Reverend', active: false }, { id: '27', title: 'Senator', active: false }]
   autoPlansOfChoice = [
     {
       autoPlan: 'Auto Compact (2%) (Third Party Fire & Theft)',
@@ -148,8 +150,13 @@ export class MypoliciesPage implements OnInit {
 
   ];
   roadSideAssistance = [{ roadSide: 'Yes' }, { roadSide: 'No' }];
-
-
+  Paymentfrequency = [{ id: '0', title: 'Monthly', active: false }, { id: '1', title: 'Quarterly', active: false }, { id: '2', title: 'Half-yearly', active: false }, { id: '3', title: 'Yearly', active: false }]
+  Pfrequency = 'Please Select';
+  showpaymentfrequency = false;
+  duration: any;
+  sumassured = 'Please Select';
+  showsumassured = false;
+  sumassuredarray = [{ id: '0', value: '100000', active: false }, { id: '1', value: '200000', active: false }, { id: '2', value: '300000', active: false }, { id: '3', value: '400000', active: false }, { id: '4', value: '500000', active: false }, { id: '5', value: '600000', active: false }, { id: '6', value: '700000', active: false }, { id: '7', value: '800000', active: false }, { id: '8', value: '900000', active: false }, { id: '9', value: '1000000', active: false }]
   // valuetype = 'Third Party';
   constructor(public router: Router,
     public api: InsuranceAppService,
@@ -436,6 +443,21 @@ export class MypoliciesPage implements OnInit {
 
     }
   }
+  openpaymentfrequency() {
+    if (this.showpaymentfrequency == true) {
+      this.showpaymentfrequency = false;
+    } else {
+      this.showpaymentfrequency = true;
+    }
+  }
+
+  opensumassured() {
+    if (this.showsumassured == true) {
+      this.showsumassured = false;
+    } else {
+      this.showsumassured = true;
+    }
+  }
   selectRoadSideAssistance(list) {
     this.roadSideVal = list.roadSide;
     this.showRoadSide = false;
@@ -453,9 +475,39 @@ export class MypoliciesPage implements OnInit {
     this.floodExtVal = list.floodExt;
     this.showFloodExt = false;
   }
+  selectpaymentfrequency(list, index) {
+    this.Pfrequency = list.title;
+    this.showpaymentfrequency = false;
+    this.Paymentfrequency.map((val, i) => {
+      // console.log(i);
+
+      if (index == i) {
+        this.Paymentfrequency[i].active = true;
+
+      }
+      if (index != i) {
+        this.Paymentfrequency[i].active = false;
+      }
+    });
+  }
+  selectsumassured(list, index) {
+    this.sumassured = list.value;
+    this.showsumassured = false;
+    this.sumassuredarray.map((val, i) => {
+      // console.log(i);
+
+      if (index == i) {
+        this.sumassuredarray[i].active = true;
+
+      }
+      if (index != i) {
+        this.sumassuredarray[i].active = false;
+      }
+    });
+  }
   selectExcessBuyBack(list) {
     this.excessBuyBackVal = list.excessByBack;
-    this.showExcessBuyBack = false;
+    this.showpaymentfrequency = false;
   }
   selectVehicleCls(list, index) {
     this.vehicleVal = list.name;
@@ -463,6 +515,8 @@ export class MypoliciesPage implements OnInit {
 
     if (this.subProName == 'Third Party') {
       this.vechilenewarray.map((val, i) => {
+        console.log(this.vechilenewarray);
+
         if (index == i) {
           this.vechilenewarray[i].active = true;
 
@@ -519,9 +573,20 @@ export class MypoliciesPage implements OnInit {
     this.getVehicleModels();
   }
 
-  selectPolicyholder(list) {
-    this.policyhldrVal = list.plcyhldrType;
-    this.showPolicyholder = false;
+  selectTitle(list, index) {
+    this.useTitle = list.title
+    this.showTitle = false;
+    this.isavetitle.map((val, i) => {
+      // console.log(i);
+
+      if (index == i) {
+        this.isavetitle[i].active = true;
+
+      }
+      if (index != i) {
+        this.isavetitle[i].active = false;
+      }
+    });
   }
 
   selectVehicleModel(list, index) {

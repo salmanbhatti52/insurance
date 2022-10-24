@@ -90,11 +90,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SubProductsPage": () => (/* binding */ SubProductsPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _sub_products_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sub-products.page.html?ngResource */ 4949);
 /* harmony import */ var _sub_products_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sub-products.page.scss?ngResource */ 9805);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 8987);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
 
@@ -104,11 +105,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let SubProductsPage = class SubProductsPage {
-    constructor(location, http, api) {
+    constructor(location, http, api, navctrl) {
         this.location = location;
         this.http = http;
         this.api = api;
+        this.navctrl = navctrl;
         this.subProducts = [{ name: 'iSave Plan', image: 'assets/images/investmentplans/1.png' }, { name: 'Maximum Investment Plan', image: 'assets/images/investmentplans/2.jpg' }, { name: 'Cornerstone Universal Plan', image: 'assets/images/investmentplans/3.jpg' }, { name: 'Children Education Fund', image: 'assets/images/investmentplans/4.png' }];
     }
     ngOnInit() {
@@ -118,21 +121,24 @@ let SubProductsPage = class SubProductsPage {
     goback() {
         this.location.back();
     }
-    seeDetails() {
+    seeDetails(sp) {
         console.log(this.token);
         this.api.postparam('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&insureval=1000&desiredprem=5000&userid=C52035&covdur=2&curdate=2022-09-29&dbirth=1995-09-29&pdvopt=test&opt=ICEDUP&process_code=908', '39109f7df56e1CORNERStone9e685066bb852').subscribe((res) => {
             console.log('response====', res);
-            this.api.presenttoast(res.result.message);
+            // this.api.presenttoast(res.result.message);
+            localStorage.setItem('subProName', sp.name);
+            this.navctrl.navigateForward('mypolicies');
         });
     }
 };
 SubProductsPage.ctorParameters = () => [
     { type: _angular_common__WEBPACK_IMPORTED_MODULE_3__.Location },
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient },
-    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService }
+    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController }
 ];
-SubProductsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+SubProductsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-sub-products',
         template: _sub_products_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_sub_products_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]

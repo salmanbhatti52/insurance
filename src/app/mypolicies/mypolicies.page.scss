@@ -272,6 +272,10 @@ ion-input {
   --placeholder-font-weight: 400;
   // --placeholder-opacity: 100%;
 }
+.in-textnochange{
+  cursor: not-allowed;
+  --padding-start: 7%;
+}
 
 .btn {
   --background: #1A206D;
@@ -292,6 +296,48 @@ ion-input {
   background: #E8E8E7;
   // box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 16px 0px;
 
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
+  padding: 0px 3px;
+}
+.table-responsive > .table-bordered {
+  border: 0;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+td{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color:#000000;
+  font-size: 10px;
+}
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: #A8B400;
+  font-size: 14px;
+}
+tr td:first-child{
+  font-size: 12px;
+}
+@media screen and (max-width: 767px){
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+}
 }
 
 // -------------------------done-------------------------------
