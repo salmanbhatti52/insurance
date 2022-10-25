@@ -110,7 +110,7 @@ export class MypoliciesPage implements OnInit {
     //   title: 'Chief',
     // }
   ];
-  isavetitle = [{ id: '0', title: 'Mr', active: false }, { id: '1', title: 'Ms', active: false }, { id: '2', title: 'Dr, active: false' }, { id: '3', title: 'Air Vice Marshall', active: false }, { id: '4', title: 'Alhaji', active: false }, { id: '5', title: 'Ambassador', active: false }, { id: '6', title: 'Architect', active: false }, { id: '7', title: 'Barr', active: false }, { id: '8', title: 'Bishop', active: false }, { id: '9', title: 'Brig', active: false }, { id: '10', title: 'Brig GEN', active: false }, { id: '11', title: 'CAPT', active: false }, { id: '12', title: 'Chief(Mrs)', active: false }, { id: '13', title: 'Commander ', active: false }, { id: '14', title: 'Dr(Mrs)', active: false }, { id: '15', title: 'Elder', active: false }, { id: '16', title: 'Hajia', active: false }, { id: '17', title: 'Hajia(Chief)', active: false }, { id: '18', title: 'His Excellency', active: false }, { id: '19', title: 'Lt Col', active: false }, { id: '21', title: 'Major', active: false }, { id: '22', title: 'Major Gen', active: false }, { id: '23', title: 'Master', active: false }, { id: '24', title: 'Professor', active: false }, { id: '25', title: 'Rev Sis', active: false }, { id: '26', title: 'Reverend', active: false }, { id: '27', title: 'Senator', active: false }]
+  isavetitle = [{ id: '0', title: 'Mr', active: false }, { id: '1', title: 'Ms', active: false }, { id: '2', title: 'Dr', active: false }, { id: '3', title: 'Air Vice Marshall', active: false }, { id: '4', title: 'Alhaji', active: false }, { id: '5', title: 'Ambassador', active: false }, { id: '6', title: 'Architect', active: false }, { id: '7', title: 'Barr', active: false }, { id: '8', title: 'Bishop', active: false }, { id: '9', title: 'Brig', active: false }, { id: '10', title: 'Brig GEN', active: false }, { id: '11', title: 'CAPT', active: false }, { id: '12', title: 'Chief(Mrs)', active: false }, { id: '13', title: 'Commander ', active: false }, { id: '14', title: 'Dr(Mrs)', active: false }, { id: '15', title: 'Elder', active: false }, { id: '16', title: 'Hajia', active: false }, { id: '17', title: 'Hajia(Chief)', active: false }, { id: '18', title: 'His Excellency', active: false }, { id: '19', title: 'Lt Col', active: false }, { id: '21', title: 'Major', active: false }, { id: '22', title: 'Major Gen', active: false }, { id: '23', title: 'Master', active: false }, { id: '24', title: 'Professor', active: false }, { id: '25', title: 'Rev Sis', active: false }, { id: '26', title: 'Reverend', active: false }, { id: '27', title: 'Senator', active: false }]
   autoPlansOfChoice = [
     {
       autoPlan: 'Auto Compact (2%) (Third Party Fire & Theft)',
@@ -571,6 +571,10 @@ export class MypoliciesPage implements OnInit {
     });
 
     this.getVehicleModels();
+  }
+  selectPolicyholder(list) {
+    this.policyhldrVal = list.plcyhldrType
+    this.showPolicyholder = false;
   }
 
   selectTitle(list, index) {

@@ -58,6 +58,7 @@ export class AppComponent {
 
   }
 
+
   selected(p) {
     this.appPages.map((value) => {
       value.status = 'unchecked';

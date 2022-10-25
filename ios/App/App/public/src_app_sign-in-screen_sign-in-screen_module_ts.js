@@ -196,13 +196,12 @@ let SignInScreenPage = class SignInScreenPage {
         console.log(localStorage.getItem('token'));
         this.router.navigate(['/home-page-screen-after-login']);
       } else {
-        this.api.hideLoader(); // this.api.presenttoast(res.message);
-
-        this.error = true;
-        this.errormessage = 'Email or password is incorrect';
-        setTimeout(() => {
-          this.error = false;
-        }, 3000);
+        this.api.hideLoader();
+        this.api.presenttoast('Email or password is incorrect'); // this.error = true
+        // this.errormessage = 'Email or password is incorrect'
+        // setTimeout(() => {
+        //   this.error = false
+        // }, 3000);
       }
     }, err => {
       console.log('err==', err);

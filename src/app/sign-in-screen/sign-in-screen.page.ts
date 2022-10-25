@@ -94,12 +94,12 @@ export class SignInScreenPage implements OnInit {
       }
       else {
         this.api.hideLoader();
-        // this.api.presenttoast(res.message);
-        this.error = true
-        this.errormessage = 'Email or password is incorrect'
-        setTimeout(() => {
-          this.error = false
-        }, 3000);
+        this.api.presenttoast('Email or password is incorrect');
+        // this.error = true
+        // this.errormessage = 'Email or password is incorrect'
+        // setTimeout(() => {
+        //   this.error = false
+        // }, 3000);
 
       }
     }, (err) => {

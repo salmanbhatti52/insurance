@@ -12,7 +12,7 @@
 
       </ion-col>
       <ion-col size="8">
-        <div class="title">Agent ID Login</div>
+        <div class="title">Agent Detail</div>
       </ion-col>
       <ion-col size="2">
       </ion-col>
@@ -23,15 +23,57 @@
 
 </ion-header>
 <ion-content>
-  <div class="container">
+  <div class="wrapper">
+    <!-- <div style="display:flex;align-items: center;
+    justify-content: space-around;">
+      <h3 style="margin:0px;text-align:center;">Agent</h3>
+    </div> -->
 
-    <div style="width: 60%;text-align: center;margin: 70px auto 0px;">
-      <p class="con-p2">Record Doesn't Exist</p>
+    <div class="box box-success">
+      <div class="panel-body">
+        <div class="main">
+          <div class="title1">Agent ID</div>
+          <div class="inner1">
+            <div class="para">{{agentID}}</div>
+          </div>
+          <div class="title1">Agent Name</div>
+          <div class="inner1">
+            <div class="para">{{agentName}}</div>
+          </div>
+
+          <div class="title1">Email</div>
+          <div class="inner1">
+            <div class="para">{{email}}</div>
+          </div>
+
+
+          <div class="title1">Address</div>
+          <div class="inner1">
+            <div class="para">{{address}}</div>
+          </div>
+
+          <div class="title1">CityLGA</div>
+          <div class="inner1">
+            <div class="para">{{cityLGA}}</div>
+          </div>
+
+          <div class="title1">kycIssueDate</div>
+          <div class="inner1">
+            <div class="para">{{kycIssueDate}}</div>
+          </div>
+          <div class="title1">kycExpiryDate</div>
+          <div class="inner1">
+            <div class="para">{{kycExpiryDate}}</div>
+          </div>
+
+
+        </div>
+
+      </div>
     </div>
-
-    <div class="img-div">
+    <!-- <div class="img-div">
       <img src="assets/images/no-records.svg">
-    </div>
+    </div> -->
 
 
 
