@@ -11,10 +11,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AgentidpopupPage": () => (/* binding */ AgentidpopupPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _agentidpopup_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./agentidpopup.page.html?ngResource */ 2832);
 /* harmony import */ var _agentidpopup_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./agentidpopup.page.scss?ngResource */ 9735);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
 
@@ -23,17 +24,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let AgentidpopupPage = class AgentidpopupPage {
-    constructor(modal, navCtrl, api) {
+    constructor(modal, navCtrl, api, location) {
         this.modal = modal;
         this.navCtrl = navCtrl;
         this.api = api;
+        this.location = location;
         this.agentId = '';
     }
     ngOnInit() {
     }
     dismiss() {
-        this.modal.dismiss();
+        // this.modal.dismiss();
+        this.location.back();
     }
     search() {
         if (this.agentId == '') {
@@ -64,12 +68,14 @@ let AgentidpopupPage = class AgentidpopupPage {
             this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Agents/' + this.agentId, beartoken).subscribe((res) => {
                 console.log('ressssss', res);
                 this.api.hideLoader();
-                this.modal.dismiss().then(data => {
-                    localStorage.setItem('agentdata', JSON.stringify(res));
-                    console.log('data came back from modal');
-                    console.log(data);
-                    this.navCtrl.navigateForward('agentloginscreen');
-                });
+                localStorage.setItem('agentdata', JSON.stringify(res));
+                this.navCtrl.navigateForward('agentloginscreen');
+                // this.modal.dismiss().then(data => {
+                //   localStorage.setItem('agentdata', JSON.stringify(res))
+                //   console.log('data came back from modal');
+                //   console.log(data);
+                //   this.navCtrl.navigateForward('agentloginscreen')
+                // })
             }, (err) => {
                 console.log(err);
                 this.api.presenttoast(err.error.title);
@@ -85,10 +91,11 @@ let AgentidpopupPage = class AgentidpopupPage {
 AgentidpopupPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ModalController },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.NavController },
-    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService }
+    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__.Location }
 ];
-AgentidpopupPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+AgentidpopupPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
         selector: 'app-agentidpopup',
         template: _agentidpopup_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_agentidpopup_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -1494,7 +1501,7 @@ const openURL = /*#__PURE__*/function () {
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = ".bg {\n  --background: #A8B400 !important;\n  border-radius: 32px;\n}\n\n.container {\n  width: 90%;\n  margin: 5% auto;\n}\n\n.icondiv {\n  text-align: right;\n  margin-right: 0%;\n}\n\n.label {\n  color: #000000;\n  font-size: 20px;\n  font-weight: 700;\n}\n\n.input1 {\n  height: 48px;\n  margin-top: 5%;\n  border-radius: 12px;\n  background: #fff url('profile-circle.svg') no-repeat;\n  --padding-start: 55px;\n  background-position: 6%;\n}\n\n.btndiv {\n  text-align: center;\n  margin-top: 8%;\n}\n\n.btn {\n  --background:#1A206D 10% no-repeat;\n  --border-radius:12px;\n  width: 171px;\n  height: 48px;\n  font-size: 18px;\n  font-weight: 500;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFnZW50aWRwb3B1cC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQ0FBQTtFQUNBLG1CQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxVQUFBO0VBQ0EsZUFBQTtBQUVGOztBQUFBO0VBQ0UsaUJBQUE7RUFDRSxnQkFBQTtBQUdKOztBQURBO0VBQ0UsY0FBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtBQUlGOztBQUZBO0VBQ0UsWUFBQTtFQUNBLGNBQUE7RUFDQSxtQkFBQTtFQUNBLG9EQUFBO0VBQ0EscUJBQUE7RUFDRSx1QkFBQTtBQUtKOztBQUhBO0VBQ0Usa0JBQUE7RUFDQSxjQUFBO0FBTUY7O0FBSkE7RUFDRSxrQ0FBQTtFQUNBLG9CQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7RUFDQSxlQUFBO0VBQ0EsZ0JBQUE7QUFPRiIsImZpbGUiOiJhZ2VudGlkcG9wdXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJne1xyXG4gIC0tYmFja2dyb3VuZDogI0E4QjQwMCAhaW1wb3J0YW50O1xyXG4gIGJvcmRlci1yYWRpdXM6IDMycHg7XHJcbn1cclxuLmNvbnRhaW5lcntcclxuICB3aWR0aDogOTAlO1xyXG4gIG1hcmdpbjogNSUgYXV0bztcclxufVxyXG4uaWNvbmRpdntcclxuICB0ZXh0LWFsaWduOiByaWdodDtcclxuICAgIG1hcmdpbi1yaWdodDogMCU7XHJcbn1cclxuLmxhYmVse1xyXG4gIGNvbG9yOiAjMDAwMDAwO1xyXG4gIGZvbnQtc2l6ZTogMjBweDtcclxuICBmb250LXdlaWdodDogNzAwO1xyXG59XHJcbi5pbnB1dDF7XHJcbiAgaGVpZ2h0OiA0OHB4O1xyXG4gIG1hcmdpbi10b3A6IDUlO1xyXG4gIGJvcmRlci1yYWRpdXM6IDEycHg7XHJcbiAgYmFja2dyb3VuZDogI2ZmZiB1cmwoLi4vLi4vYXNzZXRzL2ltYWdlcy9wcm9maWxlLWNpcmNsZS5zdmcpIG5vLXJlcGVhdDtcclxuICAtLXBhZGRpbmctc3RhcnQ6IDU1cHg7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiA2JTtcclxufVxyXG4uYnRuZGl2e1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBtYXJnaW4tdG9wOiA4JTtcclxufVxyXG4uYnRue1xyXG4gIC0tYmFja2dyb3VuZDojMUEyMDZEICAxMCUgbm8tcmVwZWF0O1xyXG4gIC0tYm9yZGVyLXJhZGl1czoxMnB4O1xyXG4gIHdpZHRoOjE3MXB4IDtcclxuICBoZWlnaHQ6IDQ4cHg7XHJcbiAgZm9udC1zaXplOiAxOHB4O1xyXG4gIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbn1cclxuIl19 */";
+module.exports = ".bg {\n  --background: #A8B400 !important;\n  border-radius: 32px;\n}\n\n.container {\n  width: 90%;\n  margin: 5% auto;\n}\n\n.icondiv {\n  text-align: right;\n  margin-right: 0%;\n}\n\n.label {\n  color: #000000;\n  font-size: 20px;\n  font-weight: 700;\n}\n\n.input1 {\n  height: 48px;\n  margin-top: 5%;\n  border-radius: 12px;\n  background: #fff url('profile-circle.svg') no-repeat;\n  --padding-start: 55px;\n  background-position: 6%;\n  color: #000000;\n}\n\n.btndiv {\n  text-align: center;\n  margin-top: 8%;\n}\n\n.btn {\n  --background:#1A206D 10% no-repeat;\n  --border-radius:12px;\n  width: 171px;\n  height: 48px;\n  font-size: 18px;\n  font-weight: 500;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFnZW50aWRwb3B1cC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQ0FBQTtFQUNBLG1CQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxVQUFBO0VBQ0EsZUFBQTtBQUVGOztBQUFBO0VBQ0UsaUJBQUE7RUFDRSxnQkFBQTtBQUdKOztBQURBO0VBQ0UsY0FBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtBQUlGOztBQUZBO0VBQ0UsWUFBQTtFQUNBLGNBQUE7RUFDQSxtQkFBQTtFQUNBLG9EQUFBO0VBQ0EscUJBQUE7RUFDRSx1QkFBQTtFQUNBLGNBQUE7QUFLSjs7QUFIQTtFQUNFLGtCQUFBO0VBQ0EsY0FBQTtBQU1GOztBQUpBO0VBQ0Usa0NBQUE7RUFDQSxvQkFBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0FBT0YiLCJmaWxlIjoiYWdlbnRpZHBvcHVwLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iZ3tcclxuICAtLWJhY2tncm91bmQ6ICNBOEI0MDAgIWltcG9ydGFudDtcclxuICBib3JkZXItcmFkaXVzOiAzMnB4O1xyXG59XHJcbi5jb250YWluZXJ7XHJcbiAgd2lkdGg6IDkwJTtcclxuICBtYXJnaW46IDUlIGF1dG87XHJcbn1cclxuLmljb25kaXZ7XHJcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDAlO1xyXG59XHJcbi5sYWJlbHtcclxuICBjb2xvcjogIzAwMDAwMDtcclxuICBmb250LXNpemU6IDIwcHg7XHJcbiAgZm9udC13ZWlnaHQ6IDcwMDtcclxufVxyXG4uaW5wdXQxe1xyXG4gIGhlaWdodDogNDhweDtcclxuICBtYXJnaW4tdG9wOiA1JTtcclxuICBib3JkZXItcmFkaXVzOiAxMnB4O1xyXG4gIGJhY2tncm91bmQ6ICNmZmYgdXJsKC4uLy4uL2Fzc2V0cy9pbWFnZXMvcHJvZmlsZS1jaXJjbGUuc3ZnKSBuby1yZXBlYXQ7XHJcbiAgLS1wYWRkaW5nLXN0YXJ0OiA1NXB4O1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogNiU7XHJcbiAgICBjb2xvcjogIzAwMDAwMDtcclxufVxyXG4uYnRuZGl2e1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBtYXJnaW4tdG9wOiA4JTtcclxufVxyXG4uYnRue1xyXG4gIC0tYmFja2dyb3VuZDojMUEyMDZEICAxMCUgbm8tcmVwZWF0O1xyXG4gIC0tYm9yZGVyLXJhZGl1czoxMnB4O1xyXG4gIHdpZHRoOjE3MXB4IDtcclxuICBoZWlnaHQ6IDQ4cHg7XHJcbiAgZm9udC1zaXplOiAxOHB4O1xyXG4gIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbn1cclxuIl19 */";
 
 /***/ }),
 
@@ -1514,7 +1521,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content class=\"bg\">\r\n\r\n  <div class=\"container\">\r\n\r\n    <div class=\"icondiv\" (click)=\"dismiss()\">\r\n      <img src=\"assets/images/close-circle.svg\" alt=\"\">\r\n    </div>\r\n\r\n    <div class=\"main\">\r\n      <div class=\"label\">Enter Agent ID</div>\r\n      <ion-input type=\"text\" class=\"input1\" placeholder=\"1254PAG\" [(ngModel)]=\"agentId\"></ion-input>\r\n\r\n      <div class=\"btndiv\" (click)=\"search()\">\r\n        <ion-button class=\"btn\"><img style=\"margin-right: 6px;\" src=\"assets/images/search-normal.svg\" alt=\"\"> SEARCH\r\n        </ion-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n";
+module.exports = "<ion-content class=\"\">\r\n  <div style=\"background: #dedede; height:100%; width:100%\">\r\n\r\n  <div class=\"v-center\">\r\n\r\n    <div class=\"icondiv\" (click)=\"dismiss()\">\r\n      <img src=\"assets/images/close-circle.svg\" alt=\"\">\r\n    </div>\r\n\r\n    <div class=\"main\">\r\n      <div class=\"label\">Enter Agent ID</div>\r\n      <ion-input type=\"text\" class=\"input1\" placeholder=\"1254PAG\" [(ngModel)]=\"agentId\"></ion-input>\r\n\r\n      <div class=\"btndiv\" (click)=\"search()\">\r\n        <ion-button class=\"btn\"><img style=\"margin-right: 6px;\" src=\"assets/images/search-normal.svg\" alt=\"\"> SEARCH\r\n        </ion-button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n</ion-content>\r\n";
 
 /***/ }),
 

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
@@ -11,13 +12,15 @@ export class AgentidpopupPage implements OnInit {
   agentId = '';
   constructor(public modal: ModalController,
     public navCtrl: NavController,
-    public api: InsuranceAppService) { }
+    public api: InsuranceAppService,
+    public location: Location) { }
 
   ngOnInit() {
   }
 
   dismiss() {
-    this.modal.dismiss();
+    // this.modal.dismiss();
+    this.location.back()
   }
 
   search() {
@@ -50,13 +53,16 @@ export class AgentidpopupPage implements OnInit {
       console.log('ressssss', res);
       this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Agents/' + this.agentId, beartoken).subscribe((res: any) => {
         console.log('ressssss', res);
-        this.api.hideLoader()
-        this.modal.dismiss().then(data => {
-          localStorage.setItem('agentdata', JSON.stringify(res))
-          console.log('data came back from modal');
-          console.log(data);
-          this.navCtrl.navigateForward('agentloginscreen')
-        })
+        this.api.hideLoader();
+        localStorage.setItem('agentdata', JSON.stringify(res))
+
+        this.navCtrl.navigateForward('agentloginscreen')
+        // this.modal.dismiss().then(data => {
+        //   localStorage.setItem('agentdata', JSON.stringify(res))
+        //   console.log('data came back from modal');
+        //   console.log(data);
+        //   this.navCtrl.navigateForward('agentloginscreen')
+        // })
       }, (err) => {
         console.log(err);
         this.api.presenttoast(err.error.title)

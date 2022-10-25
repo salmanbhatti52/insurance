@@ -92,17 +92,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SignInScreenPage": () => (/* binding */ SignInScreenPage)
 /* harmony export */ });
 /* harmony import */ var D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _sign_in_screen_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sign-in-screen.page.html?ngResource */ 4078);
 /* harmony import */ var _sign_in_screen_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sign-in-screen.page.scss?ngResource */ 1886);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _agentidpopup_agentidpopup_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../agentidpopup/agentidpopup.page */ 8483);
-/* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
-/* harmony import */ var _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/fingerprint-aio/ngx */ 3427);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/insurance-app.service */ 2111);
+/* harmony import */ var _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/fingerprint-aio/ngx */ 3427);
 
 
 
@@ -114,7 +113,6 @@ __webpack_require__.r(__webpack_exports__);
 /* eslint-disable max-len */
 
 /* eslint-disable @typescript-eslint/naming-convention */
-
 
 
 
@@ -140,9 +138,9 @@ let SignInScreenPage = class SignInScreenPage {
   }
 
   ngOnInit() {
-    this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormGroup({
-      email: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
-      password: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required])
+    this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormGroup({
+      email: new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
+      password: new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required])
     });
   }
 
@@ -269,11 +267,12 @@ let SignInScreenPage = class SignInScreenPage {
     var _this2 = this;
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const modal = yield _this2.modal.create({
-        component: _agentidpopup_agentidpopup_page__WEBPACK_IMPORTED_MODULE_3__.AgentidpopupPage,
-        cssClass: 'AgentPopupclass'
-      });
-      return yield modal.present();
+      _this2.router.navigate(['/agentidpopup']); // const modal = await this.modal.create({
+      //   component: AgentidpopupPage,
+      //   cssClass: 'AgentPopupclass',
+      // });
+      // return await modal.present();
+
     })();
   }
 
@@ -292,22 +291,22 @@ let SignInScreenPage = class SignInScreenPage {
 };
 
 SignInScreenPage.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ModalController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ModalController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.MenuController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.MenuController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.AlertController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.AlertController
 }, {
-  type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_4__.InsuranceAppService
+  type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__.InsuranceAppService
 }, {
-  type: _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_5__.FingerprintAIO
+  type: _ionic_native_fingerprint_aio_ngx__WEBPACK_IMPORTED_MODULE_4__.FingerprintAIO
 }, {
-  type: _angular_common__WEBPACK_IMPORTED_MODULE_9__.Location
+  type: _angular_common__WEBPACK_IMPORTED_MODULE_8__.Location
 }];
 
-SignInScreenPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
+SignInScreenPage = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
   selector: 'app-sign-in-screen',
   template: _sign_in_screen_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_sign_in_screen_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
