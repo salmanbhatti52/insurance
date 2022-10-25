@@ -303,3 +303,33 @@ ion-footer{
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+
+
+/// //////////////
+@media (orientation: portrait) {
+  .v-center {
+    background: #A8B400;
+    width: 89%;
+    position: relative;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 20px;
+  }
+}
+
+@media (orientation: landscape) {
+  .v-center {
+    background: #A8B400;
+    width: 89%;
+    position: relative;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 20px;
+  }
+}

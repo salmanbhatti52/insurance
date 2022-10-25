@@ -159,12 +159,13 @@ export class SignInScreenPage implements OnInit {
     this.router.navigate(['/explore-screen-before-login-expanded']);
   }
   async PopupCust() {
-    const modal = await this.modal.create({
-      component: AgentidpopupPage,
-      cssClass: 'AgentPopupclass',
-    });
+     this.router.navigate(['/agentidpopup'])
+    // const modal = await this.modal.create({
+    //   component: AgentidpopupPage,
+    //   cssClass: 'AgentPopupclass',
+    // });
 
-    return await modal.present();
+    // return await modal.present();
   }
   signUpPage() {
     this.router.navigate(['/sign-up-screen'])
