@@ -89,7 +89,7 @@ export class SignInScreenPage implements OnInit {
         this.api.username = res.first_name
         console.log(localStorage.getItem('userid'));
         console.log(localStorage.getItem('token'));
-
+        localStorage.setItem('loginas','user')
         this.router.navigate(['/home-page-screen-after-login']);
       }
       else {
@@ -136,6 +136,8 @@ export class SignInScreenPage implements OnInit {
             localStorage.setItem('password', this.getuserPassword);
             console.log(localStorage.getItem('userid'));
             console.log(localStorage.getItem('token'));
+
+            localStorage.setItem('loginas','user')
 
             this.router.navigate(['/home-page-screen-after-login']);
           }

@@ -17,6 +17,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
 
   products: any;
   username: any;
+  loginas: string;
   constructor(public navCtrl: NavController, public menuCtrl: MenuController,
     public router: Router,
     public modal: ModalController,
@@ -24,9 +25,13 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     public alert: AlertController) { }
 
   ngOnInit() {
-    this.username = localStorage.getItem('fname');
+
   }
   ionViewWillEnter() {
+
+    this.loginas =  localStorage.getItem('loginas')
+    this.username = localStorage.getItem('fname');
+    this.api.username = this.username
 
     if (localStorage.getItem('userid') == null) {
       this.api.presenttoast('Please Login First');

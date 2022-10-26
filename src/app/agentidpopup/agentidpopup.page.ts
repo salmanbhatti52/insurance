@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
 
@@ -9,11 +10,24 @@ import { InsuranceAppService } from '../services/insurance-app.service';
   styleUrls: ['./agentidpopup.page.scss'],
 })
 export class AgentidpopupPage implements OnInit {
+  agentloginType = 'Select Agent Type';
   agentId = '';
+  showMaker: any = false;
+
+
+  vechileMakenew = [{
+    manufacturer: "Gibs",
+    active: false
+  },{
+    manufacturer: "IES",
+    active: false
+  }];
+
   constructor(public modal: ModalController,
     public navCtrl: NavController,
     public api: InsuranceAppService,
-    public location: Location) { }
+    public location: Location,
+    public router:Router) { }
 
   ngOnInit() {
   }
@@ -24,21 +38,50 @@ export class AgentidpopupPage implements OnInit {
   }
 
   search() {
-    if (this.agentId == '') {
+    if (this.agentloginType == "Select Agent Type") {
+      this.api.presenttoast('Please Select Agent Type')
+    }else if(this.agentId == ''){
       this.api.presenttoast('Enter Agent ID')
     } else {
-      var myData = {
-        "sid": "ECHANNEL2",
-        "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
+
+      if(this.agentloginType == "Gibs"){
+        var myData = {
+          "sid": "ECHANNEL2",
+          "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
+        }
+        this.api.gibsapi(myData).subscribe((res: any) => {
+          console.log(res);
+          let token = res.accessToken
+          this.getresult(token)
+        }, (err) => {
+          console.log(err);
+          this.api.hideLoader()
+        });
+      }else{
+
+        let token = '39109f7df56e1CORNERStone9e685066bb852'
+        this.api.showLoader();
+        this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=901&agent='+this.agentId, token).subscribe((res: any) => {
+          console.log(res);
+          this.api.hideLoader()
+
+          if(res.result.status == 1){
+            localStorage.setItem('loginas','agent')
+            localStorage.setItem('userid', this.agentId);
+            localStorage.setItem('token', '39109f7df56e1CORNERStone9e685066bb852');
+            localStorage.setItem('fname',res.result.name)
+
+            this.router.navigate(['/home-page-screen-after-login']);
+          }else{
+            this.api.presenttoast(res.result.message)
+          }
+        }, (err) => {
+          console.log(err);
+          this.api.hideLoader()
+        });
       }
-      this.api.gibsapi(myData).subscribe((res: any) => {
-        console.log(res);
-        let token = res.accessToken
-        this.getresult(token)
-      }, (err) => {
-        console.log(err);
-        this.api.hideLoader()
-      });
+
+
 
 
     }
@@ -56,7 +99,16 @@ export class AgentidpopupPage implements OnInit {
         this.api.hideLoader();
         localStorage.setItem('agentdata', JSON.stringify(res))
 
-        this.navCtrl.navigateForward('agentloginscreen')
+        localStorage.setItem('loginas','agent')
+        localStorage.setItem('userid', this.agentId);
+        localStorage.setItem('token', beartoken);
+        localStorage.setItem('fname',res.agentName)
+
+        this.router.navigate(['/home-page-screen-after-login']);
+
+       // this.navCtrl.navigateForward('agentloginscreen')
+
+
         // this.modal.dismiss().then(data => {
         //   localStorage.setItem('agentdata', JSON.stringify(res))
         //   console.log('data came back from modal');
@@ -73,6 +125,24 @@ export class AgentidpopupPage implements OnInit {
       this.api.presenttoast(err.error.title)
       this.api.hideLoader()
     });
+
+  }
+
+
+  openVhclMakeList() {
+    if (this.showMaker == true) {
+      this.showMaker = false;
+    } else {
+      this.showMaker = true;
+
+    }
+  }
+
+
+  selectVehicleMaker(list, index) {
+    this.agentloginType = list.manufacturer;
+    // this.vehicleModelVal = '';
+    this.showMaker = false;
 
   }
 
