@@ -18,7 +18,7 @@ export class AgentidpopupPage implements OnInit {
   vechileMakenew = [{
     manufacturer: "Gibs",
     active: false
-  },{
+  }, {
     manufacturer: "IES",
     active: false
   }];
@@ -27,7 +27,7 @@ export class AgentidpopupPage implements OnInit {
     public navCtrl: NavController,
     public api: InsuranceAppService,
     public location: Location,
-    public router:Router) { }
+    public router: Router) { }
 
   ngOnInit() {
   }
@@ -40,11 +40,11 @@ export class AgentidpopupPage implements OnInit {
   search() {
     if (this.agentloginType == "Select Agent Type") {
       this.api.presenttoast('Please Select Agent Type')
-    }else if(this.agentId == ''){
+    } else if (this.agentId == '') {
       this.api.presenttoast('Enter Agent ID')
     } else {
 
-      if(this.agentloginType == "Gibs"){
+      if (this.agentloginType == "Gibs") {
         var myData = {
           "sid": "ECHANNEL2",
           "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
@@ -57,22 +57,22 @@ export class AgentidpopupPage implements OnInit {
           console.log(err);
           this.api.hideLoader()
         });
-      }else{
+      } else {
 
         let token = '39109f7df56e1CORNERStone9e685066bb852'
         this.api.showLoader();
-        this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=901&agent='+this.agentId, token).subscribe((res: any) => {
+        this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=901&agent=' + this.agentId, token).subscribe((res: any) => {
           console.log(res);
           this.api.hideLoader()
 
-          if(res.result.status == 1){
-            localStorage.setItem('loginas','agent')
+          if (res.result.status == 1) {
+            localStorage.setItem('loginas', 'agent')
             localStorage.setItem('userid', this.agentId);
             localStorage.setItem('token', '39109f7df56e1CORNERStone9e685066bb852');
-            localStorage.setItem('fname',res.result.name)
+            localStorage.setItem('fname', res.result.name)
 
             this.router.navigate(['/home-page-screen-after-login']);
-          }else{
+          } else {
             this.api.presenttoast(res.result.message)
           }
         }, (err) => {
@@ -99,14 +99,15 @@ export class AgentidpopupPage implements OnInit {
         this.api.hideLoader();
         localStorage.setItem('agentdata', JSON.stringify(res))
 
-        localStorage.setItem('loginas','agent')
+        localStorage.setItem('loginas', 'agent');
+        this.api.loginas = 'agent';
         localStorage.setItem('userid', this.agentId);
         localStorage.setItem('token', beartoken);
-        localStorage.setItem('fname',res.agentName)
+        localStorage.setItem('fname', res.agentName)
 
-        this.router.navigate(['/home-page-screen-after-login']);
+        this.router.navigate(['/dashboard']);
 
-       // this.navCtrl.navigateForward('agentloginscreen')
+        // this.navCtrl.navigateForward('agentloginscreen')
 
 
         // this.modal.dismiss().then(data => {

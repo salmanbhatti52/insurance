@@ -192,6 +192,8 @@ let SignInScreenPage = class SignInScreenPage {
         this.api.username = res.first_name;
         console.log(localStorage.getItem('userid'));
         console.log(localStorage.getItem('token'));
+        localStorage.setItem('loginas', 'user');
+        this.api.loginas = 'user';
         this.router.navigate(['/home-page-screen-after-login']);
       } else {
         this.api.hideLoader();
@@ -240,6 +242,7 @@ let SignInScreenPage = class SignInScreenPage {
               localStorage.setItem('password', _this.getuserPassword);
               console.log(localStorage.getItem('userid'));
               console.log(localStorage.getItem('token'));
+              localStorage.setItem('loginas', 'user');
 
               _this.router.navigate(['/home-page-screen-after-login']);
             } else {

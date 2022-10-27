@@ -1,0 +1,80 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex;
+    align-items: center;">
+      <ion-col size="2" style="padding-left: 25px;">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width:100% ;">
+              <img src="assets/images/sb-button.svg" alt="sb-btn">
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">My Policy</div>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <p class="para">Find your Insurance policy in Seconds!</p>
+
+    <div class="htxt">Policy Number</div>
+    <div class="dropbox1">
+      <div class="innerbox">
+        <ion-input type="text" [(ngModel)]="policynum" class="boxinput" placeholder="Policy Number/P10 Policy Number">
+        </ion-input>
+
+      </div>
+    </div>
+    <div *ngIf="policy==true">
+      <div class="htxt1">Your Policy Information</div>
+      <div class="box box-success">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table quotetable table-bordered">
+              <tbody>
+                <tr>
+                  <td style="width: 30%; color: black;">Full Name</td>
+                  <td style="color: black;">{{full_name}}</td>
+                </tr>
+                <!-- <tr>
+                  <td style="width: 30%; color: black;">Insurance Type</td>
+                  <td style="color: black;">{{InsuranceType}}</td>
+                </tr> -->
+                <tr>
+                  <td style="width: 30%; color: black;">Start Date</td>
+                  <td style="color: black;">{{StartDate}}</td>
+                </tr>
+                <tr>
+                  <td style="width: 30%; color: black;">Date of Expiration</td>
+                  <td style="color: black;">{{DateofExpiration}}</td>
+                </tr>
+                <tr>
+                  <td style="width: 30%; color: black;">E-Channel Policy Number</td>
+                  <td style="color: black;">{{PolicyNumber}}</td>
+                </tr>
+                <tr>
+                  <td style="width: 30%; color: black;">Policy Number</td>
+                  <td style="color: black;">{{P10PolicyNumber}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>
+
+<ion-footer>
+  <div class="btndiv">
+    <ion-button class="btn1" (click)="policylookup()">Submit</ion-button>
+  </div>
+</ion-footer>

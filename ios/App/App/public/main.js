@@ -53,7 +53,7 @@ const routes = [
     },
     {
         path: 'explore-screen-before-login',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_explore-screen-before-login_explore-screen-before-login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./explore-screen-before-login/explore-screen-before-login.module */ 1741)).then(m => m.ExploreScreenBeforeLoginPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_agentidpopup_agentidpopup_page_ts"), __webpack_require__.e("src_app_explore-screen-before-login_explore-screen-before-login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./explore-screen-before-login/explore-screen-before-login.module */ 1741)).then(m => m.ExploreScreenBeforeLoginPageModule)
     },
     {
         path: 'get-quote',
@@ -105,7 +105,7 @@ const routes = [
     },
     {
         path: 'explore-screen-before-login',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_explore-screen-before-login_explore-screen-before-login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./explore-screen-before-login/explore-screen-before-login.module */ 1741)).then(m => m.ExploreScreenBeforeLoginPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_agentidpopup_agentidpopup_page_ts"), __webpack_require__.e("src_app_explore-screen-before-login_explore-screen-before-login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./explore-screen-before-login/explore-screen-before-login.module */ 1741)).then(m => m.ExploreScreenBeforeLoginPageModule)
     },
     {
         path: 'get-quote',
@@ -137,7 +137,7 @@ const routes = [
     },
     {
         path: 'agentidpopup',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_agentidpopup_agentidpopup_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./agentidpopup/agentidpopup.module */ 2244)).then(m => m.AgentidpopupPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_agentidpopup_agentidpopup_page_ts"), __webpack_require__.e("src_app_agentidpopup_agentidpopup_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./agentidpopup/agentidpopup.module */ 2244)).then(m => m.AgentidpopupPageModule)
     },
     {
         path: 'agentloginscreen',
@@ -222,6 +222,10 @@ const routes = [
     {
         path: 'gibsplans',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_gibsplans_gibsplans_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./gibsplans/gibsplans.module */ 2628)).then(m => m.GibsplansPageModule)
+    },
+    {
+        path: 'allpolicies',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_allpolicies_allpolicies_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./allpolicies/allpolicies.module */ 8194)).then(m => m.AllpoliciesPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -271,6 +275,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
+  // loginas: any;
   constructor(navCtrl, menuCtrl, alert, api, route, platform) {
     // if (localStorage.getItem('userid') != null) {
     //   this.route.navigate(['home-page-screen-after-login']);
@@ -323,24 +328,64 @@ let AppComponent = class AppComponent {
       img1: '/assets/images/icons/settingactive.svg',
       status: 'unchecked'
     }];
-    this.initializeApp();
+    this.appPages2 = [// { title: 'Home', url: '/home-page-screen-after-login', img: '/assets/images/home.svg', img1: '/assets/images/homeicon.svg', status: 'unchecked' },
+    {
+      title: 'Dashboard',
+      url: 'dashboard',
+      img: '/assets/images/icons/chart.svg',
+      img1: '/assets/images/icons/dashboard.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Get Quote',
+      url: '/get-quote',
+      img: '/assets/images/icons/quote.svg',
+      img1: '/assets/images/icons/activequote.svg',
+      status: 'unchecked'
+    }, // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
+    {
+      title: 'My Policies',
+      url: 'allpolicies',
+      img: '/assets/images/icons/policy.svg',
+      img1: '/assets/images/icons/activepolicy.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Verify Policy',
+      url: 'policylookup',
+      img: '/assets/images/icons/mypolicy.svg',
+      img1: '/assets/images/icons/activemypolicy.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Renewals',
+      url: 'verify-policy-screen-cust',
+      img: '/assets/images/icons/renewals.svg',
+      img1: '/assets/images/icons/activerenewls.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Make a Claim',
+      url: '/makeaclaim',
+      img: '/assets/images/icons/claim.svg',
+      img1: '/assets/images/icons/activeclaim.svg',
+      status: 'unchecked'
+    } // { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
+    ];
   }
 
-  initializeApp() {
-    var _this = this;
+  ngOnInit() {
+    this.platform.ready().then(() => {
+      setTimeout(() => {
+        this.initializeApp();
+        _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__.SplashScreen.hide();
+        this.route.navigate(['splash']);
+      }, 3500);
+    });
+  }
 
-    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      // this.fp = localStorage.getItem('fingerprint');
-      // console.log('fingerprint====', this.fp);
-      // this.api.fpval = this.fp
-      _this.platform.ready().then(() => {
-        setTimeout(() => {
-          _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__.SplashScreen.hide();
+  initializeApp() {// this.loginas = localStorage.getItem('loginas')
+    // this.fp = localStorage.getItem('fingerprint');
+    // console.log('fingerprint====', this.fp);
+    // this.api.fpval = this.fp
 
-          _this.route.navigate(['splash']);
-        }, 3500);
-      });
-    })();
+    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {})();
   }
 
   selected(p) {
@@ -366,16 +411,16 @@ let AppComponent = class AppComponent {
 
 
   logout() {
-    var _this2 = this;
+    var _this = this;
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const alert = yield _this2.alert.create({
+      const alert = yield _this.alert.create({
         header: "Are you ready to log out?",
         buttons: [{
           text: 'No',
           role: 'cancel',
           handler: () => {
-            _this2.menuCtrl.close();
+            _this.menuCtrl.close();
           }
         }, {
           text: "Yes",
@@ -385,8 +430,9 @@ let AppComponent = class AppComponent {
             localStorage.removeItem('token');
             console.log('userid==', localStorage.getItem('userid'));
             console.log('token==', localStorage.getItem('token'));
+            localStorage.removeItem('loginas');
 
-            _this2.api.presenttoast('You are successfully logged out!');
+            _this.api.presenttoast('You are successfully logged out!');
 
             let fp = localStorage.getItem('fingerprint');
 
@@ -394,9 +440,9 @@ let AppComponent = class AppComponent {
               localStorage.removeItem('fingerprint');
             }
 
-            _this2.menuCtrl.close();
+            _this.menuCtrl.close();
 
-            _this2.navCtrl.navigateRoot('sign-in-screen');
+            _this.navCtrl.navigateRoot('sign-in-screen');
           }
         }]
       });
@@ -1093,7 +1139,7 @@ module.exports = "ion-menu ion-content {\n  --background:#1A206D;\n}\n\nion-menu
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-app>\r\n  <ion-split-pane contentId=\"main-content\">\r\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\r\n      <ion-header style=\"background-color:#1A206D !important;\">\r\n        <div style=\"width: 80%; margin: 17% auto 10px;\">\r\n          <div style=\"width: 100%;\">\r\n            <img (click)=\"closeMenu()\" src=\"assets/images/icons/backwhite-arrow.svg\" alt=\"\">\r\n          </div>\r\n        </div>\r\n\r\n      </ion-header>\r\n      <ion-content style=\"--background: #1A206D !important;\">\r\n        <!-- <div style=\"text-align:center;\">\r\n          <img src=\"assets/images/logo1.svg\">\r\n        </div> -->\r\n        <div style=\"display: flex;flex-direction: row;align-items: center; width: 80%;\r\n          margin:0% auto 5%\">\r\n          <!-- <div class=\"imgdiv\">\r\n            <img src=\"assets/images/icons/userimg.svg\">\r\n          </div> -->\r\n          <div class=\"textdiv\">\r\n            <div class=\"text1\">Username: {{api.username}}</div>\r\n          </div>\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n          <!-- <ion-row>\r\n            <ion-col size=\"9\">\r\n              <ion-label style=\"color: #fff;\">Enable Face/Fingerprint ID</ion-label>\r\n            </ion-col>\r\n            <ion-col size=\"3\">\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" checked *ngIf=\"api.fpval=='true'\">\r\n              </ion-toggle>\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" *ngIf=\"api.fpval=='false'\"></ion-toggle>\r\n            </ion-col>\r\n          </ion-row> -->\r\n\r\n        </div>\r\n\r\n\r\n      </ion-content>\r\n      <ion-footer class=\"ion-no-border fc\" no-border style=\"background-color:#1A206D !important;\">\r\n        <div style=\"display: flex;\r\n        width: 100%;\r\n        margin-bottom: 10%;\r\n        margin-left: 10%;\" (click)=\"logout()\">\r\n          <div class=\"bottom\">\r\n            <img src=\"assets/images/icons/logout.svg\">\r\n          </div>\r\n          <div class=\"stext\">\r\n            <span style=\"padding-left:4% ;\">logout</span>\r\n          </div>\r\n        </div>\r\n\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>\r\n";
+module.exports = "<ion-app>\r\n  <ion-split-pane contentId=\"main-content\">\r\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\r\n      <ion-header style=\"background-color:#1A206D !important;\">\r\n        <div style=\"width: 80%; margin: 17% auto 10px;\">\r\n          <div style=\"width: 100%;\">\r\n            <img (click)=\"closeMenu()\" src=\"assets/images/icons/backwhite-arrow.svg\" alt=\"\">\r\n          </div>\r\n        </div>\r\n\r\n      </ion-header>\r\n      <ion-content style=\"--background: #1A206D !important;\">\r\n        <!-- <div style=\"text-align:center;\">\r\n          <img src=\"assets/images/logo1.svg\">\r\n        </div> -->\r\n        <div style=\"display: flex;flex-direction: row;align-items: center; width: 80%;\r\n          margin:0% auto 5%\">\r\n          <!-- <div class=\"imgdiv\">\r\n            <img src=\"assets/images/icons/userimg.svg\">\r\n          </div> -->\r\n          <div class=\"textdiv\" *ngIf=\"api.loginas=='user'\">\r\n            <div class=\"text1\">Username: {{api.username}}</div>\r\n          </div>\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='user'\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n          <!-- <ion-row>\r\n            <ion-col size=\"9\">\r\n              <ion-label style=\"color: #fff;\">Enable Face/Fingerprint ID</ion-label>\r\n            </ion-col>\r\n            <ion-col size=\"3\">\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" checked *ngIf=\"api.fpval=='true'\">\r\n              </ion-toggle>\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" *ngIf=\"api.fpval=='false'\"></ion-toggle>\r\n            </ion-col>\r\n          </ion-row> -->\r\n\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='agent'\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages2; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </div>\r\n\r\n\r\n      </ion-content>\r\n      <ion-footer class=\"ion-no-border fc\" no-border style=\"background-color:#1A206D !important;\">\r\n        <div style=\"display: flex;\r\n        width: 100%;\r\n        margin-bottom: 10%;\r\n        margin-left: 10%;\" (click)=\"logout()\">\r\n          <div class=\"bottom\">\r\n            <img src=\"assets/images/icons/logout.svg\">\r\n          </div>\r\n          <div class=\"stext\">\r\n            <span style=\"padding-left:4% ;\">logout</span>\r\n          </div>\r\n        </div>\r\n\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>\r\n";
 
 /***/ })
 

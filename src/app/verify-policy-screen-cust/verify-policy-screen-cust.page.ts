@@ -6,7 +6,7 @@ import { VerifyPolicyPopupCustPage } from '../verify-policy-popup-cust/verify-po
 import axios from 'axios';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { HttpHeaders, HttpParams, HttpClient, HttpParamsOptions } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-verify-policy-screen-cust',
@@ -55,7 +55,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
   async PopupCust() {
     // let token = '39109f7df56e1CORNERStone9e685066bb852'
     if (this.pnumber == '') {
-      this.api.presenttoast('Policy Number Field is required!')
+      this.api.presenttoast('Policy Number Field is required!');
     } else {
       this.api.showLoader();
       this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=160&polnum2=' + this.pnumber, localStorage.getItem('token')).subscribe((response: any) => {

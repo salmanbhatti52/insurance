@@ -13,7 +13,12 @@ export class SplashPage implements OnInit {
       if (localStorage.getItem('userid') == null) {
         this.router.navigate(['start-screen']);
       } else {
-        this.router.navigate(['home-page-screen-after-login']);
+        if (localStorage.getItem('loginas') == 'user') {
+          this.router.navigate(['home-page-screen-after-login']);
+        } else {
+          this.router.navigate(['dashboard']);
+        }
+
       }
 
     }, 3000);

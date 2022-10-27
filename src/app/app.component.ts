@@ -22,9 +22,21 @@ export class AppComponent {
     { title: 'Make a Claim', url: '/makeaclaim', img: '/assets/images/icons/claim.svg', img1: '/assets/images/icons/activeclaim.svg', status: 'unchecked' },
     { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
   ];
+  public appPages2 = [
+    // { title: 'Home', url: '/home-page-screen-after-login', img: '/assets/images/home.svg', img1: '/assets/images/homeicon.svg', status: 'unchecked' },
+    { title: 'Dashboard', url: 'dashboard', img: '/assets/images/icons/chart.svg', img1: '/assets/images/icons/dashboard.svg', status: 'unchecked' },
+    { title: 'Get Quote', url: '/get-quote', img: '/assets/images/icons/quote.svg', img1: '/assets/images/icons/activequote.svg', status: 'unchecked' },
+    // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
+    { title: 'My Policies', url: 'allpolicies', img: '/assets/images/icons/policy.svg', img1: '/assets/images/icons/activepolicy.svg', status: 'unchecked' },
+    { title: 'Verify Policy', url: 'policylookup', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
+    { title: 'Renewals', url: 'verify-policy-screen-cust', img: '/assets/images/icons/renewals.svg', img1: '/assets/images/icons/activerenewls.svg', status: 'unchecked' },
+    { title: 'Make a Claim', url: '/makeaclaim', img: '/assets/images/icons/claim.svg', img1: '/assets/images/icons/activeclaim.svg', status: 'unchecked' },
+    // { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
+  ];
 
   selectedtitle: any;
   fp: any;
+  // loginas: any;
   constructor(public navCtrl: NavController,
     public menuCtrl: MenuController,
     public alert: AlertController,
@@ -40,21 +52,30 @@ export class AppComponent {
     // }
 
 
-    this.initializeApp();
+
 
   }
 
-  async initializeApp() {
-    // this.fp = localStorage.getItem('fingerprint');
-    // console.log('fingerprint====', this.fp);
-    // this.api.fpval = this.fp
+  ngOnInit() {
     this.platform.ready().then(() => {
       setTimeout(() => {
+        this.initializeApp();
+
         SplashScreen.hide();
         this.route.navigate(['splash']);
       }, 3500);
 
     });
+
+  }
+
+  async initializeApp() {
+    // this.loginas = localStorage.getItem('loginas')
+    // this.fp = localStorage.getItem('fingerprint');
+    // console.log('fingerprint====', this.fp);
+    // this.api.fpval = this.fp
+
+
 
   }
 
@@ -107,6 +128,7 @@ export class AppComponent {
 
             console.log('userid==', localStorage.getItem('userid'));
             console.log('token==', localStorage.getItem('token'));
+            localStorage.removeItem('loginas');
             this.api.presenttoast('You are successfully logged out!');
             let fp = localStorage.getItem('fingerprint')
             if (fp == 'false') {

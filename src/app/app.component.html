@@ -18,11 +18,11 @@
           <!-- <div class="imgdiv">
             <img src="assets/images/icons/userimg.svg">
           </div> -->
-          <div class="textdiv">
+          <div class="textdiv" *ngIf="api.loginas=='user'">
             <div class="text1">Username: {{api.username}}</div>
           </div>
         </div>
-        <div style="width:90%;margin:0% auto;">
+        <div style="width:90%;margin:0% auto;" *ngIf="api.loginas=='user'">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
               routerLinkActive="selected" class="ion-no-padding" (click)="selected(p)">
@@ -42,6 +42,16 @@
             </ion-col>
           </ion-row> -->
 
+        </div>
+        <div style="width:90%;margin:0% auto;" *ngIf="api.loginas=='agent'">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages2; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+              routerLinkActive="selected" class="ion-no-padding" (click)="selected(p)">
+              <img class="sidemenu-icons" *ngIf="p.status=='checked'" src="{{p.img1}}">
+              <img class="sidemenu-icons" *ngIf="p.status=='unchecked'" src="{{p.img}}">
+              <ion-label class="title">{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
         </div>
 
 

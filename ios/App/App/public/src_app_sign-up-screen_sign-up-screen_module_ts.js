@@ -215,6 +215,8 @@ let SignUpScreenPage = class SignUpScreenPage {
           this.api.presenttoast(res.message);
         } else {
           this.api.presenttoast(res.message);
+          localStorage.setItem('loginas', 'user');
+          this.api.loginas = 'user';
           this.router.navigate(['/sign-in-screen']);
         }
       }, err => {

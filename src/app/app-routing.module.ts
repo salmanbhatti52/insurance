@@ -210,7 +210,13 @@ const routes: Routes = [
   {
     path: 'gibsplans',
     loadChildren: () => import('./gibsplans/gibsplans.module').then(m => m.GibsplansPageModule)
+  },
+
+  {
+    path: 'allpolicies',
+    loadChildren: () => import('./allpolicies/allpolicies.module').then(m => m.AllpoliciesPageModule)
   }
+
 
 
 
