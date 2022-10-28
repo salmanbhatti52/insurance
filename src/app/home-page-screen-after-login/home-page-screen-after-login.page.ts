@@ -29,7 +29,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   }
   ionViewWillEnter() {
 
-    this.loginas =  localStorage.getItem('loginas')
+    this.loginas = localStorage.getItem('loginas')
     this.username = localStorage.getItem('fname');
     this.api.username = this.username
 
@@ -86,13 +86,13 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   investmentsubProducts() {
     this.router.navigate(['/sub-products']);
   }
-  openProduct(product,comingFrom) {
+  openProduct(product, comingFrom) {
     console.log('seleted product', product);
     localStorage.setItem('productName', product.name);
     localStorage.setItem('productid', product.id);
-    this.subProducts(product.id,comingFrom);
+    this.subProducts(product.id, comingFrom);
   }
-  subProducts(id,comingFrom) {
+  subProducts(id, comingFrom) {
     const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","product_id":"' + id + '","method":"get_avilable_subproducts"}';
     this.api.insertData(myData).subscribe((res: any) => {
       const subproducts = [];
@@ -154,5 +154,8 @@ export class HomePageScreenAfterLoginPage implements OnInit {
 
     this.router.navigate(['/quote-popup']);
 
+  }
+  learnmore() {
+    this.router.navigate(['/claimassistance']);
   }
 }

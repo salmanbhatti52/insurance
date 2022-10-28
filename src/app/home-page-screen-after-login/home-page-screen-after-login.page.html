@@ -21,7 +21,8 @@
       </ion-col>
       <ion-col size="2"></ion-col>
       <ion-col class="titleclass" size="2">
-        <img  *ngIf="loginas == 'user'" (click)="updateProfile()" class="pro-img" src="assets/images/user.png" alt="profile">
+        <img *ngIf="loginas == 'user'" (click)="updateProfile()" class="pro-img" src="assets/images/user.png"
+          alt="profile">
       </ion-col>
 
 
@@ -46,7 +47,7 @@
                   <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
                   </ion-progress-bar>
                   <p class="p3">We have got you covered</p>
-                  <ion-button class="btn-sm">Learn more</ion-button>
+                  <ion-button class="btn-sm" (click)="learnmore()">Learn more</ion-button>
                 </div>
                 <div>
                   <div style="width:100% ;">
@@ -67,7 +68,7 @@
                   <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
                   </ion-progress-bar>
                   <p class="p3">We have got you covered</p>
-                  <ion-button class="btn-sm">Learn more</ion-button>
+                  <ion-button class="btn-sm" (click)="learnmore()">Learn more</ion-button>
                 </div>
                 <div>
                   <div style="width:100% ;">
@@ -88,7 +89,7 @@
                   <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
                   </ion-progress-bar>
                   <p class="p3">We have got you covered</p>
-                  <ion-button class="btn-sm">Learn more</ion-button>
+                  <ion-button class="btn-sm" (click)="learnmore()">Learn more</ion-button>
                 </div>
                 <div>
                   <div style="width:100% ;">

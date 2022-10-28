@@ -215,7 +215,11 @@ const routes: Routes = [
   {
     path: 'allpolicies',
     loadChildren: () => import('./allpolicies/allpolicies.module').then(m => m.AllpoliciesPageModule)
+  },  {
+    path: 'claimassistance',
+    loadChildren: () => import('./claimassistance/claimassistance.module').then( m => m.ClaimassistancePageModule)
   }
+
 
 
 

@@ -16,7 +16,7 @@ export class InsuranceAppService {
   username: any;
 
   comingFrom: any = 0;
-  loginas: any;
+  loginas = 'user';
 
   constructor(private toastctrl: ToastController,
     private http: HttpClient,
