@@ -26,7 +26,7 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
   }
 
   claim() {
-    this.navCtrl.navigateForward('makeaclaim')
+    // this.navCtrl.navigateForward('makeaclaim')
   }
   toogleShow() {
     this.show = !this.show
@@ -42,5 +42,9 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
   }
   updateProfile() {
     this.router.navigate(['/profile-update']);
+  }
+
+  learnmore() {
+    this.router.navigate(['/claimassistance']);
   }
 }

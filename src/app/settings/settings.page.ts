@@ -23,4 +23,16 @@ export class SettingsPage implements OnInit {
     this.navCtrl.navigateForward('privacy')
   }
 
+  languagepage() {
+    this.navCtrl.navigateForward('languagepage')
+  }
+
+  notification() {
+    this.navCtrl.navigateForward('notification')
+  }
+
+  help() {
+    this.navCtrl.navigateForward('helppage')
+  }
+
 }

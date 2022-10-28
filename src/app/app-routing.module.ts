@@ -218,6 +218,18 @@ const routes: Routes = [
   },  {
     path: 'claimassistance',
     loadChildren: () => import('./claimassistance/claimassistance.module').then( m => m.ClaimassistancePageModule)
+  },
+  {
+    path: 'languagepage',
+    loadChildren: () => import('./languagepage/languagepage.module').then( m => m.LanguagepagePageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'helppage',
+    loadChildren: () => import('./helppage/helppage.module').then( m => m.HelppagePageModule)
   }
 
 

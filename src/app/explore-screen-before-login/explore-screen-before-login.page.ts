@@ -105,4 +105,6 @@ export class ExploreScreenBeforeLoginPage implements OnInit {
   signUpScreen() {
     this.router.navigate(['/sign-up-screen']);
   }
+
+
 }
