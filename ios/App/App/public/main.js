@@ -226,6 +226,22 @@ const routes = [
     {
         path: 'allpolicies',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_allpolicies_allpolicies_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./allpolicies/allpolicies.module */ 8194)).then(m => m.AllpoliciesPageModule)
+    },
+    {
+        path: 'claimassistance',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_claimassistance_claimassistance_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./claimassistance/claimassistance.module */ 450)).then(m => m.ClaimassistancePageModule)
+    },
+    {
+        path: 'languagepage',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_languagepage_languagepage_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./languagepage/languagepage.module */ 4634)).then(m => m.LanguagepagePageModule)
+    },
+    {
+        path: 'notification',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_notification_notification_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./notification/notification.module */ 2154)).then(m => m.NotificationPageModule)
+    },
+    {
+        path: 'helppage',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_helppage_helppage_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./helppage/helppage.module */ 180)).then(m => m.HelppagePageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -556,6 +572,7 @@ let InsuranceAppService = class InsuranceAppService {
     this.url = 'https://www.cornerstone.com.ng/devtest/webservice';
     this.authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
     this.comingFrom = 0;
+    this.loginas = 'user';
   }
 
   insertData(myData) {

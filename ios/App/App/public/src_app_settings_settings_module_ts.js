@@ -115,6 +115,15 @@ let SettingsPage = class SettingsPage {
     privacy() {
         this.navCtrl.navigateForward('privacy');
     }
+    languagepage() {
+        this.navCtrl.navigateForward('languagepage');
+    }
+    notification() {
+        this.navCtrl.navigateForward('notification');
+    }
+    help() {
+        this.navCtrl.navigateForward('helppage');
+    }
 };
 SettingsPage.ctorParameters = () => [
     { type: _angular_common__WEBPACK_IMPORTED_MODULE_2__.Location },
@@ -148,7 +157,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \********************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n  <ion-toolbar class=\"headBgGlobal\">\n    <ion-row style=\"display: flex;\n    align-items: center;\">\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\n\n        <div style=\"width:100% ;\" (click)=\"goback()\">\n          <img src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\n        </div>\n\n      </ion-col>\n      <ion-col size=\"8\">\n        <div class=\"title\">Settings</div>\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"language()\">\n      <ion-label>\n        Language\n      </ion-label>\n    </ion-item>\n\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"noti()\">\n      <ion-label>\n        Notification\n      </ion-label>\n    </ion-item>\n\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"privacy()\">\n      <ion-label>\n        Privacy\n      </ion-label>\n    </ion-item>\n\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"help()\">\n      <ion-label>\n        Help\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n\n</ion-content>\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n\r\n        <div style=\"width:100% ;\" (click)=\"goback()\">\r\n          <img src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n        </div>\r\n\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Settings</div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"languagepage()\">\r\n      <ion-label>\r\n        Language\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"notification()\">\r\n      <ion-label>\r\n        Notification\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"privacy()\">\r\n      <ion-label>\r\n        Privacy\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"help()\">\r\n      <ion-label>\r\n        Help\r\n      </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n\r\n\r\n</ion-content>\r\n";
 
 /***/ })
 
