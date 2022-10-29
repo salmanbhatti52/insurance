@@ -62,7 +62,7 @@ export class AppComponent {
         this.initializeApp();
 
         SplashScreen.hide();
-       // this.route.navigate(['splash']);
+        this.route.navigate(['splash']);
       }, 3500);
 
     });
