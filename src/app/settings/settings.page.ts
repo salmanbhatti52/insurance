@@ -20,7 +20,13 @@ export class SettingsPage implements OnInit {
   }
 
   privacy() {
-    this.navCtrl.navigateForward('privacy')
+    this.navCtrl.navigateForward('privacypolicy')
+
+  }
+
+  finger(){
+   this.navCtrl.navigateForward('privacy')
+
   }
 
   languagepage() {

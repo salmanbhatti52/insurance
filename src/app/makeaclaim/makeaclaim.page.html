@@ -31,7 +31,7 @@
     </ion-segment>
 
     <div *ngIf="requestsType=='NewClaim'">
-      <!-- <div class="dropbox">
+      <div class="dropbox">
         <div class="innerdropbox" (click)="openlist()">
           <div class="euro-text">{{Insurance}}</div>
           <div class="imgdiv">
@@ -46,7 +46,9 @@
 
         </div>
 
-      </div> -->
+      </div>
+
+      <div *ngIf="Insurance == 'Life Busines'">
 
       <div class="label" style="margin: 12px 0px 0px;">Policy Number or Registration Number</div>
       <div class="inputfield">
@@ -88,6 +90,12 @@
       <div style="height: 100px; width:100px; text-align: center;" *ngIf="claimdoc.base64"><img
           style="height: 100px; width:100px" src="{{claimdoc.base64}}" alt=""></div>
     </div>
+
+  </div>
+
+  <div *ngIf="Insurance == 'General Business'">
+   <p>Processing</p>
+  </div>
 
     <div *ngIf="requestsType=='ClaimTracker'">
 

@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationPage implements OnInit {
 
+notifications = [{sender_name:'John',time_added:'10:20AM',content:'Lorem ipsum dolor sit amet consectetur'},{sender_name:'Doe',time_added:'10:21AM',content:'Lorem ipsum dolor sit amet consectetur'},{sender_name:'Frank',time_added:'10:20AM',content:'Lorem ipsum dolor sit amet consectetur'},{sender_name:'Karl',time_added:'10:25AM',content:'Lorem ipsum dolor sit amet consectetur'}]
+
   constructor(public location:Location) { }
 
   ngOnInit() {

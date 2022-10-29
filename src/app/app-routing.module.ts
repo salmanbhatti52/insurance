@@ -230,6 +230,10 @@ const routes: Routes = [
   {
     path: 'helppage',
     loadChildren: () => import('./helppage/helppage.module').then( m => m.HelppagePageModule)
+  },
+  {
+    path: 'privacypolicy',
+    loadChildren: () => import('./privacypolicy/privacypolicy.module').then( m => m.PrivacypolicyPageModule)
   }
 
 

@@ -11,8 +11,8 @@ export class MakeaclaimPage implements OnInit {
   @ViewChild('mySegment', { read: ElementRef }) private mySegment: ElementRef;
   requestsType: any;
   show = false;
-  Insurance = 'Car Insurance'
-  listarray = [{ Insurance: 'Car Insurance' }, { Insurance: 'Car Insurance' }, { Insurance: 'Car Insurance' }]
+  Insurance = 'Please Select'
+  listarray = [{ Insurance: 'General Business' }, { Insurance: 'Life Busines' }]
 
   polnum: any;
   csurname: any;
