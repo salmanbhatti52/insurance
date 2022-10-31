@@ -242,6 +242,10 @@ const routes = [
     {
         path: 'helppage',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_helppage_helppage_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./helppage/helppage.module */ 180)).then(m => m.HelppagePageModule)
+    },
+    {
+        path: 'privacypolicy',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_privacypolicy_privacypolicy_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./privacypolicy/privacypolicy.module */ 7854)).then(m => m.PrivacypolicyPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

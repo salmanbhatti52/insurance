@@ -113,6 +113,9 @@ let SettingsPage = class SettingsPage {
         this.location.back();
     }
     privacy() {
+        this.navCtrl.navigateForward('privacypolicy');
+    }
+    finger() {
         this.navCtrl.navigateForward('privacy');
     }
     languagepage() {
@@ -157,7 +160,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \********************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n\r\n        <div style=\"width:100% ;\" (click)=\"goback()\">\r\n          <img src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n        </div>\r\n\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Settings</div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"languagepage()\">\r\n      <ion-label>\r\n        Language\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"notification()\">\r\n      <ion-label>\r\n        Notification\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"privacy()\">\r\n      <ion-label>\r\n        Privacy\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"help()\">\r\n      <ion-label>\r\n        Help\r\n      </ion-label>\r\n    </ion-item>\r\n  </ion-list>\r\n\r\n\r\n</ion-content>\r\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n\r\n        <div style=\"width:100% ;\" (click)=\"goback()\">\r\n          <img src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n        </div>\r\n\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Settings</div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-list>\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"languagepage()\">\r\n      <ion-label>\r\n        Language\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"notification()\">\r\n      <ion-label>\r\n        Notification\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"privacy()\">\r\n      <ion-label>\r\n        Privacy Policy\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"help()\">\r\n      <ion-label>\r\n        Help\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"finger()\">\r\n      <ion-label>\r\n        Face/Fingerprint ID\r\n      </ion-label>\r\n    </ion-item>\r\n\r\n  </ion-list>\r\n\r\n\r\n</ion-content>\r\n";
 
 /***/ })
 
