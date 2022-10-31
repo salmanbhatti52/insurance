@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActionSheetController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-explore-screen-before-login-expanded',
   templateUrl: './explore-screen-before-login-expanded.page.html',
@@ -15,7 +15,11 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
   };
 
   btnshow = false;
-  constructor(public navCtrl: NavController, public router: Router, public location: Location) { }
+  result: any;
+  constructor(public navCtrl: NavController,
+    public router: Router,
+    public location: Location,
+    public actionSheetCtrl:ActionSheetController) { }
 
   ngOnInit() {
     if (localStorage.getItem('userid') == null) {
@@ -47,4 +51,47 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
   learnmore() {
     this.router.navigate(['/claimassistance']);
   }
+
+
+
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetCtrl.create({
+
+      buttons: [
+        {
+          text: 'Chat with an agent',
+          data: {
+            action: 'caht',
+          },
+        },
+        {
+          text: 'Make Enquiry',
+          data: {
+            action: 'enquiry',
+          },
+        },
+        {
+          text: 'Our Locations',
+          data: {
+            action: 'location',
+          },
+        }
+      ],
+    });
+
+    await actionSheet.present();
+
+    const result = await actionSheet.onDidDismiss();
+    this.result = JSON.stringify(result, null, 2);
+
+    console.log('res----',result);
+
+    if(result.data.action == 'location'){
+      this.navCtrl.navigateRoot('contactus');
+    }
+
+
+  }
+
 }

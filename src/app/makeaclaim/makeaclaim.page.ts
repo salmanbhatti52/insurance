@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { InsuranceAppService } from '../services/insurance-app.service';
 
+import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-makeaclaim',
@@ -24,7 +26,21 @@ export class MakeaclaimPage implements OnInit {
     file: "",
     base64: "",
   };
-  constructor(public api: InsuranceAppService) { }
+
+
+  showloss = false;
+  losstype="Please Select"
+  listarrayloss = [{ Insurance: 'Accidental Damage' }, { Insurance: 'Own Damage'}, { Insurance: 'Others'}]
+
+  showPickerStartDate = false;
+  showPickerEndDate = false;
+  tourEndDate = format(new Date(), 'yyyy-MM-dd');
+  tourStartDate = format(new Date(), 'yyyy-MM-dd');
+  desc:any = ''
+  refnum:any=''
+
+  constructor(public api: InsuranceAppService,
+    public router:Router) { }
 
   ngOnInit() {
   }
@@ -68,7 +84,14 @@ export class MakeaclaimPage implements OnInit {
       this.show = false
     } else {
       this.show = true;
+    }
+  }
 
+  openlistloss(){
+    if (this.showloss == true) {
+      this.showloss = false
+    } else {
+      this.showloss = true;
     }
   }
 
@@ -106,6 +129,7 @@ export class MakeaclaimPage implements OnInit {
   }
 
   reportclaim() {
+    if(this.Insurance == 'Life Busines'){
     if (this.claimdoc.file == '') {
       this.api.presenttoast('Choose Document')
     } else {
@@ -140,6 +164,57 @@ export class MakeaclaimPage implements OnInit {
 
       })
     }
+  }else{
+    this.api.presenttoast('general business')
 
+     const myData = {
+      sid: 'ECHANNEL2',
+      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
+    };
+
+     var mydataAPI={
+      "policyNo": this.polnum,
+      "lossDate": this.tourStartDate,
+      "notifyDate": this.tourEndDate,
+      "description": this.desc,
+      "lossType": this.losstype,
+      "reference": this.refnum
+      }
+    this.api.gibsapi(myData).subscribe((res: any) => {
+       console.log('token-----',res);
+      const token = res.accessToken;
+      this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Claims' + mydataAPI, token).subscribe((res: any) => {
+
+        console.log('gibs product detail', res);
+        localStorage.setItem('gibsproduct', JSON.stringify(res))
+        this.router.navigate(['gibsplans']);
+      });
+    }, (err) => {
+      console.log(err);
+      this.api.hideLoader();
+    });
+
+
+  }
+  }
+
+  dateChanged(value, type) {
+    if (type == 'start') {
+      this.tourStartDate = value;
+      console.log('this.tourStartDate ----', this.tourStartDate);
+      this.showPickerStartDate = false;
+    }
+    else {
+      this.tourEndDate = value;
+      console.log('this.tourEndDate ----', this.tourEndDate);
+      this.showPickerEndDate = false;
+    }
+
+  }
+
+
+  selectInsuranceloss(list) {
+    this.losstype = list.Insurance
+    this.showloss = false
   }
 }

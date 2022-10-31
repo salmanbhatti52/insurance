@@ -2,6 +2,8 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+
 @Component({
   selector: 'app-contactus',
   templateUrl: './contactus.page.html',
@@ -12,7 +14,8 @@ export class ContactusPage implements OnInit {
   userId: any;
   constructor(public navCtrl: NavController,
     public router: Router,
-    public location: Location) { }
+    public location: Location,
+    public iab:InAppBrowser) { }
 
   ngOnInit() {
     this.userId = localStorage.getItem('userid');
@@ -38,5 +41,18 @@ export class ContactusPage implements OnInit {
   }
   updateProfile() {
     this.router.navigate(['/profile-update']);
+  }
+
+  fb(){
+    const browser = this.iab.create('https://web.facebook.com/CornerstoneInsuranceplc');
+  }
+  tw(){
+    const browser = this.iab.create('https://twitter.com/cornerstone_ng');
+  }
+  inst(){
+    const browser = this.iab.create('https://www.instagram.com/cornerstone_ng/');
+  }
+  yt(){
+    const browser = this.iab.create('https://www.youtube.com/user/Cornerstoneplc');
   }
 }

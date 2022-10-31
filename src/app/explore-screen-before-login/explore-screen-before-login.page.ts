@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController, ModalController, NavController } from '@ionic/angular';
+import { ActionSheetController, MenuController, ModalController, NavController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { AgentidpopupPage } from '../agentidpopup/agentidpopup.page';
 @Component({
@@ -15,8 +15,12 @@ export class ExploreScreenBeforeLoginPage implements OnInit {
     speed: 400
   };
   userID: any;
-  constructor(public router: Router, public navCtrl: NavController, public menuCtrl: MenuController,
-    public modal: ModalController) {
+  result: string;
+  constructor(public router: Router,
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public modal: ModalController,
+    public actionSheetCtrl:ActionSheetController) {
     this.userID = localStorage.getItem('userid')
     console.log(this.userID, 'dsadsadddddddddd----');
 

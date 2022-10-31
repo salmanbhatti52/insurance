@@ -138,28 +138,25 @@
 
     <div style="text-align:center;color: #1A206D;font-size:20px;">Insurance Tips</div>
     <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide" class="slides2">
-      <ion-slide>
+      <ion-slide style="margin: 10px;">
         <div class="lst-div">
-          <p class="lst-para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore</p>
+          <p class="lst-para">Are you aware you can lodge your claim online, renew your policy and do more from any of our digital channels without visiting any of our branches?</p>
           <div class="limg-div">
             <img src="assets/images/damage-car.svg" alt="">
           </div>
         </div>
       </ion-slide>
-      <ion-slide>
+      <ion-slide style="margin: 10px;">
         <div class="lst-div">
-          <p class="lst-para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore</p>
+          <p class="lst-para">Things just got better with Cornerstone! Investment products are now available on our new mobile app.</p>
           <div class="limg-div">
             <img src="assets/images/damage-car.svg" alt="">
           </div>
         </div>
       </ion-slide>
-      <ion-slide>
+      <ion-slide style="margin: 10px;">
         <div class="lst-div">
-          <p class="lst-para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore</p>
+          <p class="lst-para">Do you know you can verify your policy using our mobile app? Here is how, click on the VERIFY POLICY menu and select if your product is general or life. Then you provide your policy number, its that simple!</p>
           <div class="limg-div">
             <img src="assets/images/damage-car.svg" alt="">
           </div>
@@ -188,7 +185,7 @@
       </ion-tab-button>
 
 
-      <ion-tab-button (click)="tab3Click()">
+      <ion-tab-button (click)="presentActionSheet()">
         <img src="assets/images/contactus.svg" class="img">
         <ion-label class="font">Contact Us</ion-label>
 

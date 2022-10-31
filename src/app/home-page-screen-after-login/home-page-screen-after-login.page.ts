@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, MenuController, NavController } from '@ionic/angular';
+import { ActionSheetController, AlertController, MenuController, NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { QuotePopupPage } from '../quote-popup/quote-popup.page';
 import { Router } from '@angular/router';
@@ -18,11 +18,13 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   products: any;
   username: any;
   loginas: string;
+  result: string;
   constructor(public navCtrl: NavController, public menuCtrl: MenuController,
     public router: Router,
     public modal: ModalController,
     public api: InsuranceAppService,
-    public alert: AlertController) { }
+    public alert: AlertController,
+    public actionSheetCtrl:ActionSheetController) { }
 
   ngOnInit() {
 
@@ -47,7 +49,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     console.log('sASAsaSA', fp);
     if (fp == null) {
       const alert = await this.alert.create({
-        header: 'Do you want to add Finger Print login?',
+        header: 'Do you want to add Finger Print/Face ID login',
         cssClass: 'fgprintcls',
         buttons: [
           {
@@ -158,4 +160,46 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   learnmore() {
     this.router.navigate(['/claimassistance']);
   }
+
+
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetCtrl.create({
+
+      buttons: [
+        {
+          text: 'Chat with an agent',
+          data: {
+            action: 'caht',
+          },
+        },
+        {
+          text: 'Make Enquiry',
+          data: {
+            action: 'enquiry',
+          },
+        },
+        {
+          text: 'Our Locations',
+          data: {
+            action: 'location',
+          },
+        }
+      ],
+    });
+
+    await actionSheet.present();
+
+    const result = await actionSheet.onDidDismiss();
+    this.result = JSON.stringify(result, null, 2);
+
+    console.log('res----',result);
+
+    if(result.data.action == 'location'){
+      this.navCtrl.navigateRoot('contactus');
+    }
+
+
+  }
+
 }

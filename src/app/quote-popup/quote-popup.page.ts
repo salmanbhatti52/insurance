@@ -96,8 +96,7 @@ export class QuotePopupPage implements OnInit {
   }
   goback() {
 
-
-    if(this.counter == 1){
+    if(this.counter <= 1){
       this.location.back();
     }else{
 

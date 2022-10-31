@@ -5,6 +5,10 @@ import { Component } from '@angular/core';
 import { InsuranceAppService } from './services/insurance-app.service';
 import { Router } from '@angular/router';
 import { SplashScreen } from '@capacitor/splash-screen';
+
+import { ActionSheetController } from '@ionic/angular';
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -36,13 +40,15 @@ export class AppComponent {
 
   selectedtitle: any;
   fp: any;
+  result: string;
   // loginas: any;
   constructor(public navCtrl: NavController,
     public menuCtrl: MenuController,
     public alert: AlertController,
     public api: InsuranceAppService,
     public route: Router,
-    public platform: Platform) {
+    public platform: Platform,
+    private actionSheetCtrl: ActionSheetController) {
 
 
     // if (localStorage.getItem('userid') != null) {
@@ -144,5 +150,6 @@ export class AppComponent {
     await alert.present();
 
   }
+
 
 }
