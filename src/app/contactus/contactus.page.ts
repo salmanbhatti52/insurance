@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @Component({
@@ -15,7 +15,8 @@ export class ContactusPage implements OnInit {
   constructor(public navCtrl: NavController,
     public router: Router,
     public location: Location,
-    public iab:InAppBrowser) { }
+    public iab:InAppBrowser,
+    public platform:Platform) { }
 
   ngOnInit() {
     this.userId = localStorage.getItem('userid');
@@ -54,5 +55,24 @@ export class ContactusPage implements OnInit {
   }
   yt(){
     const browser = this.iab.create('https://www.youtube.com/user/Cornerstoneplc');
+  }
+
+  openwebpage(){
+    const browser = this.iab.create('https://www.cornerstone.com.ng');
+  }
+
+  public openMapsApp(lat,lng) {
+    // window.open("https://www.google.com/maps/search/?api=1&query=6.424580,3.441100")
+    var geocoords = lat + ',' + lng;
+
+    if (this.platform.is("ios")) {
+      window.open('maps://?q=' + geocoords, '_system');
+    }
+    else {
+      var label = encodeURI('7 East Street'); // encode the label!
+      window.open('geo:0,0?q=' + geocoords + '(' + label + ')', '_system');
+
+      // window.open("https://www.google.com/maps/search/?api=1&query=" + geocoords)
+    }
   }
 }
