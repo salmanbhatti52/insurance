@@ -165,8 +165,8 @@ export class MakeaclaimPage implements OnInit {
       })
     }
   }else{
-    this.api.presenttoast('general business')
 
+    this.api.showLoader()
      const myData = {
       sid: 'ECHANNEL2',
       token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
@@ -183,13 +183,17 @@ export class MakeaclaimPage implements OnInit {
     this.api.gibsapi(myData).subscribe((res: any) => {
        console.log('token-----',res);
       const token = res.accessToken;
-      this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Claims' + mydataAPI, token).subscribe((res: any) => {
+      this.api.postdata('http://testcipapiservices.gibsonline.com/api/Claims' ,mydataAPI, token).subscribe((res: any) => {
+
+        this.api.hideLoader()
+        this.api.presenttoast('Clain Number ' + res.claimNo)
 
         console.log('gibs product detail', res);
-        localStorage.setItem('gibsproduct', JSON.stringify(res))
-        this.router.navigate(['gibsplans']);
+        // localStorage.setItem('gibsproduct', JSON.stringify(res))
+        // this.router.navigate(['gibsplans']);
       });
     }, (err) => {
+      this.api.presenttoast('Invalid Policy Number')
       console.log(err);
       this.api.hideLoader();
     });

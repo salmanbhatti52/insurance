@@ -234,6 +234,14 @@ const routes: Routes = [
   {
     path: 'privacypolicy',
     loadChildren: () => import('./privacypolicy/privacypolicy.module').then( m => m.PrivacypolicyPageModule)
+  },
+  {
+    path: 'claimassistance2',
+    loadChildren: () => import('./claimassistance2/claimassistance2.module').then( m => m.Claimassistance2PageModule)
+  },
+  {
+    path: 'claimassistance3',
+    loadChildren: () => import('./claimassistance3/claimassistance3.module').then( m => m.Claimassistance3PageModule)
   }
 
 

@@ -50,9 +50,9 @@
 
       <div *ngIf="Insurance == 'Life Busines'">
 
-      <div class="label" style="margin: 12px 0px 0px;">Policy Number or Registration Number</div>
+      <div class="label" style="margin: 12px 0px 0px;">Policy Number</div>
       <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="Policy Number or Registration Number" class="in-text"
+        <ion-input style="height: 48px;" type="text" placeholder="Policy Number" class="in-text"
           [(ngModel)]="polnum">
         </ion-input>
       </div>
@@ -64,21 +64,21 @@
         </ion-input>
       </div>
 
-      <div class="label">Coth name</div>
+      <div class="label">Client First name</div>
       <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="Coth name" class="in-text" [(ngModel)]="cothname">
+        <ion-input style="height: 48px;" type="text" placeholder="Client First name" class="in-text" [(ngModel)]="cothname">
         </ion-input>
       </div>
 
-      <div class="label">DD Liabtype</div>
+      <div class="label">Policy type</div>
       <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="DD Liabtype" class="in-text"
+        <ion-input style="height: 48px;" type="text" placeholder="Policy type" class="in-text"
           [(ngModel)]="dd_liabtype"></ion-input>
       </div>
 
-      <div class="label">Text message claim</div>
+      <div class="label">Claim details</div>
       <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="Text message claim" class="in-text"
+        <ion-input style="height: 48px;" type="text" placeholder="Claim details" class="in-text"
           [(ngModel)]="txt_message_clm"></ion-input>
       </div>
 
@@ -91,79 +91,81 @@
           style="height: 100px; width:100px" src="{{claimdoc.base64}}" alt=""></div>
     </div>
 
-  </div>
+    <div *ngIf="Insurance == 'General Business'">
 
-  <div *ngIf="Insurance == 'General Business'">
-
-   <div class="label" style="margin: 12px 0px 0px;">Policy Number or Registration Number</div>
-   <div class="inputfield">
-     <ion-input style="height: 48px;" type="text" placeholder="Policy Number or Registration Number" class="in-text"
-       [(ngModel)]="polnum">
-     </ion-input>
-   </div>
-
-    <!-- Loss Date  -->
-    <div class="label">Loss date</div>
-    <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
-      (click)="showPickerStartDate = !showPickerStartDate">
-      <div style="display: flex; align-items:center">
-        <ion-text class="ion-txt" style="margin-left: 14px">{{ tourStartDate }}</ion-text>
+      <div class="label" style="margin: 12px 0px 0px;">Policy Number</div>
+      <div class="inputfield">
+        <ion-input style="height: 48px;" type="text" placeholder="Policy Number" class="in-text"
+          [(ngModel)]="polnum">
+        </ion-input>
       </div>
-    </div>
-    <ion-datetime class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date"
-      *ngIf="showPickerStartDate" #datetime [value]="tourStartDate" size="cover"
-      (ionChange)="dateChanged(datetime.value,'start')" showDefaultButtons="true"
-      (ionCancel)="showPickerStartDate=false"></ion-datetime>
-    <!-- Loss Date  -->
 
-     <!-- End Date  -->
-     <div class="label">Notify date </div>
-     <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
-       (click)="showPickerEndDate = !showPickerEndDate">
-       <div style="display: flex; align-items:center">
-         <ion-text class="ion-txt" style="margin-left: 14px">{{ tourEndDate }}</ion-text>
+       <!-- Loss Date  -->
+       <div class="label">Loss date</div>
+       <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
+         (click)="showPickerStartDate = !showPickerStartDate">
+         <div style="display: flex; align-items:center">
+           <ion-text class="ion-txt" style="margin-left: 14px">{{ tourStartDate }}</ion-text>
+         </div>
+       </div>
+       <ion-datetime class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date"
+         *ngIf="showPickerStartDate" #datetime [value]="tourStartDate" size="cover"
+         (ionChange)="dateChanged(datetime.value,'start')" showDefaultButtons="true"
+         (ionCancel)="showPickerStartDate=false"></ion-datetime>
+       <!-- Loss Date  -->
+
+        <!-- End Date  -->
+        <div class="label">Notify date </div>
+        <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
+          (click)="showPickerEndDate = !showPickerEndDate">
+          <div style="display: flex; align-items:center">
+            <ion-text class="ion-txt" style="margin-left: 14px">{{ tourEndDate }}</ion-text>
+          </div>
+        </div>
+        <ion-datetime class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date"
+          *ngIf="showPickerEndDate" #datetime [value]="tourEndDate" size="cover"
+          (ionChange)="dateChanged(datetime.value,'end')" showDefaultButtons="true"
+          (ionCancel)="showPickerEndDate=false"></ion-datetime>
+        <!-- End Date  -->
+        <div class="label">Description</div>
+         <div class="inputfield">
+             <ion-textarea rows="7" type="text" placeholder="Loss Description" class="in-text"
+               [(ngModel)]="desc">
+             </ion-textarea>
+           </div>
+
+
+           <div class="label" style="margin: 12px 0px 0px;">Loss Type</div>
+
+           <div class="dropbox">
+             <div class="innerdropbox" (click)="openlistloss()">
+               <div class="euro-text">{{losstype}}</div>
+               <div class="imgdiv">
+                 <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
+                 <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
+               </div>
+             </div>
+             <div *ngIf="showloss==true">
+               <div *ngFor="let list of listarrayloss" (click)="selectInsuranceloss(list)">
+                 <div class="euro-text1">{{list.Insurance}}</div>
+               </div>
+
+             </div>
+
+           </div>
+
+           <div class="label" style="margin: 12px 0px 0px;">Reference Number</div>
+           <div class="inputfield">
+             <ion-input style="height: 48px;" type="text" placeholder="Reference Number" class="in-text"
+               [(ngModel)]="refnum">
+             </ion-input>
+           </div>
        </div>
      </div>
-     <ion-datetime class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date"
-       *ngIf="showPickerEndDate" #datetime [value]="tourEndDate" size="cover"
-       (ionChange)="dateChanged(datetime.value,'end')" showDefaultButtons="true"
-       (ionCancel)="showPickerEndDate=false"></ion-datetime>
-     <!-- End Date  -->
-     <div class="label">Description</div>
-      <div class="inputfield">
-          <ion-textarea rows="7" type="text" placeholder="Loss Description" class="in-text"
-            [(ngModel)]="desc">
-          </ion-textarea>
-        </div>
 
-
-        <div class="label" style="margin: 12px 0px 0px;">Loss Type</div>
-
-        <div class="dropbox">
-          <div class="innerdropbox" (click)="openlistloss()">
-            <div class="euro-text">{{losstype}}</div>
-            <div class="imgdiv">
-              <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
-              <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
-            </div>
-          </div>
-          <div *ngIf="showloss==true">
-            <div *ngFor="let list of listarrayloss" (click)="selectInsuranceloss(list)">
-              <div class="euro-text1">{{list.Insurance}}</div>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="label" style="margin: 12px 0px 0px;">Reference Number</div>
-        <div class="inputfield">
-          <ion-input style="height: 48px;" type="text" placeholder="Reference Number" class="in-text"
-            [(ngModel)]="refnum">
-          </ion-input>
-        </div>
-    </div>
   </div>
+
+
 
     <div *ngIf="requestsType=='ClaimTracker'">
 

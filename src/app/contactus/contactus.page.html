@@ -26,7 +26,7 @@
     <p class="name-para">Hi <span *ngIf="userId!=null">{{cname}}!</span></p>
     <p class="wc-para">Welcome</p>
     <div class="logo">
-      <img src="assets/images/contactlogo.svg">
+      <img src="assets/images/contactlogo.jpg">
     </div>
 <div style="margin-top: 10px;">
     <img src="assets/images/fb.png" class="socialimgclass" (click)="fb()">
@@ -227,7 +227,7 @@
         <div class="para1"> <a  class="para1" href="tel:01-2806500">01-2806500</a> </div>
       </div>
 
-      <!-- ali was working here -->
+
 
       <div class="title2" style="margin-top:6% !important;">ILORIN <span style="color: #5D5D5D;font-weight:400;">(Sales
           Outlet)</span>
@@ -237,7 +237,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">3, Sokoto Road Sabo Oke, Ilorin,Kwara State
+        <div class="para" (click)="openMapsApp(8.4921139,4.5688141)">3, Sokoto Road Sabo Oke, Ilorin,Kwara State
         </div>
       </div>
 
@@ -245,7 +245,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">0802 060 3197</div>
+        <div class="para1"> <a class="para1" href="tel:0802 060 3197">0802 060 3197</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">UYO </div>
@@ -254,7 +254,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">317B, Wellington Bassey Way, Uyo, Akwa Ibom State, Nigeria
+        <div class="para" (click)="openMapsApp(5.0395195,7.9348257)">317B, Wellington Bassey Way, Uyo, Akwa Ibom State, Nigeria
         </div>
       </div>
 
@@ -262,7 +262,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">0813 045 5433</div>
+        <div class="para1"> <a class="para1" href="tel:0813 045 5433">0813 045 5433</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">FESTAC <span style="color: #5D5D5D;font-weight:400;">(Sales
@@ -273,7 +273,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">Suite 101A PIN Plaza Opposite H Close, First Avenue Festac Town, Lagos State
+        <div class="para" (click)="openMapsApp(6.471907,3.2953946)">Suite 101A PIN Plaza Opposite H Close, First Avenue Festac Town, Lagos State
         </div>
       </div>
 
@@ -281,7 +281,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">01-2806500</div>
+        <div class="para1"> <a class="para1" href="tel:01-2806500">01-2806500</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">KANO </div>
@@ -290,7 +290,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">103 Hadejia Road, Fagge, Kano State
+        <div class="para" (click)="openMapsApp(6.471907,3.2953946)">103 Hadejia Road, Fagge, Kano State
         </div>
       </div>
 
@@ -298,7 +298,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">0703 343 8119</div>
+        <div class="para1"> <a class="para1" href="tel:0703 343 8119">0703 343 8119</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">WARRI </div>
@@ -307,7 +307,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">Km 4, Refinery Road, Thomas House, Ekpan, Warri, Delta State
+        <div class="para" (click)="openMapsApp(5.7476018,5.5689825)">Km 4, Refinery Road, Thomas House, Ekpan, Warri, Delta State
         </div>
       </div>
 
@@ -315,7 +315,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">08032127487</div>
+        <div class="para1"> <a class="para1" href="tel:08032127487">08032127487</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">IBADAN </div>
@@ -324,7 +324,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">67, Aboderin Layout ,Oni & Sons Area Ring Road, Ibadan, Oyo State
+        <div class="para" (click)="openMapsApp(7.3599586,3.8635748)">67, Aboderin Layout ,Oni & Sons Area Ring Road, Ibadan, Oyo State
         </div>
       </div>
 
@@ -332,7 +332,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">0802 909 4320</div>
+        <div class="para1"> <a class="para1" href="tel:0802 909 4320">0802 909 4320</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">LAGOS ISLAND </div>
@@ -341,7 +341,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">Cornerstone House 136, Lewis Street Obalende, Lagos State
+        <div class="para" (click)="openMapsApp(6.4495684,3.406482)">Cornerstone House 136, Lewis Street Obalende, Lagos State
         </div>
       </div>
 
@@ -349,7 +349,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">01-2806500</div>
+        <div class="para1"> <a class="para1" href="tel:01-2806500">01-2806500</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">YABA </div>
@@ -358,7 +358,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">91 Herbert Macaulay Way, Sabo yaba 101001, Yaba, Lagos Mainland, Nigeria
+        <div class="para" (click)="openMapsApp(6.4862774,3.3842253)">91 Herbert Macaulay Way, Sabo yaba 101001, Yaba, Lagos Mainland, Nigeria
         </div>
       </div>
 
@@ -366,7 +366,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">01-2806500</div>
+        <div class="para1"> <a class="para1" href="tel:01-2806500">01-2806500</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">IKEJA </div>
@@ -375,7 +375,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">Swiss Guard House, 6, Adeniyi Jones Avenue, (Opposite Wahum) Ikeja, Lagos State
+        <div class="para" (click)="openMapsApp(6.6058944,3.3373)">Swiss Guard House, 6, Adeniyi Jones Avenue, (Opposite Wahum) Ikeja, Lagos State
         </div>
       </div>
 
@@ -383,7 +383,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">0818 779 6014</div>
+        <div class="para1"> <a class="para1" href="tel:0818 779 6014">0818 779 6014</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">OWERRI <span style="color: #5D5D5D;font-weight:400;">(Sales
@@ -393,7 +393,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">No. 67, Okigwe Road, Owerri, Imo State.
+        <div class="para" (click)="openMapsApp(5.5182455,7.0480823)">No. 67, Okigwe Road, Owerri, Imo State.
         </div>
       </div>
 
@@ -401,7 +401,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">0803 541 8019</div>
+        <div class="para1"> <a class="para1" href="tel:0803 541 8019">0803 541 8019</a> </div>
       </div>
 
       <div class="title2" style="margin-top:6% !important;">YENOGOA <span style="color: #5D5D5D;font-weight:400;">(Sales
@@ -411,7 +411,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg">
         </div>
-        <div class="para">Jay Cee Plaza, Otiotio Road,Yenezue Gene, Yenagoa, Bayelsa State
+        <div class="para" (click)="openMapsApp(4.9369121,6.3177197)">Jay Cee Plaza, Otiotio Road,Yenezue Gene, Yenagoa, Bayelsa State
         </div>
       </div>
 
@@ -419,7 +419,7 @@
         <div class="icondiv">
           <img src="assets/images/call.svg">
         </div>
-        <div class="para1">0803 741 1444</div>
+        <div class="para1"> <a class="para1" href="tel:0803 741 1444">0803 741 1444</a> </div>
       </div>
 
     </div>

@@ -45,7 +45,7 @@ export class ContactusPage implements OnInit {
   }
 
   fb(){
-    const browser = this.iab.create('https://web.facebook.com/CornerstoneInsuranceplc');
+    const browser = this.iab.create('https://www.facebook.com/CornerstoneInsuranceplc?_rdc=1&_rdr');
   }
   tw(){
     const browser = this.iab.create('https://twitter.com/cornerstone_ng');

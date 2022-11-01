@@ -52,6 +52,14 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     this.router.navigate(['/claimassistance']);
   }
 
+  learnmore2() {
+    this.router.navigate(['/claimassistance2']);
+  }
+
+  learnmore3() {
+    this.router.navigate(['/claimassistance3']);
+  }
+
 
 
 
