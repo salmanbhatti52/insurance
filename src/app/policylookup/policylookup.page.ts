@@ -80,7 +80,7 @@ export class PolicylookupPage implements OnInit {
       if (this.uTitle == 'Life/Investment') {
         let token = '39109f7df56e1CORNERStone9e685066bb852'
         this.api.showLoader();
-        this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + this.policynum + '&process_code=140', localStorage.getItem('token')).subscribe((response: any) => {
+        this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + this.policynum + '&process_code=140', '39109f7df56e1CORNERStone9e685066bb852').subscribe((response: any) => {
           this.api.hideLoader();
           console.log(response);
           this.verifypolicy = response.result;
@@ -112,6 +112,8 @@ export class PolicylookupPage implements OnInit {
 
 
         }, err => {
+          this.gibspolicy = false;
+          this.policy = false;
           this.api.hideLoader();
         });
       }
@@ -141,7 +143,8 @@ export class PolicylookupPage implements OnInit {
 
     }, err => {
       console.log(err);
-
+      this.gibspolicy = false;
+      this.policy = false;
       this.api.presenttoast(err.error.title);
       this.api.hideLoader();
     });
