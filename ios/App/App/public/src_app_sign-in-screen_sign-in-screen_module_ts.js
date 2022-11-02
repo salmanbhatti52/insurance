@@ -263,7 +263,7 @@ let SignInScreenPage = class SignInScreenPage {
   }
 
   exScBefLin() {
-    this.router.navigate(['/explore-screen-before-login-expanded']);
+    this.router.navigate(['/explore-screen-before-login-expanded2']);
   }
 
   PopupCust() {

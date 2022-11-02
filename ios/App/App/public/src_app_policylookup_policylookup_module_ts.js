@@ -173,7 +173,7 @@ let PolicylookupPage = class PolicylookupPage {
 
           _this.api.showLoader();
 
-          _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + _this.policynum + '&process_code=140', localStorage.getItem('token')).subscribe(response => {
+          _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + _this.policynum + '&process_code=140', '39109f7df56e1CORNERStone9e685066bb852').subscribe(response => {
             _this.api.hideLoader();
 
             console.log(response);
@@ -202,6 +202,9 @@ let PolicylookupPage = class PolicylookupPage {
               _this.api.presenttoast('Policy record not found');
             }
           }, err => {
+            _this.gibspolicy = false;
+            _this.policy = false;
+
             _this.api.hideLoader();
           });
         }
@@ -226,6 +229,8 @@ let PolicylookupPage = class PolicylookupPage {
       this.PolicyNumber = response.policyNo;
     }, err => {
       console.log(err);
+      this.gibspolicy = false;
+      this.policy = false;
       this.api.presenttoast(err.error.title);
       this.api.hideLoader();
     }); // this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Policies/Motor', Bearertoken).subscribe((res: any) => {

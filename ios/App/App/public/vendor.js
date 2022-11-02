@@ -20102,6 +20102,1152 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ 1700:
+/*!***********************************************************************************!*\
+  !*** ./node_modules/angular4-paystack/__ivy_ngcc__/fesm2015/angular4-paystack.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Angular4PaystackComponent": () => (/* binding */ Angular4PaystackComponent),
+/* harmony export */   "Angular4PaystackDirective": () => (/* binding */ Angular4PaystackDirective),
+/* harmony export */   "Angular4PaystackEmbedComponent": () => (/* binding */ Angular4PaystackEmbedComponent),
+/* harmony export */   "Angular4PaystackModule": () => (/* binding */ Angular4PaystackModule),
+/* harmony export */   "ɵa": () => (/* binding */ Angular4PaystackService),
+/* harmony export */   "ɵb": () => (/* binding */ PUBLIC_KEY_TOKEN)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4927);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ 4666);
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/** @type {?} */
+
+
+
+const _c0 = ["*"];
+const PUBLIC_KEY_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.InjectionToken('paystack.publickey');
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @record
+ */
+
+function MyWindow() {}
+
+if (false) {}
+
+class Angular4PaystackService {
+  /**
+   * @param {?} token
+   */
+  constructor(token) {
+    this.token = token;
+  }
+  /**
+   * @return {?}
+   */
+
+
+  loadScript() {
+    return new Promise(
+    /**
+    * @param {?} resolve
+    * @return {?}
+    */
+    resolve => {
+      if (window.PaystackPop && typeof window.PaystackPop.setup === 'function') {
+        resolve();
+        return;
+      }
+      /** @type {?} */
+
+
+      const script = window.document.createElement('script');
+      window.document.head.appendChild(script);
+      /** @type {?} */
+
+      const onLoadFunc =
+      /**
+      * @return {?}
+      */
+      () => {
+        script.removeEventListener('load', onLoadFunc);
+        resolve();
+      };
+
+      script.addEventListener('load', onLoadFunc);
+      script.setAttribute('src', 'https://js.paystack.co/v1/inline.js');
+    });
+  }
+  /**
+   * @param {?} obj
+   * @return {?}
+   */
+
+
+  checkInput(obj) {
+    if (!obj.key && !this.token) {
+      return 'ANGULAR-PAYSTACK: Please insert a your public key';
+    }
+
+    if (!obj.email) {
+      return 'ANGULAR-PAYSTACK: Paystack email cannot be empty';
+    }
+
+    if (!obj.amount) {
+      return 'ANGULAR-PAYSTACK: Paystack amount cannot be empty';
+    }
+
+    if (!obj.ref) {
+      return 'ANGULAR-PAYSTACK: Paystack ref cannot be empty';
+    }
+
+    return '';
+  }
+  /**
+   * @param {?} obj
+   * @return {?}
+   */
+
+
+  getPaystackOptions(obj) {
+    /** @type {?} */
+    const paystackOptions = {
+      key: obj.key || this.token,
+      email: obj.email,
+      amount: obj.amount,
+      ref: obj.ref,
+      metadata: obj.metadata || {},
+      currency: obj.currency || 'NGN',
+      plan: obj.plan || '',
+      channels: obj.channels,
+      quantity: obj.quantity || '',
+      subaccount: obj.subaccount || '',
+      transaction_charge: obj.transaction_charge || 0,
+      // tslint:disable-line
+      bearer: obj.bearer || ''
+    };
+    return paystackOptions;
+  }
+
+}
+
+Angular4PaystackService.ɵfac = function Angular4PaystackService_Factory(t) {
+  return new (t || Angular4PaystackService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](PUBLIC_KEY_TOKEN));
+};
+
+Angular4PaystackService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+  token: Angular4PaystackService,
+  factory: Angular4PaystackService.ɵfac,
+  providedIn: 'root'
+});
+/** @nocollapse */
+
+Angular4PaystackService.ctorParameters = () => [{
+  type: String,
+  decorators: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Inject,
+    args: [PUBLIC_KEY_TOKEN]
+  }]
+}];
+/** @nocollapse */
+
+
+Angular4PaystackService.ngInjectableDef = (0,_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({
+  factory: function Angular4PaystackService_Factory() {
+    return new Angular4PaystackService((0,_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"])(PUBLIC_KEY_TOKEN));
+  },
+  token: Angular4PaystackService,
+  providedIn: "root"
+});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Angular4PaystackService, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable,
+    args: [{
+      providedIn: 'root'
+    }]
+  }], function () {
+    return [{
+      type: String,
+      decorators: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Inject,
+        args: [PUBLIC_KEY_TOKEN]
+      }]
+    }];
+  }, null);
+})();
+
+if (false) {}
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @record
+ */
+
+
+function MyWindow$1() {}
+
+if (false) {}
+
+class Angular4PaystackComponent {
+  /**
+   * @param {?} paystackService
+   */
+  constructor(paystackService) {
+    this.paystackService = paystackService;
+    this.paymentInit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.onClose = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter(); // tslint:disable-line
+    // tslint:disable-line
+
+    this.callback = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter(); // tslint:disable-line
+
+    this.isPaying = false;
+  }
+  /**
+   * @return {?}
+   */
+
+
+  pay() {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+      /** @type {?} */
+      let errorText = '';
+
+      if (this.paystackOptions && Object.keys(this.paystackOptions).length >= 2) {
+        errorText = this.valdateInput(this.paystackOptions);
+        this.generateOptions(this.paystackOptions);
+      } else {
+        errorText = this.valdateInput(this);
+        this.generateOptions(this);
+      }
+
+      if (errorText) {
+        console.error(errorText);
+        return errorText;
+      }
+
+      yield this.paystackService.loadScript();
+
+      if (this.isPaying) {
+        return;
+      }
+
+      if (this.paymentInit.observers.length) {
+        this.paymentInit.emit();
+      }
+      /** @type {?} */
+
+
+      const payment = window.PaystackPop.setup(this._paystackOptions);
+      payment.openIframe();
+      this.isPaying = true;
+    });
+  }
+  /**
+   * @param {?} obj
+   * @return {?}
+   */
+
+
+  valdateInput(obj) {
+    if (!this.callback.observers.length) {
+      return 'ANGULAR-PAYSTACK: Insert a callback output like so (callback)=\'PaymentComplete($event)\' to check payment status';
+    }
+
+    return this.paystackService.checkInput(obj);
+  }
+  /**
+   * @param {?} obj
+   * @return {?}
+   */
+
+
+  generateOptions(obj) {
+    this._paystackOptions = this.paystackService.getPaystackOptions(obj);
+
+    this._paystackOptions.onClose =
+    /**
+    * @return {?}
+    */
+    () => {
+      if (this.onClose.observers.length) {
+        this.isPaying = false;
+        this.onClose.emit();
+      }
+    };
+
+    this._paystackOptions.callback =
+    /**
+    * @param {...?} response
+    * @return {?}
+    */
+    (...response) => {
+      this.isPaying = false;
+      this.callback.emit(...response);
+    };
+  }
+
+}
+
+Angular4PaystackComponent.ɵfac = function Angular4PaystackComponent_Factory(t) {
+  return new (t || Angular4PaystackComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](Angular4PaystackService));
+};
+
+Angular4PaystackComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+  type: Angular4PaystackComponent,
+  selectors: [["angular4-paystack"]],
+  inputs: {
+    key: "key",
+    email: "email",
+    amount: "amount",
+    metadata: "metadata",
+    ref: "ref",
+    currency: "currency",
+    plan: "plan",
+    quantity: "quantity",
+    channels: "channels",
+    subaccount: "subaccount",
+    transaction_charge: "transaction_charge",
+    bearer: "bearer",
+    class: "class",
+    style: "style",
+    paystackOptions: "paystackOptions"
+  },
+  outputs: {
+    paymentInit: "paymentInit",
+    onClose: "onClose",
+    callback: "callback"
+  },
+  ngContentSelectors: _c0,
+  decls: 2,
+  vars: 2,
+  consts: [[3, "ngClass", "ngStyle", "click"]],
+  template: function Angular4PaystackComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Angular4PaystackComponent_Template_button_click_0_listener() {
+        return ctx.pay();
+      });
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    }
+
+    if (rf & 2) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx.class)("ngStyle", ctx.style);
+    }
+  },
+  dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_2__.NgClass, _angular_common__WEBPACK_IMPORTED_MODULE_2__.NgStyle],
+  encapsulation: 2
+});
+/** @nocollapse */
+
+Angular4PaystackComponent.ctorParameters = () => [{
+  type: Angular4PaystackService
+}];
+
+Angular4PaystackComponent.propDecorators = {
+  key: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  email: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  amount: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  metadata: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  ref: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  currency: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  plan: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  quantity: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  channels: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  subaccount: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  transaction_charge: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  bearer: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  class: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  style: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  paystackOptions: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  paymentInit: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  onClose: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  callback: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }]
+};
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Angular4PaystackComponent, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Component,
+    args: [{
+      selector: 'angular4-paystack',
+      template: `<button [ngClass]="class" [ngStyle]="style" (click)="pay()"><ng-content></ng-content></button>`
+    }]
+  }], function () {
+    return [{
+      type: Angular4PaystackService
+    }];
+  }, {
+    paymentInit: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    onClose: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    callback: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    key: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    email: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    amount: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    metadata: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    ref: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    currency: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    plan: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    quantity: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    channels: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    subaccount: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    transaction_charge: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    bearer: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    class: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    style: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    paystackOptions: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }]
+  });
+})();
+
+if (false) {}
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @record
+ */
+
+
+function MyWindow$2() {}
+
+if (false) {}
+
+class Angular4PaystackDirective {
+  /**
+   * @param {?} paystackService
+   */
+  constructor(paystackService) {
+    this.paystackService = paystackService;
+    this.paymentInit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter(); // tslint:disable-line
+    // tslint:disable-line
+
+    this.onClose = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter(); // tslint:disable-line
+    // tslint:disable-line
+
+    this.callback = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter(); // tslint:disable-line
+
+    this.isPaying = false;
+  }
+  /**
+   * @return {?}
+   */
+
+
+  pay() {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+      /** @type {?} */
+      let errorText = '';
+
+      if (this.paystackOptions && Object.keys(this.paystackOptions).length >= 2) {
+        errorText = this.valdateInput(this.paystackOptions);
+        this.generateOptions(this.paystackOptions);
+      } else {
+        errorText = this.valdateInput(this);
+        this.generateOptions(this);
+      }
+
+      if (errorText) {
+        console.error(errorText);
+        return errorText;
+      }
+
+      yield this.paystackService.loadScript();
+
+      if (this.isPaying) {
+        return;
+      }
+
+      if (this.paymentInit.observers.length) {
+        this.paymentInit.emit();
+      }
+      /** @type {?} */
+
+
+      const payment = window.PaystackPop.setup(this._paystackOptions);
+      payment.openIframe();
+      this.isPaying = true;
+    });
+  }
+  /**
+   * @param {?} obj
+   * @return {?}
+   */
+
+
+  valdateInput(obj) {
+    if (!this.callback.observers.length) {
+      return 'ANGULAR-PAYSTACK: Insert a callback output like so (callback)=\'PaymentComplete($event)\' to check payment status';
+    }
+
+    return this.paystackService.checkInput(obj);
+  }
+  /**
+   * @param {?} obj
+   * @return {?}
+   */
+
+
+  generateOptions(obj) {
+    this._paystackOptions = this.paystackService.getPaystackOptions(obj);
+
+    this._paystackOptions.onClose =
+    /**
+    * @return {?}
+    */
+    () => {
+      if (this.onClose.observers.length) {
+        this.isPaying = false;
+        this.onClose.emit();
+      }
+    };
+
+    this._paystackOptions.callback =
+    /**
+    * @param {...?} response
+    * @return {?}
+    */
+    (...response) => {
+      this.isPaying = false;
+      this.callback.emit(...response);
+    };
+  }
+  /**
+   * @return {?}
+   */
+
+
+  buttonClick() {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+      this.pay();
+    });
+  }
+
+}
+
+Angular4PaystackDirective.ɵfac = function Angular4PaystackDirective_Factory(t) {
+  return new (t || Angular4PaystackDirective)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](Angular4PaystackService));
+};
+
+Angular4PaystackDirective.ɵdir = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({
+  type: Angular4PaystackDirective,
+  selectors: [["", "angular4-paystack", ""]],
+  hostBindings: function Angular4PaystackDirective_HostBindings(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function Angular4PaystackDirective_click_HostBindingHandler() {
+        return ctx.buttonClick();
+      });
+    }
+  },
+  inputs: {
+    key: "key",
+    email: "email",
+    amount: "amount",
+    metadata: "metadata",
+    ref: "ref",
+    currency: "currency",
+    plan: "plan",
+    quantity: "quantity",
+    subaccount: "subaccount",
+    channels: "channels",
+    transaction_charge: "transaction_charge",
+    bearer: "bearer",
+    class: "class",
+    style: "style",
+    paystackOptions: "paystackOptions"
+  },
+  outputs: {
+    paymentInit: "paymentInit",
+    onClose: "onClose",
+    callback: "callback"
+  }
+});
+/** @nocollapse */
+
+Angular4PaystackDirective.ctorParameters = () => [{
+  type: Angular4PaystackService
+}];
+
+Angular4PaystackDirective.propDecorators = {
+  key: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  email: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  amount: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  metadata: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  ref: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  currency: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  plan: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  quantity: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  subaccount: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  channels: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  transaction_charge: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  bearer: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  class: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  style: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  paystackOptions: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  paymentInit: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  onClose: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  callback: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  buttonClick: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.HostListener,
+    args: ['click']
+  }]
+};
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Angular4PaystackDirective, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Directive,
+    args: [{
+      selector: '[angular4-paystack]'
+    }]
+  }], function () {
+    return [{
+      type: Angular4PaystackService
+    }];
+  }, {
+    paymentInit: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    onClose: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    callback: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+
+    /**
+     * @return {?}
+     */
+    buttonClick: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.HostListener,
+      args: ['click']
+    }],
+    key: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    email: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    amount: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    metadata: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    ref: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    currency: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    plan: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    quantity: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    subaccount: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    channels: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    transaction_charge: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    bearer: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    class: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    style: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    paystackOptions: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }]
+  });
+})();
+
+if (false) {}
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @record
+ */
+
+
+function MyWindow$3() {}
+
+if (false) {}
+
+class Angular4PaystackEmbedComponent {
+  // tslint:disable-line
+
+  /**
+   * @param {?} paystackService
+   */
+  constructor(paystackService) {
+    this.paystackService = paystackService;
+    this.paymentInit = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.onClose = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter(); // tslint:disable-line
+    // tslint:disable-line
+
+    this.callback = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+  }
+  /**
+   * @return {?}
+   */
+
+
+  pay() {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+      /** @type {?} */
+      let errorText = '';
+
+      if (this.paystackOptions && Object.keys(this.paystackOptions).length >= 2) {
+        errorText = this.valdateInput(this.paystackOptions);
+        this.generateOptions(this.paystackOptions);
+      } else {
+        errorText = this.valdateInput(this);
+        this.generateOptions(this);
+      }
+
+      if (errorText) {
+        console.error(errorText);
+        return errorText;
+      }
+
+      yield this.paystackService.loadScript();
+
+      if (this.paymentInit.observers.length) {
+        this.paymentInit.emit();
+      }
+      /** @type {?} */
+
+
+      const payment = window.PaystackPop.setup(this._paystackOptions);
+      payment.openIframe();
+    });
+  }
+  /**
+   * @param {?} obj
+   * @return {?}
+   */
+
+
+  valdateInput(obj) {
+    if (!this.callback.observers.length) {
+      return 'ANGULAR-PAYSTACK: Insert a callback output like so (callback)=\'PaymentComplete($event)\' to check payment status';
+    }
+
+    return this.paystackService.checkInput(obj);
+  }
+  /**
+   * @param {?} obj
+   * @return {?}
+   */
+
+
+  generateOptions(obj) {
+    this._paystackOptions = this.paystackService.getPaystackOptions(obj);
+
+    this._paystackOptions.onClose =
+    /**
+    * @return {?}
+    */
+    () => {
+      if (this.onClose.observers.length) {
+        this.onClose.emit();
+      }
+    };
+
+    this._paystackOptions.callback =
+    /**
+    * @param {...?} response
+    * @return {?}
+    */
+    (...response) => {
+      this.callback.emit(...response);
+    };
+  }
+  /**
+   * @return {?}
+   */
+
+
+  ngOnInit() {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+      console.error('ANGULAR-PAYSTACK: The paystack embed option is deprecated. Please use the paystack component or directive');
+      this.pay();
+    });
+  }
+
+}
+
+Angular4PaystackEmbedComponent.ɵfac = function Angular4PaystackEmbedComponent_Factory(t) {
+  return new (t || Angular4PaystackEmbedComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](Angular4PaystackService));
+};
+
+Angular4PaystackEmbedComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+  type: Angular4PaystackEmbedComponent,
+  selectors: [["angular4-paystack-embed"]],
+  inputs: {
+    key: "key",
+    email: "email",
+    amount: "amount",
+    metadata: "metadata",
+    channels: "channels",
+    ref: "ref",
+    currency: "currency",
+    plan: "plan",
+    quantity: "quantity",
+    subaccount: "subaccount",
+    transaction_charge: "transaction_charge",
+    bearer: "bearer",
+    paystackOptions: "paystackOptions"
+  },
+  outputs: {
+    paymentInit: "paymentInit",
+    onClose: "onClose",
+    callback: "callback"
+  },
+  decls: 1,
+  vars: 0,
+  consts: [["id", "paystackEmbedContainer"]],
+  template: function Angular4PaystackEmbedComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 0);
+    }
+  },
+  encapsulation: 2,
+  changeDetection: 0
+});
+/** @nocollapse */
+
+Angular4PaystackEmbedComponent.ctorParameters = () => [{
+  type: Angular4PaystackService
+}];
+
+Angular4PaystackEmbedComponent.propDecorators = {
+  key: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  email: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  amount: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  metadata: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  channels: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  ref: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  currency: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  plan: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  quantity: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  subaccount: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  transaction_charge: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  bearer: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  paystackOptions: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  paymentInit: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  onClose: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  callback: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }]
+};
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Angular4PaystackEmbedComponent, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Component,
+    args: [{
+      selector: 'angular4-paystack-embed',
+      changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ChangeDetectionStrategy.OnPush,
+      template: `<div id="paystackEmbedContainer"></div>`
+    }]
+  }], function () {
+    return [{
+      type: Angular4PaystackService
+    }];
+  }, {
+    paymentInit: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    onClose: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    callback: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    key: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    email: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    amount: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    metadata: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    channels: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    ref: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    currency: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    plan: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    quantity: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    subaccount: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    transaction_charge: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    bearer: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    paystackOptions: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }]
+  });
+})();
+
+if (false) {}
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+
+class Angular4PaystackModule {
+  /**
+   * @param {?} token
+   * @return {?}
+   */
+  static forRoot(token) {
+    return {
+      ngModule: Angular4PaystackModule,
+      providers: [Angular4PaystackService, {
+        provide: PUBLIC_KEY_TOKEN,
+        useValue: token
+      }]
+    };
+  }
+
+}
+
+Angular4PaystackModule.ɵfac = function Angular4PaystackModule_Factory(t) {
+  return new (t || Angular4PaystackModule)();
+};
+
+Angular4PaystackModule.ɵmod = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+  type: Angular4PaystackModule
+});
+Angular4PaystackModule.ɵinj = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+  providers: [],
+  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__.CommonModule]
+});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Angular4PaystackModule, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.NgModule,
+    args: [{
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__.CommonModule],
+      exports: [Angular4PaystackComponent, Angular4PaystackDirective, Angular4PaystackEmbedComponent],
+      declarations: [Angular4PaystackComponent, Angular4PaystackDirective, Angular4PaystackEmbedComponent],
+      providers: []
+    }]
+  }], null, null);
+})();
+
+(function () {
+  (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](Angular4PaystackModule, {
+    declarations: function () {
+      return [Angular4PaystackComponent, Angular4PaystackDirective, Angular4PaystackEmbedComponent];
+    },
+    imports: function () {
+      return [_angular_common__WEBPACK_IMPORTED_MODULE_2__.CommonModule];
+    },
+    exports: function () {
+      return [Angular4PaystackComponent, Angular4PaystackDirective, Angular4PaystackEmbedComponent];
+    }
+  });
+})();
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+
+
+
+/***/ }),
+
 /***/ 4505:
 /*!****************************************************************!*\
   !*** ./node_modules/rxjs/_esm2015/internal/BehaviorSubject.js ***!
@@ -24157,6 +25303,260 @@ function toSubscriber(nextOrObserver, error, complete) {
 
   return new _Subscriber__WEBPACK_IMPORTED_MODULE_0__.Subscriber(nextOrObserver, error, complete);
 }
+
+/***/ }),
+
+/***/ 4927:
+/*!************************************************************************!*\
+  !*** ./node_modules/angular4-paystack/node_modules/tslib/tslib.es6.js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "__assign": () => (/* binding */ __assign),
+/* harmony export */   "__asyncDelegator": () => (/* binding */ __asyncDelegator),
+/* harmony export */   "__asyncGenerator": () => (/* binding */ __asyncGenerator),
+/* harmony export */   "__asyncValues": () => (/* binding */ __asyncValues),
+/* harmony export */   "__await": () => (/* binding */ __await),
+/* harmony export */   "__awaiter": () => (/* binding */ __awaiter),
+/* harmony export */   "__classPrivateFieldGet": () => (/* binding */ __classPrivateFieldGet),
+/* harmony export */   "__classPrivateFieldSet": () => (/* binding */ __classPrivateFieldSet),
+/* harmony export */   "__createBinding": () => (/* binding */ __createBinding),
+/* harmony export */   "__decorate": () => (/* binding */ __decorate),
+/* harmony export */   "__exportStar": () => (/* binding */ __exportStar),
+/* harmony export */   "__extends": () => (/* binding */ __extends),
+/* harmony export */   "__generator": () => (/* binding */ __generator),
+/* harmony export */   "__importDefault": () => (/* binding */ __importDefault),
+/* harmony export */   "__importStar": () => (/* binding */ __importStar),
+/* harmony export */   "__makeTemplateObject": () => (/* binding */ __makeTemplateObject),
+/* harmony export */   "__metadata": () => (/* binding */ __metadata),
+/* harmony export */   "__param": () => (/* binding */ __param),
+/* harmony export */   "__read": () => (/* binding */ __read),
+/* harmony export */   "__rest": () => (/* binding */ __rest),
+/* harmony export */   "__spread": () => (/* binding */ __spread),
+/* harmony export */   "__spreadArrays": () => (/* binding */ __spreadArrays),
+/* harmony export */   "__values": () => (/* binding */ __values)
+/* harmony export */ });
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    }
+    return __assign.apply(this, arguments);
+}
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+
+function __param(paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+}
+
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+function __createBinding(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}
+
+function __exportStar(m, exports) {
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+
+function __values(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+}
+
+function __spread() {
+    for (var ar = [], i = 0; i < arguments.length; i++)
+        ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+}
+
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+}
+
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result.default = mod;
+    return result;
+}
+
+function __importDefault(mod) {
+    return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
+}
+
 
 /***/ }),
 
