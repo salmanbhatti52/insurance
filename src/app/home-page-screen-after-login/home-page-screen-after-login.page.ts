@@ -120,7 +120,14 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     });
   }
   tab1Click() {
-    this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
+
+    if(localStorage.getItem('userid')){
+       this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
+    }else{
+      this.navCtrl.navigateRoot('explore-screen-before-login-expanded2');
+    }
+
+
   }
   tab2Click() {
     this.navCtrl.navigateRoot('home-page-screen-after-login');

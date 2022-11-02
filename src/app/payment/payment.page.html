@@ -269,6 +269,27 @@
     </table>
 
 
+
+<div class="btndiv1">
+
+  <button
+    angular4-paystack
+    [key]="'pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'"
+    [email]="'mailexample@mail.com'"
+    [amount]="amt"
+    [ref]="reference"
+    class="btn11"
+    (paymentInit)="paymentInit()"
+    (onClose)="paymentCancel()"
+    (callback)="paymentDone($event)"
+    >
+    Pay with Paystack
+  </button>
+
+</div>
+
+
+
   </div>
 </ion-content>
 <ion-footer>

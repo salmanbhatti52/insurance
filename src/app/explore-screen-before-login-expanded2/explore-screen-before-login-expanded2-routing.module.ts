@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ContactusPage } from './contactus.page';
-
+import { ExploreScreenBeforeLoginExpanded2Page } from './explore-screen-before-login-expanded2.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ContactusPage
+    component: ExploreScreenBeforeLoginExpanded2Page
   }
 ];
 
@@ -15,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ContactusPageRoutingModule {}
+export class ExploreScreenBeforeLoginExpanded2PageRoutingModule {}

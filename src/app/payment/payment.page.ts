@@ -18,6 +18,7 @@ export class PaymentPage implements OnInit {
   othermethod = false;
   payemntmethod = '';
   paymentoption: any;
+  priceofquote: any;
   constructor(public location: Location,
     public router: Router,
     public api: InsuranceAppService,
@@ -34,9 +35,44 @@ export class PaymentPage implements OnInit {
   excessBuyBack: number;
   trackingCharge: number;
 
+  reference = '';
+  title: any;
+  amt:any = 0
+  amtShow:any = 0
+
+
+
+
+  paymentInit() {
+    console.log('Payment initialized');
+  }
+
+  paymentDone(ref: any) {
+    this.title = 'Payment successfull';
+    console.log(this.title, ref);
+  }
+
+  paymentCancel() {
+    console.log('payment failed');
+  }
+
+
 
   ngOnInit() {
+    this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
+    for(var i = 0; i < this.quoteItems.length; i++){
+      if(this.quoteItems[i].type == "currency"){
+        this.priceofquote = this.quoteItems[i].value
+        localStorage.setItem('priceofquote',this.priceofquote)
+        this.amt =    this.priceofquote + '00'
+        this.amtShow =    this.priceofquote
+
+
+        console.log('pesyyyyyy-------',localStorage.getItem('priceofquote'));
+
+      }
+    }
   }
   buyOnlineQuote() {
     this.router.navigate(['/car-insurance-details']);

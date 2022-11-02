@@ -14,6 +14,7 @@ export class YourquotePage implements OnInit {
   quoteItems: any;
   quoteArrayLength: number;
   value = localStorage.getItem('subProName');
+  priceofquote: any;
   constructor(public location: Location,
     public router: Router) { }
   firstName: string;
@@ -29,6 +30,7 @@ export class YourquotePage implements OnInit {
   trackingCharge: number;
   ngOnInit() {
     this.quoteItems =  JSON.parse(localStorage.getItem('quoteItems'));
+
   }
   buyOnlineQuote(){
     this.router.navigate(['/car-insurance-details']);

@@ -116,30 +116,6 @@
     </div>
 
     <ion-grid style="padding:0px; width: 100%;">
-      <ion-row style="margin:16px 0px ;">
-        <!-- padding:6px 6px 6px 0px;  -->
-        <ion-col size="4" style="width: 100%;" *ngFor="let p of products">
-          <div class="gc-div" (click)="openProduct(p,p.name)">
-            <!-- (click)="openQuote(p)" -->
-            <div class="gimg-div">
-              <img src="{{p.image}}" alt="" class="cimg">
-            </div>
-            <p class="gp-div">{{p.name}}</p>
-          </div>
-        </ion-col>
-        <ion-col siz="4">
-          <div class="gc-div" (click)="investmentsubProducts()">
-            <!-- (click)="openQuote(p)" -->
-            <div class="gimg-div">
-              <img src="assets/images/investmentplan.png" alt="" class="cimg">
-            </div>
-            <p class="gp-div">Investment plans</p>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <!-- <ion-grid style="padding:0px; width: 100%;">
       <ion-row style="margin-top:16px ;">
         <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;" (click)="gotologin()">
           <div class="gc-div">
@@ -169,7 +145,7 @@
         </ion-col>
       </ion-row>
 
-       <ion-row style="margin-top:10px ;" >
+      <!-- <ion-row style="margin-top:10px ;" >
         <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;" (click)="gotologin()">
           <div class="gc-div">
             <div class="gimg-div">
@@ -245,9 +221,9 @@
             <p class="gp-div">Gadget Protection Plan</p>
           </div>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
 
-    </ion-grid> -->
+    </ion-grid>
 
     <div style="display:flex; align-items: center; margin-top: 26px;">
       <p class="mid-p1">Services</p>
@@ -257,7 +233,7 @@
     <ion-grid style="padding:0px; width: 100%;">
 
       <ion-row style="margin-top:16px ;">
-        <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;"  (click)="tab2Click()">
+        <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;"  (click)="gotologin()">
           <div class="gc-div">
             <div class="gimg-div">
               <img class="imgclass" src="assets/images/get-insured.svg" alt="">
@@ -266,7 +242,7 @@
           </div>
         </ion-col>
 
-        <ion-col size="4" style="padding:6px; width: 100%;"  (click)="makeaclaim()">
+        <ion-col size="4" style="padding:6px; width: 100%;"  (click)="gotologin()">
           <div class="gc-div">
             <div class="gimg-div">
               <img class="imgclass" src="assets/images/report-claim.svg" alt="">
@@ -275,7 +251,7 @@
           </div>
         </ion-col>
 
-        <ion-col size="4" style="padding:6px 0px 6px 6px; width: 100%;"  (click)="gotorenewpolicy()">
+        <ion-col size="4" style="padding:6px 0px 6px 6px; width: 100%;"  (click)="gotologin()">
           <div class="gc-div">
             <div class="gimg-div">
               <img class="imgclass" src="assets/images/renew-policy.svg" alt="">
@@ -295,7 +271,7 @@
           </div>
         </ion-col> -->
 
-        <ion-col size="4" style="padding:6px; width: 100%;"  (click)="policylookup()">
+        <ion-col size="4" style="padding:6px; width: 100%;"  (click)="gotologin()">
           <div class="gc-div">
             <div class="gimg-div">
               <img class="imgclass" src="assets/images/sec-doc.svg" alt="">

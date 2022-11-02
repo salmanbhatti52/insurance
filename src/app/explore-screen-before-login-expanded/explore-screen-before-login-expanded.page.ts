@@ -1,3 +1,4 @@
+import { InsuranceAppService } from './../services/insurance-app.service';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,10 +17,26 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
 
   btnshow = false;
   result: any;
+  products: any;
   constructor(public navCtrl: NavController,
     public router: Router,
     public location: Location,
-    public actionSheetCtrl:ActionSheetController) { }
+    public actionSheetCtrl:ActionSheetController,
+    public api:InsuranceAppService) { }
+
+
+    ionViewWillEnter() {
+
+
+
+      if (localStorage.getItem('userid') == null) {
+        this.api.presenttoast('Please Login First');
+        this.router.navigate(['/sign-in-screen']);
+      } else {
+        this.getProducts();
+
+      }
+    }
 
   ngOnInit() {
     if (localStorage.getItem('userid') == null) {
@@ -60,6 +77,18 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     this.router.navigate(['/claimassistance3']);
   }
 
+  gotorenewpolicy() {
+    this.router.navigate(['/verify-policy-screen-cust']);
+  }
+
+  makeaclaim() {
+    this.router.navigate(['/makeaclaim']);
+  }
+
+  policylookup() {
+    this.router.navigate(['/policylookup']);
+  }
+
 
 
 
@@ -98,8 +127,62 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     if(result.data.action == 'location'){
       this.navCtrl.navigateRoot('contactus');
     }
-
-
   }
 
+  getProducts() {
+    const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","method":"get_avilable_products"}';
+    this.api.insertData(myData).subscribe((res: any) => {
+      console.log(res);
+      if (res.message == 'success') {
+        this.products = res.myproduct;
+      }
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+
+  investmentsubProducts() {
+    this.router.navigate(['/sub-products']);
+  }
+  openProduct(product, comingFrom) {
+    console.log('seleted product', product);
+    localStorage.setItem('productName', product.name);
+    localStorage.setItem('productid', product.id);
+    this.subProducts(product.id, comingFrom);
+  }
+
+  subProducts(id, comingFrom) {
+    const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","product_id":"' + id + '","method":"get_avilable_subproducts"}';
+    this.api.insertData(myData).subscribe((res: any) => {
+      const subproducts = [];
+      console.log('subProducts---------', res);
+      res.subproducts.map((value, index) => {
+        //old code..
+        // if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen" && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
+        //   subproducts.push(value);
+        // }
+        //new code to add local travel insurance
+        if (value.name != 'Pilgrimage Plans' && value.name != 'Student Plan' && value.name != 'Europe / Shengen' && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
+          subproducts.push(value);
+        }
+      });
+      console.log('subproducts after check---', subproducts);
+      // return;
+      localStorage.setItem('subProducts', JSON.stringify(subproducts));
+      this.PopupCust(comingFrom);
+
+    }, (err) => {
+      console.log(err);
+
+    });
+  }
+
+  PopupCust(comingFrom) {
+
+    this.api.comingFrom = comingFrom;
+
+    this.router.navigate(['/quote-popup']);
+
+  }
 }

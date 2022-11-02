@@ -159,7 +159,7 @@ export class SignInScreenPage implements OnInit {
     })
   }
   exScBefLin() {
-    this.router.navigate(['/explore-screen-before-login-expanded']);
+    this.router.navigate(['/explore-screen-before-login-expanded2']);
   }
   async PopupCust() {
     this.router.navigate(['/agentidpopup'])
