@@ -246,6 +246,14 @@ const routes = [
     {
         path: 'privacypolicy',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_privacypolicy_privacypolicy_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./privacypolicy/privacypolicy.module */ 7854)).then(m => m.PrivacypolicyPageModule)
+    },
+    {
+        path: 'claimassistance2',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_claimassistance2_claimassistance2_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./claimassistance2/claimassistance2.module */ 4923)).then(m => m.Claimassistance2PageModule)
+    },
+    {
+        path: 'claimassistance3',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_claimassistance3_claimassistance3_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./claimassistance3/claimassistance3.module */ 638)).then(m => m.Claimassistance3PageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
