@@ -305,7 +305,12 @@ ion-footer{
 @import "~@ionic/angular/css/flex-utils.css";
 
 
-
+.ebanqo-widget-chat-trigger-button {
+  position: fixed;
+  right: 43px;
+  bottom: 63px !important;
+  z-index: 199;
+}
 
 /// //////////////
 @media (orientation: portrait) {
