@@ -1623,6 +1623,9 @@ ion-footer {
   bottom: 63px !important;
   z-index: 199;
 }
+.initial-prompt-message-wrapper {
+  color: #000 !important;
+}
 @media (orientation: portrait) {
   .v-center {
     background: #A8B400;
