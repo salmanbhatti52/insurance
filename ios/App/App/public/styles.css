@@ -1617,6 +1617,12 @@ ion-footer {
 }
 /* Basic CSS for apps built with Ionic */
 /* Optional CSS utils that can be commented out */
+.ebanqo-widget-chat-trigger-button {
+  position: fixed;
+  right: 43px;
+  bottom: 63px !important;
+  z-index: 199;
+}
 @media (orientation: portrait) {
   .v-center {
     background: #A8B400;
