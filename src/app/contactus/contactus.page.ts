@@ -61,7 +61,7 @@ export class ContactusPage implements OnInit {
     const browser = this.iab.create('https://www.cornerstone.com.ng');
   }
 
-  public openMapsApp(lat,lng) {
+  public openMapsApp(lat,lng,addr) {
     // window.open("https://www.google.com/maps/search/?api=1&query=6.424580,3.441100")
     var geocoords = lat + ',' + lng;
 
@@ -69,7 +69,7 @@ export class ContactusPage implements OnInit {
       window.open('maps://?q=' + geocoords, '_system');
     }
     else {
-      var label = encodeURI('7 East Street'); // encode the label!
+      var label = encodeURI(addr); // encode the label!
       window.open('geo:0,0?q=' + geocoords + '(' + label + ')', '_system');
 
       // window.open("https://www.google.com/maps/search/?api=1&query=" + geocoords)
