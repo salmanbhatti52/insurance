@@ -37,8 +37,8 @@ export class PaymentPage implements OnInit {
 
   reference = '';
   title: any;
-  amt:any = 0
-  amtShow:any = 0
+  amt: any = 0
+  amtShow: any = 0
 
 
 
@@ -49,7 +49,7 @@ export class PaymentPage implements OnInit {
 
   paymentDone(ref: any) {
     this.title = 'Payment successfull';
-    console.log(this.title, ref);
+    console.log('payment succesfull-----', this.title, ref);
   }
 
   paymentCancel() {
@@ -61,15 +61,15 @@ export class PaymentPage implements OnInit {
   ngOnInit() {
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
-    for(var i = 0; i < this.quoteItems.length; i++){
-      if(this.quoteItems[i].type == "currency"){
+    for (var i = 0; i < this.quoteItems.length; i++) {
+      if (this.quoteItems[i].type == "currency") {
         this.priceofquote = this.quoteItems[i].value
-        localStorage.setItem('priceofquote',this.priceofquote)
-        this.amt =    this.priceofquote + '00'
-        this.amtShow =    this.priceofquote
+        localStorage.setItem('priceofquote', this.priceofquote)
+        this.amt = this.priceofquote + '00'
+        this.amtShow = this.priceofquote
 
 
-        console.log('pesyyyyyy-------',localStorage.getItem('priceofquote'));
+        console.log('pesyyyyyy-------', localStorage.getItem('priceofquote'));
 
       }
     }
@@ -105,16 +105,17 @@ export class PaymentPage implements OnInit {
       if (this.payemntmethod == 'WebPAY') {
         this.paymentoption = 1;
         this.paymentapi(this.paymentoption)
-      } else {
-        if (this.payemntmethod == 'other') {
-          this.paymentoption = 2;
-          if (this.chooosebank == '') {
-            this.api.presenttoast('Choose atleast one bank')
-          } else {
-            this.paymentapi(this.paymentoption)
-          }
-        }
       }
+      // else {
+      //   if (this.payemntmethod == 'other') {
+      //     this.paymentoption = 2;
+      //     if (this.chooosebank == '') {
+      //       this.api.presenttoast('Choose atleast one bank')
+      //     } else {
+      //       this.paymentapi(this.paymentoption)
+      //     }
+      //   }
+      // }
     }
   }
 
@@ -123,7 +124,7 @@ export class PaymentPage implements OnInit {
 
     this.api.insertData(datasend).subscribe((res: any) => {
       console.log('payemt response', res);
-      if (paymentoption == 2) {
+      if (paymentoption == 1) {
         this.navCtrl.navigateForward(['payquote', {
           payres: JSON.stringify(res.transaction)
         }])

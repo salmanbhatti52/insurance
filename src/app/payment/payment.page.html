@@ -1,4 +1,3 @@
-<!-- eslint-disable @angular-eslint/template/eqeqeq -->
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
     <ion-row>
@@ -44,7 +43,7 @@
 
           </td>
 
-          <td style=" color: black;"><strong>WebPAY </strong><br><img height="100px;"
+          <td style=" color: black;"><strong>WebPay </strong><br><img height="100px;"
               src="https://cornerstone.com.ng/devtest/assets/img/cards.png">
 
           </td>
@@ -54,10 +53,30 @@
       </tbody>
     </table>
 
-
-
-
     <table class="table">
+
+      <tbody>
+        <tr>
+
+          <td width="10">
+
+            <input type="radio" value="paystack" name="payment-option" class="payment-option-other"
+              (click)="selectmethod('paystack')">
+
+          </td>
+
+          <td style=" color: black;"><strong>Paystack </strong><br><img height="100px;"
+              src="https://cornerstone.com.ng/assets/img/paystack.jpeg">
+
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+
+    <!-- <table class="table">
 
       <tbody>
 
@@ -70,7 +89,8 @@
 
           </td>
 
-          <td style=" color: black;"><strong>Bank Transfer in any of the following banks </strong><br><span class="h6"> Pay using internet
+          <td style=" color: black;"><strong>Bank Transfer in any of the following banks </strong><br><span class="h6">
+              Pay using internet
               banking or directly at any of this banks</span><br>
 
 
@@ -80,9 +100,9 @@
 
       </tbody>
 
-    </table>
+    </table> -->
 
-    <table class="table" id="bank_list" *ngIf="othermethod==true">
+    <!-- <table class="table" id="bank_list" *ngIf="othermethod==true">
 
 
       <tbody>
@@ -102,7 +122,7 @@
 
           <td style="width: 50%;">
 
-            <!-- <label for="bank" id="1">FCMB - 0135145093</label> -->
+
 
             <label style=" color: black;">Account Number:</label>
 
@@ -131,7 +151,7 @@
 
           <td>
 
-            <!-- <label for="bank" id="2">StanbicIBTC - 0008384202</label> -->
+
 
             <label style=" color: black;">Account Number:</label>
 
@@ -167,7 +187,7 @@
 
           <td>
 
-            <!-- <label for="bank" id="3">GTBank - 0108908618</label> -->
+
 
             <label style=" color: black;">Account Number:</label>
 
@@ -204,7 +224,7 @@
 
           <td>
 
-            <!-- <label for="bank" id="4">First Bank -2024120096</label> -->
+           >
 
             <label style=" color: black;">Account Number:</label>
 
@@ -241,7 +261,7 @@
 
           <td>
 
-            <!-- <label for="bank" id="6">Union Bank (General) - 0040038431</label> -->
+
 
             <label style=" color: black;">Account Number:</label>
 
@@ -266,35 +286,23 @@
       </tbody>
 
 
-    </table>
-
-
-
-<div class="btndiv1">
-
-  <button
-    angular4-paystack
-    [key]="'pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'"
-    [email]="'mailexample@mail.com'"
-    [amount]="amt"
-    [ref]="reference"
-    class="btn11"
-    (paymentInit)="paymentInit()"
-    (onClose)="paymentCancel()"
-    (callback)="paymentDone($event)"
-    >
-    Pay with Paystack
-  </button>
-
-</div>
-
+    </table> -->
 
 
   </div>
 </ion-content>
 <ion-footer>
-  <div class="btndiv">
+  <div class="btndiv" *ngIf="payemntmethod=='WebPAY'">
     <ion-button class="btn" (click)="proceed()"> Proceed</ion-button>
+  </div>
+  <div class="btndiv" *ngIf="payemntmethod=='paystack'">
+
+    <button angular4-paystack [key]="'pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'"
+      [email]="'mailexample@mail.com'" [amount]="amt" [ref]="reference" class="btn11" (paymentInit)="paymentInit()"
+      (onClose)="paymentCancel()" (callback)="paymentDone($event)">
+      Pay with Paystack
+    </button>
+
   </div>
 
 </ion-footer>
