@@ -938,6 +938,8 @@ let MypoliciesPage = class MypoliciesPage {
         }
         if (formValidationResult.status) {
             // --- Calling API To create quote --- //
+            console.log('this.policyhldrVal---', this.policyhldrVal);
+            localStorage.setItem('policyhldrVal', this.policyhldrVal);
             this.api.insertData(myData).subscribe((data) => {
                 console.log('data response for products----', data);
                 if (data.message == 'success') {

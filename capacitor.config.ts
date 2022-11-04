@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.cornerstone.app',
+  appId: 'com.cornerstone.insurance',
   appName: 'Cornerstone',
   webDir: 'www',
   bundledWebRuntime: false,

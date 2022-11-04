@@ -1,4 +1,4 @@
-package com.cornerstone.app;
+package com.cornerstone.insurance;
 
 import com.getcapacitor.BridgeActivity;
 

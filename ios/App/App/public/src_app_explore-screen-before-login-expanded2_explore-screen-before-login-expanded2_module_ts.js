@@ -167,32 +167,36 @@ let ExploreScreenBeforeLoginExpanded2Page = class ExploreScreenBeforeLoginExpand
     var _this = this;
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const actionSheet = yield _this.actionSheetCtrl.create({
-        buttons: [{
-          text: 'Chat with an agent',
-          data: {
-            action: 'caht'
-          }
-        }, {
-          text: 'Make Enquiry',
-          data: {
-            action: 'enquiry'
-          }
-        }, {
-          text: 'Our Locations',
-          data: {
-            action: 'location'
-          }
-        }]
-      });
-      yield actionSheet.present();
-      const result = yield actionSheet.onDidDismiss();
-      _this.result = JSON.stringify(result, null, 2);
-      console.log('res----', result);
+      _this.navCtrl.navigateRoot('contactus'); // const actionSheet = await this.actionSheetCtrl.create({
+      //   buttons: [
+      // {
+      //   text: 'Chat with an agent',
+      //   data: {
+      //     action: 'caht',
+      //   },
+      // },
+      // {
+      //   text: 'Make Enquiry',
+      //   data: {
+      //     action: 'enquiry',
+      //   },
+      // },
+      //     {
+      //       text: 'Our Locations',
+      //       data: {
+      //         action: 'location',
+      //       },
+      //     }
+      //   ],
+      // });
+      // await actionSheet.present();
+      // const result = await actionSheet.onDidDismiss();
+      // this.result = JSON.stringify(result, null, 2);
+      // console.log('res----',result);
+      // if(result.data.action == 'location'){
+      //   this.navCtrl.navigateRoot('contactus');
+      // }
 
-      if (result.data.action == 'location') {
-        _this.navCtrl.navigateRoot('contactus');
-      }
     })();
   }
 

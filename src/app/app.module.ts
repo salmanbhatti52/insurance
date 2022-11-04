@@ -19,7 +19,7 @@ import { Angular4PaystackModule } from 'angular4-paystack';
     AppRoutingModule,
     HttpClientModule,
     Angular4PaystackModule.forRoot('pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'),
-    ],
+  ],
   providers: [
     ReactiveFormsModule,
     FormsModule,

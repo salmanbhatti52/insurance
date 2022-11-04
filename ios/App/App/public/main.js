@@ -262,6 +262,10 @@ const routes = [
     {
         path: 'explore-screen-before-login-expanded2',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_explore-screen-before-login-expanded2_explore-screen-before-login-expanded2_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./explore-screen-before-login-expanded2/explore-screen-before-login-expanded2.module */ 8937)).then(m => m.ExploreScreenBeforeLoginExpanded2PageModule)
+    },
+    {
+        path: 'gibsproducts',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_gibsproducts_gibsproducts_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./gibsproducts/gibsproducts.module */ 1948)).then(m => m.GibsproductsPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
