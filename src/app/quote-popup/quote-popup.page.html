@@ -40,9 +40,9 @@
       </div>
 
     </div>
-    <!-- <div class="boxdiv" *ngIf="productID==1">
-      <div style="display:flex;margin-bottom: 7%;" (click)="seeDetails('null')">
-        <img src="assets/images/carimg.png" alt="" style="    width: 100px;
+    <div class="boxdiv" *ngIf="productID==1">
+      <div style="display:flex;margin-bottom: 7%;" (click)="gibsproducts()">
+        <img src="assets/images/motorcar.png" alt="" style="    width: 100px;
     height: 100px;
     object-fit: cover;">
         <p style="color: #1A206D;
@@ -50,9 +50,9 @@
         font-weight: 500;
         margin: 6% 0% 0% 4%;">COMPREHENSIVE MOTOR INSURANCE</p>
       </div>
-    </div> -->
+    </div>
 
-    <div class="boxdiv" *ngFor="let gibs of motorsubproducts">
+    <!-- <div class="boxdiv" *ngFor="let gibs of motorsubproducts">
       <div *ngIf="api.comingFrom === 'Motor Insurance'" style="display:flex;margin-bottom: 7%;"
         (click)="GProductdetail(gibs.productID)">
         <img src="assets/images/carimg.png" alt="" style="    width: 100px;
@@ -63,7 +63,7 @@
         font-weight: 500;
         margin: 6% 0% 0% 4%;">{{gibs.productName}}</p>
       </div>
-    </div>
+    </div> -->
     <!-- <div *ngFor="let sp of subProducts">
       <div class="c-center">
         <img src="{{sp.image}}" alt="" style="margin-top:5%;     width: 100px;

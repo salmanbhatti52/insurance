@@ -19,6 +19,7 @@ export class PaymentPage implements OnInit {
   payemntmethod = '';
   paymentoption: any;
   priceofquote: any;
+
   constructor(public location: Location,
     public router: Router,
     public api: InsuranceAppService,
@@ -39,7 +40,7 @@ export class PaymentPage implements OnInit {
   title: any;
   amt: any = 0
   amtShow: any = 0
-
+  email: any;
 
 
 
@@ -59,6 +60,7 @@ export class PaymentPage implements OnInit {
 
 
   ngOnInit() {
+    this.email = localStorage.getItem('email');
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
     for (var i = 0; i < this.quoteItems.length; i++) {

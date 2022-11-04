@@ -250,6 +250,10 @@ const routes: Routes = [
   {
     path: 'explore-screen-before-login-expanded2',
     loadChildren: () => import('./explore-screen-before-login-expanded2/explore-screen-before-login-expanded2.module').then( m => m.ExploreScreenBeforeLoginExpanded2PageModule)
+  },
+  {
+    path: 'gibsproducts',
+    loadChildren: () => import('./gibsproducts/gibsproducts.module').then( m => m.GibsproductsPageModule)
   }
 
 
