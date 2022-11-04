@@ -109,6 +109,7 @@ export class CarInsuranceDetailsPage implements OnInit {
     file: "",
     base64: "",
   };
+  policyhldrVal: any = '';
   // For file images //
 
   constructor(
@@ -126,13 +127,33 @@ export class CarInsuranceDetailsPage implements OnInit {
   }
 
   ionViewWillEnter() {
+   console.log('policyhldrVal----',localStorage.getItem('policyhldrVal'));
+   this.policyhldrVal = localStorage.getItem('policyhldrVal')
+
+   if(this.policyhldrVal == 'Corporate'){
+    this.corpValue = format(new Date(), 'yyyy-MM-dd');
+    this.genderVal = 'Male'
+   }else{
+    this.corpValue = format(new Date(), 'yyyy-MM-dd');
+  }
+
+   if(this.policyhldrVal == 'Private'){
+    this.dobValue = format(new Date(), 'yyyy-MM-dd');
+    this.genderVal = 'Please Select'
+   }else{
+    this.dobValue = '1998-01-01'
+    this.genderVal = 'Male'
+   }
+
+   console.log('this.genderVal----',this.genderVal);
+
     this.fullName = '';
     this.regNo = '';
     this.engNo = '';
     this.chasisNo = '';
     this.vehclr = '';
     this.clientAddress = '';
-    this.genderVal = 'Please Select';
+   // this.genderVal = 'Please Select';
     this.referrerVal = 'Please Select';
     this.imgURL = '';
     this.imgURL1 = '';
@@ -203,6 +224,8 @@ export class CarInsuranceDetailsPage implements OnInit {
 
 
   selectGenderType(list) {
+    console.log('hhhhhhhhhhhhhhhhhhhh');
+
     this.genderVal = list.gender;
     this.showGender = false;
   }
@@ -372,6 +395,8 @@ export class CarInsuranceDetailsPage implements OnInit {
   }
   createProposal(propsalType) {
     console.log("propsalType---formValidationResult", propsalType);
+    console.log('this.genderVal----',this.genderVal);
+
 
     let formValidationResult = { message: "This product is under developement", status: false };
     const headers = new HttpHeaders();

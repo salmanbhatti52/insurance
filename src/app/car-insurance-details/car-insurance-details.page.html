@@ -77,7 +77,7 @@
               placeholder="e.g:136, LEWIS STREET, OBALENDE, LAGOS ISLAND,LAGOS STATE" class="in-text"></ion-input>
           </div>
         </div>
-
+        <div *ngIf="policyhldrVal == 'Private'">
         <!----------- seventh form ---------------------------->
         <div class="label">Gender <span style="color:#A8B400;">*</span></div>
         <div class="dropbox">
@@ -96,6 +96,8 @@
           </div>
 
         </div>
+
+
         <!----------- seventh form ---------------------------->
         <div class="label">Date of Birth <span style="color:#A8B400;">*This is a NAICOM KYC Reqirement.</span></div>
 
@@ -110,7 +112,8 @@
         <ion-datetime class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date"
           *ngIf="showPickerDob" #datetime [value]="dobValue" size="cover" (ionChange)="dobChanged(datetime.value)"
           showDefaultButtons="true" (ionCancel)="showPickerDob=false"></ion-datetime>
-
+     </div>
+          <div *ngIf="policyhldrVal == 'Corporate'">
         <!----------- seventh form ---------------------------->
         <div class="label">Incorporation <span style="color:#A8B400;">*</span></div>
 
@@ -127,6 +130,8 @@
           showDefaultButtons="true" (ionCancel)="showPickerCorp=false"></ion-datetime>
 
         <!----------- seventh form ---------------------------->
+
+      </div>
         <div class="label">Year of Purchase <span style="color:#A8B400;">*</span></div>
 
         <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;"

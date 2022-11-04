@@ -66,44 +66,42 @@ export class ExploreScreenBeforeLoginExpanded2Page implements OnInit {
 
 
 
+
+
   async presentActionSheet() {
-    const actionSheet = await this.actionSheetCtrl.create({
+    this.navCtrl.navigateRoot('contactus');
+    // const actionSheet = await this.actionSheetCtrl.create({
+    //   buttons: [
+        // {
+        //   text: 'Chat with an agent',
+        //   data: {
+        //     action: 'caht',
+        //   },
+        // },
+        // {
+        //   text: 'Make Enquiry',
+        //   data: {
+        //     action: 'enquiry',
+        //   },
+        // },
+    //     {
+    //       text: 'Our Locations',
+    //       data: {
+    //         action: 'location',
+    //       },
+    //     }
+    //   ],
+    // });
 
-      buttons: [
-        {
-          text: 'Chat with an agent',
-          data: {
-            action: 'caht',
-          },
-        },
-        {
-          text: 'Make Enquiry',
-          data: {
-            action: 'enquiry',
-          },
-        },
-        {
-          text: 'Our Locations',
-          data: {
-            action: 'location',
-          },
-        }
-      ],
-    });
-
-    await actionSheet.present();
-
-    const result = await actionSheet.onDidDismiss();
-    this.result = JSON.stringify(result, null, 2);
-
-    console.log('res----',result);
-
-    if(result.data.action == 'location'){
-      this.navCtrl.navigateRoot('contactus');
-    }
-
-
+    // await actionSheet.present();
+    // const result = await actionSheet.onDidDismiss();
+    // this.result = JSON.stringify(result, null, 2);
+    // console.log('res----',result);
+    // if(result.data.action == 'location'){
+    //   this.navCtrl.navigateRoot('contactus');
+    // }
   }
+
 
   gotologin(){
     this.navCtrl.navigateRoot('sign-in-screen');

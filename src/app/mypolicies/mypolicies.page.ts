@@ -924,6 +924,9 @@ export class MypoliciesPage implements OnInit {
     return response;
   }
   createQuote(quoteType) {
+
+
+
     console.log('quoteType---', quoteType);
     let formValidationResult = { message: 'This product is under developement', status: false };
     console.log('checkTest---', formValidationResult);
@@ -960,6 +963,12 @@ export class MypoliciesPage implements OnInit {
     }
     if (formValidationResult.status) {
       // --- Calling API To create quote --- //
+
+
+      console.log('this.policyhldrVal---',this.policyhldrVal);
+
+      localStorage.setItem('policyhldrVal',this.policyhldrVal)
+
       this.api.insertData(myData).subscribe((data: any) => {
         console.log('data response for products----', data);
 
