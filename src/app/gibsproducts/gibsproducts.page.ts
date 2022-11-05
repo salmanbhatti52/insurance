@@ -21,6 +21,7 @@ export class GibsproductsPage implements OnInit {
   }
 
   gibsproduct() {
+    this.api.showLoader()
     const myData = {
       sid: 'ECHANNEL2',
       token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
@@ -35,7 +36,7 @@ export class GibsproductsPage implements OnInit {
     });
   }
   motorproductonly(token) {
-    this.api.showLoader()
+
     const Bearertoken = token;
     this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Products', Bearertoken).subscribe((res: any) => {
       this.api.hideLoader()

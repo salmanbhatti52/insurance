@@ -112,7 +112,18 @@ export class QuotePopupPage implements OnInit {
       this.router.navigate(['/localsubproduct']);
     } else {
       if (sp.product_for_quote == 1) {
-        this.router.navigate(['/mypolicies']);
+        if (sp.name == 'Third Party') {
+          this.router.navigate(['/mypolicies']);
+        } else {
+          if (sp.name == 'Student Plan' || sp.name == 'Europe / Shengen') {
+            this.router.navigate(['/mypolicies']);
+          } else {
+            localStorage.setItem('localtravel', JSON.stringify(sp));
+            this.router.navigate(['/internationalinformation']);
+          }
+        }
+
+        // this.router.navigate(['/mypolicies']);
         localStorage.setItem('subProId', sp.id);
         localStorage.setItem('subProName', sp.name);
       }
@@ -120,6 +131,14 @@ export class QuotePopupPage implements OnInit {
         this.subProductsshow(sp.id);
       }
     }
+
+    // else {
+    //   if (sp.name == 'Student Plan' || sp.name == 'Europe / Shengen') {
+    //     this.router.navigate(['/mypolicies']);
+    //   } else {
+    //     localStorage.setItem('localtravel', JSON.stringify(sp));
+    //     this.router.navigate(['/travelquote']);
+    //   }
 
 
     // this.modal.dismiss(sp).then(data => {

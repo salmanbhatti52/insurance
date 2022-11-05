@@ -258,6 +258,10 @@ const routes: Routes = [
   {
     path: 'localinformation',
     loadChildren: () => import('./localinformation/localinformation.module').then( m => m.LocalinformationPageModule)
+  },
+  {
+    path: 'internationalinformation',
+    loadChildren: () => import('./internationalinformation/internationalinformation.module').then( m => m.InternationalinformationPageModule)
   }
 
 

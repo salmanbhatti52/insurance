@@ -1,0 +1,404 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row>
+      <ion-col size="2" style="padding-left: 25px;">
+        <ion-buttons>
+          <div style="width:100% ;">
+            <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
+          </div>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Make a Quote</div>
+      </ion-col>
+      <ion-col class="titleclass" size="2">
+      </ion-col>
+
+
+    </ion-row>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div style="border: 1px solid #A8B400;
+    border-radius: 12px;" *ngIf="productname=='Worldwide TRAVELLER'">
+      <div class="main">
+        <div>
+          <div class="text" style="text-align:center;"><b>TRAVELLER Worldwide</b>
+          </div>
+          <div class="text1">Limits in USD</div>
+        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Medical Expenses and Hospitalization Abroad</div>
+            <div class="text4">150,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Emergency Dental Care</div>
+            <div class="text4">1,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Hijacking in Means of Public Transport</div>
+            <div class="text4">250 / hour up to 10000</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Loss of Passport, driving license, national identity card abroad</div>
+            <div class="text4">500.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Compensation for delay in the arrival of luggage</div>
+            <div class="text4">1,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Delayed Departure</div>
+            <div class="text4">1,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Location and forwarding of personal effects</div>
+            <div class="text4">Up To ₦10,000</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">LOSS OF PERSONAL EFFECT</div>
+            <div class="text4">Covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Accidental Death occurred in means of public transport</div>
+            <div class="text4">50,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Permanent Total disability</div>
+            <div class="text4">50,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Trip Cancellation Expenses</div>
+            <div class="text4">2,000.00</div>
+          </div>
+
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- //////Worldwide PEARL//////// -->
+    <div style="border: 1px solid #A8B400;
+    border-radius: 12px;" *ngIf="productname=='Worldwide PEARL'">
+      <div class="main">
+        <div>
+          <div class="text" style="text-align:center;"><b>PEARL Worldwide</b>
+          </div>
+          <div class="text1">Limits in USD</div>
+        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Medical Expenses and Hospitalization Abroad</div>
+            <div class="text4">50,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Emergency Dental Care</div>
+            <div class="text4">1,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Hijacking in Means of Public Transport</div>
+            <div class="text4">Not covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Loss of Passport, driving license, national identity card abroad</div>
+            <div class="text4">300.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Compensation for delay in the arrival of luggage</div>
+            <div class="text4">500.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Delayed Departure</div>
+            <div class="text4">500.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Location and forwarding of personal effects</div>
+            <div class="text4">Covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">LOSS OF PERSONAL EFFECT</div>
+            <div class="text4">Covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Accidental Death occurred in means of public transport</div>
+            <div class="text4">25,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Permanent Total disability</div>
+            <div class="text4">25,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Trip Cancellation Expenses</div>
+            <div class="text4">1,500.00</div>
+          </div>
+
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- //////Worldwide ECONOMY//////// -->
+    <div style="border: 1px solid #A8B400;
+    border-radius: 12px;" *ngIf="productname=='Worldwide ECONOMY'">
+      <div class="main">
+        <div>
+          <div class="text" style="text-align:center;"><b>ECONOMY Worldwide</b>
+          </div>
+          <div class="text1">Limits in USD</div>
+        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Medical Expenses and Hospitalization Abroad</div>
+            <div class="text4">15,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Emergency Dental Care</div>
+            <div class="text4">600.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Hijacking in Means of Public Transport</div>
+            <div class="text4">Not covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Loss of Passport, driving license, national identity card abroad</div>
+            <div class="text4">Not covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Compensation for delay in the arrival of luggage</div>
+            <div class="text4">Not covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Delayed Departure</div>
+            <div class="text4">Not covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Location and forwarding of personal effects</div>
+            <div class="text4">Not covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">LOSS OF PERSONAL EFFECT</div>
+            <div class="text4">Covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Accidental Death occurred in means of public transport</div>
+            <div class="text4">15,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Permanent Total disability</div>
+            <div class="text4">Not covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Trip Cancellation Expenses</div>
+            <div class="text4">1,000.00</div>
+          </div>
+
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- //////BASIC Pilgrimage//////// -->
+    <div style="border: 1px solid #A8B400;
+    border-radius: 12px;" *ngIf="productname=='Pilgrimage BASIC'">
+      <div class="main">
+        <div>
+          <div class="text" style="text-align:center;"><b>BASIC Pilgrimage</b>
+          </div>
+          <div class="text1">Limits in USD</div>
+        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Medical Expenses and Hospitalization Abroad</div>
+            <div class="text4">10,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Emergency Evacuation</div>
+            <div class="text4">15,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Compensation for in-flight loss of checked-in baggage</div>
+            <div class="text4">250.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">- Per Bag</div>
+            <div class="text4">125</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">- Per Item</div>
+            <div class="text4">10</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">International Assistance</div>
+            <div class="text4">Covered0</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Repatriation Of Mortal Remains</div>
+            <div class="text4">5,000</div>
+          </div>
+
+
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- //////PLUS Pilgrimage//////// -->
+    <div style="border: 1px solid #A8B400;
+     border-radius: 12px;" *ngIf="productname=='Pilgrimage PLUS'">
+      <div class="main">
+        <div>
+          <div class="text" style="text-align:center;"><b>PLUS Pilgrimage</b>
+          </div>
+          <div class="text1">Limits in USD</div>
+        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Medical Expenses and Hospitalization Abroad</div>
+            <div class="text4">15,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Emergency Evacuation</div>
+            <div class="text4">15,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Compensation for in-flight loss of checked-in baggage</div>
+            <div class="text4">500.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">- Per Bag</div>
+            <div class="text4">250</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">- Per Item</div>
+            <div class="text4">25</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">International Assistance</div>
+            <div class="text4">Covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Repatriation Of Mortal Remains</div>
+            <div class="text4">10,000</div>
+          </div>
+
+
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- //////EXTRA Pilgrimage//////// -->
+    <div style="border: 1px solid #A8B400;
+     border-radius: 12px;" *ngIf="productname=='Pilgrimage EXTRA'">
+      <div class="main">
+        <div>
+          <div class="text" style="text-align:center;"><b>EXTRA Pilgrimage</b>
+          </div>
+          <div class="text1">Limits in USD</div>
+        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Medical Expenses and Hospitalization Abroad</div>
+            <div class="text4">25,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Emergency Evacuation</div>
+            <div class="text4">15,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Compensation for in-flight loss of checked-in baggage</div>
+            <div class="text4">750.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">- Per Bag</div>
+            <div class="text4">375</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">- Per Item</div>
+            <div class="text4">75</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">International Assistance</div>
+            <div class="text4">Covered</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Repatriation Of Mortal Remains</div>
+            <div class="text4">15,000</div>
+          </div>
+
+
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
