@@ -254,6 +254,10 @@ const routes: Routes = [
   {
     path: 'gibsproducts',
     loadChildren: () => import('./gibsproducts/gibsproducts.module').then( m => m.GibsproductsPageModule)
+  },
+  {
+    path: 'localinformation',
+    loadChildren: () => import('./localinformation/localinformation.module').then( m => m.LocalinformationPageModule)
   }
 
 

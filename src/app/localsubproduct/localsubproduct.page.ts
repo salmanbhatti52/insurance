@@ -48,7 +48,7 @@ export class LocalsubproductPage implements OnInit {
   goback() {
 
 
-    if(this.counter == 1){
+    if(this.counter <= 1){
       this.location.back();
     }else{
 
@@ -116,7 +116,8 @@ export class LocalsubproductPage implements OnInit {
      this.router.navigate(['/localsubproduct']);
     } else {
       if (sp.product_for_quote == 1) {
-        this.router.navigate(['/localpoliciesform']);
+        // this.router.navigate(['/localpoliciesform']);
+        this.router.navigate(['/localinformation']);
         localStorage.setItem('subProId', sp.id);
         localStorage.setItem('subProName', sp.name);
       }
