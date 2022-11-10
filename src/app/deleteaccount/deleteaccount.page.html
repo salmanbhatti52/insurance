@@ -1,0 +1,32 @@
+<ion-content>
+  <ion-row style="padding-top: 30px;background: black;">
+    <ion-col size="2" style="text-align: center;">
+      <img (click)="goBack()" style="height: 20px; width:20px;" src="assets/imgs/left.svg">
+    </ion-col>
+    <ion-col size="8" style="text-align: center;">
+      <p style="font-size: 14pt;margin:0px;">Delete Account</p>
+    </ion-col>
+    <ion-col size="2">
+    </ion-col>
+  </ion-row>
+
+  <div class="wrapper">
+    <div class="thead">Why do you want to delete your Lev account?</div>
+    <div class="flex-c" *ngFor="let checkboxes of Checkboxes">
+      <ion-checkbox mode="md" class="check" [(ngModel)]="checkboxes.isItemChecked"
+        (ionChange)="verifyEvent(checkboxes)">
+      </ion-checkbox>
+      <span class="lbl">{{checkboxes.question}}</span>
+    </div>
+
+    <div style="color:#fff;margin-top: 10%;
+    font-size: 14px;">Commnets(optional)</div>
+
+    <ion-textarea rows="10" cols="5" class="desc-area" placeholder="Please provide additional information here..."
+      [(ngModel)]="desc"></ion-textarea>
+
+    <ion-button class=" btn" (click)="delete()">Delete</ion-button>
+  </div>
+
+
+</ion-content>

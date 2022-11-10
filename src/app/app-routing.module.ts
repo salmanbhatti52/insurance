@@ -262,6 +262,10 @@ const routes: Routes = [
   {
     path: 'internationalinformation',
     loadChildren: () => import('./internationalinformation/internationalinformation.module').then( m => m.InternationalinformationPageModule)
+  },
+  {
+    path: 'deleteaccount',
+    loadChildren: () => import('./deleteaccount/deleteaccount.module').then( m => m.DeleteaccountPageModule)
   }
 
 

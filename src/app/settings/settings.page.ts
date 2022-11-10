@@ -41,4 +41,9 @@ export class SettingsPage implements OnInit {
     this.navCtrl.navigateForward('helppage')
   }
 
+  deleteaccount() {
+    this.navCtrl.navigateForward('deleteaccount')
+  }
+
+
 }
