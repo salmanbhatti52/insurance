@@ -119,7 +119,7 @@
           <div class="gc-div" (click)="openProduct(p,p.name)">
             <!-- (click)="openQuote(p)" -->
             <div class="gimg-div">
-              <img src="{{p.image}}" alt="" class="cimg">
+              <img (error)="handleImgError($event, userIMG)" src="{{p.image}}" alt="" class="cimg">
             </div>
             <p class="gp-div">{{p.name}}</p>
           </div>
@@ -140,7 +140,8 @@
     <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide" class="slides2">
       <ion-slide style="margin: 10px;">
         <div class="lst-div">
-          <p class="lst-para">Are you aware you can lodge your claim online, renew your policy and do more from any of our digital channels without visiting any of our branches?</p>
+          <p class="lst-para">Are you aware you can lodge your claim online, renew your policy and do more from any of
+            our digital channels without visiting any of our branches?</p>
           <div class="limg-div">
             <img src="assets/images/damage-car.svg" alt="">
           </div>
@@ -148,7 +149,8 @@
       </ion-slide>
       <ion-slide style="margin: 10px;">
         <div class="lst-div">
-          <p class="lst-para">Things just got better with Cornerstone! Investment products are now available on our new mobile app.</p>
+          <p class="lst-para">Things just got better with Cornerstone! Investment products are now available on our new
+            mobile app.</p>
           <div class="limg-div">
             <img src="assets/images/damage-car.svg" alt="">
           </div>
@@ -156,7 +158,9 @@
       </ion-slide>
       <ion-slide style="margin: 10px;">
         <div class="lst-div">
-          <p class="lst-para">Do you know you can verify your policy using our mobile app? Here is how, click on the VERIFY POLICY menu and select if your product is general or life. Then you provide your policy number, its that simple!</p>
+          <p class="lst-para">Do you know you can verify your policy using our mobile app? Here is how, click on the
+            VERIFY POLICY menu and select if your product is general or life. Then you provide your policy number, its
+            that simple!</p>
           <div class="limg-div">
             <img src="assets/images/damage-car.svg" alt="">
           </div>
@@ -197,41 +201,41 @@
 
 <script>
   (function (w, d, s, o, f, js, fjs) {
-  w["EBANQO-WIDGET"] = o;
-  w[o] =
-    w[o] ||
-    function () {
-      (w[o].q = w[o].q || []).push(arguments);
-    };
-  (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
-  js.id = o;
-  js.src = f;
-  js.async = 1;
-  fjs.parentNode.insertBefore(js, fjs);
-})(
-  window,
-  document,
-  "script",
-  "ebanqo_widget",
-  "https://widget.ebanqo.io/app.js"
-);
+    w["EBANQO-WIDGET"] = o;
+    w[o] =
+      w[o] ||
+      function () {
+        (w[o].q = w[o].q || []).push(arguments);
+      };
+    (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+    js.id = o;
+    js.src = f;
+    js.async = 1;
+    fjs.parentNode.insertBefore(js, fjs);
+  })(
+    window,
+    document,
+    "script",
+    "ebanqo_widget",
+    "https://widget.ebanqo.io/app.js"
+  );
 
-ebanqo_widget("init", {
-  showChannelButtonsOnSignupForm: true,
-  buttonColor: "#2c2276",
-  promptMessageDelay: 2000,
-
-  promptMessage:
-    "Hello, I'm Cici. How may I be of assistance?",
-  instant_chat: {
+  ebanqo_widget("init", {
+    showChannelButtonsOnSignupForm: true,
     buttonColor: "#2c2276",
-    logoUrl: "https://ebanqo-logos.s3.amazonaws.com/Cici+Header-1.png",
-    url: "https://webchat.ebanqo.io/cornerstone",
-    title: "",
-    logoWidth: 78,
-    logoHeight: 37,
-    chatHeaderBackgroundColor: "#2c2276",
-    chatHeaderTextColor: "#fff",
-  },
-});
-  </script>
+    promptMessageDelay: 2000,
+
+    promptMessage:
+      "Hello, I'm Cici. How may I be of assistance?",
+    instant_chat: {
+      buttonColor: "#2c2276",
+      logoUrl: "https://ebanqo-logos.s3.amazonaws.com/Cici+Header-1.png",
+      url: "https://webchat.ebanqo.io/cornerstone",
+      title: "",
+      logoWidth: 78,
+      logoHeight: 37,
+      chatHeaderBackgroundColor: "#2c2276",
+      chatHeaderTextColor: "#fff",
+    },
+  });
+</script>
