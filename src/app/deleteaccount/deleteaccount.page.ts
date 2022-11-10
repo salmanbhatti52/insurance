@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
+import { InsuranceAppService } from '../services/insurance-app.service';
 
 @Component({
   selector: 'app-deleteaccount',
@@ -8,18 +9,20 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./deleteaccount.page.scss'],
 })
 export class DeleteaccountPage implements OnInit {
-  Checkboxes = [{ question: 'I concerned about my personal data', isItemChecked: false }, { question: 'I have another  Lev account', isItemChecked: false },
-  { question: 'I want to remove app from my mobile', isItemChecked: false }, { question: 'I get too many emails from Lev', isItemChecked: false }, { question: 'Other', isItemChecked: false }];
+  Checkboxes = [{ question: 'I concerned about my personal data', isItemChecked: false }, { question: 'I have another  Insurance account', isItemChecked: false },
+  { question: 'I want to remove app from my mobile', isItemChecked: false }, { question: 'I get too many emails from Insurance', isItemChecked: false }, { question: 'Other', isItemChecked: false }];
 
   selectquestions = [];
   constructor(
     public loacton: Location,
-    public navCtrl: NavController) { }
+    public navCtrl: NavController,
+    public alertController:AlertController,
+    public api:InsuranceAppService) { }
 
   ngOnInit() {
   }
 
-  goBack() {
+  goback() {
     this.loacton.back()
   }
   verifyEvent(ev) {
@@ -42,6 +45,39 @@ export class DeleteaccountPage implements OnInit {
   delete() {
     console.log('adasdsadsadsa', this.selectquestions.length);
 
+    if (this.selectquestions.length == 0) {
+      this.api.presenttoast('Choose one option atleast');
+    } else {
+      this.presentAlert()
+    }
+
+  }
+
+
+   async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Are you sure, you want to delete your account?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+
+          },
+        },
+        {
+          text: 'Confirm',
+          role: 'confirm',
+          handler: () => {
+            this.navCtrl.navigateRoot(['/home-page-screen-after-login'])
+            this.api.presenttoast('Your request received. Your account will be deleted within 24 hours.')
+
+          },
+        },
+      ],
+    });
+
+    await alert.present();
 
   }
 
