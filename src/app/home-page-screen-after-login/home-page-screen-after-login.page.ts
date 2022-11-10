@@ -24,7 +24,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     public modal: ModalController,
     public api: InsuranceAppService,
     public alert: AlertController,
-    public actionSheetCtrl:ActionSheetController) { }
+    public actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit() {
 
@@ -121,9 +121,9 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   }
   tab1Click() {
 
-    if(localStorage.getItem('userid')){
-       this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
-    }else{
+    if (localStorage.getItem('userid')) {
+      this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
+    } else {
       this.navCtrl.navigateRoot('explore-screen-before-login-expanded2');
     }
 
@@ -181,18 +181,18 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     this.navCtrl.navigateRoot('contactus');
     // const actionSheet = await this.actionSheetCtrl.create({
     //   buttons: [
-        // {
-        //   text: 'Chat with an agent',
-        //   data: {
-        //     action: 'caht',
-        //   },
-        // },
-        // {
-        //   text: 'Make Enquiry',
-        //   data: {
-        //     action: 'enquiry',
-        //   },
-        // },
+    // {
+    //   text: 'Chat with an agent',
+    //   data: {
+    //     action: 'caht',
+    //   },
+    // },
+    // {
+    //   text: 'Make Enquiry',
+    //   data: {
+    //     action: 'enquiry',
+    //   },
+    // },
     //     {
     //       text: 'Our Locations',
     //       data: {
@@ -209,6 +209,14 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     // if(result.data.action == 'location'){
     //   this.navCtrl.navigateRoot('contactus');
     // }
+  }
+
+
+
+  handleImgError(ev: any, item: any, url) {
+    const source = ev.srcElement;
+    const imgSrc = `assets/images/tt.png`;
+    source.src = imgSrc;
   }
 
 

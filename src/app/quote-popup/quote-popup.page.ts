@@ -150,11 +150,10 @@ export class QuotePopupPage implements OnInit {
   gibsproducts() {
     this.router.navigate(['/gibsproducts']);
   }
+
   handleImgError(ev: any, item: any, url) {
     const source = ev.srcElement;
-
     const imgSrc = `assets/images/placeholder.jpg`;
-
     source.src = imgSrc;
   }
 
