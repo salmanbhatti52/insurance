@@ -278,6 +278,10 @@ const routes = [
     {
         path: 'deleteaccount',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_deleteaccount_deleteaccount_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./deleteaccount/deleteaccount.module */ 49355)).then(m => m.DeleteaccountPageModule)
+    },
+    {
+        path: 'payment2',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_payment2_payment2_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./payment2/payment2.module */ 69826)).then(m => m.Payment2PageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -330,11 +334,6 @@ __webpack_require__.r(__webpack_exports__);
 let AppComponent = class AppComponent {
   // loginas: any;
   constructor(navCtrl, menuCtrl, alert, api, route, platform, actionSheetCtrl) {
-    // if (localStorage.getItem('userid') != null) {
-    //   this.route.navigate(['home-page-screen-after-login']);
-    // } else {
-    //   this.route.navigate(['sign-in-screen']);
-    // }
     this.navCtrl = navCtrl;
     this.menuCtrl = menuCtrl;
     this.alert = alert;
@@ -421,7 +420,11 @@ let AppComponent = class AppComponent {
       img1: '/assets/images/icons/activeclaim.svg',
       status: 'unchecked'
     } // { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
-    ];
+    ]; // if (localStorage.getItem('userid') != null) {
+    //   this.route.navigate(['home-page-screen-after-login']);
+    // } else {
+    //   this.route.navigate(['sign-in-screen']);
+    // }
   }
 
   ngOnInit() {
@@ -469,7 +472,7 @@ let AppComponent = class AppComponent {
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       const alert = yield _this.alert.create({
-        header: "Are you ready to log out?",
+        header: 'Are you ready to log out?',
         buttons: [{
           text: 'No',
           role: 'cancel',
@@ -477,7 +480,7 @@ let AppComponent = class AppComponent {
             _this.menuCtrl.close();
           }
         }, {
-          text: "Yes",
+          text: 'Yes',
           role: 'confirm',
           handler: () => {
             localStorage.removeItem('userid');

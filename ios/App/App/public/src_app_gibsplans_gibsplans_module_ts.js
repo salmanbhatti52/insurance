@@ -136,6 +136,21 @@ let GibsplansPage = class GibsplansPage {
         this.showPickerYop = false;
         this.showPickerYom = false;
         this.genderType = [{ gender: 'MALE' }, { gender: 'FEMALE' }];
+        this.valueofvehicle = '';
+        this.yesno = [{ name: 'Yes' }, { name: 'No' }];
+        this.ebb = 'Please Select';
+        this.fe = 'Please Select';
+        this.srcc = 'Please Select';
+        this.iit = 'Please Select';
+        this.producttax = '';
+        this.ebbtax = '';
+        this.fetax = '';
+        this.srcctax = '';
+        this.iittax = '';
+        this.showebb = false;
+        this.showfe = false;
+        this.showsrcc = false;
+        this.showiit = false;
         this.vechileMakenew = [];
         this.vehicleModelNew = [];
     }
@@ -143,7 +158,8 @@ let GibsplansPage = class GibsplansPage {
         this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
         console.log('ssssss-----', this.Gproduct);
         this.getCarMakeCompanies();
-        this.emailvalidation = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        this.emailvalidation =
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     }
     goback() {
         this.location.back();
@@ -165,7 +181,9 @@ let GibsplansPage = class GibsplansPage {
         }
     }
     getCarMakeCompanies() {
-        const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","method":"get_car_companies"}';
+        const myData = 'myData={"verify_token":"' +
+            localStorage.getItem('token') +
+            '","method":"get_car_companies"}';
         this.api.insertData(myData).subscribe((res) => {
             console.log(res);
             if (res.values != '') {
@@ -174,7 +192,7 @@ let GibsplansPage = class GibsplansPage {
                 this.vehicleMake.map((val, index) => {
                     const data = {
                         manufacturer: val.manufacturer,
-                        active: false
+                        active: false,
                     };
                     this.vechileMakenew.push(data);
                 });
@@ -199,7 +217,11 @@ let GibsplansPage = class GibsplansPage {
         this.getVehicleModels();
     }
     getVehicleModels() {
-        const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","method":"get_car_models","manufacturer":"' + this.vehicleMakeVal + '"}';
+        const myData = 'myData={"verify_token":"' +
+            localStorage.getItem('token') +
+            '","method":"get_car_models","manufacturer":"' +
+            this.vehicleMakeVal +
+            '"}';
         this.api.insertData(myData).subscribe((res) => {
             console.log(res);
             if (res.values != '') {
@@ -208,7 +230,7 @@ let GibsplansPage = class GibsplansPage {
                 this.vehicleModel.map((val, index) => {
                     const data = {
                         model: val.model,
-                        active: false
+                        active: false,
                     };
                     this.vehicleModelNew.push(data);
                 });
@@ -298,9 +320,29 @@ let GibsplansPage = class GibsplansPage {
         else if (this.vehclr == '') {
             this.api.presenttoast('Vehicle Colour Field Required');
         }
+        else if (this.valueofvehicle == '') {
+            this.api.presenttoast('Vehicle Value Field Required');
+        }
+        else if (this.valueofvehicle < 2000000) {
+            this.api.presenttoast('Vehicle Value is less then 2000000');
+        }
         else if (this.genderVal == 'Select Gender') {
             this.api.presenttoast('Please Select Gender');
         }
+        // ----
+        else if (this.ebb == 'Select Gender') {
+            this.api.presenttoast('Please Select Excess Buy Back');
+        }
+        else if (this.fe == 'Select Gender') {
+            this.api.presenttoast('Please Select Flood Extension');
+        }
+        else if (this.srcc == 'Select Gender') {
+            this.api.presenttoast('Please Select Strike Riot & Civil Commotion');
+        }
+        else if (this.iit == 'Select Gender') {
+            this.api.presenttoast('Please Select Increase in TPPD');
+        }
+        // ---
         else if (this.dateofbirth == 'Please Select') {
             this.api.presenttoast('Please Select DOB');
         }
@@ -308,9 +350,11 @@ let GibsplansPage = class GibsplansPage {
             this.api.presenttoast('Year of Manufacture Field Required');
         }
         else {
+            this.calculateTax();
+            localStorage.setItem('email', this.userEmail);
             var myData = {
-                "sid": "ECHANNEL2",
-                "token": "78CD825E-2F6A-4986-962C-7F0FA3E945BD"
+                sid: 'ECHANNEL2',
+                token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
             };
             this.api.gibsapi(myData).subscribe((res) => {
                 console.log(res);
@@ -325,78 +369,80 @@ let GibsplansPage = class GibsplansPage {
     getresult(token) {
         let Bearertoken = token;
         let postdata = {
-            "productID": "3034",
-            "entryDate": "2022-10-20T04:29:31.261Z",
-            "startDate": "2018-03-13T00:00:00",
-            "endDate": "2019-03-12T00:00:00",
-            "fxCurrency": "NGN",
-            "fxRate": 1,
-            "referrerSource": "AGENT",
-            "referrerDetails": "string",
-            "paymentProviderID": "string",
-            "paymentReferenceID": "string",
-            "insured": {
-                "title": "string",
-                "lastName": this.lName,
-                "firstName": this.fName,
-                "otherName": "string",
-                "gender": this.genderVal,
-                "email": this.userEmail,
-                "address": this.address,
-                "phoneLine1": this.mobNumber,
-                "phoneLine2": this.mobNumber,
-                "isOrg": true,
-                "orgName": "string",
-                "orgRegNumber": "string",
-                "orgRegDate": "2022-10-20T04:29:31.261Z",
-                "taxIdNumber": "string",
-                "cityLGA": "string",
-                "stateID": "string",
-                "nationality": "string",
-                "dateOfBirth": this.dateofbirth,
-                "kycType": "NOT_AVAILABLE",
-                "kycNumber": "string",
-                "kycIssueDate": "2022-10-20T04:29:31.261Z",
-                "kycExpiryDate": "2022-10-20T04:29:31.261Z",
-                "nextOfKin": {
-                    "title": "string",
-                    "lastName": "string",
-                    "firstName": "string",
-                    "otherName": "string",
-                    "gender": "MALE",
-                    "email": "user@example.com",
-                    "address": "string",
-                    "phoneLine1": "123456",
-                    "phoneLine2": "123456"
-                }
+            productID: '3034',
+            entryDate: '2022-10-20T04:29:31.261Z',
+            startDate: '2018-03-13T00:00:00',
+            endDate: '2019-03-12T00:00:00',
+            fxCurrency: 'NGN',
+            fxRate: 1,
+            referrerSource: 'AGENT',
+            referrerDetails: 'string',
+            paymentProviderID: 'string',
+            paymentReferenceID: 'string',
+            insured: {
+                title: 'string',
+                lastName: this.lName,
+                firstName: this.fName,
+                otherName: 'string',
+                gender: this.genderVal,
+                email: this.userEmail,
+                address: this.address,
+                phoneLine1: this.mobNumber,
+                phoneLine2: this.mobNumber,
+                isOrg: true,
+                orgName: 'string',
+                orgRegNumber: 'string',
+                orgRegDate: '2022-10-20T04:29:31.261Z',
+                taxIdNumber: 'string',
+                cityLGA: 'string',
+                stateID: 'string',
+                nationality: 'string',
+                dateOfBirth: this.dateofbirth,
+                kycType: 'NOT_AVAILABLE',
+                kycNumber: 'string',
+                kycIssueDate: '2022-10-20T04:29:31.261Z',
+                kycExpiryDate: '2022-10-20T04:29:31.261Z',
+                nextOfKin: {
+                    title: 'string',
+                    lastName: 'string',
+                    firstName: 'string',
+                    otherName: 'string',
+                    gender: 'MALE',
+                    email: 'user@example.com',
+                    address: 'string',
+                    phoneLine1: '123456',
+                    phoneLine2: '123456',
+                },
             },
-            "policySections": [
+            policySections: [
                 {
-                    "sectionID": "string",
-                    "sectionSumInsured": 0,
-                    "sectionPremium": 0,
-                    "vehicleRegNo": this.regNo,
-                    "vehicleTypeID": "VAN",
-                    "vehicleUser": "string",
-                    "engineNumber": this.engNo,
-                    "chasisNumber": this.chasisNo,
-                    "vehicleUsage": "PRIVATE",
-                    "numberOfSeats": 0,
-                    "stateOfIssue": "string",
-                    "vehicleMake": this.vehicleMakeVal,
-                    "vehicleModel": this.vehicleModelVal,
-                    "manufactureYear": this.yomdate,
-                    "vehicleColour": this.vehclr,
-                    "engineCapacityHP": "string",
-                    "coverType": "COMPREHENSIVE"
-                }
-            ]
+                    sectionID: 'string',
+                    sectionSumInsured: 0,
+                    sectionPremium: 0,
+                    vehicleRegNo: this.regNo,
+                    vehicleTypeID: 'VAN',
+                    vehicleUser: 'string',
+                    engineNumber: this.engNo,
+                    chasisNumber: this.chasisNo,
+                    vehicleUsage: 'PRIVATE',
+                    numberOfSeats: 0,
+                    stateOfIssue: 'string',
+                    vehicleMake: this.vehicleMakeVal,
+                    vehicleModel: this.vehicleModelVal,
+                    manufactureYear: this.yomdate,
+                    vehicleColour: this.vehclr,
+                    engineCapacityHP: 'string',
+                    coverType: 'COMPREHENSIVE',
+                },
+            ],
         };
-        this.api.postdata('http://testcipapiservices.gibsonline.com/api/Policies/Motor', postdata, Bearertoken).subscribe((res) => {
+        this.api
+            .postdata('http://testcipapiservices.gibsonline.com/api/Policies/Motor', postdata, Bearertoken)
+            .subscribe((res) => {
             console.log('motor response---', res);
             localStorage.setItem('gibsProductres', JSON.stringify(res));
             this.route.navigate(['policyquote']);
-        }, err => {
+        }, (err) => {
             // console.log(err);
             // let errormsg = err.error.errors[0].message;
             // this.api.presenttoast(errormsg)
@@ -405,6 +451,177 @@ let GibsplansPage = class GibsplansPage {
     validateEmail(email) {
         const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
+    }
+    //// 1
+    showDebb() {
+        if (this.showebb == true) {
+            this.showebb = false;
+        }
+        else {
+            this.showebb = true;
+        }
+    }
+    selectebb(list, index) {
+        this.ebb = list.name;
+        this.showebb = false;
+        console.log(this.ebb);
+    }
+    //// 2
+    showDfe() {
+        if (this.showfe == true) {
+            this.showfe = false;
+        }
+        else {
+            this.showfe = true;
+        }
+    }
+    selectfe(list, index) {
+        this.fe = list.name;
+        this.showfe = false;
+        console.log(this.fe);
+    }
+    //// 3
+    showDsrcc() {
+        if (this.showsrcc == true) {
+            this.showsrcc = false;
+        }
+        else {
+            this.showsrcc = true;
+        }
+    }
+    selectsrcc(list, index) {
+        this.srcc = list.name;
+        this.showsrcc = false;
+        console.log(this.srcc);
+    }
+    //// 4
+    showDiit() {
+        if (this.showiit == true) {
+            this.showiit = false;
+        }
+        else {
+            this.showiit = true;
+        }
+    }
+    selectiit(list, index) {
+        this.iit = list.name;
+        this.showiit = false;
+        console.log(this.iit);
+    }
+    calculateTax() {
+        this.gibsproduct = JSON.parse(localStorage.getItem('gibsproduct'));
+        this.productname = this.gibsproduct.productName;
+        console.log(this.productname);
+        if (this.productname == 'PRIVATE MOTOR-AUTO CLASSIC') {
+            // 1.75;
+            console.log(this.productname);
+            this.producttax = (1.75 / 100) * this.valueofvehicle;
+            if (this.ebb == 'Yes') {
+                this.ebbtax = (0.5 / 100) * this.valueofvehicle;
+            }
+            else {
+                this.ebbtax = 0;
+            }
+            if (this.fe == 'Yes') {
+                this.fetax = (0.25 / 100) * this.valueofvehicle;
+            }
+            else {
+                this.fetax = 0;
+            }
+            if (this.srcc == 'Yes') {
+                this.srcctax = (0.25 / 100) * this.valueofvehicle;
+            }
+            else {
+                this.srcctax = 0;
+            }
+            if (this.iit == 'Yes') {
+                this.iittax = (0.2 / 100) * this.valueofvehicle;
+            }
+            else {
+                this.iittax = 0;
+            }
+            console.log('this.producttax ---', this.producttax);
+            console.log('this.ebbtax ---', this.ebbtax);
+            console.log('this.fetax ---', this.fetax);
+            console.log('this.srcctax ---', this.srcctax);
+            console.log('this.iittax ---', this.iittax);
+            this.overalltax =
+                Number(this.producttax) +
+                    Number(this.ebbtax) +
+                    Number(this.fetax) +
+                    Number(this.srcctax) +
+                    Number(this.iittax);
+            localStorage.setItem('overalltax', this.overalltax);
+            console.log('this.overalltax ---', this.overalltax);
+        }
+        if (this.productname == 'PRIVATE MOTOR-AUTO PLUS') {
+            // 3
+            console.log(this.productname);
+            this.producttax = (3 / 100) * this.valueofvehicle;
+            this.ebbtax = 0;
+            this.fetax = 0;
+            this.srcctax = 0;
+            if (this.iit == 'Yes') {
+                this.iittax = (0.2 / 100) * this.valueofvehicle;
+            }
+            else {
+                this.iittax = 0;
+            }
+            console.log('this.producttax ---', this.producttax);
+            console.log('this.ebbtax ---', this.ebbtax);
+            console.log('this.fetax ---', this.fetax);
+            console.log('this.srcctax ---', this.srcctax);
+            console.log('this.iittax ---', this.iittax);
+            this.overalltax =
+                Number(this.producttax) +
+                    Number(this.ebbtax) +
+                    Number(this.fetax) +
+                    Number(this.srcctax) +
+                    Number(this.iittax);
+            localStorage.setItem('overalltax', this.overalltax);
+            console.log('this.overalltax ---', this.overalltax);
+        }
+        if (this.productname == 'UBER CLASSIC MOTOR') {
+            //  2.5
+            console.log(this.productname);
+            if (this.ebb == 'Yes') {
+                this.ebbtax = (1 / 100) * this.valueofvehicle;
+            }
+            else {
+                this.ebbtax = 0;
+            }
+            if (this.fe == 'Yes') {
+                this.fetax = (0.25 / 100) * this.valueofvehicle;
+            }
+            else {
+                this.fetax = 0;
+            }
+            if (this.srcc == 'Yes') {
+                this.srcctax = (0.25 / 100) * this.valueofvehicle;
+            }
+            else {
+                this.srcctax = 0;
+            }
+            if (this.iit == 'Yes') {
+                this.iittax = (0.2 / 100) * this.valueofvehicle;
+            }
+            else {
+                this.iittax = 0;
+            }
+            console.log('this.producttax ---', this.producttax);
+            console.log('this.ebbtax ---', this.ebbtax);
+            console.log('this.fetax ---', this.fetax);
+            console.log('this.srcctax ---', this.srcctax);
+            console.log('this.iittax ---', this.iittax);
+            this.overalltax =
+                Number(this.producttax) +
+                    Number(this.ebbtax) +
+                    Number(this.fetax) +
+                    Number(this.srcctax) +
+                    Number(this.iittax);
+            localStorage.setItem('overalltax', this.overalltax);
+            console.log('this.overalltax ---', this.overalltax);
+        }
     }
 };
 GibsplansPage.ctorParameters = () => [
@@ -440,7 +657,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \**********************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <div style=\"width:100% ;\">\r\n          <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n        </div>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Product Offering and Details</div>\r\n      </ion-col>\r\n      <ion-col size=\"2\" style=\"text-align: center;\r\n      padding-top: 3%;\">\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"wrapper\">\r\n\r\n    <div class=\"label\">Vehicle Make</div>\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"openVhclMakeList()\">\r\n        <div class=\"euro-text\" style=\"width: 100%;\">{{vehicleMakeVal}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%;\">\r\n          <img style=\"height: 6.6px;width:11.36px\" src=\"assets/images/down-arrow.svg\" *ngIf=\"showMaker==false\">\r\n          <img style=\"height: 6.6px;width:11.36px\" src=\"assets/images/yuparrow.svg\" *ngIf=\"showMaker==true\">\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"showMaker==true\" style=\"height:100px ; overflow: scroll;\">\r\n        <div *ngFor=\"let list of vechileMakenew; let i=index\" (click)=\"selectVehicleMaker(list,i)\">\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">{{list.manufacturer}}</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"opnenVehicleModelList()\">\r\n        <div class=\"euro-text\" style=\"width: 100%;\">{{vehicleModelVal}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%;\">\r\n          <img style=\"height: 6.6px;width:11.36px \" src=\"assets/images/down-arrow.svg\" *ngIf=\"showVehicleModel==false\">\r\n          <img style=\"height: 6.6px;width:11.36px\" src=\"assets/images/yuparrow.svg\" *ngIf=\"showVehicleModel==true\">\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"showVehicleModel==true\" style=\"height:100px ; overflow: scroll;\">\r\n        <div *ngFor=\"let list of vehicleModelNew;let i=index\" (click)=\"selectVehicleModel(list,i)\">\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">{{list.model}}</div>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"label\">First Name</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input [(ngModel)]=\"fName\" style=\"height: 48px;\" type=\"text\" placeholder=\"John\" class=\"in-text\">\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n    <div class=\"label\">Last Name</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input [(ngModel)]=\"lName\" style=\"height: 48px;\" type=\"text\" placeholder=\"Doe\" class=\"in-text\">\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Email</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input [(ngModel)]=\"userEmail\" style=\"height: 48px;\" type=\"email\" placeholder=\"johndoe@gmail.com\" class=\"in-text\">\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n    <div class=\"label\">Phone Number</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input [(ngModel)]=\"mobNumber\" style=\"height: 48px;\" type=\"tel\" placeholder=\"923565466554\" class=\"in-text\">\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Address</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input [(ngModel)]=\"address\" style=\"height: 48px;\" type=\"text\"\r\n          placeholder=\"e.g:136, LEWIS STREET, OBALENDE, LAGOS ISLAND, LAGOS STATE\" class=\"in-text\">\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Vehicle Registration Number</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input [(ngModel)]=\"regNo\" style=\"height:48px;\" type=\"text\" placeholder=\"MUS585AQ\" class=\"in-text\">\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Engine Number</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input [(ngModel)]=\"engNo\" style=\"height:48px;\" type=\"text\" placeholder=\"1M286534\" class=\"in-text\">\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Chasis Number</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input [(ngModel)]=\"chasisNo\" style=\"height:48px;\" type=\"text\" placeholder=\"JMTBK426481418844\"\r\n          class=\"in-text\"></ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Vehicle Colour</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input [(ngModel)]=\"vehclr\" style=\"height:48px;\" type=\"text\" placeholder=\"\" class=\"in-text\"></ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Gender</div>\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"openGenderList()\">\r\n        <div class=\"euro-text\" style=\"width: 100%;\">{{genderVal}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%;\">\r\n          <img style=\"height: 6.6px;width:11.36px\" src=\"assets/images/down-arrow.svg\" *ngIf=\"showGender==false\">\r\n          <img style=\"height: 6.6px;width:11.36px\" src=\"assets/images/yuparrow.svg\" *ngIf=\"showGender==true\">\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"showGender==true\">\r\n        <div *ngFor=\"let list of genderType; let i=index\" (click)=\"selectGenderType(list,i)\">\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">{{list.gender}}</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Date of Birth</div>\r\n\r\n    <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n      (click)=\"showPickerDob = !showPickerDob\">\r\n      <div style=\"display: flex; align-items:center\">\r\n\r\n        <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ dateofbirth }}</ion-text>\r\n      </div>\r\n\r\n    </div>\r\n    <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"date\"\r\n      *ngIf=\"showPickerDob\" #datetime [value]=\"dobValue\" size=\"cover\" (ionChange)=\"dobChanged(datetime.value)\"\r\n      showDefaultButtons=\"true\" (ionCancel)=\"showPickerDob=false\"></ion-datetime>\r\n\r\n    <!-- <div class=\"label\">Year of Purchase</div>\r\n\r\n    <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n      (click)=\"showPickerYop = !showPickerYop\">\r\n      <div style=\"display: flex; align-items:center\">\r\n\r\n        <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ yopdate }}</ion-text>\r\n      </div>\r\n\r\n    </div>\r\n    <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"year\"\r\n      *ngIf=\"showPickerYop\" #datetime [value]=\"yopValue\" size=\"cover\" (ionChange)=\"yopChanged(datetime.value)\"\r\n      showDefaultButtons=\"true\" (ionCancel)=\"showPickerYop=false\"></ion-datetime> -->\r\n\r\n    <!----------- seventh form ---------------------------->\r\n    <div class=\"label\">Year of Manufacture</div>\r\n\r\n    <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n      (click)=\"showPickerYom = !showPickerYom\">\r\n      <div style=\"display: flex; align-items:center\">\r\n\r\n        <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ yomdate }}</ion-text>\r\n      </div>\r\n\r\n    </div>\r\n    <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"year\"\r\n      *ngIf=\"showPickerYom\" #datetime [value]=\"yomValue\" size=\"cover\" (ionChange)=\"yomChanged(datetime.value)\"\r\n      showDefaultButtons=\"true\" (ionCancel)=\"showPickerYom=false\"></ion-datetime>\r\n  </div>\r\n\r\n</ion-content>\r\n<ion-footer>\r\n  <div style=\"width: 90%;margin:8% auto;\" (click)=\"submit()\">\r\n    <ion-button class=\"btn\">Continue</ion-button>\r\n  </div>\r\n</ion-footer>\r\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex; align-items: center\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\r\n        <div style=\"width: 100%\">\r\n          <img\r\n            (click)=\"goback()\"\r\n            src=\"assets/images/back-arrow.svg\"\r\n            alt=\"sb-btn\"\r\n          />\r\n        </div>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Product Offering and Details</div>\r\n      </ion-col>\r\n      <ion-col size=\"2\" style=\"text-align: center; padding-top: 3%\"> </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"wrapper\">\r\n    <!-- dropdown  start-->\r\n\r\n    <div class=\"label\">Vehicle Make</div>\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"openVhclMakeList()\">\r\n        <div class=\"euro-text\" style=\"width: 100%\">{{vehicleMakeVal}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%\">\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/down-arrow.svg\"\r\n            *ngIf=\"showMaker==false\"\r\n          />\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/yuparrow.svg\"\r\n            *ngIf=\"showMaker==true\"\r\n          />\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"showMaker==true\" style=\"height: 100px; overflow: scroll\">\r\n        <div\r\n          *ngFor=\"let list of vechileMakenew; let i=index\"\r\n          (click)=\"selectVehicleMaker(list,i)\"\r\n        >\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">\r\n            {{list.manufacturer}}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- dropdown  end-->\r\n\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"opnenVehicleModelList()\">\r\n        <div class=\"euro-text\" style=\"width: 100%\">{{vehicleModelVal}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%\">\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/down-arrow.svg\"\r\n            *ngIf=\"showVehicleModel==false\"\r\n          />\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/yuparrow.svg\"\r\n            *ngIf=\"showVehicleModel==true\"\r\n          />\r\n        </div>\r\n      </div>\r\n      <div\r\n        *ngIf=\"showVehicleModel==true\"\r\n        style=\"height: 100px; overflow: scroll\"\r\n      >\r\n        <div\r\n          *ngFor=\"let list of vehicleModelNew;let i=index\"\r\n          (click)=\"selectVehicleModel(list,i)\"\r\n        >\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">\r\n            {{list.model}}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">First Name</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"fName\"\r\n          style=\"height: 48px\"\r\n          type=\"text\"\r\n          placeholder=\"John\"\r\n          class=\"in-text\"\r\n        >\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n    <div class=\"label\">Last Name</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"lName\"\r\n          style=\"height: 48px\"\r\n          type=\"text\"\r\n          placeholder=\"Doe\"\r\n          class=\"in-text\"\r\n        >\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Email</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"userEmail\"\r\n          style=\"height: 48px\"\r\n          type=\"email\"\r\n          placeholder=\"johndoe@gmail.com\"\r\n          class=\"in-text\"\r\n        >\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n    <div class=\"label\">Phone Number</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"mobNumber\"\r\n          style=\"height: 48px\"\r\n          type=\"tel\"\r\n          placeholder=\"923565466554\"\r\n          class=\"in-text\"\r\n        >\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Address</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"address\"\r\n          style=\"height: 48px\"\r\n          type=\"text\"\r\n          placeholder=\"e.g:136, LEWIS STREET, OBALENDE, LAGOS ISLAND, LAGOS STATE\"\r\n          class=\"in-text\"\r\n        >\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Vehicle Registration Number</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"regNo\"\r\n          style=\"height: 48px\"\r\n          type=\"text\"\r\n          placeholder=\"MUS585AQ\"\r\n          class=\"in-text\"\r\n        >\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Engine Number</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"engNo\"\r\n          style=\"height: 48px\"\r\n          type=\"text\"\r\n          placeholder=\"1M286534\"\r\n          class=\"in-text\"\r\n        >\r\n        </ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Chasis Number</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"chasisNo\"\r\n          style=\"height: 48px\"\r\n          type=\"text\"\r\n          placeholder=\"JMTBK426481418844\"\r\n          class=\"in-text\"\r\n        ></ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Vehicle Colour</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"vehclr\"\r\n          style=\"height: 48px\"\r\n          type=\"text\"\r\n          placeholder=\"Colour\"\r\n          class=\"in-text\"\r\n        ></ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Value of Vehicle</div>\r\n    <div class=\"inputfield\">\r\n      <div class=\"innerdropbox\">\r\n        <ion-input\r\n          [(ngModel)]=\"valueofvehicle\"\r\n          style=\"height: 48px\"\r\n          type=\"tel\"\r\n          placeholder=\"Value of Vehicle\"\r\n          class=\"in-text\"\r\n        ></ion-input>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- dropdown  start 1-->\r\n\r\n    <div class=\"label\">Excess Buy Back</div>\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"showDebb()\">\r\n        <div class=\"euro-text\" style=\"width: 100%\">{{ebb}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%\">\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/down-arrow.svg\"\r\n            *ngIf=\"showebb==false\"\r\n          />\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/yuparrow.svg\"\r\n            *ngIf=\"showebb==true\"\r\n          />\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"showebb==true\" style=\"height: 70px; overflow: scroll\">\r\n        <div\r\n          *ngFor=\"let list of yesno; let i=index\"\r\n          (click)=\"selectebb(list,i)\"\r\n        >\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">\r\n            {{list.name}}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- dropdown  end-->\r\n\r\n    <!-- dropdown  start 2-->\r\n\r\n    <div class=\"label\">Flood Extension</div>\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"showDfe()\">\r\n        <div class=\"euro-text\" style=\"width: 100%\">{{fe}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%\">\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/down-arrow.svg\"\r\n            *ngIf=\"showfe==false\"\r\n          />\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/yuparrow.svg\"\r\n            *ngIf=\"showfe==true\"\r\n          />\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"showfe==true\" style=\"height: 70px; overflow: scroll\">\r\n        <div *ngFor=\"let list of yesno; let i=index\" (click)=\"selectfe(list,i)\">\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">\r\n            {{list.name}}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- dropdown  end-->\r\n\r\n    <!-- dropdown  start 3-->\r\n\r\n    <div class=\"label\">Strike Riot & Civil Commotion</div>\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"showDsrcc()\">\r\n        <div class=\"euro-text\" style=\"width: 100%\">{{srcc}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%\">\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/down-arrow.svg\"\r\n            *ngIf=\"showsrcc==false\"\r\n          />\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/yuparrow.svg\"\r\n            *ngIf=\"showsrcc==true\"\r\n          />\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"showsrcc==true\" style=\"height: 70px; overflow: scroll\">\r\n        <div\r\n          *ngFor=\"let list of yesno; let i=index\"\r\n          (click)=\"selectsrcc(list,i)\"\r\n        >\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">\r\n            {{list.name}}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- dropdown  end-->\r\n\r\n    <!-- dropdown  start 4-->\r\n\r\n    <div class=\"label\">Increase in TPPD</div>\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"showDiit()\">\r\n        <div class=\"euro-text\" style=\"width: 100%\">{{iit}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%\">\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/down-arrow.svg\"\r\n            *ngIf=\"showiit==false\"\r\n          />\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/yuparrow.svg\"\r\n            *ngIf=\"showiit==true\"\r\n          />\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"showiit==true\" style=\"height: 70px; overflow: scroll\">\r\n        <div\r\n          *ngFor=\"let list of yesno; let i=index\"\r\n          (click)=\"selectiit(list,i)\"\r\n        >\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">\r\n            {{list.name}}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- dropdown  end-->\r\n\r\n    <div class=\"label\">Gender</div>\r\n    <div class=\"dropbox\">\r\n      <div class=\"innerdropbox\" (click)=\"openGenderList()\">\r\n        <div class=\"euro-text\" style=\"width: 100%\">{{genderVal}}</div>\r\n        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%\">\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/down-arrow.svg\"\r\n            *ngIf=\"showGender==false\"\r\n          />\r\n          <img\r\n            style=\"height: 6.6px; width: 11.36px\"\r\n            src=\"assets/images/yuparrow.svg\"\r\n            *ngIf=\"showGender==true\"\r\n          />\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"showGender==true\">\r\n        <div\r\n          *ngFor=\"let list of genderType; let i=index\"\r\n          (click)=\"selectGenderType(list,i)\"\r\n        >\r\n          <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">\r\n            {{list.gender}}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"label\">Date of Birth</div>\r\n\r\n    <div\r\n      class=\"item-picker\"\r\n      style=\"\r\n        margin: 4% 0%;\r\n        --background: #e8e8e7;\r\n        height: 48px;\r\n        padding: 13px 15px;\r\n      \"\r\n      (click)=\"showPickerDob = !showPickerDob\"\r\n    >\r\n      <div style=\"display: flex; align-items: center\">\r\n        <ion-text class=\"ion-txt\" style=\"margin-left: 14px\"\r\n          >{{ dateofbirth }}</ion-text\r\n        >\r\n      </div>\r\n    </div>\r\n    <ion-datetime\r\n      class=\"item-picker\"\r\n      style=\"margin: 10px auto 8px; color: black\"\r\n      presentation=\"date\"\r\n      *ngIf=\"showPickerDob\"\r\n      #datetime\r\n      [value]=\"dobValue\"\r\n      size=\"cover\"\r\n      (ionChange)=\"dobChanged(datetime.value)\"\r\n      showDefaultButtons=\"true\"\r\n      (ionCancel)=\"showPickerDob=false\"\r\n    ></ion-datetime>\r\n\r\n    <!-- <div class=\"label\">Year of Purchase</div>\r\n\r\n    <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n      (click)=\"showPickerYop = !showPickerYop\">\r\n      <div style=\"display: flex; align-items:center\">\r\n\r\n        <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ yopdate }}</ion-text>\r\n      </div>\r\n\r\n    </div>\r\n    <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"year\"\r\n      *ngIf=\"showPickerYop\" #datetime [value]=\"yopValue\" size=\"cover\" (ionChange)=\"yopChanged(datetime.value)\"\r\n      showDefaultButtons=\"true\" (ionCancel)=\"showPickerYop=false\"></ion-datetime> -->\r\n\r\n    <!----------- seventh form ---------------------------->\r\n    <div class=\"label\">Year of Manufacture</div>\r\n\r\n    <div\r\n      class=\"item-picker\"\r\n      style=\"\r\n        margin: 4% 0%;\r\n        --background: #e8e8e7;\r\n        height: 48px;\r\n        padding: 13px 15px;\r\n      \"\r\n      (click)=\"showPickerYom = !showPickerYom\"\r\n    >\r\n      <div style=\"display: flex; align-items: center\">\r\n        <ion-text class=\"ion-txt\" style=\"margin-left: 14px\"\r\n          >{{ yomdate }}</ion-text\r\n        >\r\n      </div>\r\n    </div>\r\n    <ion-datetime\r\n      class=\"item-picker\"\r\n      style=\"margin: 10px auto 8px; color: black\"\r\n      presentation=\"year\"\r\n      *ngIf=\"showPickerYom\"\r\n      #datetime\r\n      [value]=\"yomValue\"\r\n      size=\"cover\"\r\n      (ionChange)=\"yomChanged(datetime.value)\"\r\n      showDefaultButtons=\"true\"\r\n      (ionCancel)=\"showPickerYom=false\"\r\n    ></ion-datetime>\r\n  </div>\r\n</ion-content>\r\n<ion-footer>\r\n  <div style=\"width: 90%; margin: 8% auto\" (click)=\"submit()\">\r\n    <ion-button class=\"btn\">Continue</ion-button>\r\n  </div>\r\n</ion-footer>\r\n";
 
 /***/ })
 
