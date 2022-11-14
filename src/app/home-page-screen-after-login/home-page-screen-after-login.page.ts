@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController, AlertController, MenuController, NavController } from '@ionic/angular';
+import {
+  ActionSheetController,
+  AlertController,
+  MenuController,
+  NavController,
+} from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { QuotePopupPage } from '../quote-popup/quote-popup.page';
 import { Router } from '@angular/router';
@@ -12,28 +17,28 @@ import { InsuranceAppService } from '../services/insurance-app.service';
 export class HomePageScreenAfterLoginPage implements OnInit {
   slideOpts = {
     initialSlide: 0,
-    speed: 400
+    speed: 400,
   };
 
   products: any;
   username: any;
   loginas: string;
   result: string;
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController,
+  constructor(
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
     public router: Router,
     public modal: ModalController,
     public api: InsuranceAppService,
     public alert: AlertController,
-    public actionSheetCtrl: ActionSheetController) { }
+    public actionSheetCtrl: ActionSheetController
+  ) {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   ionViewWillEnter() {
-
-    this.loginas = localStorage.getItem('loginas')
+    this.loginas = localStorage.getItem('loginas');
     this.username = localStorage.getItem('fname');
-    this.api.username = this.username
+    this.api.username = this.username;
 
     if (localStorage.getItem('userid') == null) {
       this.api.presenttoast('Please Login First');
@@ -74,15 +79,21 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     }
   }
   getProducts() {
-    const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","method":"get_avilable_products"}';
-    this.api.insertData(myData).subscribe((res: any) => {
-      console.log(res);
-      if (res.message == 'success') {
-        this.products = res.myproduct;
+    const myData =
+      'myData={"verify_token":"' +
+      localStorage.getItem('token') +
+      '","method":"get_avilable_products"}';
+    this.api.insertData(myData).subscribe(
+      (res: any) => {
+        console.log(res);
+        if (res.message == 'success') {
+          this.products = res.myproduct;
+        }
+      },
+      (err) => {
+        console.log(err);
       }
-    }, (err) => {
-      console.log(err);
-    });
+    );
   }
 
   investmentsubProducts() {
@@ -95,39 +106,48 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     this.subProducts(product.id, comingFrom);
   }
   subProducts(id, comingFrom) {
-    const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","product_id":"' + id + '","method":"get_avilable_subproducts"}';
-    this.api.insertData(myData).subscribe((res: any) => {
-      const subproducts = [];
-      console.log('subProducts---------', res);
-      res.subproducts.map((value, index) => {
-        //old code..
-        // if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen" && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
-        //   subproducts.push(value);
-        // }
-        //new code to add local travel insurance
-        if (value.name != 'Pilgrimage Plans' && value.name != 'Student Plan' && value.name != 'Europe / Shengen' && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
-          subproducts.push(value);
-        }
-      });
-      console.log('subproducts after check---', subproducts);
-      // return;
-      localStorage.setItem('subProducts', JSON.stringify(subproducts));
-      this.PopupCust(comingFrom);
-
-    }, (err) => {
-      console.log(err);
-
-    });
+    const myData =
+      'myData={"verify_token":"' +
+      localStorage.getItem('token') +
+      '","product_id":"' +
+      id +
+      '","method":"get_avilable_subproducts"}';
+    this.api.insertData(myData).subscribe(
+      (res: any) => {
+        const subproducts = [];
+        console.log('subProducts---------', res);
+        res.subproducts.map((value, index) => {
+          //old code..
+          // if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen" && value.name != 'Enhanced Comprehensive' && value.name != 'Auto Variants') {
+          //   subproducts.push(value);
+          // }
+          //new code to add local travel insurance
+          if (
+            value.name != 'Pilgrimage Plans' &&
+            value.name != 'Student Plan' &&
+            value.name != 'Europe / Shengen' &&
+            value.name != 'Enhanced Comprehensive' &&
+            value.name != 'Auto Variants'
+          ) {
+            subproducts.push(value);
+          }
+        });
+        console.log('subproducts after check---', subproducts);
+        // return;
+        localStorage.setItem('subProducts', JSON.stringify(subproducts));
+        this.PopupCust(comingFrom);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
   tab1Click() {
-
     if (localStorage.getItem('userid')) {
       this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
     } else {
       this.navCtrl.navigateRoot('explore-screen-before-login-expanded2');
     }
-
-
   }
   tab2Click() {
     this.navCtrl.navigateRoot('home-page-screen-after-login');
@@ -158,11 +178,9 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   // }
 
   PopupCust(comingFrom) {
-
     this.api.comingFrom = comingFrom;
 
     this.router.navigate(['/quote-popup']);
-
   }
   learnmore() {
     this.router.navigate(['/claimassistance']);
@@ -173,9 +191,6 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   learnmore3() {
     this.router.navigate(['/claimassistance3']);
   }
-
-
-
 
   async presentActionSheet() {
     this.navCtrl.navigateRoot('contactus');
@@ -211,13 +226,15 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     // }
   }
 
-
-
   handleImgError(ev: any, item: any, url) {
     const source = ev.srcElement;
     const imgSrc = `assets/images/tt.png`;
     source.src = imgSrc;
   }
 
-
+  handleImgError2(ev: any, item: any, url) {
+    const source = ev.srcElement;
+    const imgSrc = `assets/images/car1.png`;
+    source.src = imgSrc;
+  }
 }
