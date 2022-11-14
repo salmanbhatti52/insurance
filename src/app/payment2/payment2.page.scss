@@ -1,15 +1,17 @@
-.title{
+.title {
   text-align: center;
   font-family: Bliss Pro;
   font-size: 20px;
   color: #1A0F55;
   font-weight: bold;
 }
-.wrapper{
-  width: 85%;
+
+.wrapper {
+  width: 90%;
   margin: 5% auto;
 }
-.box{
+
+.box {
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid transparent;
@@ -17,24 +19,29 @@
   -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
   box-shadow: 0 1px 1px rgb(0 0 0 / 5%)
 }
-.box-success{
+
+.box-success {
   border-color: #d6e9c6;
   margin-top: 5%;
 }
+
 .panel-body {
   padding: 15px;
 }
+
 table {
   border-spacing: 0;
   border-collapse: collapse;
   font-size: 12px;
   font-family: Bliss Pro;
 }
+
 .table {
   width: 100%;
   max-width: 100%;
 
 }
+
 .table-responsive {
   width: 100%;
   margin-bottom: 15px;
@@ -42,25 +49,29 @@ table {
   -ms-overflow-style: -ms-autohiding-scrollbar;
   border: 1px solid #ddd;
 }
+
 .table-responsive .table-bordered {
   border: 0;
 }
-.table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>td {
   border: 1px solid #b8b988;
 }
-.table > tbody > tr > td {
-  padding: 8px;
+
+.table>tbody>tr>td {
+  padding:6px;
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
 
-.btndiv{
+.btndiv {
   width: 90%;
   margin: 5% auto;
 }
 
-.btn{
+.btn {
   color: #fff;
   --background: #A8B400;
   --border: 1px solid #A8B400;
@@ -69,7 +80,8 @@ table {
   --border-radius: 12px;
   height: 40px;
 }
-.btn1{
+
+.btn1 {
   color: white;
   --background: #1A206D;
   --border: 1px solid #1A206D;
@@ -79,3 +91,25 @@ table {
   margin-top: 5%;
   height: 40px;
 }
+
+
+
+.btn11{
+  background: #1A206D;
+  border-radius: 12px;
+  width: 100%;
+  height: 48px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.btndiv1{
+  padding-bottom: 4%;
+  width: 85%;
+  padding-bottom: 4%;
+  width: 85%;
+  margin: 20% auto 0%;
+}
+

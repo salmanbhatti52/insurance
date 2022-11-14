@@ -1,89 +1,95 @@
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
     <ion-row>
-      <ion-col size="2" style="padding-left: 25px;">
-        <ion-menu-toggle>
-          <ion-buttons>
-            <div style="width:100% ;">
-              <img src="assets/images/sb-button.svg" alt="sb-btn">
-            </div>
-          </ion-buttons>
-        </ion-menu-toggle>
+      <ion-col size="2" style="padding-left: 25px">
+        <ion-buttons>
+          <div style="width: 100%">
+            <img
+              (click)="goback()"
+              src="assets/images/back-arrow.svg"
+              alt="sb-btn"
+            />
+          </div>
+        </ion-buttons>
       </ion-col>
       <ion-col size="8">
-        <div class="title">Insurance Request</div>
+        <div class="title">Make a Quote</div>
       </ion-col>
-      <ion-col class="titleclass" size="2">
-      </ion-col>
+      <ion-col class="titleclass" size="2"> </ion-col>
     </ion-row>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content>
   <div class="wrapper">
-    <div style="display:flex;align-items: center;
-    justify-content: space-around;">
-      <!-- <img height="50px" src="assets/images/access_point.png"> -->
-      <h3 style="margin:0px;text-align:center;color: #000;">Insurance Request Completed Successfully</h3>
+    <div
+      style="display: flex; align-items: center; justify-content: space-around"
+    >
+      <img height="50px" src="assets/images/access_point.png" />
+      <h1 style="margin: 0px">Your quote is ready.</h1>
     </div>
     <div class="box box-success">
       <div class="panel-body">
-        <div class="main">
-          <div class="title1">First Name</div>
-          <div class="inner1">
-            <div class="para">{{getproduct.insured.firstName}}</div>
-          </div>
+        <div class="table-responsive">
+          <table class="table quotetable table-bordered">
+            <tbody>
+              <tr>
+                <td style="width: 30%; color: black">First Name</td>
+                <td style="color: black">{{getproduct.insured.firstName}}</td>
+              </tr>
 
-          <div class="title1">Last Name</div>
-          <div class="inner1">
-            <div class="para">{{getproduct.insured.lastName}}</div>
-          </div>
+              <tr>
+                <td style="width: 30%; color: black">Last Name</td>
+                <td style="color: black">{{getproduct.insured.lastName}}</td>
+              </tr>
 
-          <div class="title1">Email</div>
-          <div class="inner1">
-            <div class="para">{{getproduct.insured.email}}</div>
-          </div>
+              <tr>
+                <td style="width: 30%; color: black">Email</td>
+                <td style="color: black">{{getproduct.insured.email}}</td>
+              </tr>
 
+              <tr>
+                <td style="width: 30%; color: black">Address</td>
+                <td style="color: black">{{getproduct.insured.address}}</td>
+              </tr>
 
-          <div class="title1">Address</div>
-          <div class="inner1">
-            <div class="para">{{getproduct.insured.address}}</div>
-          </div>
+              <tr>
+                <td style="width: 30%; color: black">Gender</td>
+                <td style="color: black">{{getproduct.insured.gender}}</td>
+              </tr>
 
-          <div class="title1">Gender</div>
-          <div class="inner1">
-            <div class="para">{{getproduct.insured.gender}}</div>
-          </div>
+              <tr>
+                <td style="width: 30%; color: black">Phone</td>
+                <td style="color: black">{{getproduct.insured.phoneLine1}}</td>
+              </tr>
 
-          <div class="title1">Phone 1</div>
-          <div class="inner1">
-            <div class="para">{{getproduct.insured.phoneLine1}}</div>
-          </div>
+              <tr>
+                <td style="width: 30%; color: black">Policy Number</td>
+                <td style="color: black">{{getproduct.policyNo}}</td>
+              </tr>
 
-          <!-- <div class="title1">Phone 2</div>
-        <div class="inner1">
-          <div class="para">{{getproduct.insured.phoneLine2}}</div>
-        </div> -->
+              <tr>
+                <td style="width: 30%; color: black">Plan of Choice</td>
+                <td style="color: black">{{Gproduct.productName}}</td>
+              </tr>
 
-
-          <div class="title1">Policy Number</div>
-          <div class="inner1">
-            <div class="para">{{getproduct.policyNo}}</div>
-          </div>
-
-          <div class="title1">Plan of Choice</div>
-          <div class="inner1">
-            <div class="para">{{Gproduct.productName}}</div>
-          </div>
+              <tr>
+                <td style="width: 30%; color: black">Quote</td>
+                <td style="color: black">{{overalltax}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
       </div>
     </div>
-    <!-- <div class="btndiv">
-      <ion-button class="btn" (click)="buyOnlineQuote()">Buy Online Now </ion-button>
-      <ion-button class="btn1" (click)="getAnewQuote()">Get a new quote </ion-button>
-    </div> -->
-
+    <div class="btndiv">
+      <ion-button class="btn" (click)="buyOnlineQuote()"
+        >Buy Online Now
+      </ion-button>
+      <ion-button class="btn1" (click)="getAnewQuote()"
+        >Get a new quote
+      </ion-button>
+    </div>
   </div>
 </ion-content>

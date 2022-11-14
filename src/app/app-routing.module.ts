@@ -266,6 +266,10 @@ const routes: Routes = [
   {
     path: 'deleteaccount',
     loadChildren: () => import('./deleteaccount/deleteaccount.module').then( m => m.DeleteaccountPageModule)
+  },
+  {
+    path: 'payment2',
+    loadChildren: () => import('./payment2/payment2.module').then( m => m.Payment2PageModule)
   }
 
 
