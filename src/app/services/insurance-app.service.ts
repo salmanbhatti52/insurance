@@ -3,9 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InsuranceAppService {
   url = 'https://www.cornerstone.com.ng/devtest/webservice';
@@ -18,9 +17,11 @@ export class InsuranceAppService {
   comingFrom: any = 0;
   loginas = 'user';
 
-  constructor(private toastctrl: ToastController,
+  constructor(
+    private toastctrl: ToastController,
     private http: HttpClient,
-    private loadingController: LoadingController) { }
+    private loadingController: LoadingController
+  ) {}
   insertData(myData) {
     let header;
 
@@ -39,7 +40,7 @@ export class InsuranceAppService {
 
     header = new HttpHeaders({
       Accept: 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
 
     header.append('Access-Control-Allow-Origin', '*');
@@ -49,15 +50,14 @@ export class InsuranceAppService {
     return this.http.post(this.authurl, myData, {
       headers: header,
     });
-
-
   }
   insertFormData(Data) {
     let header;
 
     header = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
-      Cookie: 'corci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%229067b6add23324d21220d8f7d5c649c0%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A12%3A%2239.40.231.23%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A21%3A%22PostmanRuntime%2F7.29.0%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1656587499%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7D87fb653bf23ba596c9ade5a76135fe0a7557093d'
+      Cookie:
+        'corci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%229067b6add23324d21220d8f7d5c649c0%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A12%3A%2239.40.231.23%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A21%3A%22PostmanRuntime%2F7.29.0%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1656587499%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7D87fb653bf23ba596c9ade5a76135fe0a7557093d',
     });
     return this.http.post(this.url, Data, {
       headers: header,
@@ -96,7 +96,7 @@ export class InsuranceAppService {
       header.append('Access-Control-Allow-Origin', '*');
       header.append(
         'Access-Control-Allow-Methods',
-        'POST, GET, DELETE, PUT,OPTIONS',
+        'POST, GET, DELETE, PUT,OPTIONS'
       );
     } else {
       header = new HttpHeaders();
@@ -110,8 +110,6 @@ export class InsuranceAppService {
       headers: header,
     });
   }
-
-
 
   get(url, token?) {
     let header;
@@ -134,7 +132,7 @@ export class InsuranceAppService {
     // );
 
     return this.http.get(`${url}`, {
-      headers: header
+      headers: header,
     });
   }
   getpolicy(url, token?) {
@@ -159,7 +157,7 @@ export class InsuranceAppService {
     // );
 
     return this.http.get(`${url}`, {
-      headers: header
+      headers: header,
     });
   }
   postdata(url, data?, token?) {
@@ -173,16 +171,13 @@ export class InsuranceAppService {
     // });
 
     header = new HttpHeaders({
-
       Authorization: 'Bearer ' + token,
     });
 
-
     return this.http.post(`${url}`, data, {
-      headers: header
+      headers: header,
     });
   }
-
 
   postparam(url, data?, token?) {
     let header;
@@ -195,20 +190,16 @@ export class InsuranceAppService {
     // });
 
     header = new HttpHeaders({
-
       Authorization: 'Bearer ' + data,
     });
 
-
     return this.http.post(`${url}`, data, {
-      headers: header
+      headers: header,
     });
   }
 
-
   // waGetData(action,token) {
   //   let header;
-
 
   //   // if (token) {
   //   //   console.log('token=',token)
@@ -239,7 +230,6 @@ export class InsuranceAppService {
   // }
 
   getCaptcha(token?) {
-
     let header;
     if (token) {
       header = new HttpHeaders({
@@ -248,7 +238,7 @@ export class InsuranceAppService {
       header.append('Access-Control-Allow-Origin', '*');
       header.append(
         'Access-Control-Allow-Methods',
-        'POST, GET, DELETE, PUT,OPTIONS',
+        'POST, GET, DELETE, PUT,OPTIONS'
       );
     } else {
       header = new HttpHeaders({
@@ -265,34 +255,35 @@ export class InsuranceAppService {
     });
   }
 
-
   presenttoast(message) {
-    this.toastctrl.create({
-      message,
-      duration: 2000,
-      position: 'bottom'
-    }).then(res => res.present());
+    this.toastctrl
+      .create({
+        message,
+        duration: 2000,
+        position: 'bottom',
+      })
+      .then((res) => res.present());
   }
 
   async showLoader(content?: string) {
-
-    this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Please wait...',
-    }).then((res) => {
-      res.present();
-    });
-
+    this.loadingController
+      .create({
+        cssClass: 'my-custom-class',
+        message: 'Please wait...',
+      })
+      .then((res) => {
+        res.present();
+      });
   }
 
   hideLoader() {
-
-    this.loadingController.dismiss().then((res) => {
-      console.log('Loading dismissed!', res);
-    }).catch((error) => {
-      console.log('error', error);
-    });
-
+    this.loadingController
+      .dismiss()
+      .then((res) => {
+        console.log('Loading dismissed!', res);
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
   }
-
 }

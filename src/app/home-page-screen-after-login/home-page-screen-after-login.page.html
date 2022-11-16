@@ -1,14 +1,32 @@
 <!-- <ion-header [translucent]="true" class="ion-no-border cheader">
-  <ion-toolbar class="headBgGlobal">
-
-
+  <ion-toolbar class="headBgGlobalafterlogin">
+    <ion-row style="display: flex; align-items: center; padding-top: 5%">
+      <ion-col size="8" style="padding-left: 27px">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width: 100%">
+              <img src="assets/images/menuicon.svg" alt="sb-btn" />
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+      <ion-col class="titleclass" size="2">
+        <img
+          *ngIf="loginas == 'user'"
+          (click)="updateProfile()"
+          class="pro-img"
+          src="assets/images/user.png"
+          alt="profile"
+        />
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
-
 </ion-header> -->
 
 <ion-content>
   <div style="background: #1a206d; height: 250px">
-    <ion-row style="display: flex; align-items: center; padding-top: 5%">
+    <ion-row class="topmargin">
       <ion-col size="8" style="padding-left: 27px">
         <ion-menu-toggle>
           <ion-buttons>
@@ -184,7 +202,7 @@
             branches?
           </p>
           <div class="limg-div">
-            <img src="assets/images/damage-car.svg" alt="" />
+            <img src="assets/images/tip1.jpg" alt="" />
           </div>
         </div>
       </ion-slide>
@@ -195,7 +213,7 @@
             available on our new mobile app.
           </p>
           <div class="limg-div">
-            <img src="assets/images/damage-car.svg" alt="" />
+            <img src="assets/images/tip2.jpg" alt="" />
           </div>
         </div>
       </ion-slide>
@@ -208,7 +226,7 @@
             simple!
           </p>
           <div class="limg-div">
-            <img src="assets/images/damage-car.svg" alt="" />
+            <img src="assets/images/tip3.jpg" alt="" />
           </div>
         </div>
       </ion-slide>

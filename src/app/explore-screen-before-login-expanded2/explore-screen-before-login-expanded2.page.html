@@ -16,129 +16,158 @@
 
 </ion-header> -->
 <ion-content>
-  <div style="background:#1A206D;height: 250px;">
-    <ion-row style="display: flex;
-    align-items: center;padding-top:5%;">
-      <ion-col size="10" style="padding-left: 27px;">
-
-      </ion-col>
+  <div style="background: #1a206d; height: 250px">
+    <ion-row style="display: flex; align-items: center; padding-top: 5%">
+      <ion-col size="10" style="padding-left: 27px"> </ion-col>
 
       <ion-col class="titleclass" size="2">
         <!-- <img class="pro-img" (click)="updateProfile()" src="assets/images/profile.svg" alt="profile"> -->
       </ion-col>
-
-
     </ion-row>
-    <div class="top-container">
+    <div class="top-container" style="margin-top: 20px">
       <p class="name-para">Lets!</p>
       <p class="wc-para">Explore</p>
 
-
-
-
       <div class="slide-div">
-        <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide">
-
+        <ion-slides
+          pager="true"
+          [options]="slideOpts"
+          scrollbar="true"
+          (ionSlideDidChange)="active-slide"
+        >
           <ion-slide>
-            <div class="mid-div" style="width: 99%;">
+            <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
                 <div>
                   <p class="p1">Get Immediate</p>
                   <p class="p2">Claim assistance</p>
-                  <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
+                  <ion-progress-bar
+                    class="p-bar"
+                    value="0.38"
+                    style="--progress-background: #1a206d"
+                  >
                   </ion-progress-bar>
                   <p class="p3">We have got you covered</p>
-                  <ion-button class="btn-sm" *ngIf="btnshow==true" (click)="learnmore()">Learn more</ion-button>
+                  <ion-button
+                    class="btn-sm"
+                    *ngIf="btnshow==true"
+                    (click)="learnmore()"
+                    >Learn more</ion-button
+                  >
                 </div>
                 <div>
-                  <div style="width:100% ;">
-                    <img class="ins-nce" src="assets/images/insurance.svg">
+                  <div style="width: 100%">
+                    <img class="ins-nce" src="assets/images/insurance.svg" />
                   </div>
-
                 </div>
               </div>
             </div>
           </ion-slide>
 
           <ion-slide>
-            <div class="mid-div" style="width: 99%;">
+            <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
                 <div>
                   <p class="p1">Get Immediate</p>
                   <p class="p2">Claim assistance</p>
-                  <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
+                  <ion-progress-bar
+                    class="p-bar"
+                    value="0.38"
+                    style="--progress-background: #1a206d"
+                  >
                   </ion-progress-bar>
                   <p class="p3">We have got you covered</p>
-                  <ion-button class="btn-sm" *ngIf="btnshow==true" (click)="learnmore2()">Learn more</ion-button>
+                  <ion-button
+                    class="btn-sm"
+                    *ngIf="btnshow==true"
+                    (click)="learnmore2()"
+                    >Learn more</ion-button
+                  >
                 </div>
                 <div>
-                  <div style="width:100% ;">
-                    <img class="ins-nce" src="assets/images/insurance.svg">
+                  <div style="width: 100%">
+                    <img class="ins-nce" src="assets/images/insurance.svg" />
                   </div>
-
                 </div>
               </div>
             </div>
           </ion-slide>
 
           <ion-slide>
-            <div class="mid-div" style="width: 99%;">
+            <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
                 <div>
                   <p class="p1">Get Immediate</p>
                   <p class="p2">Claim assistance</p>
-                  <ion-progress-bar class="p-bar" value="0.38" style="--progress-background:#1A206D;">
+                  <ion-progress-bar
+                    class="p-bar"
+                    value="0.38"
+                    style="--progress-background: #1a206d"
+                  >
                   </ion-progress-bar>
                   <p class="p3">We have got you covered</p>
-                  <ion-button class="btn-sm" *ngIf="btnshow==true" (click)="learnmore3()">Learn more</ion-button>
+                  <ion-button
+                    class="btn-sm"
+                    *ngIf="btnshow==true"
+                    (click)="learnmore3()"
+                    >Learn more</ion-button
+                  >
                 </div>
                 <div>
-                  <div style="width:100% ;">
-                    <img class="ins-nce" src="assets/images/insurance.svg">
+                  <div style="width: 100%">
+                    <img class="ins-nce" src="assets/images/insurance.svg" />
                   </div>
-
                 </div>
               </div>
             </div>
           </ion-slide>
-
         </ion-slides>
       </div>
     </div>
-
   </div>
   <div class="container">
-
-    <div style="display:flex; align-items: center;">
+    <div style="display: flex; align-items: center">
       <p class="mid-p1">PRODUCTS</p>
       <!-- <p class="mid-p2" (click)="toogleShow()">See more <img class="arrow" src="assets/images/down-arrow.svg"
           *ngIf="!show"> <img class="arrow" src="assets/images/arrow-up.svg" alt="" *ngIf="show"> </p> -->
     </div>
 
-    <ion-grid style="padding:0px; width: 100%;">
-      <ion-row style="margin-top:16px ;">
-        <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;" (click)="gotologin()">
+    <ion-grid style="padding: 0px; width: 100%">
+      <ion-row style="margin-top: 16px">
+        <ion-col
+          size="4"
+          style="padding: 6px 6px 6px 0px; width: 100%"
+          (click)="gotologin()"
+        >
           <div class="gc-div">
             <div class="gimg-div">
-              <img class="imgclass" src="assets/images/car.svg" alt="">
+              <img class="imgclass" src="assets/images/car.svg" alt="" />
             </div>
             <p class="gp-div">Motor Insurance</p>
           </div>
         </ion-col>
 
-        <ion-col size="4" style="padding:6px; width: 100%;" (click)="gotologin()">
+        <ion-col
+          size="4"
+          style="padding: 6px; width: 100%"
+          (click)="gotologin()"
+        >
           <div class="gc-div">
             <div class="gimg-div">
-              <img class="imgclass" src="assets/images/travel.svg" alt="">
+              <img class="imgclass" src="assets/images/travel.svg" alt="" />
             </div>
             <p class="gp-div">Travel Insurance</p>
           </div>
         </ion-col>
 
-        <ion-col size="4" style="padding:6px 0px 6px 6px; width: 100%;" (click)="gotologin()">
+        <ion-col
+          size="4"
+          style="padding: 6px 0px 6px 6px; width: 100%"
+          (click)="gotologin()"
+        >
           <div class="gc-div">
             <div class="gimg-div">
-              <img class="imgclass" src="assets/images/safe-hand.svg" alt="">
+              <img class="imgclass" src="assets/images/safe-hand.svg" alt="" />
             </div>
             <p class="gp-div">Home Insurance</p>
           </div>
@@ -222,46 +251,68 @@
           </div>
         </ion-col>
       </ion-row> -->
-
     </ion-grid>
 
-    <div style="display:flex; align-items: center; margin-top: 26px;">
+    <div style="display: flex; align-items: center; margin-top: 26px">
       <p class="mid-p1">Services</p>
       <!-- <p class="mid-p2">See more <img class="arrow" src="assets/images/down-arrow.svg"> </p> -->
     </div>
 
-    <ion-grid style="padding:0px; width: 100%;">
-
-      <ion-row style="margin-top:16px ;">
-        <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;"  (click)="gotologin()">
+    <ion-grid style="padding: 0px; width: 100%">
+      <ion-row style="margin-top: 16px">
+        <ion-col
+          size="4"
+          style="padding: 6px 6px 6px 0px; width: 100%"
+          (click)="gotologin()"
+        >
           <div class="gc-div">
             <div class="gimg-div">
-              <img class="imgclass" src="assets/images/get-insured.svg" alt="">
+              <img
+                class="imgclass"
+                src="assets/images/get-insured.svg"
+                alt=""
+              />
             </div>
             <p class="gp-div">Get Insured</p>
           </div>
         </ion-col>
 
-        <ion-col size="4" style="padding:6px; width: 100%;"  (click)="gotologin()">
+        <ion-col
+          size="4"
+          style="padding: 6px; width: 100%"
+          (click)="gotologin()"
+        >
           <div class="gc-div">
             <div class="gimg-div">
-              <img class="imgclass" src="assets/images/report-claim.svg" alt="">
+              <img
+                class="imgclass"
+                src="assets/images/report-claim.svg"
+                alt=""
+              />
             </div>
             <p class="gp-div">Report a Claim</p>
           </div>
         </ion-col>
 
-        <ion-col size="4" style="padding:6px 0px 6px 6px; width: 100%;"  (click)="gotologin()">
+        <ion-col
+          size="4"
+          style="padding: 6px 0px 6px 6px; width: 100%"
+          (click)="gotologin()"
+        >
           <div class="gc-div">
             <div class="gimg-div">
-              <img class="imgclass" src="assets/images/renew-policy.svg" alt="">
+              <img
+                class="imgclass"
+                src="assets/images/renew-policy.svg"
+                alt=""
+              />
             </div>
             <p class="gp-div">Renew Policy</p>
           </div>
         </ion-col>
       </ion-row>
 
-      <ion-row style="margin-top:10px ;">
+      <ion-row style="margin-top: 10px">
         <!-- <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;">
           <div class="gc-div">
             <div class="gimg-div" >
@@ -271,10 +322,14 @@
           </div>
         </ion-col> -->
 
-        <ion-col size="4" style="padding:6px; width: 100%;"  (click)="gotologin()">
+        <ion-col
+          size="4"
+          style="padding: 6px; width: 100%"
+          (click)="gotologin()"
+        >
           <div class="gc-div">
             <div class="gimg-div">
-              <img class="imgclass" src="assets/images/sec-doc.svg" alt="">
+              <img class="imgclass" src="assets/images/sec-doc.svg" alt="" />
             </div>
             <p class="gp-div">Verify Policy</p>
           </div>
@@ -289,37 +344,30 @@
           </div>
         </ion-col> -->
       </ion-row>
-
     </ion-grid>
 
-    <div style="height: 20px;"></div>
-
+    <div style="height: 20px"></div>
   </div>
-
 </ion-content>
 
 <ion-footer>
-  <ion-tabs style="top:10px !important;">
+  <ion-tabs style="top: 10px !important">
     <ion-tab-bar slot="bottom" class="ion-no-border">
-      <hr>
+      <hr />
       <ion-tab-button (click)="tab1Click()">
-        <img src="assets/images/discover.svg" class="activeimg">
+        <img src="assets/images/discover.svg" class="activeimg" />
         <ion-label class="fontactive">Discover</ion-label>
       </ion-tab-button>
 
-
       <ion-tab-button (click)="tab2Click()">
-        <img src="assets/images/home.svg" class="img">
+        <img src="assets/images/home.svg" class="img" />
         <ion-label class="font">Home</ion-label>
       </ion-tab-button>
 
-
       <ion-tab-button (click)="presentActionSheet()">
-        <img src="assets/images/contactus.svg" class="img">
+        <img src="assets/images/contactus.svg" class="img" />
         <ion-label class="font">Contact Us</ion-label>
-
       </ion-tab-button>
-
     </ion-tab-bar>
   </ion-tabs>
 </ion-footer>

@@ -20,6 +20,12 @@
   --padding-top: 3% !important;
   --background: #fff;
 }
+
+.headBgGlobalafterlogin{
+  --padding-top: 3% !important;
+  --background: #1a206d !important;
+}
+
 .ios{
   .headBgGlobal{
     --padding-top: 6% !important;
@@ -304,6 +310,13 @@ ion-footer{
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
+.ios .ebanqo-widget-chat-trigger-button {
+  position: fixed;
+  right: 43px;
+  bottom: 105px !important;
+  z-index: 199;
+}
 
 .ebanqo-widget-chat-trigger-button {
   position: fixed;

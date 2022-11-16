@@ -7,12 +7,12 @@ const config: CapacitorConfig = {
   bundledWebRuntime: false,
   plugins: {
     SplashScreen: {
-      backgroundColor: "#A8B400",
+      backgroundColor: '#A8B400',
       launchAutoHide: false,
       showSpinner: false,
-      androidScaleType: 'CENTER_CROP'
-    }
-  }
+      androidScaleType: 'CENTER_CROP',
+    },
+  },
 };
 
 export default config;
