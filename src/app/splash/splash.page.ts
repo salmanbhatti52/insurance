@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-splash',
@@ -17,15 +17,15 @@ export class SplashPage implements OnInit {
     this.menuCtrl.enable(true);
   }
 
-  constructor(public router: Router, public menuCtrl: MenuController) {
+  constructor(public menuCtrl: MenuController, public navCtrl: NavController) {
     setTimeout(() => {
       if (localStorage.getItem('userid') == null) {
-        this.router.navigate(['start-screen']);
+        this.navCtrl.navigateRoot(['start-screen']);
       } else {
         if (localStorage.getItem('loginas') == 'user') {
-          this.router.navigate(['home-page-screen-after-login']);
+          this.navCtrl.navigateRoot(['home-page-screen-after-login']);
         } else {
-          this.router.navigate(['dashboard']);
+          this.navCtrl.navigateRoot(['dashboard']);
         }
       }
     }, 3000);
