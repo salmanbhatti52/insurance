@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, MenuController, ModalController, NavController } from '@ionic/angular';
+import {
+  ActionSheetController,
+  MenuController,
+  ModalController,
+  NavController,
+} from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { AgentidpopupPage } from '../agentidpopup/agentidpopup.page';
 @Component({
@@ -12,18 +17,19 @@ export class ExploreScreenBeforeLoginPage implements OnInit {
   show = false;
   slideOpts = {
     initialSlide: 0,
-    speed: 400
+    speed: 400,
   };
   userID: any;
   result: string;
-  constructor(public router: Router,
+  constructor(
+    public router: Router,
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public modal: ModalController,
-    public actionSheetCtrl:ActionSheetController) {
-    this.userID = localStorage.getItem('userid')
+    public actionSheetCtrl: ActionSheetController
+  ) {
+    this.userID = localStorage.getItem('userid');
     console.log(this.userID, 'dsadsadddddddddd----');
-
   }
 
   openMenu() {
@@ -45,30 +51,30 @@ export class ExploreScreenBeforeLoginPage implements OnInit {
 
   profileupdate() {
     if (this.userID == null) {
-      this.navCtrl.navigateRoot('sign-in-screen')
+      this.navCtrl.navigateRoot('sign-in-screen');
     } else {
-      this.navCtrl.navigateRoot('profile-update')
+      this.navCtrl.navigateRoot('profile-update');
     }
   }
   insured() {
     if (this.userID == null) {
-      this.navCtrl.navigateRoot('sign-in-screen')
+      this.navCtrl.navigateRoot('sign-in-screen');
     } else {
-      this.navCtrl.navigateRoot('home-page-screen-after-login')
+      this.navCtrl.navigateRoot('home-page-screen-after-login');
     }
   }
   ReportaClaim() {
     if (this.userID == null) {
-      this.navCtrl.navigateRoot('sign-in-screen')
+      this.navCtrl.navigateRoot('sign-in-screen');
     } else {
-      this.navCtrl.navigateRoot('makeaclaim')
+      this.navCtrl.navigateRoot('makeaclaim');
     }
   }
   RenewPolicy() {
     if (this.userID == null) {
-      this.navCtrl.navigateRoot('sign-in-screen')
+      this.navCtrl.navigateRoot('sign-in-screen');
     } else {
-      this.navCtrl.navigateRoot('verify-policy-screen-cust')
+      this.navCtrl.navigateRoot('verify-policy-screen-cust');
     }
   }
   async agentlogin() {
@@ -81,15 +87,13 @@ export class ExploreScreenBeforeLoginPage implements OnInit {
   }
   verifyPolicy() {
     if (this.userID == null) {
-      this.navCtrl.navigateRoot('sign-in-screen')
+      this.navCtrl.navigateRoot('sign-in-screen');
     } else {
-      this.navCtrl.navigateRoot('policylookup')
+      this.navCtrl.navigateRoot('policylookup');
     }
   }
   getintouch() {
-
-    this.navCtrl.navigateRoot('contactus')
-
+    this.navCtrl.navigateRoot('contactus');
   }
   tab1Click() {
     this.navCtrl.navigateRoot('sign-up-screen');
@@ -109,6 +113,4 @@ export class ExploreScreenBeforeLoginPage implements OnInit {
   signUpScreen() {
     this.router.navigate(['/sign-up-screen']);
   }
-
-
 }

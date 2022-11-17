@@ -2,7 +2,11 @@ import { InsuranceAppService } from './../services/insurance-app.service';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, NavController } from '@ionic/angular';
+import {
+  ActionSheetController,
+  MenuController,
+  NavController,
+} from '@ionic/angular';
 @Component({
   selector: 'app-explore-screen-before-login-expanded',
   templateUrl: './explore-screen-before-login-expanded.page.html',
@@ -23,10 +27,17 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     public router: Router,
     public location: Location,
     public actionSheetCtrl: ActionSheetController,
-    public api: InsuranceAppService
+    public api: InsuranceAppService,
+    public menuCtrl: MenuController
   ) {}
 
+  ionViewWillLeave() {
+    // enable the root left menu when leaving this page
+    this.menuCtrl.enable(true);
+  }
+
   ionViewWillEnter() {
+    this.menuCtrl.enable(false);
     if (localStorage.getItem('userid') == null) {
       this.api.presenttoast('Please Login First');
       this.router.navigate(['/sign-in-screen']);

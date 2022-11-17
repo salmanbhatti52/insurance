@@ -65,17 +65,6 @@ export class ContactusPage implements OnInit {
     );
   }
 
-  chatboat() {
-    const browser = this.iab.create('https://webchat.ebanqo.io/cornerstone');
-  }
-
-  chatboatblank() {
-    const browser = this.iab.create(
-      'https://webchat.ebanqo.io/cornerstone',
-      '_blank'
-    );
-  }
-
   openwebpage() {
     const browser = this.iab.create('https://www.cornerstone.com.ng');
   }

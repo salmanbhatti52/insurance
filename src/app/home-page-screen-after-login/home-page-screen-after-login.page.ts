@@ -4,11 +4,13 @@ import {
   AlertController,
   MenuController,
   NavController,
+  Platform,
 } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { QuotePopupPage } from '../quote-popup/quote-popup.page';
 import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 @Component({
   selector: 'app-home-page-screen-after-login',
   templateUrl: './home-page-screen-after-login.page.html',
@@ -31,7 +33,9 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     public modal: ModalController,
     public api: InsuranceAppService,
     public alert: AlertController,
-    public actionSheetCtrl: ActionSheetController
+    public actionSheetCtrl: ActionSheetController,
+    public platform: Platform,
+    public iab: InAppBrowser
   ) {}
 
   ngOnInit() {}
@@ -152,9 +156,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   tab2Click() {
     this.navCtrl.navigateRoot('home-page-screen-after-login');
   }
-  tab3Click() {
-    this.navCtrl.navigateRoot('contactus');
-  }
+
   updateProfile() {
     this.navCtrl.navigateRoot('profile-update');
   }
@@ -192,38 +194,48 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     this.router.navigate(['/claimassistance3']);
   }
 
-  async presentActionSheet() {
-    this.navCtrl.navigateRoot('contactus');
-    // const actionSheet = await this.actionSheetCtrl.create({
-    //   buttons: [
-    // {
-    //   text: 'Chat with an agent',
-    //   data: {
-    //     action: 'caht',
-    //   },
-    // },
-    // {
-    //   text: 'Make Enquiry',
-    //   data: {
-    //     action: 'enquiry',
-    //   },
-    // },
-    //     {
-    //       text: 'Our Locations',
-    //       data: {
-    //         action: 'location',
-    //       },
-    //     }
-    //   ],
-    // });
+  async tab3Click() {
+    if (this.platform.is('android')) {
+      this.router.navigate(['/contactus']);
+    } else {
+      const actionSheet = await this.actionSheetCtrl.create({
+        buttons: [
+          {
+            text: 'Chat with an agent',
+            data: {
+              action: 'chat',
+            },
+          },
+          {
+            text: 'Make Enquiry',
+            data: {
+              action: 'chat',
+            },
+          },
+          {
+            text: 'Our Locations',
+            data: {
+              action: 'location',
+            },
+          },
+        ],
+      });
 
-    // await actionSheet.present();
-    // const result = await actionSheet.onDidDismiss();
-    // this.result = JSON.stringify(result, null, 2);
-    // console.log('res----',result);
-    // if(result.data.action == 'location'){
-    //   this.navCtrl.navigateRoot('contactus');
-    // }
+      await actionSheet.present();
+      const result = await actionSheet.onDidDismiss();
+      this.result = JSON.stringify(result, null, 2);
+      console.log('res----', result);
+      if (result.data.action == 'location') {
+        this.navCtrl.navigateRoot('contactus');
+      }
+
+      if (result.data.action == 'chat') {
+        const browser = this.iab.create(
+          'https://webchat.ebanqo.io/cornerstone',
+          '_blank'
+        );
+      }
+    }
   }
 
   handleImgError(ev: any, item: any, url) {

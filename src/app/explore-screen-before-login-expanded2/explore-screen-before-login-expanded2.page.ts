@@ -1,7 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, NavController } from '@ionic/angular';
+import {
+  ActionSheetController,
+  MenuController,
+  NavController,
+} from '@ionic/angular';
 
 @Component({
   selector: 'app-explore-screen-before-login-expanded2',
@@ -9,26 +13,27 @@ import { ActionSheetController, NavController } from '@ionic/angular';
   styleUrls: ['./explore-screen-before-login-expanded2.page.scss'],
 })
 export class ExploreScreenBeforeLoginExpanded2Page implements OnInit {
-
-
   show = false;
   slideOpts = {
     initialSlide: 0,
-    speed: 400
+    speed: 400,
   };
 
   btnshow = false;
   result: any;
-  constructor(public navCtrl: NavController,
+  constructor(
+    public navCtrl: NavController,
     public router: Router,
     public location: Location,
-    public actionSheetCtrl:ActionSheetController) { }
+    public actionSheetCtrl: ActionSheetController,
+    public menuCtrl: MenuController
+  ) {}
 
   ngOnInit() {
     if (localStorage.getItem('userid') == null) {
-      this.btnshow = false
+      this.btnshow = false;
     } else {
-      this.btnshow = true
+      this.btnshow = true;
     }
   }
 
@@ -36,13 +41,13 @@ export class ExploreScreenBeforeLoginExpanded2Page implements OnInit {
     // this.navCtrl.navigateForward('makeaclaim')
   }
   toogleShow() {
-    this.show = !this.show
+    this.show = !this.show;
   }
   tab1Click() {
     this.navCtrl.navigateRoot('explore-screen-before-login-expanded');
   }
   tab2Click() {
-    this.navCtrl.navigateRoot('home-page-screen-after-login')
+    this.navCtrl.navigateRoot('home-page-screen-after-login');
   }
   tab3Click() {
     this.navCtrl.navigateRoot('contactus');
@@ -63,27 +68,22 @@ export class ExploreScreenBeforeLoginExpanded2Page implements OnInit {
     this.router.navigate(['/claimassistance3']);
   }
 
-
-
-
-
-
   async presentActionSheet() {
     this.navCtrl.navigateRoot('contactus');
     // const actionSheet = await this.actionSheetCtrl.create({
     //   buttons: [
-        // {
-        //   text: 'Chat with an agent',
-        //   data: {
-        //     action: 'caht',
-        //   },
-        // },
-        // {
-        //   text: 'Make Enquiry',
-        //   data: {
-        //     action: 'enquiry',
-        //   },
-        // },
+    // {
+    //   text: 'Chat with an agent',
+    //   data: {
+    //     action: 'caht',
+    //   },
+    // },
+    // {
+    //   text: 'Make Enquiry',
+    //   data: {
+    //     action: 'enquiry',
+    //   },
+    // },
     //     {
     //       text: 'Our Locations',
     //       data: {
@@ -102,9 +102,15 @@ export class ExploreScreenBeforeLoginExpanded2Page implements OnInit {
     // }
   }
 
-
-  gotologin(){
+  gotologin() {
     this.navCtrl.navigateRoot('sign-in-screen');
   }
 
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
+  ionViewWillLeave() {
+    // enable the root left menu when leaving this page
+    this.menuCtrl.enable(true);
+  }
 }
