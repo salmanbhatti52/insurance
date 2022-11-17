@@ -91,13 +91,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "HomePageScreenAfterLoginPage": () => (/* binding */ HomePageScreenAfterLoginPage)
 /* harmony export */ });
 /* harmony import */ var _Volumes_Office_Ali_github_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _home_page_screen_after_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home-page-screen-after-login.page.html?ngResource */ 19991);
 /* harmony import */ var _home_page_screen_after_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home-page-screen-after-login.page.scss?ngResource */ 29784);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 60124);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/insurance-app.service */ 22111);
+/* harmony import */ var _awesome_cordova_plugins_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @awesome-cordova-plugins/in-app-browser/ngx */ 67122);
+
 
 
 
@@ -108,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
-  constructor(navCtrl, menuCtrl, router, modal, api, alert, actionSheetCtrl) {
+  constructor(navCtrl, menuCtrl, router, modal, api, alert, actionSheetCtrl, platform, iab) {
     this.navCtrl = navCtrl;
     this.menuCtrl = menuCtrl;
     this.router = router;
@@ -116,6 +118,8 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
     this.api = api;
     this.alert = alert;
     this.actionSheetCtrl = actionSheetCtrl;
+    this.platform = platform;
+    this.iab = iab;
     this.slideOpts = {
       initialSlide: 0,
       speed: 400
@@ -230,10 +234,6 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
     this.navCtrl.navigateRoot('home-page-screen-after-login');
   }
 
-  tab3Click() {
-    this.navCtrl.navigateRoot('contactus');
-  }
-
   updateProfile() {
     this.navCtrl.navigateRoot('profile-update');
   } // async PopupCust() {
@@ -273,40 +273,44 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
     this.router.navigate(['/claimassistance3']);
   }
 
-  presentActionSheet() {
+  tab3Click() {
     var _this2 = this;
 
     return (0,_Volumes_Office_Ali_github_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      _this2.navCtrl.navigateRoot('contactus'); // const actionSheet = await this.actionSheetCtrl.create({
-      //   buttons: [
-      // {
-      //   text: 'Chat with an agent',
-      //   data: {
-      //     action: 'caht',
-      //   },
-      // },
-      // {
-      //   text: 'Make Enquiry',
-      //   data: {
-      //     action: 'enquiry',
-      //   },
-      // },
-      //     {
-      //       text: 'Our Locations',
-      //       data: {
-      //         action: 'location',
-      //       },
-      //     }
-      //   ],
-      // });
-      // await actionSheet.present();
-      // const result = await actionSheet.onDidDismiss();
-      // this.result = JSON.stringify(result, null, 2);
-      // console.log('res----',result);
-      // if(result.data.action == 'location'){
-      //   this.navCtrl.navigateRoot('contactus');
-      // }
+      if (_this2.platform.is('android')) {
+        _this2.router.navigate(['/contactus']);
+      } else {
+        const actionSheet = yield _this2.actionSheetCtrl.create({
+          buttons: [{
+            text: 'Chat with an agent',
+            data: {
+              action: 'chat'
+            }
+          }, {
+            text: 'Make Enquiry',
+            data: {
+              action: 'chat'
+            }
+          }, {
+            text: 'Our Locations',
+            data: {
+              action: 'location'
+            }
+          }]
+        });
+        yield actionSheet.present();
+        const result = yield actionSheet.onDidDismiss();
+        _this2.result = JSON.stringify(result, null, 2);
+        console.log('res----', result);
 
+        if (result.data.action == 'location') {
+          _this2.navCtrl.navigateRoot('contactus');
+        }
+
+        if (result.data.action == 'chat') {
+          const browser = _this2.iab.create('https://webchat.ebanqo.io/cornerstone', '_blank');
+        }
+      }
     })();
   }
 
@@ -325,22 +329,26 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
 };
 
 HomePageScreenAfterLoginPage.ctorParameters = () => [{
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.MenuController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.MenuController
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ModalController
 }, {
   type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__.InsuranceAppService
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.AlertController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.AlertController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ActionSheetController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ActionSheetController
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.Platform
+}, {
+  type: _awesome_cordova_plugins_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_4__.InAppBrowser
 }];
 
-HomePageScreenAfterLoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+HomePageScreenAfterLoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
   selector: 'app-home-page-screen-after-login',
   template: _home_page_screen_after_login_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_home_page_screen_after_login_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -365,7 +373,7 @@ module.exports = ".top-container {\n  width: 85%;\n  margin: 0% auto;\n}\n\n.con
   \************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<!-- <ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n  <ion-toolbar class=\"headBgGlobalafterlogin\">\n    <ion-row style=\"display: flex; align-items: center; padding-top: 5%\">\n      <ion-col size=\"8\" style=\"padding-left: 27px\">\n        <ion-menu-toggle>\n          <ion-buttons>\n            <div style=\"width: 100%\">\n              <img src=\"assets/images/menuicon.svg\" alt=\"sb-btn\" />\n            </div>\n          </ion-buttons>\n        </ion-menu-toggle>\n      </ion-col>\n      <ion-col size=\"2\"></ion-col>\n      <ion-col class=\"titleclass\" size=\"2\">\n        <img\n          *ngIf=\"loginas == 'user'\"\n          (click)=\"updateProfile()\"\n          class=\"pro-img\"\n          src=\"assets/images/user.png\"\n          alt=\"profile\"\n        />\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n</ion-header> -->\n\n<ion-content>\n  <div style=\"background: #1a206d; height: 250px\">\n    <ion-row class=\"topmargin\">\n      <ion-col size=\"8\" style=\"padding-left: 27px\">\n        <ion-menu-toggle>\n          <ion-buttons>\n            <div style=\"width: 100%\">\n              <img src=\"assets/images/menuicon.svg\" alt=\"sb-btn\" />\n            </div>\n          </ion-buttons>\n        </ion-menu-toggle>\n      </ion-col>\n      <ion-col size=\"2\"></ion-col>\n      <ion-col class=\"titleclass\" size=\"2\">\n        <img\n          *ngIf=\"loginas == 'user'\"\n          (click)=\"updateProfile()\"\n          class=\"pro-img\"\n          src=\"assets/images/user.png\"\n          alt=\"profile\"\n        />\n      </ion-col>\n    </ion-row>\n    <div class=\"top-container\">\n      <p class=\"name-para\">Hi \"{{username}}\",</p>\n      <p class=\"wc-para\">Welcome</p>\n\n      <div class=\"slide-div\">\n        <ion-slides\n          pager=\"true\"\n          [options]=\"slideOpts\"\n          scrollbar=\"true\"\n          (ionSlideDidChange)=\"active-slide\"\n          class=\"slides1\"\n        >\n          <ion-slide>\n            <div class=\"mid-div\" style=\"width: 99%\">\n              <div class=\"mid-sub-div\">\n                <div>\n                  <p class=\"p1\">Get Immediate</p>\n                  <p class=\"p2\">Claim assistance</p>\n                  <ion-progress-bar\n                    class=\"p-bar\"\n                    value=\"0.38\"\n                    style=\"--progress-background: #1a206d\"\n                  >\n                  </ion-progress-bar>\n                  <p class=\"p3\">We have got you covered</p>\n                  <ion-button class=\"btn-sm\" (click)=\"learnmore()\"\n                    >Learn more</ion-button\n                  >\n                </div>\n                <div>\n                  <div style=\"width: 100%\">\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\" />\n                  </div>\n                </div>\n              </div>\n            </div>\n          </ion-slide>\n\n          <ion-slide>\n            <div class=\"mid-div\" style=\"width: 99%\">\n              <div class=\"mid-sub-div\">\n                <div>\n                  <p class=\"p1\">Get Immediate</p>\n                  <p class=\"p2\">Claim assistance</p>\n                  <ion-progress-bar\n                    class=\"p-bar\"\n                    value=\"0.38\"\n                    style=\"--progress-background: #1a206d\"\n                  >\n                  </ion-progress-bar>\n                  <p class=\"p3\">We have got you covered</p>\n                  <ion-button class=\"btn-sm\" (click)=\"learnmore2()\"\n                    >Learn more</ion-button\n                  >\n                </div>\n                <div>\n                  <div style=\"width: 100%\">\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\" />\n                  </div>\n                </div>\n              </div>\n            </div>\n          </ion-slide>\n\n          <ion-slide>\n            <div class=\"mid-div\" style=\"width: 99%\">\n              <div class=\"mid-sub-div\">\n                <div>\n                  <p class=\"p1\">Get Immediate</p>\n                  <p class=\"p2\">Claim assistance</p>\n                  <ion-progress-bar\n                    class=\"p-bar\"\n                    value=\"0.38\"\n                    style=\"--progress-background: #1a206d\"\n                  >\n                  </ion-progress-bar>\n                  <p class=\"p3\">We have got you covered</p>\n                  <ion-button class=\"btn-sm\" (click)=\"learnmore3()\"\n                    >Learn more</ion-button\n                  >\n                </div>\n                <div>\n                  <div style=\"width: 100%\">\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\" />\n                  </div>\n                </div>\n              </div>\n            </div>\n          </ion-slide>\n        </ion-slides>\n      </div>\n    </div>\n  </div>\n  <div class=\"container\">\n    <div style=\"display: flex; align-items: center\">\n      <p class=\"mid-p1\">PRODUCTS</p>\n      <!-- <p class=\"mid-p2\">See more <img class=\"arrow\" src=\"assets/images/down-arrow.svg\"> </p> -->\n    </div>\n\n    <ion-grid style=\"padding: 0px; width: 100%\">\n      <ion-row style=\"margin: 16px 0px\">\n        <!-- padding:6px 6px 6px 0px;  -->\n        <ion-col size=\"4\" style=\"width: 100%\" *ngFor=\"let p of products\">\n          <div class=\"gc-div\" (click)=\"openProduct(p,p.name)\">\n            <!-- (click)=\"openQuote(p)\" -->\n            <div class=\"gimg-div\">\n              <img\n                *ngIf=\"p.name =='Travel Insurance'\"\n                (error)=\"handleImgError($event, userIMG)\"\n                src=\"{{p.image}}\"\n                alt=\"\"\n                class=\"cimg\"\n              />\n\n              <img\n                *ngIf=\"p.name =='Motor Insurance'\"\n                (error)=\"handleImgError2($event, userIMG)\"\n                src=\"{{p.image}}\"\n                alt=\"\"\n                class=\"cimg\"\n              />\n            </div>\n            <p class=\"gp-div\">{{p.name}}</p>\n          </div>\n        </ion-col>\n        <ion-col siz=\"4\">\n          <div class=\"gc-div\" (click)=\"investmentsubProducts()\">\n            <!-- (click)=\"openQuote(p)\" -->\n            <div class=\"gimg-div\">\n              <img src=\"assets/images/investmentplan.png\" alt=\"\" class=\"cimg\" />\n            </div>\n            <p class=\"gp-div\">Investment plans</p>\n          </div>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n    <div style=\"text-align: center; color: #1a206d; font-size: 20px\">\n      Insurance Tips\n    </div>\n    <ion-slides\n      pager=\"true\"\n      [options]=\"slideOpts\"\n      scrollbar=\"true\"\n      (ionSlideDidChange)=\"active-slide\"\n      class=\"slides2\"\n    >\n      <ion-slide style=\"margin: 10px\">\n        <div class=\"lst-div\">\n          <p class=\"lst-para\">\n            Are you aware you can lodge your claim online, renew your policy and\n            do more from any of our digital channels without visiting any of our\n            branches?\n          </p>\n          <div class=\"limg-div\">\n            <img src=\"assets/images/tip1.jpg\" alt=\"\" />\n          </div>\n        </div>\n      </ion-slide>\n      <ion-slide style=\"margin: 10px\">\n        <div class=\"lst-div\">\n          <p class=\"lst-para\">\n            Things just got better with Cornerstone! Investment products are now\n            available on our new mobile app.\n          </p>\n          <div class=\"limg-div\">\n            <img src=\"assets/images/tip2.jpg\" alt=\"\" />\n          </div>\n        </div>\n      </ion-slide>\n      <ion-slide style=\"margin: 10px\">\n        <div class=\"lst-div\">\n          <p class=\"lst-para\">\n            Do you know you can verify your policy using our mobile app? Here is\n            how, click on the VERIFY POLICY menu and select if your product is\n            general or life. Then you provide your policy number, its that\n            simple!\n          </p>\n          <div class=\"limg-div\">\n            <img src=\"assets/images/tip3.jpg\" alt=\"\" />\n          </div>\n        </div>\n      </ion-slide>\n    </ion-slides>\n  </div>\n</ion-content>\n\n<ion-footer>\n  <ion-tabs style=\"top: 10px !important\">\n    <ion-tab-bar slot=\"bottom\" class=\"ion-no-border\">\n      <hr />\n      <ion-tab-button (click)=\"tab1Click()\">\n        <img src=\"assets/images/discover.svg\" class=\"img\" />\n        <ion-label class=\"font\">Discover</ion-label>\n      </ion-tab-button>\n\n      <ion-tab-button (click)=\"tab2Click()\">\n        <img src=\"assets/images/home.svg\" class=\"activeimg\" />\n        <ion-label class=\"fontactive\">Home</ion-label>\n      </ion-tab-button>\n\n      <ion-tab-button (click)=\"presentActionSheet()\">\n        <img src=\"assets/images/contactus.svg\" class=\"img\" />\n        <ion-label class=\"font\">Contact Us</ion-label>\n      </ion-tab-button>\n    </ion-tab-bar>\n  </ion-tabs>\n</ion-footer>\n\n<script>\n  (function (w, d, s, o, f, js, fjs) {\n    w[\"EBANQO-WIDGET\"] = o;\n    w[o] =\n      w[o] ||\n      function () {\n        (w[o].q = w[o].q || []).push(arguments);\n      };\n    (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);\n    js.id = o;\n    js.src = f;\n    js.async = 1;\n    fjs.parentNode.insertBefore(js, fjs);\n  })(\n    window,\n    document,\n    \"script\",\n    \"ebanqo_widget\",\n    \"https://widget.ebanqo.io/app.js\"\n  );\n\n  ebanqo_widget(\"init\", {\n    showChannelButtonsOnSignupForm: true,\n    buttonColor: \"#2c2276\",\n    promptMessageDelay: 2000,\n\n    promptMessage: \"Hello, I'm Cici. How may I be of assistance?\",\n    instant_chat: {\n      buttonColor: \"#2c2276\",\n      logoUrl: \"https://ebanqo-logos.s3.amazonaws.com/Cici+Header-1.png\",\n      url: \"https://webchat.ebanqo.io/cornerstone\",\n      title: \"\",\n      logoWidth: 78,\n      logoHeight: 37,\n      chatHeaderBackgroundColor: \"#2c2276\",\n      chatHeaderTextColor: \"#fff\",\n    },\n  });\n</script>\n";
+module.exports = "<!-- <ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n  <ion-toolbar class=\"headBgGlobalafterlogin\">\n    <ion-row style=\"display: flex; align-items: center; padding-top: 5%\">\n      <ion-col size=\"8\" style=\"padding-left: 27px\">\n        <ion-menu-toggle>\n          <ion-buttons>\n            <div style=\"width: 100%\">\n              <img src=\"assets/images/menuicon.svg\" alt=\"sb-btn\" />\n            </div>\n          </ion-buttons>\n        </ion-menu-toggle>\n      </ion-col>\n      <ion-col size=\"2\"></ion-col>\n      <ion-col class=\"titleclass\" size=\"2\">\n        <img\n          *ngIf=\"loginas == 'user'\"\n          (click)=\"updateProfile()\"\n          class=\"pro-img\"\n          src=\"assets/images/user.png\"\n          alt=\"profile\"\n        />\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n</ion-header> -->\n\n<ion-content>\n  <div style=\"background: #1a206d; height: 250px\">\n    <ion-row class=\"topmargin\">\n      <ion-col size=\"8\" style=\"padding-left: 27px\">\n        <ion-menu-toggle>\n          <ion-buttons>\n            <div style=\"width: 100%\">\n              <img src=\"assets/images/menuicon.svg\" alt=\"sb-btn\" />\n            </div>\n          </ion-buttons>\n        </ion-menu-toggle>\n      </ion-col>\n      <ion-col size=\"2\"></ion-col>\n      <ion-col class=\"titleclass\" size=\"2\">\n        <img\n          *ngIf=\"loginas == 'user'\"\n          (click)=\"updateProfile()\"\n          class=\"pro-img\"\n          src=\"assets/images/user.png\"\n          alt=\"profile\"\n        />\n      </ion-col>\n    </ion-row>\n    <div class=\"top-container\">\n      <p class=\"name-para\">Hi \"{{username}}\",</p>\n      <p class=\"wc-para\">Welcome</p>\n\n      <div class=\"slide-div\">\n        <ion-slides\n          pager=\"true\"\n          [options]=\"slideOpts\"\n          scrollbar=\"true\"\n          (ionSlideDidChange)=\"active-slide\"\n          class=\"slides1\"\n        >\n          <ion-slide>\n            <div class=\"mid-div\" style=\"width: 99%\">\n              <div class=\"mid-sub-div\">\n                <div>\n                  <p class=\"p1\">Get Immediate</p>\n                  <p class=\"p2\">Claim assistance</p>\n                  <ion-progress-bar\n                    class=\"p-bar\"\n                    value=\"0.38\"\n                    style=\"--progress-background: #1a206d\"\n                  >\n                  </ion-progress-bar>\n                  <p class=\"p3\">We have got you covered</p>\n                  <ion-button class=\"btn-sm\" (click)=\"learnmore()\"\n                    >Learn more</ion-button\n                  >\n                </div>\n                <div>\n                  <div style=\"width: 100%\">\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\" />\n                  </div>\n                </div>\n              </div>\n            </div>\n          </ion-slide>\n\n          <ion-slide>\n            <div class=\"mid-div\" style=\"width: 99%\">\n              <div class=\"mid-sub-div\">\n                <div>\n                  <p class=\"p1\">Get Immediate</p>\n                  <p class=\"p2\">Claim assistance</p>\n                  <ion-progress-bar\n                    class=\"p-bar\"\n                    value=\"0.38\"\n                    style=\"--progress-background: #1a206d\"\n                  >\n                  </ion-progress-bar>\n                  <p class=\"p3\">We have got you covered</p>\n                  <ion-button class=\"btn-sm\" (click)=\"learnmore2()\"\n                    >Learn more</ion-button\n                  >\n                </div>\n                <div>\n                  <div style=\"width: 100%\">\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\" />\n                  </div>\n                </div>\n              </div>\n            </div>\n          </ion-slide>\n\n          <ion-slide>\n            <div class=\"mid-div\" style=\"width: 99%\">\n              <div class=\"mid-sub-div\">\n                <div>\n                  <p class=\"p1\">Get Immediate</p>\n                  <p class=\"p2\">Claim assistance</p>\n                  <ion-progress-bar\n                    class=\"p-bar\"\n                    value=\"0.38\"\n                    style=\"--progress-background: #1a206d\"\n                  >\n                  </ion-progress-bar>\n                  <p class=\"p3\">We have got you covered</p>\n                  <ion-button class=\"btn-sm\" (click)=\"learnmore3()\"\n                    >Learn more</ion-button\n                  >\n                </div>\n                <div>\n                  <div style=\"width: 100%\">\n                    <img class=\"ins-nce\" src=\"assets/images/insurance.svg\" />\n                  </div>\n                </div>\n              </div>\n            </div>\n          </ion-slide>\n        </ion-slides>\n      </div>\n    </div>\n  </div>\n  <div class=\"container\">\n    <div style=\"display: flex; align-items: center\">\n      <p class=\"mid-p1\">PRODUCTS</p>\n      <!-- <p class=\"mid-p2\">See more <img class=\"arrow\" src=\"assets/images/down-arrow.svg\"> </p> -->\n    </div>\n\n    <ion-grid style=\"padding: 0px; width: 100%\">\n      <ion-row style=\"margin: 16px 0px\">\n        <!-- padding:6px 6px 6px 0px;  -->\n        <ion-col size=\"4\" style=\"width: 100%\" *ngFor=\"let p of products\">\n          <div class=\"gc-div\" (click)=\"openProduct(p,p.name)\">\n            <!-- (click)=\"openQuote(p)\" -->\n            <div class=\"gimg-div\">\n              <img\n                *ngIf=\"p.name =='Travel Insurance'\"\n                (error)=\"handleImgError($event, userIMG)\"\n                src=\"{{p.image}}\"\n                alt=\"\"\n                class=\"cimg\"\n              />\n\n              <img\n                *ngIf=\"p.name =='Motor Insurance'\"\n                (error)=\"handleImgError2($event, userIMG)\"\n                src=\"{{p.image}}\"\n                alt=\"\"\n                class=\"cimg\"\n              />\n            </div>\n            <p class=\"gp-div\">{{p.name}}</p>\n          </div>\n        </ion-col>\n        <ion-col siz=\"4\">\n          <div class=\"gc-div\" (click)=\"investmentsubProducts()\">\n            <!-- (click)=\"openQuote(p)\" -->\n            <div class=\"gimg-div\">\n              <img src=\"assets/images/investmentplan.png\" alt=\"\" class=\"cimg\" />\n            </div>\n            <p class=\"gp-div\">Investment plans</p>\n          </div>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n    <div style=\"text-align: center; color: #1a206d; font-size: 20px\">\n      Insurance Tips\n    </div>\n    <ion-slides\n      pager=\"true\"\n      [options]=\"slideOpts\"\n      scrollbar=\"true\"\n      (ionSlideDidChange)=\"active-slide\"\n      class=\"slides2\"\n    >\n      <ion-slide style=\"margin: 10px\">\n        <div class=\"lst-div\">\n          <p class=\"lst-para\">\n            Are you aware you can lodge your claim online, renew your policy and\n            do more from any of our digital channels without visiting any of our\n            branches?\n          </p>\n          <div class=\"limg-div\">\n            <img src=\"assets/images/tip1.jpg\" alt=\"\" />\n          </div>\n        </div>\n      </ion-slide>\n      <ion-slide style=\"margin: 10px\">\n        <div class=\"lst-div\">\n          <p class=\"lst-para\">\n            Things just got better with Cornerstone! Investment products are now\n            available on our new mobile app.\n          </p>\n          <div class=\"limg-div\">\n            <img src=\"assets/images/tip2.jpg\" alt=\"\" />\n          </div>\n        </div>\n      </ion-slide>\n      <ion-slide style=\"margin: 10px\">\n        <div class=\"lst-div\">\n          <p class=\"lst-para\">\n            Do you know you can verify your policy using our mobile app? Here is\n            how, click on the VERIFY POLICY menu and select if your product is\n            general or life. Then you provide your policy number, its that\n            simple!\n          </p>\n          <div class=\"limg-div\">\n            <img src=\"assets/images/tip3.jpg\" alt=\"\" />\n          </div>\n        </div>\n      </ion-slide>\n    </ion-slides>\n  </div>\n</ion-content>\n\n<ion-footer>\n  <ion-tabs style=\"top: 10px !important\">\n    <ion-tab-bar slot=\"bottom\" class=\"ion-no-border\">\n      <hr />\n      <ion-tab-button (click)=\"tab1Click()\">\n        <img src=\"assets/images/discover.svg\" class=\"img\" />\n        <ion-label class=\"font\">Discover</ion-label>\n      </ion-tab-button>\n\n      <ion-tab-button (click)=\"tab2Click()\">\n        <img src=\"assets/images/home.svg\" class=\"activeimg\" />\n        <ion-label class=\"fontactive\">Home</ion-label>\n      </ion-tab-button>\n\n      <ion-tab-button (click)=\"tab3Click()\">\n        <img src=\"assets/images/contactus.svg\" class=\"img\" />\n        <ion-label class=\"font\">Contact Us</ion-label>\n      </ion-tab-button>\n    </ion-tab-bar>\n  </ion-tabs>\n</ion-footer>\n\n<script>\n  (function (w, d, s, o, f, js, fjs) {\n    w[\"EBANQO-WIDGET\"] = o;\n    w[o] =\n      w[o] ||\n      function () {\n        (w[o].q = w[o].q || []).push(arguments);\n      };\n    (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);\n    js.id = o;\n    js.src = f;\n    js.async = 1;\n    fjs.parentNode.insertBefore(js, fjs);\n  })(\n    window,\n    document,\n    \"script\",\n    \"ebanqo_widget\",\n    \"https://widget.ebanqo.io/app.js\"\n  );\n\n  ebanqo_widget(\"init\", {\n    showChannelButtonsOnSignupForm: true,\n    buttonColor: \"#2c2276\",\n    promptMessageDelay: 2000,\n\n    promptMessage: \"Hello, I'm Cici. How may I be of assistance?\",\n    instant_chat: {\n      buttonColor: \"#2c2276\",\n      logoUrl: \"https://ebanqo-logos.s3.amazonaws.com/Cici+Header-1.png\",\n      url: \"https://webchat.ebanqo.io/cornerstone\",\n      title: \"\",\n      logoWidth: 78,\n      logoHeight: 37,\n      chatHeaderBackgroundColor: \"#2c2276\",\n      chatHeaderTextColor: \"#fff\",\n    },\n  });\n</script>\n";
 
 /***/ })
 

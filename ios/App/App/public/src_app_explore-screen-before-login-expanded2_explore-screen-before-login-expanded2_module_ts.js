@@ -107,11 +107,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ExploreScreenBeforeLoginExpanded2Page = class ExploreScreenBeforeLoginExpanded2Page {
-  constructor(navCtrl, router, location, actionSheetCtrl) {
+  constructor(navCtrl, router, location, actionSheetCtrl, menuCtrl) {
     this.navCtrl = navCtrl;
     this.router = router;
     this.location = location;
     this.actionSheetCtrl = actionSheetCtrl;
+    this.menuCtrl = menuCtrl;
     this.show = false;
     this.slideOpts = {
       initialSlide: 0,
@@ -204,6 +205,15 @@ let ExploreScreenBeforeLoginExpanded2Page = class ExploreScreenBeforeLoginExpand
     this.navCtrl.navigateRoot('sign-in-screen');
   }
 
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
+
+  ionViewWillLeave() {
+    // enable the root left menu when leaving this page
+    this.menuCtrl.enable(true);
+  }
+
 };
 
 ExploreScreenBeforeLoginExpanded2Page.ctorParameters = () => [{
@@ -214,6 +224,8 @@ ExploreScreenBeforeLoginExpanded2Page.ctorParameters = () => [{
   type: _angular_common__WEBPACK_IMPORTED_MODULE_5__.Location
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ActionSheetController
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.MenuController
 }];
 
 ExploreScreenBeforeLoginExpanded2Page = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({

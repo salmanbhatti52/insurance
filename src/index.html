@@ -24,5 +24,45 @@
   <body>
     <app-root></app-root>
     <script type="text/javascript" src="scripts/ajax-call.js"></script>
+
+    <script type="text/javascript">
+      (function (w, d, s, o, f, js, fjs) {
+        w["EBANQO-WIDGET"] = o;
+        w[o] =
+          w[o] ||
+          function () {
+            (w[o].q = w[o].q || []).push(arguments);
+          };
+        (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+        js.id = o;
+        js.src = f;
+        js.async = 1;
+        fjs.parentNode.insertBefore(js, fjs);
+      })(
+        window,
+        document,
+        "script",
+        "ebanqo_widget",
+        "https://widget.ebanqo.io/app.js"
+      );
+
+      ebanqo_widget("init", {
+        showChannelButtonsOnSignupForm: true,
+        buttonColor: "#2c2276",
+        promptMessageDelay: 2000,
+
+        promptMessage: "Hello, I'm Cici. How may I be of assistance?",
+        instant_chat: {
+          buttonColor: "#2c2276",
+          logoUrl: "https://ebanqo-logos.s3.amazonaws.com/Cici+Header-1.png",
+          url: "https://webchat.ebanqo.io/cornerstone",
+          title: "",
+          logoWidth: 78,
+          logoHeight: 37,
+          chatHeaderBackgroundColor: "#2c2276",
+          chatHeaderTextColor: "#fff",
+        },
+      });
+    </script>
   </body>
 </html>
