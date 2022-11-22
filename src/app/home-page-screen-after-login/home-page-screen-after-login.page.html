@@ -62,7 +62,7 @@
           <ion-slide>
             <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
-                <div>
+                <!-- <div>
                   <p class="p1">Get Immediate</p>
                   <p class="p2">Claim assistance</p>
                   <ion-progress-bar
@@ -75,11 +75,14 @@
                   <ion-button class="btn-sm" (click)="learnmore()"
                     >Learn more</ion-button
                   >
-                </div>
-                <div>
-                  <div style="width: 100%">
-                    <img class="ins-nce" src="assets/images/insurance.svg" />
-                  </div>
+                </div> -->
+
+                <div style="width: 100%" (click)="learnmore()">
+                  <img
+                    style="border-radius: 10px 50px 10px 10px"
+                    class="ins-nce"
+                    src="assets/images/slider/pt1.jpg"
+                  />
                 </div>
               </div>
             </div>
@@ -88,7 +91,7 @@
           <ion-slide>
             <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
-                <div>
+                <!-- <div>
                   <p class="p1">Get Immediate</p>
                   <p class="p2">Claim assistance</p>
                   <ion-progress-bar
@@ -101,11 +104,13 @@
                   <ion-button class="btn-sm" (click)="learnmore2()"
                     >Learn more</ion-button
                   >
-                </div>
-                <div>
-                  <div style="width: 100%">
-                    <img class="ins-nce" src="assets/images/insurance.svg" />
-                  </div>
+                </div> -->
+                <div style="width: 100%" (click)="learnmore2()">
+                  <img
+                    style="border-radius: 10px 50px 10px 10px"
+                    class="ins-nce"
+                    src="assets/images/slider/pt2.jpg"
+                  />
                 </div>
               </div>
             </div>
@@ -114,7 +119,7 @@
           <ion-slide>
             <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
-                <div>
+                <!-- <div>
                   <p class="p1">Get Immediate</p>
                   <p class="p2">Claim assistance</p>
                   <ion-progress-bar
@@ -127,11 +132,13 @@
                   <ion-button class="btn-sm" (click)="learnmore3()"
                     >Learn more</ion-button
                   >
-                </div>
-                <div>
-                  <div style="width: 100%">
-                    <img class="ins-nce" src="assets/images/insurance.svg" />
-                  </div>
+                </div> -->
+                <div style="width: 100%" (click)="learnmore3()">
+                  <img
+                    style="border-radius: 10px 50px 10px 10px"
+                    class="ins-nce"
+                    src="assets/images/slider/pt3.png"
+                  />
                 </div>
               </div>
             </div>
@@ -196,37 +203,49 @@
     >
       <ion-slide style="margin: 10px">
         <div class="lst-div">
-          <p class="lst-para">
+          <!-- <p class="lst-para">
             Are you aware you can lodge your claim online, renew your policy and
             do more from any of our digital channels without visiting any of our
             branches?
-          </p>
+          </p> -->
           <div class="limg-div">
-            <img src="assets/images/tip1.jpg" alt="" />
+            <img
+              style="border-radius: 10px"
+              src="assets/images/slider/it1.jpg"
+              alt=""
+            />
           </div>
         </div>
       </ion-slide>
       <ion-slide style="margin: 10px">
         <div class="lst-div">
-          <p class="lst-para">
+          <!-- <p class="lst-para">
             Things just got better with Cornerstone! Investment products are now
             available on our new mobile app.
-          </p>
+          </p> -->
           <div class="limg-div">
-            <img src="assets/images/tip2.jpg" alt="" />
+            <img
+              style="border-radius: 10px"
+              src="assets/images/slider/it2.jpg"
+              alt=""
+            />
           </div>
         </div>
       </ion-slide>
       <ion-slide style="margin: 10px">
         <div class="lst-div">
-          <p class="lst-para">
+          <!-- <p class="lst-para">
             Do you know you can verify your policy using our mobile app? Here is
             how, click on the VERIFY POLICY menu and select if your product is
             general or life. Then you provide your policy number, its that
             simple!
-          </p>
+          </p> -->
           <div class="limg-div">
-            <img src="assets/images/tip3.jpg" alt="" />
+            <img
+              style="border-radius: 10px"
+              src="assets/images/slider/it3.jpg"
+              alt=""
+            />
           </div>
         </div>
       </ion-slide>
@@ -255,43 +274,3 @@
     </ion-tab-bar>
   </ion-tabs>
 </ion-footer>
-
-<script>
-  (function (w, d, s, o, f, js, fjs) {
-    w["EBANQO-WIDGET"] = o;
-    w[o] =
-      w[o] ||
-      function () {
-        (w[o].q = w[o].q || []).push(arguments);
-      };
-    (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
-    js.id = o;
-    js.src = f;
-    js.async = 1;
-    fjs.parentNode.insertBefore(js, fjs);
-  })(
-    window,
-    document,
-    "script",
-    "ebanqo_widget",
-    "https://widget.ebanqo.io/app.js"
-  );
-
-  ebanqo_widget("init", {
-    showChannelButtonsOnSignupForm: true,
-    buttonColor: "#2c2276",
-    promptMessageDelay: 2000,
-
-    promptMessage: "Hello, I'm Cici. How may I be of assistance?",
-    instant_chat: {
-      buttonColor: "#2c2276",
-      logoUrl: "https://ebanqo-logos.s3.amazonaws.com/Cici+Header-1.png",
-      url: "https://webchat.ebanqo.io/cornerstone",
-      title: "",
-      logoWidth: 78,
-      logoHeight: 37,
-      chatHeaderBackgroundColor: "#2c2276",
-      chatHeaderTextColor: "#fff",
-    },
-  });
-</script>
