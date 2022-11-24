@@ -164,11 +164,11 @@ export class Mypolicies2Page implements OnInit {
   ageGroupList = [
     {
       id: 1,
-      title: '18 - 65 YearsOld',
+      title: '18 - 65 Years Old',
     },
     {
       id: 2,
-      title: '66 - 75 YearsOld',
+      title: '66 - 75 Years Old',
     },
     {
       id: 3,

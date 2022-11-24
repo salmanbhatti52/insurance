@@ -54,7 +54,22 @@ export class SubProductsPage implements OnInit {
         console.log('response====', res);
         // this.api.presenttoast(res.result.message);
         localStorage.setItem('subProName', sp.name);
-        this.navctrl.navigateForward('mypolicies2');
+
+        if (sp.name == 'iSave Plan') {
+          this.navctrl.navigateForward('ivplan1');
+        }
+
+        if (sp.name == 'Maximum Investment Plan') {
+          this.navctrl.navigateForward('ivplan2');
+        }
+
+        if (sp.name == 'Cornerstone Universal Plan') {
+          this.navctrl.navigateForward('ivplan3');
+        }
+
+        if (sp.name == 'Children Education Fund') {
+          this.navctrl.navigateForward('ivplan4');
+        }
       });
   }
 }

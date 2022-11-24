@@ -274,6 +274,22 @@ const routes: Routes = [
   {
     path: 'mypolicies2',
     loadChildren: () => import('./mypolicies2/mypolicies2.module').then( m => m.Mypolicies2PageModule)
+  },
+  {
+    path: 'ivplan2',
+    loadChildren: () => import('./ivplan2/ivplan2.module').then( m => m.Ivplan2PageModule)
+  },
+  {
+    path: 'ivplan1',
+    loadChildren: () => import('./ivplan1/ivplan1.module').then( m => m.Ivplan1PageModule)
+  },
+  {
+    path: 'ivplan3',
+    loadChildren: () => import('./ivplan3/ivplan3.module').then( m => m.Ivplan3PageModule)
+  },
+  {
+    path: 'ivplan4',
+    loadChildren: () => import('./ivplan4/ivplan4.module').then( m => m.Ivplan4PageModule)
   }
 
 
