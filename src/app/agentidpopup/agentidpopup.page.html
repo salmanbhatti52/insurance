@@ -1,40 +1,59 @@
 <ion-content class="">
-  <div style="background: #dedede; height:100%; width:100%">
-
-  <div class="v-center">
-
-    <div class="icondiv" (click)="dismiss()">
-      <img src="assets/images/close-circle.svg" alt="">
-    </div>
-
-    <div class="main">
-
-      <div class="label">Select Agent Type</div>
-      <div class="dropbox">
-        <div class="innerdropbox" (click)="openVhclMakeList()">
-          <div class="euro-text" style="width: 100%;">{{agentloginType}}</div>
-          <div class="imgdiv" style="padding-bottom: 2px; width: 5%;">
-            <img style="height: 6.6px;width:11.36px" src="assets/images/down-arrow.svg" *ngIf="showMaker==false">
-            <img style="height: 6.6px;width:11.36px" src="assets/images/yuparrow.svg" *ngIf="showMaker==true">
-          </div>
-        </div>
-        <div *ngIf="showMaker==true" style="height:auto ; overflow: scroll;">
-          <div *ngFor="let list of vechileMakenew; let i=index" (click)="selectVehicleMaker(list,i)">
-            <div class="euro-text1" [class.activeproduct]="list.active==true">{{list.manufacturer}}</div>
-          </div>
-
-        </div>
+  <div style="background: #dedede; height: 100%; width: 100%">
+    <div class="v-center">
+      <div class="icondiv" (click)="dismiss()">
+        <img src="assets/images/close-circle.svg" alt="" />
       </div>
 
+      <div class="main">
+        <div class="label">Select Agent Type</div>
+        <div class="dropbox">
+          <div class="innerdropbox" (click)="openVhclMakeList()">
+            <div class="euro-text" style="width: 100%">{{agentloginType}}</div>
+            <div class="imgdiv" style="padding-bottom: 2px; width: 5%">
+              <img
+                style="height: 6.6px; width: 11.36px"
+                src="assets/images/down-arrow.svg"
+                *ngIf="showMaker==false"
+              />
+              <img
+                style="height: 6.6px; width: 11.36px"
+                src="assets/images/yuparrow.svg"
+                *ngIf="showMaker==true"
+              />
+            </div>
+          </div>
+          <div *ngIf="showMaker==true" style="height: auto; overflow: scroll">
+            <div
+              *ngFor="let list of vechileMakenew; let i=index"
+              (click)="selectVehicleMaker(list,i)"
+            >
+              <div class="euro-text1" [class.activeproduct]="list.active==true">
+                {{list.manufacturer}}
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="label">Enter Agent ID</div>
-      <ion-input type="text" class="input1" placeholder="1254PAG" [(ngModel)]="agentId"></ion-input>
+        <div class="label">Enter Agent ID</div>
+        <ion-input
+          type="text"
+          class="input1"
+          placeholder="1254PAG"
+          [(ngModel)]="agentId"
+        ></ion-input>
 
-      <div class="btndiv" (click)="search()">
-        <ion-button class="btn"><img style="margin-right: 6px;" src="assets/images/search-normal.svg" alt=""> LOGIN
-        </ion-button>
+        <div class="btndiv" (click)="search()">
+          <ion-button class="btn"
+            ><img
+              style="margin-right: 6px"
+              src="assets/images/search-normal.svg"
+              alt=""
+            />
+            LOGIN
+          </ion-button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </ion-content>
