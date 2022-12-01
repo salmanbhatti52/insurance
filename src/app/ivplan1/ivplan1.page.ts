@@ -221,6 +221,33 @@ export class Ivplan1Page implements OnInit {
         (res: any) => {
           console.log('response calculator----', res);
           this.api.hideLoader();
+          this.autoPostRecipt();
+          // this.api.presenttoast(res.result.message);
+        },
+        (err) => {
+          this.api.hideLoader();
+          console.log(err);
+        }
+      );
+  }
+
+  autoPostRecipt() {
+    var data = new FormData();
+    data.append('polnum', 'EC220048094');
+    data.append('amount', '608');
+    data.append('payment_ref', 'fje744n3n3');
+
+    this.api.showLoader();
+    this.api
+      .postdata(
+        'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=912',
+        data,
+        '39109f7df56e1CORNERStone9e685066bb852'
+      )
+      .subscribe(
+        (res: any) => {
+          console.log('autoPostRecipt res----', res);
+          this.api.hideLoader();
           // this.api.presenttoast(res.result.message);
         },
         (err) => {
