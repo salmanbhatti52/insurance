@@ -23,6 +23,7 @@ export class Ivplan1Page implements OnInit {
   otheName = '';
   showPickerStartDate = false;
   useTitle = 'Please Select';
+  monthlyinvestment: any = '';
 
   isavetitle = [
     { id: '0', title: 'Mr', active: false },
@@ -187,28 +188,32 @@ export class Ivplan1Page implements OnInit {
   }
 
   createQuote() {
-    this.api
-      .postparam(
-        'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=100&opt=ICEDUP&csurname=' +
-          this.fName +
-          '&cothname=' +
-          this.lName +
-          '&cemail=' +
-          this.userEmail +
-          '&regdate=10-10-2022&country=NG&plan_code=ICEDUP',
-        '39109f7df56e1CORNERStone9e685066bb852'
-      )
-      .subscribe((res: any) => {
-        console.log('response====', res);
-        this.calculatorAPI();
-        // this.api.presenttoast(res.result.message);
-      });
+    if (this.monthlyinvestment == '' || this.fName == '' || this.lName == '') {
+      this.api.presenttoast('Please enter required fields.');
+    } else {
+      this.api
+        .postparam(
+          'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=100&opt=ICEDUP&csurname=' +
+            this.fName +
+            '&cothname=' +
+            this.lName +
+            '&cemail=' +
+            this.userEmail +
+            '&regdate=10-10-2022&country=NG&plan_code=ICEDUP',
+          '39109f7df56e1CORNERStone9e685066bb852'
+        )
+        .subscribe((res: any) => {
+          console.log('response====', res);
+          this.calculatorAPI(res.result.userid);
+          // this.api.presenttoast(res.result.message);
+        });
+    }
   }
 
-  calculatorAPI() {
+  calculatorAPI(userid) {
     var data = new FormData();
     data.append('opt', 'iclifp');
-    data.append('userid', 'C52028');
+    data.append('userid', userid);
 
     this.api.showLoader();
     this.api
@@ -221,7 +226,7 @@ export class Ivplan1Page implements OnInit {
         (res: any) => {
           console.log('response calculator----', res);
           this.api.hideLoader();
-          this.autoPostRecipt();
+          this.autoPostRecipt(res.result.quoteId);
           // this.api.presenttoast(res.result.message);
         },
         (err) => {
@@ -231,10 +236,10 @@ export class Ivplan1Page implements OnInit {
       );
   }
 
-  autoPostRecipt() {
+  autoPostRecipt(quoteId) {
     var data = new FormData();
-    data.append('polnum', 'EC220048094');
-    data.append('amount', '608');
+    data.append('polnum', quoteId);
+    data.append('amount', this.monthlyinvestment);
     data.append('payment_ref', 'fje744n3n3');
 
     this.api.showLoader();
