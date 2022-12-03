@@ -290,6 +290,14 @@ const routes: Routes = [
   {
     path: 'ivplan4',
     loadChildren: () => import('./ivplan4/ivplan4.module').then( m => m.Ivplan4PageModule)
+  },
+  {
+    path: 'ivplanquote',
+    loadChildren: () => import('./ivplanquote/ivplanquote.module').then( m => m.IvplanquotePageModule)
+  },
+  {
+    path: 'ivpayment',
+    loadChildren: () => import('./ivpayment/ivpayment.module').then( m => m.IvpaymentPageModule)
   }
 
 

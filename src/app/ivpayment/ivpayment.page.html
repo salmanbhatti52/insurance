@@ -1,0 +1,308 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row>
+      <ion-col size="2" style="padding-left: 25px">
+        <ion-buttons>
+          <div style="width: 100%">
+            <img
+              (click)="goback()"
+              src="assets/images/back-arrow.svg"
+              alt="sb-btn"
+            />
+          </div>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title" style="color: black">Make a Payment</div>
+      </ion-col>
+      <ion-col class="titleclass" size="2"> </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div
+      style="display: flex; align-items: center; justify-content: space-around"
+    >
+      <img height="50px" src="assets/images/access_point.png" />
+      <h1 style="margin: 0px; font-size: 22px; margin-left: 6px; color: black">
+        Select your payment Option.(Amount : ₦ {{amtShow}} )
+      </h1>
+    </div>
+
+    <!-- <table class="table">
+
+      <tbody>
+        <tr>
+
+          <td width="10">
+
+            <input type="radio" value="WEBpay" name="payment-option" class="payment-option-other"
+              (click)="selectmethod('WebPAY')">
+
+          </td>
+
+          <td style=" color: black;"><strong>WebPay </strong><br><img height="100px;"
+              src="https://cornerstone.com.ng/devtest/assets/img/cards.png">
+
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table> -->
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <!-- <td width="10">
+
+            <input type="radio" value="paystack" name="payment-option" class="payment-option-other"
+              (click)="selectmethod('paystack')">
+
+          </td> -->
+
+          <td style="color: black">
+            <strong>Paystack </strong><br /><img
+              height="100px;"
+              src="https://cornerstone.com.ng/assets/img/paystack.jpeg"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <table class="table">
+
+      <tbody>
+
+        <tr>
+
+          <td width="10">
+
+            <input type="radio" name="payment-option" value="deposit" id="payment-option-bank"
+              (click)="selectmethod('other')">
+
+          </td>
+
+          <td style=" color: black;"><strong>Bank Transfer in any of the following banks </strong><br><span class="h6">
+              Pay using internet
+              banking or directly at any of this banks</span><br>
+
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table> -->
+
+    <!-- <table class="table" id="bank_list" *ngIf="othermethod==true">
+
+
+      <tbody>
+
+
+        <tr>
+
+          <td>
+
+            <input type="radio" value="1" id="FCMB" name="banklist" class="allbank"
+              (change)="onItemChange($event.target.value)">
+
+          </td>
+
+          <td><img height="50" src="https://cornerstone.com.ng/devtest/assets/img/banks/1.png">
+          </td>
+
+          <td style="width: 50%;">
+
+
+
+            <label style=" color: black;">Account Number:</label>
+
+
+
+            <input type="text" readonly="readonly" name="bank_name" value="  0135145093"
+              style="height:30px;width:200px">
+
+          </td>
+
+
+        </tr>
+
+
+        <tr>
+
+          <td>
+
+            <input type="radio" value="2" id="StanbicIBTC" name="banklist" class="allbank"
+              (change)="onItemChange($event.target.value)">
+
+          </td>
+
+          <td><img height="50" src="https://cornerstone.com.ng/devtest/assets/img/banks/2.png">
+          </td>
+
+          <td>
+
+
+
+            <label style=" color: black;">Account Number:</label>
+
+
+
+            <input type="text" readonly="readonly" name="bank_name" value="  0008384202"
+              style="height:30px;width:200px">
+
+          </td>
+
+          <td>
+
+            <table id="StanbicIBTC" class="StanbicIBTC">
+
+              <tbody></tbody>
+            </table>
+
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>
+
+            <input type="radio" value="3" id="GTBank" name="banklist" class="allbank"
+              (change)="onItemChange($event.target.value)">
+
+          </td>
+
+          <td><img height="50" src="https://cornerstone.com.ng/devtest/assets/img/banks/3.png">
+          </td>
+
+          <td>
+
+
+
+            <label style=" color: black;">Account Number:</label>
+
+
+
+            <input type="text" readonly="readonly" name="bank_name" value="  0108908618"
+              style="height:30px;width:200px">
+
+          </td>
+
+          <td>
+
+            <table id="GTBank" class="GTBank">
+
+              <tbody></tbody>
+            </table>
+
+          </td>
+
+        </tr>
+
+
+        <tr>
+
+          <td>
+
+            <input type="radio" value="4" id="FirstBank" name="banklist" class="allbank"
+              (change)="onItemChange($event.target.value)">
+
+          </td>
+
+          <td><img height="50" src="https://cornerstone.com.ng/devtest/assets/img/banks/4.png">
+          </td>
+
+          <td>
+
+           >
+
+            <label style=" color: black;">Account Number:</label>
+
+
+
+            <input type="text" readonly="readonly" name="bank_name" value="  2024120096"
+              style="height:29px;width:200px">
+
+          </td>
+
+          <td>
+
+            <table id="FirstBank" class="FirstBank">
+
+              <tbody></tbody>
+            </table>
+
+          </td>
+
+        </tr>
+
+
+        <tr>
+
+          <td>
+
+            <input type="radio" value="6" id="UnionBankGeneral" name="banklist" class="allbank"
+              (change)="onItemChange($event.target.value)">
+
+          </td>
+
+          <td><img height="50" src="https://cornerstone.com.ng/devtest/assets/img/banks/6.png">
+          </td>
+
+          <td>
+
+
+
+            <label style=" color: black;">Account Number:</label>
+
+
+
+            <input type="text" readonly="readonly" name="bank_name" value="    0040038431"
+              style="height:30px;width:200px;margin-top: 1px">
+
+          </td>
+
+          <td>
+
+            <table id="UnionBankGeneral" class="UnionBankGeneral">
+
+              <tbody></tbody>
+            </table>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+
+    </table> -->
+  </div>
+</ion-content>
+<ion-footer>
+  <!-- <div class="btndiv" *ngIf="payemntmethod=='WebPAY'">
+    <ion-button class="btn" (click)="proceed()"> Proceed</ion-button>
+  </div> -->
+  <div class="btndiv">
+    <button
+      angular4-paystack
+      [key]="'pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'"
+      [email]="email"
+      [amount]="amt"
+      [ref]="reference"
+      class="btn11"
+      (paymentInit)="paymentInit()"
+      (onClose)="paymentCancel()"
+      (callback)="paymentDone($event)"
+    >
+      Pay with Paystack
+    </button>
+  </div>
+</ion-footer>

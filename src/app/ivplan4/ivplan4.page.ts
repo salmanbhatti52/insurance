@@ -23,6 +23,7 @@ export class Ivplan4Page implements OnInit {
   otheName = '';
   showPickerStartDate = false;
   useTitle = 'Please Select';
+  monthlyinvestment: any = '';
 
   isavetitle = [
     { id: '0', title: 'Mr', active: false },
@@ -186,15 +187,88 @@ export class Ivplan4Page implements OnInit {
     return response;
   }
 
-  dateChanged(value, type) {
-    if (type == 'start') {
-      this.tourStartDate = value;
-      console.log('this.tourStartDate ----', this.tourStartDate);
-      this.showPickerStartDate = false;
+  createQuote() {
+    if (this.monthlyinvestment == '' || this.fName == '' || this.lName == '') {
+      this.api.presenttoast('Please enter required fields.');
     } else {
-      this.tourStartDate = value;
-      console.log('this.tourEndDate ----', this.tourStartDate);
-      this.showPickerStartDate = false;
+      this.api
+        .postparam(
+          'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=100&opt=ICEDUP&csurname=' +
+            this.fName +
+            '&cothname=' +
+            this.lName +
+            '&cemail=' +
+            this.userEmail +
+            '&regdate=10-10-2022&country=NG&plan_code=ICEDUP',
+          '39109f7df56e1CORNERStone9e685066bb852'
+        )
+        .subscribe((res: any) => {
+          console.log('response====', res);
+          this.calculatorAPI(res.result.userid);
+          // this.api.presenttoast(res.result.message);
+        });
     }
+  }
+
+  calculatorAPI(userid) {
+    var data = new FormData();
+    data.append('opt', 'iclifp');
+    data.append('userid', userid);
+
+    this.api.showLoader();
+    this.api
+      .postdata(
+        'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=908',
+        data,
+        '39109f7df56e1CORNERStone9e685066bb852'
+      )
+      .subscribe(
+        (res: any) => {
+          console.log('response calculator----', res);
+          this.api.hideLoader();
+          this.autoPostRecipt(res.result.quoteId);
+          // this.api.presenttoast(res.result.message);
+        },
+        (err) => {
+          this.api.hideLoader();
+          console.log(err);
+        }
+      );
+  }
+
+  autoPostRecipt(quoteId) {
+    var data = new FormData();
+    data.append('polnum', quoteId);
+    data.append('amount', this.monthlyinvestment);
+
+    localStorage.setItem('monthlyinvestment', this.monthlyinvestment);
+
+    var ss = Math.random();
+    var s1 = ss.toString().split('0.');
+
+    data.append('payment_ref', s1.toString());
+
+    this.api.showLoader();
+    this.api
+      .postdata(
+        'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=912',
+        data,
+        '39109f7df56e1CORNERStone9e685066bb852'
+      )
+      .subscribe(
+        (res: any) => {
+          console.log('autoPostRecipt res----', res);
+          this.api.hideLoader();
+          localStorage.setItem('ivplanres', JSON.stringify(res));
+
+          this.router.navigate(['/ivplanquote']);
+
+          // this.api.presenttoast(res.result.message);
+        },
+        (err) => {
+          this.api.hideLoader();
+          console.log(err);
+        }
+      );
   }
 }

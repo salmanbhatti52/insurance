@@ -240,7 +240,13 @@ export class Ivplan1Page implements OnInit {
     var data = new FormData();
     data.append('polnum', quoteId);
     data.append('amount', this.monthlyinvestment);
-    data.append('payment_ref', 'fje744n3n3');
+
+    localStorage.setItem('monthlyinvestment', this.monthlyinvestment);
+
+    var ss = Math.random();
+    var s1 = ss.toString().split('0.');
+
+    data.append('payment_ref', s1.toString());
 
     this.api.showLoader();
     this.api
@@ -253,6 +259,10 @@ export class Ivplan1Page implements OnInit {
         (res: any) => {
           console.log('autoPostRecipt res----', res);
           this.api.hideLoader();
+          localStorage.setItem('ivplanres', JSON.stringify(res));
+
+          this.router.navigate(['/ivplanquote']);
+
           // this.api.presenttoast(res.result.message);
         },
         (err) => {
