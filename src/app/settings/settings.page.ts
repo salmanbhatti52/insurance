@@ -8,42 +8,39 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
+  constructor(public location: Location, public navCtrl: NavController) {}
 
-  constructor(public location: Location,
-    public navCtrl: NavController) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   goback() {
     this.location.back();
   }
 
   privacy() {
-    this.navCtrl.navigateForward('privacypolicy')
-
+    this.navCtrl.navigateForward('privacypolicy');
   }
 
-  finger(){
-   this.navCtrl.navigateForward('privacy')
-
+  finger() {
+    this.navCtrl.navigateForward('privacy');
   }
 
   languagepage() {
-    this.navCtrl.navigateForward('languagepage')
+    this.navCtrl.navigateForward('languagepage');
   }
 
   notification() {
-    this.navCtrl.navigateForward('notification')
+    this.navCtrl.navigateForward('notification');
   }
 
   help() {
-    this.navCtrl.navigateForward('helppage')
+    this.navCtrl.navigateForward('helppage');
   }
 
   deleteaccount() {
-    this.navCtrl.navigateForward('deleteaccount')
+    this.navCtrl.navigateForward('deleteaccount');
   }
 
-
+  updateProfile() {
+    this.navCtrl.navigateRoot('profile-update');
+  }
 }

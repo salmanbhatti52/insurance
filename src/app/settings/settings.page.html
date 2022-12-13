@@ -1,61 +1,81 @@
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
-    <ion-row style="display: flex;
-    align-items: center;">
-      <ion-col size="2" style="padding-left: 25px;">
-
-        <div style="width:100% ;" (click)="goback()">
-          <img src="assets/images/back-arrow.svg" alt="sb-btn">
+    <ion-row style="display: flex; align-items: center">
+      <ion-col size="2" style="padding-left: 25px">
+        <div style="width: 100%" (click)="goback()">
+          <img src="assets/images/back-arrow.svg" alt="sb-btn" />
         </div>
-
       </ion-col>
       <ion-col size="8">
         <div class="title">Settings</div>
       </ion-col>
     </ion-row>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item class="ion-activatable" detail="true" lines="none" (click)="languagepage()">
-      <ion-label>
-        Language
-      </ion-label>
+    <ion-item
+      class="ion-activatable"
+      detail="true"
+      lines="none"
+      (click)="languagepage()"
+    >
+      <ion-label> Language </ion-label>
     </ion-item>
 
-    <ion-item class="ion-activatable" detail="true" lines="none" (click)="notification()">
-      <ion-label>
-        Notification
-      </ion-label>
+    <ion-item
+      class="ion-activatable"
+      detail="true"
+      lines="none"
+      (click)="notification()"
+    >
+      <ion-label> Notification </ion-label>
     </ion-item>
 
-    <ion-item class="ion-activatable" detail="true" lines="none" (click)="privacy()">
-      <ion-label>
-        Privacy Policy
-      </ion-label>
+    <ion-item
+      class="ion-activatable"
+      detail="true"
+      lines="none"
+      (click)="privacy()"
+    >
+      <ion-label> Privacy Policy </ion-label>
     </ion-item>
 
-    <ion-item class="ion-activatable" detail="true" lines="none" (click)="help()">
-      <ion-label>
-        Help
-      </ion-label>
+    <ion-item
+      class="ion-activatable"
+      detail="true"
+      lines="none"
+      (click)="help()"
+    >
+      <ion-label> Help </ion-label>
     </ion-item>
 
-    <ion-item class="ion-activatable" detail="true" lines="none" (click)="finger()">
-      <ion-label>
-        Face/Fingerprint ID
-      </ion-label>
+    <ion-item
+      class="ion-activatable"
+      detail="true"
+      lines="none"
+      (click)="finger()"
+    >
+      <ion-label> Face/Fingerprint ID </ion-label>
     </ion-item>
 
-    <ion-item class="ion-activatable" detail="true" lines="none" (click)="deleteaccount()">
-      <ion-label>
-        Delete your account?
-      </ion-label>
+    <ion-item
+      class="ion-activatable"
+      detail="true"
+      lines="none"
+      (click)="updateProfile()"
+    >
+      <ion-label>Update Profile </ion-label>
     </ion-item>
 
+    <ion-item
+      class="ion-activatable"
+      detail="true"
+      lines="none"
+      (click)="deleteaccount()"
+    >
+      <ion-label> Delete your account? </ion-label>
+    </ion-item>
   </ion-list>
-
-
 </ion-content>

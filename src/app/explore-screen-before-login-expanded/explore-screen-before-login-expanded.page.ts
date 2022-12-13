@@ -6,7 +6,9 @@ import {
   ActionSheetController,
   MenuController,
   NavController,
+  Platform,
 } from '@ionic/angular';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 @Component({
   selector: 'app-explore-screen-before-login-expanded',
   templateUrl: './explore-screen-before-login-expanded.page.html',
@@ -28,7 +30,9 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     public location: Location,
     public actionSheetCtrl: ActionSheetController,
     public api: InsuranceAppService,
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController,
+    public iab: InAppBrowser,
+    public platform: Platform
   ) {}
 
   ionViewWillLeave() {
@@ -66,8 +70,48 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
   tab2Click() {
     this.navCtrl.navigateRoot('home-page-screen-after-login');
   }
-  tab3Click() {
-    this.navCtrl.navigateRoot('contactus');
+  async tab3Click() {
+    if (this.platform.is('android')) {
+      this.router.navigate(['/contactus']);
+    } else {
+      const actionSheet = await this.actionSheetCtrl.create({
+        buttons: [
+          {
+            text: 'Chat with an agent',
+            data: {
+              action: 'chat',
+            },
+          },
+          {
+            text: 'Make Enquiry',
+            data: {
+              action: 'chat',
+            },
+          },
+          {
+            text: 'Our Locations',
+            data: {
+              action: 'location',
+            },
+          },
+        ],
+      });
+
+      await actionSheet.present();
+      const result = await actionSheet.onDidDismiss();
+      this.result = JSON.stringify(result, null, 2);
+      console.log('res----', result);
+      if (result.data.action == 'location') {
+        this.navCtrl.navigateRoot('contactus');
+      }
+
+      if (result.data.action == 'chat') {
+        const browser = this.iab.create(
+          'https://webchat.ebanqo.io/cornerstone',
+          '_blank'
+        );
+      }
+    }
   }
   updateProfile() {
     this.router.navigate(['/profile-update']);
