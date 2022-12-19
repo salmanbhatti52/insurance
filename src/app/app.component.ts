@@ -30,7 +30,8 @@ export class AppComponent {
     // { title: 'Dashboard', url: 'dashboard', img: '/assets/images/icons/chart.svg', img1: '/assets/images/icons/dashboard.svg', status: 'unchecked' },
     {
       title: 'Retrieve Quote',
-      url: '/get-quote',
+      // url: '/get-quote',
+      url: '/draft',
       img: '/assets/images/icons/quote.svg',
       img1: '/assets/images/icons/activequote.svg',
       status: 'unchecked',

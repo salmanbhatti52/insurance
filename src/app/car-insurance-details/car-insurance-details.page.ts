@@ -12,7 +12,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
-import { Camera, CameraResultType, CameraSource, ImageOptions, Photo } from '@capacitor/camera';
+import {
+  Camera,
+  CameraResultType,
+  CameraSource,
+  ImageOptions,
+  Photo,
+} from '@capacitor/camera';
 import { ActionSheetController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import axios from 'axios';
@@ -64,61 +70,63 @@ export class CarInsuranceDetailsPage implements OnInit {
   productname = localStorage.getItem('productName');
   genderVal = 'Please Select';
   referrerVal = 'Please Select';
-  genderType = [{ gender: 'Male' }, { gender: 'Female' }]
+  genderType = [{ gender: 'Male' }, { gender: 'Female' }];
   referrerList: any;
   imgURLBase: string;
 
   // For file images //
   passPort = {
-    file: "",
-    base64: "",
+    file: '',
+    base64: '',
   };
   vehicleLicence = {
-    file: "",
-    base64: "",
+    file: '',
+    base64: '',
   };
   driverLicence = {
-    file: "",
-    base64: "",
+    file: '',
+    base64: '',
   };
   vehFrontPic = {
-    file: "",
-    base64: "",
+    file: '',
+    base64: '',
   };
   vehRearPic = {
-    file: "",
-    base64: "",
+    file: '',
+    base64: '',
   };
   vehPicSideViewLeft = {
-    file: "",
-    base64: "",
+    file: '',
+    base64: '',
   };
   vehPicSideViewRight = {
-    file: "",
-    base64: "",
-  }
+    file: '',
+    base64: '',
+  };
   vehPicDashboard = {
-    file: "",
-    base64: "",
+    file: '',
+    base64: '',
   };
   inspectionForm = {
-    file: "",
-    base64: "",
+    file: '',
+    base64: '',
   };
   utilityBills = {
-    file: "",
-    base64: "",
+    file: '',
+    base64: '',
   };
   policyhldrVal: any = '';
   // For file images //
+
+  draftArr: any = '';
 
   constructor(
     public location: Location,
     public router: Router,
     public api: InsuranceAppService,
     private actionSheetController: ActionSheetController,
-    private http: HttpClient,
-  ) { }
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
@@ -127,25 +135,25 @@ export class CarInsuranceDetailsPage implements OnInit {
   }
 
   ionViewWillEnter() {
-   console.log('policyhldrVal----',localStorage.getItem('policyhldrVal'));
-   this.policyhldrVal = localStorage.getItem('policyhldrVal')
+    console.log('policyhldrVal----', localStorage.getItem('policyhldrVal'));
+    this.policyhldrVal = localStorage.getItem('policyhldrVal');
 
-   if(this.policyhldrVal == 'Corporate'){
-    this.corpValue = format(new Date(), 'yyyy-MM-dd');
-    this.genderVal = 'Male'
-   }else{
-    this.corpValue = format(new Date(), 'yyyy-MM-dd');
-  }
+    if (this.policyhldrVal == 'Corporate') {
+      this.corpValue = format(new Date(), 'yyyy-MM-dd');
+      this.genderVal = 'Male';
+    } else {
+      this.corpValue = format(new Date(), 'yyyy-MM-dd');
+    }
 
-   if(this.policyhldrVal == 'Private'){
-    this.dobValue = format(new Date(), 'yyyy-MM-dd');
-    this.genderVal = 'Please Select'
-   }else{
-    this.dobValue = '1998-01-01'
-    this.genderVal = 'Male'
-   }
+    if (this.policyhldrVal == 'Private') {
+      this.dobValue = format(new Date(), 'yyyy-MM-dd');
+      this.genderVal = 'Please Select';
+    } else {
+      this.dobValue = '1998-01-01';
+      this.genderVal = 'Male';
+    }
 
-   console.log('this.genderVal----',this.genderVal);
+    console.log('this.genderVal----', this.genderVal);
 
     this.fullName = '';
     this.regNo = '';
@@ -153,7 +161,7 @@ export class CarInsuranceDetailsPage implements OnInit {
     this.chasisNo = '';
     this.vehclr = '';
     this.clientAddress = '';
-   // this.genderVal = 'Please Select';
+    // this.genderVal = 'Please Select';
     this.referrerVal = 'Please Select';
     this.imgURL = '';
     this.imgURL1 = '';
@@ -161,19 +169,22 @@ export class CarInsuranceDetailsPage implements OnInit {
   }
 
   getReferrerList() {
-    const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","method":"get_referred_by"}'
-    this.api.insertData(myData).subscribe((res: any) => {
-      console.log(res);
-      if (res.message != '') {
-        this.referrerList = res.values;
-        console.log(this.referrerList);
-
+    const myData =
+      'myData={"verify_token":"' +
+      localStorage.getItem('token') +
+      '","method":"get_referred_by"}';
+    this.api.insertData(myData).subscribe(
+      (res: any) => {
+        console.log(res);
+        if (res.message != '') {
+          this.referrerList = res.values;
+          console.log(this.referrerList);
+        }
+      },
+      (err) => {
+        console.log(err);
       }
-
-    }, (err) => {
-      console.log(err);
-
-    })
+    );
   }
   dobChanged(value) {
     this.dobValue = value;
@@ -206,22 +217,19 @@ export class CarInsuranceDetailsPage implements OnInit {
   }
   openGenderList() {
     if (this.showGender == true) {
-      this.showGender = false
+      this.showGender = false;
     } else {
       this.showGender = true;
-
     }
   }
 
   openReferrerList() {
     if (this.showReferrer == true) {
-      this.showReferrer = false
+      this.showReferrer = false;
     } else {
       this.showReferrer = true;
-
     }
   }
-
 
   selectGenderType(list) {
     console.log('hhhhhhhhhhhhhhhhhhhh');
@@ -238,8 +246,8 @@ export class CarInsuranceDetailsPage implements OnInit {
     console.log('yyyyyy==', imgetype);
     var options: ImageOptions = {
       source: source,
-      resultType: CameraResultType.Base64
-    }
+      resultType: CameraResultType.Base64,
+    };
     const image = await Camera.getPhoto(options);
     // const blob = new Blob([new Uint8Array(decode(image.base64String))], {
     //   type: `image/${image.format}`,
@@ -247,44 +255,42 @@ export class CarInsuranceDetailsPage implements OnInit {
     // console.log('Data from gallary blob',blob);
     console.log('Data from gallary Data url', image.dataUrl);
     if (imgetype == 'license') {
-      this.imgURL = "image.dataUrl";
+      this.imgURL = 'image.dataUrl';
       //this.imgURL= blob;
       // this.blobMeanID = blob;
-
     }
     if (imgetype == 'nic') {
-      this.imgURL1 = "image.dataUrl";
+      this.imgURL1 = 'image.dataUrl';
       // this.imgURL1= blob;
       this.blobLicence = new Blob();
     }
     const imgData = {
-      image: this.imgURL
-    }
+      image: this.imgURL,
+    };
   }
 
-
   async selectImage(imagefile) {
-
-    const imgtype = imagefile
+    const imgtype = imagefile;
     const actionSheet = await this.actionSheetController.create({
       header: 'Select Image source',
-      buttons: [{
-        text: 'Load from Library',
-        handler: () => {
-          this.camera2(CameraSource.Photos, imgtype);
-        }
-      },
-      {
-        text: 'Use Camera',
-        handler: () => {
-          this.camera2(CameraSource.Camera, imgtype);
-        }
-      },
-      {
-        text: 'Cancel',
-        role: 'cancel'
-      }
-      ]
+      buttons: [
+        {
+          text: 'Load from Library',
+          handler: () => {
+            this.camera2(CameraSource.Photos, imgtype);
+          },
+        },
+        {
+          text: 'Use Camera',
+          handler: () => {
+            this.camera2(CameraSource.Camera, imgtype);
+          },
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+      ],
     });
     await actionSheet.present();
   }
@@ -294,117 +300,119 @@ export class CarInsuranceDetailsPage implements OnInit {
   }
 
   motorValidation() {
-    let response = { message: "message", status: false };
+    let response = { message: 'message', status: false };
     if (this.fullName == '') {
       response.message = 'Full Name required';
-    }
-    else if (this.regNo == '') {
+    } else if (this.regNo == '') {
       response.message = 'Vehicle Reg. No. required';
-    }
-    else if (this.engNo == '') {
+    } else if (this.engNo == '') {
       response.message = 'Engine No. required';
-    }
-    else if (this.chasisNo == '') {
+    } else if (this.chasisNo == '') {
       response.message = 'Chasis No. required';
-    }
-    else if (this.vehclr == '') {
+    } else if (this.vehclr == '') {
       response.message = 'Vehicle Colour required';
-    }
-    else if (this.clientAddress == '') {
+    } else if (this.clientAddress == '') {
       response.message = 'Address required';
-    }
-    else if (this.genderVal == 'Please Select') {
+    } else if (this.genderVal == 'Please Select') {
       response.message = 'Please Select Gender';
-    }
-    else if (this.vehicleLicence.file == '') {
+    } else if (this.vehicleLicence.file == '') {
       response.message = 'Vehicle License required';
-    }
-    else if (this.driverLicence.file == '') {
+    } else if (this.driverLicence.file == '') {
       response.message = 'Driver License/N.I.C required';
-    }
-    else if (this.vehFrontPic.file == '' && (this.subProductName == "Enhanced Comprehensive" || this.subProductName == "Auto Variants")) {
+    } else if (
+      this.vehFrontPic.file == '' &&
+      (this.subProductName == 'Enhanced Comprehensive' ||
+        this.subProductName == 'Auto Variants')
+    ) {
       response.message = 'Vehicle Picture Front View required';
-    }
-    else if (this.vehRearPic.file == '' && (this.subProductName == "Enhanced Comprehensive" || this.subProductName == "Auto Variants")) {
+    } else if (
+      this.vehRearPic.file == '' &&
+      (this.subProductName == 'Enhanced Comprehensive' ||
+        this.subProductName == 'Auto Variants')
+    ) {
       response.message = 'Vehicle Picture Rear View required';
-    }
-    else if (this.vehPicSideViewLeft.file == '' && (this.subProductName == "Enhanced Comprehensive" || this.subProductName == "Auto Variants")) {
+    } else if (
+      this.vehPicSideViewLeft.file == '' &&
+      (this.subProductName == 'Enhanced Comprehensive' ||
+        this.subProductName == 'Auto Variants')
+    ) {
       response.message = 'Vehicle Picture Side View(Left) required';
-    }
-    else if (this.vehPicSideViewRight.file == '' && (this.subProductName == "Enhanced Comprehensive" || this.subProductName == "Auto Variants")) {
+    } else if (
+      this.vehPicSideViewRight.file == '' &&
+      (this.subProductName == 'Enhanced Comprehensive' ||
+        this.subProductName == 'Auto Variants')
+    ) {
       response.message = 'Vehicle Picture Side View(Right) required';
-    }
-    else if (this.vehPicDashboard.file == '' && (this.subProductName == "Enhanced Comprehensive" || this.subProductName == "Auto Variants")) {
+    } else if (
+      this.vehPicDashboard.file == '' &&
+      (this.subProductName == 'Enhanced Comprehensive' ||
+        this.subProductName == 'Auto Variants')
+    ) {
       response.message = 'Dashboard (displaying Kilometer of vehicle) required';
-    }
-    else if (this.utilityBills.file == '' && (this.subProductName == "Enhanced Comprehensive" || this.subProductName == "Auto Variants")) {
+    } else if (
+      this.utilityBills.file == '' &&
+      (this.subProductName == 'Enhanced Comprehensive' ||
+        this.subProductName == 'Auto Variants')
+    ) {
       response.message = 'Utility Bill required';
-    }
-    else if (this.inspectionForm.file == '' && (this.subProductName == "Enhanced Comprehensive" || this.subProductName == "Auto Variants")) {
+    } else if (
+      this.inspectionForm.file == '' &&
+      (this.subProductName == 'Enhanced Comprehensive' ||
+        this.subProductName == 'Auto Variants')
+    ) {
       response.message = 'Form inspection required';
-    }
-    else if (this.referrerVal == 'Please Select') {
+    } else if (this.referrerVal == 'Please Select') {
       response.message = 'Please Select Referrer';
-    }
-    else if (this.referrerData == '') {
+    } else if (this.referrerData == '') {
       response.message = 'Referrer Details required';
-    }
-    else {
+    } else {
       response.message = 'Motor validated';
       response.status = true;
     }
     return response;
   }
   travelValidation() {
-    let response = { message: "message", status: false };
+    let response = { message: 'message', status: false };
     if (this.fullName == '') {
       response.message = 'Full Name required';
-    }
-    else if (this.passPortNo == '') {
+    } else if (this.passPortNo == '') {
       response.message = 'Passport number required';
-    }
-    else if (this.nationality == '') {
+    } else if (this.nationality == '') {
       response.message = 'Nationality required';
-    }
-    else if (this.destination == '') {
+    } else if (this.destination == '') {
       response.message = 'Destination required';
-    }
-    else if (this.kinInfo == '') {
+    } else if (this.kinInfo == '') {
       response.message = 'kin info required';
-    }
-    else if (this.clientAddress == '') {
+    } else if (this.clientAddress == '') {
       response.message = 'Address required';
-    }
-    else if (this.genderVal == 'Please Select') {
+    } else if (this.genderVal == 'Please Select') {
       response.message = 'Please Select Gender';
-    }
-    else if (this.passPort.file == '') {
+    } else if (this.passPort.file == '') {
       response.message = 'Passport image required';
-    }
-    else if (this.referrerVal == 'Please Select') {
+    } else if (this.referrerVal == 'Please Select') {
       response.message = 'Please Select Referrer';
-    }
-    else if (this.referrerData == '') {
+    } else if (this.referrerData == '') {
       response.message = 'Referrer Details required';
-    }
-    else {
+    } else {
       response.message = 'Travel validated';
       response.status = true;
     }
     return response;
   }
   createProposal(propsalType) {
-    console.log("propsalType---formValidationResult", propsalType);
-    console.log('this.genderVal----',this.genderVal);
+    console.log('propsalType---formValidationResult', propsalType);
+    console.log('this.genderVal----', this.genderVal);
 
-
-    let formValidationResult = { message: "This product is under developement", status: false };
+    let formValidationResult = {
+      message: 'This product is under developement',
+      status: false,
+    };
     const headers = new HttpHeaders();
     var form = new FormData();
     form.append('method', 'save_product_proposal');
 
     switch (propsalType) {
-      case "Motor Insurance":
+      case 'Motor Insurance':
         formValidationResult = this.motorValidation();
         form.append('product_id', localStorage.getItem('subProId'));
         form.append('quote_id', localStorage.getItem('quote_id'));
@@ -424,17 +432,26 @@ export class CarInsuranceDetailsPage implements OnInit {
         form.append('means_of_id', this.driverLicence.file);
         form.append('vehicle_licence', this.vehicleLicence.file);
         form.append('verify_token', localStorage.getItem('token'));
-        if (this.subProductName == "Enhanced Comprehensive" || this.subProductName == "Auto Variants") {
+        if (
+          this.subProductName == 'Enhanced Comprehensive' ||
+          this.subProductName == 'Auto Variants'
+        ) {
           form.append('vehicle_picture_front_view', this.vehFrontPic.file);
           form.append('vehicle_picture_rear_view', this.vehRearPic.file);
-          form.append('vehicle_picture_side_view_left', this.vehPicSideViewLeft.file);
-          form.append('vehicle_picture_side_view_right', this.vehPicSideViewRight.file);
+          form.append(
+            'vehicle_picture_side_view_left',
+            this.vehPicSideViewLeft.file
+          );
+          form.append(
+            'vehicle_picture_side_view_right',
+            this.vehPicSideViewRight.file
+          );
           form.append('vehicle_picture_dashboard', this.vehPicDashboard.file);
           form.append('inspection_form', this.inspectionForm.file);
           form.append('utility_bill', this.utilityBills.file);
         }
         break;
-      case "Travel Insurance":
+      case 'Travel Insurance':
         formValidationResult = this.travelValidation();
         form.append('product_id', localStorage.getItem('subProId'));
         form.append('quote_id', localStorage.getItem('quote_id'));
@@ -453,107 +470,124 @@ export class CarInsuranceDetailsPage implements OnInit {
         break;
 
       default:
-
     }
-    console.log("formValidationResult----", formValidationResult);
+    console.log('formValidationResult----', formValidationResult);
     if (formValidationResult.status) {
       const config = {
         method: 'post',
         url: 'https://www.cornerstone.com.ng/devtest/webservice',
         headers: headers,
-        data: form
+        data: form,
       };
       console.log('form form config', config);
-      this.http.post(config.url, config.data, {
-        headers: config.headers,
-      }).subscribe((res) => {
-        this.propsalResponse = res;
-        if (this.propsalResponse.status_no == 0) {
-          this.api.presenttoast(this.propsalResponse.message);
-        }
-        else {
-          // this.api.presenttoast("Proposal completed start payment");
-          this.router.navigate(['/payment']);
-        }
-        console.log('Response after propsal', JSON.stringify(res));
-      }, err => {
-        console.log('err===', err);
+      this.http
+        .post(config.url, config.data, {
+          headers: config.headers,
+        })
+        .subscribe(
+          (res: any) => {
+            this.propsalResponse = res;
+            if (this.propsalResponse.status_no == 0) {
+              this.api.presenttoast(this.propsalResponse.message);
+            } else {
+              //ali
 
-      });
-    }
-    else {
+              this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+
+              for (var i = 0; i < this.draftArr.length; i++) {
+                var product_id = this.draftArr[i].product_id;
+                var quote_id = this.draftArr[i].quote_id;
+                var product_name = this.draftArr[i].product_name;
+                var quoteItems = this.draftArr[i].quoteItems;
+                var path = this.draftArr[i].path;
+                if (this.draftArr.quote_id == res.quote_id) {
+                  this.draftArr.splice(i, 1);
+
+                  var obj = {
+                    title: 'Third Party',
+                    product_id: product_id,
+                    quote_id: quote_id,
+                    subProName: product_name,
+                    quoteItems: quoteItems,
+                    image:
+                      'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+                    path: '/payment',
+                  };
+
+                  this.draftArr.push(obj);
+                }
+              }
+
+              localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+
+              // var data = '';
+              // this.api.presenttoast(data.info.message);
+
+              // this.api.presenttoast("Proposal completed start payment");
+              this.router.navigate(['/payment']);
+            }
+            console.log('Response after propsal', JSON.stringify(res));
+          },
+          (err) => {
+            console.log('err===', err);
+          }
+        );
+    } else {
       this.api.presenttoast(formValidationResult.message);
     }
-
   }
 
-
   selectFile(event, type) {
+    console.log('type --- ', type);
+    console.log('linceise --- ', event.target.files[0]);
 
-    console.log("type --- ", type);
-    console.log("linceise --- ", event.target.files[0]);
-
-
-    this.getBase64(event.target.files[0]).then(data => {
-      let file = event.target.files[0];
-      let base64 = data as string;
-      if (type == 'vehicleLicence') {
-        this.vehicleLicence.file = file;
-        this.vehicleLicence.base64 = base64;
-      }
-      else if (type == 'driverLicence') {
-        this.driverLicence.file = file;
-        this.driverLicence.base64 = base64;
-      }
-      else if (type == 'vehFrontPic') {
-        this.vehFrontPic.file = file;
-        this.vehFrontPic.base64 = base64;
-      }
-      else if (type == 'vehRearPic') {
-        this.vehRearPic.file = file;
-        this.vehRearPic.base64 = base64;
-      }
-      else if (type == 'vehPicSideViewLeft') {
-        this.vehPicSideViewLeft.file = file;
-        this.vehPicSideViewLeft.base64 = base64;
-      }
-      else if (type == 'vehPicSideViewRight') {
-        this.vehPicSideViewRight.file = file;
-        this.vehPicSideViewRight.base64 = base64;
-      }
-      else if (type == 'vehPicDashboard') {
-        this.vehPicDashboard.file = file;
-        this.vehPicDashboard.base64 = base64;
-      }
-      else if (type == 'inspectionForm') {
-        this.inspectionForm.file = file;
-        this.inspectionForm.base64 = base64;
-      }
-      else if (type == 'utilityBills') {
-        this.utilityBills.file = file;
-        this.utilityBills.base64 = base64;
-      }
-      // -- For travel insurance -- //
-      else if (type == 'passPort') {
-        this.passPort.file = file;
-        this.passPort.base64 = base64;
-      }
-      // -- For travel insurance -- //
-
-
-
-
-    }).catch(err => console.log('Errrrrr', err));
-
-
-
+    this.getBase64(event.target.files[0])
+      .then((data) => {
+        let file = event.target.files[0];
+        let base64 = data as string;
+        if (type == 'vehicleLicence') {
+          this.vehicleLicence.file = file;
+          this.vehicleLicence.base64 = base64;
+        } else if (type == 'driverLicence') {
+          this.driverLicence.file = file;
+          this.driverLicence.base64 = base64;
+        } else if (type == 'vehFrontPic') {
+          this.vehFrontPic.file = file;
+          this.vehFrontPic.base64 = base64;
+        } else if (type == 'vehRearPic') {
+          this.vehRearPic.file = file;
+          this.vehRearPic.base64 = base64;
+        } else if (type == 'vehPicSideViewLeft') {
+          this.vehPicSideViewLeft.file = file;
+          this.vehPicSideViewLeft.base64 = base64;
+        } else if (type == 'vehPicSideViewRight') {
+          this.vehPicSideViewRight.file = file;
+          this.vehPicSideViewRight.base64 = base64;
+        } else if (type == 'vehPicDashboard') {
+          this.vehPicDashboard.file = file;
+          this.vehPicDashboard.base64 = base64;
+        } else if (type == 'inspectionForm') {
+          this.inspectionForm.file = file;
+          this.inspectionForm.base64 = base64;
+        } else if (type == 'utilityBills') {
+          this.utilityBills.file = file;
+          this.utilityBills.base64 = base64;
+        }
+        // -- For travel insurance -- //
+        else if (type == 'passPort') {
+          this.passPort.file = file;
+          this.passPort.base64 = base64;
+        }
+        // -- For travel insurance -- //
+      })
+      .catch((err) => console.log('Errrrrr', err));
   }
   getBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
+      reader.onerror = (error) => reject(error);
     });
   }
 }

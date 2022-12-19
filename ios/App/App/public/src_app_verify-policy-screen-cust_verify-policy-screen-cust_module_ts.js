@@ -90,7 +90,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "VerifyPolicyScreenCustPage": () => (/* binding */ VerifyPolicyScreenCustPage)
 /* harmony export */ });
-/* harmony import */ var _Users_salmanahmad_Desktop_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Volumes_Office_Ali_github_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _verify_policy_screen_cust_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./verify-policy-screen-cust.page.html?ngResource */ 74306);
 /* harmony import */ var _verify_policy_screen_cust_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./verify-policy-screen-cust.page.scss?ngResource */ 4107);
@@ -152,7 +152,7 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
   PopupCust() {
     var _this = this;
 
-    return (0,_Users_salmanahmad_Desktop_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Volumes_Office_Ali_github_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       // let token = '39109f7df56e1CORNERStone9e685066bb852'
       if (_this.pnumber == '') {
         _this.api.presenttoast('Policy Number Field is required!');

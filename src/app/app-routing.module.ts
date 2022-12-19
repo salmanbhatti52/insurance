@@ -298,6 +298,10 @@ const routes: Routes = [
   {
     path: 'ivpayment',
     loadChildren: () => import('./ivpayment/ivpayment.module').then( m => m.IvpaymentPageModule)
+  },
+  {
+    path: 'draft',
+    loadChildren: () => import('./draft/draft.module').then( m => m.DraftPageModule)
   }
 
 

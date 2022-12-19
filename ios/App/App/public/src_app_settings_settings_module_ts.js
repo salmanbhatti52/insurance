@@ -107,8 +107,7 @@ let SettingsPage = class SettingsPage {
         this.location = location;
         this.navCtrl = navCtrl;
     }
-    ngOnInit() {
-    }
+    ngOnInit() { }
     goback() {
         this.location.back();
     }
@@ -129,6 +128,9 @@ let SettingsPage = class SettingsPage {
     }
     deleteaccount() {
         this.navCtrl.navigateForward('deleteaccount');
+    }
+    updateProfile() {
+        this.navCtrl.navigateRoot('profile-update');
     }
 };
 SettingsPage.ctorParameters = () => [
@@ -163,7 +165,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \********************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n  <ion-toolbar class=\"headBgGlobal\">\n    <ion-row style=\"display: flex;\n    align-items: center;\">\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\n\n        <div style=\"width:100% ;\" (click)=\"goback()\">\n          <img src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\n        </div>\n\n      </ion-col>\n      <ion-col size=\"8\">\n        <div class=\"title\">Settings</div>\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"languagepage()\">\n      <ion-label>\n        Language\n      </ion-label>\n    </ion-item>\n\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"notification()\">\n      <ion-label>\n        Notification\n      </ion-label>\n    </ion-item>\n\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"privacy()\">\n      <ion-label>\n        Privacy Policy\n      </ion-label>\n    </ion-item>\n\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"help()\">\n      <ion-label>\n        Help\n      </ion-label>\n    </ion-item>\n\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"finger()\">\n      <ion-label>\n        Face/Fingerprint ID\n      </ion-label>\n    </ion-item>\n\n    <ion-item class=\"ion-activatable\" detail=\"true\" lines=\"none\" (click)=\"deleteaccount()\">\n      <ion-label>\n        Delete your account?\n      </ion-label>\n    </ion-item>\n\n  </ion-list>\n\n\n</ion-content>\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n  <ion-toolbar class=\"headBgGlobal\">\n    <ion-row style=\"display: flex; align-items: center\">\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\n        <div style=\"width: 100%\" (click)=\"goback()\">\n          <img src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\" />\n        </div>\n      </ion-col>\n      <ion-col size=\"8\">\n        <div class=\"title\">Settings</div>\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item\n      class=\"ion-activatable\"\n      detail=\"true\"\n      lines=\"none\"\n      (click)=\"languagepage()\"\n    >\n      <ion-label> Language </ion-label>\n    </ion-item>\n\n    <ion-item\n      class=\"ion-activatable\"\n      detail=\"true\"\n      lines=\"none\"\n      (click)=\"notification()\"\n    >\n      <ion-label> Notification </ion-label>\n    </ion-item>\n\n    <ion-item\n      class=\"ion-activatable\"\n      detail=\"true\"\n      lines=\"none\"\n      (click)=\"privacy()\"\n    >\n      <ion-label> Privacy Policy </ion-label>\n    </ion-item>\n\n    <ion-item\n      class=\"ion-activatable\"\n      detail=\"true\"\n      lines=\"none\"\n      (click)=\"help()\"\n    >\n      <ion-label> Help </ion-label>\n    </ion-item>\n\n    <ion-item\n      class=\"ion-activatable\"\n      detail=\"true\"\n      lines=\"none\"\n      (click)=\"finger()\"\n    >\n      <ion-label> Face/Fingerprint ID </ion-label>\n    </ion-item>\n\n    <ion-item\n      class=\"ion-activatable\"\n      detail=\"true\"\n      lines=\"none\"\n      (click)=\"updateProfile()\"\n    >\n      <ion-label>My Account</ion-label>\n    </ion-item>\n\n    <ion-item\n      class=\"ion-activatable\"\n      detail=\"true\"\n      lines=\"none\"\n      (click)=\"deleteaccount()\"\n    >\n      <ion-label> Delete your account? </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>\n";
 
 /***/ })
 

@@ -200,6 +200,8 @@ export class MypoliciesPage implements OnInit {
     { id: '9', value: '1000000', active: false },
   ];
   // valuetype = 'Third Party';
+
+  draftArr: any = '';
   constructor(
     public router: Router,
     public api: InsuranceAppService,
@@ -1002,6 +1004,28 @@ export class MypoliciesPage implements OnInit {
           console.log('data response for products----', data);
 
           if (data.message == 'success') {
+            //ali
+
+            var obj = {
+              title: 'Third Party',
+              product_id: data.info.product_id,
+              quote_id: data.info.quote_id,
+              subProName: data.info.product_name,
+              quoteItems: JSON.stringify(data.quoteItems),
+              image:
+                'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+              path: '/yourquote',
+            };
+
+            this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+
+            if (this.draftArr) {
+              this.draftArr.push(obj);
+            } else {
+              this.draftArr = [obj];
+            }
+            localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+
             this.api.presenttoast(data.info.message);
             localStorage.setItem('product_id', data.info.product_id);
             localStorage.setItem('quote_id', data.info.quote_id);
