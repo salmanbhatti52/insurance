@@ -361,7 +361,7 @@ export class GibsplansPage implements OnInit {
 
     this.api
       .postdata(
-        'http://testcipapiservices.gibsonline.com/api/Policies/Motor',
+        'http://testcipapiservices.gibsonline.com/api/metadata/Policies/Motor',
         postdata,
         Bearertoken
       )

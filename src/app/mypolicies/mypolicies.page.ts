@@ -1027,6 +1027,7 @@ export class MypoliciesPage implements OnInit {
             localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
 
             this.api.presenttoast(data.info.message);
+            localStorage.setItem('email', this.userEmail);
             localStorage.setItem('product_id', data.info.product_id);
             localStorage.setItem('quote_id', data.info.quote_id);
             localStorage.setItem('subProName', data.info.product_name);

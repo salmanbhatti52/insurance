@@ -43,7 +43,7 @@ export class GibsproductsPage implements OnInit {
     const Bearertoken = token;
     this.api
       .getpolicy(
-        'http://testcipapiservices.gibsonline.com/api/Products',
+        'http://testcipapiservices.gibsonline.com/api/metadata/products',
         Bearertoken
       )
       .subscribe(
@@ -80,7 +80,8 @@ export class GibsproductsPage implements OnInit {
         const token = res.accessToken;
         this.api
           .getpolicy(
-            'http://testcipapiservices.gibsonline.com/api/Products/' + ID,
+            'http://testcipapiservices.gibsonline.com/api/metadata/products/' +
+              ID,
             token
           )
           .subscribe((res: any) => {
