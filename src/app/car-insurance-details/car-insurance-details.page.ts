@@ -126,9 +126,11 @@ export class CarInsuranceDetailsPage implements OnInit {
     public api: InsuranceAppService,
     private actionSheetController: ActionSheetController,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit() {
+    // this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+    // console.log('sssssssssssssssss', this.draftArr);
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
     this.getReferrerList();
@@ -493,18 +495,19 @@ export class CarInsuranceDetailsPage implements OnInit {
               //ali
 
               this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+              console.log(this.draftArr);
 
               for (var i = 0; i < this.draftArr.length; i++) {
                 var product_id = this.draftArr[i].product_id;
                 var quote_id = this.draftArr[i].quote_id;
-                var product_name = this.draftArr[i].product_name;
+                var product_name = this.draftArr[i].subProName;
                 var quoteItems = this.draftArr[i].quoteItems;
-                var path = this.draftArr[i].path;
+                // var path = this.draftArr[i].path;
                 if (this.draftArr.quote_id == res.quote_id) {
                   this.draftArr.splice(i, 1);
 
                   var obj = {
-                    title: 'Third Party',
+                    title: product_name,
                     product_id: product_id,
                     quote_id: quote_id,
                     subProName: product_name,

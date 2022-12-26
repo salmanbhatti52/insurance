@@ -66,7 +66,7 @@ export class GibsplansPage implements OnInit {
     public api: InsuranceAppService,
     public location: Location,
     public route: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));

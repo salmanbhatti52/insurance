@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-draft',
   templateUrl: './draft.page.html',
@@ -8,10 +8,14 @@ import { Router } from '@angular/router';
 })
 export class DraftPage implements OnInit {
   draftArr: any = '';
+  currentdate: any;
+  constructor(public router: Router) { }
 
-  constructor(public router: Router) {}
+  ngOnInit() {
+    this.currentdate = moment(new Date()).format('DD-MM-YYYY');
+    console.log('cdate=', this.currentdate);
 
-  ngOnInit() {}
+  }
 
   ionViewWillEnter() {
     this.draftArr = JSON.parse(localStorage.getItem('draftArr'));

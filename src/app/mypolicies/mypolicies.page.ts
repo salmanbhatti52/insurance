@@ -206,7 +206,7 @@ export class MypoliciesPage implements OnInit {
     public router: Router,
     public api: InsuranceAppService,
     public location: Location
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.subProName = localStorage.getItem('subProName');
@@ -1007,7 +1007,7 @@ export class MypoliciesPage implements OnInit {
             //ali
 
             var obj = {
-              title: 'Third Party',
+              title: data.info.product_name,
               product_id: data.info.product_id,
               quote_id: data.info.quote_id,
               subProName: data.info.product_name,

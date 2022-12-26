@@ -80,11 +80,12 @@ export class Ivplan4Page implements OnInit {
     { id: '9', value: '1000000', active: false },
   ];
   // valuetype = 'Third Party';
+  draftArr: any = '';
   constructor(
     public router: Router,
     public api: InsuranceAppService,
     public location: Location
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.subProName = localStorage.getItem('subProName');
@@ -194,12 +195,12 @@ export class Ivplan4Page implements OnInit {
       this.api
         .postparam(
           'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=100&opt=ICEDUP&csurname=' +
-            this.fName +
-            '&cothname=' +
-            this.lName +
-            '&cemail=' +
-            this.userEmail +
-            '&regdate=10-10-2022&country=NG&plan_code=ICEDUP',
+          this.fName +
+          '&cothname=' +
+          this.lName +
+          '&cemail=' +
+          this.userEmail +
+          '&regdate=10-10-2022&country=NG&plan_code=ICEDUP',
           '39109f7df56e1CORNERStone9e685066bb852'
         )
         .subscribe((res: any) => {
@@ -260,7 +261,26 @@ export class Ivplan4Page implements OnInit {
           console.log('autoPostRecipt res----', res);
           this.api.hideLoader();
           localStorage.setItem('ivplanres', JSON.stringify(res));
+          var obj = {
+            title: this.subProName,
+            product_id: res.refnum,
+            quote_id: quoteId,
+            subProName: this.subProName,
+            quoteItems: 'dummy',
+            image:
+              'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+            path: '/ivplanquote',
+          };
 
+          this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+
+          if (this.draftArr) {
+            this.draftArr.push(obj);
+          } else {
+            this.draftArr = [obj];
+          }
+          localStorage.setItem('subProName', this.subProName);
+          localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
           this.router.navigate(['/ivplanquote']);
 
           // this.api.presenttoast(res.result.message);
