@@ -41,11 +41,10 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
     public iab: InAppBrowser
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   ionViewWillEnter() {
-    this.deletedraftafter7days();
     this.loginas = localStorage.getItem('loginas');
     this.username = localStorage.getItem('fname');
     this.api.username = this.username;
@@ -104,6 +103,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
         console.log(err);
       }
     );
+    this.deletedraftafter7days();
   }
 
   investmentsubProducts() {
@@ -258,6 +258,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
 
   deletedraftafter7days() {
     this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+
     for (var i = 0; i < this.draftArr.length; i++) {
       this.calclatedtime = moment(
         this.draftArr[i].datetime,
@@ -276,6 +277,8 @@ export class HomePageScreenAfterLoginPage implements OnInit {
         }
       }
     }
+
+
 
     localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
   }

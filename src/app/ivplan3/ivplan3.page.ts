@@ -270,6 +270,7 @@ export class Ivplan3Page implements OnInit {
             image:
               'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
             path: '/ivplanquote',
+            datetime: new Date().toISOString(),
           };
 
           this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
