@@ -206,9 +206,11 @@ export class MypoliciesPage implements OnInit {
     public router: Router,
     public api: InsuranceAppService,
     public location: Location
-  ) { }
+  ) {}
 
   ngOnInit() {
+    console.log('new Date().toISOString()===', new Date().toISOString());
+
     this.subProName = localStorage.getItem('subProName');
     console.log('subproduct name-----', this.subProName);
 
@@ -1015,6 +1017,7 @@ export class MypoliciesPage implements OnInit {
               image:
                 'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
               path: '/yourquote',
+              datetime: new Date().toISOString(),
             };
 
             this.draftArr = JSON.parse(localStorage.getItem('draftArr'));

@@ -9,17 +9,31 @@ import * as moment from 'moment';
 export class DraftPage implements OnInit {
   draftArr: any = '';
   currentdate: any;
-  constructor(public router: Router) { }
+  constructor(public router: Router) {}
 
   ngOnInit() {
     this.currentdate = moment(new Date()).format('DD-MM-YYYY');
     console.log('cdate=', this.currentdate);
-
   }
 
   ionViewWillEnter() {
     this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+    // var obj = {
+    //   datetime: '2022-12-12T06:57:37.473Z',
+    //   image:
+    //     'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+    //   path: '/yourquote',
+    //   product_id: '2',
+    //   quoteItems:
+    //     '[{"label":"Name of Company","value":"fwerqwr21r","type":""},{"label":"Vehicle Make","value":"BMW 135","type":""},{"label":"Vehicle Class","value":"Private Buses/Pick up trucks (e.g. Toyota Hiace Buses, Hilux, Vans, Mini Bus etc.)","type":""},{"label":"Quote","value":7500,"type":"currency"}]',
+    //   quote_id: 4219,
+    //   subProName: 'Third Party',
+    //   title: 'Third Party',
+    // };
 
+    // this.draftArr.push(obj);
+
+    // localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
     console.log('draftArr----', JSON.parse(localStorage.getItem('draftArr')));
   }
 

@@ -11,6 +11,9 @@ import { QuotePopupPage } from '../quote-popup/quote-popup.page';
 import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-home-page-screen-after-login',
   templateUrl: './home-page-screen-after-login.page.html',
@@ -26,6 +29,8 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   username: any;
   loginas: string;
   result: string;
+  draftArr: any = '';
+  calclatedtime: any = '';
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -40,6 +45,7 @@ export class HomePageScreenAfterLoginPage implements OnInit {
 
   ngOnInit() {}
   ionViewWillEnter() {
+    this.deletedraftafter7days();
     this.loginas = localStorage.getItem('loginas');
     this.username = localStorage.getItem('fname');
     this.api.username = this.username;
@@ -248,5 +254,29 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     const source = ev.srcElement;
     const imgSrc = `assets/images/car1.png`;
     source.src = imgSrc;
+  }
+
+  deletedraftafter7days() {
+    this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+    for (var i = 0; i < this.draftArr.length; i++) {
+      this.calclatedtime = moment(
+        this.draftArr[i].datetime,
+        'YYYYMMDD'
+      ).fromNow(); // 11 years ago
+      console.log('tt-----', this.calclatedtime);
+
+      if (this.calclatedtime.includes('days')) {
+        console.log('day wala ha bhai');
+        var day = this.calclatedtime.substring(
+          0,
+          this.calclatedtime.indexOf(' ')
+        );
+        if (parseInt(day) > 7) {
+          this.draftArr.splice(i, 1);
+        }
+      }
+    }
+
+    localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
   }
 }
