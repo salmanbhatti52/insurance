@@ -147,6 +147,15 @@ export class RenewalsPage implements OnInit {
     let encode1 = encodeURIComponent('P/500/1002/2022/00082');
     console.log('dasdsadsa', encode1);
 
+
+    // this.api.postdata(' http://testcipapiservices.gibsonline.com/api/policies/P/500/1001/2023/00235', this.bearertoken).subscribe((response: any) => {
+
+    //   console.log('ddddddddddddddddddd', response);
+    //   this.api.hideLoader();
+
+    // });
+
+
     this.api.postdata('http://testcipapiservices.gibsonline.com/api/Policies/Motor/' + encode1 + '/renew', payload, Bearertoken).subscribe((res: any) => {
       console.log('resssss', res);
       this.api.presenttoast('Success')

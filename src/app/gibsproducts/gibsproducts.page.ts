@@ -16,7 +16,7 @@ export class GibsproductsPage implements OnInit {
     public modal: ModalController,
     public location: Location,
     public api: InsuranceAppService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.gibsproduct();
@@ -81,7 +81,7 @@ export class GibsproductsPage implements OnInit {
         this.api
           .getpolicy(
             'http://testcipapiservices.gibsonline.com/api/metadata/products/' +
-              ID,
+            ID,
             token
           )
           .subscribe((res: any) => {

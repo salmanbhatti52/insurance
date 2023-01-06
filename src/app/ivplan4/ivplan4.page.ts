@@ -187,7 +187,13 @@ export class Ivplan4Page implements OnInit {
 
     return response;
   }
+  dateChanged(value) {
 
+    this.tourStartDate = value;
+    this.showPickerStartDate = false;
+    console.log('this.tourStartDate ----', this.tourStartDate);
+
+  }
   createQuote() {
     if (this.monthlyinvestment == '' || this.fName == '' || this.lName == '') {
       this.api.presenttoast('Please enter required fields.');

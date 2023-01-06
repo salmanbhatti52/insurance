@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-policyquote',
@@ -10,12 +10,25 @@ import { Router } from '@angular/router';
 export class PolicyquotePage implements OnInit {
   getproduct: any;
   Gproduct: any;
-  overalltax: string;
-  constructor(public location: Location, public router: Router) {}
+  overalltax: any;
+  fname: any;
+  lname: any;
+  userEmail: any;
+  mobNumber: any;
+  address: any;
+  gender: any;
+  constructor(public location: Location, public router: Router, public activated: ActivatedRoute) { }
 
   ngOnInit() {
-    this.overalltax = localStorage.getItem('overalltax');
+    this.overalltax = Math.floor(Number(localStorage.getItem('overalltax')));
 
+    this.fname = this.activated.snapshot.params['fname'];
+    this.lname = this.activated.snapshot.params['lname'];
+    this.userEmail = this.activated.snapshot.params['userEmail'];
+    this.mobNumber = this.activated.snapshot.params['mobNumber'];
+    this.address = this.activated.snapshot.params['address'];
+    this.gender = this.activated.snapshot.params['gender'];
+    console.log('fname', this.fname);
     this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
     console.log('', this.Gproduct);
     this.getproduct = JSON.parse(localStorage.getItem('gibsProductres'));

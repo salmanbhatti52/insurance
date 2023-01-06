@@ -27,6 +27,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
   phone_number: any;
   email: any;
   address: any;
+  bearertoken: any;
   constructor(public modal: ModalController,
     public location: Location,
     public router: Router,
@@ -34,6 +35,32 @@ export class VerifyPolicyScreenCustPage implements OnInit {
     private http: HttpClient,) { }
 
   ngOnInit() {
+
+    const myData = {
+      sid: 'ECHANNEL2',
+      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+    };
+    this.api.gibsapi(myData).subscribe(
+      (res: any) => {
+        console.log(res);
+        const token = res.accessToken;
+        this.policieshistory(token)
+      },
+      (err) => {
+        console.log(err);
+
+      }
+    )
+  }
+  policieshistory(token) {
+    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/policies/history', token).subscribe((response: any) => {
+
+      console.log(response);
+      this.api.hideLoader();
+
+    }, err => {
+      console.log('error to get policies----', err);
+    });
   }
 
   goback() {
@@ -52,37 +79,73 @@ export class VerifyPolicyScreenCustPage implements OnInit {
     this.Insurance = list.Insurance
     this.show = false
   }
+
   async PopupCust() {
-    // let token = '39109f7df56e1CORNERStone9e685066bb852'
+    // let token = '39109f7df56e1CORNERStone9e685066bb852''
+    // P/500/1001/2023/00235
     if (this.pnumber == '') {
       this.api.presenttoast('Policy Number Field is required!');
     } else {
-      this.api.showLoader();
-      this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=160&polnum2=' + this.pnumber, localStorage.getItem('token')).subscribe((response: any) => {
+      const myData = {
+        sid: 'ECHANNEL2',
+        token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+      };
+      this.api.gibsapi(myData).subscribe(
+        (res: any) => {
+          console.log(res);
+          const token = res.accessToken;
+          this.bearertoken = res.accessToken;
+          // this.api.postdata('http://testcipapiservices.gibsonline.com/api/policies/P/500/1001/2023/00235/renew', this.bearertoken).subscribe((response: any) => {
 
-        console.log(response.result);
-        this.verifypolicy = response.result
-        localStorage.setItem('policydata', JSON.stringify(this.verifypolicy));
+          //   console.log(response);
+          //   this.api.hideLoader();
 
+          // });
+          let encode1 = encodeURIComponent('P/500/1001/2023/00235');
+          console.log('dasdsadsa', encode1);
+          this.api.postdata(' http://testcipapiservices.gibsonline.com/api/policies/' + encode1, this.bearertoken).subscribe((response: any) => {
 
-        this.api.hideLoader();
-        if (this.verifypolicy) {
-          if (this.verifypolicy.status == 1) {
-            this.router.navigate(['renewals'])
-            // this.policy = true;
-            // this.first_name = this.verifypolicy.first_name
-            // this.last_name = this.verifypolicy.last_name
-            // this.dob = this.verifypolicy.dob
-            // this.phone_number = this.verifypolicy.phone_number
-            // this.email = this.verifypolicy.email
-            // this.address = this.verifypolicy.address
-          } else {
-            this.api.presenttoast(this.verifypolicy.message)
-          }
-        } else {
-          this.api.presenttoast('Policy record not found');
+            console.log('ddddddddddddddddddd', response);
+            this.api.hideLoader();
+
+          }, err => {
+            console.log('get policy error', err);
+
+          });
+        },
+        (err) => {
+          console.log(err);
+
         }
-      });
+      );
+
+
+      // old one
+      // this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=160&polnum2=' + this.pnumber, localStorage.getItem('token')).subscribe((response: any) => {
+
+      //   console.log(response.result);
+      //   this.verifypolicy = response.result
+      //   localStorage.setItem('policydata', JSON.stringify(this.verifypolicy));
+
+
+      //   this.api.hideLoader();
+      //   if (this.verifypolicy) {
+      //     if (this.verifypolicy.status == 1) {
+      //       this.router.navigate(['renewals'])
+      //       // this.policy = true;
+      //       // this.first_name = this.verifypolicy.first_name
+      //       // this.last_name = this.verifypolicy.last_name
+      //       // this.dob = this.verifypolicy.dob
+      //       // this.phone_number = this.verifypolicy.phone_number
+      //       // this.email = this.verifypolicy.email
+      //       // this.address = this.verifypolicy.address
+      //     } else {
+      //       this.api.presenttoast(this.verifypolicy.message)
+      //     }
+      //   } else {
+      //     this.api.presenttoast('Policy record not found');
+      //   }
+      // });
     }
 
 

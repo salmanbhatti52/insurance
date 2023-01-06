@@ -5,11 +5,7 @@
       <ion-col size="2" style="padding-left: 25px">
         <ion-buttons>
           <div style="width: 100%">
-            <img
-              (click)="goback()"
-              src="assets/images/back-arrow.svg"
-              alt="sb-btn"
-            />
+            <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn" />
           </div>
         </ion-buttons>
       </ion-col>
@@ -23,9 +19,7 @@
 
 <ion-content>
   <div class="wrapper">
-    <div
-      style="display: flex; align-items: center; justify-content: space-around"
-    >
+    <div style="display: flex; align-items: center; justify-content: space-around">
       <img height="50px" src="assets/images/access_point.png" />
       <h1 style="margin: 0px">Your quote is ready.</h1>
     </div>
@@ -36,32 +30,32 @@
             <tbody>
               <tr>
                 <td style="width: 30%; color: black">First Name</td>
-                <td style="color: black">{{getproduct.insured.firstName}}</td>
+                <td style="color: black">{{fname}}</td>
               </tr>
 
               <tr>
                 <td style="width: 30%; color: black">Last Name</td>
-                <td style="color: black">{{getproduct.insured.lastName}}</td>
+                <td style="color: black">{{lname}}</td>
               </tr>
 
               <tr>
                 <td style="width: 30%; color: black">Email</td>
-                <td style="color: black">{{getproduct.insured.email}}</td>
+                <td style="color: black">{{userEmail}}</td>
               </tr>
 
               <tr>
                 <td style="width: 30%; color: black">Address</td>
-                <td style="color: black">{{getproduct.insured.address}}</td>
+                <td style="color: black">{{address}}</td>
               </tr>
 
               <tr>
                 <td style="width: 30%; color: black">Gender</td>
-                <td style="color: black">{{getproduct.insured.gender}}</td>
+                <td style="color: black">{{gender}}</td>
               </tr>
 
               <tr>
                 <td style="width: 30%; color: black">Phone</td>
-                <td style="color: black">{{getproduct.insured.phoneLine1}}</td>
+                <td style="color: black">{{mobNumber}}</td>
               </tr>
 
               <tr>
@@ -84,11 +78,9 @@
       </div>
     </div>
     <div class="btndiv">
-      <ion-button class="btn" (click)="buyOnlineQuote()"
-        >Buy Online Now
+      <ion-button class="btn" (click)="buyOnlineQuote()">Buy Online Now
       </ion-button>
-      <ion-button class="btn1" (click)="getAnewQuote()"
-        >Get a new quote
+      <ion-button class="btn1" (click)="getAnewQuote()">Get a new quote
       </ion-button>
     </div>
   </div>

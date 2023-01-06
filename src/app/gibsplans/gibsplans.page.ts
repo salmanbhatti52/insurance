@@ -66,9 +66,11 @@ export class GibsplansPage implements OnInit {
     public api: InsuranceAppService,
     public location: Location,
     public route: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
+
+
     this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
     console.log('ssssss-----', this.Gproduct);
 
@@ -290,78 +292,169 @@ export class GibsplansPage implements OnInit {
 
   getresult(token) {
     let Bearertoken = token;
-    let postdata = {
-      productID: '3034',
-      entryDate: '2022-10-20T04:29:31.261Z',
-      startDate: '2018-03-13T00:00:00',
-      endDate: '2019-03-12T00:00:00',
-      fxCurrency: 'NGN',
-      fxRate: 1,
-      referrerSource: 'AGENT',
-      referrerDetails: 'string',
-      paymentProviderID: 'string',
-      paymentReferenceID: 'string',
-      insured: {
-        title: 'string',
-        lastName: this.lName,
-        firstName: this.fName,
-        otherName: 'string',
-        gender: this.genderVal,
-        email: this.userEmail,
-        address: this.address,
-        phoneLine1: this.mobNumber,
-        phoneLine2: this.mobNumber,
-        isOrg: true,
-        orgName: 'string',
-        orgRegNumber: 'string',
-        orgRegDate: '2022-10-20T04:29:31.261Z',
-        taxIdNumber: 'string',
-        cityLGA: 'string',
-        stateID: 'string',
-        nationality: 'string',
-        dateOfBirth: this.dateofbirth,
-        kycType: 'NOT_AVAILABLE',
-        kycNumber: 'string',
-        kycIssueDate: '2022-10-20T04:29:31.261Z',
-        kycExpiryDate: '2022-10-20T04:29:31.261Z',
-        nextOfKin: {
-          title: 'string',
-          lastName: 'string',
-          firstName: 'string',
-          otherName: 'string',
-          gender: 'MALE',
-          email: 'user@example.com',
-          address: 'string',
-          phoneLine1: '123456',
-          phoneLine2: '123456',
-        },
-      },
-      policySections: [
-        {
-          sectionID: 'string',
-          sectionSumInsured: 0,
-          sectionPremium: 0,
-          vehicleRegNo: this.regNo,
-          vehicleTypeID: 'VAN',
-          vehicleUser: 'string',
-          engineNumber: this.engNo,
-          chasisNumber: this.chasisNo,
-          vehicleUsage: 'PRIVATE',
-          numberOfSeats: 0,
-          stateOfIssue: 'string',
-          vehicleMake: this.vehicleMakeVal,
-          vehicleModel: this.vehicleModelVal,
-          manufactureYear: this.yomdate,
-          vehicleColour: this.vehclr,
-          engineCapacityHP: 'string',
-          coverType: 'COMPREHENSIVE',
-        },
-      ],
-    };
+    // let postdata = {
+    //   productID: '3034',
+    //   entryDate: '2022-10-20T04:29:31.261Z',
+    //   startDate: '2018-03-13T00:00:00',
+    //   endDate: '2019-03-12T00:00:00',
+    //   fxCurrency: 'NGN',
+    //   fxRate: 1,
+    //   referrerSource: 'AGENT',
+    //   referrerDetails: 'string',
+    //   paymentProviderID: 'string',
+    //   paymentReferenceID: 'string',
+    //   insured: {
+    //     title: 'string',
+    //     lastName: this.lName,
+    //     firstName: this.fName,
+    //     otherName: 'string',
+    //     gender: this.genderVal,
+    //     email: this.userEmail,
+    //     address: this.address,
+    //     phoneLine1: this.mobNumber,
+    //     phoneLine2: this.mobNumber,
+    //     isOrg: true,
+    //     orgName: 'string',
+    //     orgRegNumber: 'string',
+    //     orgRegDate: '2022-10-20T04:29:31.261Z',
+    //     taxIdNumber: 'string',
+    //     cityLGA: 'string',
+    //     stateID: 'string',
+    //     nationality: 'string',
+    //     dateOfBirth: this.dateofbirth,
+    //     kycType: 'NOT_AVAILABLE',
+    //     kycNumber: 'string',
+    //     kycIssueDate: '2022-10-20T04:29:31.261Z',
+    //     kycExpiryDate: '2022-10-20T04:29:31.261Z',
+    //     nextOfKin: {
+    //       title: 'string',
+    //       lastName: 'string',
+    //       firstName: 'string',
+    //       otherName: 'string',
+    //       gender: 'MALE',
+    //       email: 'user@example.com',
+    //       address: 'string',
+    //       phoneLine1: '123456',
+    //       phoneLine2: '123456',
+    //     },
+    //   },
+    //   policySections: [
+    //     {
+    //       sectionID: 'string',
+    //       sectionSumInsured: 0,
+    //       sectionPremium: 0,
+    //       vehicleRegNo: this.regNo,
+    //       vehicleTypeID: 'VAN',
+    //       vehicleUser: 'string',
+    //       engineNumber: this.engNo,
+    //       chasisNumber: this.chasisNo,
+    //       vehicleUsage: 'PRIVATE',
+    //       numberOfSeats: 0,
+    //       stateOfIssue: 'string',
+    //       vehicleMake: this.vehicleMakeVal,
+    //       vehicleModel: this.vehicleModelVal,
+    //       manufactureYear: this.yomdate,
+    //       vehicleColour: this.vehclr,
+    //       engineCapacityHP: 'string',
+    //       coverType: 'COMPREHENSIVE',
+    //     },
+    //   ],
+    // };
 
+    let postdata = {
+      "productID": "1001",
+      "entryDate": "2022-10-29",
+      "startDate": "2022-10-29",
+      "endDate": "2023-10-29",
+      "fxCurrency": "NGN",
+      "fxRate": 1,
+      "agentID": "AG-000012",
+      "paymentAccountID": "1112000044",
+      "insured": {
+        "lastName": this.lName,
+        "firstName": this.lName,
+        "gender": this.genderVal,
+        "email": this.userEmail,
+        "address": this.address,
+        "phoneLine1": this.mobNumber,
+        "isOrg": false,
+        "cityLGA": "n/a",
+        "stateID": "n/a",
+        "nationality": "bd",
+        "dateOfBirth": this.dateofbirth,
+        "kycType": "NOT_AVAILABLE",
+        "kycNumber": "n/a"
+      },
+      "policySections": [
+        {
+          "sectionID": "n/a",
+          "sectionSumInsured": 40000,
+          "sectionPremium": 40000,
+          "sectionFields": [
+            {
+              "name": "VehicleRegNo",
+              "value": this.regNo
+            },
+            {
+              "name": "VehicleTypeID",
+              "value": "JEEP"
+            },
+            {
+              "name": "VehicleUser",
+              "value": this.fName
+            },
+            {
+              "name": "EngineNumber",
+              "value": this.engNo
+            },
+            {
+              "name": "EngineCapacityHP",
+              "value": "2.5"
+            },
+            {
+              "name": "ChasisNumber",
+              "value": this.chasisNo
+            },
+            {
+              "name": "VehicleUsage",
+              "value": "PRIVATE"
+            },
+            {
+              "name": "NumberOfSeats",
+              "value": "1"
+            },
+            {
+              "name": "stateOfIssue",
+              "value": "Lagos"
+            },
+            {
+              "name": "VehicleMake",
+              "value": this.vehicleMakeVal
+            },
+            {
+              "name": "VehicleModel",
+              "value": this.vehicleMakeVal
+            },
+            {
+              "name": "ManufactureYear",
+              "value": this.yomdate
+            },
+            {
+              "name": "VehicleColour",
+              "value": this.vehclr
+            },
+            {
+              "name": "CoverType",
+              "value": "COMPREHENSIVE"
+            }
+          ]
+        }
+      ]
+    }
+    // 'http://testcipapiservices.gibsonline.com/api/metadata/Policies/Motor' old url
     this.api
       .postdata(
-        'http://testcipapiservices.gibsonline.com/api/metadata/Policies/Motor',
+        'http://testcipapiservices.gibsonline.com/api/policies',
         postdata,
         Bearertoken
       )
@@ -369,12 +462,19 @@ export class GibsplansPage implements OnInit {
         (res: any) => {
           console.log('motor response---', res);
           localStorage.setItem('gibsProductres', JSON.stringify(res));
-          this.route.navigate(['policyquote']);
+          this.route.navigate(['policyquote', {
+            fname: this.fName,
+            lname: this.lName,
+            userEmail: this.userEmail,
+            mobNumber: this.mobNumber,
+            address: this.dateofbirth,
+            gender: this.genderVal,
+          }]);
         },
         (err) => {
-          // console.log(err);
-          // let errormsg = err.error.errors[0].message;
-          // this.api.presenttoast(errormsg)
+          console.log(err);
+          let errormsg = err.error.errors[0].message;
+          this.api.presenttoast(errormsg)
         }
       );
   }
