@@ -41,9 +41,9 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
     public iab: InAppBrowser
-  ) { }
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
   ionViewWillEnter() {
     this.loginas = localStorage.getItem('loginas');
     this.username = localStorage.getItem('fname');
@@ -246,13 +246,13 @@ export class HomePageScreenAfterLoginPage implements OnInit {
 
   handleImgError(ev: any, item: any, url) {
     const source = ev.srcElement;
-    const imgSrc = `assets/images/tt.png`;
+    const imgSrc = `assets/images/travel.svg`;
     source.src = imgSrc;
   }
 
   handleImgError2(ev: any, item: any, url) {
     const source = ev.srcElement;
-    const imgSrc = `assets/images/car1.png`;
+    const imgSrc = `assets/images/car.svg`;
     source.src = imgSrc;
   }
 
@@ -277,8 +277,6 @@ export class HomePageScreenAfterLoginPage implements OnInit {
         }
       }
     }
-
-
 
     localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
   }
