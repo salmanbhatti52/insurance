@@ -1,34 +1,39 @@
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
     <ion-row>
-      <ion-col size="2" style="padding-left: 25px;">
-        <ion-buttons>
+      <ion-col size="2" style="padding-left: 25px">
+        <!-- <ion-buttons>
           <div style="width:100% ;">
             <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
           </div>
-        </ion-buttons>
+        </ion-buttons> -->
+
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width: 100%">
+              <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
       </ion-col>
       <ion-col size="8">
-        <div class="title" style=" color: black;">Make a Payment</div>
+        <div class="title" style="color: black">Make a Payment</div>
       </ion-col>
-      <ion-col class="titleclass" size="2">
-      </ion-col>
-
-
+      <ion-col class="titleclass" size="2"> </ion-col>
     </ion-row>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content>
   <div class="wrapper">
-    <div style="display:flex;align-items: center;
-    justify-content: space-around;">
-      <img height="50px" src="assets/images/access_point.png">
-      <h1 style="margin: 0px;
-      font-size: 22px;
-      margin-left: 6px;
-      color: black;">Select your payment Option.(Amount : ₦ {{quoteItems[quoteItems.length - 1].value}} ) </h1>
+    <div
+      style="display: flex; align-items: center; justify-content: space-around"
+    >
+      <img height="50px" src="assets/images/access_point.png" />
+      <h1 style="margin: 0px; font-size: 22px; margin-left: 6px; color: black">
+        Select your payment Option.(Amount : ₦ {{quoteItems[quoteItems.length -
+        1].value}} )
+      </h1>
     </div>
 
     <!-- <table class="table">
@@ -54,10 +59,8 @@
     </table> -->
 
     <table class="table">
-
       <tbody>
         <tr>
-
           <!-- <td width="10">
 
             <input type="radio" value="paystack" name="payment-option" class="payment-option-other"
@@ -65,16 +68,15 @@
 
           </td> -->
 
-          <td style=" color: black;"><strong>Paystack </strong><br><img height="100px;"
-              src="https://cornerstone.com.ng/assets/img/paystack.jpeg">
-
+          <td style="color: black">
+            <strong>Paystack </strong><br /><img
+              height="100px;"
+              src="https://cornerstone.com.ng/assets/img/paystack.jpeg"
+            />
           </td>
-
         </tr>
-
       </tbody>
     </table>
-
 
     <!-- <table class="table">
 
@@ -287,8 +289,6 @@
 
 
     </table> -->
-
-
   </div>
 </ion-content>
 <ion-footer>
@@ -296,13 +296,18 @@
     <ion-button class="btn" (click)="proceed()"> Proceed</ion-button>
   </div> -->
   <div class="btndiv">
-
-    <button angular4-paystack [key]="'pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'" [email]="email" [amount]="amt"
-      [ref]="reference" class="btn11" (paymentInit)="paymentInit()" (onClose)="paymentCancel()"
-      (callback)="paymentDone($event)">
+    <button
+      angular4-paystack
+      [key]="'pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'"
+      [email]="email"
+      [amount]="amt"
+      [ref]="reference"
+      class="btn11"
+      (paymentInit)="paymentInit()"
+      (onClose)="paymentCancel()"
+      (callback)="paymentDone($event)"
+    >
       Pay with Paystack
     </button>
-
   </div>
-
 </ion-footer>

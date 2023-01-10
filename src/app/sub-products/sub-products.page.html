@@ -1,34 +1,34 @@
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
-    <ion-row style="display: flex;
-    align-items: center;">
-      <ion-col size="2" style="padding-left: 25px;">
-
-        <div style="width:100% ;" (click)="goback()">
+    <ion-row style="display: flex; align-items: center">
+      <ion-col size="2" style="padding-left: 25px">
+        <!-- <div style="width:100% ;" (click)="goback()">
           <img src="assets/images/back-arrow.svg" alt="sb-btn">
-        </div>
+        </div> -->
 
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width: 100%">
+              <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
       </ion-col>
       <ion-col size="8">
         <div class="title">Life/Investment Products</div>
       </ion-col>
-      <ion-col size="2">
-
-      </ion-col>
+      <ion-col size="2"> </ion-col>
     </ion-row>
   </ion-toolbar>
-
 </ion-header>
-
 
 <ion-content>
   <div class="wrapper">
     <div class="boxdiv" *ngFor="let sp of subProducts">
-      <div style="display:flex;margin-bottom: 7%;" (click)="seeDetails(sp)">
-        <img src="{{sp.image}}" alt="" style="width: 170px; height: 83px;">
+      <div style="display: flex; margin-bottom: 7%" (click)="seeDetails(sp)">
+        <img src="{{sp.image}}" alt="" style="width: 170px; height: 83px" />
         <p class="con-p2">{{sp.name}}</p>
       </div>
-
     </div>
   </div>
 </ion-content>

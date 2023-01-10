@@ -137,6 +137,7 @@ export class CarInsuranceDetailsPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    console.log('fullName----', localStorage.getItem('userfullname'));
     console.log('policyhldrVal----', localStorage.getItem('policyhldrVal'));
     this.policyhldrVal = localStorage.getItem('policyhldrVal');
 
@@ -168,6 +169,8 @@ export class CarInsuranceDetailsPage implements OnInit {
     this.imgURL = '';
     this.imgURL1 = '';
     this.referrerData = '';
+
+    this.fullName = localStorage.getItem('userfullname');
   }
 
   getReferrerList() {

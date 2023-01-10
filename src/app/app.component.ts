@@ -142,6 +142,8 @@ export class AppComponent {
 
         SplashScreen.hide();
         this.route.navigate(['splash']);
+
+        //aliiii
       }, 3500);
     });
   }

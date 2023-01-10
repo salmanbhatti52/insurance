@@ -659,9 +659,11 @@ export class MypoliciesPage implements OnInit {
       response.message = 'First name required';
     } else if (this.lName == '') {
       response.message = 'Last name required';
-    } else if (this.otheName == '') {
-      response.message = 'Other name required';
-    } else if (this.mobNumber == '') {
+    }
+    // else if (this.otheName == '') {
+    //   response.message = 'Other name required';
+    // }
+    else if (this.mobNumber == '') {
       response.message = 'Phone required';
     } else if (this.userEmail == '') {
       response.message = 'Email required';
@@ -1030,6 +1032,7 @@ export class MypoliciesPage implements OnInit {
             localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
 
             this.api.presenttoast(data.info.message);
+            localStorage.setItem('userfullname', this.fName + ' ' + this.lName);
             localStorage.setItem('email', this.userEmail);
             localStorage.setItem('product_id', data.info.product_id);
             localStorage.setItem('quote_id', data.info.quote_id);

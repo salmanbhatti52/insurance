@@ -1,37 +1,38 @@
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
     <ion-row>
-      <ion-col size="2" style="padding-left: 25px;">
-        <ion-buttons>
+      <ion-col size="2" style="padding-left: 25px">
+        <!-- <ion-buttons>
           <div style="width:100% ;">
             <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
           </div>
-        </ion-buttons>
+        </ion-buttons> -->
+
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width: 100%">
+              <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
       </ion-col>
       <ion-col size="8">
         <div class="title">Make a Quote</div>
       </ion-col>
-      <ion-col class="titleclass" size="2">
-      </ion-col>
-
-
+      <ion-col class="titleclass" size="2"> </ion-col>
     </ion-row>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content>
   <div class="wrapper">
+    <!-- ------------------------1-------------------------- -->
 
-
-      <!-- ------------------------1-------------------------- -->
-
-    <div style="border: 1px solid #A8B400;
-      border-radius: 12px;">
-
+    <div style="border: 1px solid #a8b400; border-radius: 12px">
       <div class="main">
         <div class="cflex">
-          <div class="text" style="text-align: center;"><b>Schedule of Cover</b>
+          <div class="text" style="text-align: center">
+            <b>Schedule of Cover</b>
           </div>
           <div class="text1">Limits in NGN</div>
         </div>
@@ -45,7 +46,6 @@
             <div class="text3">Accidental Medical Evacaution</div>
             <div class="text4">35,000.00</div>
           </div>
-
 
           <div class="cflex1">
             <div class="text3">Transport of Mortal Remains</div>
@@ -62,309 +62,256 @@
             <div class="text4">50,000.00</div>
           </div>
 
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------------------2-------------------------- -->
+
+    <div style="border: 1px solid #a8b400; border-radius: 12px">
+      <div class="main">
+        <div class="cflex">
+          <div class="text" style="text-align: center">
+            <b>Schedule of Cover</b>
+          </div>
+          <div class="text1">Limits in NGN</div>
+        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Accidental Medical Treatment</div>
+            <div class="text4">50,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Accidental Medical Evacaution</div>
+            <div class="text4">70,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Transport of Mortal Remains</div>
+            <div class="text4">40,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Loss/Theft of Checked-in Baggage</div>
+            <div class="text4">40,000.00</div>
+          </div>
+
+          <div class="cflex1">
+            <div class="text3">Death</div>
+            <div class="text4">100,000.00</div>
+          </div>
 
           <div class="btndiv">
             <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
           </div>
         </div>
       </div>
-
     </div>
-
-
-      <!-- ------------------------2-------------------------- -->
-
-
-    <div style="border: 1px solid #A8B400;
-    border-radius: 12px;">
-
-    <div class="main">
-      <div class="cflex">
-        <div class="text" style="text-align: center;"><b>Schedule of Cover</b>
-        </div>
-        <div class="text1">Limits in NGN</div>
-      </div>
-      <div>
-        <div class="cflex1">
-          <div class="text3">Accidental Medical Treatment</div>
-          <div class="text4">50,000.00</div>
-        </div>
-
-        <div class="cflex1">
-          <div class="text3">Accidental Medical Evacaution</div>
-          <div class="text4">70,000.00</div>
-        </div>
-
-
-        <div class="cflex1">
-          <div class="text3">Transport of Mortal Remains</div>
-          <div class="text4">40,000.00</div>
-        </div>
-
-        <div class="cflex1">
-          <div class="text3">Loss/Theft of Checked-in Baggage</div>
-          <div class="text4">40,000.00</div>
-        </div>
-
-        <div class="cflex1">
-          <div class="text3">Death</div>
-          <div class="text4">100,000.00</div>
-        </div>
-
-
-        <div class="btndiv">
-          <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
 
     <!-- ------------------------3-------------------------- -->
 
-
-
-
-    <div style="border: 1px solid #A8B400;
-    border-radius: 12px;">
-
-    <div class="main">
-      <div class="cflex">
-        <div class="text" style="text-align: center;"><b>Schedule of Cover</b>
+    <div style="border: 1px solid #a8b400; border-radius: 12px">
+      <div class="main">
+        <div class="cflex">
+          <div class="text" style="text-align: center">
+            <b>Schedule of Cover</b>
+          </div>
+          <div class="text1">Limits in NGN</div>
         </div>
-        <div class="text1">Limits in NGN</div>
-      </div>
-      <div>
-        <div class="cflex1">
-          <div class="text3">Accidental Medical Treatment</div>
-          <div class="text4">75,000.00</div>
-        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Accidental Medical Treatment</div>
+            <div class="text4">75,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Accidental Medical Evacaution</div>
-          <div class="text4">105,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Accidental Medical Evacaution</div>
+            <div class="text4">105,000.00</div>
+          </div>
 
+          <div class="cflex1">
+            <div class="text3">Transport of Mortal Remains</div>
+            <div class="text4">60,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Transport of Mortal Remains</div>
-          <div class="text4">60,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Loss/Theft of Checked-in Baggage</div>
+            <div class="text4">60,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Loss/Theft of Checked-in Baggage</div>
-          <div class="text4">60,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Death</div>
+            <div class="text4">150,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Death</div>
-          <div class="text4">150,000.00</div>
-        </div>
-
-
-        <div class="btndiv">
-          <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
         </div>
       </div>
     </div>
-
-  </div>
-
 
     <!-- ------------------------4-------------------------- -->
 
-
-
-
-
-    <div style="border: 1px solid #A8B400;
-    border-radius: 12px;">
-
-    <div class="main">
-      <div class="cflex">
-        <div class="text" style="text-align: center;"><b>Schedule of Cover</b>
+    <div style="border: 1px solid #a8b400; border-radius: 12px">
+      <div class="main">
+        <div class="cflex">
+          <div class="text" style="text-align: center">
+            <b>Schedule of Cover</b>
+          </div>
+          <div class="text1">Limits in NGN</div>
         </div>
-        <div class="text1">Limits in NGN</div>
-      </div>
-      <div>
-        <div class="cflex1">
-          <div class="text3">Accidental Medical Treatment</div>
-          <div class="text4">100,000.00</div>
-        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Accidental Medical Treatment</div>
+            <div class="text4">100,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Accidental Medical Evacaution</div>
-          <div class="text4">140,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Accidental Medical Evacaution</div>
+            <div class="text4">140,000.00</div>
+          </div>
 
+          <div class="cflex1">
+            <div class="text3">Transport of Mortal Remains</div>
+            <div class="text4">80,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Transport of Mortal Remains</div>
-          <div class="text4">80,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Loss/Theft of Checked-in Baggage</div>
+            <div class="text4">80,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Loss/Theft of Checked-in Baggage</div>
-          <div class="text4">80,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Death</div>
+            <div class="text4">200,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Death</div>
-          <div class="text4">200,000.00</div>
-        </div>
-
-
-        <div class="btndiv">
-          <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
         </div>
       </div>
     </div>
-
-  </div>
-
 
     <!-- ------------------------5-------------------------- -->
 
-
-
-
-    <div style="border: 1px solid #A8B400;
-    border-radius: 12px;">
-
-    <div class="main">
-      <div class="cflex">
-        <div class="text" style="text-align: center;"><b>Schedule of Cover</b>
+    <div style="border: 1px solid #a8b400; border-radius: 12px">
+      <div class="main">
+        <div class="cflex">
+          <div class="text" style="text-align: center">
+            <b>Schedule of Cover</b>
+          </div>
+          <div class="text1">Limits in NGN</div>
         </div>
-        <div class="text1">Limits in NGN</div>
-      </div>
-      <div>
-        <div class="cflex1">
-          <div class="text3">Accidental Medical Treatment</div>
-          <div class="text4">50,000.00</div>
-        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Accidental Medical Treatment</div>
+            <div class="text4">50,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Transport of Mortal Remains</div>
-          <div class="text4">20,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Transport of Mortal Remains</div>
+            <div class="text4">20,000.00</div>
+          </div>
 
+          <div class="cflex1">
+            <div class="text3">Personal Accident(Death)</div>
+            <div class="text4">100,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Personal Accident(Death)</div>
-          <div class="text4">100,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Loss/Theft of Checked-in Personal Effect</div>
+            <div class="text4">20,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Loss/Theft of Checked-in Personal Effect</div>
-          <div class="text4">20,000.00</div>
-        </div>
-
-
-        <div class="btndiv">
-          <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
         </div>
       </div>
     </div>
-
-  </div>
-
 
     <!-- ------------------------6-------------------------- -->
 
-
-
-
-
-    <div style="border: 1px solid #A8B400;
-    border-radius: 12px;">
-
-    <div class="main">
-      <div class="cflex">
-        <div class="text" style="text-align: center;"><b>Schedule of Cover</b>
+    <div style="border: 1px solid #a8b400; border-radius: 12px">
+      <div class="main">
+        <div class="cflex">
+          <div class="text" style="text-align: center">
+            <b>Schedule of Cover</b>
+          </div>
+          <div class="text1">Limits in NGN</div>
         </div>
-        <div class="text1">Limits in NGN</div>
-      </div>
-      <div>
-        <div class="cflex1">
-          <div class="text3">Accidental Medical Treatment</div>
-          <div class="text4">75,000.00</div>
-        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Accidental Medical Treatment</div>
+            <div class="text4">75,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Transport of Mortal Remains</div>
-          <div class="text4">30,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Transport of Mortal Remains</div>
+            <div class="text4">30,000.00</div>
+          </div>
 
+          <div class="cflex1">
+            <div class="text3">Personal Accident(Death)</div>
+            <div class="text4">150,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Personal Accident(Death)</div>
-          <div class="text4">150,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Loss/Theft of Checked-in Personal Effect</div>
+            <div class="text4">30,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Loss/Theft of Checked-in Personal Effect</div>
-          <div class="text4">30,000.00</div>
-        </div>
-
-
-        <div class="btndiv">
-          <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
         </div>
       </div>
     </div>
 
-  </div>
-
-
     <!-- ------------------------7-------------------------- -->
 
-
-
-
-
-    <div style="border: 1px solid #A8B400;
-    border-radius: 12px;">
-
-    <div class="main">
-      <div class="cflex">
-        <div class="text" style="text-align: center;"><b>Schedule of Cover</b>
+    <div style="border: 1px solid #a8b400; border-radius: 12px">
+      <div class="main">
+        <div class="cflex">
+          <div class="text" style="text-align: center">
+            <b>Schedule of Cover</b>
+          </div>
+          <div class="text1">Limits in NGN</div>
         </div>
-        <div class="text1">Limits in NGN</div>
-      </div>
-      <div>
-        <div class="cflex1">
-          <div class="text3">Accidental Medical Treatment</div>
-          <div class="text4">100,000.00</div>
-        </div>
+        <div>
+          <div class="cflex1">
+            <div class="text3">Accidental Medical Treatment</div>
+            <div class="text4">100,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Transport of Mortal Remains</div>
-          <div class="text4">40,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Transport of Mortal Remains</div>
+            <div class="text4">40,000.00</div>
+          </div>
 
+          <div class="cflex1">
+            <div class="text3">Personal Accident(Death)</div>
+            <div class="text4">200,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Personal Accident(Death)</div>
-          <div class="text4">200,000.00</div>
-        </div>
+          <div class="cflex1">
+            <div class="text3">Loss/Theft of Checked-in Personal Effect</div>
+            <div class="text4">40,000.00</div>
+          </div>
 
-        <div class="cflex1">
-          <div class="text3">Loss/Theft of Checked-in Personal Effect</div>
-          <div class="text4">40,000.00</div>
-        </div>
-
-
-        <div class="btndiv">
-          <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          <div class="btndiv">
+            <ion-button class="btn" (click)="goto()">Get Quote</ion-button>
+          </div>
         </div>
       </div>
     </div>
 
-  </div>
-
-
     <!-- ------------------------7-------------------------- -->
-
   </div>
 </ion-content>

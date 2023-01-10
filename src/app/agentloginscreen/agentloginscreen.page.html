@@ -1,26 +1,27 @@
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
-    <ion-row style="display: flex;
-    align-items: center;">
-      <ion-col size="2" style="padding-left: 27px;">
-
-        <ion-buttons>
+    <ion-row style="display: flex; align-items: center">
+      <ion-col size="2" style="padding-left: 27px">
+        <!-- <ion-buttons>
           <div style="width:100% ;" (click)="goback()">
             <img src="assets/images/back-arrow.svg" alt="sb-btn">
           </div>
-        </ion-buttons>
+        </ion-buttons> -->
 
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width: 100%">
+              <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
       </ion-col>
       <ion-col size="8">
         <div class="title">Agent Detail</div>
       </ion-col>
-      <ion-col size="2">
-      </ion-col>
-
-
+      <ion-col size="2"> </ion-col>
     </ion-row>
   </ion-toolbar>
-
 </ion-header>
 <ion-content>
   <div class="wrapper">
@@ -46,7 +47,6 @@
             <div class="para">{{email}}</div>
           </div>
 
-
           <div class="title1">Address</div>
           <div class="inner1">
             <div class="para">{{address}}</div>
@@ -65,18 +65,12 @@
           <div class="inner1">
             <div class="para">{{kycExpiryDate}}</div>
           </div>
-
-
         </div>
-
       </div>
     </div>
     <!-- <div class="img-div">
       <img src="assets/images/no-records.svg">
     </div> -->
-
-
-
   </div>
 </ion-content>
 <!-- <ion-footer>

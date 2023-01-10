@@ -1,35 +1,47 @@
 <ion-header [translucent]="true" class="ion-no-border cheader">
   <ion-toolbar class="headBgGlobal">
     <ion-row>
-      <ion-col size="2" style="padding-left: 25px;">
-        <ion-buttons>
+      <ion-col size="2" style="padding-left: 25px">
+        <!-- <ion-buttons>
           <div style="width:100% ;">
             <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
           </div>
-        </ion-buttons>
+        </ion-buttons> -->
+
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width: 100%">
+              <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
       </ion-col>
       <ion-col size="8">
         <div class="title">Make a Quote</div>
       </ion-col>
-      <ion-col class="titleclass" size="2">
-      </ion-col>
-
-
+      <ion-col class="titleclass" size="2"> </ion-col>
     </ion-row>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content>
   <div class="wrapper">
-
-    <div style="border: 1px solid #A8B400;
-      border-radius: 12px;" *ngIf="productname=='PRIVATE MOTOR-AUTO CLASSIC'">
+    <div
+      style="border: 1px solid #a8b400; border-radius: 12px"
+      *ngIf="productname=='PRIVATE MOTOR-AUTO CLASSIC'"
+    >
       <div class="main">
         <div class="cflex">
-          <div class="text"><b>AUTO CLASS</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive</span>
+          <div class="text">
+            <b>AUTO CLASS</b><br /><span
+              class="cspan"
+              style="padding-left: 2.5%"
+              >Comprehensive</span
+            >
           </div>
-          <div class="text1">1.75%<br><span class="cspan">Of vehicle value</span></div>
+          <div class="text1">
+            1.75%<br /><span class="cspan">Of vehicle value</span>
+          </div>
         </div>
         <div>
           <div class="cflex1">
@@ -45,21 +57,21 @@
           <div class="cflex1">
             <div class="text5">THIFT</div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text5">FIRE</div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text5">ACCIDENTAL DAMAGE</div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
@@ -118,22 +130,27 @@
           </div> -->
 
           <div class="cflex1">
-            <div class="text5">PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF N 2,000,000</div>
+            <div class="text5">
+              PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF
+              N 2,000,000
+            </div>
             <div class="imgdiv">
-              <img src="assets/images/cross.svg">
+              <img src="assets/images/cross.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text5">INCREASE IN PASSENGER LIABILITY</div>
             <div class="imgdiv">
-              <img src="assets/images/cross.svg">
+              <img src="assets/images/cross.svg" />
             </div>
           </div>
 
           <div class="cflex1">
-            <div class="text3">PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR PAYMENTS MADE OVER 3
-              INSTALLMENTS)</div>
+            <div class="text3">
+              PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR
+              PAYMENTS MADE OVER 3 INSTALLMENTS)
+            </div>
             <div class="text4">Up To 3 Consecutive And Equal Payments</div>
           </div>
 
@@ -142,16 +159,22 @@
           </div>
         </div>
       </div>
-
     </div>
 
-    <div style="border: 1px solid #A8B400;
-    border-radius: 12px;" *ngIf="productname=='PRIVATE MOTOR-AUTO PLUS'">
+    <div
+      style="border: 1px solid #a8b400; border-radius: 12px"
+      *ngIf="productname=='PRIVATE MOTOR-AUTO PLUS'"
+    >
       <div class="main">
         <div class="cflex">
-          <div class="text"><b>Auto Plus</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive</span>
+          <div class="text">
+            <b>Auto Plus</b><br /><span class="cspan" style="padding-left: 2.5%"
+              >Comprehensive</span
+            >
           </div>
-          <div class="text1">3%<br><span class="cspan">Of vehicle value</span></div>
+          <div class="text1">
+            3%<br /><span class="cspan">Of vehicle value</span>
+          </div>
         </div>
         <div>
           <div class="cflex1">
@@ -167,21 +190,21 @@
           <div class="cflex1">
             <div class="text5">THIFT</div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text5">FIRE</div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text5">ACCIDENTAL DAMAGE</div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
@@ -240,22 +263,27 @@
         </div> -->
 
           <div class="cflex1">
-            <div class="text5">PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF N 2,000,000</div>
+            <div class="text5">
+              PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF
+              N 2,000,000
+            </div>
             <div class="imgdiv">
-              <img src="assets/images/cross.svg">
+              <img src="assets/images/cross.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text5">INCREASE IN PASSENGER LIABILITY</div>
             <div class="imgdiv">
-              <img src="assets/images/cross.svg">
+              <img src="assets/images/cross.svg" />
             </div>
           </div>
 
           <div class="cflex1">
-            <div class="text3">PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR PAYMENTS MADE OVER 3
-              INSTALLMENTS)</div>
+            <div class="text3">
+              PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR
+              PAYMENTS MADE OVER 3 INSTALLMENTS)
+            </div>
             <div class="text4">Up To 3 Consecutive And Equal Payments</div>
           </div>
 
@@ -264,16 +292,24 @@
           </div>
         </div>
       </div>
-
     </div>
 
-    <div style="border: 1px solid #A8B400;
-    border-radius: 12px;" *ngIf="productname=='UBER CLASSIC MOTOR'">
+    <div
+      style="border: 1px solid #a8b400; border-radius: 12px"
+      *ngIf="productname=='UBER CLASSIC MOTOR'"
+    >
       <div class="main">
         <div class="cflex">
-          <div class="text"><b>Uber Classic</b><br><span class="cspan" style="padding-left: 2.5%;">Comprehensive</span>
+          <div class="text">
+            <b>Uber Classic</b><br /><span
+              class="cspan"
+              style="padding-left: 2.5%"
+              >Comprehensive</span
+            >
           </div>
-          <div class="text1">2.5%<br><span class="cspan">Of vehicle value</span></div>
+          <div class="text1">
+            2.5%<br /><span class="cspan">Of vehicle value</span>
+          </div>
         </div>
         <div>
           <div class="cflex1">
@@ -289,21 +325,21 @@
           <div class="cflex1">
             <div class="text5">THIFT</div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text5">FIRE</div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text5">ACCIDENTAL DAMAGE</div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
@@ -332,21 +368,21 @@
           <div class="cflex1">
             <div class="text3">REFUND OF MEDICAL EXPENSES</div>
             <div class="imgdiv">
-              <img src="assets/images/cross.svg">
+              <img src="assets/images/cross.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text3">LOSS OF PERSONAL EFFECT</div>
             <div class="imgdiv">
-              <img src="assets/images/cross.svg">
+              <img src="assets/images/cross.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text3">TRACKING INSTALLATION</div>
             <div class="imgdiv">
-              <img src="assets/images/cross.svg">
+              <img src="assets/images/cross.svg" />
             </div>
           </div>
 
@@ -368,21 +404,25 @@
         </div> -->
 
           <div class="cflex1">
-            <div class="text5">PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF N 2,000,000</div>
+            <div class="text5">
+              PASSENGER LIABILITY OF ₦250,000 PER PASSENGER. ANNUAL AGGREGATE OF
+              N 2,000,000
+            </div>
             <div class="imgdiv">
-              <img src="assets/images/tick.svg">
+              <img src="assets/images/tick.svg" />
             </div>
           </div>
 
           <div class="cflex1">
             <div class="text5">INCREASE IN PASSENGER LIABILITY</div>
             <div class="text4">@ 0.375% of increased benefit</div>
-
           </div>
 
           <div class="cflex1">
-            <div class="text3">PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR PAYMENTS MADE OVER 3
-              INSTALLMENTS)</div>
+            <div class="text3">
+              PAYMENT PLAN (AN ADDITIONAL 0.25% WILL BE APPLIED ON THE RATE FOR
+              PAYMENTS MADE OVER 3 INSTALLMENTS)
+            </div>
             <div class="text4">Once</div>
           </div>
 
@@ -391,7 +431,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </ion-content>
