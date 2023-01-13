@@ -132,7 +132,10 @@ let MakeaclaimPage = class MakeaclaimPage {
         this.desc = '';
         this.refnum = '';
     }
-    ngOnInit() { }
+    ngOnInit() {
+        this.csurname = localStorage.getItem('lname');
+        this.cothname = localStorage.getItem('fname');
+    }
     ionViewWillEnter() {
         if (this.requestsType) {
             if (this.requestsType === 'NewClaim') {
@@ -214,7 +217,7 @@ let MakeaclaimPage = class MakeaclaimPage {
                 data.append('claimdoc', this.claimdoc.file);
                 this.api.showLoader();
                 this.api
-                    .postdata('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=200', data, localStorage.getItem('token'))
+                    .postdata('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=200', data, '39109f7df56e1CORNERStone9e685066bb852')
                     .subscribe((res) => {
                     console.log('response claim', res);
                     this.api.hideLoader();
@@ -262,13 +265,15 @@ let MakeaclaimPage = class MakeaclaimPage {
                 console.log('token-----', res);
                 const token = res.accessToken;
                 this.api
-                    .postdata('http://testcipapiservices.gibsonline.com/api/Claims', data, token)
+                    .postdata('http://testcipapiservices.gibsonline.com/api/claims', data, token)
                     .subscribe((res) => {
                     this.api.hideLoader();
                     this.api.presenttoast('Clain Number ' + res.claimNo);
                     console.log('gibs product detail', res);
                     // localStorage.setItem('gibsproduct', JSON.stringify(res))
                     // this.router.navigate(['gibsplans']);
+                }, err => {
+                    this.api.hideLoader();
                 });
             }, (err) => {
                 this.api.presenttoast('Invalid Policy Number');

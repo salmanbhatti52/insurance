@@ -45,9 +45,12 @@ export class MakeaclaimPage implements OnInit {
   desc: any = '';
   refnum: any = '';
 
-  constructor(public api: InsuranceAppService, public router: Router) {}
+  constructor(public api: InsuranceAppService, public router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.csurname = localStorage.getItem('lname');
+    this.cothname = localStorage.getItem('fname');
+  }
 
   ionViewWillEnter() {
     if (this.requestsType) {
@@ -138,7 +141,7 @@ export class MakeaclaimPage implements OnInit {
           .postdata(
             'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=200',
             data,
-            localStorage.getItem('token')
+            '39109f7df56e1CORNERStone9e685066bb852'
           )
           .subscribe((res: any) => {
             console.log('response claim', res);
@@ -189,7 +192,7 @@ export class MakeaclaimPage implements OnInit {
           const token = res.accessToken;
           this.api
             .postdata(
-              'http://testcipapiservices.gibsonline.com/api/Claims',
+              'http://testcipapiservices.gibsonline.com/api/claims',
               data,
               token
             )
@@ -200,6 +203,8 @@ export class MakeaclaimPage implements OnInit {
               console.log('gibs product detail', res);
               // localStorage.setItem('gibsproduct', JSON.stringify(res))
               // this.router.navigate(['gibsplans']);
+            }, err => {
+              this.api.hideLoader()
             });
         },
         (err) => {

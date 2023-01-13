@@ -30,9 +30,7 @@
 
 <ion-content>
   <div class="wrapper">
-    <div
-      style="display: flex; align-items: center; justify-content: space-around"
-    >
+    <div style="display: flex; align-items: center; justify-content: space-around">
       <img height="50px" src="assets/images/access_point.png" />
       <h1 style="margin: 0px; font-size: 22px; margin-left: 6px; color: black">
         Select your payment Option.(Amount : ₦ {{priceofquote}} )
@@ -72,10 +70,8 @@
           </td> -->
 
           <td style="color: black">
-            <strong>Paystack </strong><br /><img
-              height="100px;"
-              src="https://cornerstone.com.ng/assets/img/paystack.jpeg"
-            />
+            <strong>Paystack </strong><br /><img height="100px;"
+              src="https://cornerstone.com.ng/assets/img/paystack.jpeg" />
           </td>
         </tr>
       </tbody>
@@ -298,19 +294,13 @@
   <!-- <div class="btndiv" *ngIf="payemntmethod=='WebPAY'">
     <ion-button class="btn" (click)="proceed()"> Proceed</ion-button>
   </div> -->
+  <!-- old key pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f -->
   <div class="btndiv">
-    <button
-      angular4-paystack
-      [key]="'pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'"
-      [email]="email"
-      [amount]="amt"
-      [ref]="reference"
-      class="btn11"
-      (paymentInit)="paymentInit()"
-      (onClose)="paymentCancel()"
-      (callback)="paymentDone($event)"
-    >
+    <button angular4-paystack [key]="'pk_test_ff6f2927d464e23a6ddf592be475db01de695970'" [email]="email" [amount]="amt"
+      [ref]="reference" class="btn11" (paymentInit)="paymentInit()" (onClose)="paymentCancel()"
+      (callback)="paymentDone($event)">
       Pay with Paystack
     </button>
+    <!-- <ion-button (click)="pay()">Pay with Paystack</ion-button> -->
   </div>
 </ion-footer>

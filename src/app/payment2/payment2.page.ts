@@ -18,13 +18,15 @@ export class Payment2Page implements OnInit {
   payemntmethod = '';
   paymentoption: any;
   priceofquote: any;
+  productres: any;
+  policyNo: any;
 
   constructor(
     public location: Location,
     public router: Router,
     public api: InsuranceAppService,
     public navCtrl: NavController
-  ) {}
+  ) { }
   firstName: string;
   lastName: string;
   companyName: string;
@@ -50,6 +52,9 @@ export class Payment2Page implements OnInit {
   paymentDone(ref: any) {
     this.title = 'Payment successfull';
     console.log('payment succesfull-----', this.title, ref);
+    if (ref.status == 'success') {
+      this.pay()
+    }
   }
 
   paymentCancel() {
@@ -60,10 +65,13 @@ export class Payment2Page implements OnInit {
     this.email = localStorage.getItem('email');
     console.log('email', this.email);
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
-    this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
+    // this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
 
     this.priceofquote = Math.floor(Number(localStorage.getItem('overalltax')));
     this.amt = this.priceofquote + '' + '00';
+    console.log('dsadsads', localStorage.getItem('gibsProductres'));
+    this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
+    this.policyNo = this.productres.policyNo
   }
   buyOnlineQuote() {
     this.router.navigate(['/car-insurance-details']);
@@ -108,6 +116,34 @@ export class Payment2Page implements OnInit {
       //   }
       // }
     }
+  }
+
+  pay() {
+    var myData = {
+      sid: 'ECHANNEL2',
+      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+    };
+    this.api.gibsapi(myData).subscribe(
+      (res: any) => {
+        console.log(res);
+        let token = res.accessToken;
+        this.getcertificate(token);
+      },
+      (err) => {
+        console.log(err);
+        this.api.hideLoader();
+      }
+    );
+
+  }
+  getcertificate(token) {
+    let encode = encodeURIComponent(this.policyNo);
+    console.log('eee--', encode);
+
+    this.api.get('http://testcipapiservices.gibsonline.com/api/utilities/send/certificate?policyNo=' + encode + '&email=' + this.email, token).subscribe((res: any) => {
+      console.log('certificate====', res);
+      this.navCtrl.navigateRoot('home-page-screen-after-login')
+    })
   }
 
   paymentapi(paymentoption) {

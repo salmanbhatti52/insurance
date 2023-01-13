@@ -23,8 +23,9 @@ export class PolicylookupPage implements OnInit {
   P10PolicyNumber: any;
   response: any;
   gibspolicy = false;
+  statusdesc: any;
 
-  constructor(public api: InsuranceAppService) {}
+  constructor(public api: InsuranceAppService) { }
 
   ngOnInit() {
     var number = 'YEKINI, AZEEZAT, ABOSEDE';
@@ -78,8 +79,8 @@ export class PolicylookupPage implements OnInit {
         this.api
           .get(
             'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' +
-              this.policynum +
-              '&process_code=140',
+            this.policynum +
+            '&process_code=140',
             '39109f7df56e1CORNERStone9e685066bb852'
           )
           .subscribe(
@@ -102,6 +103,7 @@ export class PolicylookupPage implements OnInit {
                   this.PolicyNumber = this.verifypolicy.polnum;
                   // this.InsuranceType =
                   this.P10PolicyNumber = this.verifypolicy.polnum2;
+                  this.statusdesc = this.verifypolicy.statusdesc
                 }
               } else {
                 this.gibspolicy = false;
@@ -132,8 +134,8 @@ export class PolicylookupPage implements OnInit {
         this.policy = false;
 
         this.gibspolicy = true;
-        this.full_name =
-          response.insured.firstName + ' ' + response.insured.lastName;
+        // this.full_name =
+        //   response.insured.firstName + ' ' + response.insured.lastName;
         this.StartDate = response.startDate;
         this.DateofExpiration = response.endDate;
         this.PolicyNumber = response.policyNo;

@@ -62,6 +62,8 @@ export class GibsplansPage implements OnInit {
   gibsproduct: any;
   overalltax: any;
 
+  draftArr: any = '';
+  subProName: any;
   constructor(
     public api: InsuranceAppService,
     public location: Location,
@@ -73,7 +75,7 @@ export class GibsplansPage implements OnInit {
 
     this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
     console.log('ssssss-----', this.Gproduct);
-
+    this.subProName = this.Gproduct.productName
     this.getCarMakeCompanies();
 
     this.emailvalidation =
@@ -462,14 +464,33 @@ export class GibsplansPage implements OnInit {
         (res: any) => {
           console.log('motor response---', res);
           localStorage.setItem('gibsProductres', JSON.stringify(res));
-          this.route.navigate(['policyquote', {
-            fname: this.fName,
-            lname: this.lName,
-            userEmail: this.userEmail,
-            mobNumber: this.mobNumber,
-            address: this.dateofbirth,
-            gender: this.genderVal,
-          }]);
+          var obj = {
+            title: this.subProName,
+            product_id: res.productID,
+            quote_id: res.agentID,
+            subProName: this.subProName,
+            quoteItems: 'dummy',
+            image:
+              'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+            path: '/policyquote',
+            datetime: new Date().toISOString(),
+          };
+          this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+
+          if (this.draftArr) {
+            this.draftArr.push(obj);
+          } else {
+            this.draftArr = [obj];
+          }
+          // localStorage.setItem('subProName', this.subProName);
+          localStorage.setItem('fname', this.fName);
+          localStorage.setItem('lname', this.lName);
+          localStorage.setItem('userEmail', this.userEmail);
+          localStorage.setItem('mobNumber', this.mobNumber);
+          localStorage.setItem('address', this.dateofbirth);
+          localStorage.setItem('gender', this.genderVal);
+          localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+          this.route.navigate(['policyquote']);
         },
         (err) => {
           console.log(err);

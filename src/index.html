@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Ionic App</title>
 
-    <base href="/" />
+<head>
+  <meta charset="utf-8" />
+  <title>Ionic App</title>
 
-    <meta name="color-scheme" content="light dark" />
-    <meta
-      name="viewport"
-      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
+  <base href="/" />
 
-    <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
 
-    <!-- add to homescreen for ios -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
 
-    <script>
-      (function (w, d, s, o, f, js, fjs) {
-        w["EBANQO-WIDGET"] = o;
-        w[o] =
-          w[o] ||
-          function () {
-            (w[o].q = w[o].q || []).push(arguments);
-          };
-        (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
-        js.id = o;
-        js.src = f;
-        js.async = 1;
-        fjs.parentNode.insertBefore(js, fjs);
-      })(
-        window,
-        document,
-        "script",
-        "ebanqo_widget",
-        "https://widget.ebanqo.io/app.js"
-      );
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-      ebanqo_widget("init", {
-        showChannelButtonsOnSignupForm: true,
+  <script>
+    (function (w, d, s, o, f, js, fjs) {
+      w["EBANQO-WIDGET"] = o;
+      w[o] =
+        w[o] ||
+        function () {
+          (w[o].q = w[o].q || []).push(arguments);
+        };
+      (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+      js.id = o;
+      js.src = f;
+      js.async = 1;
+      fjs.parentNode.insertBefore(js, fjs);
+    })(
+      window,
+      document,
+      "script",
+      "ebanqo_widget",
+      "https://widget.ebanqo.io/app.js"
+    );
+
+    ebanqo_widget("init", {
+      showChannelButtonsOnSignupForm: true,
+      buttonColor: "#2c2276",
+      promptMessageDelay: 2000,
+
+      promptMessage: "Hello, I'm Cici. How may I be of assistance?",
+      instant_chat: {
         buttonColor: "#2c2276",
-        promptMessageDelay: 2000,
+        logoUrl: "https://ebanqo-logos.s3.amazonaws.com/Cici+Header-1.png",
+        url: "https://webchat.ebanqo.io/cornerstone",
+        title: "",
+        logoWidth: 78,
+        logoHeight: 37,
+        chatHeaderBackgroundColor: "#2c2276",
+        chatHeaderTextColor: "#fff",
+      },
+    });
+  </script>
+</head>
 
-        promptMessage: "Hello, I'm Cici. How may I be of assistance?",
-        instant_chat: {
-          buttonColor: "#2c2276",
-          logoUrl: "https://ebanqo-logos.s3.amazonaws.com/Cici+Header-1.png",
-          url: "https://webchat.ebanqo.io/cornerstone",
-          title: "",
-          logoWidth: 78,
-          logoHeight: 37,
-          chatHeaderBackgroundColor: "#2c2276",
-          chatHeaderTextColor: "#fff",
-        },
-      });
-    </script>
-  </head>
+<body>
+  <app-root></app-root>
+  <script type="text/javascript" src="scripts/ajax-call.js"></script>
+</body>
 
-  <body>
-    <app-root></app-root>
-    <script type="text/javascript" src="scripts/ajax-call.js"></script>
-  </body>
 </html>

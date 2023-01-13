@@ -103,7 +103,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
           // });
           let encode1 = encodeURIComponent('P/500/1001/2023/00235');
           console.log('dasdsadsa', encode1);
-          this.api.postdata(' http://testcipapiservices.gibsonline.com/api/policies/' + encode1, this.bearertoken).subscribe((response: any) => {
+          this.api.postdata(' http://testcipapiservices.gibsonline.com/api/policies/' + encode1 + '/renew', this.bearertoken).subscribe((response: any) => {
 
             console.log('ddddddddddddddddddd', response);
             this.api.hideLoader();

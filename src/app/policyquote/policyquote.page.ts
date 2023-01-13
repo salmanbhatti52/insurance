@@ -22,12 +22,12 @@ export class PolicyquotePage implements OnInit {
   ngOnInit() {
     this.overalltax = Math.floor(Number(localStorage.getItem('overalltax')));
 
-    this.fname = this.activated.snapshot.params['fname'];
-    this.lname = this.activated.snapshot.params['lname'];
-    this.userEmail = this.activated.snapshot.params['userEmail'];
-    this.mobNumber = this.activated.snapshot.params['mobNumber'];
-    this.address = this.activated.snapshot.params['address'];
-    this.gender = this.activated.snapshot.params['gender'];
+    this.fname = localStorage.getItem('fname');
+    this.lname = localStorage.getItem('lname');
+    this.userEmail = localStorage.getItem('userEmail');
+    this.mobNumber = localStorage.getItem('mobNumber');
+    this.address = localStorage.getItem('address');
+    this.gender = localStorage.getItem('gender');
     console.log('fname', this.fname);
     this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
     console.log('', this.Gproduct);

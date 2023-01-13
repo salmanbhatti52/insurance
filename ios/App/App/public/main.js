@@ -465,7 +465,7 @@ let AppComponent = class AppComponent {
       setTimeout(() => {
         this.initializeApp();
         _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__.SplashScreen.hide();
-        this.route.navigate(['splash']);
+        this.route.navigate(['splash']); //aliiii
       }, 3500);
     });
   }

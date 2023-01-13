@@ -322,13 +322,13 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
 
   handleImgError(ev, item, url) {
     const source = ev.srcElement;
-    const imgSrc = `assets/images/tt.png`;
+    const imgSrc = `assets/images/travel.svg`;
     source.src = imgSrc;
   }
 
   handleImgError2(ev, item, url) {
     const source = ev.srcElement;
-    const imgSrc = `assets/images/car1.png`;
+    const imgSrc = `assets/images/car.svg`;
     source.src = imgSrc;
   }
 

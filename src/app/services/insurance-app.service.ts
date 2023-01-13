@@ -21,7 +21,7 @@ export class InsuranceAppService {
     private toastctrl: ToastController,
     private http: HttpClient,
     private loadingController: LoadingController
-  ) {}
+  ) { }
   insertData(myData) {
     let header;
 
