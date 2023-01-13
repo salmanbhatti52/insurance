@@ -31,5 +31,5 @@ export class SplashPage implements OnInit {
     }, 3000);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

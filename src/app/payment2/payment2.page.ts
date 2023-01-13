@@ -50,9 +50,9 @@ export class Payment2Page implements OnInit {
   }
 
   paymentDone(ref: any) {
-    this.title = 'Payment successfull';
-    console.log('payment succesfull-----', this.title, ref);
+    console.log('payment succesfull-----', ref);
     if (ref.status == 'success') {
+      localStorage.setItem('trxref', ref.trxref)
       this.pay()
     }
   }
@@ -137,12 +137,14 @@ export class Payment2Page implements OnInit {
 
   }
   getcertificate(token) {
+    this.api.showLoader();
     let encode = encodeURIComponent(this.policyNo);
     console.log('eee--', encode);
 
     this.api.get('http://testcipapiservices.gibsonline.com/api/utilities/send/certificate?policyNo=' + encode + '&email=' + this.email, token).subscribe((res: any) => {
       console.log('certificate====', res);
-      this.navCtrl.navigateRoot('home-page-screen-after-login')
+      this.api.hideLoader()
+      this.navCtrl.navigateRoot('paymentresponse');
     })
   }
 

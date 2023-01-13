@@ -314,6 +314,10 @@ const routes = [
     {
         path: 'draft',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_moment_moment_js"), __webpack_require__.e("src_app_draft_draft_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./draft/draft.module */ 42306)).then(m => m.DraftPageModule)
+    },
+    {
+        path: 'paymentresponse',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_paymentresponse_paymentresponse_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./paymentresponse/paymentresponse.module */ 27459)).then(m => m.PaymentresponsePageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
