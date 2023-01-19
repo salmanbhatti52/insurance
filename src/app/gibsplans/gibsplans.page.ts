@@ -17,7 +17,7 @@ export class GibsplansPage implements OnInit {
   yomValue = format(new Date(), 'yyyy');
   dateofbirth = 'Please Select';
   yopdate = 'Please Select';
-  yomdate = 'Please Select';
+  yomdate = format(new Date(), 'yyyy');
   vehicleModel: any;
   vehicleMake: any;
   fName = '';
@@ -293,6 +293,7 @@ export class GibsplansPage implements OnInit {
   }
 
   getresult(token) {
+    this.api.showLoader()
     let Bearertoken = token;
     // let postdata = {
     //   productID: '3034',
@@ -387,12 +388,12 @@ export class GibsplansPage implements OnInit {
         "kycType": "NOT_AVAILABLE",
         "kycNumber": "n/a"
       },
-      "policySections": [
+      "sections": [
         {
           "sectionID": "n/a",
           "sectionSumInsured": 40000,
           "sectionPremium": 40000,
-          "sectionFields": [
+          "fields": [
             {
               "name": "VehicleRegNo",
               "value": this.regNo
@@ -463,6 +464,7 @@ export class GibsplansPage implements OnInit {
       .subscribe(
         (res: any) => {
           console.log('motor response---', res);
+          this.api.hideLoader()
           localStorage.setItem('gibsProductres', JSON.stringify(res));
           var obj = {
             title: this.subProName,
@@ -489,10 +491,12 @@ export class GibsplansPage implements OnInit {
           localStorage.setItem('mobNumber', this.mobNumber);
           localStorage.setItem('address', this.dateofbirth);
           localStorage.setItem('gender', this.genderVal);
+          localStorage.setItem('product_id', res.productID);
           localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
           this.route.navigate(['policyquote']);
         },
         (err) => {
+          this.api.hideLoader()
           console.log(err);
           let errormsg = err.error.errors[0].message;
           this.api.presenttoast(errormsg)

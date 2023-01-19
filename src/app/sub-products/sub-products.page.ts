@@ -11,16 +11,23 @@ import { InsuranceAppService } from '../services/insurance-app.service';
 })
 export class SubProductsPage implements OnInit {
   subProducts = [
-    { name: 'iSave Plan', image: 'assets/images/investmentplans/1.png' },
     {
+      id: 0,
+      name: 'iSave Plan',
+      image: 'assets/images/investmentplans/1.png'
+    },
+    {
+      id: 1,
       name: 'Maximum Investment Plan',
       image: 'assets/images/investmentplans/2.jpg',
     },
     {
+      id: 2,
       name: 'Cornerstone Universal Plan',
       image: 'assets/images/investmentplans/3.jpg',
     },
     {
+      id: 3,
       name: 'Children Education Fund',
       image: 'assets/images/investmentplans/4.png',
     },
@@ -31,7 +38,7 @@ export class SubProductsPage implements OnInit {
     private http: HttpClient,
     public api: InsuranceAppService,
     public navctrl: NavController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.token = localStorage.getItem('token');
@@ -54,7 +61,7 @@ export class SubProductsPage implements OnInit {
     // console.log('response====', res);
     // this.api.presenttoast(res.result.message);
     localStorage.setItem('subProName', sp.name);
-
+    localStorage.setItem('product_id', sp.id);
     if (sp.name == 'iSave Plan') {
       this.navctrl.navigateForward('ivplan1');
     }

@@ -20,6 +20,9 @@ export class Payment2Page implements OnInit {
   priceofquote: any;
   productres: any;
   policyNo: any;
+  subprodName: any;
+  draftArr: any;
+  productID: string;
 
   constructor(
     public location: Location,
@@ -53,25 +56,33 @@ export class Payment2Page implements OnInit {
     console.log('payment succesfull-----', ref);
     if (ref.status == 'success') {
       localStorage.setItem('trxref', ref.trxref)
+
       this.pay()
     }
   }
+
 
   paymentCancel() {
     console.log('payment failed');
   }
 
   ngOnInit() {
+    this.subprodName = localStorage.getItem('subProName');
+    this.productID = localStorage.getItem('product_id');
     this.email = localStorage.getItem('email');
-    console.log('email', this.email);
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
     // this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
 
     this.priceofquote = Math.floor(Number(localStorage.getItem('overalltax')));
     this.amt = this.priceofquote + '' + '00';
     console.log('dsadsads', localStorage.getItem('gibsProductres'));
-    this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
-    this.policyNo = this.productres.policyNo
+    if (localStorage.getItem('gibsProductres') == null) {
+      this.policyNo = ''
+    } else {
+      this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
+      this.policyNo = this.productres.policyNo
+    }
+
   }
   buyOnlineQuote() {
     this.router.navigate(['/car-insurance-details']);
@@ -127,7 +138,24 @@ export class Payment2Page implements OnInit {
       (res: any) => {
         console.log(res);
         let token = res.accessToken;
-        this.getcertificate(token);
+        this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+        console.log(this.draftArr);
+
+        for (var i = 0; i < this.draftArr.length; i++) {
+          if (this.draftArr[i].product_id == this.productID) {
+
+            this.draftArr.splice(i, 1);
+
+          }
+
+        }
+        localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+        if (this.subprodName == 'PRIVATE MOTOR-AUTO CLASSIC' || this.subprodName == 'PRIVATE      MOTOR-AUTO PLUS' || this.subprodName == 'UBER CLASSIC MOTOR') {
+          this.getcertificate(token);
+        } else {
+          this.navCtrl.navigateRoot('home-page-screen-after-login')
+        }
+
       },
       (err) => {
         console.log(err);
@@ -145,6 +173,9 @@ export class Payment2Page implements OnInit {
       console.log('certificate====', res);
       this.api.hideLoader()
       this.navCtrl.navigateRoot('paymentresponse');
+    }, err => {
+      this.api.hideLoader();
+      this.api.presenttoast('Something went wrong');
     })
   }
 

@@ -565,6 +565,7 @@ let CarInsuranceDetailsPage = class CarInsuranceDetailsPage {
         headers: config.headers
       }).subscribe(res => {
         this.propsalResponse = res;
+        console.log(res);
 
         if (this.propsalResponse.status_no == 0) {
           this.api.presenttoast(this.propsalResponse.message);
@@ -589,6 +590,7 @@ let CarInsuranceDetailsPage = class CarInsuranceDetailsPage {
                 quoteItems: quoteItems,
                 image: 'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
                 path: '/payment',
+                status: 0,
                 datetime: new Date().toISOString()
               };
               this.draftArr.push(obj);

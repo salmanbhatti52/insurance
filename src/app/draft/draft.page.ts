@@ -9,7 +9,7 @@ import * as moment from 'moment';
 export class DraftPage implements OnInit {
   draftArr: any = '';
   currentdate: any;
-  constructor(public router: Router) {}
+  constructor(public router: Router) { }
 
   ngOnInit() {
     this.currentdate = moment(new Date()).format('DD-MM-YYYY');
@@ -42,7 +42,7 @@ export class DraftPage implements OnInit {
 
     localStorage.setItem('product_id', sp.product_id);
     localStorage.setItem('quote_id', sp.quote_id);
-    localStorage.setItem('subProName', sp.product_name);
+    localStorage.setItem('subProName', sp.subProName);
     localStorage.setItem('quoteItems', sp.quoteItems);
     this.router.navigate([sp.path]);
   }

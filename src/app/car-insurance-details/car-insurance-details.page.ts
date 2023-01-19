@@ -126,7 +126,7 @@ export class CarInsuranceDetailsPage implements OnInit {
     public api: InsuranceAppService,
     private actionSheetController: ActionSheetController,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit() {
     // this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
@@ -492,6 +492,8 @@ export class CarInsuranceDetailsPage implements OnInit {
         .subscribe(
           (res: any) => {
             this.propsalResponse = res;
+            console.log(res);
+
             if (this.propsalResponse.status_no == 0) {
               this.api.presenttoast(this.propsalResponse.message);
             } else {
@@ -518,6 +520,7 @@ export class CarInsuranceDetailsPage implements OnInit {
                     image:
                       'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
                     path: '/payment',
+                    status: 0, // for active/present in array
                     datetime: new Date().toISOString(),
                   };
 

@@ -18,13 +18,15 @@ export class IvpaymentPage implements OnInit {
   payemntmethod = '';
   paymentoption: any;
   priceofquote: any;
+  draftArr: any;
+  productID: any;
 
   constructor(
     public location: Location,
     public router: Router,
     public api: InsuranceAppService,
     public navCtrl: NavController
-  ) {}
+  ) { }
   firstName: string;
   lastName: string;
   companyName: string;
@@ -51,8 +53,22 @@ export class IvpaymentPage implements OnInit {
   }
 
   paymentDone(ref: any) {
-    this.title = 'Payment successfull';
-    console.log('payment succesfull-----', this.title, ref);
+    console.log('payment succesfull-----', ref);
+    if (ref.status == 'success') {
+      this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+      console.log(this.draftArr);
+
+      for (var i = 0; i < this.draftArr.length; i++) {
+        if (this.draftArr[i].product_id == this.productID) {
+
+          this.draftArr.splice(i, 1);
+
+        }
+
+      }
+      this.navCtrl.navigateRoot('home-page-screen-after-login')
+      localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+    }
   }
 
   paymentCancel() {
@@ -60,6 +76,7 @@ export class IvpaymentPage implements OnInit {
   }
 
   ngOnInit() {
+    this.productID = localStorage.getItem('product_id');
     this.email = localStorage.getItem('email');
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
 

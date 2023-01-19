@@ -81,6 +81,7 @@ export class Ivplan4Page implements OnInit {
   ];
   // valuetype = 'Third Party';
   draftArr: any = '';
+  productID: any;
   constructor(
     public router: Router,
     public api: InsuranceAppService,
@@ -88,6 +89,7 @@ export class Ivplan4Page implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.productID = localStorage.getItem('product_id');
     this.subProName = localStorage.getItem('subProName');
     console.log('subproduct name-----', this.subProName);
 
@@ -269,7 +271,7 @@ export class Ivplan4Page implements OnInit {
           localStorage.setItem('ivplanres', JSON.stringify(res));
           var obj = {
             title: this.subProName,
-            product_id: res.refnum,
+            product_id: this.productID,
             quote_id: quoteId,
             subProName: this.subProName,
             quoteItems: 'dummy',

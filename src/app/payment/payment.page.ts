@@ -19,6 +19,10 @@ export class PaymentPage implements OnInit {
   payemntmethod = '';
   paymentoption: any;
   priceofquote: any;
+  subprodName: any;
+  productID: any;
+  draftArr: any;
+
 
   constructor(public location: Location,
     public router: Router,
@@ -50,7 +54,23 @@ export class PaymentPage implements OnInit {
 
   paymentDone(ref: any) {
     this.title = 'Payment successfull';
-    console.log('payment succesfull-----', this.title, ref);
+    console.log('payment succesfull-----', ref);
+    if (ref.status == 'success') {
+      this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+      console.log(this.draftArr);
+
+      for (var i = 0; i < this.draftArr.length; i++) {
+        if (this.draftArr[i].product_id == this.productID) {
+
+          this.draftArr.splice(i, 1);
+
+        }
+
+      }
+      this.navCtrl.navigateRoot('home-page-screen-after-login')
+      localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+    }
+
   }
 
   paymentCancel() {
@@ -60,6 +80,8 @@ export class PaymentPage implements OnInit {
 
 
   ngOnInit() {
+    this.subprodName = localStorage.getItem('subProName');
+    this.productID = localStorage.getItem('product_id');
     this.email = localStorage.getItem('email');
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));

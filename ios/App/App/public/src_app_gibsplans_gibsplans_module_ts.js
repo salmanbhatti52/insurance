@@ -119,7 +119,7 @@ let GibsplansPage = class GibsplansPage {
         this.yomValue = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(), 'yyyy');
         this.dateofbirth = 'Please Select';
         this.yopdate = 'Please Select';
-        this.yomdate = 'Please Select';
+        this.yomdate = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(), 'yyyy');
         this.fName = '';
         this.lName = '';
         this.userEmail = '';
@@ -369,6 +369,7 @@ let GibsplansPage = class GibsplansPage {
         }
     }
     getresult(token) {
+        this.api.showLoader();
         let Bearertoken = token;
         // let postdata = {
         //   productID: '3034',
@@ -462,12 +463,12 @@ let GibsplansPage = class GibsplansPage {
                 "kycType": "NOT_AVAILABLE",
                 "kycNumber": "n/a"
             },
-            "policySections": [
+            "sections": [
                 {
                     "sectionID": "n/a",
                     "sectionSumInsured": 40000,
                     "sectionPremium": 40000,
-                    "sectionFields": [
+                    "fields": [
                         {
                             "name": "VehicleRegNo",
                             "value": this.regNo
@@ -533,6 +534,7 @@ let GibsplansPage = class GibsplansPage {
             .postdata('http://testcipapiservices.gibsonline.com/api/policies', postdata, Bearertoken)
             .subscribe((res) => {
             console.log('motor response---', res);
+            this.api.hideLoader();
             localStorage.setItem('gibsProductres', JSON.stringify(res));
             var obj = {
                 title: this.subProName,
@@ -558,9 +560,11 @@ let GibsplansPage = class GibsplansPage {
             localStorage.setItem('mobNumber', this.mobNumber);
             localStorage.setItem('address', this.dateofbirth);
             localStorage.setItem('gender', this.genderVal);
+            localStorage.setItem('product_id', res.productID);
             localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
             this.route.navigate(['policyquote']);
         }, (err) => {
+            this.api.hideLoader();
             console.log(err);
             let errormsg = err.error.errors[0].message;
             this.api.presenttoast(errormsg);

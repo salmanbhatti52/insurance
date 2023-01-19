@@ -206,7 +206,7 @@ export class MypoliciesPage implements OnInit {
     public router: Router,
     public api: InsuranceAppService,
     public location: Location
-  ) {}
+  ) { }
 
   ngOnInit() {
     console.log('new Date().toISOString()===', new Date().toISOString());
@@ -1009,7 +1009,6 @@ export class MypoliciesPage implements OnInit {
 
           if (data.message == 'success') {
             //ali
-
             var obj = {
               title: data.info.product_name,
               product_id: data.info.product_id,

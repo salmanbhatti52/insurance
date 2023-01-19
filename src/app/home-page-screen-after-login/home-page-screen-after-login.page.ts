@@ -41,9 +41,9 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
     public iab: InAppBrowser
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   ionViewWillEnter() {
     this.loginas = localStorage.getItem('loginas');
     this.username = localStorage.getItem('fname');
