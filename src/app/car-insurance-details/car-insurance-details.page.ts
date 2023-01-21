@@ -535,8 +535,10 @@ export class CarInsuranceDetailsPage implements OnInit {
 
               // this.api.presenttoast("Proposal completed start payment");
               this.router.navigate(['/payment']);
+              localStorage.setItem('productres', JSON.stringify(res))
             }
             console.log('Response after propsal', JSON.stringify(res));
+
           },
           (err) => {
             console.log('err===', err);

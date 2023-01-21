@@ -159,6 +159,7 @@ let GibsplansPage = class GibsplansPage {
         this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
         console.log('ssssss-----', this.Gproduct);
         this.subProName = this.Gproduct.productName;
+        this.productId = this.Gproduct.productID;
         this.getCarMakeCompanies();
         this.emailvalidation =
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -440,7 +441,7 @@ let GibsplansPage = class GibsplansPage {
         //   ],
         // };
         let postdata = {
-            "productID": "1001",
+            "productID": this.productId,
             "entryDate": "2022-10-29",
             "startDate": "2022-10-29",
             "endDate": "2023-10-29",

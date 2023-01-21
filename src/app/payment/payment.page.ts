@@ -56,6 +56,7 @@ export class PaymentPage implements OnInit {
     this.title = 'Payment successfull';
     console.log('payment succesfull-----', ref);
     if (ref.status == 'success') {
+      localStorage.setItem('trxref', ref.trxref)
       this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
       console.log(this.draftArr);
 
@@ -67,7 +68,7 @@ export class PaymentPage implements OnInit {
         }
 
       }
-      this.navCtrl.navigateRoot('home-page-screen-after-login')
+      this.navCtrl.navigateRoot('paymentresponse')
       localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
     }
 

@@ -318,6 +318,10 @@ const routes = [
     {
         path: 'paymentresponse',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_paymentresponse_paymentresponse_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./paymentresponse/paymentresponse.module */ 27459)).then(m => m.PaymentresponsePageModule)
+    },
+    {
+        path: 'payment2response',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_payment2response_payment2response_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./payment2response/payment2response.module */ 51342)).then(m => m.Payment2responsePageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

@@ -150,11 +150,9 @@ export class Payment2Page implements OnInit {
 
         }
         localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
-        if (this.subprodName == 'PRIVATE MOTOR-AUTO CLASSIC' || this.subprodName == 'PRIVATE      MOTOR-AUTO PLUS' || this.subprodName == 'UBER CLASSIC MOTOR') {
-          this.getcertificate(token);
-        } else {
-          this.navCtrl.navigateRoot('home-page-screen-after-login')
-        }
+
+        this.getcertificate(token);
+
 
       },
       (err) => {
@@ -172,7 +170,7 @@ export class Payment2Page implements OnInit {
     this.api.get('http://testcipapiservices.gibsonline.com/api/utilities/send/certificate?policyNo=' + encode + '&email=' + this.email, token).subscribe((res: any) => {
       console.log('certificate====', res);
       this.api.hideLoader()
-      this.navCtrl.navigateRoot('paymentresponse');
+      this.navCtrl.navigateRoot('payment2response');
     }, err => {
       this.api.hideLoader();
       this.api.presenttoast('Something went wrong');

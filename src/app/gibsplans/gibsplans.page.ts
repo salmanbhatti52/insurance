@@ -64,6 +64,7 @@ export class GibsplansPage implements OnInit {
 
   draftArr: any = '';
   subProName: any;
+  productId: any;
   constructor(
     public api: InsuranceAppService,
     public location: Location,
@@ -76,6 +77,8 @@ export class GibsplansPage implements OnInit {
     this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
     console.log('ssssss-----', this.Gproduct);
     this.subProName = this.Gproduct.productName
+    this.productId = this.Gproduct.productID
+
     this.getCarMakeCompanies();
 
     this.emailvalidation =
@@ -365,7 +368,7 @@ export class GibsplansPage implements OnInit {
     // };
 
     let postdata = {
-      "productID": "1001",
+      "productID": this.productId,
       "entryDate": "2022-10-29",
       "startDate": "2022-10-29",
       "endDate": "2023-10-29",

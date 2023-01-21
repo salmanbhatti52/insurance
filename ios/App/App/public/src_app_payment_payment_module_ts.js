@@ -130,6 +130,7 @@ let PaymentPage = class PaymentPage {
         this.title = 'Payment successfull';
         console.log('payment succesfull-----', ref);
         if (ref.status == 'success') {
+            localStorage.setItem('trxref', ref.trxref);
             this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
             console.log(this.draftArr);
             for (var i = 0; i < this.draftArr.length; i++) {
@@ -137,7 +138,7 @@ let PaymentPage = class PaymentPage {
                     this.draftArr.splice(i, 1);
                 }
             }
-            this.navCtrl.navigateRoot('home-page-screen-after-login');
+            this.navCtrl.navigateRoot('paymentresponse');
             localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
         }
     }

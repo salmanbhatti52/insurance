@@ -306,6 +306,10 @@ const routes: Routes = [
   {
     path: 'paymentresponse',
     loadChildren: () => import('./paymentresponse/paymentresponse.module').then( m => m.PaymentresponsePageModule)
+  },
+  {
+    path: 'payment2response',
+    loadChildren: () => import('./payment2response/payment2response.module').then( m => m.Payment2responsePageModule)
   }
 
 
