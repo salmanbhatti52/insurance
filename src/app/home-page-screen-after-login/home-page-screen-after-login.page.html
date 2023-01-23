@@ -38,13 +38,8 @@
       </ion-col>
       <ion-col size="2"></ion-col>
       <ion-col class="titleclass" size="2">
-        <img
-          *ngIf="loginas == 'user'"
-          (click)="updateProfile()"
-          class="pro-img"
-          src="assets/images/user.png"
-          alt="profile"
-        />
+        <img *ngIf="loginas == 'user'" (click)="updateProfile()" class="pro-img" src="assets/images/user.png"
+          alt="profile" />
       </ion-col>
     </ion-row>
     <div class="top-container">
@@ -52,13 +47,8 @@
       <p class="wc-para">Welcome</p>
 
       <div class="slide-div">
-        <ion-slides
-          pager="true"
-          [options]="slideOpts"
-          scrollbar="true"
-          (ionSlideDidChange)="active-slide"
-          class="slides1"
-        >
+        <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide"
+          class="slides1">
           <ion-slide>
             <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
@@ -78,33 +68,16 @@
                 </div> -->
 
                 <div style="width: 100%" (click)="learnmore()">
-                  <img
-                    style="border-radius: 10px 50px 10px 10px"
-                    class="ins-nce"
-                    src="assets/images/slider/pt1.jpg"
-                  />
+                  <img style="border-radius: 10px 50px 10px 10px" class="ins-nce" src="assets/images/slider/pt1.jpg" />
                 </div>
               </div>
             </div>
           </ion-slide>
 
-          <ion-slide>
+          <!-- <ion-slide>
             <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
-                <!-- <div>
-                  <p class="p1">Get Immediate</p>
-                  <p class="p2">Claim assistance</p>
-                  <ion-progress-bar
-                    class="p-bar"
-                    value="0.38"
-                    style="--progress-background: #1a206d"
-                  >
-                  </ion-progress-bar>
-                  <p class="p3">We have got you covered</p>
-                  <ion-button class="btn-sm" (click)="learnmore2()"
-                    >Learn more</ion-button
-                  >
-                </div> -->
+
                 <div style="width: 100%" (click)="learnmore2()">
                   <img
                     style="border-radius: 10px 50px 10px 10px"
@@ -114,7 +87,7 @@
                 </div>
               </div>
             </div>
-          </ion-slide>
+          </ion-slide> -->
 
           <ion-slide>
             <div class="mid-div" style="width: 99%">
@@ -134,11 +107,7 @@
                   >
                 </div> -->
                 <div style="width: 100%" (click)="learnmore3()">
-                  <img
-                    style="border-radius: 10px 50px 10px 10px"
-                    class="ins-nce"
-                    src="assets/images/slider/pt2.jpg"
-                  />
+                  <img style="border-radius: 10px 50px 10px 10px" class="ins-nce" src="assets/images/slider/pt2.jpg" />
                 </div>
               </div>
             </div>
@@ -160,21 +129,11 @@
           <div class="gc-div" (click)="openProduct(p,p.name)">
             <!-- (click)="openQuote(p)" -->
             <div class="gimg-div">
-              <img
-                *ngIf="p.name =='Travel Insurance'"
-                (error)="handleImgError($event, userIMG)"
-                src="{{p.image}}"
-                alt=""
-                class="cimg"
-              />
+              <img *ngIf="p.name =='Travel Insurance'" (error)="handleImgError($event, userIMG)" src="{{p.image}}"
+                alt="" class="cimg" />
 
-              <img
-                *ngIf="p.name =='Motor Insurance'"
-                (error)="handleImgError2($event, userIMG)"
-                src="{{p.image}}"
-                alt=""
-                class="cimg"
-              />
+              <img *ngIf="p.name =='Motor Insurance'" (error)="handleImgError2($event, userIMG)" src="{{p.image}}"
+                alt="" class="cimg" />
             </div>
             <p class="gp-div">{{p.name}}</p>
           </div>
@@ -194,13 +153,7 @@
     <div style="text-align: center; color: #1a206d; font-size: 20px">
       Insurance Tips
     </div>
-    <ion-slides
-      pager="true"
-      [options]="slideOpts"
-      scrollbar="true"
-      (ionSlideDidChange)="active-slide"
-      class="slides2"
-    >
+    <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide" class="slides2">
       <ion-slide style="margin: 10px">
         <div class="lst-div">
           <!-- <p class="lst-para">
@@ -209,11 +162,7 @@
             branches?
           </p> -->
           <div class="limg-div">
-            <img
-              style="border-radius: 10px"
-              src="assets/images/slider/it1.jpg"
-              alt=""
-            />
+            <img style="border-radius: 10px" src="assets/images/slider/it1.jpg" alt="" />
           </div>
         </div>
       </ion-slide>
@@ -224,11 +173,7 @@
             available on our new mobile app.
           </p> -->
           <div class="limg-div">
-            <img
-              style="border-radius: 10px"
-              src="assets/images/slider/it2.jpg"
-              alt=""
-            />
+            <img style="border-radius: 10px" src="assets/images/slider/it2.jpg" alt="" />
           </div>
         </div>
       </ion-slide>
@@ -241,11 +186,7 @@
             simple!
           </p> -->
           <div class="limg-div">
-            <img
-              style="border-radius: 10px"
-              src="assets/images/slider/it3.jpg"
-              alt=""
-            />
+            <img style="border-radius: 10px" src="assets/images/slider/it3.jpg" alt="" />
           </div>
         </div>
       </ion-slide>

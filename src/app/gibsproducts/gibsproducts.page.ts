@@ -88,7 +88,7 @@ export class GibsproductsPage implements OnInit {
             console.log('gibs product detail', res);
             localStorage.setItem('gibsproduct', JSON.stringify(res));
 
-            this.router.navigate(['comprehensivequote']);
+            this.router.navigate(['gibsplans']);
           });
       },
       (err) => {
