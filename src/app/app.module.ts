@@ -18,7 +18,7 @@ import { Angular4PaystackModule } from 'angular4-paystack';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    Angular4PaystackModule.forRoot('pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'),
+    Angular4PaystackModule.forRoot('pk_test_ff6f2927d464e23a6ddf592be475db01de695970'),
   ],
   providers: [
     ReactiveFormsModule,

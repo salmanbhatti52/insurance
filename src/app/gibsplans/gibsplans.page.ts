@@ -65,6 +65,7 @@ export class GibsplansPage implements OnInit {
   draftArr: any = '';
   subProName: any;
   productId: any;
+  motorproduct: any;
   constructor(
     public api: InsuranceAppService,
     public location: Location,
@@ -72,7 +73,13 @@ export class GibsplansPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (localStorage.getItem('subProName') == 'Third Party') {
+      this.motorproduct = 'THIRD_PARTY_ONLY'
+    } else {
+      this.motorproduct = 'COMPREHENSIVE '
+    }
 
+    console.log(this.motorproduct);
 
     this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
     console.log('ssssss-----', this.Gproduct);
@@ -367,7 +374,9 @@ export class GibsplansPage implements OnInit {
     //   ],
     // };
 
+
     let postdata = {
+      // default productID:1001
       "productID": this.productId,
       "entryDate": "2022-10-29",
       "startDate": "2022-10-29",
@@ -451,7 +460,7 @@ export class GibsplansPage implements OnInit {
             },
             {
               "name": "CoverType",
-              "value": "COMPREHENSIVE"
+              "value": this.motorproduct
             }
           ]
         }

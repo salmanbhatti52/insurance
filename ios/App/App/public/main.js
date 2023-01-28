@@ -619,7 +619,7 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
             _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule.forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule,
             _angular_common_http__WEBPACK_IMPORTED_MODULE_8__.HttpClientModule,
-            angular4_paystack__WEBPACK_IMPORTED_MODULE_9__.Angular4PaystackModule.forRoot('pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f'),
+            angular4_paystack__WEBPACK_IMPORTED_MODULE_9__.Angular4PaystackModule.forRoot('pk_test_ff6f2927d464e23a6ddf592be475db01de695970'),
         ],
         providers: [
             _angular_forms__WEBPACK_IMPORTED_MODULE_10__.ReactiveFormsModule,

@@ -20,6 +20,9 @@
 <ion-content>
   <div class="container">
     <div *ngIf="draftArr">
+      <div style="text-align: center" class="boxdiv" *ngIf="draftArr.length==0">
+        <p style="padding: 20px 0px" class="con-p2">No draft present</p>
+      </div>
       <div class="boxdiv" *ngFor="let sp of draftArr">
         <div style="display: flex; margin-bottom: 7%" (click)="seeDetails(sp)">
           <img (error)="handleImgError($event, userIMG)" src="{{sp.image}}" alt=""

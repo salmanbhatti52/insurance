@@ -28,6 +28,35 @@ export class PaymentresponsePage implements OnInit {
 
 
 
+  send() {
+    var myData = {
+      sid: 'ECHANNEL2',
+      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+    };
+    this.api.gibsapi(myData).subscribe(
+      (res: any) => {
+        console.log(res);
+        let token = res.accessToken;
+        this.getcertificate(token);
+      },
+      (err) => {
+        console.log(err);
+        this.api.hideLoader();
+      }
+    );
+
+  }
+  getcertificate(token) {
+    let encode = encodeURIComponent('P/500/1001/2023/00295');
+    console.log('eee--', encode);
+
+    this.api.get('http://testcipapiservices.gibsonline.com/api/utilities/send/certificate?policyNo=' + encode + '&email=' + this.email, token).subscribe((res: any) => {
+      console.log('certificate====', res);
+      this.api.presenttoast('Please check your email.')
+    })
+  }
+
+
   goback() {
     this.router.navigate(['/home-page-screen-after-login']);
   }
