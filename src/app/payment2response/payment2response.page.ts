@@ -19,10 +19,15 @@ export class Payment2responsePage implements OnInit {
     public navCtrl: NavController) { }
 
   ngOnInit() {
+    if (localStorage.getItem('subProName') == 'Third Party') {
+      this.subProName = localStorage.getItem('subProName')
+    } else {
+      this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
+      console.log('ssssss-----', this.Gproduct);
+      this.subProName = this.Gproduct.productName
+    }
     this.email = localStorage.getItem('email');
-    this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
-    console.log('ssssss-----', this.Gproduct);
-    this.subProName = this.Gproduct.productName
+
     this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
     console.log(this.productres);
 

@@ -113,8 +113,8 @@ export class QuotePopupPage implements OnInit {
     } else {
       if (sp.product_for_quote == 1) {
         if (sp.name == 'Third Party') {
-          this.router.navigate(['/gibsproducts']);
-          // this.router.navigate(['/mypolicies']);
+          // this.router.navigate(['/gibsproducts']);
+          this.router.navigate(['/mypolicies']);
         } else {
           if (sp.name == 'Student Plan' || sp.name == 'Europe / Shengen') {
             this.router.navigate(['/mypolicies']);

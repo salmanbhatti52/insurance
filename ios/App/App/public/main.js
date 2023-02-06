@@ -173,7 +173,7 @@ const routes = [
     },
     {
         path: 'payment',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_payment_payment_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./payment/payment.module */ 24068)).then(m => m.PaymentPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_moment_moment_js"), __webpack_require__.e("src_app_payment_payment_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./payment/payment.module */ 24068)).then(m => m.PaymentPageModule)
     },
     {
         path: 'payquote',
@@ -221,7 +221,7 @@ const routes = [
     },
     {
         path: 'gibsplans',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_gibsplans_gibsplans_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./gibsplans/gibsplans.module */ 12628)).then(m => m.GibsplansPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("default-node_modules_moment_moment_js"), __webpack_require__.e("src_app_gibsplans_gibsplans_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./gibsplans/gibsplans.module */ 12628)).then(m => m.GibsplansPageModule)
     },
     {
         path: 'allpolicies',
@@ -676,6 +676,9 @@ let InsuranceAppService = class InsuranceAppService {
       // "Accept": "application/json"
       'Content-Type': 'application/x-www-form-urlencoded'
     });
+    header.append('Access-Control-Allow-Origin', '*');
+    header.append('Access-Control-Allow-Methods', '*');
+    header.append('Access-Control-Allow-Headers');
     return this.http.post(this.url, myData, {
       headers: header
     });

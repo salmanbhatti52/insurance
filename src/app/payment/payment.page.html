@@ -288,9 +288,9 @@
   </div>
 </ion-content>
 <ion-footer>
-  <!-- <div class="btndiv" *ngIf="payemntmethod=='WebPAY'">
-    <ion-button class="btn" (click)="proceed()"> Proceed</ion-button>
-  </div> -->
+  <div class="btndiv">
+    <ion-button class="btn" (click)="paymentDone()"> Proceed</ion-button>
+  </div>
   <div class="btndiv">
     <button angular4-paystack [key]="'pk_test_ff6f2927d464e23a6ddf592be475db01de695970'" [email]="email" [amount]="amt"
       [ref]="reference" class="btn11" (paymentInit)="paymentInit()" (onClose)="paymentCancel()"

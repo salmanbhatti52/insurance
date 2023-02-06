@@ -200,7 +200,7 @@ export class MypoliciesPage implements OnInit {
     { id: '9', value: '1000000', active: false },
   ];
   // valuetype = 'Third Party';
-
+  vehicleModelNew = [];
   draftArr: any = '';
   constructor(
     public router: Router,
@@ -371,8 +371,9 @@ export class MypoliciesPage implements OnInit {
       }
     );
   }
-  vehicleModelNew = [];
+
   getVehicleModels() {
+    this.vehicleModelNew = [];
     const myData =
       'myData={"verify_token":"' +
       localStorage.getItem('token') +
@@ -1032,11 +1033,17 @@ export class MypoliciesPage implements OnInit {
 
             this.api.presenttoast(data.info.message);
             localStorage.setItem('userfullname', this.fName + ' ' + this.lName);
+            localStorage.setItem('fname', this.fName);
+            localStorage.setItem('lname', this.lName);
             localStorage.setItem('email', this.userEmail);
             localStorage.setItem('product_id', data.info.product_id);
             localStorage.setItem('quote_id', data.info.quote_id);
             localStorage.setItem('subProName', data.info.product_name);
             localStorage.setItem('quoteItems', JSON.stringify(data.quoteItems));
+            localStorage.setItem('vechileval', this.vehicleVal)
+            localStorage.setItem('vechilemakeval', this.vehicleMakeVal);
+            localStorage.setItem('vechilemodelval', this.vehicleModelVal)
+            localStorage.setItem('phonenumber', this.mobNumber)
             this.router.navigate(['/yourquote']);
           } else {
             this.api.presenttoast(data.message);

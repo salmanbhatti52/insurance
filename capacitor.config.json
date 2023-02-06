@@ -1,1 +1,9 @@
-{}
+{
+  "cordova": {
+    "android": {
+        "preferences": {
+            "loadUrlTimeoutValue": "700000"
+        }
+    }
+  }
+}

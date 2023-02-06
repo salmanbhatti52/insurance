@@ -30,7 +30,9 @@ export class InsuranceAppService {
       // "Accept": "application/json"
       'Content-Type': 'application/x-www-form-urlencoded',
     });
-
+    header.append('Access-Control-Allow-Origin', '*');
+    header.append('Access-Control-Allow-Methods', '*');
+    header.append('Access-Control-Allow-Headers');
     return this.http.post(this.url, myData, {
       headers: header,
     });
@@ -172,7 +174,10 @@ export class InsuranceAppService {
 
     header = new HttpHeaders({
       Authorization: 'Bearer ' + token,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     });
+    header.append("Access-Control-Allow-Origin", "*");
 
     return this.http.post(`${url}`, data, {
       headers: header,

@@ -14,6 +14,13 @@ export class DraftPage implements OnInit {
   ngOnInit() {
     this.currentdate = moment(new Date()).format('DD-MM-YYYY');
     console.log('cdate=', this.currentdate);
+    var oneYearFromNow = new Date();
+    var result = oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+    console.log(result);
+    moment(new Date(result)).format('DD-MM-YYYY');
+    console.log(moment(new Date(result)).format('YYYY-MM-DD'));
+
+
   }
 
   ionViewWillEnter() {

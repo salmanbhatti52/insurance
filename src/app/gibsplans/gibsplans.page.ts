@@ -3,6 +3,7 @@ import { InsuranceAppService } from '../services/insurance-app.service';
 import { format } from 'date-fns';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 @Component({
   selector: 'app-gibsplans',
   templateUrl: './gibsplans.page.html',
@@ -66,6 +67,8 @@ export class GibsplansPage implements OnInit {
   subProName: any;
   productId: any;
   motorproduct: any;
+  currentdate: any;
+  enddate: any;
   constructor(
     public api: InsuranceAppService,
     public location: Location,
@@ -73,6 +76,12 @@ export class GibsplansPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.currentdate = moment(new Date()).format('YYYY-MM-DD');
+    console.log('cdate=', this.currentdate);
+    var oneYearFromNow = new Date();
+    var result = oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+    this.enddate = moment(new Date(result)).format('YYYY-MM-DD');
+    console.log(moment(new Date(result)).format('YYYY-MM-DD'));
     if (localStorage.getItem('subProName') == 'Third Party') {
       this.motorproduct = 'THIRD_PARTY_ONLY'
     } else {
@@ -378,9 +387,9 @@ export class GibsplansPage implements OnInit {
     let postdata = {
       // default productID:1001
       "productID": this.productId,
-      "entryDate": "2022-10-29",
-      "startDate": "2022-10-29",
-      "endDate": "2023-10-29",
+      "entryDate": this.currentdate,
+      "startDate": this.currentdate,
+      "endDate": this.enddate,
       "fxCurrency": "NGN",
       "fxRate": 1,
       "agentID": "AG-000012",
@@ -403,8 +412,8 @@ export class GibsplansPage implements OnInit {
       "sections": [
         {
           "sectionID": "n/a",
-          "sectionSumInsured": 40000,
-          "sectionPremium": 40000,
+          "sectionSumInsured": 0,
+          "sectionPremium": this.overalltax,
           "fields": [
             {
               "name": "VehicleRegNo",
@@ -460,7 +469,7 @@ export class GibsplansPage implements OnInit {
             },
             {
               "name": "CoverType",
-              "value": this.motorproduct
+              "value": 'COMPREHENSIVE'
             }
           ]
         }

@@ -90,14 +90,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "GibsplansPage": () => (/* binding */ GibsplansPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _gibsplans_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gibsplans.page.html?ngResource */ 70577);
 /* harmony import */ var _gibsplans_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gibsplans.page.scss?ngResource */ 53278);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 22111);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ 86712);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 94666);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ 86712);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 94666);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ 56908);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -114,12 +117,12 @@ let GibsplansPage = class GibsplansPage {
         this.vehicleMakeVal = 'Select Manufacturer';
         this.vehicleModelVal = 'Select Model';
         this.genderVal = 'Select Gender';
-        this.dobValue = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(), 'yyyy-MM-dd');
-        this.yopValue = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(), 'yyyy');
-        this.yomValue = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(), 'yyyy');
+        this.dobValue = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'yyyy-MM-dd');
+        this.yopValue = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'yyyy');
+        this.yomValue = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'yyyy');
         this.dateofbirth = 'Please Select';
         this.yopdate = 'Please Select';
-        this.yomdate = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(), 'yyyy');
+        this.yomdate = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'yyyy');
         this.fName = '';
         this.lName = '';
         this.userEmail = '';
@@ -156,6 +159,12 @@ let GibsplansPage = class GibsplansPage {
         this.vehicleModelNew = [];
     }
     ngOnInit() {
+        this.currentdate = moment__WEBPACK_IMPORTED_MODULE_3__(new Date()).format('YYYY-MM-DD');
+        console.log('cdate=', this.currentdate);
+        var oneYearFromNow = new Date();
+        var result = oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+        this.enddate = moment__WEBPACK_IMPORTED_MODULE_3__(new Date(result)).format('YYYY-MM-DD');
+        console.log(moment__WEBPACK_IMPORTED_MODULE_3__(new Date(result)).format('YYYY-MM-DD'));
         if (localStorage.getItem('subProName') == 'Third Party') {
             this.motorproduct = 'THIRD_PARTY_ONLY';
         }
@@ -450,9 +459,9 @@ let GibsplansPage = class GibsplansPage {
         let postdata = {
             // default productID:1001
             "productID": this.productId,
-            "entryDate": "2022-10-29",
-            "startDate": "2022-10-29",
-            "endDate": "2023-10-29",
+            "entryDate": this.currentdate,
+            "startDate": this.currentdate,
+            "endDate": this.enddate,
             "fxCurrency": "NGN",
             "fxRate": 1,
             "agentID": "AG-000012",
@@ -475,8 +484,8 @@ let GibsplansPage = class GibsplansPage {
             "sections": [
                 {
                     "sectionID": "n/a",
-                    "sectionSumInsured": 40000,
-                    "sectionPremium": 40000,
+                    "sectionSumInsured": 0,
+                    "sectionPremium": this.overalltax,
                     "fields": [
                         {
                             "name": "VehicleRegNo",
@@ -532,7 +541,7 @@ let GibsplansPage = class GibsplansPage {
                         },
                         {
                             "name": "CoverType",
-                            "value": this.motorproduct
+                            "value": 'COMPREHENSIVE'
                         }
                     ]
                 }
@@ -757,11 +766,11 @@ let GibsplansPage = class GibsplansPage {
 };
 GibsplansPage.ctorParameters = () => [
     { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService },
-    { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__.Location },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router }
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_5__.Location },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router }
 ];
-GibsplansPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+GibsplansPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
         selector: 'app-gibsplans',
         template: _gibsplans_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_gibsplans_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]

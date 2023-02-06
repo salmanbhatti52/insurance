@@ -119,6 +119,7 @@ export class CarInsuranceDetailsPage implements OnInit {
   // For file images //
 
   draftArr: any = '';
+  subProName: any;
 
   constructor(
     public location: Location,
@@ -131,8 +132,9 @@ export class CarInsuranceDetailsPage implements OnInit {
   ngOnInit() {
     // this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
     // console.log('sssssssssssssssss', this.draftArr);
+    this.subProName = localStorage.getItem('subProName');
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
-    this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
+    // this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
     this.getReferrerList();
   }
 
@@ -508,7 +510,7 @@ export class CarInsuranceDetailsPage implements OnInit {
                 var product_name = this.draftArr[i].subProName;
                 var quoteItems = this.draftArr[i].quoteItems;
                 // var path = this.draftArr[i].path;
-                if (this.draftArr.quote_id == res.quote_id) {
+                if (this.draftArr.quote_id == res.quote.id) {
                   this.draftArr.splice(i, 1);
 
                   var obj = {
@@ -535,7 +537,16 @@ export class CarInsuranceDetailsPage implements OnInit {
 
               // this.api.presenttoast("Proposal completed start payment");
               this.router.navigate(['/payment']);
-              localStorage.setItem('productres', JSON.stringify(res))
+              localStorage.setItem('productres', JSON.stringify(res));
+              localStorage.setItem('dob', this.dobValue);
+              localStorage.setItem('genderVal', this.genderVal);
+              localStorage.setItem('regNo', this.regNo);
+              localStorage.setItem('engNo', this.engNo);
+              localStorage.setItem('chasisNo', this.chasisNo);
+              localStorage.setItem('vehclr', this.vehclr);
+              localStorage.setItem('clientAddress', this.clientAddress);
+              localStorage.setItem('yomValue', this.yomValue);
+              localStorage.setItem('agentcode', this.referrerData)
             }
             console.log('Response after propsal', JSON.stringify(res));
 
