@@ -165,12 +165,11 @@ let GibsplansPage = class GibsplansPage {
         var result = oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
         this.enddate = moment__WEBPACK_IMPORTED_MODULE_3__(new Date(result)).format('YYYY-MM-DD');
         console.log(moment__WEBPACK_IMPORTED_MODULE_3__(new Date(result)).format('YYYY-MM-DD'));
-        if (localStorage.getItem('subProName') == 'Third Party') {
-            this.motorproduct = 'THIRD_PARTY_ONLY';
-        }
-        else {
-            this.motorproduct = 'COMPREHENSIVE ';
-        }
+        // if (localStorage.getItem('subProName') == 'Third Party') {
+        //   this.motorproduct = 'THIRD_PARTY_ONLY'
+        // } else {
+        //   this.motorproduct = 'COMPREHENSIVE '
+        // }
         console.log(this.motorproduct);
         this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
         console.log('ssssss-----', this.Gproduct);

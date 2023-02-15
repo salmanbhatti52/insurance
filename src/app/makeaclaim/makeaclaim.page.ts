@@ -161,6 +161,10 @@ export class MakeaclaimPage implements OnInit {
             } else {
               this.api.presenttoast('Policy record not found');
             }
+          }, err => {
+            console.log('err======', err);
+
+            this.api.hideLoader()
           });
       }
     } else {

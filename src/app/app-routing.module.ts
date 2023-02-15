@@ -310,6 +310,18 @@ const routes: Routes = [
   {
     path: 'payment2response',
     loadChildren: () => import('./payment2response/payment2response.module').then( m => m.Payment2responsePageModule)
+  },
+  {
+    path: 'vehicleinformation',
+    loadChildren: () => import('./vehicleinformation/vehicleinformation.module').then( m => m.VehicleinformationPageModule)
+  },
+  {
+    path: 'ivplaninformation',
+    loadChildren: () => import('./ivplaninformation/ivplaninformation.module').then( m => m.IvplaninformationPageModule)
+  },
+  {
+    path: 'ivplanpaymentres',
+    loadChildren: () => import('./ivplanpaymentres/ivplanpaymentres.module').then( m => m.IvplanpaymentresPageModule)
   }
 
 

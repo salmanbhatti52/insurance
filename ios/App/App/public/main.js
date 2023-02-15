@@ -794,7 +794,17 @@ let InsuranceAppService = class InsuranceAppService {
     return this.http.get(`${url}`, {
       headers: header
     });
-  }
+  } // postpolicies(url, data?, token?) {
+  //   const headers = {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/x-www-form-urlencoded',
+  //     'Authorization': 'Bearer ' + token
+  //   };
+  //   console.log('token in api ervice====', token);
+  //   return this.ionichttp.post(`${url}`, data, headers
+  //   );
+  // }
+
 
   postdata(url, data, token) {
     let header;
@@ -805,11 +815,20 @@ let InsuranceAppService = class InsuranceAppService {
     //   headers: headers
     // });
 
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-      Authorization: 'Bearer ' + token
-    });
+    const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      // 'X-Requested-With': 'XMLHttpRequest',
+      'X-Requested-With': '*'
+    }); // header.append("Access-Control-Allow-Origin", "*");
+    // header.append(
+    //   "Access-Control-Allow-Methods",
+    //   "POST, GET, DELETE, PUT,OPTIONS"
+    // );
+
     return this.http.post(`${url}`, data, {
-      headers: header
+      headers
     });
   }
 

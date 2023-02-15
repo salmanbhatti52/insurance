@@ -1,0 +1,138 @@
+.title {
+  text-align: center;
+  font-family: Bliss Pro;
+  font-size: 20px;
+  color: #1A206D;
+  font-weight: bold;
+}
+.wrapper {
+  width: 85%;
+  margin: 0% auto 5%;
+}
+.label {
+  color: #000000;
+  font-size: 16px;
+}
+
+.dropbox {
+  margin: 4% 0%;
+  background: #E8E8E7;
+  border-radius: 12px;
+  padding: 13.41px 15px;
+
+}
+.innerdropbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.euro-text{
+  color: #5D5D5D;
+  font-size: 14px;
+  font-weight: 400;
+
+}
+.euro-text1{
+  color: #5D5D5D;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 5%;
+}
+ion-input {
+  --ion-font-family: Bliss Pro;
+}
+
+.inputfield {
+  margin: 3% 0%;
+  background: #E8E8E7;
+  border-radius: 12px;
+}
+.in-text {
+  --color: #5D5D5D;
+  --placeholder-color: #5D5D5D;
+  --padding-start: 7%;
+  --padding-top: 5%;
+  --padding-bottom: 5%;
+  font-size: 14px;
+  font-weight: 400;
+  --placeholder-font-weight: 400;
+  // --placeholder-opacity: 100%;
+}
+.item-picker{
+  // width: 85%;
+  // height: 48px;
+  border-color: white;
+  border-radius: 12px;
+  background: #E8E8E7;
+  // box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 16px 0px;
+
+}
+.ion-txt{
+  font-family: Bliss Pro;
+  font-size: 14px;
+  font-weight: 400;
+  color:black;
+  }
+  .btn{
+    --background: #1A206D;
+    --border-radius:12px ;
+    width: 100%;
+    height: 48px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .filebtn{
+    background: #E8E8E7;
+    border-radius: 12px;
+
+  }
+ion-radio {
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+}
+ion-label{
+  margin-left: 4px;
+  font-size: 14px;
+}
+
+ion-radio::part(container) {
+  border-radius: 5px;
+  border: 2px solid #ddd;
+}
+
+ion-radio::part(mark) {
+  background: none;
+  transition: none;
+  transform: none;
+  border-radius: 0;
+}
+
+ion-radio.radio-checked::part(container) {
+  background: #1A206D;
+  border-color: transparent;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 4px;
+  height:8px;
+
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: #fff;
+
+  transform: rotate(45deg);
+}
+.radio-flex{
+display: flex;
+align-items: center;
+}
+.b-box{
+  border: 2px solid #E8E8E7;
+  padding: 5px 10px;
+  margin: 10px 0px;
+}

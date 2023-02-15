@@ -82,11 +82,11 @@ export class GibsplansPage implements OnInit {
     var result = oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
     this.enddate = moment(new Date(result)).format('YYYY-MM-DD');
     console.log(moment(new Date(result)).format('YYYY-MM-DD'));
-    if (localStorage.getItem('subProName') == 'Third Party') {
-      this.motorproduct = 'THIRD_PARTY_ONLY'
-    } else {
-      this.motorproduct = 'COMPREHENSIVE '
-    }
+    // if (localStorage.getItem('subProName') == 'Third Party') {
+    //   this.motorproduct = 'THIRD_PARTY_ONLY'
+    // } else {
+    //   this.motorproduct = 'COMPREHENSIVE '
+    // }
 
     console.log(this.motorproduct);
 

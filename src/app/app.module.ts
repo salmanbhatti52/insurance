@@ -11,7 +11,6 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { Angular4PaystackModule } from 'angular4-paystack';
 
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,

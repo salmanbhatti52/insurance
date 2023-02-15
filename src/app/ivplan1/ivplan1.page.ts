@@ -216,8 +216,7 @@ export class Ivplan1Page implements OnInit {
   calculatorAPI(userid) {
     var data = new FormData();
     data.append('opt', 'iclifp');
-    data.append('userid', userid);
-
+    data.append('userid', 'C52028');
     this.api.showLoader();
     this.api
       .postdata(

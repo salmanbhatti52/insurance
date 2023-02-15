@@ -1,0 +1,495 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row style="display: flex; align-items: center">
+      <ion-col size="2" style="padding-left: 25px">
+        <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width: 100%">
+              <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Product Offering and Details</div>
+      </ion-col>
+      <ion-col size="2" style="text-align: center; padding-top: 3%"> </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+    <div style="display: flex; align-items: center;margin-top: 2%;">
+      <img height="45px" src="assets/images/access_point.png" />
+      <h1 style="margin: 0px;
+      color: #000;
+      margin-left: 10px;
+      font-size: 23px;
+      font-weight: 600;">Please enter your details.</h1>
+    </div>
+    <h5 style="color: #a94442; font-size:16px;margin: 5px 0px 15px 0px;">
+      Please ensure that the information supplied is true and complete. Information entered here is final and
+      Cornerstone will not be held liable if you enter wrong
+      information
+    </h5>
+
+    <div class="label">Full Name</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="fullname" style="height: 48px" type="text" placeholder="John" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">Address</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="address" style="height: 48px" type="text"
+          placeholder="e.g:136, LEWIS STREET, OBALENDE, LAGOS ISLAND, LAGOS STATE" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">Gender</div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="openGenderList()">
+        <div class="euro-text">{{genderVal}}</div>
+        <div class="imgdiv" style="padding-bottom: 2px">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg" *ngIf="showGender===false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="showGender==true" />
+        </div>
+      </div>
+      <div *ngIf="showGender==true">
+        <div *ngFor="let list of genderType" (click)="selectGenderType(list)">
+          <div class="euro-text1">{{list.gender}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label">Marital Status</div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="openMaritalList()">
+        <div class="euro-text">{{maritalVal}}</div>
+        <div class="imgdiv" style="padding-bottom: 2px">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg" *ngIf="MaritalStatus===false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="MaritalStatus==true" />
+        </div>
+      </div>
+      <div *ngIf="MaritalStatus==true">
+        <div *ngFor="let list of maritalType" (click)="selectMaritalType(list)">
+          <div class="euro-text1">{{list.value}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label" style="margin-bottom: 3% !important;">Occupation Category</div>
+
+    <ion-radio-group (ionChange)="chooseOccupation($event)">
+
+      <ion-radio value="Military"></ion-radio>
+      <ion-label>Military</ion-label>
+
+      <ion-radio value="Judiciary"></ion-radio>
+      <ion-label>Judiciary</ion-label>
+
+      <ion-radio value="PrivateSectorService"></ion-radio>
+      <ion-label>Private Sector Service</ion-label>
+
+      <ion-radio value="Public/GovernmentSector"></ion-radio>
+      <ion-label>Public/Government Sector</ion-label>
+
+      <ion-radio value="IndividualBuisness"></ion-radio>
+      <ion-label>Individual Buisness</ion-label>
+
+      <ion-radio value="Student"></ion-radio>
+      <ion-label>Student</ion-label>
+
+      <ion-radio value="EducationalInstitution"></ion-radio>
+      <ion-label>Educational Institution</ion-label>
+
+      <ion-radio value="Retired"></ion-radio>
+      <ion-label>Retired</ion-label>
+
+    </ion-radio-group>
+
+    <div class="label" style="margin-top: 3% !important;">Date of Birth</div>
+
+    <div class="item-picker" style="
+        margin: 4% 0%;
+        --background: #e8e8e7;
+        height: 48px;
+        padding: 13px 15px;
+      " (click)="showPickerdob = !showPickerdob">
+      <div style="display: flex; align-items: center">
+        <ion-text class="ion-txt" style="margin-left: 14px">{{ dateofbirth }}</ion-text>
+      </div>
+    </div>
+    <ion-datetime class="item-picker" style="margin: 10px auto 8px; color: black" presentation="date"
+      *ngIf="showPickerdob" #datetime [value]="dobValue" size="cover" (ionChange)="dobChanged(datetime.value)"
+      showDefaultButtons="true" (ionCancel)="showPickerdob=false"></ion-datetime>
+
+    <div class="label">Are there any circumstances, particularly occupational, which involves an additional risk of
+      death by accident?</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="address" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">Any previous insurance policy?</div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="openPIP()">
+        <div class="euro-text">{{PIPVal}}</div>
+        <div class="imgdiv" style="padding-bottom: 2px">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg" *ngIf="PIPStatus===false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="PIPStatus==true" />
+        </div>
+      </div>
+      <div *ngIf="PIPStatus==true">
+        <div *ngFor="let list of Answers" (click)="selectPIPType(list)">
+          <div class="euro-text1">{{list.value}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label">With Cornerstone?</div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="openCornerstoneList()">
+        <div class="euro-text">{{CornerstoneVal}}</div>
+        <div class="imgdiv" style="padding-bottom: 2px">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg"
+            *ngIf="CornerstoneStatus===false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="CornerstoneStatus==true" />
+        </div>
+      </div>
+      <div *ngIf="CornerstoneStatus==true">
+        <div *ngFor="let list of Answers" (click)="selectCornerstoneType(list)">
+          <div class="euro-text1">{{list.value}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="color:#000;font-size: 28px;font-weight: 600; text-align: center;">Beneficiaries</div>
+    <div class="b-box">
+      <div class="label">Beneficiary 1</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="B1" style="height: 48px" type="text" placeholder="Full name" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Relationship</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="rel" style="height: 48px" type="text" placeholder="eg daughter" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Benefits Proportion</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="proportion" style="height: 48px" type="text" placeholder="eg 50%s" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+    </div>
+    <!------------------------------------- 2 ----------------------------------------------------->
+    <div class="b-box">
+      <div class="label">Beneficiary 2</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="B2" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Relationship</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="rel2" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Benefits Proportion</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="proportion2" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+    </div>
+    <!------------------------------------- 3 ----------------------------------------------------->
+    <div class="b-box">
+      <div class="label">Beneficiary 3</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="B3" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Relationship</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="rel3" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Benefits Proportion</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="proportion3" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+    </div>
+
+    <!------------------------------------- 4 ----------------------------------------------------->
+    <div class="b-box">
+      <div class="label">Beneficiary 4</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="B4" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Relationship </div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="rel4" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Benefits Proportion</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="proportion4" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+    </div>
+
+    <!------------------------------------- 5 ----------------------------------------------------->
+    <div class="b-box">
+      <div class="label">Beneficiary 5</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="B5" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Relationship </div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="rel5" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="label">Benefits Proportion</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="proportion5" style="height: 48px" type="text" placeholder="" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+    </div>
+
+    <div style="color:#000;font-size: 28px;font-weight: 600;text-align: center;">
+      Trustee
+    </div>
+    <div style="color: #a4b517;font-size: 16px;text-align: center;margin-bottom: 2%;">if beneficiary(ies) is(are) less
+      than 18yrs old
+    </div>
+
+    <div class="label">Name of Trustee</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="nameoftrustee" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">Relationship of Trustee</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="reloftrustee" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">Contact Address of Trustee</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="addoftrustee" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">Phone Number of Trustee</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="numoftrustee" style="height: 48px" type="tel" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div style="color:#000;font-size: 28px;font-weight: 600;text-align: center;margin: 2% 0%;">
+      Medical Records
+    </div>
+
+    <div class="label">Hospital Name</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="hospitalname" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">Hospital Address</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="hospitaladdress" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <ion-row>
+      <ion-col size="6">
+        <div class="label">Height(m)</div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="height" style="height: 48px" type="number" placeholder="" class="in-text">
+            </ion-input>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="label">Weight(kg)</div>
+        <div class="inputfield">
+          <div class="innerdropbox">
+            <ion-input [(ngModel)]="weight" style="height: 48px" type="number" placeholder="" class="in-text">
+            </ion-input>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <div style="color:#000;font-size: 28px;font-weight: 600;text-align: center;margin: 2% 0%;">What is your daily
+      consumption of? (Number of times per day)</div>
+
+    <div class="label">Alcohol</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="Alcohol" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">Tobacco</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="Tobacco" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">Narcotics</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="Narcotics" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">If female, are you currently pregnant?</div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="openOption()">
+        <div class="euro-text">{{PVal}}</div>
+        <div class="imgdiv" style="padding-bottom: 2px">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg"
+            *ngIf="pregnantStatus===false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="pregnantStatus==true" />
+        </div>
+      </div>
+      <div *ngIf="pregnantStatus==true">
+        <div *ngFor="let list of Answers" (click)="selectoptionType(list)">
+          <div class="euro-text1">{{list.value}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label">If yes, when is your EDD?</div>
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="edd" style="height: 48px" type="text" placeholder="" class="in-text">
+        </ion-input>
+      </div>
+    </div>
+
+    <div class="label">
+      Valid Drivers license/National Identity Card/International Pasport
+      <span style="color: #a8b400">*Maximum file size 300KB</span>
+    </div>
+
+    <div class="inputfield" style="display: flex; height: 48px">
+      <input type="file" (change)="selectFile($event,'driverLicence')" accept="image/x-png,image/gif,image/jpeg" />
+    </div>
+    <div style="height: 100px; width: 100px; text-align: center" *ngIf="driverLicence.base64">
+      <img style="height: 100px; width: 100px" src="{{driverLicence.base64}}" alt="" />
+    </div>
+
+    <div class="label">
+      Utility Bills
+      <span style="color: #a8b400">*Maximum file size 2MB</span>
+    </div>
+
+    <div class="inputfield" style="display: flex; height: 48px">
+      <input type="file" (change)="selectFile($event,'utilityBills')" accept="image/x-png,image/gif,image/jpeg" />
+    </div>
+    <div style="height: 100px; width: 100px; text-align: center" *ngIf="utilityBills.base64">
+      <img style="height: 100px; width: 100px" src="{{utilityBills.base64}}" alt="" />
+    </div>
+
+    <div class="label">
+      Who referred you?
+      <span style="color: #a8b400">*Please enter the name and if possible phone number of the
+        referrer.</span>
+    </div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="openReferrerList()">
+        <div class="euro-text">{{referrerVal}}</div>
+        <div class="imgdiv" style="padding-bottom: 2px">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg" *ngIf="showReferrer==false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="showReferrer==true" />
+        </div>
+      </div>
+      <div *ngIf="showReferrer==true" style="height: 120px; overflow: scroll">
+        <div *ngFor="let list of referrerList" (click)="selectReferrerType(list)">
+          <div class="euro-text1">{{list}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inputfield">
+      <div class="innerdropbox">
+        <ion-input [(ngModel)]="referrerData" style="height: 48px" type="text"
+          placeholder="Enter name, Branch and mobile number" class="in-text"></ion-input>
+      </div>
+    </div>
+
+    <div style="width: 90%; margin: 8% auto" (click)="createProposal()">
+      <ion-button class="btn">Submit Proposal</ion-button>
+    </div>
+
+  </div>
+</ion-content>

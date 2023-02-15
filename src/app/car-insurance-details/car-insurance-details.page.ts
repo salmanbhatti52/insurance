@@ -522,7 +522,6 @@ export class CarInsuranceDetailsPage implements OnInit {
                     image:
                       'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
                     path: '/payment',
-                    status: 0, // for active/present in array
                     datetime: new Date().toISOString(),
                   };
 

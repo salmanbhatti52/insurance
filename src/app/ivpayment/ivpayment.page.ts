@@ -55,6 +55,7 @@ export class IvpaymentPage implements OnInit {
   paymentDone(ref: any) {
     console.log('payment succesfull-----', ref);
     if (ref.status == 'success') {
+      localStorage.setItem('trxref', ref.trxref);
       this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
       console.log(this.draftArr);
 
@@ -66,7 +67,7 @@ export class IvpaymentPage implements OnInit {
         }
 
       }
-      this.navCtrl.navigateRoot('home-page-screen-after-login')
+      this.navCtrl.navigateRoot('ivplanpaymentres');
       localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
     }
   }

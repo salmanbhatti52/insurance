@@ -130,13 +130,15 @@ export class Payment2Page implements OnInit {
   }
 
   pay() {
+    this.api.showLoader();
     var myData = {
       sid: 'ECHANNEL2',
       token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
     };
     this.api.gibsapi(myData).subscribe(
       (res: any) => {
-        console.log(res);
+        // console.log(res);
+        this.api.hideLoader()
         let token = res.accessToken;
         this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
         console.log(this.draftArr);

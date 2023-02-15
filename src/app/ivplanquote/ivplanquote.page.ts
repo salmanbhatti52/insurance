@@ -11,7 +11,7 @@ export class IvplanquotePage implements OnInit {
   ivplanres: any;
   nameofplan = localStorage.getItem('subProName');
   monthlyinvestment = localStorage.getItem('monthlyinvestment');
-  constructor(public location: Location, public router: Router) {}
+  constructor(public location: Location, public router: Router) { }
 
   ngOnInit() {
     this.ivplanres = JSON.parse(localStorage.getItem('ivplanres'));
@@ -19,7 +19,7 @@ export class IvplanquotePage implements OnInit {
     console.log('this.ivplanres=--==', this.ivplanres);
   }
   buyOnlineQuote() {
-    this.router.navigate(['/ivpayment']);
+    this.router.navigate(['/ivplaninformation']);
   }
   getAnewQuote() {
     this.router.navigate(['/home-page-screen-after-login']);

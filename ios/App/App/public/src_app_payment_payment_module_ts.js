@@ -139,51 +139,38 @@ let PaymentPage = class PaymentPage {
     paymentDone(ref) {
         this.title = 'Payment successfull';
         console.log('payment succesfull-----', ref);
-        // if (ref.status == 'success') {
-        //   this.api.showLoader()
-        //   localStorage.setItem('trxref', ref.trxref);
-        this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
-        console.log(this.draftArr);
-        // for (var i = 0; i < this.draftArr.length; i++) {
-        //   if (this.draftArr[i].product_id == this.productID) {
-        //     this.draftArr.splice(i, 1);
-        //   }
-        // }
-        localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
-        if (localStorage.getItem('subProName') == 'Third Party') {
-            // localStorage.getItem('vechileval')
-            // localStorage.getItem('vechilemakeval');
-            // localStorage.getItem('vechilemodelval')
-            // localStorage.getItem('phonenumber');
-            // localStorage.getItem('userfullname');
-            // localStorage.getItem('dob');
-            // localStorage.getItem('genderVal');
-            // localStorage.getItem('regNo');
-            // localStorage.getItem('engNo');
-            // localStorage.getItem('chasisNo');
-            // localStorage.getItem('vehclr');
-            // localStorage.getItem('clientAddress');
-            // localStorage.getItem('yomValue');
-            var myData = {
-                sid: 'ECHANNEL2',
-                token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
-            };
-            this.api.gibsapi(myData).subscribe((res) => {
+        if (ref.status == 'success') {
+            this.api.showLoader();
+            localStorage.setItem('trxref', ref.trxref);
+            this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+            console.log(this.draftArr);
+            for (var i = 0; i < this.draftArr.length; i++) {
+                if (this.draftArr[i].product_id == this.productID) {
+                    this.draftArr.splice(i, 1);
+                }
+            }
+            localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+            if (localStorage.getItem('subProName') == 'Third Party') {
+                var myData = {
+                    sid: 'ECHANNEL2',
+                    token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+                };
+                this.api.gibsapi(myData).subscribe((res) => {
+                    this.api.hideLoader();
+                    console.log(res);
+                    let token = res.accessToken;
+                    this.getresult(token);
+                }, (err) => {
+                    console.log(err);
+                    this.api.hideLoader();
+                });
+                // 'http://testcipapiservices.gibsonline.com/api/metadata/Policies/Motor' old url
+            }
+            else {
                 this.api.hideLoader();
-                console.log(res);
-                let token = res.accessToken;
-                this.getresult(token);
-            }, (err) => {
-                console.log(err);
-                this.api.hideLoader();
-            });
-            // 'http://testcipapiservices.gibsonline.com/api/metadata/Policies/Motor' old url
+                this.navCtrl.navigateRoot('paymentresponse');
+            }
         }
-        else {
-            this.api.hideLoader();
-            this.navCtrl.navigateRoot('paymentresponse');
-        }
-        // }
     }
     getresult(Bearertoken) {
         this.api.showLoader();
@@ -278,6 +265,7 @@ let PaymentPage = class PaymentPage {
                 }
             ]
         };
+        // 'https://cors-anywhere.herokuapp.com/corsdemo/'
         this.api
             .postdata('http://testcipapiservices.gibsonline.com/api/policies', postdata, Bearertoken)
             .subscribe((res) => {
@@ -287,7 +275,7 @@ let PaymentPage = class PaymentPage {
             this.getcertificate(Bearertoken);
         }, (err) => {
             this.api.hideLoader();
-            console.log('err', err);
+            console.log('errrrrrrr', err);
             // let errormsg = err.error.errors[0].message;
             // this.api.presenttoast(errormsg)
             this.api.presenttoast(err.message);
@@ -422,7 +410,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\r\n        <!-- <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons> -->\r\n\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width: 100%\">\r\n              <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\" style=\"color: black\">Make a Payment</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"wrapper\">\r\n    <div style=\"display: flex; align-items: center; justify-content: space-around\">\r\n      <img height=\"50px\" src=\"assets/images/access_point.png\" />\r\n      <h1 style=\"margin: 0px; font-size: 22px; margin-left: 6px; color: black\">\r\n        Select your payment Option.(Amount : ₦ {{quoteItems[quoteItems.length -\r\n        1].value}} )\r\n      </h1>\r\n    </div>\r\n\r\n    <!-- <table class=\"table\">\r\n\r\n      <tbody>\r\n        <tr>\r\n\r\n          <td width=\"10\">\r\n\r\n            <input type=\"radio\" value=\"WEBpay\" name=\"payment-option\" class=\"payment-option-other\"\r\n              (click)=\"selectmethod('WebPAY')\">\r\n\r\n          </td>\r\n\r\n          <td style=\" color: black;\"><strong>WebPay </strong><br><img height=\"100px;\"\r\n              src=\"https://cornerstone.com.ng/devtest/assets/img/cards.png\">\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n      </tbody>\r\n    </table> -->\r\n\r\n    <table class=\"table\">\r\n      <tbody>\r\n        <tr>\r\n          <!-- <td width=\"10\">\r\n\r\n            <input type=\"radio\" value=\"paystack\" name=\"payment-option\" class=\"payment-option-other\"\r\n              (click)=\"selectmethod('paystack')\">\r\n\r\n          </td> -->\r\n\r\n          <td style=\"color: black\">\r\n            <strong>Paystack </strong><br /><img height=\"100px;\"\r\n              src=\"https://cornerstone.com.ng/assets/img/paystack.jpeg\" />\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n\r\n    <!-- <table class=\"table\">\r\n\r\n      <tbody>\r\n\r\n        <tr>\r\n\r\n          <td width=\"10\">\r\n\r\n            <input type=\"radio\" name=\"payment-option\" value=\"deposit\" id=\"payment-option-bank\"\r\n              (click)=\"selectmethod('other')\">\r\n\r\n          </td>\r\n\r\n          <td style=\" color: black;\"><strong>Bank Transfer in any of the following banks </strong><br><span class=\"h6\">\r\n              Pay using internet\r\n              banking or directly at any of this banks</span><br>\r\n\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n      </tbody>\r\n\r\n    </table> -->\r\n\r\n    <!-- <table class=\"table\" id=\"bank_list\" *ngIf=\"othermethod==true\">\r\n\r\n\r\n      <tbody>\r\n\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"1\" id=\"FCMB\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/1.png\">\r\n          </td>\r\n\r\n          <td style=\"width: 50%;\">\r\n\r\n\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"  0135145093\"\r\n              style=\"height:30px;width:200px\">\r\n\r\n          </td>\r\n\r\n\r\n        </tr>\r\n\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"2\" id=\"StanbicIBTC\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/2.png\">\r\n          </td>\r\n\r\n          <td>\r\n\r\n\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"  0008384202\"\r\n              style=\"height:30px;width:200px\">\r\n\r\n          </td>\r\n\r\n          <td>\r\n\r\n            <table id=\"StanbicIBTC\" class=\"StanbicIBTC\">\r\n\r\n              <tbody></tbody>\r\n            </table>\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"3\" id=\"GTBank\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/3.png\">\r\n          </td>\r\n\r\n          <td>\r\n\r\n\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"  0108908618\"\r\n              style=\"height:30px;width:200px\">\r\n\r\n          </td>\r\n\r\n          <td>\r\n\r\n            <table id=\"GTBank\" class=\"GTBank\">\r\n\r\n              <tbody></tbody>\r\n            </table>\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"4\" id=\"FirstBank\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/4.png\">\r\n          </td>\r\n\r\n          <td>\r\n\r\n           >\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"  2024120096\"\r\n              style=\"height:29px;width:200px\">\r\n\r\n          </td>\r\n\r\n          <td>\r\n\r\n            <table id=\"FirstBank\" class=\"FirstBank\">\r\n\r\n              <tbody></tbody>\r\n            </table>\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"6\" id=\"UnionBankGeneral\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/6.png\">\r\n          </td>\r\n\r\n          <td>\r\n\r\n\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"    0040038431\"\r\n              style=\"height:30px;width:200px;margin-top: 1px\">\r\n\r\n          </td>\r\n\r\n          <td>\r\n\r\n            <table id=\"UnionBankGeneral\" class=\"UnionBankGeneral\">\r\n\r\n              <tbody></tbody>\r\n            </table>\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n      </tbody>\r\n\r\n\r\n    </table> -->\r\n  </div>\r\n</ion-content>\r\n<ion-footer>\r\n  <div class=\"btndiv\">\r\n    <ion-button class=\"btn\" (click)=\"paymentDone()\"> Proceed</ion-button>\r\n  </div>\r\n  <div class=\"btndiv\">\r\n    <button angular4-paystack [key]=\"'pk_test_ff6f2927d464e23a6ddf592be475db01de695970'\" [email]=\"email\" [amount]=\"amt\"\r\n      [ref]=\"reference\" class=\"btn11\" (paymentInit)=\"paymentInit()\" (onClose)=\"paymentCancel()\"\r\n      (callback)=\"paymentDone($event)\">\r\n      Pay with Paystack\r\n    </button>\r\n  </div>\r\n</ion-footer>";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\r\n        <!-- <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons> -->\r\n\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width: 100%\">\r\n              <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\" style=\"color: black\">Make a Payment</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"wrapper\">\r\n    <div style=\"display: flex; align-items: center; justify-content: space-around\">\r\n      <img height=\"50px\" src=\"assets/images/access_point.png\" />\r\n      <h1 style=\"margin: 0px; font-size: 22px; margin-left: 6px; color: black\">\r\n        Select your payment Option.(Amount : ₦ {{quoteItems[quoteItems.length -\r\n        1].value}} )\r\n      </h1>\r\n    </div>\r\n\r\n    <!-- <table class=\"table\">\r\n\r\n      <tbody>\r\n        <tr>\r\n\r\n          <td width=\"10\">\r\n\r\n            <input type=\"radio\" value=\"WEBpay\" name=\"payment-option\" class=\"payment-option-other\"\r\n              (click)=\"selectmethod('WebPAY')\">\r\n\r\n          </td>\r\n\r\n          <td style=\" color: black;\"><strong>WebPay </strong><br><img height=\"100px;\"\r\n              src=\"https://cornerstone.com.ng/devtest/assets/img/cards.png\">\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n      </tbody>\r\n    </table> -->\r\n\r\n    <table class=\"table\">\r\n      <tbody>\r\n        <tr>\r\n          <!-- <td width=\"10\">\r\n\r\n            <input type=\"radio\" value=\"paystack\" name=\"payment-option\" class=\"payment-option-other\"\r\n              (click)=\"selectmethod('paystack')\">\r\n\r\n          </td> -->\r\n\r\n          <td style=\"color: black\">\r\n            <strong>Paystack </strong><br /><img height=\"100px;\"\r\n              src=\"https://cornerstone.com.ng/assets/img/paystack.jpeg\" />\r\n          </td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n\r\n    <!-- <table class=\"table\">\r\n\r\n      <tbody>\r\n\r\n        <tr>\r\n\r\n          <td width=\"10\">\r\n\r\n            <input type=\"radio\" name=\"payment-option\" value=\"deposit\" id=\"payment-option-bank\"\r\n              (click)=\"selectmethod('other')\">\r\n\r\n          </td>\r\n\r\n          <td style=\" color: black;\"><strong>Bank Transfer in any of the following banks </strong><br><span class=\"h6\">\r\n              Pay using internet\r\n              banking or directly at any of this banks</span><br>\r\n\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n      </tbody>\r\n\r\n    </table> -->\r\n\r\n    <!-- <table class=\"table\" id=\"bank_list\" *ngIf=\"othermethod==true\">\r\n\r\n\r\n      <tbody>\r\n\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"1\" id=\"FCMB\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/1.png\">\r\n          </td>\r\n\r\n          <td style=\"width: 50%;\">\r\n\r\n\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"  0135145093\"\r\n              style=\"height:30px;width:200px\">\r\n\r\n          </td>\r\n\r\n\r\n        </tr>\r\n\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"2\" id=\"StanbicIBTC\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/2.png\">\r\n          </td>\r\n\r\n          <td>\r\n\r\n\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"  0008384202\"\r\n              style=\"height:30px;width:200px\">\r\n\r\n          </td>\r\n\r\n          <td>\r\n\r\n            <table id=\"StanbicIBTC\" class=\"StanbicIBTC\">\r\n\r\n              <tbody></tbody>\r\n            </table>\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"3\" id=\"GTBank\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/3.png\">\r\n          </td>\r\n\r\n          <td>\r\n\r\n\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"  0108908618\"\r\n              style=\"height:30px;width:200px\">\r\n\r\n          </td>\r\n\r\n          <td>\r\n\r\n            <table id=\"GTBank\" class=\"GTBank\">\r\n\r\n              <tbody></tbody>\r\n            </table>\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"4\" id=\"FirstBank\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/4.png\">\r\n          </td>\r\n\r\n          <td>\r\n\r\n           >\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"  2024120096\"\r\n              style=\"height:29px;width:200px\">\r\n\r\n          </td>\r\n\r\n          <td>\r\n\r\n            <table id=\"FirstBank\" class=\"FirstBank\">\r\n\r\n              <tbody></tbody>\r\n            </table>\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n\r\n        <tr>\r\n\r\n          <td>\r\n\r\n            <input type=\"radio\" value=\"6\" id=\"UnionBankGeneral\" name=\"banklist\" class=\"allbank\"\r\n              (change)=\"onItemChange($event.target.value)\">\r\n\r\n          </td>\r\n\r\n          <td><img height=\"50\" src=\"https://cornerstone.com.ng/devtest/assets/img/banks/6.png\">\r\n          </td>\r\n\r\n          <td>\r\n\r\n\r\n\r\n            <label style=\" color: black;\">Account Number:</label>\r\n\r\n\r\n\r\n            <input type=\"text\" readonly=\"readonly\" name=\"bank_name\" value=\"    0040038431\"\r\n              style=\"height:30px;width:200px;margin-top: 1px\">\r\n\r\n          </td>\r\n\r\n          <td>\r\n\r\n            <table id=\"UnionBankGeneral\" class=\"UnionBankGeneral\">\r\n\r\n              <tbody></tbody>\r\n            </table>\r\n\r\n          </td>\r\n\r\n        </tr>\r\n\r\n      </tbody>\r\n\r\n\r\n    </table> -->\r\n  </div>\r\n</ion-content>\r\n<ion-footer>\r\n  <!-- <div class=\"btndiv\">\r\n    <ion-button class=\"btn\" (click)=\"paymentDone()\"> Proceed</ion-button>\r\n  </div> -->\r\n  <div class=\"btndiv\">\r\n    <button angular4-paystack [key]=\"'pk_test_ff6f2927d464e23a6ddf592be475db01de695970'\" [email]=\"email\" [amount]=\"amt\"\r\n      [ref]=\"reference\" class=\"btn11\" (paymentInit)=\"paymentInit()\" (onClose)=\"paymentCancel()\"\r\n      (callback)=\"paymentDone($event)\">\r\n      Pay with Paystack\r\n    </button>\r\n  </div>\r\n</ion-footer>";
 
 /***/ })
 

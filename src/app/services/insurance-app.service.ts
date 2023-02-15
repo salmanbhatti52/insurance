@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -20,7 +21,8 @@ export class InsuranceAppService {
   constructor(
     private toastctrl: ToastController,
     private http: HttpClient,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+
   ) { }
   insertData(myData) {
     let header;
@@ -162,7 +164,20 @@ export class InsuranceAppService {
       headers: header,
     });
   }
+
+  // postpolicies(url, data?, token?) {
+
+  //   const headers = {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/x-www-form-urlencoded',
+  //     'Authorization': 'Bearer ' + token
+  //   };
+  //   console.log('token in api ervice====', token);
+  //   return this.ionichttp.post(`${url}`, data, headers
+  //   );
+  // }
   postdata(url, data?, token?) {
+
     let header;
     console.log('token in api ervice====', token);
     // let headers
@@ -172,15 +187,23 @@ export class InsuranceAppService {
     //   headers: headers
     // });
 
-    header = new HttpHeaders({
-      Authorization: 'Bearer ' + token,
-      Accept: 'application/json',
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
+      // 'X-Requested-With': 'XMLHttpRequest',
+      // 'X-Requested-With': '*',
     });
-    header.append("Access-Control-Allow-Origin", "*");
+    // header.append("Access-Control-Allow-Origin", "*");
+    // header.append(
+    //   "Access-Control-Allow-Methods",
+    //   "POST, GET, DELETE, PUT,OPTIONS"
+    // );
+
+
 
     return this.http.post(`${url}`, data, {
-      headers: header,
+      headers,
     });
   }
 

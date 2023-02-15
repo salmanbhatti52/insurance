@@ -39,7 +39,7 @@ export class PolicyquotePage implements OnInit {
 
   buyOnlineQuote() {
     console.log('totaltax ---', this.overalltax);
-    this.router.navigate(['payment2']);
+    this.router.navigate(['vehicleinformation']);
   }
 
   getAnewQuote() {

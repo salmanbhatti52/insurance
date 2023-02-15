@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import * as moment from 'moment';
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.page.html',
@@ -67,61 +68,48 @@ export class PaymentPage implements OnInit {
   paymentDone(ref: any) {
     this.title = 'Payment successfull';
     console.log('payment succesfull-----', ref);
-    // if (ref.status == 'success') {
-    //   this.api.showLoader()
-    //   localStorage.setItem('trxref', ref.trxref);
-    this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
-    console.log(this.draftArr);
+    if (ref.status == 'success') {
+      this.api.showLoader()
+      localStorage.setItem('trxref', ref.trxref);
+      this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+      console.log(this.draftArr);
 
-    // for (var i = 0; i < this.draftArr.length; i++) {
-    //   if (this.draftArr[i].product_id == this.productID) {
+      for (var i = 0; i < this.draftArr.length; i++) {
+        if (this.draftArr[i].product_id == this.productID) {
 
-    //     this.draftArr.splice(i, 1);
+          this.draftArr.splice(i, 1);
 
-    //   }
-
-    // }
-    localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
-    if (localStorage.getItem('subProName') == 'Third Party') {
-      // localStorage.getItem('vechileval')
-      // localStorage.getItem('vechilemakeval');
-      // localStorage.getItem('vechilemodelval')
-      // localStorage.getItem('phonenumber');
-      // localStorage.getItem('userfullname');
-      // localStorage.getItem('dob');
-      // localStorage.getItem('genderVal');
-      // localStorage.getItem('regNo');
-      // localStorage.getItem('engNo');
-      // localStorage.getItem('chasisNo');
-      // localStorage.getItem('vehclr');
-      // localStorage.getItem('clientAddress');
-      // localStorage.getItem('yomValue');
-
-      var myData = {
-        sid: 'ECHANNEL2',
-        token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
-      };
-      this.api.gibsapi(myData).subscribe(
-        (res: any) => {
-          this.api.hideLoader()
-          console.log(res);
-          let token = res.accessToken;
-          this.getresult(token);
-        },
-        (err) => {
-          console.log(err);
-          this.api.hideLoader();
         }
-      );
-      // 'http://testcipapiservices.gibsonline.com/api/metadata/Policies/Motor' old url
 
-    } else {
-      this.api.hideLoader()
-      this.navCtrl.navigateRoot('paymentresponse')
+      }
+      localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+      if (localStorage.getItem('subProName') == 'Third Party') {
+
+        var myData = {
+          sid: 'ECHANNEL2',
+          token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+        };
+        this.api.gibsapi(myData).subscribe(
+          (res: any) => {
+            this.api.hideLoader()
+            console.log(res);
+            let token = res.accessToken;
+            this.getresult(token);
+          },
+          (err) => {
+            console.log(err);
+            this.api.hideLoader();
+          }
+        );
+        // 'http://testcipapiservices.gibsonline.com/api/metadata/Policies/Motor' old url
+
+      } else {
+        this.api.hideLoader()
+        this.navCtrl.navigateRoot('paymentresponse')
+      }
+
+
     }
-
-
-    // }
 
   }
   getresult(Bearertoken) {
@@ -237,7 +225,7 @@ export class PaymentPage implements OnInit {
         },
         (err) => {
           this.api.hideLoader()
-          console.log('err', err);
+          console.log('errrrrrrr', err);
           // let errormsg = err.error.errors[0].message;
           // this.api.presenttoast(errormsg)
           this.api.presenttoast(err.message)
