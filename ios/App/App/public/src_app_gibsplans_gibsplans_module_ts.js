@@ -178,6 +178,7 @@ let GibsplansPage = class GibsplansPage {
         this.getCarMakeCompanies();
         this.emailvalidation =
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        this.testresult();
     }
     goback() {
         this.location.back();
@@ -761,6 +762,34 @@ let GibsplansPage = class GibsplansPage {
             localStorage.setItem('overalltax', this.overalltax);
             console.log('this.overalltax ---', this.overalltax);
         }
+    }
+    testresult() {
+        const myData = 'myData={"insurance_type":"' +
+            "Auto Classic" +
+            '","product_name":"' +
+            "Comprehensive Motor Insurance" +
+            '","frequency":"' +
+            "Thrice" +
+            '", "value":"' +
+            "6000000" +
+            '", "flood_extension":"' +
+            "Yes" +
+            '", "excess_buy_back":"' +
+            "Yes" +
+            '", "srcc":"' +
+            "Yes" +
+            '", "tppd":"' +
+            "Yes" +
+            '", "passenger_liability":"' +
+            "No" +
+            '", "verify_token":"' +
+            localStorage.getItem('token') +
+            '","method":"get_motor_price"}';
+        this.api.insertData(myData).subscribe((res) => {
+            console.log(res);
+        }, (err) => {
+            console.log(err);
+        });
     }
 };
 GibsplansPage.ctorParameters = () => [

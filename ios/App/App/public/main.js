@@ -322,6 +322,18 @@ const routes = [
     {
         path: 'payment2response',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_payment2response_payment2response_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./payment2response/payment2response.module */ 51342)).then(m => m.Payment2responsePageModule)
+    },
+    {
+        path: 'vehicleinformation',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_vehicleinformation_vehicleinformation_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./vehicleinformation/vehicleinformation.module */ 50475)).then(m => m.VehicleinformationPageModule)
+    },
+    {
+        path: 'ivplaninformation',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_ivplaninformation_ivplaninformation_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./ivplaninformation/ivplaninformation.module */ 17546)).then(m => m.IvplaninformationPageModule)
+    },
+    {
+        path: 'ivplanpaymentres',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_ivplanpaymentres_ivplanpaymentres_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./ivplanpaymentres/ivplanpaymentres.module */ 91007)).then(m => m.IvplanpaymentresPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -818,9 +830,9 @@ let InsuranceAppService = class InsuranceAppService {
     const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
       'Authorization': 'Bearer ' + token,
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      // 'X-Requested-With': 'XMLHttpRequest',
-      'X-Requested-With': '*'
+      'Content-Type': 'application/json' // 'X-Requested-With': 'XMLHttpRequest',
+      // 'X-Requested-With': '*',
+
     }); // header.append("Access-Control-Allow-Origin", "*");
     // header.append(
     //   "Access-Control-Allow-Methods",

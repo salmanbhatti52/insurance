@@ -116,7 +116,23 @@ let GibsproductsPage = class GibsproductsPage {
     }
     ngOnInit() {
         this.gibsproduct();
+        // this.getcarclasses()
     }
+    // getcarclasses() {
+    //   const myData =
+    //     'myData={"verify_token":"' +
+    //     localStorage.getItem('token') +
+    //     '","product_class":"comprehensive_motor_plans","method":"get_car_classes"}';
+    //   this.api.insertData(myData).subscribe(
+    //     (res: any) => {
+    //       console.log(res);
+    //       this.motorsubproducts = res.values
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //     }
+    //   );
+    // }
     gibsproduct() {
         this.api.showLoader();
         const myData = {
@@ -211,7 +227,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\r\n        <!-- <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons> -->\r\n\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width: 100%\">\r\n              <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Motor Products</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"c-center\">\r\n      <p class=\"con-p1\">Make a Quote</p>\r\n    </div>\r\n    <div\r\n      style=\"font-size: 20px; color: #000; font-weight: 500; margin-bottom: 3%\"\r\n    >\r\n      The products for mobile are:\r\n    </div>\r\n\r\n    <div class=\"boxdiv\" *ngFor=\"let gibs of motorsubproducts\">\r\n      <div\r\n        style=\"display: flex; margin-bottom: 7%\"\r\n        (click)=\"GProductdetail(gibs.productID)\"\r\n      >\r\n        <img\r\n          src=\"assets/images/motorcar.png\"\r\n          alt=\"\"\r\n          style=\"width: 100px; height: 100px; object-fit: cover\"\r\n        />\r\n        <p\r\n          style=\"\r\n            color: #1a206d;\r\n            font-size: 17px;\r\n            font-weight: 500;\r\n            margin: 6% 0% 0% 4%;\r\n          \"\r\n        >\r\n          {{gibs.productName}}\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ion-content>\r\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\r\n        <!-- <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons> -->\r\n\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width: 100%\">\r\n              <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Motor Products</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"c-center\">\r\n      <p class=\"con-p1\">Make a Quote</p>\r\n    </div>\r\n    <div style=\"font-size: 20px; color: #000; font-weight: 500; margin-bottom: 3%\">\r\n      The products for mobile are:\r\n    </div>\r\n\r\n    <div class=\"boxdiv\" *ngFor=\"let gibs of motorsubproducts\">\r\n      <div style=\"display: flex; margin-bottom: 7%\" (click)=\"GProductdetail(gibs.productID)\">\r\n        <img src=\"assets/images/motorcar.png\" alt=\"\" style=\"width: 100px; height: 100px; object-fit: cover\" />\r\n        <p style=\"\r\n            color: #1a206d;\r\n            font-size: 17px;\r\n            font-weight: 500;\r\n            margin: 6% 0% 0% 4%;\r\n          \">\r\n          {{gibs.values}}\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ion-content>";
 
 /***/ })
 

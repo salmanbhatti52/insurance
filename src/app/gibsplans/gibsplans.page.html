@@ -148,7 +148,38 @@
       </div>
     </div>
 
+
     <!-- dropdown  start 1-->
+    <div class="label">Frequency</div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="showFrequency()">
+        <div class="euro-text" style="width: 100%">{{fchoose}}</div>
+        <div class="imgdiv" style="padding-bottom: 2px; width: 5%">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg" *ngIf="showf==false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="showf==true" />
+        </div>
+      </div>
+      <div *ngIf="productType!='Uber Classic'">
+        <div *ngIf="showf==true" style="height: 85px; overflow: scroll">
+          <div *ngFor="let list of frequency; let i=index" (click)="selectFrequency(list,i)">
+            <div class="euro-text1" [class.activeproduct]="list.active==true">
+              {{list.f}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="productType=='Uber Classic'">
+        <div *ngIf="showf==true" style="height: 45px; overflow: scroll">
+          <div *ngFor="let list of freqonce; let i=index" (click)="selectFrequency(list,i)">
+            <div class="euro-text1" [class.activeproduct]="list.active==true">
+              {{list.f}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
     <div class="label">Excess Buy Back</div>
     <div class="dropbox">
@@ -234,6 +265,41 @@
       </div>
     </div>
 
+    <div class="label">Passenger Liability</div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="showLiabillity()">
+        <div class="euro-text" style="width: 100%">{{pliability}}</div>
+        <div class="imgdiv" style="padding-bottom: 2px; width: 5%">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg" *ngIf="showpliability==false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="showpliability==true" />
+        </div>
+      </div>
+      <div *ngIf="showpliability==true" style="height: 70px; overflow: scroll">
+        <div *ngFor="let list of yesno; let i=index" (click)="selectLiabillity(list,i)">
+          <div class="euro-text1" [class.activeproduct]="list.active==true">
+            {{list.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label">Full Package</div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="Fullpackage()">
+        <div class="euro-text" style="width: 100%">{{Fpacakage}}</div>
+        <div class="imgdiv" style="padding-bottom: 2px; width: 5%">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg" *ngIf="showfullp==false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="showfullp==true" />
+        </div>
+      </div>
+      <div *ngIf="showfullp==true" style="height: 70px; overflow: scroll">
+        <div *ngFor="let list of yesno; let i=index" (click)="selectpackage(list,i)">
+          <div class="euro-text1" [class.activeproduct]="list.active==true">
+            {{list.name}}
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- dropdown  end-->
 
     <div class="label">Gender</div>

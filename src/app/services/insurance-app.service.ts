@@ -203,7 +203,7 @@ export class InsuranceAppService {
 
 
     return this.http.post(`${url}`, data, {
-      headers,
+      headers
     });
   }
 

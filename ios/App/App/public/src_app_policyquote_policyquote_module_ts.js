@@ -125,7 +125,7 @@ let PolicyquotePage = class PolicyquotePage {
     }
     buyOnlineQuote() {
         console.log('totaltax ---', this.overalltax);
-        this.router.navigate(['payment2']);
+        this.router.navigate(['vehicleinformation']);
     }
     getAnewQuote() {
         this.router.navigate(['/home-page-screen-after-login']);

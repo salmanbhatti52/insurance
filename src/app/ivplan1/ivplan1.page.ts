@@ -6,7 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { Router } from '@angular/router';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-ivplan1',
   templateUrl: './ivplan1.page.html',
@@ -85,7 +85,8 @@ export class Ivplan1Page implements OnInit {
   constructor(
     public router: Router,
     public api: InsuranceAppService,
-    public location: Location
+    public location: Location,
+    public http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -214,15 +215,21 @@ export class Ivplan1Page implements OnInit {
   }
 
   calculatorAPI(userid) {
+    var token = '39109f7df56e1CORNERStone9e685066bb852'
+    let header = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+    });
     var data = new FormData();
     data.append('opt', 'iclifp');
-    data.append('userid', 'C52028');
+    data.append('userid', userid);
     this.api.showLoader();
-    this.api
-      .postdata(
+    this.http
+      .post(
         'https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=908',
         data,
-        '39109f7df56e1CORNERStone9e685066bb852'
+        {
+          headers: header
+        }
       )
       .subscribe(
         (res: any) => {

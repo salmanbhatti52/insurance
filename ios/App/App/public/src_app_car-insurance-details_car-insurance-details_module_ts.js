@@ -591,7 +591,6 @@ let CarInsuranceDetailsPage = class CarInsuranceDetailsPage {
                 quoteItems: quoteItems,
                 image: 'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
                 path: '/payment',
-                status: 0,
                 datetime: new Date().toISOString()
               };
               this.draftArr.push(obj);

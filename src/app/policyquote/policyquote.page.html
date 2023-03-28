@@ -35,6 +35,142 @@
       <div class="panel-body">
         <div class="table-responsive">
           <table class="table quotetable table-bordered">
+            <tbody *ngIf="productType=='Auto Classic'">
+              <tr>
+                <td style="width: 55%; color: black">Auto Plan of Choice</td>
+                <td style="color: black">{{productType}} {{vechilemodel}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Vehicle Make</td>
+                <td style="color: black">{{vechilemake}} {{vechilemodel}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Value of Vehicle</td>
+                <td style="color: black">₦{{value}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Actual Premium</td>
+                <td style="color: black">₦{{prices.actual}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Flood Extension</td>
+                <td style="color: black">₦{{prices.flood_value}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Excess Buy Back</td>
+                <td style="color: black">₦{{prices.excess_value}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Strike Riot & Civil Commotion</td>
+                <td style="color: black">₦{{prices.srcc_value}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Increase in Third Party Property Damage</td>
+                <td style="color: black">₦{{prices.tppd_value}}</td>
+              </tr>
+              <tr>
+                <td style="width: 55%; color: black">Partial Payment</td>
+                <td style="color: black">₦{{prices.partial_payment}}</td>
+              </tr>
+              <tr>
+                <td style="width: 55%; color: black">Quote (Single Payment)</td>
+                <td style="color: black">₦{{prices.Quote}}</td>
+              </tr>
+            </tbody>
+
+            <tbody *ngIf="productType=='Auto Plus'">
+              <tr>
+                <td style="width: 55%; color: black">Auto Plan of Choice</td>
+                <td style="color: black">{{productType}} {{vechilemodel}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Vehicle Make</td>
+                <td style="color: black">{{vechilemake}} {{vechilemodel}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Value of Vehicle</td>
+                <td style="color: black">₦{{value}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Actual Premium</td>
+                <td style="color: black">₦{{prices.actual}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Increase in Third Party Property Damage</td>
+                <td style="color: black">₦{{prices.tppd_value}}</td>
+              </tr>
+              <tr>
+                <td style="width: 55%; color: black">Partial Payment</td>
+                <td style="color: black">₦{{prices.partial_payment}}</td>
+              </tr>
+              <tr>
+                <td style="width: 55%; color: black">Quote (Single Payment)</td>
+                <td style="color: black">₦{{prices.Quote}}</td>
+              </tr>
+            </tbody>
+
+            <tbody *ngIf="productType=='Uber Classic'">
+              <tr>
+                <td style="width: 55%; color: black">Auto Plan of Choice</td>
+                <td style="color: black">{{productType}} {{vechilemodel}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Vehicle Make</td>
+                <td style="color: black">{{vechilemake}} {{vechilemodel}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Value of Vehicle</td>
+                <td style="color: black">₦{{value}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Actual Premium</td>
+                <td style="color: black">₦{{prices.actual}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Flood Extension</td>
+                <td style="color: black">₦{{prices.flood_value}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Excess Buy Back</td>
+                <td style="color: black">₦{{prices.excess_value}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Strike Riot & Civil Commotion</td>
+                <td style="color: black">₦{{prices.srcc_value}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 55%; color: black">Increase in Third Party Property Damage</td>
+                <td style="color: black">₦{{prices.tppd_value}}</td>
+              </tr>
+              <tr>
+                <td style="width: 55%; color: black">Partial Payment</td>
+                <td style="color: black">₦{{prices.partial_payment}}</td>
+              </tr>
+              <tr>
+                <td style="width: 55%; color: black">Quote (Single Payment)</td>
+                <td style="color: black">₦{{prices.Quote}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- <table class="table quotetable table-bordered">
             <tbody>
               <tr>
                 <td style="width: 30%; color: black">First Name</td>
@@ -81,7 +217,7 @@
                 <td style="color: black">{{overalltax}}</td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
         </div>
       </div>
     </div>

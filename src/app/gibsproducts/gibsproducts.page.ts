@@ -11,6 +11,7 @@ import { InsuranceAppService } from '../services/insurance-app.service';
 })
 export class GibsproductsPage implements OnInit {
   motorsubproducts = [];
+  productType: string;
   constructor(
     public router: Router,
     public modal: ModalController,
@@ -19,9 +20,25 @@ export class GibsproductsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.gibsproduct();
+    // this.gibsproduct();
+    this.getcarclasses()
   }
 
+  getcarclasses() {
+    const myData =
+      'myData={"verify_token":"' +
+      localStorage.getItem('token') +
+      '","product_class":"comprehensive_motor_plans","method":"get_car_classes"}';
+    this.api.insertData(myData).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.motorsubproducts = res.values
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
   gibsproduct() {
     this.api.showLoader();
     const myData = {
@@ -69,34 +86,50 @@ export class GibsproductsPage implements OnInit {
         }
       );
   }
-  GProductdetail(ID) {
-    const myData = {
-      sid: 'ECHANNEL2',
-      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
-    };
-    this.api.gibsapi(myData).subscribe(
-      (res: any) => {
-        // console.log(res);
-        const token = res.accessToken;
-        this.api
-          .getpolicy(
-            'http://testcipapiservices.gibsonline.com/api/metadata/products/' +
-            ID,
-            token
-          )
-          .subscribe((res: any) => {
-            console.log('gibs product detail', res);
-            localStorage.setItem('gibsproduct', JSON.stringify(res));
 
-            this.router.navigate(['gibsplans']);
-          });
-      },
-      (err) => {
-        console.log(err);
-        this.api.hideLoader();
-      }
-    );
+  GProductdetail(p) {
+    console.log(p);
+    if (p == 'Auto Classic (1.75% Of vehicle value)') {
+      this.productType = 'Auto Classic'
+    } if (p == 'Auto Plus (3% Of vehicle value)') {
+      this.productType = 'Auto Plus'
+    }
+    if (p == 'Uber Classic (2.5% Of vehicle value)') {
+      this.productType = 'Uber Classic'
+    }
+    this.router.navigate(['gibsplans', {
+      productType: this.productType
+    }]);
   }
+
+  // GProductdetail(ID) {
+  //   const myData = {
+  //     sid: 'ECHANNEL2',
+  //     token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+  //   };
+  //   this.api.gibsapi(myData).subscribe(
+  //     (res: any) => {
+  //       // console.log(res);
+  //       const token = res.accessToken;
+  //       this.api
+  //         .getpolicy(
+  //           'http://testcipapiservices.gibsonline.com/api/metadata/products/' +
+  //           ID,
+  //           token
+  //         )
+  //         .subscribe((res: any) => {
+  //           console.log('gibs product detail', res);
+  //           localStorage.setItem('gibsproduct', JSON.stringify(res));
+
+  //           this.router.navigate(['gibsplans']);
+  //         });
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //       this.api.hideLoader();
+  //     }
+  //   );
+  // }
 
   goback() {
     this.location.back();
