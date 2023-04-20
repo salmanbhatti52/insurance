@@ -3,16 +3,16 @@
     <ion-row>
       <ion-col size="2" style="padding-left: 25px">
 
-        <ion-menu-toggle>
+        <!-- <ion-menu-toggle>
           <ion-buttons>
             <div style="width: 100%">
               <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
             </div>
           </ion-buttons>
-        </ion-menu-toggle>
+        </ion-menu-toggle> -->
       </ion-col>
       <ion-col size="8">
-        <div class="title">Payment</div>
+        <div class="title">Payment Successful</div>
       </ion-col>
       <ion-col class="titleclass" size="2"> </ion-col>
     </ion-row>
@@ -21,6 +21,17 @@
 
 <ion-content>
   <div class="wrapper">
+    <!-- <p style="color: #1A0F55;
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0px;
+    font-weight: 600;">Thank you for purchasing our Motor Insurance, please check your
+      email for your certificate</p> -->
+    <p style="color: #1A0F55;
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0px;
+    font-weight: 600;">Thank you for purchasing our Motor Insurance,download your certificate</p>
 
     <div class="box box-success">
       <div class="panel-body">
@@ -29,19 +40,18 @@
             <tbody>
               <tr>
                 <td style="width: 30%; color: black">Product Name</td>
-                <td style="color: black">{{subProName}}</td>
+                <td style="color: black">{{productres.product.name}}</td>
+              </tr>
+              <tr>
+                <td style="width: 30%; color: black">Product Type</td>
+                <td style="color: black">{{productType}}</td>
               </tr>
               <tr>
                 <td style="width: 30%; color: black">policyNo</td>
-                <td style="color: black">{{policyNo}}</td>
+                <td style="color: black">{{productres.product.last_policynumber}}</td>
               </tr>
 
-              <tr>
-                <td style="width: 30%; color: black">documentNo</td>
-                <td style="color: black">{{productres.documentNo}}</td>
-              </tr>
-
-              <tr>
+              <!-- <tr>
                 <td style="width: 30%; color: black">entryDate</td>
                 <td style="color: black">{{productres.entryDate}}</td>
               </tr>
@@ -49,7 +59,7 @@
               <tr>
                 <td style="width: 30%; color: black">endDate</td>
                 <td style="color: black">{{productres.endDate}}</td>
-              </tr>
+              </tr> -->
               <tr>
                 <td style="width: 30%; color: black">Transaction Reference</td>
                 <td style="color: black">{{trxref}}</td>
@@ -63,13 +73,14 @@
     font-size: 14px;
     line-height: 1.2;
     margin: 0px;">Thankyou for buying.We have sent you a certificate on email.Please check your email.</p>
-    <p style="text-align: center; margin: 10px 0px 0px 0px">
+    <!-- <p style="text-align: center; margin: 10px 0px 0px 0px">
       <span class="p-span" style="color: #1a206d">In case you didn't receive email?</span>
       <span class="p-span" style="color: #a8b400" (click)="send()">Resend</span>
-    </p>
+    </p> -->
 
     <div class="btndiv">
-
+      <ion-button class="btn1" (click)="download()">Download
+      </ion-button>
       <ion-button class="btn1" (click)="goback()">Go back to home
       </ion-button>
     </div>

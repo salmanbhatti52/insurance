@@ -95,6 +95,8 @@ export class Ivplan1Page implements OnInit {
     this.productID = localStorage.getItem('product_id');
     this.userEmail = localStorage.getItem('email');
     this.mobNumber = localStorage.getItem('number');
+    this.fName = localStorage.getItem('fname');;
+    this.lName = localStorage.getItem('lname');
   }
 
   goback() {

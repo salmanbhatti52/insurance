@@ -115,6 +115,19 @@ export class InsuranceAppService {
     });
   }
 
+  getcallbackurl(url) {
+    let header;
+    header = new HttpHeaders();
+    header.append('Access-Control-Allow-Origin', '*');
+    header.append(
+      'Access-Control-Allow-Methods',
+      'POST, GET, DELETE, PUT,OPTIONS'
+    );
+
+    return this.http.get(`${url}`, {
+      headers: header,
+    });
+  }
   get(url, token?) {
     let header;
     // console.log('token in api ervice====', token);

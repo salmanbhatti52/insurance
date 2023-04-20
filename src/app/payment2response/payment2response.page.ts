@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
+import { Http, HttpDownloadFileResult } from '@capacitor-community/http';
+import { HttpClient } from '@angular/common/http';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 @Component({
   selector: 'app-payment2response',
   templateUrl: './payment2response.page.html',
@@ -14,23 +17,28 @@ export class Payment2responsePage implements OnInit {
   Gproduct: any;
   subProName: any;
   trxref: any;
+  productType: string;
+  FILE_DIR = Directory.Documents
   constructor(public router: Router,
     public api: InsuranceAppService,
-    public navCtrl: NavController) { }
+    public navCtrl: NavController,
+    public http: HttpClient) { }
 
   ngOnInit() {
-    if (localStorage.getItem('subProName') == 'Third Party') {
-      this.subProName = localStorage.getItem('subProName')
-    } else {
-      this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
-      console.log('ssssss-----', this.Gproduct);
-      this.subProName = this.Gproduct.productName
-    }
-    this.email = localStorage.getItem('email');
+    // if (localStorage.getItem('subProName') == 'Third Party') {
+    //   this.subProName = localStorage.getItem('subProName')
+    // } else {
+    //   this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
+    //   console.log('ssssss-----', this.Gproduct);
+    //   this.subProName = this.Gproduct.productName
+    // }
+    // this.email = localStorage.getItem('email');
 
-    this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
-    console.log(this.productres);
-
+    // this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
+    // console.log(this.productres);
+    this.productType = localStorage.getItem('productType');
+    this.productres = JSON.parse(localStorage.getItem('vechileinfo'));
+    console.log(this.productres)
     this.policyNo = this.productres.policyNo;
     this.trxref = localStorage.getItem('trxref')
   }
@@ -63,6 +71,32 @@ export class Payment2responsePage implements OnInit {
     })
   }
 
+  async download() {
+    let ref = this
+    this.http.get('', { responseType: 'blob' }).subscribe((res: Blob) => {
+      var reader = new FileReader();
+      reader.readAsDataURL(res);
+
+      reader.onloadend = function () {
+        let base64 = reader.result.toString();
+        ref.savepdf(base64)
+      }
+    })
+
+  }
+
+  savepdf(base64) {
+    Filesystem.writeFile({
+      path: 'Certificate.pdf',
+      data: base64,
+      directory: Directory.Documents,
+      encoding: Encoding.UTF8,
+    }).then(res => {
+      alert('file saved at' + res.uri)
+    }, (err) => {
+      alert(err)
+    })
+  }
   goback() {
     this.router.navigate(['/home-page-screen-after-login']);
   }

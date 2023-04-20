@@ -1,15 +1,20 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
-
+import { IonModal } from '@ionic/angular';
+import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeScript, SafeStyle, SafeUrl } from "@angular/platform-browser";
+import { Pipe, PipeTransform } from "@angular/core";
+import { OverlayEventDetail } from '@ionic/core/components';
+@Pipe({ name: "safe" })
 @Component({
   selector: 'app-payment2',
   templateUrl: './payment2.page.html',
   styleUrls: ['./payment2.page.scss'],
 })
 export class Payment2Page implements OnInit {
+  @ViewChild(IonModal) modal: IonModal;
   quoteItems: any;
   quoteArrayLength: number;
   value = localStorage.getItem('subProName');
@@ -23,12 +28,18 @@ export class Payment2Page implements OnInit {
   subprodName: any;
   draftArr: any;
   productID: string;
+  prices: any;
+  quoteprocess: any;
+  quote_id: any;
+  paystackurl: any;
+  referenceval: any;
 
   constructor(
     public location: Location,
     public router: Router,
     public api: InsuranceAppService,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private sanitizer: DomSanitizer
   ) { }
   firstName: string;
   lastName: string;
@@ -56,8 +67,8 @@ export class Payment2Page implements OnInit {
     console.log('payment succesfull-----', ref);
     if (ref.status == 'success') {
       localStorage.setItem('trxref', ref.trxref)
-
-      this.pay()
+      // this.paymentapi('')
+      // this.pay()
     }
   }
 
@@ -67,22 +78,52 @@ export class Payment2Page implements OnInit {
   }
 
   ngOnInit() {
-    this.subprodName = localStorage.getItem('subProName');
-    this.productID = localStorage.getItem('product_id');
+    this.quoteprocess = JSON.parse(localStorage.getItem('quoteprocess'));
+
+    this.quote_id = this.quoteprocess.info.quote_id
     this.email = localStorage.getItem('email');
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
-    // this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
+    console.log('quote_id', this.quote_id);
 
-    this.priceofquote = Math.floor(Number(localStorage.getItem('overalltax')));
-    this.amt = this.priceofquote + '' + '00';
-    console.log('dsadsads', localStorage.getItem('gibsProductres'));
-    if (localStorage.getItem('gibsProductres') == null) {
-      this.policyNo = ''
-    } else {
-      this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
-      this.policyNo = this.productres.policyNo
+
+    // this.prices = JSON.parse(localStorage.getItem('motorprices'))
+    // this.amt = this.prices.amount
+    this.prices = JSON.parse(localStorage.getItem('quoteItemsvalues'))
+    console.log(this.prices);
+    for (var i = 0; i < this.prices.length; i++) {
+      if (this.prices[i].label == 'Quote') {
+        this.amt = this.prices[i].value
+
+
+      }
     }
 
+    let p = 'https://www.cornerstone.com.ng/devtest/webservice/app/paystackCallback/?txnref=4236714128'
+    let split = p.split('?')[1]
+    let split2 = p.split('=')[1]
+    console.log('ddddddddddddddd', split2);
+    let transval = '&' + split
+    console.log('ddddddddddddddd', transval);
+    let reference = '&reference=' + split2
+    console.log('ddddddddddddddd', reference);
+    // old code.....
+    ////////////////////
+    // this.subprodName = localStorage.getItem('subProName');
+    // this.productID = localStorage.getItem('product_id');
+    // this.email = localStorage.getItem('email');
+    // this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
+    // // this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
+
+    // this.priceofquote = Math.floor(Number(localStorage.getItem('overalltax')));
+    // this.amt = this.priceofquote + '' + '00';
+    // console.log('dsadsads', localStorage.getItem('gibsProductres'));
+    // if (localStorage.getItem('gibsProductres') == null) {
+    //   this.policyNo = ''
+    // } else {
+    //   this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
+    //   this.policyNo = this.productres.policyNo
+    // }
+    ///////////////////////////////
   }
   buyOnlineQuote() {
     this.router.navigate(['/car-insurance-details']);
@@ -180,27 +221,81 @@ export class Payment2Page implements OnInit {
   }
 
   paymentapi(paymentoption) {
+
+    console.log(this.paystackurl);
+
+    this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+    console.log(this.draftArr);
+
+    // for (var i = 0; i < this.draftArr.length; i++) {
+    //   if (this.draftArr[i].quote_id == this.quote_id) {
+
+    //     this.draftArr.splice(i, 1);
+
+    //   }
+
+    // }
+    // localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+
     let datasend =
       'myData={"product_id":' +
-      localStorage.getItem('subProId') +
+      '59' +
       ',"quote_id":' +
-      localStorage.getItem('quote_id') +
+      this.quote_id +
       ',"payment_option":' +
-      paymentoption +
+      '"paystack"' +
       ',"verify_token":"' +
       localStorage.getItem('token') +
       '","method":"payment_method_select"}';
+    // 'myData={"quote_id":' +
+    // this.quote_id +
+    // ',"verify_token":"' +
+    // localStorage.getItem('token') +
+    // '","method":"send_certificate"}';
 
     this.api.insertData(datasend).subscribe((res: any) => {
       console.log('payemt response', res);
-      if (paymentoption == 1) {
-        this.navCtrl.navigateForward([
-          'payquote',
-          {
-            payres: JSON.stringify(res.transaction),
-          },
-        ]);
+      if (res.status_no == 1) {
+        this.paystackurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.paystack.url)
+        this.api.presenttoast(res.message)
+        // this.navCtrl.navigateRoot('payment2response');
+        let p = res.fields.callback_url
+        let split = p.split('?')[1]
+        let split2 = p.split('=')[1]
+        let transval = '&' + split
+        let reference = '&reference=' + split2
+        this.referenceval = reference
+        // console.log('ddddddddddddddd', transval);
+      } else {
+        this.api.presenttoast(res.message)
       }
+
+      // if (paymentoption == 1) {
+      //   this.navCtrl.navigateForward([
+      //     'payquote',
+      //     {
+      //       payres: JSON.stringify(res.transaction),
+      //     },
+      //   ]);
+      // }
     });
   }
+
+  confirm() {
+    this.modal.dismiss('', 'confirm');
+  }
+  onWillDismiss(event: Event) {
+    console.log('event', event);
+
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      alert('hellow')
+      this.api.getcallbackurl(this.referenceval).subscribe((url: any) => {
+        console.log('callback url:::', url);
+
+      })
+    }
+  }
+
+
 }

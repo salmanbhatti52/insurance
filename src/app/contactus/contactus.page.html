@@ -2,27 +2,23 @@
   <ion-toolbar class="headBgGlobal">
     <ion-row style="display: flex; align-items: center">
       <ion-col size="2" style="padding-left: 25px">
-        <!-- <div style="width: 100%">
+        <div style="width: 100%">
           <img (click)="goBack()" src="assets/images/back-arrow.svg" alt="" />
-        </div> -->
+        </div>
 
-        <ion-menu-toggle>
+        <!-- <ion-menu-toggle>
           <ion-buttons>
             <div style="width: 100%">
               <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
             </div>
           </ion-buttons>
-        </ion-menu-toggle>
+        </ion-menu-toggle> -->
       </ion-col>
       <ion-col size="8">
         <div class="title">Contact Us</div>
       </ion-col>
       <ion-col class="titleclass" size="2">
-        <img
-          (click)="updateProfile()"
-          class="pro-img"
-          src="assets/images/user.png"
-        />
+        <img (click)="updateProfile()" class="pro-img" src="assets/images/user.png" />
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -33,20 +29,13 @@
     <p class="name-para">Hi <span *ngIf="userId!=null">{{cname}}!</span></p>
     <p class="wc-para">Welcome</p>
     <div class="logo">
-      <img
-        src="assets/images/contactlogo.png"
-        style="height: 200px; width: 200px"
-      />
+      <img src="assets/images/contactlogo.png" style="height: 200px; width: 200px" />
     </div>
     <div style="margin-top: 10px">
       <img src="assets/images/fb.png" class="socialimgclass" (click)="fb()" />
       <img src="assets/images/tw.png" class="socialimgclass" (click)="tw()" />
       <img src="assets/images/yt.png" class="socialimgclass" (click)="yt()" />
-      <img
-        src="assets/images/inst.png"
-        class="socialimgclass"
-        (click)="inst()"
-      />
+      <img src="assets/images/inst.png" class="socialimgclass" (click)="inst()" />
     </div>
     <div class="headtitle">HEAD OFFICE</div>
 
@@ -57,10 +46,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(6.4244264,3.4459322,'21, Water Corporation Drive, Off Ligali Ayorinde Street, Victoria Island ,Lagos, Nigeria')"
-        >
+        <div class="para"
+          (click)="openMapsApp(6.4244264,3.4459322,'21, Water Corporation Drive, Off Ligali Ayorinde Street, Victoria Island ,Lagos, Nigeria')">
           21, Water Corporation Drive, Off Ligali Ayorinde Street, Victoria
           Island ,Lagos, Nigeria
         </div>
@@ -73,9 +60,7 @@
           <img src="assets/images/sms.svg" />
         </div>
         <div class="para1">
-          <a class="para1" href="mailto:ecare@cornerstone.com.ng"
-            >ecare@cornerstone.com.ng</a
-          >
+          <a class="para1" href="mailto:ecare@cornerstone.com.ng">ecare@cornerstone.com.ng</a>
           <br />
           <span class="sp">(Sales Enquiries & Support)</span>
         </div>
@@ -85,9 +70,7 @@
           <img src="assets/images/sms.svg" />
         </div>
         <div class="para1">
-          <a class="para1" href="mailto:enquiries@cornerstone.com.ng"
-            >enquiries@cornerstone.com.ng</a
-          ><br />
+          <a class="para1" href="mailto:enquiries@cornerstone.com.ng">enquiries@cornerstone.com.ng</a><br />
           <span class="sp">(Corporate Enquiries, Feedbacks & Complaints)</span>
         </div>
       </div>
@@ -96,9 +79,7 @@
           <img src="assets/images/sms.svg" />
         </div>
         <div class="para1">
-          <a class="para1" href="mailto:claimscare@cornerstone.com.ng"
-            >ClaimsCare@cornerstone.com.ng</a
-          ><br />
+          <a class="para1" href="mailto:claimscare@cornerstone.com.ng">ClaimsCare@cornerstone.com.ng</a><br />
           <span class="sp">(Claims Lodgement, Enquiries & Complaints)</span>
         </div>
       </div>
@@ -122,12 +103,8 @@
         <div class="para1">
           <a class="para1" href="tel:01-2806500">01-2806500</a> &
           <a class="para1" href="tel:07086216957">0700</a> CORNERSTONE <br />
-          <span class="sp"
-            ><a class="para1" href="tel:0700 267 63778663"
-              >(0700 267 63778663)</a
-            >
-            (Corporate Enquiries,Feedbacks & Complaints)</span
-          >
+          <span class="sp"><a class="para1" href="tel:0700 267 63778663">(0700 267 63778663)</a>
+            (Corporate Enquiries,Feedbacks & Complaints)</span>
         </div>
       </div>
 
@@ -151,10 +128,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(7.1361511,3.3224694,'Agbeloba Building, 56, Quarry Road, Abeokuta, Ogun State')"
-        >
+        <div class="para"
+          (click)="openMapsApp(7.1361511,3.3224694,'Agbeloba Building, 56, Quarry Road, Abeokuta, Ogun State')">
           Agbeloba Building, 56, Quarry Road, Abeokuta, Ogun State
         </div>
       </div>
@@ -177,10 +152,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(6.6102297,3.514677,'134 Lagos Road,Ikorodu,Lagos State')"
-        >
+        <div class="para" (click)="openMapsApp(6.6102297,3.514677,'134 Lagos Road,Ikorodu,Lagos State')">
           134 Lagos Road,Ikorodu,Lagos State
         </div>
       </div>
@@ -200,10 +172,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(4.8212557,7.007805,'222, Aba Road, Port Harcourt, Rivers State')"
-        >
+        <div class="para" (click)="openMapsApp(4.8212557,7.007805,'222, Aba Road, Port Harcourt, Rivers State')">
           222, Aba Road, Port Harcourt, Rivers State
         </div>
       </div>
@@ -223,10 +192,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(9.0811713,7.4994721,'34, Gana street, Maitama, Abuja')"
-        >
+        <div class="para" (click)="openMapsApp(9.0811713,7.4994721,'34, Gana street, Maitama, Abuja')">
           34, Gana street, Maitama, Abuja
         </div>
       </div>
@@ -249,10 +215,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(6.4644981,3.5351153,'Road 2. Block E, Shop 154, Ikota Shopping Complex VGC, Lekki – Ajah Expressway, Lagos State')"
-        >
+        <div class="para"
+          (click)="openMapsApp(6.4644981,3.5351153,'Road 2. Block E, Shop 154, Ikota Shopping Complex VGC, Lekki – Ajah Expressway, Lagos State')">
           Road 2. Block E, Shop 154, Ikota Shopping Complex VGC, Lekki – Ajah
           Expressway, Lagos State
         </div>
@@ -276,10 +240,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(9.1910422,7.1785003,'7 Suleiman Barau Road, Suleja,Niger State')"
-        >
+        <div class="para" (click)="openMapsApp(9.1910422,7.1785003,'7 Suleiman Barau Road, Suleja,Niger State')">
           7 Suleiman Barau Road, Suleja,Niger State
         </div>
       </div>
@@ -302,10 +263,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(6.4419916,3.3568497,'Polysonic Mall (2nd Floor) 1B, Point Road, Apapa, Lagos State')"
-        >
+        <div class="para"
+          (click)="openMapsApp(6.4419916,3.3568497,'Polysonic Mall (2nd Floor) 1B, Point Road, Apapa, Lagos State')">
           Polysonic Mall (2nd Floor) 1B, Point Road, Apapa, Lagos State
         </div>
       </div>
@@ -328,10 +287,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(8.4921139,4.5688141,'3, Sokoto Road Sabo Oke, Ilorin,Kwara State')"
-        >
+        <div class="para" (click)="openMapsApp(8.4921139,4.5688141,'3, Sokoto Road Sabo Oke, Ilorin,Kwara State')">
           3, Sokoto Road Sabo Oke, Ilorin,Kwara State
         </div>
       </div>
@@ -351,10 +307,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(5.0395195,7.9348257,'317B, Wellington Bassey Way, Uyo, Akwa Ibom State, Nigeria')"
-        >
+        <div class="para"
+          (click)="openMapsApp(5.0395195,7.9348257,'317B, Wellington Bassey Way, Uyo, Akwa Ibom State, Nigeria')">
           317B, Wellington Bassey Way, Uyo, Akwa Ibom State, Nigeria
         </div>
       </div>
@@ -377,10 +331,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(6.471907,3.2953946,'Suite 101A PIN Plaza Opposite H Close, First Avenue Festac Town, Lagos State')"
-        >
+        <div class="para"
+          (click)="openMapsApp(6.471907,3.2953946,'Suite 101A PIN Plaza Opposite H Close, First Avenue Festac Town, Lagos State')">
           Suite 101A PIN Plaza Opposite H Close, First Avenue Festac Town, Lagos
           State
         </div>
@@ -401,10 +353,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(6.471907,3.2953946,'103 Hadejia Road, Fagge, Kano State')"
-        >
+        <div class="para" (click)="openMapsApp(6.471907,3.2953946,'103 Hadejia Road, Fagge, Kano State')">
           103 Hadejia Road, Fagge, Kano State
         </div>
       </div>
@@ -424,10 +373,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(5.7476018,5.5689825,'Km 4, Refinery Road, Thomas House, Ekpan, Warri, Delta State')"
-        >
+        <div class="para"
+          (click)="openMapsApp(5.7476018,5.5689825,'Km 4, Refinery Road, Thomas House, Ekpan, Warri, Delta State')">
           Km 4, Refinery Road, Thomas House, Ekpan, Warri, Delta State
         </div>
       </div>
@@ -447,10 +394,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(7.3599586,3.8635748,'67, Aboderin Layout ,Oni & Sons Area Ring Road, Ibadan, Oyo State')"
-        >
+        <div class="para"
+          (click)="openMapsApp(7.3599586,3.8635748,'67, Aboderin Layout ,Oni & Sons Area Ring Road, Ibadan, Oyo State')">
           67, Aboderin Layout ,Oni & Sons Area Ring Road, Ibadan, Oyo State
         </div>
       </div>
@@ -470,10 +415,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(6.4495684,3.406482,'Cornerstone House 136, Lewis Street Obalende, Lagos State')"
-        >
+        <div class="para"
+          (click)="openMapsApp(6.4495684,3.406482,'Cornerstone House 136, Lewis Street Obalende, Lagos State')">
           Cornerstone House 136, Lewis Street Obalende, Lagos State
         </div>
       </div>
@@ -493,10 +436,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(6.4862774,3.3842253,'91 Herbert Macaulay Way, Sabo yaba 101001, Yaba, Lagos Mainland, Nigeria')"
-        >
+        <div class="para"
+          (click)="openMapsApp(6.4862774,3.3842253,'91 Herbert Macaulay Way, Sabo yaba 101001, Yaba, Lagos Mainland, Nigeria')">
           91 Herbert Macaulay Way, Sabo yaba 101001, Yaba, Lagos Mainland,
           Nigeria
         </div>
@@ -517,10 +458,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(6.6058944,3.3373,'Swiss Guard House, 6, Adeniyi Jones Avenue, (Opposite Wahum) Ikeja, Lagos State')"
-        >
+        <div class="para"
+          (click)="openMapsApp(6.6058944,3.3373,'Swiss Guard House, 6, Adeniyi Jones Avenue, (Opposite Wahum) Ikeja, Lagos State')">
           Swiss Guard House, 6, Adeniyi Jones Avenue, (Opposite Wahum) Ikeja,
           Lagos State
         </div>
@@ -544,10 +483,7 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(5.5182455,7.0480823,'No. 67, Okigwe Road, Owerri, Imo State.')"
-        >
+        <div class="para" (click)="openMapsApp(5.5182455,7.0480823,'No. 67, Okigwe Road, Owerri, Imo State.')">
           No. 67, Okigwe Road, Owerri, Imo State.
         </div>
       </div>
@@ -570,10 +506,8 @@
         <div class="icondiv">
           <img src="assets/images/location.svg" />
         </div>
-        <div
-          class="para"
-          (click)="openMapsApp(4.9369121,6.3177197,'Jay Cee Plaza, Otiotio Road,Yenezue Gene, Yenagoa, Bayelsa State')"
-        >
+        <div class="para"
+          (click)="openMapsApp(4.9369121,6.3177197,'Jay Cee Plaza, Otiotio Road,Yenezue Gene, Yenagoa, Bayelsa State')">
           Jay Cee Plaza, Otiotio Road,Yenezue Gene, Yenagoa, Bayelsa State
         </div>
       </div>

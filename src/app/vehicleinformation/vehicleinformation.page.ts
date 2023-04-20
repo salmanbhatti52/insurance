@@ -3,6 +3,9 @@ import { InsuranceAppService } from './../services/insurance-app.service';
 import { Component, OnInit } from '@angular/core';
 import { format } from 'date-fns';
 import { NavController } from '@ionic/angular';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-vehicleinformation',
   templateUrl: './vehicleinformation.page.html',
@@ -13,12 +16,14 @@ export class VehicleinformationPage implements OnInit {
   address = '';
   dateofbirth = 'Please Select';
   showPickerdob = false;
+  showPickerdoI = false
   yopValue = format(new Date(), 'yyyy');
   yomValue = format(new Date(), 'yyyy');
   yomdate = format(new Date(), 'yyyy');
   yopdate = format(new Date(), 'yyyy');
   showPickerYom = false;
   showPickerYop = false;
+  doIValue = format(new Date(), 'yyyy-MM-dd');
   dobValue = format(new Date(), 'yyyy-MM-dd');
   showReferrer = false;
   showGender = false;
@@ -74,17 +79,35 @@ export class VehicleinformationPage implements OnInit {
   };
   draftArr: any;
   vechileinformation: any;
+  quoteval: any;
+  dateofincorporation: any = 'Please Select';
+  quoteprocess: any;
+  quote_id: any;
   constructor(public api: InsuranceAppService,
     public navCtrl: NavController,
-    public route: ActivatedRoute) { }
+    public route: ActivatedRoute,
+    private http: HttpClient,
+    public location: Location) { }
 
   ngOnInit() {
     this.getReferrerList();
 
+    this.quoteval = JSON.parse(localStorage.getItem('quotevalues'));
+    console.log(this.quoteval);
+    this.dateofbirth = this.quoteval.dob
+    this.quoteprocess = JSON.parse(localStorage.getItem('quoteprocess'));
 
+    this.quote_id = this.quoteprocess.info.quote_id
+
+    console.log(localStorage.getItem('motorquoteprice'));
+
+    this.fullname = localStorage.getItem('fname') + localStorage.getItem('lname')
 
   }
 
+  goback() {
+    this.location.back();
+  }
   getReferrerList() {
     const myData =
       'myData={"verify_token":"' +
@@ -116,6 +139,10 @@ export class VehicleinformationPage implements OnInit {
   dobChanged(value) {
     this.dateofbirth = value;
     this.showPickerdob = false;
+  }
+  doInChanged(value) {
+    this.dateofincorporation = value;
+    this.showPickerdoI = false;
   }
 
   selectFile(event, type) {
@@ -257,48 +284,191 @@ export class VehicleinformationPage implements OnInit {
       this.utilityBills.file == '') {
       this.api.presenttoast('Utility Bill required')
 
-    } else if (
-      this.CACForm.file == '') {
-      this.api.presenttoast('Form inspection required')
+    }
+    // else if (
+    //   this.CACForm.file == '') {
+    //   this.api.presenttoast('Form inspection required')
 
-    } else if (this.referrerVal == 'Please Select') {
+    // }
+    else if (this.referrerVal == 'Please Select') {
       this.api.presenttoast('Please Select Referrer')
 
     } else if (this.referrerData == '') {
       this.api.presenttoast('Referrer Details required')
 
     } else {
+      // const myData =
+      //   'myData={"quote_id":"' +
+      //   this.quoteprocess.info.quote_id +
+      //   '","product_id":"' +
+      //   this.quoteprocess.info.product_id +
+      //   '","name":"' +
+      //   this.fullname +
+      //   '","registration_number":"' +
+      //   this.quoteval.registration_number +
+      //   '","engine_number":"' +
+      //   this.quoteval.engine_number +
+      //   '","chasis_number":"' +
+      //   this.quoteval.chasis_number +
+      //   '","vehicle_colour":"' +
+      //   this.quoteval.vehicle_colour +
+      //   '","year_of_manufacture":"' +
+      //   this.yomdate +
+      //   '","year_of_purchase":"' +
+      //   this.yopdate +
 
-      this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
-      console.log(this.draftArr);
+      //   '","address":"' +
+      //   this.address +
+      //   '", "gender":"' +
+      //   this.genderVal +
+      //   '", "date_of_birth":"' +
+      //   this.quoteval.dob +
+      //   '", "Incorporation":"' +
+      //   this.dateofincorporation +
+      //   '", "referred_by":"' +
+      //   this.referrerVal +
+      //   '", "referrer_details":"' +
+      //   this.referrerData +
+      //   '", "means_of_id":"' +
+      //   this.driverLicence.file +
+      //   '", "vehicle_licence":"' +
+      //   this.vehicleLicence.file +
+      //   '", "utility_bill":"' +
+      //   this.utilityBills.file +
+      //   '", "vehicle_picture_front_view":"' +
+      //   this.vehFrontPic.file +
+      //   '", "vehicle_picture_rear_view":"' +
+      //   this.vehRearPic.file +
+      //   '", "vehicle_picture_side_view_left":"' +
+      //   this.vehPicSideViewLeft.file +
+      //   '", "vehicle_picture_side_view_right":"' +
+      //   this.vehPicSideViewRight.file +
+      //   '", "vehicle_picture_dashboard":"' +
+      //   this.vehPicDashboard.file +
+      //   '", "verify_token":"' +
+      //   localStorage.getItem('token') +
+      //   '","method":"save_product_proposal"}';
+      const headers = new HttpHeaders();
+      var form = new FormData();
+      form.append('product_id', this.quoteprocess.info.product_id);
+      form.append('quote_id', this.quoteprocess.info.quote_id);
+      form.append('name', this.fullname);
+      form.append('registration_number', this.quoteval.registration_number);
+      form.append('engine_number', this.quoteval.engine_number);
+      form.append('chasis_number', this.quoteval.chasis_number);
+      form.append('vehicle_colour', this.quoteval.vehicle_colour);
+      form.append('address', this.address);
+      form.append('gender', this.genderVal);
+      form.append('date_of_birth', this.dateofbirth);
+      form.append('incorporation', this.dateofincorporation);
+      form.append('year_of_purchase', this.yopdate);
+      form.append('year_of_manufacture', this.yomdate);
+      form.append('referred_by', this.referrerVal);
+      form.append('referrer_details', this.referrerData);
+      form.append('means_of_id', this.driverLicence.file);
+      form.append('vehicle_licence', this.vehicleLicence.file);
+      form.append('utility_bill', this.utilityBills.file);
+      form.append('vehicle_picture_front_view', this.vehFrontPic.file);
+      form.append('vehicle_picture_rear_view', this.vehRearPic.file);
+      form.append('vehicle_picture_side_view_left', this.vehPicSideViewLeft.file);
+      form.append('vehicle_picture_side_view_right', this.vehPicSideViewRight.file);
+      form.append('vehicle_picture_dashboard', this.vehPicDashboard.file);
+      form.append('verify_token', localStorage.getItem('token'));
+      form.append('method', 'save_product_proposal');
+      const config = {
+        method: 'post',
+        url: 'https://www.cornerstone.com.ng/devtest/webservice',
+        headers: headers,
+        data: form,
+      };
+      console.log('form form config', config);
+      this.http
+        .post(config.url, config.data, {
+          headers: config.headers,
+        })
+        .subscribe(
+          (res: any) => {
+            console.log(res);
+            if (res.status_no == 1) {
+              this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+              console.log(this.draftArr);
+              for (var i = 0; i < this.draftArr.length; i++) {
+                var product_id = this.draftArr[i].product_id;
+                var quote_id = this.draftArr[i].quote_id;
+                var product_name = this.draftArr[i].subProName;
+                var quoteItems = this.draftArr[i].quoteItems;
+                // var path = this.draftArr[i].path;
+                if (this.draftArr[i].quote_id == this.quote_id) {
+                  this.draftArr.splice(i, 1);
 
-      for (var i = 0; i < this.draftArr.length; i++) {
-        var product_id = this.draftArr[i].product_id;
-        var quote_id = this.draftArr[i].quote_id;
-        var product_name = this.draftArr[i].subProName;
-        var quoteItems = this.draftArr[i].quoteItems;
-        // var path = this.draftArr[i].path;
-        if (this.draftArr[i].product_id == localStorage.getItem('product_id')) {
-          this.draftArr.splice(i, 1);
+                  var obj = {
+                    title: product_name,
+                    product_id: product_id,
+                    quote_id: quote_id,
+                    subProName: product_name,
+                    quoteItems: quoteItems,
+                    image:
+                      'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+                    path: '/payment2',
+                    datetime: new Date().toISOString(),
+                  };
 
-          var obj = {
-            title: product_name,
-            product_id: product_id,
-            quote_id: quote_id,
-            subProName: product_name,
-            quoteItems: quoteItems,
-            image:
-              'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
-            path: '/payment2',
-            datetime: new Date().toISOString(),
-          };
+                  this.draftArr.push(obj);
+                }
+              }
 
-          this.draftArr.push(obj);
-        }
-      }
+              localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+              this.navCtrl.navigateRoot('payment2')
+              localStorage.setItem('vechileinfo', JSON.stringify(res))
+            } else {
+              this.api.presenttoast(res.message + ' ' + (res.field))
+            }
 
-      localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
-      this.navCtrl.navigateRoot('payment2');
+
+          },
+          (err) => {
+            console.log('err===', err);
+          }
+        );
+      // this.api.insertData(form).subscribe(
+      //   (res: any) => {
+      //     console.log('proposalproces=====', res);
+      //     // this.navCtrl.navigateRoot('payment2')
+      //   },
+      //   (err) => {
+      //     console.log(err);
+      //   }
+      // );
+      // this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+      // console.log(this.draftArr);
+
+      // for (var i = 0; i < this.draftArr.length; i++) {
+      //   var product_id = this.draftArr[i].product_id;
+      //   var quote_id = this.draftArr[i].quote_id;
+      //   var product_name = this.draftArr[i].subProName;
+      //   var quoteItems = this.draftArr[i].quoteItems;
+      //   // var path = this.draftArr[i].path;
+      //   if (this.draftArr[i].product_id == localStorage.getItem('product_id')) {
+      //     this.draftArr.splice(i, 1);
+
+      //     var obj = {
+      //       title: product_name,
+      //       product_id: product_id,
+      //       quote_id: quote_id,
+      //       subProName: product_name,
+      //       quoteItems: quoteItems,
+      //       image:
+      //         'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+      //       path: '/payment2',
+      //       datetime: new Date().toISOString(),
+      //     };
+
+      //     this.draftArr.push(obj);
+      //   }
+      // }
+
+      // localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+      // this.navCtrl.navigateRoot('payment2');
     }
 
   }

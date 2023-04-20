@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-policyquote',
   templateUrl: './policyquote.page.html',
@@ -22,9 +23,13 @@ export class PolicyquotePage implements OnInit {
   vechilemodel: string;
   productType: string;
   prices: string;
+  quoteitems: any;
   constructor(public location: Location, public router: Router, public activated: ActivatedRoute) { }
 
   ngOnInit() {
+    this.quoteitems = JSON.parse(localStorage.getItem('quoteItemsvalues'))
+    console.log(this.quoteitems);
+
     // this.overalltax = Math.floor(Number(localStorage.getItem('overalltax')));
 
     // this.fname = localStorage.getItem('fname');
@@ -45,13 +50,14 @@ export class PolicyquotePage implements OnInit {
     this.vechilemake = localStorage.getItem('vechilemake')
     this.vechilemodel = localStorage.getItem('vechilemodel');
     this.productType = localStorage.getItem('productType');
-    this.prices = JSON.parse(localStorage.getItem('motorprices'))
-    console.log(this.prices);
+    // this.prices = JSON.parse(localStorage.getItem('motorprices'))
+    // console.log(this.prices);
 
   }
 
   buyOnlineQuote() {
     console.log('totaltax ---', this.overalltax);
+
     this.router.navigate(['vehicleinformation']);
   }
 

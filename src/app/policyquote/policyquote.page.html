@@ -3,19 +3,19 @@
   <ion-toolbar class="headBgGlobal">
     <ion-row>
       <ion-col size="2" style="padding-left: 25px">
-        <!-- <ion-buttons>
+        <ion-buttons>
           <div style="width: 100%">
             <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn" />
           </div>
-        </ion-buttons> -->
+        </ion-buttons>
 
-        <ion-menu-toggle>
+        <!-- <ion-menu-toggle>
           <ion-buttons>
             <div style="width: 100%">
               <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
             </div>
           </ion-buttons>
-        </ion-menu-toggle>
+        </ion-menu-toggle> -->
       </ion-col>
       <ion-col size="8">
         <div class="title">Make a Quote</div>
@@ -35,13 +35,14 @@
       <div class="panel-body">
         <div class="table-responsive">
           <table class="table quotetable table-bordered">
-            <tbody *ngIf="productType=='Auto Classic'">
+            <tbody *ngFor="let item of quoteitems">
               <tr>
-                <td style="width: 55%; color: black">Auto Plan of Choice</td>
-                <td style="color: black">{{productType}} {{vechilemodel}}</td>
+                <td style="width: 55%; color: black">{{item.label}}</td>
+                <td style="color: black" *ngIf="item.type==''">{{item.value}}</td>
+                <td style="color: black" *ngIf="item.type=='currency'">₦{{item.value}}</td>
               </tr>
 
-              <tr>
+              <!-- <tr>
                 <td style="width: 55%; color: black">Vehicle Make</td>
                 <td style="color: black">{{vechilemake}} {{vechilemodel}}</td>
               </tr>
@@ -82,10 +83,10 @@
               <tr>
                 <td style="width: 55%; color: black">Quote (Single Payment)</td>
                 <td style="color: black">₦{{prices.Quote}}</td>
-              </tr>
+              </tr> -->
             </tbody>
 
-            <tbody *ngIf="productType=='Auto Plus'">
+            <!-- <tbody *ngIf="productType=='Auto Plus'">
               <tr>
                 <td style="width: 55%; color: black">Auto Plan of Choice</td>
                 <td style="color: black">{{productType}} {{vechilemodel}}</td>
@@ -168,7 +169,7 @@
                 <td style="width: 55%; color: black">Quote (Single Payment)</td>
                 <td style="color: black">₦{{prices.Quote}}</td>
               </tr>
-            </tbody>
+            </tbody> -->
           </table>
           <!-- <table class="table quotetable table-bordered">
             <tbody>

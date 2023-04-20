@@ -106,7 +106,6 @@ export class SignUpScreenPage implements OnInit {
       this.api.insertData(myData).subscribe((res: any) => {
         console.log('res==', res);
         if (res.message === 'Email address already exist') {
-          console.log(res.message);
 
           this.api.presenttoast(res.message);
         } else {

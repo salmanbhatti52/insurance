@@ -12,17 +12,17 @@
   <ion-toolbar class="headBgGlobal">
     <ion-row style="display: flex; align-items: center">
       <ion-col size="2" style="padding-left: 25px">
-        <!-- <div style="width:100% ;">
+        <div style="width:100% ;">
           <img (click)="goBack()" src="assets/images/back-arrow.svg" alt="sb-btn">
-        </div> -->
+        </div>
 
-        <ion-menu-toggle>
+        <!-- <ion-menu-toggle>
           <ion-buttons>
             <div style="width: 100%">
               <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
             </div>
           </ion-buttons>
-        </ion-menu-toggle>
+        </ion-menu-toggle> -->
       </ion-col>
       <ion-col size="8" style="padding-top: 0px">
         <div class="title">Customer Information Profile</div>
@@ -52,79 +52,45 @@
         <span class="error-msg">Enter your title</span>
       </div> -->
 
-      <ion-input
-        type="text"
-        formControlName="fname"
-        [(ngModel)]="fName"
-        class="input"
-        placeholder="{{firstName}}"
-        ><img class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt=""
-      /></ion-input>
+      <ion-input type="text" formControlName="fname" [(ngModel)]="fName" class="input" placeholder="{{firstName}}"><img
+          class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt="" /></ion-input>
 
-      <div
-        class="validation"
-        *ngIf="RegisterForm.get('fname').hasError('required') && RegisterForm.get('fname').touched"
-      >
+      <div class="validation"
+        *ngIf="RegisterForm.get('fname').hasError('required') && RegisterForm.get('fname').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon" />
         <span class="error-msg">Enter your first name</span>
       </div>
 
-      <ion-input
-        type="text"
-        formControlName="lname"
-        [(ngModel)]="lName"
-        class="input"
-        placeholder="{{lastName}}"
-        ><img class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt=""
-      /></ion-input>
+      <ion-input type="text" formControlName="lname" [(ngModel)]="lName" class="input" placeholder="{{lastName}}"><img
+          class="plchldr-css" src="assets/images/icons/ava-icon.svg" alt="" /></ion-input>
 
-      <div
-        class="validation"
-        *ngIf="RegisterForm.get('lname').hasError('required') && RegisterForm.get('lname').touched"
-      >
+      <div class="validation"
+        *ngIf="RegisterForm.get('lname').hasError('required') && RegisterForm.get('lname').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon" />
         <span class="error-msg">Enter your last name</span>
       </div>
 
-      <ion-input
-        type="tel"
-        formControlName="number"
-        [(ngModel)]="mobNumber"
-        class="input"
-        placeholder="{{userNumber}}"
-      >
+      <ion-input type="tel" formControlName="number" [(ngModel)]="mobNumber" class="input" placeholder="{{userNumber}}">
         <img class="plchldr-css" src="assets/images/icons/phone.svg" alt="" />
       </ion-input>
 
-      <div
-        class="validation"
-        *ngIf="RegisterForm.get('number').hasError('required') && RegisterForm.get('number').touched"
-      >
+      <div class="validation"
+        *ngIf="RegisterForm.get('number').hasError('required') && RegisterForm.get('number').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon" />
         <span class="error-msg">Enter your mobile number</span>
       </div>
 
-      <ion-input
-        type="email"
-        formControlName="email"
-        [(ngModel)]="userEmail"
-        class="input"
-        placeholder="{{useremail}}"
-      >
+      <ion-input type="email" formControlName="email" [(ngModel)]="userEmail" class="input" placeholder="{{useremail}}">
         <img class="plchldr-css" src="assets/images/icons/email.svg" alt="" />
       </ion-input>
 
-      <div
-        class="validation"
-        *ngIf="RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched"
-      >
+      <div class="validation"
+        *ngIf="RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon" />
         <span class="error-msg">Enter your email</span>
       </div>
-      <div
-        class="validation"
-        *ngIf="RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched"
-      >
+      <div class="validation"
+        *ngIf="RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon" />
         <span class="error-msg">This is invalid format</span>
       </div>
@@ -132,36 +98,18 @@
       <div class="fields">
         <div class="inputdiv">
           <div>
-            <img
-              style="margin: 15px 10px 13px 15px"
-              src="assets/images/pw-lock.svg"
-            />
+            <img style="margin: 15px 10px 13px 15px" src="assets/images/pw-lock.svg" />
           </div>
           <div class="pinput">
-            <ion-input
-              formControlName="existpassword"
-              [(ngModel)]="existingpass"
-              class="ph-css"
-              placeholder="Existing password "
-              type="{{eshowPass ? 'text':'password' }}"
-              (ionChange)="existingpassword($event)"
-            ></ion-input>
+            <ion-input formControlName="existpassword" [(ngModel)]="existingpass" class="ph-css"
+              placeholder="Existing password " type="{{eshowPass ? 'text':'password' }}"
+              (ionChange)="existingpassword($event)"></ion-input>
           </div>
           <div class="icondiv" style="margin-top: 4px">
             <!-- <img src="assets/imgs/icons/eye.svg"> -->
-            <ion-icon
-              style="color: black; margin-right: 15px"
-              name="eye"
-              *ngIf="!eshowPass"
-              (click)="EtogglePass()"
-            >
+            <ion-icon style="color: black; margin-right: 15px" name="eye" *ngIf="!eshowPass" (click)="EtogglePass()">
             </ion-icon>
-            <ion-icon
-              style="color: black; margin-right: 15px"
-              name="eye-off"
-              *ngIf="eshowPass"
-              (click)="EtogglePass()"
-            >
+            <ion-icon style="color: black; margin-right: 15px" name="eye-off" *ngIf="eshowPass" (click)="EtogglePass()">
             </ion-icon>
           </div>
         </div>
@@ -170,45 +118,25 @@
       <div class="fields">
         <div class="inputdiv">
           <div>
-            <img
-              style="margin: 15px 10px 13px 15px"
-              src="assets/images/pw-lock.svg"
-            />
+            <img style="margin: 15px 10px 13px 15px" src="assets/images/pw-lock.svg" />
           </div>
           <div class="pinput">
-            <ion-input
-              formControlName="password"
-              [(ngModel)]="userPassword"
-              class="ph-css"
-              placeholder="Enter New password "
-              type="{{showPass ? 'text':'password' }}"
-              (ionChange)="currentpassword($event)"
-            ></ion-input>
+            <ion-input formControlName="password" [(ngModel)]="userPassword" class="ph-css"
+              placeholder="Enter New password " type="{{showPass ? 'text':'password' }}"
+              (ionChange)="currentpassword($event)"></ion-input>
           </div>
           <div class="icondiv" style="margin-top: 4px">
             <!-- <img src="assets/imgs/icons/eye.svg"> -->
-            <ion-icon
-              style="color: black; margin-right: 15px"
-              name="eye"
-              *ngIf="!showPass"
-              (click)="togglePass()"
-            >
+            <ion-icon style="color: black; margin-right: 15px" name="eye" *ngIf="!showPass" (click)="togglePass()">
             </ion-icon>
-            <ion-icon
-              style="color: black; margin-right: 15px"
-              name="eye-off"
-              *ngIf="showPass"
-              (click)="togglePass()"
-            >
+            <ion-icon style="color: black; margin-right: 15px" name="eye-off" *ngIf="showPass" (click)="togglePass()">
             </ion-icon>
           </div>
         </div>
       </div>
 
-      <div
-        class="validation"
-        *ngIf="RegisterForm.get('password').hasError('required') && RegisterForm.get('password').touched"
-      >
+      <div class="validation"
+        *ngIf="RegisterForm.get('password').hasError('required') && RegisterForm.get('password').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon" />
         <span class="error-msg">Enter your new password</span>
       </div>
@@ -216,175 +144,99 @@
       <div class="fields">
         <div class="inputdiv">
           <div>
-            <img
-              style="margin: 15px 10px 13px 15px"
-              src="assets/images/pw-lock.svg"
-            />
+            <img style="margin: 15px 10px 13px 15px" src="assets/images/pw-lock.svg" />
           </div>
           <div class="pinput">
-            <ion-input
-              formControlName="cpassword"
-              [(ngModel)]="cuserPassword"
-              class="ph-css"
-              placeholder="new password "
-              type="{{cshowPass ? 'text':'password' }}"
-              (ionChange)="newpassword($event)"
-            >
+            <ion-input formControlName="cpassword" [(ngModel)]="cuserPassword" class="ph-css"
+              placeholder="new password " type="{{cshowPass ? 'text':'password' }}" (ionChange)="newpassword($event)">
             </ion-input>
           </div>
           <div class="icondiv" style="margin-top: 4px">
             <!-- <img src="assets/imgs/icons/eye.svg"> -->
-            <ion-icon
-              style="color: black; margin-right: 15px"
-              name="eye"
-              *ngIf="!cshowPass"
-              (click)="confirmtogglePass()"
-            ></ion-icon>
-            <ion-icon
-              style="color: black; margin-right: 15px"
-              name="eye-off"
-              *ngIf="cshowPass"
-              (click)="confirmtogglePass()"
-            ></ion-icon>
+            <ion-icon style="color: black; margin-right: 15px" name="eye" *ngIf="!cshowPass"
+              (click)="confirmtogglePass()"></ion-icon>
+            <ion-icon style="color: black; margin-right: 15px" name="eye-off" *ngIf="cshowPass"
+              (click)="confirmtogglePass()"></ion-icon>
           </div>
         </div>
       </div>
 
-      <div
-        class="validation"
-        *ngIf="RegisterForm.get('cpassword').hasError('required') && RegisterForm.get('cpassword').touched"
-      >
+      <div class="validation"
+        *ngIf="RegisterForm.get('cpassword').hasError('required') && RegisterForm.get('cpassword').touched">
         <img src="assets/images/alert-icon.png" class="alertIcon" />
         <span class="error-msg">Confirm your new password</span>
       </div>
       <!-- //////////////--------------------------//////////////////////////// -->
       <div class="texthead">KYC Documents</div>
-      <div
-        style="
+      <div style="
           font-size: 16px;
           text-transform: capitalize;
           color: #000;
           font-weight: 600;
-        "
-      >
+        ">
         Proof of ID
       </div>
       <div class="inputfield" style="padding: 10px 15px">
         <!-- <input type="file" (change)="selectFile($event,'Id')" accept="image/x-png,image/gif,image/jpeg"> -->
-        <div
-          style="
+        <div style="
             display: flex;
             align-items: center;
             justify-content: space-between;
-          "
-        >
+          ">
           <div style="color: #000">Choose File</div>
 
           <div (click)="openlist()">
-            <img
-              style="height: 11px; width: 11px"
-              src="assets/images/down-arrow.svg"
-              *ngIf="show==false"
-            />
-            <img
-              style="height: 11px; width: 11px"
-              src="assets/images/yuparrow.svg"
-              *ngIf="show==true"
-            />
+            <img style="height: 11px; width: 11px" src="assets/images/down-arrow.svg" *ngIf="show==false" />
+            <img style="height: 11px; width: 11px" src="assets/images/yuparrow.svg" *ngIf="show==true" />
           </div>
         </div>
 
         <div *ngIf="show==true">
-          <input
-            type="file"
-            (change)="selectFile($event,'driverlicense')"
-            accept="image/x-png,image/gif,image/jpeg"
-            class="file-input"
-            value=""
-            title=" "
-          />
-          <input
-            type="file"
-            (change)="selectFile($event,'Idcard')"
-            accept="image/x-png,image/gif,image/jpeg"
-            class="file-input2"
-            value=""
-            title=" "
-          />
-          <input
-            type="file"
-            (change)="selectFile($event,'passport')"
-            accept="image/x-png,image/gif,image/jpeg"
-            class="file-input3"
-            value=""
-            title=" "
-          />
+          <input type="file" (change)="selectFile($event,'driverlicense')" accept="image/x-png,image/gif,image/jpeg"
+            class="file-input" value="" title=" " />
+          <input type="file" (change)="selectFile($event,'Idcard')" accept="image/x-png,image/gif,image/jpeg"
+            class="file-input2" value="" title=" " />
+          <input type="file" (change)="selectFile($event,'passport')" accept="image/x-png,image/gif,image/jpeg"
+            class="file-input3" value="" title=" " />
         </div>
       </div>
 
-      <div
-        style="
+      <div style="
           height: 100px;
           width: 100px;
           text-align: center;
           margin-bottom: 4%;
-        "
-        *ngIf="base64"
-      >
+        " *ngIf="base64">
         <img style="height: 100px; width: 100px" src="{{base64}}" alt="" />
       </div>
 
-      <div
-        style="
+      <div style="
           font-size: 16px;
           text-transform: capitalize;
           color: #000;
           font-weight: 600;
-        "
-      >
+        ">
         Proof of Address
       </div>
-      <div
-        class="inputfield"
-        style="
+      <div class="inputfield" style="
           display: flex;
           height: 44px;
           align-items: center;
           padding: 0px 15px;
-        "
-      >
-        <input
-          type="file"
-          (change)="selectFile($event,'utilityBills')"
-          accept="image/x-png,image/gif,image/jpeg"
-          class="file-input4"
-          value=""
-          title=" "
-        />
+        ">
+        <input type="file" (change)="selectFile($event,'utilityBills')" accept="image/x-png,image/gif,image/jpeg"
+          class="file-input4" value="" title=" " />
       </div>
 
-      <div
-        style="height: 100px; width: 100px; text-align: center"
-        *ngIf="utilityBills.base64"
-      >
-        <img
-          style="height: 100px; width: 100px"
-          src="{{utilityBills.base64}}"
-          alt=""
-        />
+      <div style="height: 100px; width: 100px; text-align: center" *ngIf="utilityBills.base64">
+        <img style="height: 100px; width: 100px" src="{{utilityBills.base64}}" alt="" />
       </div>
 
       <!-- //////////////--------------------------//////////////////////////// -->
       <div style="width: 85%; margin: 30px auto 0px">
         <div style="text-align: center">
-          <ion-button
-            type="submit"
-            [disabled]="RegisterForm.invalid"
-            class="btn"
-            (click)="updateProfile()"
-            style="--background: #a8b400"
-            >Update</ion-button
-          >
+          <ion-button type="submit" [disabled]="RegisterForm.invalid" class="btn" (click)="updateProfile()"
+            style="--background: #a8b400">Update</ion-button>
         </div>
       </div>
     </form>

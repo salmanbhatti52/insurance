@@ -89,12 +89,12 @@ export class GibsproductsPage implements OnInit {
 
   GProductdetail(p) {
     console.log(p);
-    if (p == 'Auto Classic (1.75% Of vehicle value)') {
+    if (p == 'Auto Classic (5% Of vehicle value)') {
       this.productType = 'Auto Classic'
-    } if (p == 'Auto Plus (3% Of vehicle value)') {
+    } if (p == 'Auto Plus (5% Of vehicle value)') {
       this.productType = 'Auto Plus'
     }
-    if (p == 'Uber Classic (2.5% Of vehicle value)') {
+    if (p == 'Uber Classic (5% Of vehicle value)') {
       this.productType = 'Uber Classic'
     }
     this.router.navigate(['gibsplans', {

@@ -115,24 +115,20 @@ let GibsproductsPage = class GibsproductsPage {
         this.motorsubproducts = [];
     }
     ngOnInit() {
-        this.gibsproduct();
-        // this.getcarclasses()
+        // this.gibsproduct();
+        this.getcarclasses();
     }
-    // getcarclasses() {
-    //   const myData =
-    //     'myData={"verify_token":"' +
-    //     localStorage.getItem('token') +
-    //     '","product_class":"comprehensive_motor_plans","method":"get_car_classes"}';
-    //   this.api.insertData(myData).subscribe(
-    //     (res: any) => {
-    //       console.log(res);
-    //       this.motorsubproducts = res.values
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //     }
-    //   );
-    // }
+    getcarclasses() {
+        const myData = 'myData={"verify_token":"' +
+            localStorage.getItem('token') +
+            '","product_class":"comprehensive_motor_plans","method":"get_car_classes"}';
+        this.api.insertData(myData).subscribe((res) => {
+            console.log(res);
+            this.motorsubproducts = res.values;
+        }, (err) => {
+            console.log(err);
+        });
+    }
     gibsproduct() {
         this.api.showLoader();
         const myData = {
@@ -168,27 +164,48 @@ let GibsproductsPage = class GibsproductsPage {
             this.api.hideLoader();
         });
     }
-    GProductdetail(ID) {
-        const myData = {
-            sid: 'ECHANNEL2',
-            token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
-        };
-        this.api.gibsapi(myData).subscribe((res) => {
-            // console.log(res);
-            const token = res.accessToken;
-            this.api
-                .getpolicy('http://testcipapiservices.gibsonline.com/api/metadata/products/' +
-                ID, token)
-                .subscribe((res) => {
-                console.log('gibs product detail', res);
-                localStorage.setItem('gibsproduct', JSON.stringify(res));
-                this.router.navigate(['gibsplans']);
-            });
-        }, (err) => {
-            console.log(err);
-            this.api.hideLoader();
-        });
+    GProductdetail(p) {
+        console.log(p);
+        if (p == 'Auto Classic (5% Of vehicle value)') {
+            this.productType = 'Auto Classic';
+        }
+        if (p == 'Auto Plus (5% Of vehicle value)') {
+            this.productType = 'Auto Plus';
+        }
+        if (p == 'Uber Classic (5% Of vehicle value)') {
+            this.productType = 'Uber Classic';
+        }
+        this.router.navigate(['gibsplans', {
+                productType: this.productType
+            }]);
     }
+    // GProductdetail(ID) {
+    //   const myData = {
+    //     sid: 'ECHANNEL2',
+    //     token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+    //   };
+    //   this.api.gibsapi(myData).subscribe(
+    //     (res: any) => {
+    //       // console.log(res);
+    //       const token = res.accessToken;
+    //       this.api
+    //         .getpolicy(
+    //           'http://testcipapiservices.gibsonline.com/api/metadata/products/' +
+    //           ID,
+    //           token
+    //         )
+    //         .subscribe((res: any) => {
+    //           console.log('gibs product detail', res);
+    //           localStorage.setItem('gibsproduct', JSON.stringify(res));
+    //           this.router.navigate(['gibsplans']);
+    //         });
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //       this.api.hideLoader();
+    //     }
+    //   );
+    // }
     goback() {
         this.location.back();
     }
@@ -227,7 +244,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\r\n        <!-- <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons> -->\r\n\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width: 100%\">\r\n              <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Motor Products</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"c-center\">\r\n      <p class=\"con-p1\">Make a Quote</p>\r\n    </div>\r\n    <div style=\"font-size: 20px; color: #000; font-weight: 500; margin-bottom: 3%\">\r\n      The products for mobile are:\r\n    </div>\r\n\r\n    <div class=\"boxdiv\" *ngFor=\"let gibs of motorsubproducts\">\r\n      <div style=\"display: flex; margin-bottom: 7%\" (click)=\"GProductdetail(gibs.productID)\">\r\n        <img src=\"assets/images/motorcar.png\" alt=\"\" style=\"width: 100px; height: 100px; object-fit: cover\" />\r\n        <p style=\"\r\n            color: #1a206d;\r\n            font-size: 17px;\r\n            font-weight: 500;\r\n            margin: 6% 0% 0% 4%;\r\n          \">\r\n          {{gibs.values}}\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</ion-content>";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\r\n        <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons>\r\n\r\n        <!-- <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width: 100%\">\r\n              <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle> -->\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Motor Products</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <div class=\"c-center\">\r\n      <p class=\"con-p1\">Make a Quote</p>\r\n    </div>\r\n    <div style=\"font-size: 20px; color: #000; font-weight: 500; margin-bottom: 3%\">\r\n      The products for mobile are:\r\n    </div>\r\n\r\n    <div class=\"boxdiv\" *ngFor=\"let p of motorsubproducts\">\r\n      <div style=\"display: flex; margin-bottom: 7%\" (click)=\"GProductdetail(p)\">\r\n        <img src=\"assets/images/motorcar.png\" alt=\"\" style=\"width: 100px; height: 100px; object-fit: cover\" />\r\n        <p style=\"\r\n            color: #1a206d;\r\n            font-size: 17px;\r\n            font-weight: 500;\r\n            margin: 6% 0% 0% 4%;\r\n          \">\r\n          {{p}}\r\n        </p>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- oldcode -->\r\n    <!-- <div class=\"boxdiv\" *ngFor=\"let gibs of motorsubproducts\">\r\n      <div style=\"display: flex; margin-bottom: 7%\" (click)=\"GProductdetail(gibs.productID)\">\r\n        <img src=\"assets/images/motorcar.png\" alt=\"\" style=\"width: 100px; height: 100px; object-fit: cover\" />\r\n        <p style=\"\r\n            color: #1a206d;\r\n            font-size: 17px;\r\n            font-weight: 500;\r\n            margin: 6% 0% 0% 4%;\r\n          \">\r\n          {{gibs}}\r\n        </p>\r\n      </div>\r\n    </div> -->\r\n  </div>\r\n</ion-content>";
 
 /***/ })
 

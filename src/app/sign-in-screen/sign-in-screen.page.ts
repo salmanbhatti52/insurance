@@ -45,7 +45,7 @@ export class SignInScreenPage implements OnInit {
     public faio: FingerprintAIO,
     public location: Location,
     public navCtrl: NavController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.RegisterForm = new FormGroup({
@@ -107,8 +107,7 @@ export class SignInScreenPage implements OnInit {
           localStorage.setItem('email', res.email);
           localStorage.setItem('password', this.userPassword);
           this.api.username = res.first_name;
-          console.log(localStorage.getItem('userid'));
-          console.log(localStorage.getItem('token'));
+
           localStorage.setItem('loginas', 'user');
           this.api.loginas = 'user';
           // this.router.navigate(['/home-page-screen-after-login']);

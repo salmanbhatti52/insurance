@@ -38,8 +38,8 @@ export class GibsplansPage implements OnInit {
   showPickerYom = false;
 
   genderType = [{ gender: 'MALE' }, { gender: 'FEMALE' }];
-  frequency = [{ f: 'Once' }, { f: 'twice' }, { f: 'Thrice' }];
-  freqonce = [{ f: 'Once' }];
+  frequency = [{ f: 'once' }, { f: 'twice' }, { f: 'thrice' }];
+  freqonce = [{ f: 'once' }];
   showf = false;
   Gproduct: any;
   emailvalidation: any;
@@ -100,7 +100,10 @@ export class GibsplansPage implements OnInit {
     // } else {
     //   this.motorproduct = 'COMPREHENSIVE '
     // }
-
+    this.userEmail = localStorage.getItem('email');
+    this.mobNumber = localStorage.getItem('number');
+    this.fName = localStorage.getItem('fname');;
+    this.lName = localStorage.getItem('lname');
     console.log(this.motorproduct);
 
     // this.Gproduct = JSON.parse(localStorage.getItem('gibsproduct'));
@@ -114,7 +117,6 @@ export class GibsplansPage implements OnInit {
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.productType = this.activated.snapshot.params['productType']
     console.log(this.productType);
-
     this.testresult()
   }
 
@@ -283,9 +285,11 @@ export class GibsplansPage implements OnInit {
       this.api.presenttoast('InValid Email');
     } else if (this.mobNumber == '') {
       this.api.presenttoast('Mobile Number Field Required');
-    } else if (this.address == '') {
-      this.api.presenttoast('Address Field Required');
-    } else if (this.regNo == '') {
+    }
+    //  else if (this.address == '') {
+    //   this.api.presenttoast('Address Field Required');
+    // }
+    else if (this.regNo == '') {
       this.api.presenttoast('Registration Number Field Required');
     } else if (this.chasisNo == '') {
       this.api.presenttoast('Chasis Number Field Required');
@@ -300,19 +304,21 @@ export class GibsplansPage implements OnInit {
     }
     else if (this.fchoose == 'Please Select') {
       this.api.presenttoast('Please Select Frequency');
-    } else if (this.genderVal == 'Select Gender') {
-      this.api.presenttoast('Please Select Gender');
     }
-    else if (this.dateofbirth == 'Please Select') {
-      this.api.presenttoast('Please Select DOB');
-    } else if (this.Fpacakage == 'Please Select') {
+    // else if (this.genderVal == 'Select Gender') {
+    //   this.api.presenttoast('Please Select Gender');
+    // }
+    // else if (this.dateofbirth == 'Please Select') {
+    //   this.api.presenttoast('Please Select DOB');
+    // }
+    else if (this.Fpacakage == 'Please Select') {
       this.api.presenttoast('Please Select Full Pacakge');
     }
     else if (this.yomdate == 'Please Select') {
       this.api.presenttoast('Year of Manufacture Field Required');
     }
     else if (this.productType == 'Auto Classic') {
-      alert('auto')
+
       if (this.ebb == 'Please Select') {
         this.api.presenttoast('Please Select Excess Buy Back');
       } else if (this.fe == 'Please Select') {
@@ -326,7 +332,7 @@ export class GibsplansPage implements OnInit {
     }
     else
       if (this.productType == 'Uber Classic') {
-        alert('uber')
+
         if (this.ebb == 'Please Select') {
           this.api.presenttoast('Please Select Excess Buy Back');
         } else if (this.fe == 'Please Select') {
@@ -370,7 +376,7 @@ export class GibsplansPage implements OnInit {
     // }
   }
   showresult() {
-    alert('hellow');
+
     const myData =
       'myData={"insurance_type":"' +
       this.productType +
@@ -396,12 +402,18 @@ export class GibsplansPage implements OnInit {
     this.api.insertData(myData).subscribe(
       (res: any) => {
         console.log(res);
-        localStorage.setItem('valueofvechile', this.valueofvehicle)
-        localStorage.setItem('vechilemake', this.vehicleMakeVal)
-        localStorage.setItem('vechilemodel', this.vehicleModelVal);
-        localStorage.setItem('productType', this.productType)
-        localStorage.setItem('motorprices', JSON.stringify(res))
-        // this.Quoteprocess()
+        if (res.status_no == 1) {
+          localStorage.setItem('valueofvechile', this.valueofvehicle)
+          localStorage.setItem('vechilemake', this.vehicleMakeVal)
+          localStorage.setItem('vechilemodel', this.vehicleModelVal);
+          localStorage.setItem('productType', this.productType)
+          localStorage.setItem('motorprices', JSON.stringify(res));
+
+          this.Quoteprocess()
+        }
+        else {
+          this.api.presenttoast(res.message)
+        }
 
       },
       (err) => {
@@ -430,8 +442,6 @@ export class GibsplansPage implements OnInit {
       this.vehicleMakeVal +
       '","vehicle_model":"' +
       this.vehicleModelVal +
-      '","vehicle_manufacturer":"' +
-      this.vehicleMakeVal +
 
       '","frequency":"' +
       this.fchoose +
@@ -452,10 +462,47 @@ export class GibsplansPage implements OnInit {
       '", "verify_token":"' +
       localStorage.getItem('token') +
       '","method":"save_product_quote"}';
+
     this.api.insertData(myData).subscribe(
       (res: any) => {
         console.log('quoteproces=====', res);
+        localStorage.setItem('quoteItemsvalues', JSON.stringify(res.quoteItems))
+        if (res.status_no == 1) {
+          var obj = {
+            title: this.productType,
+            product_id: res.info.product_id,
+            quote_id: res.info.quote_id,
+            subProName: this.productType,
+            quoteItems: 'dummy',
+            image:
+              'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+            path: '/policyquote',
+            datetime: new Date().toISOString(),
+          };
+          this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
 
+          if (this.draftArr) {
+            this.draftArr.push(obj);
+          } else {
+            this.draftArr = [obj];
+          }
+          this.api.presenttoast(res.info.message)
+          let datasend = {
+            registration_number: this.regNo,
+            engine_number: this.engNo,
+            chasis_number: this.chasisNo,
+            vehicle_colour: this.vehclr,
+            dob: this.dateofbirth,
+          }
+          localStorage.setItem('quotevalues', JSON.stringify(datasend));
+          localStorage.setItem('quoteprocess', JSON.stringify(res));
+          localStorage.setItem('email', this.userEmail);
+          localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+          this.route.navigate(['policyquote']);
+        }
+        else {
+          this.api.presenttoast(res.message)
+        }
       },
       (err) => {
         console.log(err);

@@ -322,6 +322,10 @@ const routes: Routes = [
   {
     path: 'ivplanpaymentres',
     loadChildren: () => import('./ivplanpaymentres/ivplanpaymentres.module').then( m => m.IvplanpaymentresPageModule)
+  },
+  {
+    path: 'paymentpopup',
+    loadChildren: () => import('./paymentpopup/paymentpopup.module').then( m => m.PaymentpopupPageModule)
   }
 
 

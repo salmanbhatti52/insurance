@@ -94,6 +94,8 @@ export class Ivplan2Page implements OnInit {
 
     this.userEmail = localStorage.getItem('email');
     this.mobNumber = localStorage.getItem('number');
+    this.fName = localStorage.getItem('fname');;
+    this.lName = localStorage.getItem('lname');
   }
 
   goback() {
