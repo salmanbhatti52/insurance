@@ -29,7 +29,7 @@
     <div style="display: flex; align-items: center; justify-content: space-around">
       <img height="50px" src="assets/images/access_point.png" />
       <h1 style="margin: 0px; font-size: 22px; margin-left: 6px; color: black">
-        (Amount : ₦ {{amt}} )
+        (Amount : ₦ {{amtShow}} )
       </h1>
     </div>
 
@@ -284,7 +284,7 @@
 
 
     </table> -->
-    <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <!-- <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
       <ng-template>
         <ion-header>
           <ion-toolbar>
@@ -297,7 +297,7 @@
           <iframe [src]="paystackurl" style="width:100%;height:100%;" (callback)="paymentDone($event)"></iframe>
         </ion-content>
       </ng-template>
-    </ion-modal>
+    </ion-modal> -->
   </div>
 </ion-content>
 <ion-footer>
@@ -313,7 +313,7 @@
       (callback)="paymentDone($event)">
       Pay with Paystack
     </button>
-    <ion-button (click)="paymentapi()">Pay with Paystack</ion-button>
-    <ion-button id="open-modal">Pay with Paystack</ion-button>
+    <!-- <ion-button (click)="paystackpayment()">Check payment response</ion-button> -->
+    <!-- <ion-button id="open-modal">Pay with Paystack</ion-button> -->
   </div>
 </ion-footer>

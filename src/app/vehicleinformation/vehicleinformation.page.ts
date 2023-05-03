@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 export class VehicleinformationPage implements OnInit {
   fullname = '';
   address = '';
-  dateofbirth = 'Please Select';
+  dateofbirth: any;
   showPickerdob = false;
   showPickerdoI = false
   yopValue = format(new Date(), 'yyyy');
@@ -80,9 +80,10 @@ export class VehicleinformationPage implements OnInit {
   draftArr: any;
   vechileinformation: any;
   quoteval: any;
-  dateofincorporation: any = 'Please Select';
+  dateofincorporation: any;
   quoteprocess: any;
   quote_id: any;
+  policyhldrtype: any;
   constructor(public api: InsuranceAppService,
     public navCtrl: NavController,
     public route: ActivatedRoute,
@@ -94,7 +95,7 @@ export class VehicleinformationPage implements OnInit {
 
     this.quoteval = JSON.parse(localStorage.getItem('quotevalues'));
     console.log(this.quoteval);
-    this.dateofbirth = this.quoteval.dob
+    this.policyhldrtype = this.quoteval.policyhldrVal
     this.quoteprocess = JSON.parse(localStorage.getItem('quoteprocess'));
 
     this.quote_id = this.quoteprocess.info.quote_id
@@ -297,6 +298,7 @@ export class VehicleinformationPage implements OnInit {
       this.api.presenttoast('Referrer Details required')
 
     } else {
+      this.api.showLoader()
       // const myData =
       //   'myData={"quote_id":"' +
       //   this.quoteprocess.info.quote_id +
@@ -359,8 +361,13 @@ export class VehicleinformationPage implements OnInit {
       form.append('vehicle_colour', this.quoteval.vehicle_colour);
       form.append('address', this.address);
       form.append('gender', this.genderVal);
-      form.append('date_of_birth', this.dateofbirth);
-      form.append('incorporation', this.dateofincorporation);
+      if (this.policyhldrtype == 'Private') {
+        form.append('date_of_birth', this.dateofbirth);
+
+      } else {
+        form.append('incorporation', this.dateofincorporation);
+      }
+
       form.append('year_of_purchase', this.yopdate);
       form.append('year_of_manufacture', this.yomdate);
       form.append('referred_by', this.referrerVal);
@@ -390,6 +397,7 @@ export class VehicleinformationPage implements OnInit {
           (res: any) => {
             console.log(res);
             if (res.status_no == 1) {
+              this.api.hideLoader()
               this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
               console.log(this.draftArr);
               for (var i = 0; i < this.draftArr.length; i++) {
@@ -421,12 +429,14 @@ export class VehicleinformationPage implements OnInit {
               this.navCtrl.navigateRoot('payment2')
               localStorage.setItem('vechileinfo', JSON.stringify(res))
             } else {
+              this.api.hideLoader()
               this.api.presenttoast(res.message + ' ' + (res.field))
             }
 
 
           },
           (err) => {
+            this.api.hideLoader()
             console.log('err===', err);
           }
         );

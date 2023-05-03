@@ -46,7 +46,10 @@ export class GibsplansPage implements OnInit {
 
   valueofvehicle: any = '';
   yesno = [{ name: 'Yes' }, { name: 'No' }];
+  policyhldrList = [{ plcyhldrType: 'Private' }, { plcyhldrType: 'Corporate' }];
+  policyhldrVal = 'Please Select';
 
+  compName: any;
   ebb: any = 'Please Select';
   fe: any = 'Please Select';
   srcc: any = 'Please Select';
@@ -68,6 +71,7 @@ export class GibsplansPage implements OnInit {
   showpliability = false;
   showfullp = false;
 
+  showPolicyholder = false;
 
   productname: string;
   gibsproduct: any;
@@ -224,6 +228,18 @@ export class GibsplansPage implements OnInit {
     console.log('vechileMakenew--------', this.vehicleModelNew);
   }
 
+  openPolicyhldrList() {
+    if (this.showPolicyholder == true) {
+      this.showPolicyholder = false;
+    } else {
+      this.showPolicyholder = true;
+    }
+  }
+
+  selectPolicyholder(list) {
+    this.policyhldrVal = list.plcyhldrType;
+    this.showPolicyholder = false;
+  }
   openGenderList() {
     if (this.showGender == true) {
       this.showGender = false;
@@ -275,11 +291,13 @@ export class GibsplansPage implements OnInit {
       this.api.presenttoast('Vehicle Make required');
     } else if (this.vehicleModelVal == 'Select Model') {
       this.api.presenttoast('Vehicle Model required');
-    } else if (this.fName == '') {
-      this.api.presenttoast('First Name Field Required');
-    } else if (this.lName == '') {
-      this.api.presenttoast('Last Name Field Required');
-    } else if (this.userEmail == '') {
+    }
+    //  else if (this.fName == '') {
+    //   this.api.presenttoast('First Name Field Required');
+    // } else if (this.lName == '') {
+    //   this.api.presenttoast('Last Name Field Required');
+    // }
+    else if (this.userEmail == '') {
       this.api.presenttoast('Email Field Required');
     } else if (!this.validateEmail(this.userEmail)) {
       this.api.presenttoast('InValid Email');
@@ -299,8 +317,6 @@ export class GibsplansPage implements OnInit {
       this.api.presenttoast('Vehicle Colour Field Required');
     } else if (this.valueofvehicle == '') {
       this.api.presenttoast('Vehicle Value Field Required');
-    } else if (this.valueofvehicle < 2000000) {
-      this.api.presenttoast('Vehicle Value is less then 2000000');
     }
     else if (this.fchoose == 'Please Select') {
       this.api.presenttoast('Please Select Frequency');
@@ -311,9 +327,9 @@ export class GibsplansPage implements OnInit {
     // else if (this.dateofbirth == 'Please Select') {
     //   this.api.presenttoast('Please Select DOB');
     // }
-    else if (this.Fpacakage == 'Please Select') {
-      this.api.presenttoast('Please Select Full Pacakge');
-    }
+    // else if (this.Fpacakage == 'Please Select') {
+    //   this.api.presenttoast('Please Select Full Pacakge');
+    // }
     else if (this.yomdate == 'Please Select') {
       this.api.presenttoast('Year of Manufacture Field Required');
     }
@@ -437,12 +453,13 @@ export class GibsplansPage implements OnInit {
       '","email":"' +
       this.userEmail +
       '","policyholder_type":"' +
-      "Private" +
+      this.policyhldrVal +
       '","vehicle_manufacturer":"' +
       this.vehicleMakeVal +
       '","vehicle_model":"' +
       this.vehicleModelVal +
-
+      '","company_name":"' +
+      this.compName +
       '","frequency":"' +
       this.fchoose +
       '", "value_of_vehicle":"' +
@@ -457,8 +474,7 @@ export class GibsplansPage implements OnInit {
       this.iit +
       '", "passenger_liability":"' +
       this.pliability +
-      '", "full_package":"' +
-      this.Fpacakage +
+
       '", "verify_token":"' +
       localStorage.getItem('token') +
       '","method":"save_product_quote"}';
@@ -493,6 +509,7 @@ export class GibsplansPage implements OnInit {
             chasis_number: this.chasisNo,
             vehicle_colour: this.vehclr,
             dob: this.dateofbirth,
+            policyhldrVal: this.policyhldrVal
           }
           localStorage.setItem('quotevalues', JSON.stringify(datasend));
           localStorage.setItem('quoteprocess', JSON.stringify(res));

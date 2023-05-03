@@ -153,7 +153,7 @@ const routes = [
     },
     {
         path: 'car-insurance-details',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("src_app_car-insurance-details_car-insurance-details_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./car-insurance-details/car-insurance-details.module */ 20829)).then(m => m.CarInsuranceDetailsPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_car-insurance-details_car-insurance-details_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./car-insurance-details/car-insurance-details.module */ 20829)).then(m => m.CarInsuranceDetailsPageModule)
     },
     {
         path: 'yourquote',
@@ -321,7 +321,7 @@ const routes = [
     },
     {
         path: 'payment2response',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("src_app_payment2response_payment2response_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./payment2response/payment2response.module */ 51342)).then(m => m.Payment2responsePageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_payment2response_payment2response_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./payment2response/payment2response.module */ 51342)).then(m => m.Payment2responsePageModule)
     },
     {
         path: 'vehicleinformation',
@@ -367,16 +367,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
 /* harmony import */ var D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.html?ngResource */ 33383);
 /* harmony import */ var _app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component.scss?ngResource */ 79259);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/insurance-app.service */ 22111);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/splash-screen */ 82239);
 
 
 /* eslint-disable max-len */
+
 
 
 
@@ -482,14 +484,14 @@ let AppComponent = class AppComponent {
     // }
   }
 
-  ngOnInit() {// this.platform.ready().then(() => {
-    //   setTimeout(() => {
-    //     this.initializeApp();
-    //     SplashScreen.hide();
-    //     this.route.navigate(['splash']);
-    //     //aliiii
-    //   }, 3500);
-    // });
+  ngOnInit() {
+    this.platform.ready().then(() => {
+      setTimeout(() => {
+        this.initializeApp();
+        _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__.SplashScreen.hide();
+        this.route.navigate(['splash']); //aliiii
+      }, 3500);
+    });
   }
 
   initializeApp() {// this.loginas = localStorage.getItem('loginas')
@@ -565,22 +567,22 @@ let AppComponent = class AppComponent {
 };
 
 AppComponent.ctorParameters = () => [{
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.MenuController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.MenuController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.AlertController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.AlertController
 }, {
   type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__.InsuranceAppService
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.Platform
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.Platform
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ActionSheetController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ActionSheetController
 }];
 
-AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
   selector: 'app-root',
   template: _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]

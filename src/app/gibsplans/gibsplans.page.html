@@ -63,22 +63,53 @@
         </div>
       </div>
     </div>
-
-    <div class="label">First Name</div>
-    <div class="inputfield">
-      <div class="innerdropbox">
-        <ion-input [(ngModel)]="fName" style="height: 48px" type="text" placeholder="John" class="in-text">
-        </ion-input>
+    <div class="label">
+      Policyholder Type <span style="color: #a8b400">*</span>
+    </div>
+    <div class="dropbox">
+      <div class="innerdropbox" (click)="openPolicyhldrList()">
+        <div class="euro-text" style="width: 100%">
+          {{policyhldrVal}}
+        </div>
+        <div class="imgdiv" style="padding-bottom: 2px; width: 5%">
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/down-arrow.svg"
+            *ngIf="showPolicyholder==false" />
+          <img style="height: 6.6px; width: 11.36px" src="assets/images/yuparrow.svg" *ngIf="showPolicyholder==true" />
+        </div>
+      </div>
+      <div *ngIf="showPolicyholder==true">
+        <div *ngFor="let list of policyhldrList" (click)="selectPolicyholder(list)">
+          <div class="euro-text1">{{list.plcyhldrType}}</div>
+        </div>
       </div>
     </div>
-    <div class="label">Last Name</div>
-    <div class="inputfield">
-      <div class="innerdropbox">
-        <ion-input [(ngModel)]="lName" style="height: 48px" type="text" placeholder="Doe" class="in-text">
-        </ion-input>
+
+    <div *ngIf="policyhldrVal=='Private'">
+      <div class="label">First Name</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="fName" style="height: 48px" type="text" placeholder="John" class="in-text">
+          </ion-input>
+        </div>
+      </div>
+      <div class="label">Last Name</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="lName" style="height: 48px" type="text" placeholder="Doe" class="in-text">
+          </ion-input>
+        </div>
       </div>
     </div>
 
+    <div *ngIf="policyhldrVal=='Corporate'">
+      <div class="label">Company Name</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="compName" style="height: 48px" type="email" placeholder="phenologix"
+            class="in-text"></ion-input>
+        </div>
+      </div>
+    </div>
     <div class="label">Email</div>
     <div class="inputfield">
       <div class="innerdropbox">
@@ -285,7 +316,7 @@
     </div>
 
 
-    <div class="label">Full Package</div>
+    <!-- <div class="label">Full Package</div>
     <div class="dropbox">
       <div class="innerdropbox" (click)="Fullpackage()">
         <div class="euro-text" style="width: 100%">{{Fpacakage}}</div>
@@ -301,7 +332,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- dropdown  end-->
 
     <!-- <div class="label">Gender</div>

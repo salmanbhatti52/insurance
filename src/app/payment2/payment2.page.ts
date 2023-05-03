@@ -7,6 +7,7 @@ import { IonModal } from '@ionic/angular';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeScript, SafeStyle, SafeUrl } from "@angular/platform-browser";
 import { Pipe, PipeTransform } from "@angular/core";
 import { OverlayEventDetail } from '@ionic/core/components';
+
 @Pipe({ name: "safe" })
 @Component({
   selector: 'app-payment2',
@@ -33,6 +34,9 @@ export class Payment2Page implements OnInit {
   quote_id: any;
   paystackurl: any;
   referenceval: any;
+  trxref: string;
+  paystacktrxref: string;
+  proposalprocess: any;
 
   constructor(
     public location: Location,
@@ -67,7 +71,9 @@ export class Payment2Page implements OnInit {
     console.log('payment succesfull-----', ref);
     if (ref.status == 'success') {
       localStorage.setItem('trxref', ref.trxref)
-      // this.paymentapi('')
+      this.paystacktrxref = ref.trxref
+      // this.trxref = ref.transaction
+      this.payment_method()
       // this.pay()
     }
   }
@@ -79,10 +85,18 @@ export class Payment2Page implements OnInit {
 
   ngOnInit() {
     this.quoteprocess = JSON.parse(localStorage.getItem('quoteprocess'));
+    this.proposalprocess = JSON.parse(localStorage.getItem('vechileinfo'))
+
+    console.log('proposal info:::', this.proposalprocess);
+    this.trxref = this.proposalprocess.quote.transaction_ref
 
     this.quote_id = this.quoteprocess.info.quote_id
-    this.email = localStorage.getItem('email');
+    // this.email = localStorage.getItem('email');
+    this.email = this.proposalprocess.quote.email
+
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
+    console.log('dasdasd-w--www', this.reference);
+
     console.log('quote_id', this.quote_id);
 
 
@@ -92,20 +106,22 @@ export class Payment2Page implements OnInit {
     console.log(this.prices);
     for (var i = 0; i < this.prices.length; i++) {
       if (this.prices[i].label == 'Quote') {
-        this.amt = this.prices[i].value
-
+        this.amtShow = this.prices[i].value
+        let fixedamount = this.amtShow.toFixed(0)
+        this.amt = fixedamount * 100
+        console.log('amt', this.amt);
 
       }
     }
 
-    let p = 'https://www.cornerstone.com.ng/devtest/webservice/app/paystackCallback/?txnref=4236714128'
-    let split = p.split('?')[1]
-    let split2 = p.split('=')[1]
-    console.log('ddddddddddddddd', split2);
-    let transval = '&' + split
-    console.log('ddddddddddddddd', transval);
-    let reference = '&reference=' + split2
-    console.log('ddddddddddddddd', reference);
+    // let p = 'https://www.cornerstone.com.ng/devtest/webservice/app/paystackCallback/?txnref=4236714128'
+    // let split = p.split('?')[1]
+    // let split2 = p.split('=')[1]
+    // console.log('ddddddddddddddd', split2);
+    // let transval = '&' + split
+    // console.log('ddddddddddddddd', transval);
+    // let reference = '&reference=' + split2
+    // console.log('ddddddddddddddd', reference);
     // old code.....
     ////////////////////
     // this.subprodName = localStorage.getItem('subProName');
@@ -155,7 +171,7 @@ export class Payment2Page implements OnInit {
     } else {
       if (this.payemntmethod == 'WebPAY') {
         this.paymentoption = 1;
-        this.paymentapi(this.paymentoption);
+        // this.paymentapi();
       }
       // else {
       //   if (this.payemntmethod == 'other') {
@@ -220,26 +236,11 @@ export class Payment2Page implements OnInit {
     })
   }
 
-  paymentapi(paymentoption) {
-
-    console.log(this.paystackurl);
-
-    this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
-    console.log(this.draftArr);
-
-    // for (var i = 0; i < this.draftArr.length; i++) {
-    //   if (this.draftArr[i].quote_id == this.quote_id) {
-
-    //     this.draftArr.splice(i, 1);
-
-    //   }
-
-    // }
-    // localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
-
-    let datasend =
+  //new paystackapi method////
+  payment_method() {
+    let paydata =
       'myData={"product_id":' +
-      '59' +
+      "59" +
       ',"quote_id":' +
       this.quote_id +
       ',"payment_option":' +
@@ -247,24 +248,86 @@ export class Payment2Page implements OnInit {
       ',"verify_token":"' +
       localStorage.getItem('token') +
       '","method":"payment_method_select"}';
-    // 'myData={"quote_id":' +
-    // this.quote_id +
-    // ',"verify_token":"' +
-    // localStorage.getItem('token') +
-    // '","method":"send_certificate"}';
 
-    this.api.insertData(datasend).subscribe((res: any) => {
+    this.api.insertData(paydata).subscribe((res: any) => {
       console.log('payemt response', res);
       if (res.status_no == 1) {
-        this.paystackurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.paystack.url)
+        this.paystackpayment()
+      } else {
         this.api.presenttoast(res.message)
-        // this.navCtrl.navigateRoot('payment2response');
-        let p = res.fields.callback_url
-        let split = p.split('?')[1]
-        let split2 = p.split('=')[1]
-        let transval = '&' + split
-        let reference = '&reference=' + split2
-        this.referenceval = reference
+      }
+
+
+    });
+
+  }
+  /////////////////
+  paystackpayment() {
+    let datasend =
+      'myData={"transaction_ref":' +
+      '"' + this.trxref + '"' +
+      ',"paystack_transaction_ref":' +
+      '"' + this.paystacktrxref + '"' +
+      ',"quote_id":' +
+      '"' + this.quote_id + '"' +
+      ',"verify_token":"' +
+      localStorage.getItem('token') +
+      '","method":"standalonePaystackConfirm"}';
+
+    this.api.showLoader()
+    this.api.insertData(datasend).subscribe((res: any) => {
+      console.log('payemt response', res);
+      if (res.message != 'Payment method not found.') {
+        this.api.hideLoader()
+        this.sendcertificate()
+      } else {
+        this.api.hideLoader()
+        this.api.presenttoast(res.message)
+      }
+
+
+    });
+  }
+  sendcertificate() {
+
+
+
+    this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+    console.log(this.draftArr);
+
+    for (var i = 0; i < this.draftArr.length; i++) {
+      if (this.draftArr[i].quote_id == this.quote_id) {
+
+        this.draftArr.splice(i, 1);
+
+      }
+
+    }
+    localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+
+    let datasend =
+
+      'myData={"quote_id":' +
+      this.quote_id +
+      ',"verify_token":"' +
+      localStorage.getItem('token') +
+      '","method":"send_certificate"}';
+    this.api.showLoader()
+    this.api.insertData(datasend).subscribe((res: any) => {
+      console.log('payemt response', res);
+      this.api.hideLoader()
+      if (res.status_no == 1) {
+        localStorage.setItem('certificatelink', res.certificate_link)
+        // this.paystackpayment()
+        // this.paystackurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.paystack.url)
+        this.api.presenttoast(res.message)
+        this.navCtrl.navigateRoot('payment2response');
+        // let p = res.fields.callback_url
+        // let split = p.split('?')[1]
+        // let split2 = p.split('=')[1]
+        // let transval = '&' + split
+        // let reference = '&reference=' + split2
+        // this.referenceval = reference
         // console.log('ddddddddddddddd', transval);
       } else {
         this.api.presenttoast(res.message)

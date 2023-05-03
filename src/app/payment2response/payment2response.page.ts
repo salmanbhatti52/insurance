@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { Http, HttpDownloadFileResult } from '@capacitor-community/http';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 @Component({
   selector: 'app-payment2response',
@@ -19,6 +19,7 @@ export class Payment2responsePage implements OnInit {
   trxref: any;
   productType: string;
   FILE_DIR = Directory.Documents
+  certificate_link: string;
   constructor(public router: Router,
     public api: InsuranceAppService,
     public navCtrl: NavController,
@@ -40,7 +41,10 @@ export class Payment2responsePage implements OnInit {
     this.productres = JSON.parse(localStorage.getItem('vechileinfo'));
     console.log(this.productres)
     this.policyNo = this.productres.policyNo;
-    this.trxref = localStorage.getItem('trxref')
+    this.trxref = localStorage.getItem('trxref');
+    this.certificate_link = localStorage.getItem('certificatelink')
+    console.log(this.certificate_link);
+
   }
 
   send() {
@@ -72,8 +76,18 @@ export class Payment2responsePage implements OnInit {
   }
 
   async download() {
+    let header;
+
+    header = new HttpHeaders({
+      // "Content-Type": "application/json",
+      // "Accept": "application/json"
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+    header.append('Access-Control-Allow-Origin', '*');
+    header.append('Access-Control-Allow-Methods', '*');
+    header.append('Access-Control-Allow-Headers');
     let ref = this
-    this.http.get('', { responseType: 'blob' }).subscribe((res: Blob) => {
+    this.http.get(this.certificate_link, { responseType: 'blob', headers: header, }).subscribe((res: Blob) => {
       var reader = new FileReader();
       reader.readAsDataURL(res);
 

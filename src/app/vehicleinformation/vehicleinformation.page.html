@@ -113,37 +113,54 @@
       </div>
     </div> -->
 
-    <div class="label" style="margin-top: 3% !important;">Date of Birth</div>
-
-    <div class="item-picker" style="
-        margin: 4% 0%;
-        --background: #e8e8e7;
-        height: 48px;
-        padding: 13px 15px;
-      " (click)="showPickerdob = !showPickerdob">
-      <div style="display: flex; align-items: center">
-        <ion-text class="ion-txt" style="margin-left: 14px">{{ dateofbirth }}</ion-text>
+    <div *ngIf="policyhldrtype=='Private'">
+      <div class="label" style="margin-top: 3% !important;">Date of Birth</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="dateofbirth" style="height: 48px" type="tel" placeholder="YYYY-MM-DD" class="in-text">
+          </ion-input>
+        </div>
       </div>
+      <!-- <div class="item-picker" style="
+          margin: 4% 0%;
+          --background: #e8e8e7;
+          height: 48px;
+          padding: 13px 15px;
+        " (click)="showPickerdob = !showPickerdob">
+        <div style="display: flex; align-items: center">
+          <ion-text class="ion-txt" style="margin-left: 14px">{{ dateofbirth }}</ion-text>
+        </div>
+      </div>
+      <ion-datetime class="item-picker" style="margin: 10px auto 8px; color: black" presentation="date"
+        *ngIf="showPickerdob" #datetime [value]="dobValue" size="cover" (ionChange)="dobChanged(datetime.value)"
+        showDefaultButtons="true" (ionCancel)="showPickerdob=false"></ion-datetime> -->
     </div>
-    <ion-datetime class="item-picker" style="margin: 10px auto 8px; color: black" presentation="date"
-      *ngIf="showPickerdob" #datetime [value]="dobValue" size="cover" (ionChange)="dobChanged(datetime.value)"
-      showDefaultButtons="true" (ionCancel)="showPickerdob=false"></ion-datetime>
 
-    <div class="label" style="margin-top: 3% !important;">Date of Incorporation</div>
 
-    <div class="item-picker" style="
+    <div *ngIf="policyhldrtype=='Corporate'">
+      <div class="label" style="margin-top: 3% !important;">Date of Incorporation</div>
+      <div class="inputfield">
+        <div class="innerdropbox">
+          <ion-input [(ngModel)]="dateofincorporation" style="height: 48px" type="tel" placeholder="YYYY-MM-DD"
+            class="in-text">
+          </ion-input>
+        </div>
+      </div>
+      <!-- <div class="item-picker" style="
         margin: 4% 0%;
         --background: #e8e8e7;
         height: 48px;
         padding: 13px 15px;
       " (click)="showPickerdoI = !showPickerdoI">
-      <div style="display: flex; align-items: center">
-        <ion-text class="ion-txt" style="margin-left: 14px">{{ dateofincorporation }}</ion-text>
+        <div style="display: flex; align-items: center">
+          <ion-text class="ion-txt" style="margin-left: 14px">{{ dateofincorporation }}</ion-text>
+        </div>
       </div>
+      <ion-datetime class="item-picker" style="margin: 10px auto 8px; color: black" presentation="date"
+        *ngIf="showPickerdoI" #datetime [value]="doIValue" size="cover" (ionChange)="doInChanged(datetime.value)"
+        showDefaultButtons="true" (ionCancel)="showPickerdoI=false"></ion-datetime> -->
     </div>
-    <ion-datetime class="item-picker" style="margin: 10px auto 8px; color: black" presentation="date"
-      *ngIf="showPickerdoI" #datetime [value]="doIValue" size="cover" (ionChange)="doInChanged(datetime.value)"
-      showDefaultButtons="true" (ionCancel)="showPickerdoI=false"></ion-datetime>
+
 
     <div class="label">Year of Purchase</div>
 
