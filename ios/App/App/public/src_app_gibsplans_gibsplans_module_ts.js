@@ -535,13 +535,14 @@ let GibsplansPage = class GibsplansPage {
             console.log('quoteproces=====', res);
             localStorage.setItem('quoteItemsvalues', JSON.stringify(res.quoteItems));
             if (res.status_no == 1) {
+                // 'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
                 var obj = {
                     title: this.productType,
                     product_id: res.info.product_id,
                     quote_id: res.info.quote_id,
                     subProName: this.productType,
                     quoteItems: 'dummy',
-                    image: 'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+                    image: 'https://www.cornerstone.com.ng/assets/uploads/product/2.jpg',
                     path: '/policyquote',
                     datetime: new Date().toISOString(),
                 };

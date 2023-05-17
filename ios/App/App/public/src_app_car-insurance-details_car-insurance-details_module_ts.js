@@ -550,14 +550,16 @@ let CarInsuranceDetailsPage = class CarInsuranceDetailsPage {
         break;
 
       default:
-    }
+    } // test url= 'https://www.cornerstone.com.ng/devtest/webservice'
+    // live url: 'https://www.cornerstone.com.ng/webservice'
+
 
     console.log('formValidationResult----', formValidationResult);
 
     if (formValidationResult.status) {
       const config = {
         method: 'post',
-        url: 'https://www.cornerstone.com.ng/devtest/webservice',
+        url: 'https://www.cornerstone.com.ng/webservice',
         headers: headers,
         data: form
       };
@@ -582,14 +584,15 @@ let CarInsuranceDetailsPage = class CarInsuranceDetailsPage {
             var quoteItems = this.draftArr[i].quoteItems; // var path = this.draftArr[i].path;
 
             if (this.draftArr.quote_id == res.quote.id) {
-              this.draftArr.splice(i, 1);
+              this.draftArr.splice(i, 1); // imageurl='https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg'
+
               var obj = {
                 title: product_name,
                 product_id: product_id,
                 quote_id: quote_id,
                 subProName: product_name,
                 quoteItems: quoteItems,
-                image: 'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+                image: 'https://www.cornerstone.com.ng/assets/uploads/product/2.jpg',
                 path: '/payment',
                 datetime: new Date().toISOString()
               };

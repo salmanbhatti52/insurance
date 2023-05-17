@@ -678,8 +678,8 @@ let InsuranceAppService = class InsuranceAppService {
   constructor(toastctrl, http, loadingController) {
     this.toastctrl = toastctrl;
     this.http = http;
-    this.loadingController = loadingController;
-    this.url = 'https://www.cornerstone.com.ng/devtest/webservice';
+    this.loadingController = loadingController; // url = 'https://www.cornerstone.com.ng/devtest/webservice';
+
     this.authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
     this.comingFrom = 0;
     this.loginas = 'user';
