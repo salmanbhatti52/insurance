@@ -484,6 +484,8 @@ export class GibsplansPage implements OnInit {
         console.log('quoteproces=====', res);
         localStorage.setItem('quoteItemsvalues', JSON.stringify(res.quoteItems))
         if (res.status_no == 1) {
+
+          // 'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
           var obj = {
             title: this.productType,
             product_id: res.info.product_id,
@@ -491,7 +493,7 @@ export class GibsplansPage implements OnInit {
             subProName: this.productType,
             quoteItems: 'dummy',
             image:
-              'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+              'https://www.cornerstone.com.ng/assets/uploads/product/2.jpg',
             path: '/policyquote',
             datetime: new Date().toISOString(),
           };

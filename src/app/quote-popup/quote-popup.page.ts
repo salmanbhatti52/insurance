@@ -39,6 +39,8 @@ export class QuotePopupPage implements OnInit {
     this.productID = localStorage.getItem('productid');
     console.log('productid', this.productID);
     this.insurancename = localStorage.getItem('productName');
+    console.log(this.insurancename);
+
 
   }
 

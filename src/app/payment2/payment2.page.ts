@@ -352,7 +352,7 @@ export class Payment2Page implements OnInit {
 
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'confirm') {
-      alert('hellow')
+
       this.api.getcallbackurl(this.referenceval).subscribe((url: any) => {
         console.log('callback url:::', url);
 

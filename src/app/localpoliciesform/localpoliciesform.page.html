@@ -3,26 +3,22 @@
   <ion-toolbar class="headBgGlobal">
     <ion-row style="display: flex; align-items: center">
       <ion-col size="2" style="padding-left: 25px">
-        <!-- <div style="width:100% ;">
+        <div style="width:100% ;">
           <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
-        </div> -->
+        </div>
 
-        <ion-menu-toggle>
+        <!-- <ion-menu-toggle>
           <ion-buttons>
             <div style="width: 100%">
               <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
             </div>
           </ion-buttons>
-        </ion-menu-toggle>
+        </ion-menu-toggle> -->
       </ion-col>
       <ion-col size="8">
         <div class="title">Product Offering and Details</div>
       </ion-col>
-      <ion-col
-        size="2"
-        style="text-align: center; padding-top: 3%"
-        *ngIf="requestsType=='PurchasePolicies'"
-      >
+      <ion-col size="2" style="text-align: center; padding-top: 3%" *ngIf="requestsType=='PurchasePolicies'">
         <img src="assets/images/info.png" (click)="goto()" />
       </ion-col>
     </ion-row>

@@ -8,7 +8,10 @@ import { LoadingController } from '@ionic/angular';
   providedIn: 'root',
 })
 export class InsuranceAppService {
-  url = 'https://www.cornerstone.com.ng/devtest/webservice';
+  // Live:
+  url: 'https://www.cornerstone.com.ng/webservice'
+
+  // url = 'https://www.cornerstone.com.ng/devtest/webservice';
   authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
   // url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/'
 

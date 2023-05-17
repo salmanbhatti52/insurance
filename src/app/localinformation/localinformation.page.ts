@@ -9,23 +9,26 @@ import { Router } from '@angular/router';
 })
 export class LocalinformationPage implements OnInit {
   subProName: any;
+  localsubprodutName: any;
 
-  constructor(public location:Location,
-    public router:Router) { }
+  constructor(public location: Location,
+    public router: Router) { }
 
   ngOnInit() {
   }
 
-  goback(){
+  goback() {
     this.location.back()
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.subProName = localStorage.getItem('subProName')
     console.log(' this.subProName-----', this.subProName);
+    let split = this.subProName.split('Travel Safeguard -')
+    this.localsubprodutName = split[1]
   }
 
-  goto(){
+  goto() {
     this.router.navigate(['/localpoliciesform']);
   }
 

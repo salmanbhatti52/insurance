@@ -271,31 +271,37 @@ export class Ivplan1Page implements OnInit {
         (res: any) => {
           console.log('autoPostRecipt res----', res);
           this.api.hideLoader();
-          localStorage.setItem('ivplanres', JSON.stringify(res));
-          var obj = {
-            title: this.subProName,
-            product_id: this.productID,
-            quote_id: quoteId,
-            subProName: this.subProName,
-            quoteItems: 'dummy',
-            image:
-              'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
-            path: '/ivplanquote',
-            datetime: new Date().toISOString(),
-          };
+          if (res.result.status != 0) {
+            localStorage.setItem('ivplanres', JSON.stringify(res));
+            var obj = {
+              title: this.subProName,
+              product_id: this.productID,
+              quote_id: quoteId,
+              subProName: this.subProName,
+              quoteItems: 'dummy',
+              image:
+                'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+              path: '/ivplanquote',
+              datetime: new Date().toISOString(),
+            };
 
-          this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+            this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
 
-          if (this.draftArr) {
-            this.draftArr.push(obj);
-          } else {
-            this.draftArr = [obj];
+            if (this.draftArr) {
+              this.draftArr.push(obj);
+            } else {
+              this.draftArr = [obj];
+            }
+            localStorage.setItem('subProName', this.subProName);
+            localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+            this.router.navigate(['/ivplanquote']);
+
+            // this.api.presenttoast(res.result.message);
           }
-          localStorage.setItem('subProName', this.subProName);
-          localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
-          this.router.navigate(['/ivplanquote']);
+          else {
+            this.api.presenttoast(res.result.message);
+          }
 
-          // this.api.presenttoast(res.result.message);
         },
         (err) => {
           this.api.hideLoader();

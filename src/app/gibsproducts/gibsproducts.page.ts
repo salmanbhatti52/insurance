@@ -39,53 +39,53 @@ export class GibsproductsPage implements OnInit {
       }
     );
   }
-  gibsproduct() {
-    this.api.showLoader();
-    const myData = {
-      sid: 'ECHANNEL2',
-      token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
-    };
-    this.api.gibsapi(myData).subscribe(
-      (res: any) => {
-        console.log(res);
-        const token = res.accessToken;
-        this.motorproductonly(token);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-  motorproductonly(token) {
-    const Bearertoken = token;
-    this.api
-      .getpolicy(
-        'http://testcipapiservices.gibsonline.com/api/metadata/products',
-        Bearertoken
-      )
-      .subscribe(
-        (res: any) => {
-          this.api.hideLoader();
-          console.log('ressssss', res);
-          res.map((value, index) => {
-            if (
-              value.productName == 'PRIVATE MOTOR-AUTO CLASSIC' ||
-              value.productName == 'PRIVATE MOTOR-AUTO PLUS' ||
-              value.productName == 'UBER CLASSIC MOTOR'
-            ) {
-              this.motorsubproducts.push(value);
-            }
-          });
-          // console.log('subproducts after check---11', this.motorsubproducts);
+  // gibsproduct() {
+  //   this.api.showLoader();
+  //   const myData = {
+  //     sid: 'ECHANNEL2',
+  //     token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+  //   };
+  //   this.api.gibsapi(myData).subscribe(
+  //     (res: any) => {
+  //       console.log(res);
+  //       const token = res.accessToken;
+  //       this.motorproductonly(token);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
+  // motorproductonly(token) {
+  //   const Bearertoken = token;
+  //   this.api
+  //     .getpolicy(
+  //       'http://testcipapiservices.gibsonline.com/api/metadata/products',
+  //       Bearertoken
+  //     )
+  //     .subscribe(
+  //       (res: any) => {
+  //         this.api.hideLoader();
+  //         console.log('ressssss', res);
+  //         res.map((value, index) => {
+  //           if (
+  //             value.productName == 'PRIVATE MOTOR-AUTO CLASSIC' ||
+  //             value.productName == 'PRIVATE MOTOR-AUTO PLUS' ||
+  //             value.productName == 'UBER CLASSIC MOTOR'
+  //           ) {
+  //             this.motorsubproducts.push(value);
+  //           }
+  //         });
+  //         // console.log('subproducts after check---11', this.motorsubproducts);
 
-          // this.counter++;
-          // console.log('this.counter++', this.counter);
-        },
-        (err) => {
-          this.api.hideLoader();
-        }
-      );
-  }
+  //         // this.counter++;
+  //         // console.log('this.counter++', this.counter);
+  //       },
+  //       (err) => {
+  //         this.api.hideLoader();
+  //       }
+  //     );
+  // }
 
   GProductdetail(p) {
     console.log(p);

@@ -2,19 +2,19 @@
   <ion-toolbar class="headBgGlobal">
     <ion-row>
       <ion-col size="2" style="padding-left: 25px">
-        <!-- <ion-buttons>
+        <ion-buttons>
           <div style="width:100% ;">
             <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
           </div>
-        </ion-buttons> -->
+        </ion-buttons>
 
-        <ion-menu-toggle>
+        <!-- <ion-menu-toggle>
           <ion-buttons>
             <div style="width: 100%">
               <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
             </div>
           </ion-buttons>
-        </ion-menu-toggle>
+        </ion-menu-toggle> -->
       </ion-col>
       <ion-col size="8">
         <div class="title">Make a Quote</div>
@@ -27,11 +27,9 @@
 <ion-content>
   <div class="wrapper">
     <!-- ------------------------1-------------------------- -->
-
-    <div
-      style="border: 1px solid #a8b400; border-radius: 12px"
-      *ngIf="subProName == 'Air Compact Cover'"
-    >
+    <div class="text" style="text-align: center;margin-bottom: 5%;">{{localsubprodutName}}</div>
+    <div style="border: 1px solid #a8b400; border-radius: 12px;"
+      *ngIf="subProName == 'Travel Safeguard - Air [Compact Cover]'">
       <div class="main">
         <div class="cflex">
           <div class="text" style="text-align: center">
@@ -74,10 +72,8 @@
 
     <!-- ------------------------2-------------------------- -->
 
-    <div
-      style="border: 1px solid #a8b400; border-radius: 12px"
-      *ngIf="subProName == 'Air Essential Cover'"
-    >
+    <div style="border: 1px solid #a8b400; border-radius: 12px"
+      *ngIf="subProName == 'Travel Safeguard - Air [Essential Cover]'">
       <div class="main">
         <div class="cflex">
           <div class="text" style="text-align: center">
@@ -120,10 +116,8 @@
 
     <!-- ------------------------3-------------------------- -->
 
-    <div
-      style="border: 1px solid #a8b400; border-radius: 12px"
-      *ngIf="subProName == 'Air Gold Cover'"
-    >
+    <div style="border: 1px solid #a8b400; border-radius: 12px"
+      *ngIf="subProName == 'Travel Safeguard - Air [Gold Cover]'">
       <div class="main">
         <div class="cflex">
           <div class="text" style="text-align: center">
@@ -166,10 +160,8 @@
 
     <!-- ------------------------4-------------------------- -->
 
-    <div
-      style="border: 1px solid #a8b400; border-radius: 12px"
-      *ngIf="subProName == 'Air Platinum Cover'"
-    >
+    <div style="border: 1px solid #a8b400; border-radius: 12px"
+      *ngIf="subProName == 'Travel Safeguard - Air [Platinum Cover]'">
       <div class="main">
         <div class="cflex">
           <div class="text" style="text-align: center">
@@ -212,10 +204,8 @@
 
     <!-- ------------------------5-------------------------- -->
 
-    <div
-      style="border: 1px solid #a8b400; border-radius: 12px"
-      *ngIf="subProName == 'Road Essential Cover'"
-    >
+    <div style="border: 1px solid #a8b400; border-radius: 12px"
+      *ngIf="subProName == 'Travel Safeguard -Road [Essential Cover]'">
       <div class="main">
         <div class="cflex">
           <div class="text" style="text-align: center">
@@ -253,10 +243,8 @@
 
     <!-- ------------------------6-------------------------- -->
 
-    <div
-      style="border: 1px solid #a8b400; border-radius: 12px"
-      *ngIf="subProName == 'Road Gold Cover'"
-    >
+    <div style="border: 1px solid #a8b400; border-radius: 12px"
+      *ngIf="subProName == 'Travel Safeguard -Road [Gold Cover]'">
       <div class="main">
         <div class="cflex">
           <div class="text" style="text-align: center">
@@ -294,10 +282,8 @@
 
     <!-- ------------------------7-------------------------- -->
 
-    <div
-      style="border: 1px solid #a8b400; border-radius: 12px"
-      *ngIf="subProName == 'Road Platinum Cover'"
-    >
+    <div style="border: 1px solid #a8b400; border-radius: 12px"
+      *ngIf="subProName == 'Travel Safeguard -Road [Platinum Cover]'">
       <div class="main">
         <div class="cflex">
           <div class="text" style="text-align: center">

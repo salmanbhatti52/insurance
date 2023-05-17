@@ -384,7 +384,7 @@ export class VehicleinformationPage implements OnInit {
       form.append('method', 'save_product_proposal');
       const config = {
         method: 'post',
-        url: 'https://www.cornerstone.com.ng/devtest/webservice',
+        url: 'https://www.cornerstone.com.ng/webservice',
         headers: headers,
         data: form,
       };

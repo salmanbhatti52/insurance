@@ -1017,7 +1017,7 @@ export class MypoliciesPage implements OnInit {
               subProName: data.info.product_name,
               quoteItems: JSON.stringify(data.quoteItems),
               image:
-                'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
+                'https://www.cornerstone.com.ng/assets/uploads/product/2.jpg',
               path: '/yourquote',
               datetime: new Date().toISOString(),
             };
