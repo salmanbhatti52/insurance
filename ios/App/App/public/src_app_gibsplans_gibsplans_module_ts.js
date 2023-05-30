@@ -542,7 +542,7 @@ let GibsplansPage = class GibsplansPage {
                     quote_id: res.info.quote_id,
                     subProName: this.productType,
                     quoteItems: 'dummy',
-                    image: 'https://www.cornerstone.com.ng/assets/uploads/product/2.jpg',
+                    image: 'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
                     path: '/policyquote',
                     datetime: new Date().toISOString(),
                 };

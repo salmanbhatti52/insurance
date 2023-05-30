@@ -86,17 +86,17 @@ export class SignInScreenPage implements OnInit {
   signIn() {
     this.api.showLoader();
     let myData =
-      'myData={\r\n    "email": "' +
+      'myData={"email": "' +
       this.userEmail +
-      '",\r\n    "password": "' +
+      '","password": "' +
       this.userPassword +
-      '",\r\n    "method": "login"\r\n}';
+      '", "method": "login"}';
     this.api.insertData(myData).subscribe(
       (res: any) => {
         console.log('res==', res);
-
+        this.api.hideLoader();
         if (res.email) {
-          this.api.hideLoader();
+
           this.api.presenttoast('Welcome!');
           localStorage.setItem('userid', res.user_id);
           localStorage.setItem('token', res.token);
@@ -123,8 +123,9 @@ export class SignInScreenPage implements OnInit {
         }
       },
       (err) => {
-        console.log('err==', err);
         this.api.hideLoader();
+        console.log('err==', err);
+
         this.api.presenttoast(err);
       }
     );

@@ -678,7 +678,9 @@ let InsuranceAppService = class InsuranceAppService {
   constructor(toastctrl, http, loadingController) {
     this.toastctrl = toastctrl;
     this.http = http;
-    this.loadingController = loadingController; // url = 'https://www.cornerstone.com.ng/devtest/webservice';
+    this.loadingController = loadingController; // Live:
+
+    this.url = 'https://www.cornerstone.com.ng/webservice'; // url = 'https://www.cornerstone.com.ng/devtest/webservice';
 
     this.authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
     this.comingFrom = 0;
@@ -686,10 +688,11 @@ let InsuranceAppService = class InsuranceAppService {
   }
 
   insertData(myData) {
+    console.log('data', myData);
     let header;
     header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
       // "Content-Type": "application/json",
-      // "Accept": "application/json"
+      "Accept": "application/json",
       'Content-Type': 'application/x-www-form-urlencoded'
     });
     header.append('Access-Control-Allow-Origin', '*');

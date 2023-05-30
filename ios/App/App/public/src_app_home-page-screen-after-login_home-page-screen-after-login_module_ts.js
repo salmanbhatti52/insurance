@@ -185,6 +185,7 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
       console.log(res);
 
       if (res.message == 'success') {
+        this.api.hideLoader();
         this.products = res.myproduct;
       }
     }, err => {
@@ -335,22 +336,28 @@ let HomePageScreenAfterLoginPage = class HomePageScreenAfterLoginPage {
   deletedraftafter7days() {
     this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
 
-    for (var i = 0; i < this.draftArr.length; i++) {
-      this.calclatedtime = moment__WEBPACK_IMPORTED_MODULE_5__(this.draftArr[i].datetime, 'YYYYMMDD').fromNow(); // 11 years ago
+    if (this.draftArr == null) {
+      this.api.hideLoader();
+    } else {
+      this.api.hideLoader();
 
-      console.log('tt-----', this.calclatedtime);
+      for (var i = 0; i < this.draftArr.length; i++) {
+        this.calclatedtime = moment__WEBPACK_IMPORTED_MODULE_5__(this.draftArr[i].datetime, 'YYYYMMDD').fromNow(); // 11 years ago
 
-      if (this.calclatedtime.includes('days')) {
-        console.log('day wala ha bhai');
-        var day = this.calclatedtime.substring(0, this.calclatedtime.indexOf(' '));
+        console.log('tt-----', this.calclatedtime);
 
-        if (parseInt(day) > 7) {
-          this.draftArr.splice(i, 1);
+        if (this.calclatedtime.includes('days')) {
+          console.log('day wala ha bhai');
+          var day = this.calclatedtime.substring(0, this.calclatedtime.indexOf(' '));
+
+          if (parseInt(day) > 7) {
+            this.draftArr.splice(i, 1);
+          }
         }
       }
-    }
 
-    localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+      localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+    }
   }
 
 };

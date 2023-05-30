@@ -493,7 +493,7 @@ export class GibsplansPage implements OnInit {
             subProName: this.productType,
             quoteItems: 'dummy',
             image:
-              'https://www.cornerstone.com.ng/assets/uploads/product/2.jpg',
+              'https://www.cornerstone.com.ng/devtest/assets/uploads/product/2.jpg',
             path: '/policyquote',
             datetime: new Date().toISOString(),
           };

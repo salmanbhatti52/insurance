@@ -9,7 +9,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class InsuranceAppService {
   // Live:
-  url: 'https://www.cornerstone.com.ng/webservice'
+  url = 'https://www.cornerstone.com.ng/webservice'
 
   // url = 'https://www.cornerstone.com.ng/devtest/webservice';
   authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
@@ -28,11 +28,13 @@ export class InsuranceAppService {
 
   ) { }
   insertData(myData) {
+    console.log('data', myData);
+
     let header;
 
     header = new HttpHeaders({
       // "Content-Type": "application/json",
-      // "Accept": "application/json"
+      "Accept": "application/json",
       'Content-Type': 'application/x-www-form-urlencoded',
     });
     header.append('Access-Control-Allow-Origin', '*');

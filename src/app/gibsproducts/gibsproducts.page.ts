@@ -25,16 +25,19 @@ export class GibsproductsPage implements OnInit {
   }
 
   getcarclasses() {
+    // this.api.showLoader()
     const myData =
       'myData={"verify_token":"' +
       localStorage.getItem('token') +
       '","product_class":"comprehensive_motor_plans","method":"get_car_classes"}';
     this.api.insertData(myData).subscribe(
       (res: any) => {
+        this.api.hideLoader();
         console.log(res);
         this.motorsubproducts = res.values
       },
       (err) => {
+        this.api.hideLoader();
         console.log(err);
       }
     );
@@ -89,17 +92,21 @@ export class GibsproductsPage implements OnInit {
 
   GProductdetail(p) {
     console.log(p);
-    if (p == 'Auto Classic (5% Of vehicle value)') {
-      this.productType = 'Auto Classic'
-    } if (p == 'Auto Plus (5% Of vehicle value)') {
-      this.productType = 'Auto Plus'
-    }
-    if (p == 'Uber Classic (5% Of vehicle value)') {
-      this.productType = 'Uber Classic'
-    }
+
     this.router.navigate(['gibsplans', {
-      productType: this.productType
+      productType: p
     }]);
+    // if (p == 'Auto Classic (5% Of vehicle value)') {
+    //   this.productType = 'Auto Classic'
+    // } if (p == 'Auto Plus (5% Of vehicle value)') {
+    //   this.productType = 'Auto Plus'
+    // }
+    // if (p == 'Uber Classic (5% Of vehicle value)') {
+    //   this.productType = 'Uber Classic'
+    // }
+    // this.router.navigate(['gibsplans', {
+    //   productType: this.productType
+    // }]);
   }
 
   // GProductdetail(ID) {

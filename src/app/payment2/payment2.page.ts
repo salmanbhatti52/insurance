@@ -258,6 +258,8 @@ export class Payment2Page implements OnInit {
       }
 
 
+    }, err => {
+      this.api.hideLoader()
     });
 
   }
@@ -277,7 +279,7 @@ export class Payment2Page implements OnInit {
     this.api.showLoader()
     this.api.insertData(datasend).subscribe((res: any) => {
       console.log('payemt response', res);
-      if (res.message != 'Payment method not found.') {
+      if (res.message != 'Transaction reference not found') {
         this.api.hideLoader()
         this.sendcertificate()
       } else {
@@ -286,6 +288,8 @@ export class Payment2Page implements OnInit {
       }
 
 
+    }, err => {
+      this.api.hideLoader()
     });
   }
   sendcertificate() {
@@ -341,6 +345,8 @@ export class Payment2Page implements OnInit {
       //     },
       //   ]);
       // }
+    }, err => {
+      this.api.hideLoader()
     });
   }
 

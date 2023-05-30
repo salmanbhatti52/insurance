@@ -175,12 +175,12 @@ let SignInScreenPage = class SignInScreenPage {
 
   signIn() {
     this.api.showLoader();
-    let myData = 'myData={\r\n    "email": "' + this.userEmail + '",\r\n    "password": "' + this.userPassword + '",\r\n    "method": "login"\r\n}';
+    let myData = 'myData={"email": "' + this.userEmail + '","password": "' + this.userPassword + '", "method": "login"}';
     this.api.insertData(myData).subscribe(res => {
       console.log('res==', res);
+      this.api.hideLoader();
 
       if (res.email) {
-        this.api.hideLoader();
         this.api.presenttoast('Welcome!');
         localStorage.setItem('userid', res.user_id);
         localStorage.setItem('token', res.token);
@@ -204,8 +204,8 @@ let SignInScreenPage = class SignInScreenPage {
         // }, 3000);
       }
     }, err => {
-      console.log('err==', err);
       this.api.hideLoader();
+      console.log('err==', err);
       this.api.presenttoast(err);
     });
   }
