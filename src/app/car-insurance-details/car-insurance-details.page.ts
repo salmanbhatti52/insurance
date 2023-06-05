@@ -12,13 +12,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
-import {
-  Camera,
-  CameraResultType,
-  CameraSource,
-  ImageOptions,
-  Photo,
-} from '@capacitor/camera';
+
 import { ActionSheetController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import axios from 'axios';
@@ -249,58 +243,9 @@ export class CarInsuranceDetailsPage implements OnInit {
     this.showReferrer = false;
   }
 
-  async camera2(source, imgetype) {
-    console.log('yyyyyy==', imgetype);
-    var options: ImageOptions = {
-      source: source,
-      resultType: CameraResultType.Base64,
-    };
-    const image = await Camera.getPhoto(options);
-    // const blob = new Blob([new Uint8Array(decode(image.base64String))], {
-    //   type: `image/${image.format}`,
-    // });
-    // console.log('Data from gallary blob',blob);
-    console.log('Data from gallary Data url', image.dataUrl);
-    if (imgetype == 'license') {
-      this.imgURL = 'image.dataUrl';
-      //this.imgURL= blob;
-      // this.blobMeanID = blob;
-    }
-    if (imgetype == 'nic') {
-      this.imgURL1 = 'image.dataUrl';
-      // this.imgURL1= blob;
-      this.blobLicence = new Blob();
-    }
-    const imgData = {
-      image: this.imgURL,
-    };
-  }
 
-  async selectImage(imagefile) {
-    const imgtype = imagefile;
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Select Image source',
-      buttons: [
-        {
-          text: 'Load from Library',
-          handler: () => {
-            this.camera2(CameraSource.Photos, imgtype);
-          },
-        },
-        {
-          text: 'Use Camera',
-          handler: () => {
-            this.camera2(CameraSource.Camera, imgtype);
-          },
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel',
-        },
-      ],
-    });
-    await actionSheet.present();
-  }
+
+
 
   goback() {
     this.location.back();
@@ -484,7 +429,7 @@ export class CarInsuranceDetailsPage implements OnInit {
     if (formValidationResult.status) {
       const config = {
         method: 'post',
-        url: 'https://www.cornerstone.com.ng/webservice',
+        url: this.api.url,
         headers: headers,
         data: form,
       };

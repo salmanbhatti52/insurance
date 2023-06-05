@@ -3,13 +3,13 @@
     <ion-row>
       <ion-col size="2" style="padding-left: 25px">
 
-        <ion-menu-toggle>
+        <!-- <ion-menu-toggle>
           <ion-buttons>
             <div style="width: 100%">
               <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
             </div>
           </ion-buttons>
-        </ion-menu-toggle>
+        </ion-menu-toggle> -->
       </ion-col>
       <ion-col size="8">
         <div class="title">Payment</div>
@@ -25,7 +25,8 @@
     font-size: 20px;
     line-height: 1.2;
     margin: 0px;
-    font-weight: 600;">Thankyou for buying</p>
+    font-weight: 600;">Thank you for purchasing our Motor Insurance,download your certificate</p>
+
     <div class="box box-success">
       <div class="panel-body">
         <div class="table-responsive">
@@ -52,17 +53,11 @@
         </div>
       </div>
     </div>
-    <p style="color: black;
-    font-size: 14px;
-    line-height: 1.2;
-    margin: 0px;">We have sent you a certificate on email.Please check your email.</p>
-    <p style="text-align: center; margin: 10px 0px 0px 0px">
-      <span class="p-span" style="color: #1a206d">In case you didn't receive email?</span>
-      <span class="p-span" style="color: #a8b400" (click)="send()">Resend</span>
-    </p>
+
 
     <div class="btndiv">
-
+      <button class="btn12"><a href="{{certificate_link}}" target="_blank">View and Download</a>
+      </button>
       <ion-button class="btn1" (click)="goback()">Go back to home
       </ion-button>
     </div>

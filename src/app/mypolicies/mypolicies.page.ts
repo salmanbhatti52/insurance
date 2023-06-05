@@ -247,6 +247,25 @@ export class MypoliciesPage implements OnInit {
     this.lName = localStorage.getItem('lname');
 
     this.compName = '';
+
+
+    // let data = 'myData={"vehicle_class":"' +
+    //   "Cars/Sedan/SUV" +
+    //   '","product_name":"' +
+    //   "Third Party" +
+    //   '","verify_token":"' +
+    //   localStorage.getItem('token') +
+    //   '","method":"get_motor_price"}'
+    // this.api.insertData(data).subscribe(
+    //   (data: any) => {
+    //     console.log('data response for products----', data);
+
+
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
   }
 
   segmentChanged(ev) {

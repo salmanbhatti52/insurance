@@ -118,7 +118,7 @@ export class QuotePopupPage implements OnInit {
           // this.router.navigate(['/gibsproducts']);
           this.router.navigate(['/mypolicies']);
         } else {
-          if (sp.name == 'Student Plan' || sp.name == 'Europe / Shengen') {
+          if (sp.name == 'Student Plan' || sp.name == 'Europe / Schengen' || sp.name == 'Travel Care Premier' || sp.name == 'Travel Care Visa') {
             this.router.navigate(['/mypolicies']);
           } else {
             localStorage.setItem('localtravel', JSON.stringify(sp));

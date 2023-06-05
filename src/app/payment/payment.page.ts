@@ -27,6 +27,9 @@ export class PaymentPage implements OnInit {
   policyNo: any;
   currentdate: any;
   enddate: any;
+  quoteId: any;
+  paystacktrxref: any;
+  trxref: any;
 
 
   constructor(public location: Location,
@@ -65,198 +68,11 @@ export class PaymentPage implements OnInit {
     console.log('Payment initialized');
   }
 
-  paymentDone(ref: any) {
-    this.title = 'Payment successfull';
-    console.log('payment succesfull-----', ref);
-    if (ref.status == 'success') {
-      this.api.showLoader()
-      localStorage.setItem('trxref', ref.trxref);
-      this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
-      console.log(this.draftArr);
-
-      for (var i = 0; i < this.draftArr.length; i++) {
-        if (this.draftArr[i].product_id == this.productID) {
-
-          this.draftArr.splice(i, 1);
-
-        }
-
-      }
-      localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
-      if (localStorage.getItem('subProName') == 'Third Party') {
-
-        var myData = {
-          sid: 'ECHANNEL2',
-          token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
-        };
-        this.api.gibsapi(myData).subscribe(
-          (res: any) => {
-            this.api.hideLoader()
-            console.log(res);
-            let token = res.accessToken;
-            this.getresult(token);
-          },
-          (err) => {
-            console.log(err);
-            this.api.hideLoader();
-          }
-        );
-        // 'http://testcipapiservices.gibsonline.com/api/metadata/Policies/Motor' old url
-
-      } else {
-        this.api.hideLoader()
-        this.navCtrl.navigateRoot('paymentresponse')
-      }
-
-
-    }
-
-  }
-  getresult(Bearertoken) {
-    this.api.showLoader()
-    let postdata = {
-      // default productID:1001
-      "productID": '1001',
-      "entryDate": this.currentdate,
-      "startDate": this.currentdate,
-      "endDate": this.enddate,
-      "fxCurrency": "NGN",
-      "fxRate": 1,
-      "agentID": localStorage.getItem('agentcode'),
-      "paymentAccountID": "1112000044",
-      "insured": {
-        "lastName": localStorage.getItem('fname'),
-        "firstName": localStorage.getItem('lname'),
-        "gender": this.genderVal,
-        "email": localStorage.getItem('email'),
-        "address": localStorage.getItem('clientAddress'),
-        "phoneLine1": localStorage.getItem('phonenumber'),
-        "isOrg": false,
-        "cityLGA": "n/a",
-        "stateID": "n/a",
-        "nationality": "bd",
-        "dateOfBirth": localStorage.getItem('dob'),
-        "kycType": "NOT_AVAILABLE",
-        "kycNumber": "n/a"
-      },
-      "sections": [
-        {
-          "sectionID": "n/a",
-          "sectionSumInsured": 0,
-          "sectionPremium": this.amtShow,
-          "fields": [
-            {
-              "name": "VehicleRegNo",
-              "value": localStorage.getItem('regNo')
-            },
-            {
-              "name": "VehicleTypeID",
-              "value": "JEEP"
-            },
-            {
-              "name": "VehicleUser",
-              "value": localStorage.getItem('userfullname')
-            },
-            {
-              "name": "EngineNumber",
-              "value": localStorage.getItem('engNo')
-
-            },
-            {
-              "name": "EngineCapacityHP",
-              "value": "2.5"
-            },
-            {
-              "name": "ChasisNumber",
-              "value": localStorage.getItem('chasisNo')
-            },
-            {
-              "name": "VehicleUsage",
-              "value": "PRIVATE"
-            },
-            {
-              "name": "NumberOfSeats",
-              "value": "1"
-            },
-            {
-              "name": "stateOfIssue",
-              "value": "Lagos"
-            },
-            {
-              "name": "VehicleMake",
-              "value": localStorage.getItem('vechilemakeval')
-
-            },
-            {
-              "name": "VehicleModel",
-              "value": localStorage.getItem('vechilemodelval')
-            },
-            {
-              "name": "ManufactureYear",
-              "value": localStorage.getItem('yomValue')
-            },
-            {
-              "name": "VehicleColour",
-              "value": localStorage.getItem('vehclr')
-            },
-            {
-              "name": "CoverType",
-              "value": 'THIRD_PARTY_ONLY'
-            }
-          ]
-        }
-      ]
-    }
-    // 'https://cors-anywhere.herokuapp.com/corsdemo/'
-    this.api
-      .postdata(
-        'http://testcipapiservices.gibsonline.com/api/policies',
-        postdata,
-        Bearertoken
-      )
-      .subscribe(
-        (res: any) => {
-          console.log('motor response---', res);
-          this.api.hideLoader()
-          localStorage.setItem('gibsProductres', JSON.stringify(res));
-
-          this.getcertificate(Bearertoken)
-
-        },
-        (err) => {
-          this.api.hideLoader()
-          console.log('errrrrrrr', err);
-          // let errormsg = err.error.errors[0].message;
-          // this.api.presenttoast(errormsg)
-          this.api.presenttoast(err.message)
-        }
-      );
-  }
-
-  getcertificate(token) {
-    this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
-    this.policyNo = this.productres.policyNo;
-
-    this.api.showLoader();
-    let encode = encodeURIComponent(this.policyNo);
-    console.log('eee--', encode);
-
-    this.api.get('http://testcipapiservices.gibsonline.com/api/utilities/send/certificate?policyNo=' + encode + '&email=' + this.email, token).subscribe((res: any) => {
-      console.log('certificate====', res);
-      this.api.hideLoader()
-      this.navCtrl.navigateRoot('payment2response');
-    }, err => {
-      this.api.hideLoader();
-      this.api.presenttoast('Something went wrong');
-    })
-  }
-  paymentCancel() {
-    console.log('payment failed');
-  }
-
-
-
   ngOnInit() {
+    this.productres = JSON.parse(localStorage.getItem('productres'));
+    console.log('productres=====', this.productres);
+    this.quoteId = this.productres.quote.id
+    this.trxref = this.productres.quote.transaction_ref
     this.currentdate = moment(new Date()).format('YYYY-MM-DD');
     console.log('cdate=', this.currentdate);
     var oneYearFromNow = new Date();
@@ -264,6 +80,8 @@ export class PaymentPage implements OnInit {
     this.enddate = moment(new Date(result)).format('YYYY-MM-DD');
     this.subprodName = localStorage.getItem('subProName');
     this.productID = localStorage.getItem('product_id');
+    console.log('productId=====', this.productID);
+
     this.email = localStorage.getItem('email');
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
@@ -280,6 +98,306 @@ export class PaymentPage implements OnInit {
       }
     }
   }
+
+  paymentDone(ref: any) {
+    this.title = 'Payment successfull';
+    console.log('payment succesfull-----', ref);
+    if (ref.status == 'success') {
+
+      localStorage.setItem('trxref', ref.trxref);
+      this.paystacktrxref = ref.trxref
+      this.payment_method()
+      // if (localStorage.getItem('subProName') == 'Third Party') {
+
+      //   var myData = {
+      //     sid: 'ECHANNEL2',
+      //     token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+      //   };
+      //   this.api.gibsapi(myData).subscribe(
+      //     (res: any) => {
+      //       this.api.hideLoader()
+      //       console.log(res);
+      //       let token = res.accessToken;
+      //       this.getresult(token);
+      //     },
+      //     (err) => {
+      //       console.log(err);
+      //       this.api.hideLoader();
+      //     }
+      //   );
+      //   // 'http://testcipapiservices.gibsonline.com/api/metadata/Policies/Motor' old url
+
+      // } else {
+      //   this.api.hideLoader()
+      //   this.navCtrl.navigateRoot('paymentresponse')
+      // }
+
+
+    }
+
+  }
+
+  //new paystackapi method////
+  payment_method() {
+    let paydata =
+      'myData={"product_id":' +
+      this.productID +
+      ',"quote_id":' +
+      this.quoteId +
+      ',"payment_option":' +
+      '"paystack"' +
+      ',"verify_token":"' +
+      localStorage.getItem('token') +
+      '","method":"payment_method_select"}';
+
+    this.api.insertData(paydata).subscribe((res: any) => {
+      console.log('payemt response', res);
+      if (res.status_no == 1) {
+        this.paystackpayment()
+      } else {
+        this.api.presenttoast(res.message)
+      }
+
+
+    }, err => {
+      this.api.hideLoader()
+    });
+
+  }
+  /////////////////
+  paystackpayment() {
+    let datasend =
+      'myData={"transaction_ref":' +
+      '"' + this.trxref + '"' +
+      ',"paystack_transaction_ref":' +
+      '"' + this.paystacktrxref + '"' +
+      ',"quote_id":' +
+      '"' + this.quoteId + '"' +
+      ',"verify_token":"' +
+      localStorage.getItem('token') +
+      '","method":"standalonePaystackConfirm"}';
+
+    this.api.showLoader()
+    this.api.insertData(datasend).subscribe((res: any) => {
+      console.log('payemt response', res);
+      if (res.message != 'Transaction reference not found') {
+        this.api.hideLoader()
+        if (localStorage.getItem('productName') == 'Motor Insurance') {
+          this.sendcertificate()
+        } else {
+          this.api.presenttoast(res.message)
+        }
+
+      } else {
+        this.api.hideLoader()
+        this.api.presenttoast(res.message)
+      }
+
+
+    }, err => {
+      this.api.hideLoader()
+    });
+  }
+  sendcertificate() {
+
+    this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+    console.log(this.draftArr);
+
+    for (var i = 0; i < this.draftArr.length; i++) {
+      if (this.draftArr[i].product_id == this.productID) {
+
+        this.draftArr.splice(i, 1);
+
+      }
+
+    }
+    localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+
+    let datasend =
+
+      'myData={"quote_id":' +
+      this.quoteId +
+      ',"verify_token":"' +
+      localStorage.getItem('token') +
+      '","method":"send_certificate"}';
+    this.api.showLoader()
+    this.api.insertData(datasend).subscribe((res: any) => {
+      console.log('payemt response', res);
+      this.api.hideLoader()
+      if (res.status_no == 1) {
+        localStorage.setItem('certificatelink', res.certificate_link)
+        // this.paystackpayment()
+        // this.paystackurl = this.sanitizer.bypassSecurityTrustResourceUrl(res.paystack.url)
+        this.api.presenttoast(res.message)
+        this.navCtrl.navigateRoot('paymentresponse');
+        // let p = res.fields.callback_url
+        // let split = p.split('?')[1]
+        // let split2 = p.split('=')[1]
+        // let transval = '&' + split
+        // let reference = '&reference=' + split2
+        // this.referenceval = reference
+        // console.log('ddddddddddddddd', transval);
+      } else {
+        this.api.presenttoast(res.message)
+      }
+
+      // if (paymentoption == 1) {
+      //   this.navCtrl.navigateForward([
+      //     'payquote',
+      //     {
+      //       payres: JSON.stringify(res.transaction),
+      //     },
+      //   ]);
+      // }
+    }, err => {
+      this.api.hideLoader()
+    });
+  }
+  // getresult(Bearertoken) {
+  //   this.api.showLoader()
+  //   let postdata = {
+  //     // default productID:1001
+  //     "productID": '1001',
+  //     "entryDate": this.currentdate,
+  //     "startDate": this.currentdate,
+  //     "endDate": this.enddate,
+  //     "fxCurrency": "NGN",
+  //     "fxRate": 1,
+  //     "agentID": localStorage.getItem('agentcode'),
+  //     "paymentAccountID": "1112000044",
+  //     "insured": {
+  //       "lastName": localStorage.getItem('fname'),
+  //       "firstName": localStorage.getItem('lname'),
+  //       "gender": this.genderVal,
+  //       "email": localStorage.getItem('email'),
+  //       "address": localStorage.getItem('clientAddress'),
+  //       "phoneLine1": localStorage.getItem('phonenumber'),
+  //       "isOrg": false,
+  //       "cityLGA": "n/a",
+  //       "stateID": "n/a",
+  //       "nationality": "bd",
+  //       "dateOfBirth": localStorage.getItem('dob'),
+  //       "kycType": "NOT_AVAILABLE",
+  //       "kycNumber": "n/a"
+  //     },
+  //     "sections": [
+  //       {
+  //         "sectionID": "n/a",
+  //         "sectionSumInsured": 0,
+  //         "sectionPremium": this.amtShow,
+  //         "fields": [
+  //           {
+  //             "name": "VehicleRegNo",
+  //             "value": localStorage.getItem('regNo')
+  //           },
+  //           {
+  //             "name": "VehicleTypeID",
+  //             "value": "JEEP"
+  //           },
+  //           {
+  //             "name": "VehicleUser",
+  //             "value": localStorage.getItem('userfullname')
+  //           },
+  //           {
+  //             "name": "EngineNumber",
+  //             "value": localStorage.getItem('engNo')
+
+  //           },
+  //           {
+  //             "name": "EngineCapacityHP",
+  //             "value": "2.5"
+  //           },
+  //           {
+  //             "name": "ChasisNumber",
+  //             "value": localStorage.getItem('chasisNo')
+  //           },
+  //           {
+  //             "name": "VehicleUsage",
+  //             "value": "PRIVATE"
+  //           },
+  //           {
+  //             "name": "NumberOfSeats",
+  //             "value": "1"
+  //           },
+  //           {
+  //             "name": "stateOfIssue",
+  //             "value": "Lagos"
+  //           },
+  //           {
+  //             "name": "VehicleMake",
+  //             "value": localStorage.getItem('vechilemakeval')
+
+  //           },
+  //           {
+  //             "name": "VehicleModel",
+  //             "value": localStorage.getItem('vechilemodelval')
+  //           },
+  //           {
+  //             "name": "ManufactureYear",
+  //             "value": localStorage.getItem('yomValue')
+  //           },
+  //           {
+  //             "name": "VehicleColour",
+  //             "value": localStorage.getItem('vehclr')
+  //           },
+  //           {
+  //             "name": "CoverType",
+  //             "value": 'THIRD_PARTY_ONLY'
+  //           }
+  //         ]
+  //       }
+  //     ]
+  //   }
+  //   // 'https://cors-anywhere.herokuapp.com/corsdemo/'
+  //   this.api
+  //     .postdata(
+  //       'http://testcipapiservices.gibsonline.com/api/policies',
+  //       postdata,
+  //       Bearertoken
+  //     )
+  //     .subscribe(
+  //       (res: any) => {
+  //         console.log('motor response---', res);
+  //         this.api.hideLoader()
+  //         localStorage.setItem('gibsProductres', JSON.stringify(res));
+
+  //         this.getcertificate(Bearertoken)
+
+  //       },
+  //       (err) => {
+  //         this.api.hideLoader()
+  //         console.log('errrrrrrr', err);
+  //         // let errormsg = err.error.errors[0].message;
+  //         // this.api.presenttoast(errormsg)
+  //         this.api.presenttoast(err.message)
+  //       }
+  //     );
+  // }
+
+  // getcertificate(token) {
+  //   this.productres = JSON.parse(localStorage.getItem('gibsProductres'));
+  //   this.policyNo = this.productres.policyNo;
+
+  //   this.api.showLoader();
+  //   let encode = encodeURIComponent(this.policyNo);
+  //   console.log('eee--', encode);
+
+  //   this.api.get('http://testcipapiservices.gibsonline.com/api/utilities/send/certificate?policyNo=' + encode + '&email=' + this.email, token).subscribe((res: any) => {
+  //     console.log('certificate====', res);
+  //     this.api.hideLoader()
+  //     this.navCtrl.navigateRoot('payment2response');
+  //   }, err => {
+  //     this.api.hideLoader();
+  //     this.api.presenttoast('Something went wrong');
+  //   })
+  // }
+  paymentCancel() {
+    console.log('payment failed');
+  }
+
+
+
+
   buyOnlineQuote() {
     this.router.navigate(['/car-insurance-details']);
   }
@@ -310,7 +428,7 @@ export class PaymentPage implements OnInit {
     } else {
       if (this.payemntmethod == 'WebPAY') {
         this.paymentoption = 1;
-        this.paymentapi(this.paymentoption)
+        // this.paymentapi(this.paymentoption)
       }
       // else {
       //   if (this.payemntmethod == 'other') {
@@ -325,17 +443,17 @@ export class PaymentPage implements OnInit {
     }
   }
 
-  paymentapi(paymentoption) {
-    let datasend = "myData={\"product_id\":" + localStorage.getItem('subProId') + ",\"quote_id\":" + localStorage.getItem('quote_id') + ",\"payment_option\":" + paymentoption + ",\"verify_token\":\"" + localStorage.getItem('token') + "\",\"method\":\"payment_method_select\"}";
+  // paymentapi(paymentoption) {
+  //   let datasend = "myData={\"product_id\":" + localStorage.getItem('subProId') + ",\"quote_id\":" + localStorage.getItem('quote_id') + ",\"payment_option\":" + paymentoption + ",\"verify_token\":\"" + localStorage.getItem('token') + "\",\"method\":\"payment_method_select\"}";
 
-    this.api.insertData(datasend).subscribe((res: any) => {
-      console.log('payemt response', res);
-      if (paymentoption == 1) {
-        this.navCtrl.navigateForward(['payquote', {
-          payres: JSON.stringify(res.transaction)
-        }])
-      }
+  //   this.api.insertData(datasend).subscribe((res: any) => {
+  //     console.log('payemt response', res);
+  //     if (paymentoption == 1) {
+  //       this.navCtrl.navigateForward(['payquote', {
+  //         payres: JSON.stringify(res.transaction)
+  //       }])
+  //     }
 
-    })
-  }
+  //   })
+  // }
 }

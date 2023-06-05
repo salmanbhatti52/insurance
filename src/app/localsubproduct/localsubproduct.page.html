@@ -35,8 +35,7 @@
 
     <div class="boxdiv" *ngFor="let sp of subProducts">
       <div style="display: flex; margin-bottom: 7%" (click)="seeDetails(sp)">
-        <img (error)="handleImgError($event, userIMG)" src="{{sp.image}}" alt=""
-          style="width: 100px; height: 100px; object-fit: cover" />
+        <img (error)="handleImgError($event, userIMG)" src="{{sp.image}}" alt="" style="width: 100px; height: 100px;" />
         <p class="con-p2">{{sp.name}}</p>
       </div>
     </div>

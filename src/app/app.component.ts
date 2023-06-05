@@ -66,6 +66,13 @@ export class AppComponent {
       img1: '/assets/images/icons/settingactive.svg',
       status: 'unchecked',
     },
+    {
+      title: 'Delete Account',
+      url: '/deleteaccount',
+      img: '/assets/images/icons/delete.png',
+      img1: '/assets/images/icons/deleteactive.png',
+      status: 'unchecked',
+    },
   ];
   public appPages2 = [
     // { title: 'Home', url: '/home-page-screen-after-login', img: '/assets/images/home.svg', img1: '/assets/images/homeicon.svg', status: 'unchecked' },
@@ -112,6 +119,13 @@ export class AppComponent {
       img1: '/assets/images/icons/activeclaim.svg',
       status: 'unchecked',
     },
+    {
+      title: 'Delete Account',
+      url: '/deleteaccount',
+      img: '/assets/images/icons/delete.png',
+      img1: '/assets/images/icons/activedelete.png',
+      status: 'unchecked',
+    },
     // { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
   ];
 
@@ -136,16 +150,16 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.platform.ready().then(() => {
-      setTimeout(() => {
-        this.initializeApp();
+    // this.platform.ready().then(() => {
+    //   setTimeout(() => {
+    //     this.initializeApp();
 
-        SplashScreen.hide();
-        this.route.navigate(['splash']);
+    //     SplashScreen.hide();
+    //     this.route.navigate(['splash']);
 
-        //aliiii
-      }, 3500);
-    });
+    //     //aliiii
+    //   }, 3500);
+    // });
   }
 
   async initializeApp() {
