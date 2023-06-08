@@ -97,6 +97,8 @@ export class PaymentPage implements OnInit {
 
       }
     }
+    console.log('dsdasdasd', localStorage.getItem('productName'));
+
   }
 
   paymentDone(ref: any) {
@@ -186,6 +188,18 @@ export class PaymentPage implements OnInit {
           this.sendcertificate()
         } else {
           this.api.presenttoast(res.message)
+          this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+          console.log(this.draftArr);
+
+          for (var i = 0; i < this.draftArr.length; i++) {
+            if (this.draftArr[i].product_id == this.productID) {
+
+              this.draftArr.splice(i, 1);
+
+            }
+
+          }
+          localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
         }
 
       } else {
