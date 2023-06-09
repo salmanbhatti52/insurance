@@ -150,16 +150,16 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    // this.platform.ready().then(() => {
-    //   setTimeout(() => {
-    //     this.initializeApp();
+    this.platform.ready().then(() => {
+      setTimeout(() => {
+        this.initializeApp();
 
-    //     SplashScreen.hide();
-    //     this.route.navigate(['splash']);
+        SplashScreen.hide();
+        this.route.navigate(['splash']);
 
-    //     //aliiii
-    //   }, 3500);
-    // });
+        //aliiii
+      }, 3500);
+    });
   }
 
   async initializeApp() {
