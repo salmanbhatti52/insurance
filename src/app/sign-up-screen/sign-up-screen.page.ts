@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonDatetime, ModalController } from '@ionic/angular';
+import { IonDatetime, MenuController, ModalController } from '@ionic/angular';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { Router } from '@angular/router';
@@ -35,8 +35,18 @@ export class SignUpScreenPage implements OnInit {
   constructor(public router: Router,
     public api: InsuranceAppService,
     public location: Location,
-    public modal: ModalController) {
+    public modal: ModalController,
+    public menuCtrl: MenuController) {
     // this.setToday();
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+
+  }
+  ionViewWillLeave() {
+    // enable the root left menu when leaving this page
+    this.menuCtrl.enable(true);
   }
 
   ngOnInit() {

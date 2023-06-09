@@ -91,13 +91,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ForgotpasswordPage": () => (/* binding */ ForgotpasswordPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _forgotpassword_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./forgotpassword.page.html?ngResource */ 33382);
 /* harmony import */ var _forgotpassword_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./forgotpassword.page.scss?ngResource */ 87599);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 94666);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ 2508);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 22111);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+
 
 
 
@@ -106,15 +108,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ForgotpasswordPage = class ForgotpasswordPage {
-    constructor(location, api) {
+    constructor(location, api, menuCtrl) {
         this.location = location;
         this.api = api;
+        this.menuCtrl = menuCtrl;
         this.userEmail = '';
     }
     ngOnInit() {
         this.RegisterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormGroup({
             email: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__.FormControl('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__.Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)])
         });
+    }
+    ionViewDidEnter() {
+        this.menuCtrl.enable(false);
+    }
+    ionViewWillLeave() {
+        // enable the root left menu when leaving this page
+        this.menuCtrl.enable(true);
     }
     goback() {
         this.location.back();
@@ -137,10 +147,11 @@ let ForgotpasswordPage = class ForgotpasswordPage {
 };
 ForgotpasswordPage.ctorParameters = () => [
     { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__.Location },
-    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService }
+    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.MenuController }
 ];
-ForgotpasswordPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+ForgotpasswordPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-forgotpassword',
         template: _forgotpassword_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_forgotpassword_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -167,7 +178,7 @@ module.exports = ".rowcls {\n  display: flex;\n  align-items: center;\n  margin-
   \********************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-row class=\"rowcls\">\r\n    <ion-col size=\"10\" style=\"padding-left: 27px\">\r\n      <!-- <div style=\"width:100% ;\">\r\n        <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n      </div> -->\r\n\r\n      <ion-menu-toggle>\r\n        <ion-buttons>\r\n          <div style=\"width: 100%\">\r\n            <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\r\n          </div>\r\n        </ion-buttons>\r\n      </ion-menu-toggle>\r\n    </ion-col>\r\n\r\n    <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\r\n  </ion-row>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <div style=\"text-align: center\">\r\n      <img\r\n        src=\"assets/images/logo.svg\"\r\n        style=\"text-align: center; margin-top: 15px\"\r\n        alt=\"\"\r\n      />\r\n    </div>\r\n\r\n    <div style=\"margin-top: 15px\">\r\n      <p class=\"sign-in-para\">Enter Your Email Address</p>\r\n    </div>\r\n    <form [formGroup]=\"RegisterForm\" (ngSubmit)=\"formSubmit()\">\r\n      <div class=\"input-div\">\r\n        <ion-input\r\n          formControlName=\"email\"\r\n          [(ngModel)]=\"userEmail\"\r\n          class=\"input\"\r\n          type=\"email\"\r\n          placeholder=\"Email\"\r\n          ><img\r\n            style=\"margin: 15px 7px 14px 15px\"\r\n            src=\"assets/images/icons/email.svg\"\r\n          />\r\n        </ion-input>\r\n        <div\r\n          class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched\"\r\n        >\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\" />\r\n          <span class=\"error-msg\">Enter your email</span>\r\n        </div>\r\n        <div\r\n          class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched\"\r\n        >\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\" />\r\n          <span class=\"error-msg\">This is invalid format</span>\r\n        </div>\r\n      </div>\r\n\r\n      <ion-button\r\n        class=\"btn\"\r\n        type=\"submit\"\r\n        [disabled]=\"RegisterForm.invalid\"\r\n        style=\"--background: #a8b400\"\r\n        >Reset Password</ion-button\r\n      >\r\n    </form>\r\n  </div>\r\n</ion-content>\r\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-row class=\"rowcls\">\r\n    <ion-col size=\"10\" style=\"padding-left: 27px\">\r\n      <div style=\"width:100% ;\">\r\n        <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n      </div>\r\n\r\n      <!-- <ion-menu-toggle>\r\n        <ion-buttons>\r\n          <div style=\"width: 100%\">\r\n            <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\r\n          </div>\r\n        </ion-buttons>\r\n      </ion-menu-toggle> -->\r\n    </ion-col>\r\n\r\n    <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\r\n  </ion-row>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <div style=\"text-align: center\">\r\n      <img src=\"assets/images/logo.svg\" style=\"text-align: center; margin-top: 15px\" alt=\"\" />\r\n    </div>\r\n\r\n    <div style=\"margin-top: 15px\">\r\n      <p class=\"sign-in-para\">Enter Your Email Address</p>\r\n    </div>\r\n    <form [formGroup]=\"RegisterForm\" (ngSubmit)=\"formSubmit()\">\r\n      <div class=\"input-div\">\r\n        <ion-input formControlName=\"email\" [(ngModel)]=\"userEmail\" class=\"input\" type=\"email\" placeholder=\"Email\"><img\r\n            style=\"margin: 15px 7px 14px 15px\" src=\"assets/images/icons/email.svg\" />\r\n        </ion-input>\r\n        <div class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('email').hasError('required') && RegisterForm.get('email').touched\">\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\" />\r\n          <span class=\"error-msg\">Enter your email</span>\r\n        </div>\r\n        <div class=\"validation\"\r\n          *ngIf=\"RegisterForm.get('email').hasError('pattern') && RegisterForm.get('email').touched\">\r\n          <img src=\"assets/images/alert-icon.png\" class=\"alertIcon\" />\r\n          <span class=\"error-msg\">This is invalid format</span>\r\n        </div>\r\n      </div>\r\n\r\n      <ion-button class=\"btn\" type=\"submit\" [disabled]=\"RegisterForm.invalid\" style=\"--background: #a8b400\">Reset\r\n        Password</ion-button>\r\n    </form>\r\n  </div>\r\n</ion-content>";
 
 /***/ })
 

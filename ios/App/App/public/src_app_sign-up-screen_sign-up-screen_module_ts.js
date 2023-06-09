@@ -116,11 +116,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let SignUpScreenPage = class SignUpScreenPage {
-  constructor(router, api, location, modal) {
+  constructor(router, api, location, modal, menuCtrl) {
     this.router = router;
     this.api = api;
     this.location = location;
     this.modal = modal;
+    this.menuCtrl = menuCtrl;
     this.uTitle = '';
     this.fName = '';
     this.lName = '';
@@ -146,6 +147,15 @@ let SignUpScreenPage = class SignUpScreenPage {
     this.showPass = false;
     this.cshowPass = false;
     this.checkbox = false; // this.setToday();
+  }
+
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+  }
+
+  ionViewWillLeave() {
+    // enable the root left menu when leaving this page
+    this.menuCtrl.enable(true);
   }
 
   ngOnInit() {
@@ -264,6 +274,8 @@ SignUpScreenPage.ctorParameters = () => [{
   type: _angular_common__WEBPACK_IMPORTED_MODULE_8__.Location
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.ModalController
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.MenuController
 }];
 
 SignUpScreenPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({

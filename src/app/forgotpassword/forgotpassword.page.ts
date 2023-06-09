@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { InsuranceAppService } from '../services/insurance-app.service';
+import { MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-forgotpassword',
   templateUrl: './forgotpassword.page.html',
@@ -11,12 +12,21 @@ export class ForgotpasswordPage implements OnInit {
   RegisterForm: FormGroup;
   userEmail = '';
   constructor(public location: Location,
-    public api: InsuranceAppService) { }
+    public api: InsuranceAppService,
+    public menuCtrl: MenuController) { }
 
   ngOnInit() {
     this.RegisterForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)])
     });
+  }
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false);
+
+  }
+  ionViewWillLeave() {
+    // enable the root left menu when leaving this page
+    this.menuCtrl.enable(true);
   }
 
   goback() {
