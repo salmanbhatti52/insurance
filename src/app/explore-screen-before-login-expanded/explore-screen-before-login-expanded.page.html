@@ -29,12 +29,7 @@
       <p class="wc-para">Explore</p>
 
       <div class="slide-div" style="margin-top: 20px">
-        <ion-slides
-          pager="true"
-          [options]="slideOpts"
-          scrollbar="true"
-          (ionSlideDidChange)="active-slide"
-        >
+        <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide">
           <ion-slide>
             <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
@@ -56,11 +51,7 @@
                   >
                 </div> -->
                 <div style="width: 100%" (click)="learnmore()">
-                  <img
-                    style="border-radius: 10px 50px 10px 10px"
-                    class="ins-nce"
-                    src="assets/images/slider/pt1.jpg"
-                  />
+                  <img style="border-radius: 10px 50px 10px 10px" class="ins-nce" src="assets/images/slider/pt1.jpg" />
                 </div>
               </div>
             </div>
@@ -87,36 +78,16 @@
                   >
                 </div> -->
                 <div style="width: 100%" (click)="learnmore2()">
-                  <img
-                    style="border-radius: 10px 50px 10px 10px"
-                    class="ins-nce"
-                    src="assets/images/slider/pt2.jpg"
-                  />
+                  <img style="border-radius: 10px 50px 10px 10px" class="ins-nce" src="assets/images/slider/pt2.jpg" />
                 </div>
               </div>
             </div>
           </ion-slide>
 
-          <ion-slide>
+          <!-- <ion-slide>
             <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
-                <!-- <div>
-                  <p class="p1">Get Immediate</p>
-                  <p class="p2">Claim assistance</p>
-                  <ion-progress-bar
-                    class="p-bar"
-                    value="0.38"
-                    style="--progress-background: #1a206d"
-                  >
-                  </ion-progress-bar>
-                  <p class="p3">We have got you covered</p>
-                  <ion-button
-                    class="btn-sm"
-                    *ngIf="btnshow==true"
-                    (click)="learnmore3()"
-                    >Learn more</ion-button
-                  >
-                </div> -->
+
                 <div style="width: 100%" (click)="learnmore3()">
                   <img
                     style="border-radius: 10px 50px 10px 10px"
@@ -126,7 +97,7 @@
                 </div>
               </div>
             </div>
-          </ion-slide>
+          </ion-slide> -->
         </ion-slides>
       </div>
     </div>
@@ -145,21 +116,11 @@
           <div class="gc-div" (click)="openProduct(p,p.name)">
             <!-- (click)="openQuote(p)" -->
             <div style="display: flex" class="gimg-div">
-              <img
-                *ngIf="p.name =='Travel Insurance'"
-                (error)="handleImgError($event, userIMG)"
-                src="{{p.image}}"
-                alt=""
-                class="cimg"
-              />
+              <img *ngIf="p.name =='Travel Insurance'" (error)="handleImgError($event, userIMG)" src="{{p.image}}"
+                alt="" class="cimg" />
 
-              <img
-                *ngIf="p.name =='Motor Insurance'"
-                (error)="handleImgError2($event, userIMG)"
-                src="{{p.image}}"
-                alt=""
-                class="cimg"
-              />
+              <img *ngIf="p.name =='Motor Insurance'" (error)="handleImgError2($event, userIMG)" src="{{p.image}}"
+                alt="" class="cimg" />
             </div>
             <p class="gp-div">{{p.name}}</p>
           </div>
@@ -293,52 +254,28 @@
 
     <ion-grid style="padding: 0px; width: 100%">
       <ion-row style="margin-top: 16px">
-        <ion-col
-          size="4"
-          style="padding: 6px 6px 6px 0px; width: 100%"
-          (click)="tab2Click()"
-        >
+        <ion-col size="4" style="padding: 6px 6px 6px 0px; width: 100%" (click)="tab2Click()">
           <div class="gc-div">
             <div class="gimg-div">
-              <img
-                class="imgclass"
-                src="assets/images/get-insured.svg"
-                alt=""
-              />
+              <img class="imgclass" src="assets/images/get-insured.svg" alt="" />
             </div>
             <p class="gp-div">Get Insured</p>
           </div>
         </ion-col>
 
-        <ion-col
-          size="4"
-          style="padding: 6px; width: 100%"
-          (click)="makeaclaim()"
-        >
+        <ion-col size="4" style="padding: 6px; width: 100%" (click)="makeaclaim()">
           <div class="gc-div">
             <div class="gimg-div">
-              <img
-                class="imgclass"
-                src="assets/images/report-claim.svg"
-                alt=""
-              />
+              <img class="imgclass" src="assets/images/report-claim.svg" alt="" />
             </div>
             <p class="gp-div">Report a Claim</p>
           </div>
         </ion-col>
 
-        <ion-col
-          size="4"
-          style="padding: 6px 0px 6px 6px; width: 100%"
-          (click)="gotorenewpolicy()"
-        >
+        <ion-col size="4" style="padding: 6px 0px 6px 6px; width: 100%" (click)="gotorenewpolicy()">
           <div class="gc-div">
             <div class="gimg-div">
-              <img
-                class="imgclass"
-                src="assets/images/renew-policy.svg"
-                alt=""
-              />
+              <img class="imgclass" src="assets/images/renew-policy.svg" alt="" />
             </div>
             <p class="gp-div">Renew Policy</p>
           </div>
@@ -355,11 +292,7 @@
           </div>
         </ion-col> -->
 
-        <ion-col
-          size="4"
-          style="padding: 6px; width: 100%"
-          (click)="policylookup()"
-        >
+        <ion-col size="4" style="padding: 6px; width: 100%" (click)="policylookup()">
           <div class="gc-div">
             <div class="gimg-div">
               <img class="imgclass" src="assets/images/sec-doc.svg" alt="" />
