@@ -50,13 +50,14 @@ export class SignUpScreenPage implements OnInit {
   }
 
   ngOnInit() {
+    // ^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d^a-zA-Z0-9].{5,50}$
     this.RegisterForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
       fname: new FormControl('', Validators.required),
       lname: new FormControl('', Validators.required),
       number: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.pattern(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/)]),
-      password: new FormControl('', [Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#])[A-Za-z\d$@$!%*?&].{5,}')]),
+      password: new FormControl('', [Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d^a-zA-Z0-9].{5,50}')]),
       cpassword: new FormControl('', [Validators.required]),
       date: new FormControl('', [Validators.required]),
       terms: new FormControl('', [Validators.required])

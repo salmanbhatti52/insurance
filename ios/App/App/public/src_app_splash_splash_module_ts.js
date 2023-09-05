@@ -159,7 +159,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \****************************************************/
 /***/ ((module) => {
 
-module.exports = "<!-- <ion-header>\n  <ion-toolbar>\n    <ion-title>splash</ion-title>\n  </ion-toolbar>\n</ion-header> -->\n\n<ion-content>\n  <img src=\"assets/splashsreen.png\" style=\"width: 100%;\n  height: 100%;\">\n\n</ion-content>\n";
+module.exports = "<!-- <ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>splash</ion-title>\r\n  </ion-toolbar>\r\n</ion-header> -->\r\n\r\n<ion-content>\r\n  <img src=\"assets/splashsreen.png\" style=\"width: 100%;\r\n  height: 100%;\">\r\n\r\n</ion-content>\r\n";
 
 /***/ })
 

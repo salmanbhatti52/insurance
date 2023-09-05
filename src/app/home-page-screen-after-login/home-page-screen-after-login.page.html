@@ -27,7 +27,7 @@
 <ion-content>
   <div style="background: #1a206d; height: 250px">
     <ion-row class="topmargin">
-      <ion-col size="8" style="padding-left: 27px">
+      <ion-col size="2" style="padding-left: 27px">
         <ion-menu-toggle>
           <ion-buttons>
             <div style="width: 100%">
@@ -36,7 +36,9 @@
           </ion-buttons>
         </ion-menu-toggle>
       </ion-col>
-      <ion-col size="2"></ion-col>
+      <ion-col size="8" style="text-align: center;">
+        <img src="assets/images/cornerlogo.png" style="width: 100px;">
+      </ion-col>
       <ion-col class="titleclass" size="2">
         <img *ngIf="loginas == 'user'" (click)="updateProfile()" class="pro-img" src="assets/images/user.png"
           alt="profile" />

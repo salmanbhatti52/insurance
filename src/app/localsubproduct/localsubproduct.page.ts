@@ -36,8 +36,10 @@ export class LocalsubproductPage implements OnInit {
     public api: InsuranceAppService) { }
 
   ngOnInit() {
-    this.subProducts = JSON.parse(localStorage.getItem('subProducts'));
-    this.arr1 =this.subProducts;
+    // this.subProducts = JSON.parse(localStorage.getItem('subProducts'));
+    this.arr1 = this.subProducts;
+
+    console.log(this.subProducts);
 
     this.productID = localStorage.getItem('productid2');
     console.log('productid', this.productID);
@@ -48,20 +50,20 @@ export class LocalsubproductPage implements OnInit {
   goback() {
 
 
-    if(this.counter <= 1){
+    if (this.counter <= 1) {
       this.location.back();
-    }else{
+    } else {
 
-      if(this.counter == 2){
-       this.subProducts =  this.arr1;
+      if (this.counter == 2) {
+        this.subProducts = this.arr1;
       }
-      if(this.counter == 3){
-        this.subProducts =  this.arr2;
+      if (this.counter == 3) {
+        this.subProducts = this.arr2;
       }
-       if(this.counter == 4){
-        this.subProducts =  this.arr3;
-      } if(this.counter == 5){
-        this.subProducts =  this.arr4;
+      if (this.counter == 4) {
+        this.subProducts = this.arr3;
+      } if (this.counter == 5) {
+        this.subProducts = this.arr4;
       }
       this.counter--;
     }
@@ -86,19 +88,19 @@ export class LocalsubproductPage implements OnInit {
       console.log('subproducts after check---22', subproducts);
       this.counter++;
       console.log('this.counter++', this.counter);
-      if(this.counter == 1){
-        this.arr1 =subproducts;
+      if (this.counter == 1) {
+        this.arr1 = subproducts;
       }
-      if(this.counter == 2){
-        this.arr2 =subproducts;
+      if (this.counter == 2) {
+        this.arr2 = subproducts;
       }
-      if(this.counter == 3){
-        this.arr3 =subproducts;
+      if (this.counter == 3) {
+        this.arr3 = subproducts;
       }
-       if(this.counter == 4){
-        this.arr4 =subproducts;
-      } if(this.counter == 5){
-        this.arr5 =subproducts;
+      if (this.counter == 4) {
+        this.arr4 = subproducts;
+      } if (this.counter == 5) {
+        this.arr5 = subproducts;
       }
       // return;
       this.subProducts = subproducts;
@@ -112,8 +114,8 @@ export class LocalsubproductPage implements OnInit {
   seeDetails(sp) {
     console.log(sp);
     if (sp.name == 'Local Travel Insurance') {
-      localStorage.setItem('productid2',sp.id);
-     this.router.navigate(['/localsubproduct']);
+      localStorage.setItem('productid2', sp.id);
+      this.router.navigate(['/localsubproduct']);
     } else {
       if (sp.product_for_quote == 1) {
         // this.router.navigate(['/localpoliciesform']);

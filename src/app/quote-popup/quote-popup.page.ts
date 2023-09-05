@@ -33,14 +33,28 @@ export class QuotePopupPage implements OnInit {
     public api: InsuranceAppService) { }
 
   ngOnInit() {
-    this.subProducts = JSON.parse(localStorage.getItem('subProducts'));
-    this.arr1 = this.subProducts;
+
+
+  }
+
+  ionViewWillEnter() {
+
+    const subproducts = [];
+    const subProductsfilter = JSON.parse(localStorage.getItem('subProducts'));
+    console.log(subProductsfilter);
+    subProductsfilter.filter((value, index) => {
+
+      if (value.name != "Travel Care Premier" && value.name != "Travel Care Visa") {
+        subproducts.push(value);
+      }
+      this.subProducts = subproducts
+      this.arr1 = this.subProducts;
+    });
 
     this.productID = localStorage.getItem('productid');
     console.log('productid', this.productID);
     this.insurancename = localStorage.getItem('productName');
     console.log(this.insurancename);
-
 
   }
 
@@ -76,10 +90,10 @@ export class QuotePopupPage implements OnInit {
       const subproducts = [];
       console.log('subProducts---------11111', res);
       res.subproducts.map((value, index) => {
-        // if (value.name != "Local Travel Insurance" && value.name != "Pilgrimage Plans" && value.name != "Student Plan" && value.name != "Europe / Shengen") {
-        //   subproducts.push(value);
-        // }
-        subproducts.push(value);
+        if (value.name != "Travel Care Premier" && value.name != "Travel Care Visa") {
+          subproducts.push(value);
+        }
+        // subproducts.push(value);
       });
       console.log('subproducts after check---22', subproducts);
       this.counter++;

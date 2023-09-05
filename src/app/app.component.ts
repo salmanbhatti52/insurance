@@ -155,10 +155,18 @@ export class AppComponent {
         this.initializeApp();
 
         SplashScreen.hide();
-        this.route.navigate(['splash']);
+        if (localStorage.getItem('userid') == null) {
+          this.navCtrl.navigateRoot(['start-screen']);
+        } else {
+          if (localStorage.getItem('loginas') == 'user') {
+            this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+          } else {
+            this.navCtrl.navigateRoot(['dashboard']);
+          }
+        }
 
         //aliiii
-      }, 3500);
+      }, 4000);
     });
   }
 
