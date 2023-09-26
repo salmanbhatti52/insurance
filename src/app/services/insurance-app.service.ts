@@ -12,7 +12,7 @@ export class InsuranceAppService {
   url = 'https://www.cornerstone.com.ng/webservice'
 
   // url = 'https://www.cornerstone.com.ng/devtest/webservice';
-  authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
+  authurl = 'http://testcipapiservices.gibsonline.com/api/auth';
   // url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/'
 
   fpval: any;
@@ -225,6 +225,22 @@ export class InsuranceAppService {
     });
   }
 
+  renewal(url, token) {
+
+    console.log('token in api ervice====', token);
+
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+
+    });
+
+
+    return this.http.post(`${url}`, {
+      headers
+    });
+  }
   postparam(url, data?, token?) {
     let header;
     console.log('token in api ervice====', token);

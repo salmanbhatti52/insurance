@@ -92,40 +92,40 @@ export class AgentidpopupPage implements OnInit {
     // 00003
     this.api.showLoader();
     let beartoken = token
-    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Agents', beartoken).subscribe((res: any) => {
+    // this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/agents', beartoken).subscribe((res: any) => {
+    //   console.log('ressssss', res);
+    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/agents/' + this.agentId, beartoken).subscribe((res: any) => {
       console.log('ressssss', res);
-      this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/Agents/' + this.agentId, beartoken).subscribe((res: any) => {
-        console.log('ressssss', res);
-        this.api.hideLoader();
-        localStorage.setItem('agentdata', JSON.stringify(res))
+      this.api.hideLoader();
+      localStorage.setItem('agentdata', JSON.stringify(res))
 
-        localStorage.setItem('loginas', 'agent');
-        this.api.loginas = 'agent';
-        localStorage.setItem('userid', this.agentId);
-        localStorage.setItem('token', beartoken);
-        localStorage.setItem('fname', res.agentName)
+      localStorage.setItem('loginas', 'agent');
+      this.api.loginas = 'agent';
+      localStorage.setItem('userid', this.agentId);
+      localStorage.setItem('token', beartoken);
+      localStorage.setItem('fname', res.agentName)
 
-        this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard']);
 
-        // this.navCtrl.navigateForward('agentloginscreen')
+      // this.navCtrl.navigateForward('agentloginscreen')
 
 
-        // this.modal.dismiss().then(data => {
-        //   localStorage.setItem('agentdata', JSON.stringify(res))
-        //   console.log('data came back from modal');
-        //   console.log(data);
-        //   this.navCtrl.navigateForward('agentloginscreen')
-        // })
-      }, (err) => {
-        console.log(err);
-        this.api.presenttoast(err.error.title)
-        this.api.hideLoader()
-      });
+      // this.modal.dismiss().then(data => {
+      //   localStorage.setItem('agentdata', JSON.stringify(res))
+      //   console.log('data came back from modal');
+      //   console.log(data);
+      //   this.navCtrl.navigateForward('agentloginscreen')
+      // })
     }, (err) => {
       console.log(err);
       this.api.presenttoast(err.error.title)
       this.api.hideLoader()
     });
+    // }, (err) => {
+    //   console.log(err);
+    //   this.api.presenttoast(err.error.title)
+    //   this.api.hideLoader()
+    // });
 
   }
 

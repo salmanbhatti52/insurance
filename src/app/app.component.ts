@@ -151,22 +151,22 @@ export class AppComponent {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-      setTimeout(() => {
-        this.initializeApp();
+      // setTimeout(() => {
+      //   this.initializeApp();
 
-        SplashScreen.hide();
-        if (localStorage.getItem('userid') == null) {
-          this.navCtrl.navigateRoot(['start-screen']);
-        } else {
-          if (localStorage.getItem('loginas') == 'user') {
-            this.navCtrl.navigateRoot(['home-page-screen-after-login']);
-          } else {
-            this.navCtrl.navigateRoot(['dashboard']);
-          }
-        }
+      //   SplashScreen.hide();
+      //   if (localStorage.getItem('userid') == null) {
+      //     this.navCtrl.navigateRoot(['start-screen']);
+      //   } else {
+      //     if (localStorage.getItem('loginas') == 'user') {
+      //       this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+      //     } else {
+      //       this.navCtrl.navigateRoot(['dashboard']);
+      //     }
+      //   }
 
-        //aliiii
-      }, 4000);
+      //   //aliiii
+      // }, 4000);
     });
   }
 

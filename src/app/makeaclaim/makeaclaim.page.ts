@@ -3,6 +3,7 @@ import { InsuranceAppService } from '../services/insurance-app.service';
 
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-makeaclaim',
@@ -45,7 +46,8 @@ export class MakeaclaimPage implements OnInit {
   desc: any = '';
   refnum: any = '';
 
-  constructor(public api: InsuranceAppService, public router: Router) { }
+  constructor(public api: InsuranceAppService, public router: Router,
+    public alert: AlertController) { }
 
   ngOnInit() {
     this.csurname = localStorage.getItem('lname');
@@ -179,7 +181,7 @@ export class MakeaclaimPage implements OnInit {
         lossDate: this.tourStartDate,
         notifyDate: this.tourEndDate,
         description: this.desc,
-        lossType: this.losstype,
+        // lossType: this.losstype,
         reference: this.refnum,
       };
 
@@ -188,7 +190,7 @@ export class MakeaclaimPage implements OnInit {
       data.append('lossDate', this.tourStartDate);
       data.append('notifyDate', this.tourEndDate);
       data.append('description', this.desc);
-      data.append('lossType', this.losstype);
+      // data.append('lossType', this.losstype);
       data.append('reference', this.refnum);
       this.api.gibsapi(myData).subscribe(
         (res: any) => {
@@ -197,13 +199,13 @@ export class MakeaclaimPage implements OnInit {
           this.api
             .postdata(
               'http://testcipapiservices.gibsonline.com/api/claims',
-              data,
+              mydataAPI,
               token
             )
             .subscribe((res: any) => {
               this.api.hideLoader();
-              this.api.presenttoast('Clain Number ' + res.claimNo);
-
+              // this.api.presenttoast('Clain Number ' + res.claimNo);
+              this.alertbox(res.claimNo)
               console.log('gibs product detail', res);
               // localStorage.setItem('gibsproduct', JSON.stringify(res))
               // this.router.navigate(['gibsplans']);
@@ -235,5 +237,26 @@ export class MakeaclaimPage implements OnInit {
   selectInsuranceloss(list) {
     this.losstype = list.Insurance;
     this.showloss = false;
+  }
+
+  async alertbox(message) {
+    const fp = localStorage.getItem('fingerprint');
+    console.log('sASAsaSA', fp);
+
+    const alert = await this.alert.create({
+      header: 'Your claim number is ' + message,
+      cssClass: 'fgprintcls',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+
+          },
+        },
+      ],
+    });
+    await alert.present();
+
   }
 }

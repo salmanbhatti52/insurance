@@ -126,7 +126,7 @@ export class PolicylookupPage implements OnInit {
     console.log('eee--', encode);
 
     let Bearertoken = token;
-    let url = 'http://testcipapiservices.gibsonline.com/api/Policies/' + encode;
+    let url = 'http://testcipapiservices.gibsonline.com/api/policies/' + encode;
     this.api.getpolicy(url, Bearertoken).subscribe(
       (response: any) => {
         this.api.hideLoader();

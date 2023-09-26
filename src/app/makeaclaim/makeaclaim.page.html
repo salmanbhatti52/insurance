@@ -50,69 +50,68 @@
 
       <div *ngIf="Insurance == 'Life Busines'">
 
-      <div class="label" style="margin: 12px 0px 0px;">Policy Number</div>
-      <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="Policy Number" class="in-text"
-          [(ngModel)]="polnum">
-        </ion-input>
+        <div class="label" style="margin: 12px 0px 0px;">Policy Number</div>
+        <div class="inputfield">
+          <ion-input style="height: 48px;" type="text" placeholder="Policy Number" class="in-text" [(ngModel)]="polnum">
+          </ion-input>
+        </div>
+
+        <div class="label">Client Surname</div>
+        <div class="inputfield">
+          <ion-input style="height: 48px;" type="text" placeholder="Client Surname" class="in-text"
+            [(ngModel)]="csurname">
+          </ion-input>
+        </div>
+
+        <div class="label">Client First name</div>
+        <div class="inputfield">
+          <ion-input style="height: 48px;" type="text" placeholder="Client First name" class="in-text"
+            [(ngModel)]="cothname">
+          </ion-input>
+        </div>
+
+        <div class="label">Policy type</div>
+        <div class="inputfield">
+          <ion-input style="height: 48px;" type="text" placeholder="Policy type" class="in-text"
+            [(ngModel)]="dd_liabtype"></ion-input>
+        </div>
+
+        <div class="label">Claim details</div>
+        <div class="inputfield">
+          <ion-input style="height: 48px;" type="text" placeholder="Claim details" class="in-text"
+            [(ngModel)]="txt_message_clm"></ion-input>
+        </div>
+
+        <div class="label">Claims Supporting Document</div>
+
+        <input class="custom-file-input" type="file" (change)="selectFile($event,'vehFrontPic')"
+          accept="image/x-png,image/gif,image/jpeg">
+
+        <div style="height: 100px; width:100px; text-align: center;" *ngIf="claimdoc.base64"><img
+            style="height: 100px; width:100px" src="{{claimdoc.base64}}" alt=""></div>
       </div>
 
-      <div class="label">Client Surname</div>
-      <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="Client Surname" class="in-text"
-          [(ngModel)]="csurname">
-        </ion-input>
-      </div>
+      <div *ngIf="Insurance == 'General Business'">
 
-      <div class="label">Client First name</div>
-      <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="Client First name" class="in-text" [(ngModel)]="cothname">
-        </ion-input>
-      </div>
+        <div class="label" style="margin: 12px 0px 0px;">Policy Number</div>
+        <div class="inputfield">
+          <ion-input style="height: 48px;" type="text" placeholder="Policy Number" class="in-text" [(ngModel)]="polnum">
+          </ion-input>
+        </div>
 
-      <div class="label">Policy type</div>
-      <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="Policy type" class="in-text"
-          [(ngModel)]="dd_liabtype"></ion-input>
-      </div>
-
-      <div class="label">Claim details</div>
-      <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="Claim details" class="in-text"
-          [(ngModel)]="txt_message_clm"></ion-input>
-      </div>
-
-      <div class="label">Claims Supporting Document</div>
-
-      <input class="custom-file-input" type="file" (change)="selectFile($event,'vehFrontPic')"
-        accept="image/x-png,image/gif,image/jpeg">
-
-      <div style="height: 100px; width:100px; text-align: center;" *ngIf="claimdoc.base64"><img
-          style="height: 100px; width:100px" src="{{claimdoc.base64}}" alt=""></div>
-    </div>
-
-    <div *ngIf="Insurance == 'General Business'">
-
-      <div class="label" style="margin: 12px 0px 0px;">Policy Number</div>
-      <div class="inputfield">
-        <ion-input style="height: 48px;" type="text" placeholder="Policy Number" class="in-text"
-          [(ngModel)]="polnum">
-        </ion-input>
-      </div>
-
-       <!-- Loss Date  -->
-       <div class="label">Loss date</div>
-       <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
-         (click)="showPickerStartDate = !showPickerStartDate">
-         <div style="display: flex; align-items:center">
-           <ion-text class="ion-txt" style="margin-left: 14px">{{ tourStartDate }}</ion-text>
-         </div>
-       </div>
-       <ion-datetime class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date"
-         *ngIf="showPickerStartDate" #datetime [value]="tourStartDate" size="cover"
-         (ionChange)="dateChanged(datetime.value,'start')" showDefaultButtons="true"
-         (ionCancel)="showPickerStartDate=false"></ion-datetime>
-       <!-- Loss Date  -->
+        <!-- Loss Date  -->
+        <div class="label">Loss date</div>
+        <div class="item-picker" style="margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;"
+          (click)="showPickerStartDate = !showPickerStartDate">
+          <div style="display: flex; align-items:center">
+            <ion-text class="ion-txt" style="margin-left: 14px">{{ tourStartDate }}</ion-text>
+          </div>
+        </div>
+        <ion-datetime class="item-picker" style="margin:10px auto 8px; color: black;" presentation="date"
+          *ngIf="showPickerStartDate" #datetime [value]="tourStartDate" size="cover"
+          (ionChange)="dateChanged(datetime.value,'start')" showDefaultButtons="true"
+          (ionCancel)="showPickerStartDate=false"></ion-datetime>
+        <!-- Loss Date  -->
 
         <!-- End Date  -->
         <div class="label">Notify date </div>
@@ -128,14 +127,13 @@
           (ionCancel)="showPickerEndDate=false"></ion-datetime>
         <!-- End Date  -->
         <div class="label">Description</div>
-         <div class="inputfield">
-             <ion-textarea rows="7" type="text" placeholder="Loss Description" class="in-text"
-               [(ngModel)]="desc">
-             </ion-textarea>
-           </div>
+        <div class="inputfield">
+          <ion-textarea rows="7" type="text" placeholder="Loss Description" class="in-text" [(ngModel)]="desc">
+          </ion-textarea>
+        </div>
 
 
-           <div class="label" style="margin: 12px 0px 0px;">Loss Type</div>
+        <!-- <div class="label" style="margin: 12px 0px 0px;">Loss Type</div>
 
            <div class="dropbox">
              <div class="innerdropbox" (click)="openlistloss()">
@@ -152,112 +150,112 @@
 
              </div>
 
-           </div>
+           </div> -->
 
-           <div class="label" style="margin: 12px 0px 0px;">Reference Number</div>
-           <div class="inputfield">
-             <ion-input style="height: 48px;" type="text" placeholder="Reference Number" class="in-text"
-               [(ngModel)]="refnum">
-             </ion-input>
-           </div>
-       </div>
-     </div>
+        <div class="label" style="margin: 12px 0px 0px;">Reference Number</div>
+        <div class="inputfield">
+          <ion-input style="height: 48px;" type="text" placeholder="Reference Number" class="in-text"
+            [(ngModel)]="refnum">
+          </ion-input>
+        </div>
+      </div>
+    </div>
 
   </div>
 
 
 
-    <div *ngIf="requestsType=='ClaimTracker'">
+  <div *ngIf="requestsType=='ClaimTracker'">
 
 
-      <ion-row>
-        <ion-col size="2" style="text-align: -webkit-center;">
-          <img style="    width: 26px;
+    <ion-row>
+      <ion-col size="2" style="text-align: -webkit-center;">
+        <img style="    width: 26px;
           margin-top: 24px;" src="assets/tracking/01.svg">
 
-        </ion-col>
+      </ion-col>
 
 
-        <ion-col size="10">
-          <ion-row>
-            <ion-col size="3">
-              <img style="    height: 68px;
+      <ion-col size="10">
+        <ion-row>
+          <ion-col size="3">
+            <img style="    height: 68px;
               width: 50px;
               border: 1px solid #A2BB06;
               border-radius: 10px;
               padding: 10px;" src="assets/tracking/s1.svg">
-            </ion-col>
-            <ion-col size="9">
+          </ion-col>
+          <ion-col size="9">
 
-              <p>Claims received and under verification</p>
-            </ion-col>
-          </ion-row>
+            <p>Claims received and under verification</p>
+          </ion-col>
+        </ion-row>
 
 
-          <ion-row style="margin-top: 32px;">
-            <ion-col size="3">
-              <img style="    height: 68px;
+        <ion-row style="margin-top: 32px;">
+          <ion-col size="3">
+            <img style="    height: 68px;
               width: 50px;
               border: 1px solid #A2BB06;
               border-radius: 10px;
               padding: 10px;" src="assets/tracking/s2.svg">
-            </ion-col>
-            <ion-col size="9">
+          </ion-col>
+          <ion-col size="9">
 
-              <p>Claim verified and being processed</p>
-            </ion-col>
-          </ion-row>
+            <p>Claim verified and being processed</p>
+          </ion-col>
+        </ion-row>
 
-          <ion-row style="margin-top: 32px;">
-            <ion-col size="3">
-              <img style="    height: 68px;
+        <ion-row style="margin-top: 32px;">
+          <ion-col size="3">
+            <img style="    height: 68px;
               width: 50px;
               border: 1px solid #A2BB06;
               border-radius: 10px;
               padding: 10px;" src="assets/tracking/s3.svg">
-            </ion-col>
-            <ion-col size="9">
+          </ion-col>
+          <ion-col size="9">
 
-              <p>EDV sent to you and awaiting submission</p>
-            </ion-col>
-          </ion-row>
+            <p>EDV sent to you and awaiting submission</p>
+          </ion-col>
+        </ion-row>
 
-          <ion-row style="margin-top: 32px;">
-            <ion-col size="3">
-              <img style="    height: 68px;
+        <ion-row style="margin-top: 32px;">
+          <ion-col size="3">
+            <img style="    height: 68px;
               width: 50px;
               border: 1px solid #A2BB06;
               border-radius: 10px;
               padding: 10px;" src="assets/tracking/s4.svg">
-            </ion-col>
-            <ion-col size="9">
+          </ion-col>
+          <ion-col size="9">
 
-              <p>Final Approval</p>
-            </ion-col>
-          </ion-row>
+            <p>Final Approval</p>
+          </ion-col>
+        </ion-row>
 
 
-          <ion-row style="margin-top: 32px;">
-            <ion-col size="3">
-              <img style="    height: 68px;
+        <ion-row style="margin-top: 32px;">
+          <ion-col size="3">
+            <img style="    height: 68px;
               width: 50px;
               border: 1px solid #A2BB06;
               border-radius: 10px;
               padding: 10px;" src="assets/tracking/s5.svg">
-            </ion-col>
-            <ion-col size="9">
+          </ion-col>
+          <ion-col size="9">
 
-              <p>Payment in progress</p>
-            </ion-col>
-          </ion-row>
+            <p>Payment in progress</p>
+          </ion-col>
+        </ion-row>
 
-        </ion-col>
-      </ion-row>
-
-
+      </ion-col>
+    </ion-row>
 
 
-    </div>
+
+
+  </div>
 
 
 </ion-content>

@@ -53,7 +53,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
     )
   }
   policieshistory(token) {
-    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/policies/history', token).subscribe((response: any) => {
+    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/policies', token).subscribe((response: any) => {
 
       console.log(response);
       this.api.hideLoader();
@@ -101,9 +101,9 @@ export class VerifyPolicyScreenCustPage implements OnInit {
           //   this.api.hideLoader();
 
           // });
-          let encode1 = encodeURIComponent('P/500/1001/2023/00235');
+          let encode1 = encodeURIComponent(this.pnumber);
           console.log('dasdsadsa', encode1);
-          this.api.postdata(' http://testcipapiservices.gibsonline.com/api/policies/' + encode1 + '/renew', this.bearertoken).subscribe((response: any) => {
+          this.api.renewal(' http://testcipapiservices.gibsonline.com/api/policies/' + encode1 + '/renew', res.accessToken).subscribe((response: any) => {
 
             console.log('ddddddddddddddddddd', response);
             this.api.hideLoader();
