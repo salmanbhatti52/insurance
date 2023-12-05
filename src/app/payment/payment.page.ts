@@ -108,7 +108,7 @@ export class PaymentPage implements OnInit {
 
       localStorage.setItem('trxref', ref.trxref);
       this.paystacktrxref = ref.trxref
-      this.payment_method()
+      // this.payment_method()
       // if (localStorage.getItem('subProName') == 'Third Party') {
 
       //   var myData = {

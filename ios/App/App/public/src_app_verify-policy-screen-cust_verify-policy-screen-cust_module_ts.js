@@ -145,7 +145,7 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
   }
 
   policieshistory(token) {
-    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/policies/history', token).subscribe(response => {
+    this.api.getpolicy('http://testcipapiservices.gibsonline.com/api/policies', token).subscribe(response => {
       console.log(response);
       this.api.hideLoader();
     }, err => {
@@ -187,21 +187,21 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
         _this.api.gibsapi(myData).subscribe(res => {
           console.log(res);
           const token = res.accessToken;
-          _this.bearertoken = res.accessToken; // this.api.postdata('http://testcipapiservices.gibsonline.com/api/policies/P/500/1001/2023/00235/renew', this.bearertoken).subscribe((response: any) => {
-          //   console.log(response);
-          //   this.api.hideLoader();
-          // });
+          _this.bearertoken = res.accessToken;
 
-          let encode1 = encodeURIComponent('P/500/1001/2023/00235');
-          console.log('dasdsadsa', encode1);
-
-          _this.api.postdata(' http://testcipapiservices.gibsonline.com/api/policies/' + encode1 + '/renew', _this.bearertoken).subscribe(response => {
-            console.log('ddddddddddddddddddd', response);
+          _this.api.renewal('https://testcipapiservices.gibsonline.com/api/policies/P%2F500%2F1001%2F2023%2F00235/renew', _this.bearertoken).subscribe(response => {
+            console.log(response);
 
             _this.api.hideLoader();
-          }, err => {
-            console.log('get policy error', err);
-          });
+          }); // let encode1 = encodeURIComponent(this.pnumber);
+          // console.log('dasdsadsa', encode1);
+          // this.api.renewal('https://testcipapiservices.gibsonline.com/api/policies/' + encode1 + '/renew', res.accessToken).subscribe((response: any) => {
+          //   console.log('ddddddddddddddddddd', response);
+          //   this.api.hideLoader();
+          // }, err => {
+          //   console.log('get policy error', err);
+          // });
+
         }, err => {
           console.log(err);
         }); // old one

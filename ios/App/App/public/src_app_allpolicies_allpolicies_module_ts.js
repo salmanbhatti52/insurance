@@ -124,6 +124,7 @@ let AllpoliciesPage = class AllpoliciesPage {
     var _this = this;
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      // localStorage.getItem('token')
       if (_this.policynum == '') {
         _this.api.presenttoast('Policy Number Field is required!');
       } else {
@@ -131,7 +132,7 @@ let AllpoliciesPage = class AllpoliciesPage {
 
         _this.api.showLoader();
 
-        _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + _this.policynum + '&process_code=140', localStorage.getItem('token')).subscribe(response => {
+        _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + _this.policynum + '&process_code=140', token).subscribe(response => {
           _this.api.hideLoader();
 
           console.log(response);

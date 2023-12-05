@@ -90,13 +90,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MakeaclaimPage": () => (/* binding */ MakeaclaimPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
-/* harmony import */ var _makeaclaim_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./makeaclaim.page.html?ngResource */ 86759);
-/* harmony import */ var _makeaclaim_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./makeaclaim.page.scss?ngResource */ 16005);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/insurance-app.service */ 22111);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! date-fns */ 86712);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _makeaclaim_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./makeaclaim.page.html?ngResource */ 86759);
+/* harmony import */ var _makeaclaim_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./makeaclaim.page.scss?ngResource */ 16005);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/insurance-app.service */ 22111);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ 86712);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+
+
 
 
 
@@ -105,218 +109,277 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let MakeaclaimPage = class MakeaclaimPage {
-    constructor(api, router) {
-        this.api = api;
-        this.router = router;
-        this.show = false;
-        this.Insurance = 'Please Select';
-        this.listarray = [
-            { Insurance: 'General Business' },
-            { Insurance: 'Life Busines' },
-        ];
-        this.claimdoc = {
-            file: '',
-            base64: '',
-        };
-        this.showloss = false;
-        this.losstype = 'Please Select';
-        this.listarrayloss = [
-            { Insurance: 'Accidental Damage' },
-            { Insurance: 'Own Damage' },
-            { Insurance: 'Others' },
-        ];
-        this.showPickerStartDate = false;
-        this.showPickerEndDate = false;
-        this.tourEndDate = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(), 'yyyy-MM-dd');
-        this.tourStartDate = (0,date_fns__WEBPACK_IMPORTED_MODULE_3__["default"])(new Date(), 'yyyy-MM-dd');
-        this.desc = '';
-        this.refnum = '';
-    }
-    ngOnInit() {
-        this.csurname = localStorage.getItem('lname');
-        this.cothname = localStorage.getItem('fname');
-    }
-    ionViewWillEnter() {
-        if (this.requestsType) {
-            if (this.requestsType === 'NewClaim') {
-                this.mySegment.nativeElement.children[0].click();
-            }
-            if (this.requestsType === 'ClaimTracker') {
-                this.mySegment.nativeElement.children[1].click();
-            }
-        }
-        else {
-            this.requestsType = 'NewClaim';
-            this.mySegment.nativeElement.children[0].click();
-        }
-    }
-    segmentChanged(ev) {
-        console.log('requestType value', ev.detail.value);
-        let data = ev.detail.value;
-        this.requestsType = data;
-        if (ev.detail.value === 'NewClaim') {
-            this.requestsType = 'NewClaim';
-        }
-        if (ev.detail.value === 'ClaimTracker') {
-            this.requestsType = 'ClaimTracker';
-        }
-        localStorage.setItem('requestType1', this.requestsType);
-    }
-    openlist() {
-        if (this.show == true) {
-            this.show = false;
-        }
-        else {
-            this.show = true;
-        }
-    }
-    openlistloss() {
-        if (this.showloss == true) {
-            this.showloss = false;
-        }
-        else {
-            this.showloss = true;
-        }
-    }
-    selectInsurance(list) {
-        this.Insurance = list.Insurance;
-        this.show = false;
-    }
-    selectFile(event, type) {
-        console.log('type --- ', type);
-        console.log('linceise --- ', event.target.files[0]);
-        this.getBase64(event.target.files[0])
-            .then((data) => {
-            let file = event.target.files[0];
-            let base64 = data;
-            this.claimdoc.file = file;
-            this.claimdoc.base64 = base64;
-        })
-            .catch((err) => console.log('Errrrrr', err));
-    }
-    getBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = (error) => reject(error);
-        });
-    }
-    reportclaim() {
-        if (this.Insurance == 'Life Busines') {
-            if (this.claimdoc.file == '') {
-                this.api.presenttoast('Choose Document');
-            }
-            else {
-                var data = new FormData();
-                data.append('polnum', this.polnum);
-                data.append('csurname', this.csurname);
-                data.append('cothname', this.cothname);
-                data.append('dd_liabtype', this.dd_liabtype);
-                data.append('txt_message_clm', this.txt_message_clm);
-                data.append('claimdoc', this.claimdoc.file);
-                this.api.showLoader();
-                this.api
-                    .postdata('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=200', data, '39109f7df56e1CORNERStone9e685066bb852')
-                    .subscribe((res) => {
-                    console.log('response claim', res);
-                    this.api.hideLoader();
-                    // if (res.result.status == 0) {
-                    //   this.api.presenttoast(res.result.message)
-                    // } else {
-                    //   this.api.presenttoast('Please try again');
-                    // }
-                    if (res.result) {
-                        if (res.result.status == 1) {
-                            this.api.presenttoast(res.result.message);
-                        }
-                        else {
-                            this.api.presenttoast(res.result.message);
-                        }
-                    }
-                    else {
-                        this.api.presenttoast('Policy record not found');
-                    }
-                }, err => {
-                    console.log('err======', err);
-                    this.api.hideLoader();
-                });
-            }
-        }
-        else {
-            this.api.showLoader();
-            const myData = {
-                sid: 'ECHANNEL2',
-                token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
-            };
-            var mydataAPI = {
-                policyNo: this.polnum,
-                lossDate: this.tourStartDate,
-                notifyDate: this.tourEndDate,
-                description: this.desc,
-                lossType: this.losstype,
-                reference: this.refnum,
-            };
-            var data = new FormData();
-            data.append('policyNo', this.polnum);
-            data.append('lossDate', this.tourStartDate);
-            data.append('notifyDate', this.tourEndDate);
-            data.append('description', this.desc);
-            data.append('lossType', this.losstype);
-            data.append('reference', this.refnum);
-            this.api.gibsapi(myData).subscribe((res) => {
-                console.log('token-----', res);
-                const token = res.accessToken;
-                this.api
-                    .postdata('http://testcipapiservices.gibsonline.com/api/claims', data, token)
-                    .subscribe((res) => {
-                    this.api.hideLoader();
-                    this.api.presenttoast('Clain Number ' + res.claimNo);
-                    console.log('gibs product detail', res);
-                    // localStorage.setItem('gibsproduct', JSON.stringify(res))
-                    // this.router.navigate(['gibsplans']);
-                }, err => {
-                    this.api.hideLoader();
-                });
-            }, (err) => {
-                this.api.presenttoast('Invalid Policy Number');
-                console.log(err);
-                this.api.hideLoader();
-            });
-        }
-    }
-    dateChanged(value, type) {
-        if (type == 'start') {
-            this.tourStartDate = value;
-            console.log('this.tourStartDate ----', this.tourStartDate);
-            this.showPickerStartDate = false;
-        }
-        else {
-            this.tourEndDate = value;
-            console.log('this.tourEndDate ----', this.tourEndDate);
-            this.showPickerEndDate = false;
-        }
-    }
-    selectInsuranceloss(list) {
-        this.losstype = list.Insurance;
-        this.showloss = false;
-    }
-};
-MakeaclaimPage.ctorParameters = () => [
-    { type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_2__.InsuranceAppService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router }
-];
-MakeaclaimPage.propDecorators = {
-    mySegment: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_5__.ViewChild, args: ['mySegment', { read: _angular_core__WEBPACK_IMPORTED_MODULE_5__.ElementRef },] }]
-};
-MakeaclaimPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
-        selector: 'app-makeaclaim',
-        template: _makeaclaim_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_makeaclaim_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], MakeaclaimPage);
+  constructor(api, router, alert) {
+    this.api = api;
+    this.router = router;
+    this.alert = alert;
+    this.show = false;
+    this.Insurance = 'Please Select';
+    this.listarray = [{
+      Insurance: 'General Business'
+    }, {
+      Insurance: 'Life Busines'
+    }];
+    this.claimdoc = {
+      file: '',
+      base64: ''
+    };
+    this.showloss = false;
+    this.losstype = 'Please Select';
+    this.listarrayloss = [{
+      Insurance: 'Accidental Damage'
+    }, {
+      Insurance: 'Own Damage'
+    }, {
+      Insurance: 'Others'
+    }];
+    this.showPickerStartDate = false;
+    this.showPickerEndDate = false;
+    this.tourEndDate = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'yyyy-MM-dd');
+    this.tourStartDate = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'yyyy-MM-dd');
+    this.desc = '';
+    this.refnum = '';
+  }
 
+  ngOnInit() {
+    this.csurname = localStorage.getItem('lname');
+    this.cothname = localStorage.getItem('fname');
+  }
+
+  ionViewWillEnter() {
+    if (this.requestsType) {
+      if (this.requestsType === 'NewClaim') {
+        this.mySegment.nativeElement.children[0].click();
+      }
+
+      if (this.requestsType === 'ClaimTracker') {
+        this.mySegment.nativeElement.children[1].click();
+      }
+    } else {
+      this.requestsType = 'NewClaim';
+      this.mySegment.nativeElement.children[0].click();
+    }
+  }
+
+  segmentChanged(ev) {
+    console.log('requestType value', ev.detail.value);
+    let data = ev.detail.value;
+    this.requestsType = data;
+
+    if (ev.detail.value === 'NewClaim') {
+      this.requestsType = 'NewClaim';
+    }
+
+    if (ev.detail.value === 'ClaimTracker') {
+      this.requestsType = 'ClaimTracker';
+    }
+
+    localStorage.setItem('requestType1', this.requestsType);
+  }
+
+  openlist() {
+    if (this.show == true) {
+      this.show = false;
+    } else {
+      this.show = true;
+    }
+  }
+
+  openlistloss() {
+    if (this.showloss == true) {
+      this.showloss = false;
+    } else {
+      this.showloss = true;
+    }
+  }
+
+  selectInsurance(list) {
+    this.Insurance = list.Insurance;
+    this.show = false;
+  }
+
+  selectFile(event, type) {
+    console.log('type --- ', type);
+    console.log('linceise --- ', event.target.files[0]);
+    this.getBase64(event.target.files[0]).then(data => {
+      let file = event.target.files[0];
+      let base64 = data;
+      this.claimdoc.file = file;
+      this.claimdoc.base64 = base64;
+    }).catch(err => console.log('Errrrrr', err));
+  }
+
+  getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onload = () => resolve(reader.result);
+
+      reader.onerror = error => reject(error);
+    });
+  }
+
+  reportclaim() {
+    var _this = this;
+
+    if (this.Insurance == 'Life Busines') {
+      if (this.claimdoc.file == '') {
+        this.api.presenttoast('Choose Document');
+      } else {
+        var data = new FormData();
+        data.append('polnum', this.polnum);
+        data.append('csurname', this.csurname);
+        data.append('cothname', this.cothname);
+        data.append('dd_liabtype', this.dd_liabtype);
+        data.append('txt_message_clm', this.txt_message_clm);
+        data.append('claimdoc', this.claimdoc.file);
+        this.api.showLoader();
+        this.api.postdata('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=200', data, '39109f7df56e1CORNERStone9e685066bb852').subscribe( /*#__PURE__*/function () {
+          var _ref = (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (res) {
+            console.log('response claim', res);
+
+            _this.api.hideLoader(); // if (res.result.status == 0) {
+            //   this.api.presenttoast(res.result.message)
+            // } else {
+            //   this.api.presenttoast('Please try again');
+            // }
+
+
+            if (res.result) {
+              if (res.result.status == 1) {
+                _this.api.presenttoast(res.result.message);
+              } else {
+                const alert = yield _this.alert.create({
+                  header: res.result.message,
+                  cssClass: 'fgprintcls',
+                  buttons: [{
+                    text: 'OK',
+                    role: 'confirm',
+                    handler: () => {}
+                  }]
+                });
+                yield alert.present(); // this.api.presenttoast(res.result.message);
+              }
+            } else {
+              _this.api.presenttoast('Policy record not found');
+            }
+          });
+
+          return function (_x) {
+            return _ref.apply(this, arguments);
+          };
+        }(), err => {
+          console.log('err======', err);
+          this.api.hideLoader();
+        });
+      }
+    } else {
+      this.api.showLoader();
+      const myData = {
+        sid: 'ECHANNEL2',
+        token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
+      };
+      var mydataAPI = {
+        "name": "najam",
+        "vehicleregno": "MN1234",
+        "accidentdate": "2023-11-20",
+        "accidentplace": "Nigeria",
+        "accidentdescribe": "test",
+        "weathercondition": "good",
+        "losstypecode": 1
+      }; // var data = new FormData();
+      // data.append('policyNo', this.polnum);
+      // data.append('lossDate', this.tourStartDate);
+      // data.append('notifyDate', this.tourEndDate);
+      // data.append('description', this.desc);
+      // // data.append('lossType', this.losstype);
+      // data.append('reference', this.refnum);
+
+      this.api.gibsapi(myData).subscribe(res => {
+        console.log('token-----', res);
+        const token = res.accessToken;
+        this.api.postdata('https://app.cornerstone.com.ng/claimapi/api/ProcessClaim/NewClaim', mydataAPI, token).subscribe(res => {
+          this.api.hideLoader(); // this.api.presenttoast('Clain Number ' + res.claimNo);
+
+          this.alertbox(res.claimNo);
+          console.log('gibs product detail', res); // localStorage.setItem('gibsproduct', JSON.stringify(res))
+          // this.router.navigate(['gibsplans']);
+        }, err => {
+          console.log(err);
+          this.api.hideLoader();
+
+          if (err.error.message == 'Validation Failed') {
+            this.api.presenttoast(err.error.errors[0].message);
+          }
+        });
+      }, err => {
+        this.api.presenttoast('Invalid Policy Number');
+        console.log(err);
+        this.api.hideLoader();
+      });
+    }
+  }
+
+  dateChanged(value, type) {
+    if (type == 'start') {
+      this.tourStartDate = value;
+      console.log('this.tourStartDate ----', this.tourStartDate);
+      this.showPickerStartDate = false;
+    } else {
+      this.tourEndDate = value;
+      console.log('this.tourEndDate ----', this.tourEndDate);
+      this.showPickerEndDate = false;
+    }
+  }
+
+  selectInsuranceloss(list) {
+    this.losstype = list.Insurance;
+    this.showloss = false;
+  }
+
+  alertbox(message) {
+    var _this2 = this;
+
+    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const fp = localStorage.getItem('fingerprint');
+      console.log('sASAsaSA', fp);
+      const alert = yield _this2.alert.create({
+        header: 'Your claim number is ' + message,
+        cssClass: 'fgprintcls',
+        buttons: [{
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {}
+        }]
+      });
+      yield alert.present();
+    })();
+  }
+
+};
+
+MakeaclaimPage.ctorParameters = () => [{
+  type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__.InsuranceAppService
+}, {
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.AlertController
+}];
+
+MakeaclaimPage.propDecorators = {
+  mySegment: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_7__.ViewChild,
+    args: ['mySegment', {
+      read: _angular_core__WEBPACK_IMPORTED_MODULE_7__.ElementRef
+    }]
+  }]
+};
+MakeaclaimPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+  selector: 'app-makeaclaim',
+  template: _makeaclaim_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_makeaclaim_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], MakeaclaimPage);
 
 
 /***/ }),
@@ -337,7 +400,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width:100% ;\">\r\n              <img src=\"assets/images/sb-button.svg\" alt=\"sb-btn\">\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Make a Claim</div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <ion-segment mode=\"ios\" (ionChange)=\"segmentChanged($event)\" #mySegment scrollable=\"true\" class=\"segment1\">\r\n      <ion-segment-button mode=\"ios\" value=\"NewClaim\" class=\"sbtn\">\r\n        <ion-label>New Claim</ion-label>\r\n      </ion-segment-button>\r\n      <ion-segment-button checked mode=\"ios\" value=\"ClaimTracker\" class=\"sbtn\">\r\n        <ion-label>Claim Tracker</ion-label>\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n\r\n    <div *ngIf=\"requestsType=='NewClaim'\">\r\n      <div class=\"dropbox\">\r\n        <div class=\"innerdropbox\" (click)=\"openlist()\">\r\n          <div class=\"euro-text\">{{Insurance}}</div>\r\n          <div class=\"imgdiv\">\r\n            <img style=\"height: 11px; width: 11px;\" src=\"assets/images/down-arrow.svg\" *ngIf=\"show==false\">\r\n            <img style=\"height: 11px; width: 11px;\" src=\"assets/images/yuparrow.svg\" *ngIf=\"show==true\">\r\n          </div>\r\n        </div>\r\n        <div *ngIf=\"show==true\">\r\n          <div *ngFor=\"let list of listarray\" (click)=\"selectInsurance(list)\">\r\n            <div class=\"euro-text1\">{{list.Insurance}}</div>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <div *ngIf=\"Insurance == 'Life Busines'\">\r\n\r\n      <div class=\"label\" style=\"margin: 12px 0px 0px;\">Policy Number</div>\r\n      <div class=\"inputfield\">\r\n        <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy Number\" class=\"in-text\"\r\n          [(ngModel)]=\"polnum\">\r\n        </ion-input>\r\n      </div>\r\n\r\n      <div class=\"label\">Client Surname</div>\r\n      <div class=\"inputfield\">\r\n        <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Client Surname\" class=\"in-text\"\r\n          [(ngModel)]=\"csurname\">\r\n        </ion-input>\r\n      </div>\r\n\r\n      <div class=\"label\">Client First name</div>\r\n      <div class=\"inputfield\">\r\n        <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Client First name\" class=\"in-text\" [(ngModel)]=\"cothname\">\r\n        </ion-input>\r\n      </div>\r\n\r\n      <div class=\"label\">Policy type</div>\r\n      <div class=\"inputfield\">\r\n        <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy type\" class=\"in-text\"\r\n          [(ngModel)]=\"dd_liabtype\"></ion-input>\r\n      </div>\r\n\r\n      <div class=\"label\">Claim details</div>\r\n      <div class=\"inputfield\">\r\n        <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Claim details\" class=\"in-text\"\r\n          [(ngModel)]=\"txt_message_clm\"></ion-input>\r\n      </div>\r\n\r\n      <div class=\"label\">Claims Supporting Document</div>\r\n\r\n      <input class=\"custom-file-input\" type=\"file\" (change)=\"selectFile($event,'vehFrontPic')\"\r\n        accept=\"image/x-png,image/gif,image/jpeg\">\r\n\r\n      <div style=\"height: 100px; width:100px; text-align: center;\" *ngIf=\"claimdoc.base64\"><img\r\n          style=\"height: 100px; width:100px\" src=\"{{claimdoc.base64}}\" alt=\"\"></div>\r\n    </div>\r\n\r\n    <div *ngIf=\"Insurance == 'General Business'\">\r\n\r\n      <div class=\"label\" style=\"margin: 12px 0px 0px;\">Policy Number</div>\r\n      <div class=\"inputfield\">\r\n        <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy Number\" class=\"in-text\"\r\n          [(ngModel)]=\"polnum\">\r\n        </ion-input>\r\n      </div>\r\n\r\n       <!-- Loss Date  -->\r\n       <div class=\"label\">Loss date</div>\r\n       <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n         (click)=\"showPickerStartDate = !showPickerStartDate\">\r\n         <div style=\"display: flex; align-items:center\">\r\n           <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ tourStartDate }}</ion-text>\r\n         </div>\r\n       </div>\r\n       <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"date\"\r\n         *ngIf=\"showPickerStartDate\" #datetime [value]=\"tourStartDate\" size=\"cover\"\r\n         (ionChange)=\"dateChanged(datetime.value,'start')\" showDefaultButtons=\"true\"\r\n         (ionCancel)=\"showPickerStartDate=false\"></ion-datetime>\r\n       <!-- Loss Date  -->\r\n\r\n        <!-- End Date  -->\r\n        <div class=\"label\">Notify date </div>\r\n        <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n          (click)=\"showPickerEndDate = !showPickerEndDate\">\r\n          <div style=\"display: flex; align-items:center\">\r\n            <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ tourEndDate }}</ion-text>\r\n          </div>\r\n        </div>\r\n        <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"date\"\r\n          *ngIf=\"showPickerEndDate\" #datetime [value]=\"tourEndDate\" size=\"cover\"\r\n          (ionChange)=\"dateChanged(datetime.value,'end')\" showDefaultButtons=\"true\"\r\n          (ionCancel)=\"showPickerEndDate=false\"></ion-datetime>\r\n        <!-- End Date  -->\r\n        <div class=\"label\">Description</div>\r\n         <div class=\"inputfield\">\r\n             <ion-textarea rows=\"7\" type=\"text\" placeholder=\"Loss Description\" class=\"in-text\"\r\n               [(ngModel)]=\"desc\">\r\n             </ion-textarea>\r\n           </div>\r\n\r\n\r\n           <div class=\"label\" style=\"margin: 12px 0px 0px;\">Loss Type</div>\r\n\r\n           <div class=\"dropbox\">\r\n             <div class=\"innerdropbox\" (click)=\"openlistloss()\">\r\n               <div class=\"euro-text\">{{losstype}}</div>\r\n               <div class=\"imgdiv\">\r\n                 <img style=\"height: 11px; width: 11px;\" src=\"assets/images/down-arrow.svg\" *ngIf=\"show==false\">\r\n                 <img style=\"height: 11px; width: 11px;\" src=\"assets/images/yuparrow.svg\" *ngIf=\"show==true\">\r\n               </div>\r\n             </div>\r\n             <div *ngIf=\"showloss==true\">\r\n               <div *ngFor=\"let list of listarrayloss\" (click)=\"selectInsuranceloss(list)\">\r\n                 <div class=\"euro-text1\">{{list.Insurance}}</div>\r\n               </div>\r\n\r\n             </div>\r\n\r\n           </div>\r\n\r\n           <div class=\"label\" style=\"margin: 12px 0px 0px;\">Reference Number</div>\r\n           <div class=\"inputfield\">\r\n             <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Reference Number\" class=\"in-text\"\r\n               [(ngModel)]=\"refnum\">\r\n             </ion-input>\r\n           </div>\r\n       </div>\r\n     </div>\r\n\r\n  </div>\r\n\r\n\r\n\r\n    <div *ngIf=\"requestsType=='ClaimTracker'\">\r\n\r\n\r\n      <ion-row>\r\n        <ion-col size=\"2\" style=\"text-align: -webkit-center;\">\r\n          <img style=\"    width: 26px;\r\n          margin-top: 24px;\" src=\"assets/tracking/01.svg\">\r\n\r\n        </ion-col>\r\n\r\n\r\n        <ion-col size=\"10\">\r\n          <ion-row>\r\n            <ion-col size=\"3\">\r\n              <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s1.svg\">\r\n            </ion-col>\r\n            <ion-col size=\"9\">\r\n\r\n              <p>Claims received and under verification</p>\r\n            </ion-col>\r\n          </ion-row>\r\n\r\n\r\n          <ion-row style=\"margin-top: 32px;\">\r\n            <ion-col size=\"3\">\r\n              <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s2.svg\">\r\n            </ion-col>\r\n            <ion-col size=\"9\">\r\n\r\n              <p>Claim verified and being processed</p>\r\n            </ion-col>\r\n          </ion-row>\r\n\r\n          <ion-row style=\"margin-top: 32px;\">\r\n            <ion-col size=\"3\">\r\n              <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s3.svg\">\r\n            </ion-col>\r\n            <ion-col size=\"9\">\r\n\r\n              <p>EDV sent to you and awaiting submission</p>\r\n            </ion-col>\r\n          </ion-row>\r\n\r\n          <ion-row style=\"margin-top: 32px;\">\r\n            <ion-col size=\"3\">\r\n              <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s4.svg\">\r\n            </ion-col>\r\n            <ion-col size=\"9\">\r\n\r\n              <p>Final Approval</p>\r\n            </ion-col>\r\n          </ion-row>\r\n\r\n\r\n          <ion-row style=\"margin-top: 32px;\">\r\n            <ion-col size=\"3\">\r\n              <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s5.svg\">\r\n            </ion-col>\r\n            <ion-col size=\"9\">\r\n\r\n              <p>Payment in progress</p>\r\n            </ion-col>\r\n          </ion-row>\r\n\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n\r\n\r\n\r\n    </div>\r\n\r\n\r\n</ion-content>\r\n<ion-footer *ngIf=\"requestsType=='NewClaim'\">\r\n  <div class=\"btndiv\">\r\n    <ion-button class=\"btn1\" (click)=\"reportclaim()\">Submit claim</ion-button>\r\n  </div>\r\n</ion-footer>\r\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width:100% ;\">\r\n              <img src=\"assets/images/sb-button.svg\" alt=\"sb-btn\">\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Make a Claim</div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <ion-segment mode=\"ios\" (ionChange)=\"segmentChanged($event)\" #mySegment scrollable=\"true\" class=\"segment1\">\r\n      <ion-segment-button mode=\"ios\" value=\"NewClaim\" class=\"sbtn\">\r\n        <ion-label>New Claim</ion-label>\r\n      </ion-segment-button>\r\n      <ion-segment-button checked mode=\"ios\" value=\"ClaimTracker\" class=\"sbtn\">\r\n        <ion-label>Claim Tracker</ion-label>\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n\r\n    <div *ngIf=\"requestsType=='NewClaim'\">\r\n      <div class=\"dropbox\">\r\n        <div class=\"innerdropbox\" (click)=\"openlist()\">\r\n          <div class=\"euro-text\">{{Insurance}}</div>\r\n          <div class=\"imgdiv\">\r\n            <img style=\"height: 11px; width: 11px;\" src=\"assets/images/down-arrow.svg\" *ngIf=\"show==false\">\r\n            <img style=\"height: 11px; width: 11px;\" src=\"assets/images/yuparrow.svg\" *ngIf=\"show==true\">\r\n          </div>\r\n        </div>\r\n        <div *ngIf=\"show==true\">\r\n          <div *ngFor=\"let list of listarray\" (click)=\"selectInsurance(list)\">\r\n            <div class=\"euro-text1\">{{list.Insurance}}</div>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <div *ngIf=\"Insurance == 'Life Busines'\">\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Policy Number</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy Number\" class=\"in-text\" [(ngModel)]=\"polnum\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Client Surname</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Client Surname\" class=\"in-text\"\r\n            [(ngModel)]=\"csurname\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Client First name</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Client First name\" class=\"in-text\"\r\n            [(ngModel)]=\"cothname\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Policy type</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy type\" class=\"in-text\"\r\n            [(ngModel)]=\"dd_liabtype\"></ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Claim details</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Claim details\" class=\"in-text\"\r\n            [(ngModel)]=\"txt_message_clm\"></ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Claims Supporting Document</div>\r\n\r\n        <input class=\"custom-file-input\" type=\"file\" (change)=\"selectFile($event,'vehFrontPic')\"\r\n          accept=\"image/x-png,image/gif,image/jpeg\">\r\n\r\n        <div style=\"height: 100px; width:100px; text-align: center;\" *ngIf=\"claimdoc.base64\"><img\r\n            style=\"height: 100px; width:100px\" src=\"{{claimdoc.base64}}\" alt=\"\"></div>\r\n      </div>\r\n\r\n      <div *ngIf=\"Insurance == 'General Business'\">\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Policy Number</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy Number\" class=\"in-text\" [(ngModel)]=\"polnum\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <!-- Loss Date  -->\r\n        <div class=\"label\">Loss date</div>\r\n        <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n          (click)=\"showPickerStartDate = !showPickerStartDate\">\r\n          <div style=\"display: flex; align-items:center\">\r\n            <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ tourStartDate }}</ion-text>\r\n          </div>\r\n        </div>\r\n        <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"date\"\r\n          *ngIf=\"showPickerStartDate\" #datetime [value]=\"tourStartDate\" size=\"cover\"\r\n          (ionChange)=\"dateChanged(datetime.value,'start')\" showDefaultButtons=\"true\"\r\n          (ionCancel)=\"showPickerStartDate=false\"></ion-datetime>\r\n        <!-- Loss Date  -->\r\n\r\n        <!-- End Date  -->\r\n        <div class=\"label\">Notify date </div>\r\n        <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n          (click)=\"showPickerEndDate = !showPickerEndDate\">\r\n          <div style=\"display: flex; align-items:center\">\r\n            <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ tourEndDate }}</ion-text>\r\n          </div>\r\n        </div>\r\n        <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"date\"\r\n          *ngIf=\"showPickerEndDate\" #datetime [value]=\"tourEndDate\" size=\"cover\"\r\n          (ionChange)=\"dateChanged(datetime.value,'end')\" showDefaultButtons=\"true\"\r\n          (ionCancel)=\"showPickerEndDate=false\"></ion-datetime>\r\n        <!-- End Date  -->\r\n        <div class=\"label\">Description</div>\r\n        <div class=\"inputfield\">\r\n          <ion-textarea rows=\"7\" type=\"text\" placeholder=\"Loss Description\" class=\"in-text\" [(ngModel)]=\"desc\">\r\n          </ion-textarea>\r\n        </div>\r\n\r\n\r\n        <!-- <div class=\"label\" style=\"margin: 12px 0px 0px;\">Loss Type</div>\r\n\r\n           <div class=\"dropbox\">\r\n             <div class=\"innerdropbox\" (click)=\"openlistloss()\">\r\n               <div class=\"euro-text\">{{losstype}}</div>\r\n               <div class=\"imgdiv\">\r\n                 <img style=\"height: 11px; width: 11px;\" src=\"assets/images/down-arrow.svg\" *ngIf=\"show==false\">\r\n                 <img style=\"height: 11px; width: 11px;\" src=\"assets/images/yuparrow.svg\" *ngIf=\"show==true\">\r\n               </div>\r\n             </div>\r\n             <div *ngIf=\"showloss==true\">\r\n               <div *ngFor=\"let list of listarrayloss\" (click)=\"selectInsuranceloss(list)\">\r\n                 <div class=\"euro-text1\">{{list.Insurance}}</div>\r\n               </div>\r\n\r\n             </div>\r\n\r\n           </div> -->\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Reference Number</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Reference Number\" class=\"in-text\"\r\n            [(ngModel)]=\"refnum\">\r\n          </ion-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n\r\n\r\n  <div *ngIf=\"requestsType=='ClaimTracker'\">\r\n\r\n\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"text-align: -webkit-center;\">\r\n        <img style=\"    width: 26px;\r\n          margin-top: 24px;\" src=\"assets/tracking/01.svg\">\r\n\r\n      </ion-col>\r\n\r\n\r\n      <ion-col size=\"10\">\r\n        <ion-row>\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s1.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Claims received and under verification</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s2.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Claim verified and being processed</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s3.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>EDV sent to you and awaiting submission</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s4.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Final Approval</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s5.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Payment in progress</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n\r\n\r\n\r\n  </div>\r\n\r\n\r\n</ion-content>\r\n<ion-footer *ngIf=\"requestsType=='NewClaim'\">\r\n  <div class=\"btndiv\">\r\n    <ion-button class=\"btn1\" (click)=\"reportclaim()\">Submit claim</ion-button>\r\n  </div>\r\n</ion-footer>";
 
 /***/ })
 

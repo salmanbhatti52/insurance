@@ -443,53 +443,7 @@ let AppComponent = class AppComponent {
       img: '/assets/images/icons/delete.png',
       img1: '/assets/images/icons/deleteactive.png',
       status: 'unchecked'
-    }];
-    this.appPages2 = [// { title: 'Home', url: '/home-page-screen-after-login', img: '/assets/images/home.svg', img1: '/assets/images/homeicon.svg', status: 'unchecked' },
-    {
-      title: 'Dashboard',
-      url: 'dashboard',
-      img: '/assets/images/icons/chart.svg',
-      img1: '/assets/images/icons/dashboard.svg',
-      status: 'unchecked'
-    }, {
-      title: 'Get Quote',
-      url: '/get-quote',
-      img: '/assets/images/icons/quote.svg',
-      img1: '/assets/images/icons/activequote.svg',
-      status: 'unchecked'
-    }, // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
-    {
-      title: 'My Policies',
-      url: 'allpolicies',
-      img: '/assets/images/icons/policy.svg',
-      img1: '/assets/images/icons/activepolicy.svg',
-      status: 'unchecked'
-    }, {
-      title: 'Verify Policy',
-      url: 'policylookup',
-      img: '/assets/images/icons/mypolicy.svg',
-      img1: '/assets/images/icons/activemypolicy.svg',
-      status: 'unchecked'
-    }, {
-      title: 'Renewals',
-      url: 'verify-policy-screen-cust',
-      img: '/assets/images/icons/renewals.svg',
-      img1: '/assets/images/icons/activerenewls.svg',
-      status: 'unchecked'
-    }, {
-      title: 'Make a Claim',
-      url: '/makeaclaim',
-      img: '/assets/images/icons/claim.svg',
-      img1: '/assets/images/icons/activeclaim.svg',
-      status: 'unchecked'
-    }, {
-      title: 'Delete Account',
-      url: '/deleteaccount',
-      img: '/assets/images/icons/delete.png',
-      img1: '/assets/images/icons/activedelete.png',
-      status: 'unchecked'
-    } // { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
-    ]; // if (localStorage.getItem('userid') != null) {
+    }]; // if (localStorage.getItem('userid') != null) {
     //   this.route.navigate(['home-page-screen-after-login']);
     // } else {
     //   this.route.navigate(['sign-in-screen']);
@@ -505,11 +459,11 @@ let AppComponent = class AppComponent {
         if (localStorage.getItem('userid') == null) {
           this.navCtrl.navigateRoot(['start-screen']);
         } else {
-          if (localStorage.getItem('loginas') == 'user') {
-            this.navCtrl.navigateRoot(['home-page-screen-after-login']);
-          } else {
-            this.navCtrl.navigateRoot(['dashboard']);
-          }
+          this.navCtrl.navigateRoot(['home-page-screen-after-login']); // if (localStorage.getItem('loginas') == 'user') {
+          //   this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+          // } else {
+          //   this.navCtrl.navigateRoot(['dashboard']);
+          // }
         } //aliiii
 
       }, 4000);
@@ -704,7 +658,7 @@ let InsuranceAppService = class InsuranceAppService {
 
     this.url = 'https://www.cornerstone.com.ng/webservice'; // url = 'https://www.cornerstone.com.ng/devtest/webservice';
 
-    this.authurl = 'http://testcipapiservices.gibsonline.com/api/Auth';
+    this.authurl = 'https://testcipapiservices.gibsonline.com/api/auth';
     this.comingFrom = 0;
     this.loginas = 'user';
   }
@@ -728,7 +682,7 @@ let InsuranceAppService = class InsuranceAppService {
   gibsapi(myData) {
     let header;
     header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-      Accept: 'application/json',
+      "Accept": 'application/json',
       'Content-Type': 'application/json'
     });
     header.append('Access-Control-Allow-Origin', '*');
@@ -865,21 +819,44 @@ let InsuranceAppService = class InsuranceAppService {
     // return this.http.get(url, {
     //   headers: headers
     // });
-
-    const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-      'Authorization': 'Bearer ' + token,
-      'Accept': 'application/json',
-      'Content-Type': 'application/json' // 'X-Requested-With': 'XMLHttpRequest',
-      // 'X-Requested-With': '*',
-
-    }); // header.append("Access-Control-Allow-Origin", "*");
-    // header.append(
+    // const headers = new HttpHeaders({
+    //   'Authorization': 'Bearer ' + token,
+    //   'Accept': 'application/json',
+    //   'Content-Type': 'application/json',
+    //   // 'X-Requested-With': 'XMLHttpRequest',
+    //   // 'X-Requested-With': '*',
+    // });
+    // headers.append("Access-Control-Allow-Origin", "*");
+    // headers.append(
     //   "Access-Control-Allow-Methods",
     //   "POST, GET, DELETE, PUT,OPTIONS"
     // );
 
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      "Accept": "application/json",
+      'Content-Type': "application/json"
+    });
+    header.append('Access-Control-Allow-Origin', '*');
+    header.append('Access-Control-Allow-Headers');
     return this.http.post(`${url}`, data, {
-      headers
+      headers: header
+    });
+  }
+
+  renewal(url, token) {
+    console.log('token in api ervice====', token);
+    let header;
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    });
+    header.append('Access-Control-Allow-Origin', '*');
+    header.append('Access-Control-Allow-Methods', '*');
+    header.append('Access-Control-Allow-Headers');
+    return this.http.post(`${url}`, {
+      headers: header
     });
   }
 
@@ -1323,7 +1300,7 @@ module.exports = "ion-menu ion-content {\n  --background:#1A206D;\n}\n\nion-menu
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-app>\r\n  <ion-split-pane contentId=\"main-content\">\r\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\r\n      <ion-header style=\"background-color:#1A206D !important;\">\r\n        <div style=\"width: 80%; margin: 17% auto 10px;\">\r\n          <div style=\"width: 100%;\">\r\n            <img (click)=\"closeMenu()\" src=\"assets/images/icons/backwhite-arrow.svg\" alt=\"\">\r\n          </div>\r\n        </div>\r\n\r\n      </ion-header>\r\n      <ion-content style=\"--background: #1A206D !important;\">\r\n        <!-- <div style=\"text-align:center;\">\r\n          <img src=\"assets/images/logo1.svg\">\r\n        </div> -->\r\n        <div style=\"width: 80%;\r\n        margin: 0% auto 5%;\">\r\n          <img src=\"assets/images/cornerlogo.png\" style=\"width:150px;\">\r\n        </div>\r\n        <div style=\"display: flex;flex-direction: row;align-items: center; width: 80%;\r\n          margin:0% auto 5%\">\r\n          <!-- <div class=\"imgdiv\">\r\n            <img src=\"assets/images/icons/userimg.svg\">\r\n          </div> -->\r\n          <div class=\"textdiv\" *ngIf=\"api.loginas=='user'\">\r\n            <div class=\"text1\">Username: {{api.username}}</div>\r\n          </div>\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='user'\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n          <!-- <ion-row>\r\n            <ion-col size=\"9\">\r\n              <ion-label style=\"color: #fff;\">Enable Face/Fingerprint ID</ion-label>\r\n            </ion-col>\r\n            <ion-col size=\"3\">\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" checked *ngIf=\"api.fpval=='true'\">\r\n              </ion-toggle>\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" *ngIf=\"api.fpval=='false'\"></ion-toggle>\r\n            </ion-col>\r\n          </ion-row> -->\r\n\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='agent'\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages2; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </div>\r\n\r\n\r\n      </ion-content>\r\n      <ion-footer class=\"ion-no-border fc\" no-border style=\"background-color:#1A206D !important;\">\r\n        <div style=\"display: flex;\r\n        width: 100%;\r\n        margin-bottom: 10%;\r\n        margin-left: 10%;\" (click)=\"logout()\">\r\n          <div class=\"bottom\">\r\n            <img src=\"assets/images/icons/logout.svg\">\r\n          </div>\r\n          <div class=\"stext\">\r\n            <span style=\"padding-left:4% ;\">logout</span>\r\n          </div>\r\n        </div>\r\n\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>";
+module.exports = "<ion-app>\r\n  <ion-split-pane contentId=\"main-content\">\r\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\r\n      <ion-header style=\"background-color:#1A206D !important;\">\r\n        <div style=\"width: 80%; margin: 17% auto 10px;\">\r\n          <div style=\"width: 100%;\">\r\n            <img (click)=\"closeMenu()\" src=\"assets/images/icons/backwhite-arrow.svg\" alt=\"\">\r\n          </div>\r\n        </div>\r\n\r\n      </ion-header>\r\n      <ion-content style=\"--background: #1A206D !important;\">\r\n        <!-- <div style=\"text-align:center;\">\r\n          <img src=\"assets/images/logo1.svg\">\r\n        </div> -->\r\n        <div style=\"width: 80%;\r\n        margin: 0% auto 5%;\">\r\n          <img src=\"assets/images/cornerlogo.png\" style=\"width:150px;\">\r\n        </div>\r\n        <div style=\"display: flex;flex-direction: row;align-items: center; width: 80%;\r\n          margin:0% auto 5%\">\r\n          <!-- <div class=\"imgdiv\">\r\n            <img src=\"assets/images/icons/userimg.svg\">\r\n          </div> -->\r\n          <div class=\"textdiv\" *ngIf=\"api.loginas=='user' || api.loginas=='agent'\">\r\n            <div class=\"text1\">Username: {{api.username}}</div>\r\n          </div>\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='user' || api.loginas=='agent' \">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n          <!-- <ion-row>\r\n            <ion-col size=\"9\">\r\n              <ion-label style=\"color: #fff;\">Enable Face/Fingerprint ID</ion-label>\r\n            </ion-col>\r\n            <ion-col size=\"3\">\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" checked *ngIf=\"api.fpval=='true'\">\r\n              </ion-toggle>\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" *ngIf=\"api.fpval=='false'\"></ion-toggle>\r\n            </ion-col>\r\n          </ion-row> -->\r\n\r\n        </div>\r\n        <!-- <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='agent'\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages2; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </div> -->\r\n\r\n\r\n      </ion-content>\r\n      <ion-footer class=\"ion-no-border fc\" no-border style=\"background-color:#1A206D !important;\">\r\n        <div style=\"display: flex;\r\n        width: 100%;\r\n        margin-bottom: 10%;\r\n        margin-left: 10%;\" (click)=\"logout()\">\r\n          <div class=\"bottom\">\r\n            <img src=\"assets/images/icons/logout.svg\">\r\n          </div>\r\n          <div class=\"stext\">\r\n            <span style=\"padding-left:4% ;\">logout</span>\r\n          </div>\r\n        </div>\r\n\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>";
 
 /***/ })
 

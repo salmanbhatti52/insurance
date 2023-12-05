@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
-
+import * as btoa from 'btoa-lite';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class InsuranceAppService {
   url = 'https://www.cornerstone.com.ng/webservice'
 
   // url = 'https://www.cornerstone.com.ng/devtest/webservice';
-  authurl = 'http://testcipapiservices.gibsonline.com/api/auth';
+  authurl = 'https://testcipapiservices.gibsonline.com/api/auth';
   // url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/'
 
   fpval: any;
@@ -48,7 +48,7 @@ export class InsuranceAppService {
     let header;
 
     header = new HttpHeaders({
-      Accept: 'application/json',
+      "Accept": 'application/json',
       'Content-Type': 'application/json',
     });
 
@@ -198,48 +198,56 @@ export class InsuranceAppService {
 
     let header;
     console.log('token in api ervice====', token);
-    // let headers
-    // headers = new Headers();
-    // headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");
-    // return this.http.get(url, {
-    //   headers: headers
-    // });
 
-    const headers = new HttpHeaders({
+    header = new HttpHeaders({
       'Authorization': 'Bearer ' + token,
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      // 'X-Requested-With': 'XMLHttpRequest',
-      // 'X-Requested-With': '*',
+      "Accept": "application/json",
+      'Content-Type': "application/json",
     });
-    // header.append("Access-Control-Allow-Origin", "*");
-    // header.append(
-    //   "Access-Control-Allow-Methods",
-    //   "POST, GET, DELETE, PUT,OPTIONS"
-    // );
-
-
-
+    // header.append('Access-Control-Allow-Origin', '*');
+    // header.append('Access-Control-Allow-Headers');
     return this.http.post(`${url}`, data, {
-      headers
+      headers: header,
+    });
+  }
+
+  newclaim(url, data?) {
+    const username = 'c31a6a20-7eda-41da-a7df-d14b501c237c';
+    const password = 'DECHANNEL';
+    const encodedCredentials = btoa(`${username}:${password}`);
+    let header;
+
+    header = new HttpHeaders({
+      'Authorization': 'Basic ' + encodedCredentials,
+      "Accept": "application/json",
+      'Content-Type': "application/json",
+    });
+    // header.append('Access-Control-Allow-Origin', '*');
+    // header.append('Access-Control-Allow-Headers');
+    return this.http.post(`${url}`, data, {
+      headers: header,
     });
   }
 
   renewal(url, token) {
 
     console.log('token in api ervice====', token);
+    let header;
 
-    const headers = new HttpHeaders({
+    header = new HttpHeaders({
       'Authorization': 'Bearer ' + token,
       'Accept': 'application/json',
       'Content-Type': 'application/json',
 
     });
-
+    header.append('Access-Control-Allow-Origin', '*');
+    header.append('Access-Control-Allow-Methods', '*');
+    header.append('Access-Control-Allow-Headers');
 
     return this.http.post(`${url}`, {
-      headers
+      headers: header,
     });
+
   }
   postparam(url, data?, token?) {
     let header;

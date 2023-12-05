@@ -4,7 +4,7 @@ import { InsuranceAppService } from '../services/insurance-app.service';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-makeaclaim',
   templateUrl: './makeaclaim.page.html',
@@ -26,6 +26,7 @@ export class MakeaclaimPage implements OnInit {
   dd_liabtype: any;
   txt_message_clm: any;
 
+
   claimdoc = {
     file: '',
     base64: '',
@@ -34,18 +35,28 @@ export class MakeaclaimPage implements OnInit {
   showloss = false;
   losstype = 'Please Select';
   listarrayloss = [
-    { Insurance: 'Accidental Damage' },
-    { Insurance: 'Own Damage' },
-    { Insurance: 'Others' },
+    { Insurance: 'Own Damage', value: 1 },
+    { Insurance: 'Vandalization', value: 2 },
+    { Insurance: 'Negligent insured', value: 3 },
+    { Insurance: 'Own Damage and Negligent insured', value: 4 },
+    { Insurance: 'Negligent third party', value: 5 },
+    { Insurance: 'Fire /Theft Total Loss', value: 6 },
+    { Insurance: 'Fire Partial Loss', value: 7 },
+    { Insurance: 'Property Third Party Damage only', value: 8 },
   ];
 
   showPickerStartDate = false;
   showPickerEndDate = false;
-  tourEndDate = format(new Date(), 'yyyy-MM-dd');
-  tourStartDate = format(new Date(), 'yyyy-MM-dd');
-  desc: any = '';
+  tourEndDate = format(new Date(), 'MM/dd/yyyy');
+  tourStartDate;
   refnum: any = '';
 
+  name: any = '';
+  accidentplace: any = '';
+  vechregnum: any = '';
+  weathercondition: any = '';
+  accidentdescribe: any = '';
+  selectedDate: any;
   constructor(public api: InsuranceAppService, public router: Router,
     public alert: AlertController) { }
 
@@ -145,7 +156,7 @@ export class MakeaclaimPage implements OnInit {
             data,
             '39109f7df56e1CORNERStone9e685066bb852'
           )
-          .subscribe((res: any) => {
+          .subscribe(async (res: any) => {
             console.log('response claim', res);
             this.api.hideLoader();
             // if (res.result.status == 0) {
@@ -158,7 +169,21 @@ export class MakeaclaimPage implements OnInit {
               if (res.result.status == 1) {
                 this.api.presenttoast(res.result.message);
               } else {
-                this.api.presenttoast(res.result.message);
+                const alert = await this.alert.create({
+                  header: res.result.message,
+                  cssClass: 'fgprintcls',
+                  buttons: [
+                    {
+                      text: 'OK',
+                      role: 'confirm',
+                      handler: () => {
+
+                      },
+                    },
+                  ],
+                });
+                await alert.present();
+                // this.api.presenttoast(res.result.message);
               }
             } else {
               this.api.presenttoast('Policy record not found');
@@ -177,31 +202,31 @@ export class MakeaclaimPage implements OnInit {
       };
 
       var mydataAPI = {
-        policyNo: this.polnum,
-        lossDate: this.tourStartDate,
-        notifyDate: this.tourEndDate,
-        description: this.desc,
-        // lossType: this.losstype,
-        reference: this.refnum,
+        "name": this.name,
+        "vehicleregno": this.vechregnum,
+        "accidentdate": this.tourStartDate,
+        "accidentplace": this.accidentplace,
+        "accidentdescribe": this.accidentdescribe,
+        "weathercondition": this.weathercondition,
+        "losstypecode": this.losstype
       };
 
-      var data = new FormData();
-      data.append('policyNo', this.polnum);
-      data.append('lossDate', this.tourStartDate);
-      data.append('notifyDate', this.tourEndDate);
-      data.append('description', this.desc);
-      // data.append('lossType', this.losstype);
-      data.append('reference', this.refnum);
+      // var data = new FormData();
+      // data.append('name', "najam");
+      // data.append('vehicleregno', "MN000");
+      // data.append('accidentdate', "2023-11-22");
+      // data.append('accidentplace', "nigeria");
+      // data.append('accidentdescribe', "dsadasdasd");
+      // data.append('weathercondition', "dasdasdsad");
+      // data.append('losstypecode', '1');
       this.api.gibsapi(myData).subscribe(
         (res: any) => {
           console.log('token-----', res);
           const token = res.accessToken;
           this.api
-            .postdata(
-              'http://testcipapiservices.gibsonline.com/api/claims',
-              mydataAPI,
-              token
-            )
+            .newclaim(
+              'https://app.cornerstone.com.ng/claimapi/api/ProcessClaim/NewClaim',
+              mydataAPI)
             .subscribe((res: any) => {
               this.api.hideLoader();
               // this.api.presenttoast('Clain Number ' + res.claimNo);
@@ -210,7 +235,14 @@ export class MakeaclaimPage implements OnInit {
               // localStorage.setItem('gibsproduct', JSON.stringify(res))
               // this.router.navigate(['gibsplans']);
             }, err => {
+              console.log(err);
               this.api.hideLoader()
+              if (err.error.message == 'Validation Failed') {
+                this.api.presenttoast(err.error.errors[0].message);
+
+              }
+
+
             });
         },
         (err) => {
@@ -222,20 +254,29 @@ export class MakeaclaimPage implements OnInit {
     }
   }
 
-  dateChanged(value, type) {
-    if (type == 'start') {
-      this.tourStartDate = value;
-      console.log('this.tourStartDate ----', this.tourStartDate);
-      this.showPickerStartDate = false;
-    } else {
-      this.tourEndDate = value;
-      console.log('this.tourEndDate ----', this.tourEndDate);
-      this.showPickerEndDate = false;
-    }
+  // dateChanged(value, type) {
+  //   if (type == 'start') {
+  //     // this.tourStartDate = value;
+
+  //     this.tourStartDate = moment(value).format('L');
+  //     console.log('this.tourStartDate ----', this.tourStartDate);
+  //     this.showPickerStartDate = false;
+  //   } else {
+  //     this.tourEndDate = value;
+  //     console.log('this.tourEndDate ----', this.tourEndDate);
+  //     this.showPickerEndDate = false;
+  //   }
+  // }
+  onDateChange(val) {
+    var dateval = new Date(val)
+    console.log('Selected Date:', dateval);
+    this.tourStartDate = moment(dateval).format('L');
   }
 
   selectInsuranceloss(list) {
-    this.losstype = list.Insurance;
+    console.log(list.value);
+
+    this.losstype = list.value;
     this.showloss = false;
   }
 

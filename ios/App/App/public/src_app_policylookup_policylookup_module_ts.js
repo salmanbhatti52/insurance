@@ -218,7 +218,7 @@ let PolicylookupPage = class PolicylookupPage {
     let encode = encodeURIComponent(this.policynum);
     console.log('eee--', encode);
     let Bearertoken = token;
-    let url = 'http://testcipapiservices.gibsonline.com/api/Policies/' + encode;
+    let url = 'https://testcipapiservices.gibsonline.com/api/policies/' + encode;
     this.api.getpolicy(url, Bearertoken).subscribe(response => {
       this.api.hideLoader();
       console.log(response);

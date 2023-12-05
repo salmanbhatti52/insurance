@@ -95,23 +95,23 @@ export class VerifyPolicyScreenCustPage implements OnInit {
           console.log(res);
           const token = res.accessToken;
           this.bearertoken = res.accessToken;
-          // this.api.postdata('http://testcipapiservices.gibsonline.com/api/policies/P/500/1001/2023/00235/renew', this.bearertoken).subscribe((response: any) => {
+          this.api.renewal('https://testcipapiservices.gibsonline.com/api/policies/P%2F500%2F1001%2F2023%2F00235/renew', this.bearertoken).subscribe((response: any) => {
 
-          //   console.log(response);
-          //   this.api.hideLoader();
-
-          // });
-          let encode1 = encodeURIComponent(this.pnumber);
-          console.log('dasdsadsa', encode1);
-          this.api.renewal(' http://testcipapiservices.gibsonline.com/api/policies/' + encode1 + '/renew', res.accessToken).subscribe((response: any) => {
-
-            console.log('ddddddddddddddddddd', response);
+            console.log(response);
             this.api.hideLoader();
 
-          }, err => {
-            console.log('get policy error', err);
-
           });
+          // let encode1 = encodeURIComponent(this.pnumber);
+          // console.log('dasdsadsa', encode1);
+          // this.api.renewal('https://testcipapiservices.gibsonline.com/api/policies/' + encode1 + '/renew', res.accessToken).subscribe((response: any) => {
+
+          //   console.log('ddddddddddddddddddd', response);
+          //   this.api.hideLoader();
+
+          // }, err => {
+          //   console.log('get policy error', err);
+
+          // });
         },
         (err) => {
           console.log(err);
