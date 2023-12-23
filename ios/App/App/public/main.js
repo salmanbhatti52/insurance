@@ -69,7 +69,7 @@ const routes = [
     },
     {
         path: 'makeaclaim',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_makeaclaim_makeaclaim_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./makeaclaim/makeaclaim.module */ 13268)).then(m => m.MakeaclaimPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("default-node_modules_moment_moment_js"), __webpack_require__.e("src_app_makeaclaim_makeaclaim_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./makeaclaim/makeaclaim.module */ 13268)).then(m => m.MakeaclaimPageModule)
     },
     {
         path: 'dashboard',
@@ -125,7 +125,7 @@ const routes = [
     },
     {
         path: 'makeaclaim',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_makeaclaim_makeaclaim_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./makeaclaim/makeaclaim.module */ 13268)).then(m => m.MakeaclaimPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("default-node_modules_moment_moment_js"), __webpack_require__.e("src_app_makeaclaim_makeaclaim_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./makeaclaim/makeaclaim.module */ 13268)).then(m => m.MakeaclaimPageModule)
     },
     {
         path: 'dashboard',
@@ -399,7 +399,7 @@ let AppComponent = class AppComponent {
     this.actionSheetCtrl = actionSheetCtrl;
     this.appPages = [{
       title: 'Home',
-      url: '/home-page-screen-after-login',
+      url: 'home-page-screen-after-login',
       img: '/assets/images/home.svg',
       img1: '/assets/images/homeicon.svg',
       status: 'unchecked'
@@ -443,7 +443,58 @@ let AppComponent = class AppComponent {
       img: '/assets/images/icons/delete.png',
       img1: '/assets/images/icons/deleteactive.png',
       status: 'unchecked'
-    }]; // if (localStorage.getItem('userid') != null) {
+    }];
+    this.appPages2 = [{
+      title: 'Dashboard',
+      url: 'dashboard',
+      img: '/assets/images/icons/chart.svg',
+      img1: '/assets/images/icons/dashboard.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Home',
+      url: 'home-page-screen-after-login',
+      img: '/assets/images/home.svg',
+      img1: '/assets/images/homeicon.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Get Quote',
+      url: '/get-quote',
+      img: '/assets/images/icons/quote.svg',
+      img1: '/assets/images/icons/activequote.svg',
+      status: 'unchecked'
+    }, // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
+    {
+      title: 'My Policies',
+      url: 'allpolicies',
+      img: '/assets/images/icons/policy.svg',
+      img1: '/assets/images/icons/activepolicy.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Verify Policy',
+      url: 'policylookup',
+      img: '/assets/images/icons/mypolicy.svg',
+      img1: '/assets/images/icons/activemypolicy.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Renewals',
+      url: 'verify-policy-screen-cust',
+      img: '/assets/images/icons/renewals.svg',
+      img1: '/assets/images/icons/activerenewls.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Make a Claim',
+      url: '/makeaclaim',
+      img: '/assets/images/icons/claim.svg',
+      img1: '/assets/images/icons/activeclaim.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Delete Account',
+      url: '/deleteaccount',
+      img: '/assets/images/icons/delete.png',
+      img1: '/assets/images/icons/activedelete.png',
+      status: 'unchecked'
+    } // { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
+    ]; // if (localStorage.getItem('userid') != null) {
     //   this.route.navigate(['home-page-screen-after-login']);
     // } else {
     //   this.route.navigate(['sign-in-screen']);
@@ -454,16 +505,18 @@ let AppComponent = class AppComponent {
     this.platform.ready().then(() => {
       setTimeout(() => {
         this.initializeApp();
+        this.api.loginas = localStorage.getItem('loginas');
         _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_4__.SplashScreen.hide();
 
         if (localStorage.getItem('userid') == null) {
           this.navCtrl.navigateRoot(['start-screen']);
         } else {
-          this.navCtrl.navigateRoot(['home-page-screen-after-login']); // if (localStorage.getItem('loginas') == 'user') {
-          //   this.navCtrl.navigateRoot(['home-page-screen-after-login']);
-          // } else {
-          //   this.navCtrl.navigateRoot(['dashboard']);
-          // }
+          // this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+          if (this.api.loginas == 'user') {
+            this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+          } else {
+            this.navCtrl.navigateRoot(['dashboard']);
+          }
         } //aliiii
 
       }, 4000);
@@ -640,10 +693,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "InsuranceAppService": () => (/* binding */ InsuranceAppService)
 /* harmony export */ });
 /* harmony import */ var D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 58987);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 58987);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var btoa_lite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! btoa-lite */ 98263);
+/* harmony import */ var btoa_lite__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(btoa_lite__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 
@@ -660,13 +716,12 @@ let InsuranceAppService = class InsuranceAppService {
 
     this.authurl = 'https://testcipapiservices.gibsonline.com/api/auth';
     this.comingFrom = 0;
-    this.loginas = 'user';
   }
 
   insertData(myData) {
     console.log('data', myData);
     let header;
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
       // "Content-Type": "application/json",
       "Accept": "application/json",
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -681,7 +736,7 @@ let InsuranceAppService = class InsuranceAppService {
 
   gibsapi(myData) {
     let header;
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
       "Accept": 'application/json',
       'Content-Type': 'application/json'
     });
@@ -695,7 +750,7 @@ let InsuranceAppService = class InsuranceAppService {
 
   insertFormData(Data) {
     let header;
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
       Cookie: 'corci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%229067b6add23324d21220d8f7d5c649c0%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A12%3A%2239.40.231.23%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A21%3A%22PostmanRuntime%2F7.29.0%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1656587499%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7D87fb653bf23ba596c9ade5a76135fe0a7557093d'
     });
@@ -708,13 +763,13 @@ let InsuranceAppService = class InsuranceAppService {
     let header;
 
     if (token) {
-      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
         Authorization: 'Bearer ' + token
       });
       header.append('Access-Control-Allow-Origin', '*');
       header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     } else {
-      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
       header.append('Access-Control-Allow-Origin', '*');
       header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     }
@@ -728,13 +783,13 @@ let InsuranceAppService = class InsuranceAppService {
     let header;
 
     if (token) {
-      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
         'auth-key': token
       });
       header.append('Access-Control-Allow-Origin', '*');
       header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     } else {
-      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
       header.append('Access-Control-Allow-Origin', '*');
       header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     }
@@ -746,7 +801,7 @@ let InsuranceAppService = class InsuranceAppService {
 
   getcallbackurl(url) {
     let header;
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders();
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders();
     header.append('Access-Control-Allow-Origin', '*');
     header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     return this.http.get(`${url}`, {
@@ -763,7 +818,7 @@ let InsuranceAppService = class InsuranceAppService {
     //   headers: headers
     // });
 
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
       // 'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: 'Bearer ' + token
     }); // header.append("Access-Control-Allow-Origin", "*");
@@ -786,7 +841,7 @@ let InsuranceAppService = class InsuranceAppService {
     //   headers: headers
     // });
 
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
       Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token
@@ -813,32 +868,31 @@ let InsuranceAppService = class InsuranceAppService {
 
   postdata(url, data, token) {
     let header;
-    console.log('token in api ervice====', token); // let headers
-    // headers = new Headers();
-    // headers.append("Authorization", "Bearer 39109f7df56e1CORNERStone9e685066bb852");
-    // return this.http.get(url, {
-    //   headers: headers
-    // });
-    // const headers = new HttpHeaders({
-    //   'Authorization': 'Bearer ' + token,
-    //   'Accept': 'application/json',
-    //   'Content-Type': 'application/json',
-    //   // 'X-Requested-With': 'XMLHttpRequest',
-    //   // 'X-Requested-With': '*',
-    // });
-    // headers.append("Access-Control-Allow-Origin", "*");
-    // headers.append(
-    //   "Access-Control-Allow-Methods",
-    //   "POST, GET, DELETE, PUT,OPTIONS"
-    // );
-
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+    console.log('token in api ervice====', token);
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
       'Authorization': 'Bearer ' + token,
       "Accept": "application/json",
       'Content-Type': "application/json"
+    }); // header.append('Access-Control-Allow-Origin', '*');
+    // header.append('Access-Control-Allow-Headers');
+
+    return this.http.post(`${url}`, data, {
+      headers: header
     });
-    header.append('Access-Control-Allow-Origin', '*');
-    header.append('Access-Control-Allow-Headers');
+  }
+
+  newclaim(url, data) {
+    const username = 'c31a6a20-7eda-41da-a7df-d14b501c237c';
+    const password = 'DECHANNEL';
+    const encodedCredentials = btoa_lite__WEBPACK_IMPORTED_MODULE_1__(`${username}:${password}`);
+    let header;
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+      'Authorization': 'Basic ' + encodedCredentials,
+      "Accept": "application/json",
+      'Content-Type': "application/json"
+    }); // header.append('Access-Control-Allow-Origin', '*');
+    // header.append('Access-Control-Allow-Headers');
+
     return this.http.post(`${url}`, data, {
       headers: header
     });
@@ -847,7 +901,7 @@ let InsuranceAppService = class InsuranceAppService {
   renewal(url, token) {
     console.log('token in api ervice====', token);
     let header;
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
       'Authorization': 'Bearer ' + token,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -869,7 +923,7 @@ let InsuranceAppService = class InsuranceAppService {
     //   headers: headers
     // });
 
-    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
       Authorization: 'Bearer ' + data
     });
     return this.http.post(`${url}`, data, {
@@ -910,13 +964,13 @@ let InsuranceAppService = class InsuranceAppService {
     let header;
 
     if (token) {
-      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
         'auth-key': token
       });
       header.append('Access-Control-Allow-Origin', '*');
       header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
     } else {
-      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({// "content-type":"text/html"
+      header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({// "content-type":"text/html"
       });
       header.append('Access-Control-Allow-Origin', '*');
       header.append('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT,OPTIONS');
@@ -959,14 +1013,14 @@ let InsuranceAppService = class InsuranceAppService {
 };
 
 InsuranceAppService.ctorParameters = () => [{
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__.ToastController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ToastController
 }, {
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__.LoadingController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.LoadingController
 }];
 
-InsuranceAppService = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Injectable)({
+InsuranceAppService = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Injectable)({
   providedIn: 'root'
 })], InsuranceAppService);
 
@@ -1300,7 +1354,7 @@ module.exports = "ion-menu ion-content {\n  --background:#1A206D;\n}\n\nion-menu
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<ion-app>\r\n  <ion-split-pane contentId=\"main-content\">\r\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\r\n      <ion-header style=\"background-color:#1A206D !important;\">\r\n        <div style=\"width: 80%; margin: 17% auto 10px;\">\r\n          <div style=\"width: 100%;\">\r\n            <img (click)=\"closeMenu()\" src=\"assets/images/icons/backwhite-arrow.svg\" alt=\"\">\r\n          </div>\r\n        </div>\r\n\r\n      </ion-header>\r\n      <ion-content style=\"--background: #1A206D !important;\">\r\n        <!-- <div style=\"text-align:center;\">\r\n          <img src=\"assets/images/logo1.svg\">\r\n        </div> -->\r\n        <div style=\"width: 80%;\r\n        margin: 0% auto 5%;\">\r\n          <img src=\"assets/images/cornerlogo.png\" style=\"width:150px;\">\r\n        </div>\r\n        <div style=\"display: flex;flex-direction: row;align-items: center; width: 80%;\r\n          margin:0% auto 5%\">\r\n          <!-- <div class=\"imgdiv\">\r\n            <img src=\"assets/images/icons/userimg.svg\">\r\n          </div> -->\r\n          <div class=\"textdiv\" *ngIf=\"api.loginas=='user' || api.loginas=='agent'\">\r\n            <div class=\"text1\">Username: {{api.username}}</div>\r\n          </div>\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='user' || api.loginas=='agent' \">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n          <!-- <ion-row>\r\n            <ion-col size=\"9\">\r\n              <ion-label style=\"color: #fff;\">Enable Face/Fingerprint ID</ion-label>\r\n            </ion-col>\r\n            <ion-col size=\"3\">\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" checked *ngIf=\"api.fpval=='true'\">\r\n              </ion-toggle>\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" *ngIf=\"api.fpval=='false'\"></ion-toggle>\r\n            </ion-col>\r\n          </ion-row> -->\r\n\r\n        </div>\r\n        <!-- <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='agent'\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages2; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </div> -->\r\n\r\n\r\n      </ion-content>\r\n      <ion-footer class=\"ion-no-border fc\" no-border style=\"background-color:#1A206D !important;\">\r\n        <div style=\"display: flex;\r\n        width: 100%;\r\n        margin-bottom: 10%;\r\n        margin-left: 10%;\" (click)=\"logout()\">\r\n          <div class=\"bottom\">\r\n            <img src=\"assets/images/icons/logout.svg\">\r\n          </div>\r\n          <div class=\"stext\">\r\n            <span style=\"padding-left:4% ;\">logout</span>\r\n          </div>\r\n        </div>\r\n\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>";
+module.exports = "<ion-app>\r\n  <ion-split-pane contentId=\"main-content\">\r\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\r\n      <ion-header style=\"background-color:#1A206D !important;\">\r\n        <div style=\"width: 80%; margin: 17% auto 10px;\">\r\n          <div style=\"width: 100%;\">\r\n            <img (click)=\"closeMenu()\" src=\"assets/images/icons/backwhite-arrow.svg\" alt=\"\">\r\n          </div>\r\n        </div>\r\n\r\n      </ion-header>\r\n      <ion-content style=\"--background: #1A206D !important;\">\r\n        <!-- <div style=\"text-align:center;\">\r\n          <img src=\"assets/images/logo1.svg\">\r\n        </div> -->\r\n        <div style=\"width: 80%;\r\n        margin: 0% auto 5%;\">\r\n          <img src=\"assets/images/cornerlogo.png\" style=\"width:150px;\">\r\n        </div>\r\n        <div style=\"display: flex;flex-direction: row;align-items: center; width: 80%;\r\n          margin:0% auto 5%\">\r\n          <!-- <div class=\"imgdiv\">\r\n            <img src=\"assets/images/icons/userimg.svg\">\r\n          </div> -->\r\n          <div class=\"textdiv\" *ngIf=\"api.loginas=='user' || api.loginas=='agent'\">\r\n            <div class=\"text1\">Username: {{api.username}}</div>\r\n          </div>\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='user'\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n          <!-- <ion-row>\r\n            <ion-col size=\"9\">\r\n              <ion-label style=\"color: #fff;\">Enable Face/Fingerprint ID</ion-label>\r\n            </ion-col>\r\n            <ion-col size=\"3\">\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" checked *ngIf=\"api.fpval=='true'\">\r\n              </ion-toggle>\r\n              <ion-toggle class=\"toogleclass\" (ionChange)=\"toogle($event)\" *ngIf=\"api.fpval=='false'\"></ion-toggle>\r\n            </ion-col>\r\n          </ion-row> -->\r\n\r\n        </div>\r\n        <div style=\"width:90%;margin:0% auto;\" *ngIf=\"api.loginas=='agent'\">\r\n          <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages2; let i = index\">\r\n            <ion-item routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\"\r\n              routerLinkActive=\"selected\" class=\"ion-no-padding\" (click)=\"selected(p)\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='checked'\" src=\"{{p.img1}}\">\r\n              <img class=\"sidemenu-icons\" *ngIf=\"p.status=='unchecked'\" src=\"{{p.img}}\">\r\n              <ion-label class=\"title\">{{ p.title }}</ion-label>\r\n            </ion-item>\r\n          </ion-menu-toggle>\r\n        </div>\r\n\r\n\r\n      </ion-content>\r\n      <ion-footer class=\"ion-no-border fc\" no-border style=\"background-color:#1A206D !important;\">\r\n        <div style=\"display: flex;\r\n        width: 100%;\r\n        margin-bottom: 10%;\r\n        margin-left: 10%;\" (click)=\"logout()\">\r\n          <div class=\"bottom\">\r\n            <img src=\"assets/images/icons/logout.svg\">\r\n          </div>\r\n          <div class=\"stext\">\r\n            <span style=\"padding-left:4% ;\">logout</span>\r\n          </div>\r\n        </div>\r\n\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>";
 
 /***/ })
 

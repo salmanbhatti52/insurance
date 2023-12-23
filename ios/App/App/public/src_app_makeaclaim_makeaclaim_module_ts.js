@@ -91,14 +91,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "MakeaclaimPage": () => (/* binding */ MakeaclaimPage)
 /* harmony export */ });
 /* harmony import */ var D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _makeaclaim_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./makeaclaim.page.html?ngResource */ 86759);
 /* harmony import */ var _makeaclaim_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./makeaclaim.page.scss?ngResource */ 16005);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/insurance-app.service */ 22111);
-/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! date-fns */ 86712);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! date-fns */ 86712);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ 56908);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -127,18 +130,39 @@ let MakeaclaimPage = class MakeaclaimPage {
     this.showloss = false;
     this.losstype = 'Please Select';
     this.listarrayloss = [{
-      Insurance: 'Accidental Damage'
+      Insurance: 'Own Damage',
+      value: 1
     }, {
-      Insurance: 'Own Damage'
+      Insurance: 'Vandalization',
+      value: 2
     }, {
-      Insurance: 'Others'
+      Insurance: 'Negligent insured',
+      value: 3
+    }, {
+      Insurance: 'Own Damage and Negligent insured',
+      value: 4
+    }, {
+      Insurance: 'Negligent third party',
+      value: 5
+    }, {
+      Insurance: 'Fire /Theft Total Loss',
+      value: 6
+    }, {
+      Insurance: 'Fire Partial Loss',
+      value: 7
+    }, {
+      Insurance: 'Property Third Party Damage only',
+      value: 8
     }];
     this.showPickerStartDate = false;
     this.showPickerEndDate = false;
-    this.tourEndDate = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'yyyy-MM-dd');
-    this.tourStartDate = (0,date_fns__WEBPACK_IMPORTED_MODULE_4__["default"])(new Date(), 'yyyy-MM-dd');
-    this.desc = '';
+    this.tourEndDate = (0,date_fns__WEBPACK_IMPORTED_MODULE_5__["default"])(new Date(), 'MM/dd/yyyy');
     this.refnum = '';
+    this.name = '';
+    this.accidentplace = '';
+    this.vechregnum = '';
+    this.weathercondition = '';
+    this.accidentdescribe = '';
   }
 
   ngOnInit() {
@@ -281,25 +305,26 @@ let MakeaclaimPage = class MakeaclaimPage {
         token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
       };
       var mydataAPI = {
-        "name": "najam",
-        "vehicleregno": "MN1234",
-        "accidentdate": "2023-11-20",
-        "accidentplace": "Nigeria",
-        "accidentdescribe": "test",
-        "weathercondition": "good",
-        "losstypecode": 1
+        "name": this.name,
+        "vehicleregno": this.vechregnum,
+        "accidentdate": this.tourStartDate,
+        "accidentplace": this.accidentplace,
+        "accidentdescribe": this.accidentdescribe,
+        "weathercondition": this.weathercondition,
+        "losstypecode": this.losstype
       }; // var data = new FormData();
-      // data.append('policyNo', this.polnum);
-      // data.append('lossDate', this.tourStartDate);
-      // data.append('notifyDate', this.tourEndDate);
-      // data.append('description', this.desc);
-      // // data.append('lossType', this.losstype);
-      // data.append('reference', this.refnum);
+      // data.append('name', "najam");
+      // data.append('vehicleregno', "MN000");
+      // data.append('accidentdate', "2023-11-22");
+      // data.append('accidentplace', "nigeria");
+      // data.append('accidentdescribe', "dsadasdasd");
+      // data.append('weathercondition', "dasdasdsad");
+      // data.append('losstypecode', '1');
 
       this.api.gibsapi(myData).subscribe(res => {
         console.log('token-----', res);
         const token = res.accessToken;
-        this.api.postdata('https://app.cornerstone.com.ng/claimapi/api/ProcessClaim/NewClaim', mydataAPI, token).subscribe(res => {
+        this.api.newclaim('https://app.cornerstone.com.ng/claimapi/api/ProcessClaim/NewClaim', mydataAPI).subscribe(res => {
           this.api.hideLoader(); // this.api.presenttoast('Clain Number ' + res.claimNo);
 
           this.alertbox(res.claimNo);
@@ -319,22 +344,29 @@ let MakeaclaimPage = class MakeaclaimPage {
         this.api.hideLoader();
       });
     }
-  }
+  } // dateChanged(value, type) {
+  //   if (type == 'start') {
+  //     // this.tourStartDate = value;
+  //     this.tourStartDate = moment(value).format('L');
+  //     console.log('this.tourStartDate ----', this.tourStartDate);
+  //     this.showPickerStartDate = false;
+  //   } else {
+  //     this.tourEndDate = value;
+  //     console.log('this.tourEndDate ----', this.tourEndDate);
+  //     this.showPickerEndDate = false;
+  //   }
+  // }
 
-  dateChanged(value, type) {
-    if (type == 'start') {
-      this.tourStartDate = value;
-      console.log('this.tourStartDate ----', this.tourStartDate);
-      this.showPickerStartDate = false;
-    } else {
-      this.tourEndDate = value;
-      console.log('this.tourEndDate ----', this.tourEndDate);
-      this.showPickerEndDate = false;
-    }
+
+  onDateChange(val) {
+    var dateval = new Date(val);
+    console.log('Selected Date:', dateval);
+    this.tourStartDate = moment__WEBPACK_IMPORTED_MODULE_4__(dateval).format('L');
   }
 
   selectInsuranceloss(list) {
-    this.losstype = list.Insurance;
+    console.log(list.value);
+    this.losstype = list.value;
     this.showloss = false;
   }
 
@@ -362,20 +394,20 @@ let MakeaclaimPage = class MakeaclaimPage {
 MakeaclaimPage.ctorParameters = () => [{
   type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__.InsuranceAppService
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.AlertController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.AlertController
 }];
 
 MakeaclaimPage.propDecorators = {
   mySegment: [{
-    type: _angular_core__WEBPACK_IMPORTED_MODULE_7__.ViewChild,
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_8__.ViewChild,
     args: ['mySegment', {
-      read: _angular_core__WEBPACK_IMPORTED_MODULE_7__.ElementRef
+      read: _angular_core__WEBPACK_IMPORTED_MODULE_8__.ElementRef
     }]
   }]
 };
-MakeaclaimPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+MakeaclaimPage = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
   selector: 'app-makeaclaim',
   template: _makeaclaim_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_makeaclaim_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -400,7 +432,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width:100% ;\">\r\n              <img src=\"assets/images/sb-button.svg\" alt=\"sb-btn\">\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Make a Claim</div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <ion-segment mode=\"ios\" (ionChange)=\"segmentChanged($event)\" #mySegment scrollable=\"true\" class=\"segment1\">\r\n      <ion-segment-button mode=\"ios\" value=\"NewClaim\" class=\"sbtn\">\r\n        <ion-label>New Claim</ion-label>\r\n      </ion-segment-button>\r\n      <ion-segment-button checked mode=\"ios\" value=\"ClaimTracker\" class=\"sbtn\">\r\n        <ion-label>Claim Tracker</ion-label>\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n\r\n    <div *ngIf=\"requestsType=='NewClaim'\">\r\n      <div class=\"dropbox\">\r\n        <div class=\"innerdropbox\" (click)=\"openlist()\">\r\n          <div class=\"euro-text\">{{Insurance}}</div>\r\n          <div class=\"imgdiv\">\r\n            <img style=\"height: 11px; width: 11px;\" src=\"assets/images/down-arrow.svg\" *ngIf=\"show==false\">\r\n            <img style=\"height: 11px; width: 11px;\" src=\"assets/images/yuparrow.svg\" *ngIf=\"show==true\">\r\n          </div>\r\n        </div>\r\n        <div *ngIf=\"show==true\">\r\n          <div *ngFor=\"let list of listarray\" (click)=\"selectInsurance(list)\">\r\n            <div class=\"euro-text1\">{{list.Insurance}}</div>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <div *ngIf=\"Insurance == 'Life Busines'\">\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Policy Number</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy Number\" class=\"in-text\" [(ngModel)]=\"polnum\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Client Surname</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Client Surname\" class=\"in-text\"\r\n            [(ngModel)]=\"csurname\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Client First name</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Client First name\" class=\"in-text\"\r\n            [(ngModel)]=\"cothname\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Policy type</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy type\" class=\"in-text\"\r\n            [(ngModel)]=\"dd_liabtype\"></ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Claim details</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Claim details\" class=\"in-text\"\r\n            [(ngModel)]=\"txt_message_clm\"></ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Claims Supporting Document</div>\r\n\r\n        <input class=\"custom-file-input\" type=\"file\" (change)=\"selectFile($event,'vehFrontPic')\"\r\n          accept=\"image/x-png,image/gif,image/jpeg\">\r\n\r\n        <div style=\"height: 100px; width:100px; text-align: center;\" *ngIf=\"claimdoc.base64\"><img\r\n            style=\"height: 100px; width:100px\" src=\"{{claimdoc.base64}}\" alt=\"\"></div>\r\n      </div>\r\n\r\n      <div *ngIf=\"Insurance == 'General Business'\">\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Policy Number</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy Number\" class=\"in-text\" [(ngModel)]=\"polnum\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <!-- Loss Date  -->\r\n        <div class=\"label\">Loss date</div>\r\n        <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n          (click)=\"showPickerStartDate = !showPickerStartDate\">\r\n          <div style=\"display: flex; align-items:center\">\r\n            <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ tourStartDate }}</ion-text>\r\n          </div>\r\n        </div>\r\n        <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"date\"\r\n          *ngIf=\"showPickerStartDate\" #datetime [value]=\"tourStartDate\" size=\"cover\"\r\n          (ionChange)=\"dateChanged(datetime.value,'start')\" showDefaultButtons=\"true\"\r\n          (ionCancel)=\"showPickerStartDate=false\"></ion-datetime>\r\n        <!-- Loss Date  -->\r\n\r\n        <!-- End Date  -->\r\n        <div class=\"label\">Notify date </div>\r\n        <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n          (click)=\"showPickerEndDate = !showPickerEndDate\">\r\n          <div style=\"display: flex; align-items:center\">\r\n            <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ tourEndDate }}</ion-text>\r\n          </div>\r\n        </div>\r\n        <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"date\"\r\n          *ngIf=\"showPickerEndDate\" #datetime [value]=\"tourEndDate\" size=\"cover\"\r\n          (ionChange)=\"dateChanged(datetime.value,'end')\" showDefaultButtons=\"true\"\r\n          (ionCancel)=\"showPickerEndDate=false\"></ion-datetime>\r\n        <!-- End Date  -->\r\n        <div class=\"label\">Description</div>\r\n        <div class=\"inputfield\">\r\n          <ion-textarea rows=\"7\" type=\"text\" placeholder=\"Loss Description\" class=\"in-text\" [(ngModel)]=\"desc\">\r\n          </ion-textarea>\r\n        </div>\r\n\r\n\r\n        <!-- <div class=\"label\" style=\"margin: 12px 0px 0px;\">Loss Type</div>\r\n\r\n           <div class=\"dropbox\">\r\n             <div class=\"innerdropbox\" (click)=\"openlistloss()\">\r\n               <div class=\"euro-text\">{{losstype}}</div>\r\n               <div class=\"imgdiv\">\r\n                 <img style=\"height: 11px; width: 11px;\" src=\"assets/images/down-arrow.svg\" *ngIf=\"show==false\">\r\n                 <img style=\"height: 11px; width: 11px;\" src=\"assets/images/yuparrow.svg\" *ngIf=\"show==true\">\r\n               </div>\r\n             </div>\r\n             <div *ngIf=\"showloss==true\">\r\n               <div *ngFor=\"let list of listarrayloss\" (click)=\"selectInsuranceloss(list)\">\r\n                 <div class=\"euro-text1\">{{list.Insurance}}</div>\r\n               </div>\r\n\r\n             </div>\r\n\r\n           </div> -->\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Reference Number</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Reference Number\" class=\"in-text\"\r\n            [(ngModel)]=\"refnum\">\r\n          </ion-input>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n\r\n\r\n  <div *ngIf=\"requestsType=='ClaimTracker'\">\r\n\r\n\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"text-align: -webkit-center;\">\r\n        <img style=\"    width: 26px;\r\n          margin-top: 24px;\" src=\"assets/tracking/01.svg\">\r\n\r\n      </ion-col>\r\n\r\n\r\n      <ion-col size=\"10\">\r\n        <ion-row>\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s1.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Claims received and under verification</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s2.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Claim verified and being processed</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s3.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>EDV sent to you and awaiting submission</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s4.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Final Approval</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s5.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Payment in progress</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n\r\n\r\n\r\n  </div>\r\n\r\n\r\n</ion-content>\r\n<ion-footer *ngIf=\"requestsType=='NewClaim'\">\r\n  <div class=\"btndiv\">\r\n    <ion-button class=\"btn1\" (click)=\"reportclaim()\">Submit claim</ion-button>\r\n  </div>\r\n</ion-footer>";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row style=\"display: flex;\r\n    align-items: center;\">\r\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width:100% ;\">\r\n              <img src=\"assets/images/sb-button.svg\" alt=\"sb-btn\">\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Make a Claim</div>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <ion-segment mode=\"ios\" (ionChange)=\"segmentChanged($event)\" #mySegment scrollable=\"true\" class=\"segment1\">\r\n      <ion-segment-button mode=\"ios\" value=\"NewClaim\" class=\"sbtn\">\r\n        <ion-label>New Claim</ion-label>\r\n      </ion-segment-button>\r\n      <ion-segment-button checked mode=\"ios\" value=\"ClaimTracker\" class=\"sbtn\">\r\n        <ion-label>Claim Tracker</ion-label>\r\n      </ion-segment-button>\r\n    </ion-segment>\r\n\r\n    <div *ngIf=\"requestsType=='NewClaim'\">\r\n      <div class=\"dropbox\">\r\n        <div class=\"innerdropbox\" (click)=\"openlist()\">\r\n          <div class=\"euro-text\">{{Insurance}}</div>\r\n          <div class=\"imgdiv\">\r\n            <img style=\"height: 11px; width: 11px;\" src=\"assets/images/down-arrow.svg\" *ngIf=\"show==false\">\r\n            <img style=\"height: 11px; width: 11px;\" src=\"assets/images/yuparrow.svg\" *ngIf=\"show==true\">\r\n          </div>\r\n        </div>\r\n        <div *ngIf=\"show==true\">\r\n          <div *ngFor=\"let list of listarray\" (click)=\"selectInsurance(list)\">\r\n            <div class=\"euro-text1\">{{list.Insurance}}</div>\r\n          </div>\r\n\r\n        </div>\r\n\r\n      </div>\r\n\r\n      <div *ngIf=\"Insurance == 'Life Busines'\">\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Policy Number</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy Number\" class=\"in-text\" [(ngModel)]=\"polnum\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Client Surname</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Client Surname\" class=\"in-text\"\r\n            [(ngModel)]=\"csurname\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Client First name</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Client First name\" class=\"in-text\"\r\n            [(ngModel)]=\"cothname\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Policy type</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Policy type\" class=\"in-text\"\r\n            [(ngModel)]=\"dd_liabtype\"></ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Claim details</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Claim details\" class=\"in-text\"\r\n            [(ngModel)]=\"txt_message_clm\"></ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\">Claims Supporting Document</div>\r\n\r\n        <input class=\"custom-file-input\" type=\"file\" (change)=\"selectFile($event,'vehFrontPic')\"\r\n          accept=\"image/x-png,image/gif,image/jpeg\">\r\n\r\n        <div style=\"height: 100px; width:100px; text-align: center;\" *ngIf=\"claimdoc.base64\"><img\r\n            style=\"height: 100px; width:100px\" src=\"{{claimdoc.base64}}\" alt=\"\"></div>\r\n      </div>\r\n\r\n      <div *ngIf=\"Insurance == 'General Business'\">\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">name</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"name\" class=\"in-text\" [(ngModel)]=\"name\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <!-- Loss Date  -->\r\n        <div class=\"label\">Accident Date</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" value=\"{{ date | date: 'MM/dd/yyyy' }}\" id=\"date\" class=\"in-text\"\r\n            [(ngModel)]=\"tourStartDate\">\r\n          </ion-input>\r\n        </div>\r\n        <ion-popover trigger=\"date\" size=\"cover\">\r\n          <ng-template>\r\n            <ion-datetime [showDefaultButtons]=\"true\" #popoverDatetime presentation=\"date\" value=\"{{date}}\"\r\n              (ionChange)=\"onDateChange(popoverDatetime.value)\">\r\n            </ion-datetime>\r\n          </ng-template>\r\n        </ion-popover>\r\n        <!-- Loss Date  -->\r\n\r\n        <!-- End Date  -->\r\n        <!-- <div class=\"label\">Notify date </div>\r\n        <div class=\"item-picker\" style=\"margin: 4% 0%; --background: #E8E8E7; height: 48px; padding: 13px 15px;\"\r\n          (click)=\"showPickerEndDate = !showPickerEndDate\">\r\n          <div style=\"display: flex; align-items:center\">\r\n            <ion-text class=\"ion-txt\" style=\"margin-left: 14px\">{{ tourEndDate }}</ion-text>\r\n          </div>\r\n        </div>\r\n        <ion-datetime class=\"item-picker\" style=\"margin:10px auto 8px; color: black;\" presentation=\"date\"\r\n          *ngIf=\"showPickerEndDate\" #datetime [value]=\"tourEndDate\" size=\"cover\"\r\n          (ionChange)=\"dateChanged(datetime.value,'end')\" showDefaultButtons=\"true\"\r\n          (ionCancel)=\"showPickerEndDate=false\"></ion-datetime> -->\r\n        <!-- End Date  -->\r\n        <div class=\"label\">Accident Describe</div>\r\n        <div class=\"inputfield\">\r\n          <ion-textarea rows=\"4\" type=\"text\" placeholder=\"Loss Description\" class=\"in-text\"\r\n            [(ngModel)]=\"accidentdescribe\">\r\n          </ion-textarea>\r\n        </div>\r\n\r\n        <div class=\"label\">Accident Place</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"accidentplace\" class=\"in-text\"\r\n            [(ngModel)]=\"accidentplace\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Vechile Registration Number</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"Reference Number\" class=\"in-text\"\r\n            [(ngModel)]=\"vechregnum\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Weather Condition</div>\r\n        <div class=\"inputfield\">\r\n          <ion-input style=\"height: 48px;\" type=\"text\" placeholder=\"eathercondition\" class=\"in-text\"\r\n            [(ngModel)]=\"weathercondition\">\r\n          </ion-input>\r\n        </div>\r\n\r\n        <div class=\"label\" style=\"margin: 12px 0px 0px;\">Loss Type</div>\r\n\r\n        <div class=\"dropbox\">\r\n          <div class=\"innerdropbox\" (click)=\"openlistloss()\">\r\n            <div class=\"euro-text\">{{losstype}}</div>\r\n            <div class=\"imgdiv\">\r\n              <img style=\"height: 11px; width: 11px;\" src=\"assets/images/down-arrow.svg\" *ngIf=\"show==false\">\r\n              <img style=\"height: 11px; width: 11px;\" src=\"assets/images/yuparrow.svg\" *ngIf=\"show==true\">\r\n            </div>\r\n          </div>\r\n          <div *ngIf=\"showloss==true\">\r\n            <div *ngFor=\"let list of listarrayloss\" (click)=\"selectInsuranceloss(list)\">\r\n              <div class=\"euro-text1\">{{list.Insurance}}</div>\r\n            </div>\r\n\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n\r\n\r\n  <div *ngIf=\"requestsType=='ClaimTracker'\">\r\n\r\n\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"text-align: -webkit-center;\">\r\n        <img style=\"    width: 26px;\r\n          margin-top: 24px;\" src=\"assets/tracking/01.svg\">\r\n\r\n      </ion-col>\r\n\r\n\r\n      <ion-col size=\"10\">\r\n        <ion-row>\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s1.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Claims received and under verification</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s2.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Claim verified and being processed</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s3.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>EDV sent to you and awaiting submission</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s4.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Final Approval</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n\r\n        <ion-row style=\"margin-top: 32px;\">\r\n          <ion-col size=\"3\">\r\n            <img style=\"    height: 68px;\r\n              width: 50px;\r\n              border: 1px solid #A2BB06;\r\n              border-radius: 10px;\r\n              padding: 10px;\" src=\"assets/tracking/s5.svg\">\r\n          </ion-col>\r\n          <ion-col size=\"9\">\r\n\r\n            <p>Payment in progress</p>\r\n          </ion-col>\r\n        </ion-row>\r\n\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n\r\n\r\n\r\n  </div>\r\n\r\n\r\n</ion-content>\r\n<ion-footer *ngIf=\"requestsType=='NewClaim'\">\r\n  <div class=\"btndiv\">\r\n    <ion-button class=\"btn1\" (click)=\"reportclaim()\">Submit claim</ion-button>\r\n  </div>\r\n</ion-footer>";
 
 /***/ })
 
