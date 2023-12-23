@@ -19,7 +19,7 @@ export class InsuranceAppService {
   username: any;
 
   comingFrom: any = 0;
-  loginas = 'user';
+  loginas;
 
   constructor(
     private toastctrl: ToastController,

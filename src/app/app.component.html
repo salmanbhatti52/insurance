@@ -26,7 +26,7 @@
             <div class="text1">Username: {{api.username}}</div>
           </div>
         </div>
-        <div style="width:90%;margin:0% auto;" *ngIf="api.loginas=='user' || api.loginas=='agent' ">
+        <div style="width:90%;margin:0% auto;" *ngIf="api.loginas=='user'">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
               routerLinkActive="selected" class="ion-no-padding" (click)="selected(p)">
@@ -47,7 +47,7 @@
           </ion-row> -->
 
         </div>
-        <!-- <div style="width:90%;margin:0% auto;" *ngIf="api.loginas=='agent'">
+        <div style="width:90%;margin:0% auto;" *ngIf="api.loginas=='agent'">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages2; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
               routerLinkActive="selected" class="ion-no-padding" (click)="selected(p)">
@@ -56,7 +56,7 @@
               <ion-label class="title">{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
-        </div> -->
+        </div>
 
 
       </ion-content>

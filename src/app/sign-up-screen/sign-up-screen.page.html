@@ -3,7 +3,7 @@
     <ion-row style="display: flex; align-items: center">
       <ion-col size="2" style="padding-left: 25px">
         <div style="width: 100%">
-          <img (click)="goBack()" src="assets/images/back-arrow.svg" alt="" />
+          <img (click)="goBack()" *ngIf="api.loginas == 'agent'" src="assets/images/back-arrow.svg" alt="" />
         </div>
 
         <!-- <ion-menu-toggle>
@@ -28,7 +28,9 @@
   <div class="container">
     <div class="title-para" style="text-align: center; margin-bottom: 20px">
       <!-- <p class="cont-p1">Hi there <br> -->
-      <p class="cont-p1"><span>Create an account to get started</span></p>
+      <p class="cont-p1" *ngIf="api.loginas !='agent'"><span>Create an account to get started</span></p>
+      <p class="cont-p1" *ngIf="api.loginas == 'agent'"><span>Enter customer details</span></p>
+
     </div>
     <form [formGroup]="RegisterForm" style="margin-top: 11px">
       <div class="dropbox1">

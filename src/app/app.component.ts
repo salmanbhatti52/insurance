@@ -22,7 +22,7 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Home',
-      url: '/home-page-screen-after-login',
+      url: 'home-page-screen-after-login',
       img: '/assets/images/home.svg',
       img1: '/assets/images/homeicon.svg',
       status: 'unchecked',
@@ -74,60 +74,60 @@ export class AppComponent {
       status: 'unchecked',
     },
   ];
-  // public appPages2 = [
-  //   // { title: 'Home', url: '/home-page-screen-after-login', img: '/assets/images/home.svg', img1: '/assets/images/homeicon.svg', status: 'unchecked' },
-  //   {
-  //     title: 'Dashboard',
-  //     url: 'dashboard',
-  //     img: '/assets/images/icons/chart.svg',
-  //     img1: '/assets/images/icons/dashboard.svg',
-  //     status: 'unchecked',
-  //   },
-  //   {
-  //     title: 'Get Quote',
-  //     url: '/get-quote',
-  //     img: '/assets/images/icons/quote.svg',
-  //     img1: '/assets/images/icons/activequote.svg',
-  //     status: 'unchecked',
-  //   },
-  //   // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
-  //   {
-  //     title: 'My Policies',
-  //     url: 'allpolicies',
-  //     img: '/assets/images/icons/policy.svg',
-  //     img1: '/assets/images/icons/activepolicy.svg',
-  //     status: 'unchecked',
-  //   },
-  //   {
-  //     title: 'Verify Policy',
-  //     url: 'policylookup',
-  //     img: '/assets/images/icons/mypolicy.svg',
-  //     img1: '/assets/images/icons/activemypolicy.svg',
-  //     status: 'unchecked',
-  //   },
-  //   {
-  //     title: 'Renewals',
-  //     url: 'verify-policy-screen-cust',
-  //     img: '/assets/images/icons/renewals.svg',
-  //     img1: '/assets/images/icons/activerenewls.svg',
-  //     status: 'unchecked',
-  //   },
-  //   {
-  //     title: 'Make a Claim',
-  //     url: '/makeaclaim',
-  //     img: '/assets/images/icons/claim.svg',
-  //     img1: '/assets/images/icons/activeclaim.svg',
-  //     status: 'unchecked',
-  //   },
-  //   {
-  //     title: 'Delete Account',
-  //     url: '/deleteaccount',
-  //     img: '/assets/images/icons/delete.png',
-  //     img1: '/assets/images/icons/activedelete.png',
-  //     status: 'unchecked',
-  //   },
-  //   // { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
-  // ];
+  public appPages2 = [
+    {
+      title: 'Dashboard',
+      url: 'dashboard',
+      img: '/assets/images/icons/chart.svg',
+      img1: '/assets/images/icons/dashboard.svg',
+      status: 'unchecked',
+    },
+    { title: 'Home', url: 'home-page-screen-after-login', img: '/assets/images/home.svg', img1: '/assets/images/homeicon.svg', status: 'unchecked' },
+    {
+      title: 'Get Quote',
+      url: '/get-quote',
+      img: '/assets/images/icons/quote.svg',
+      img1: '/assets/images/icons/activequote.svg',
+      status: 'unchecked',
+    },
+    // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
+    {
+      title: 'My Policies',
+      url: 'allpolicies',
+      img: '/assets/images/icons/policy.svg',
+      img1: '/assets/images/icons/activepolicy.svg',
+      status: 'unchecked',
+    },
+    {
+      title: 'Verify Policy',
+      url: 'policylookup',
+      img: '/assets/images/icons/mypolicy.svg',
+      img1: '/assets/images/icons/activemypolicy.svg',
+      status: 'unchecked',
+    },
+    {
+      title: 'Renewals',
+      url: 'verify-policy-screen-cust',
+      img: '/assets/images/icons/renewals.svg',
+      img1: '/assets/images/icons/activerenewls.svg',
+      status: 'unchecked',
+    },
+    {
+      title: 'Make a Claim',
+      url: '/makeaclaim',
+      img: '/assets/images/icons/claim.svg',
+      img1: '/assets/images/icons/activeclaim.svg',
+      status: 'unchecked',
+    },
+    {
+      title: 'Delete Account',
+      url: '/deleteaccount',
+      img: '/assets/images/icons/delete.png',
+      img1: '/assets/images/icons/activedelete.png',
+      status: 'unchecked',
+    },
+    // { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
+  ];
 
   selectedtitle: any;
   fp: any;
@@ -153,17 +153,17 @@ export class AppComponent {
     this.platform.ready().then(() => {
       setTimeout(() => {
         this.initializeApp();
-
+        this.api.loginas = localStorage.getItem('loginas');
         SplashScreen.hide();
         if (localStorage.getItem('userid') == null) {
           this.navCtrl.navigateRoot(['start-screen']);
         } else {
-          this.navCtrl.navigateRoot(['home-page-screen-after-login']);
-          // if (localStorage.getItem('loginas') == 'user') {
-          //   this.navCtrl.navigateRoot(['home-page-screen-after-login']);
-          // } else {
-          //   this.navCtrl.navigateRoot(['dashboard']);
-          // }
+          // this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+          if (this.api.loginas == 'user') {
+            this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+          } else {
+            this.navCtrl.navigateRoot(['dashboard']);
+          }
         }
 
         //aliiii

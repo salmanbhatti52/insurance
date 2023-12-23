@@ -55,7 +55,7 @@ export class AgentidpopupPage implements OnInit {
           this.getresult(token)
         }, (err) => {
           console.log(err);
-          this.api.hideLoader()
+          this.api.hideLoader();
         });
       } else {
 
@@ -67,11 +67,12 @@ export class AgentidpopupPage implements OnInit {
 
           if (res.result.status == 1) {
             localStorage.setItem('loginas', 'agent')
+            this.api.loginas = 'agent';
             localStorage.setItem('userid', this.agentId);
             localStorage.setItem('token', '39109f7df56e1CORNERStone9e685066bb852');
             localStorage.setItem('fname', res.result.name)
 
-            this.router.navigate(['/home-page-screen-after-login']);
+            this.router.navigate(['/sign-up-screen']);
           } else {
             this.api.presenttoast(res.result.message)
           }
@@ -105,7 +106,7 @@ export class AgentidpopupPage implements OnInit {
       localStorage.setItem('token', beartoken);
       localStorage.setItem('fname', res.agentName)
 
-      this.router.navigate(['/home-page-screen-after-login']);
+      this.router.navigate(['/sign-up-screen']);
       // this.router.navigate(['/dashboard']);
 
       // this.navCtrl.navigateForward('agentloginscreen')
