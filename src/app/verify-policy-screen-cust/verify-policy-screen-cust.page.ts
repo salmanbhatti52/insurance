@@ -95,7 +95,9 @@ export class VerifyPolicyScreenCustPage implements OnInit {
           console.log(res);
           const token = res.accessToken;
           this.bearertoken = res.accessToken;
-          this.api.renewal('https://testcipapiservices.gibsonline.com/api/policies/P%2F500%2F1001%2F2023%2F00235/renew', this.bearertoken).subscribe((response: any) => {
+          let encode1 = encodeURIComponent(this.pnumber);
+          console.log('dasdsadsa', encode1);
+          this.api.renewal('https://testcipapiservices.gibsonline.com/api/policies/' + encode1 + '/renew', this.bearertoken).subscribe((response: any) => {
 
             console.log(response);
             this.api.hideLoader();

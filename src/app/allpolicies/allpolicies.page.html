@@ -26,6 +26,26 @@
     <div class="htxt">Policy Number</div>
     <div class="dropbox1">
       <div class="innerbox">
+        <ion-input type="text" [(ngModel)]="uTitle" class="boxinput" placeholder="Select Policy Type"
+          (click)="openlist()">
+        </ion-input>
+        <div class="imgdiv" (click)="openlist()">
+          <img style="height: 11px; width: 11px;" src="assets/images/down-arrow.svg" *ngIf="show==false">
+          <img style="height: 11px; width: 11px;" src="assets/images/yuparrow.svg" *ngIf="show==true">
+        </div>
+
+      </div>
+      <div *ngIf="show==true">
+        <div *ngFor="let list of listarray" (click)="selectTitle(list)">
+          <div class="euro-text1">{{list.Title}}</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="htxt">Policy Number</div>
+    <div class="dropbox1">
+      <div class="innerbox">
         <ion-input type="text" [(ngModel)]="policynum" class="boxinput" placeholder="Policy Number/P10 Policy Number">
         </ion-input>
 
@@ -62,6 +82,46 @@
                   <td style="width: 30%; color: black;">Policy Number</td>
                   <td style="color: black;">{{P10PolicyNumber}}</td>
                 </tr>
+                <tr>
+                  <td style="width: 30%; color: black;">Policy Status</td>
+                  <td style="color: black;">{{statusdesc}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="gibspolicy==true">
+      <div class="htxt1">Your Policy Information</div>
+      <div class="box box-success">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table quotetable table-bordered">
+              <tbody>
+                <tr>
+                  <td style="width: 30%; color: black;">Customer Name</td>
+                  <td style="color: black;">{{full_name}}</td>
+                </tr>
+                <!-- <tr>
+                  <td style="width: 30%; color: black;">Insurance Type</td>
+                  <td style="color: black;">{{InsuranceType}}</td>
+                </tr> -->
+                <tr>
+                  <td style="width: 30%; color: black;">Start Date</td>
+                  <td style="color: black;">{{StartDate}}</td>
+                </tr>
+                <tr>
+                  <td style="width: 30%; color: black;">Date of Expiration</td>
+                  <td style="color: black;">{{DateofExpiration}}</td>
+                </tr>
+                <tr>
+                  <td style="width: 30%; color: black;">Policy Number</td>
+                  <td style="color: black;">{{PolicyNumber}}</td>
+                </tr>
+
               </tbody>
             </table>
           </div>

@@ -92,7 +92,8 @@ export class PolicylookupPage implements OnInit {
                 if (response.result.status == 0) {
                   this.gibspolicy = false;
                   this.policy = false;
-                  this.api.presenttoast(response.result.message);
+                  // this.api.presenttoast(response.result.message);
+                  this.api.alertboxshow(response.result.message);
                 } else {
                   this.gibspolicy = false;
                   this.policy = true;
@@ -107,7 +108,8 @@ export class PolicylookupPage implements OnInit {
                 }
               } else {
                 this.gibspolicy = false;
-                this.api.presenttoast('Policy record not found');
+                // this.api.presenttoast('Policy record not found');
+                this.api.alertboxshow('Policy record not found');
               }
             },
             (err) => {
@@ -134,8 +136,8 @@ export class PolicylookupPage implements OnInit {
         this.policy = false;
 
         this.gibspolicy = true;
-        // this.full_name =
-        //   response.insured.firstName + ' ' + response.insured.lastName;
+        this.full_name =
+          response.customerName
         this.StartDate = response.startDate;
         this.DateofExpiration = response.endDate;
         this.PolicyNumber = response.policyNo;
@@ -144,7 +146,8 @@ export class PolicylookupPage implements OnInit {
         console.log(err);
         this.gibspolicy = false;
         this.policy = false;
-        this.api.presenttoast(err.error.title);
+        // this.api.presenttoast(err.error.message);
+        this.api.alertboxshow(err.error.message);
         this.api.hideLoader();
       }
     );

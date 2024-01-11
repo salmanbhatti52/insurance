@@ -196,8 +196,9 @@ let SignInScreenPage = class SignInScreenPage {
 
         this.navCtrl.navigateRoot(['/home-page-screen-after-login']);
       } else {
-        this.api.hideLoader();
-        this.api.presenttoast('Email or password is incorrect'); // this.error = true
+        this.api.hideLoader(); // this.api.presenttoast('Email or password is incorrect');
+
+        this.api.alertboxshow(res.message); // this.error = true
         // this.errormessage = 'Email or password is incorrect'
         // setTimeout(() => {
         //   this.error = false

@@ -69,12 +69,13 @@ export class AgentidpopupPage implements OnInit {
             localStorage.setItem('loginas', 'agent')
             this.api.loginas = 'agent';
             localStorage.setItem('userid', this.agentId);
-            localStorage.setItem('token', '39109f7df56e1CORNERStone9e685066bb852');
+            // localStorage.setItem('token', '39109f7df56e1CORNERStone9e685066bb852');
             localStorage.setItem('fname', res.result.name)
 
-            this.router.navigate(['/sign-up-screen']);
+            this.signIn();
           } else {
-            this.api.presenttoast(res.result.message)
+            // this.api.presenttoast(res.result.message);
+            this.api.alertboxshow(res.result.message);
           }
         }, (err) => {
           console.log(err);
@@ -105,8 +106,8 @@ export class AgentidpopupPage implements OnInit {
       localStorage.setItem('userid', this.agentId);
       localStorage.setItem('token', beartoken);
       localStorage.setItem('fname', res.agentName)
-
-      this.router.navigate(['/sign-up-screen']);
+      this.signIn()
+      // this.router.navigate(['/sign-up-screen']);
       // this.router.navigate(['/dashboard']);
 
       // this.navCtrl.navigateForward('agentloginscreen')
@@ -120,7 +121,8 @@ export class AgentidpopupPage implements OnInit {
       // })
     }, (err) => {
       console.log(err);
-      this.api.presenttoast(err.error.title)
+      // this.api.presenttoast(err.error.message);
+      this.api.alertboxshow(err.error.message);
       this.api.hideLoader()
     });
     // }, (err) => {
@@ -131,6 +133,49 @@ export class AgentidpopupPage implements OnInit {
 
   }
 
+  signIn() {
+    this.api.showLoader();
+    let myData =
+      'myData={"email": "' +
+      'mobiletest1@gmail.com' +
+      '","password": "' +
+      'password' +
+      '", "method": "login"}';
+    this.api.insertData(myData).subscribe(
+      (res: any) => {
+        console.log('res==', res);
+        this.api.hideLoader();
+        if (res.email) {
+
+          this.api.presenttoast('Welcome!');
+          localStorage.setItem('userid', res.user_id);
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('title', res.title);
+          localStorage.setItem('fname', res.first_name);
+          localStorage.setItem('lname', res.last_name);
+          localStorage.setItem('number', res.phone);
+          localStorage.setItem('email', res.email);
+          this.api.username = res.first_name;
+          // this.navCtrl.navigateRoot(['/dashboard']);
+          this.navCtrl.navigateRoot(['/home-page-screen-after-login']);
+        } else {
+          this.api.hideLoader();
+          this.api.presenttoast('Email or password is incorrect');
+          // this.error = true
+          // this.errormessage = 'Email or password is incorrect'
+          // setTimeout(() => {
+          //   this.error = false
+          // }, 3000);
+        }
+      },
+      (err) => {
+        this.api.hideLoader();
+        console.log('err==', err);
+
+        this.api.presenttoast(err);
+      }
+    );
+  }
 
   openVhclMakeList() {
     if (this.showMaker == true) {

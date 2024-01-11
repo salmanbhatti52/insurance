@@ -118,7 +118,8 @@ export class SignUpScreenPage implements OnInit {
         console.log('res==', res);
         if (res.message === 'Email address already exist') {
 
-          this.api.presenttoast(res.message);
+          // this.api.presenttoast(res.message);
+          this.api.alertboxshow(res.message);
         } else {
           this.api.presenttoast(res.message);
           localStorage.setItem('loginas', 'user');
@@ -128,7 +129,8 @@ export class SignUpScreenPage implements OnInit {
 
       }, (err) => {
         console.log('err==', err);
-        this.api.presenttoast(err);
+        // this.api.presenttoast(err);
+        this.api.alertboxshow(err);
 
       });
 

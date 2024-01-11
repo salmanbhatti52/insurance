@@ -32,15 +32,10 @@
     </ion-refresher-content>
   </ion-refresher> -->
 
-  <ng-container *ngIf="notifications?.length >0">
-    <!-- <div class="clear_div">
-        <p class="clear_p" (click)="clearNotifcation()">Clear all</p>
-      </div> -->
+  <!-- <ng-container *ngIf="notifications?.length >0">
 
     <ion-row class="pdtop" *ngFor="let notification of notifications; let i = index">
-      <!-- <ion-col size="2" class="notify_image_main">
-        <img src="{{base_url}}{{notification.sender_img_url}}" />
-      </ion-col> -->
+
       <ion-col [class.oddclass]="i%2!=0" class="notify_content" size="12">
         <ion-row>
           <ion-col size="6" class="ion-text-left">
@@ -60,8 +55,9 @@
         <h2>{{dataError}}</h2>
       </ion-col>
     </ion-row>
-  </ng-container>
-  <ng-container *ngIf="notifications?.length < 1 ">
+  </ng-container> -->
+  <!-- *ngIf="notifications?.length < 1 " -->
+  <ng-container>
     <ion-row>
       <ion-col class="ion-text-center">
         <h2>No notification found</h2>

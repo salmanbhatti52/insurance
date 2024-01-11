@@ -508,7 +508,8 @@ let CarInsuranceDetailsPage = class CarInsuranceDetailsPage {
                 this.propsalResponse = res;
                 console.log(res);
                 if (this.propsalResponse.status_no == 0) {
-                    this.api.presenttoast(this.propsalResponse.message);
+                    // this.api.presenttoast(this.propsalResponse.message);
+                    this.api.alertboxshow(this.propsalResponse.message);
                 }
                 else {
                     //ali
@@ -558,7 +559,8 @@ let CarInsuranceDetailsPage = class CarInsuranceDetailsPage {
             });
         }
         else {
-            this.api.presenttoast(formValidationResult.message);
+            // this.api.presenttoast(formValidationResult.message);
+            this.api.alertboxshow(formValidationResult.message);
         }
     }
     selectFile(event, type) {

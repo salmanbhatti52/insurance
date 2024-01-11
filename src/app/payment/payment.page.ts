@@ -108,7 +108,7 @@ export class PaymentPage implements OnInit {
 
       localStorage.setItem('trxref', ref.trxref);
       this.paystacktrxref = ref.trxref
-      // this.payment_method()
+      this.payment_method()
       // if (localStorage.getItem('subProName') == 'Third Party') {
 
       //   var myData = {
@@ -135,6 +135,8 @@ export class PaymentPage implements OnInit {
       // }
 
 
+    } else {
+      this.api.alertboxshow('Something went Wrong');
     }
 
   }
@@ -157,12 +159,14 @@ export class PaymentPage implements OnInit {
       if (res.status_no == 1) {
         this.paystackpayment()
       } else {
-        this.api.presenttoast(res.message)
+        // this.api.presenttoast(res.message);
+        this.api.alertboxshow(res.message);
       }
 
 
     }, err => {
-      this.api.hideLoader()
+      this.api.alertboxshow('err in payment method select ' + err);
+      // this.api.hideLoader()
     });
 
   }
@@ -182,38 +186,42 @@ export class PaymentPage implements OnInit {
     this.api.showLoader()
     this.api.insertData(datasend).subscribe((res: any) => {
       console.log('payemt response', res);
-      if (res.message != 'Transaction reference not found') {
-        this.api.hideLoader()
-        if (localStorage.getItem('productName') == 'Motor Insurance') {
-          this.sendcertificate()
-        } else {
-          this.api.presenttoast(res.message)
-          this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
-          console.log(this.draftArr);
+      // this.api.alertboxshow(res);
+      if (res.status_no == 1) {
+        this.api.hideLoader();
+        this.api.alertboxshow(res.message);
+        // if (localStorage.getItem('productName') == 'Motor Insurance') {
+        this.sendcertificate()
+        // } else {
+        // this.api.presenttoast(res.message)
+        // this.api.alertboxshow(res.message)
+        this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+        console.log(this.draftArr);
 
-          for (var i = 0; i < this.draftArr.length; i++) {
-            if (this.draftArr[i].product_id == this.productID) {
+        // for (var i = 0; i < this.draftArr.length; i++) {
+        //   if (this.draftArr[i].product_id == this.productID) {
 
-              this.draftArr.splice(i, 1);
+        //     this.draftArr.splice(i, 1);
 
-            }
+        //   }
 
-          }
-          localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
-        }
+        // }
+        // localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+        // }
 
       } else {
         this.api.hideLoader()
-        this.api.presenttoast(res.message)
+        // this.api.presenttoast(res.message)
+        this.api.alertboxshow(res.message)
       }
 
 
     }, err => {
+      this.api.alertboxshow('error in standalonePaystackConfirm: ' + JSON.stringify(err));
       this.api.hideLoader()
     });
   }
   sendcertificate() {
-
     this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
     console.log(this.draftArr);
 
@@ -234,10 +242,11 @@ export class PaymentPage implements OnInit {
       ',"verify_token":"' +
       localStorage.getItem('token') +
       '","method":"send_certificate"}';
-    this.api.showLoader()
+    // this.api.showLoader()
     this.api.insertData(datasend).subscribe((res: any) => {
       console.log('payemt response', res);
-      this.api.hideLoader()
+      this.api.hideLoader();
+      // this.api.alertboxshow(res);
       if (res.status_no == 1) {
         localStorage.setItem('certificatelink', res.certificate_link)
         // this.paystackpayment()
@@ -252,7 +261,8 @@ export class PaymentPage implements OnInit {
         // this.referenceval = reference
         // console.log('ddddddddddddddd', transval);
       } else {
-        this.api.presenttoast(res.message)
+        // this.api.presenttoast(res.message)
+        this.api.alertboxshow(res.message)
       }
 
       // if (paymentoption == 1) {
@@ -264,6 +274,7 @@ export class PaymentPage implements OnInit {
       //   ]);
       // }
     }, err => {
+      this.api.alertboxshow('err in certificate' + err);
       this.api.hideLoader()
     });
   }

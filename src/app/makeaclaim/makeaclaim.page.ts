@@ -57,6 +57,7 @@ export class MakeaclaimPage implements OnInit {
   weathercondition: any = '';
   accidentdescribe: any = '';
   selectedDate: any;
+  Insurancename: any;
   constructor(public api: InsuranceAppService, public router: Router,
     public alert: AlertController) { }
 
@@ -238,8 +239,11 @@ export class MakeaclaimPage implements OnInit {
               console.log(err);
               this.api.hideLoader()
               if (err.error.message == 'Validation Failed') {
-                this.api.presenttoast(err.error.errors[0].message);
-
+                // this.api.presenttoast(err.error.errors[0].message);
+                this.alertboxshow(err.error.errors[0].message)
+              } else {
+                // this.api.presenttoast(err.error.Message);
+                this.alertboxshow(err.error.Message)
               }
 
 
@@ -274,15 +278,13 @@ export class MakeaclaimPage implements OnInit {
   }
 
   selectInsuranceloss(list) {
-    console.log(list.value);
-
+    console.log(list);
+    this.Insurancename = list.Insurance
     this.losstype = list.value;
     this.showloss = false;
   }
 
   async alertbox(message) {
-    const fp = localStorage.getItem('fingerprint');
-    console.log('sASAsaSA', fp);
 
     const alert = await this.alert.create({
       header: 'Your claim number is ' + message,
@@ -300,4 +302,22 @@ export class MakeaclaimPage implements OnInit {
     await alert.present();
 
   }
+
+  async alertboxshow(message) {
+    const alert = await this.alert.create({
+      header: message,
+      cssClass: 'fgprintcls',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
 }

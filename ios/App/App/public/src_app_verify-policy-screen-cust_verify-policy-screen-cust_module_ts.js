@@ -188,8 +188,10 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
           console.log(res);
           const token = res.accessToken;
           _this.bearertoken = res.accessToken;
+          let encode1 = encodeURIComponent(_this.pnumber);
+          console.log('dasdsadsa', encode1);
 
-          _this.api.renewal('https://testcipapiservices.gibsonline.com/api/policies/P%2F500%2F1001%2F2023%2F00235/renew', _this.bearertoken).subscribe(response => {
+          _this.api.renewal('https://testcipapiservices.gibsonline.com/api/policies/' + encode1 + '/renew', _this.bearertoken).subscribe(response => {
             console.log(response);
 
             _this.api.hideLoader();

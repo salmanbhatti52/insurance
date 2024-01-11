@@ -120,51 +120,117 @@ let AllpoliciesPage = class AllpoliciesPage {
 
   ngOnInit() {}
 
+  openlist() {
+    console.log('show value====', this.show);
+
+    if (this.show == false) {
+      this.show = true;
+    } else {
+      this.show = false;
+    }
+  }
+
+  selectTitle(list) {
+    this.uTitle = list.Title;
+    this.show = false;
+  }
+
   policylookup() {
     var _this = this;
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      // localStorage.getItem('token')
-      if (_this.policynum == '') {
+      if (_this.uTitle == '') {
+        _this.api.presenttoast('Please select an item from dropdown');
+      } else if (_this.policynum == '') {
         _this.api.presenttoast('Policy Number Field is required!');
       } else {
-        let token = '39109f7df56e1CORNERStone9e685066bb852';
+        if (_this.uTitle == 'Gen Business') {
+          _this.api.showLoader();
 
-        _this.api.showLoader();
+          var myData = {
+            sid: 'ECHANNEL2',
+            token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD'
+          };
 
-        _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + _this.policynum + '&process_code=140', token).subscribe(response => {
-          _this.api.hideLoader();
+          _this.api.gibsapi(myData).subscribe(res => {
+            console.log(res);
+            let token = res.accessToken;
 
-          console.log(response);
-          _this.verifypolicy = response.result;
+            _this.policyresult(token);
+          }, err => {
+            console.log(err);
 
-          if (_this.verifypolicy) {
-            if (response.result.status == 0) {
-              _this.gibspolicy = false;
-              _this.policy = false;
+            _this.api.hideLoader();
+          });
+        }
 
-              _this.api.presenttoast(response.result.message);
+        if (_this.uTitle == 'Life/Investment') {
+          let token = '39109f7df56e1CORNERStone9e685066bb852';
+
+          _this.api.showLoader();
+
+          _this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&polnum2=' + _this.policynum + '&process_code=140', '39109f7df56e1CORNERStone9e685066bb852').subscribe(response => {
+            _this.api.hideLoader();
+
+            console.log(response);
+            _this.verifypolicy = response.result;
+
+            if (_this.verifypolicy) {
+              if (response.result.status == 0) {
+                _this.gibspolicy = false;
+                _this.policy = false;
+
+                _this.api.presenttoast(response.result.message);
+              } else {
+                _this.gibspolicy = false;
+                _this.policy = true;
+                var name = _this.verifypolicy.insured;
+                _this.full_name = name.replace(/,/g, '');
+                _this.StartDate = _this.verifypolicy.issuedate;
+                _this.DateofExpiration = _this.verifypolicy.mat_date;
+                _this.PolicyNumber = _this.verifypolicy.polnum; // this.InsuranceType =
+
+                _this.P10PolicyNumber = _this.verifypolicy.polnum2;
+                _this.statusdesc = _this.verifypolicy.statusdesc;
+              }
             } else {
               _this.gibspolicy = false;
-              _this.policy = true;
-              var name = _this.verifypolicy.insured;
-              _this.full_name = name.replace(/,/g, '');
-              _this.StartDate = _this.verifypolicy.issuedate;
-              _this.DateofExpiration = _this.verifypolicy.mat_date;
-              _this.PolicyNumber = _this.verifypolicy.polnum; // this.InsuranceType =
 
-              _this.P10PolicyNumber = _this.verifypolicy.polnum2;
+              _this.api.presenttoast('Policy record not found');
             }
-          } else {
+          }, err => {
             _this.gibspolicy = false;
+            _this.policy = false;
 
-            _this.api.presenttoast('Policy record not found');
-          }
-        }, err => {
-          _this.api.hideLoader();
-        });
+            _this.api.hideLoader();
+          });
+        }
       }
     })();
+  }
+
+  policyresult(token) {
+    // P/500/4000/2022/00007
+    let encode = encodeURIComponent(this.policynum);
+    console.log('eee--', encode);
+    let Bearertoken = token;
+    let url = 'https://testcipapiservices.gibsonline.com/api/policies/' + encode;
+    this.api.getpolicy(url, Bearertoken).subscribe(response => {
+      this.api.hideLoader();
+      console.log(response);
+      this.policy = false;
+      this.gibspolicy = true;
+      this.full_name = response.customerName;
+      this.StartDate = response.startDate;
+      this.DateofExpiration = response.endDate;
+      this.PolicyNumber = response.policyNo;
+    }, err => {
+      console.log(err);
+      this.gibspolicy = false;
+      this.policy = false;
+      this.api.presenttoast(err.error.title);
+      this.api.hideLoader();
+    });
   }
 
 };
@@ -198,7 +264,7 @@ module.exports = "@import url(\"https://fonts.googleapis.com/css2?family=Roboto:
   \**************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n  <ion-toolbar class=\"headBgGlobal\">\n    <ion-row style=\"display: flex;\n    align-items: center;\">\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\n        <ion-menu-toggle>\n          <ion-buttons>\n            <div style=\"width:100% ;\">\n              <img src=\"assets/images/sb-button.svg\" alt=\"sb-btn\">\n            </div>\n          </ion-buttons>\n        </ion-menu-toggle>\n      </ion-col>\n      <ion-col size=\"8\">\n        <div class=\"title\">My Policy</div>\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n\n</ion-header>\n\n<ion-content>\n  <div class=\"wrapper\">\n    <p class=\"para\">Find your Insurance policy in Seconds!</p>\n\n    <div class=\"htxt\">Policy Number</div>\n    <div class=\"dropbox1\">\n      <div class=\"innerbox\">\n        <ion-input type=\"text\" [(ngModel)]=\"policynum\" class=\"boxinput\" placeholder=\"Policy Number/P10 Policy Number\">\n        </ion-input>\n\n      </div>\n    </div>\n    <div *ngIf=\"policy==true\">\n      <div class=\"htxt1\">Your Policy Information</div>\n      <div class=\"box box-success\">\n        <div class=\"panel-body\">\n          <div class=\"table-responsive\">\n            <table class=\"table quotetable table-bordered\">\n              <tbody>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Full Name</td>\n                  <td style=\"color: black;\">{{full_name}}</td>\n                </tr>\n                <!-- <tr>\n                  <td style=\"width: 30%; color: black;\">Insurance Type</td>\n                  <td style=\"color: black;\">{{InsuranceType}}</td>\n                </tr> -->\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Start Date</td>\n                  <td style=\"color: black;\">{{StartDate}}</td>\n                </tr>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Date of Expiration</td>\n                  <td style=\"color: black;\">{{DateofExpiration}}</td>\n                </tr>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">E-Channel Policy Number</td>\n                  <td style=\"color: black;\">{{PolicyNumber}}</td>\n                </tr>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Policy Number</td>\n                  <td style=\"color: black;\">{{P10PolicyNumber}}</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n\n</ion-content>\n\n<ion-footer>\n  <div class=\"btndiv\">\n    <ion-button class=\"btn1\" (click)=\"policylookup()\">Submit</ion-button>\n  </div>\n</ion-footer>\n";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n  <ion-toolbar class=\"headBgGlobal\">\n    <ion-row style=\"display: flex;\n    align-items: center;\">\n      <ion-col size=\"2\" style=\"padding-left: 25px;\">\n        <ion-menu-toggle>\n          <ion-buttons>\n            <div style=\"width:100% ;\">\n              <img src=\"assets/images/sb-button.svg\" alt=\"sb-btn\">\n            </div>\n          </ion-buttons>\n        </ion-menu-toggle>\n      </ion-col>\n      <ion-col size=\"8\">\n        <div class=\"title\">My Policy</div>\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n\n</ion-header>\n\n<ion-content>\n  <div class=\"wrapper\">\n    <p class=\"para\">Find your Insurance policy in Seconds!</p>\n\n    <div class=\"htxt\">Policy Number</div>\n    <div class=\"dropbox1\">\n      <div class=\"innerbox\">\n        <ion-input type=\"text\" [(ngModel)]=\"uTitle\" class=\"boxinput\" placeholder=\"Select Policy Type\"\n          (click)=\"openlist()\">\n        </ion-input>\n        <div class=\"imgdiv\" (click)=\"openlist()\">\n          <img style=\"height: 11px; width: 11px;\" src=\"assets/images/down-arrow.svg\" *ngIf=\"show==false\">\n          <img style=\"height: 11px; width: 11px;\" src=\"assets/images/yuparrow.svg\" *ngIf=\"show==true\">\n        </div>\n\n      </div>\n      <div *ngIf=\"show==true\">\n        <div *ngFor=\"let list of listarray\" (click)=\"selectTitle(list)\">\n          <div class=\"euro-text1\">{{list.Title}}</div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"htxt\">Policy Number</div>\n    <div class=\"dropbox1\">\n      <div class=\"innerbox\">\n        <ion-input type=\"text\" [(ngModel)]=\"policynum\" class=\"boxinput\" placeholder=\"Policy Number/P10 Policy Number\">\n        </ion-input>\n\n      </div>\n    </div>\n    <div *ngIf=\"policy==true\">\n      <div class=\"htxt1\">Your Policy Information</div>\n      <div class=\"box box-success\">\n        <div class=\"panel-body\">\n          <div class=\"table-responsive\">\n            <table class=\"table quotetable table-bordered\">\n              <tbody>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Full Name</td>\n                  <td style=\"color: black;\">{{full_name}}</td>\n                </tr>\n                <!-- <tr>\n                  <td style=\"width: 30%; color: black;\">Insurance Type</td>\n                  <td style=\"color: black;\">{{InsuranceType}}</td>\n                </tr> -->\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Start Date</td>\n                  <td style=\"color: black;\">{{StartDate}}</td>\n                </tr>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Date of Expiration</td>\n                  <td style=\"color: black;\">{{DateofExpiration}}</td>\n                </tr>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">E-Channel Policy Number</td>\n                  <td style=\"color: black;\">{{PolicyNumber}}</td>\n                </tr>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Policy Number</td>\n                  <td style=\"color: black;\">{{P10PolicyNumber}}</td>\n                </tr>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Policy Status</td>\n                  <td style=\"color: black;\">{{statusdesc}}</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n\n\n    <div *ngIf=\"gibspolicy==true\">\n      <div class=\"htxt1\">Your Policy Information</div>\n      <div class=\"box box-success\">\n        <div class=\"panel-body\">\n          <div class=\"table-responsive\">\n            <table class=\"table quotetable table-bordered\">\n              <tbody>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Customer Name</td>\n                  <td style=\"color: black;\">{{full_name}}</td>\n                </tr>\n                <!-- <tr>\n                  <td style=\"width: 30%; color: black;\">Insurance Type</td>\n                  <td style=\"color: black;\">{{InsuranceType}}</td>\n                </tr> -->\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Start Date</td>\n                  <td style=\"color: black;\">{{StartDate}}</td>\n                </tr>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Date of Expiration</td>\n                  <td style=\"color: black;\">{{DateofExpiration}}</td>\n                </tr>\n                <tr>\n                  <td style=\"width: 30%; color: black;\">Policy Number</td>\n                  <td style=\"color: black;\">{{PolicyNumber}}</td>\n                </tr>\n\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n\n</ion-content>\n\n<ion-footer>\n  <div class=\"btndiv\">\n    <ion-button class=\"btn1\" (click)=\"policylookup()\">Submit</ion-button>\n  </div>\n</ion-footer>";
 
 /***/ })
 

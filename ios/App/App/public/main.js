@@ -444,25 +444,27 @@ let AppComponent = class AppComponent {
       img1: '/assets/images/icons/deleteactive.png',
       status: 'unchecked'
     }];
-    this.appPages2 = [{
-      title: 'Dashboard',
-      url: 'dashboard',
-      img: '/assets/images/icons/chart.svg',
-      img1: '/assets/images/icons/dashboard.svg',
-      status: 'unchecked'
-    }, {
+    this.appPages2 = [// {
+    //   title: 'Dashboard',
+    //   url: 'dashboard',
+    //   img: '/assets/images/icons/chart.svg',
+    //   img1: '/assets/images/icons/dashboard.svg',
+    //   status: 'unchecked',
+    // },
+    {
       title: 'Home',
       url: 'home-page-screen-after-login',
       img: '/assets/images/home.svg',
       img1: '/assets/images/homeicon.svg',
       status: 'unchecked'
-    }, {
-      title: 'Get Quote',
-      url: '/get-quote',
-      img: '/assets/images/icons/quote.svg',
-      img1: '/assets/images/icons/activequote.svg',
-      status: 'unchecked'
-    }, // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
+    }, // {
+    //   title: 'Get Quote',
+    //   url: '/get-quote',
+    //   img: '/assets/images/icons/quote.svg',
+    //   img1: '/assets/images/icons/activequote.svg',
+    //   status: 'unchecked',
+    // },
+    // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
     {
       title: 'My Policies',
       url: 'allpolicies',
@@ -491,7 +493,7 @@ let AppComponent = class AppComponent {
       title: 'Delete Account',
       url: '/deleteaccount',
       img: '/assets/images/icons/delete.png',
-      img1: '/assets/images/icons/activedelete.png',
+      img1: '/assets/images/icons/deleteactive.png',
       status: 'unchecked'
     } // { title: 'Settings', url: '/settings', img: '/assets/images/icons/setting.svg', img1: '/assets/images/icons/settingactive.svg', status: 'unchecked' },
     ]; // if (localStorage.getItem('userid') != null) {
@@ -511,12 +513,11 @@ let AppComponent = class AppComponent {
         if (localStorage.getItem('userid') == null) {
           this.navCtrl.navigateRoot(['start-screen']);
         } else {
-          // this.navCtrl.navigateRoot(['home-page-screen-after-login']);
-          if (this.api.loginas == 'user') {
-            this.navCtrl.navigateRoot(['home-page-screen-after-login']);
-          } else {
-            this.navCtrl.navigateRoot(['dashboard']);
-          }
+          this.navCtrl.navigateRoot(['home-page-screen-after-login']); // if (this.api.loginas == 'user') {
+          //   this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+          // } else {
+          //   this.navCtrl.navigateRoot(['dashboard']);
+          // }
         } //aliiii
 
       }, 4000);
@@ -707,10 +708,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let InsuranceAppService = class InsuranceAppService {
-  constructor(toastctrl, http, loadingController) {
+  constructor(toastctrl, http, loadingController, alert) {
     this.toastctrl = toastctrl;
     this.http = http;
-    this.loadingController = loadingController; // Live:
+    this.loadingController = loadingController;
+    this.alert = alert; // Live:
 
     this.url = 'https://www.cornerstone.com.ng/webservice'; // url = 'https://www.cornerstone.com.ng/devtest/webservice';
 
@@ -981,6 +983,23 @@ let InsuranceAppService = class InsuranceAppService {
     });
   }
 
+  alertboxshow(message) {
+    var _this = this;
+
+    return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const alert = yield _this.alert.create({
+        header: message,
+        cssClass: 'fgprintcls',
+        buttons: [{
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {}
+        }]
+      });
+      yield alert.present();
+    })();
+  }
+
   presenttoast(message) {
     this.toastctrl.create({
       message,
@@ -990,10 +1009,10 @@ let InsuranceAppService = class InsuranceAppService {
   }
 
   showLoader(content) {
-    var _this = this;
+    var _this2 = this;
 
     return (0,D_najam_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      _this.loadingController.create({
+      _this2.loadingController.create({
         cssClass: 'my-custom-class',
         message: 'Please wait...'
       }).then(res => {
@@ -1018,6 +1037,8 @@ InsuranceAppService.ctorParameters = () => [{
   type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.LoadingController
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.AlertController
 }];
 
 InsuranceAppService = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Injectable)({

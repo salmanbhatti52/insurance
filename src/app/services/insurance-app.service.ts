@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import * as btoa from 'btoa-lite';
 
@@ -25,6 +25,7 @@ export class InsuranceAppService {
     private toastctrl: ToastController,
     private http: HttpClient,
     private loadingController: LoadingController,
+    private alert: AlertController
 
   ) { }
   insertData(myData) {
@@ -324,6 +325,24 @@ export class InsuranceAppService {
       headers: header,
     });
   }
+
+  async alertboxshow(message) {
+    const alert = await this.alert.create({
+      header: message,
+      cssClass: 'fgprintcls',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
 
   presenttoast(message) {
     this.toastctrl

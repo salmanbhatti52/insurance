@@ -444,7 +444,8 @@ export class CarInsuranceDetailsPage implements OnInit {
             console.log(res);
 
             if (this.propsalResponse.status_no == 0) {
-              this.api.presenttoast(this.propsalResponse.message);
+              // this.api.presenttoast(this.propsalResponse.message);
+              this.api.alertboxshow(this.propsalResponse.message)
             } else {
               //ali
 
@@ -502,7 +503,8 @@ export class CarInsuranceDetailsPage implements OnInit {
           }
         );
     } else {
-      this.api.presenttoast(formValidationResult.message);
+      // this.api.presenttoast(formValidationResult.message);
+      this.api.alertboxshow(formValidationResult.message);
     }
   }
 
