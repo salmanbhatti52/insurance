@@ -71,7 +71,7 @@ enum PluginError:Int {
 
                 default:
                     code = PluginError.BIOMETRIC_UNKNOWN_ERROR.rawValue;
-                    // break;
+                    break;
             }
             results = ["code": code, "message": error!.localizedDescription];
             pluginResult = CDVPluginResult(status: CDVCommandStatus_ERROR, messageAs: results);
