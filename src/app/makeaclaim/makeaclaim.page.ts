@@ -231,20 +231,16 @@ export class MakeaclaimPage implements OnInit {
             .subscribe((res: any) => {
               this.api.hideLoader();
               // this.api.presenttoast('Clain Number ' + res.claimNo);
-              this.alertbox(res.claimNo)
+              this.alertboxshow(res.Messageresponse)
               console.log('gibs product detail', res);
               // localStorage.setItem('gibsproduct', JSON.stringify(res))
               // this.router.navigate(['gibsplans']);
             }, err => {
               console.log(err);
               this.api.hideLoader()
-              if (err.error.message == 'Validation Failed') {
-                // this.api.presenttoast(err.error.errors[0].message);
-                this.alertboxshow(err.error.errors[0].message)
-              } else {
-                // this.api.presenttoast(err.error.Message);
-                this.alertboxshow(err.error.Message)
-              }
+
+              this.alertboxshow(err.error.Messageresponse);
+
 
 
             });
@@ -284,24 +280,7 @@ export class MakeaclaimPage implements OnInit {
     this.showloss = false;
   }
 
-  async alertbox(message) {
 
-    const alert = await this.alert.create({
-      header: 'Your claim number is ' + message,
-      cssClass: 'fgprintcls',
-      buttons: [
-        {
-          text: 'OK',
-          role: 'confirm',
-          handler: () => {
-
-          },
-        },
-      ],
-    });
-    await alert.present();
-
-  }
 
   async alertboxshow(message) {
     const alert = await this.alert.create({
