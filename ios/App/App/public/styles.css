@@ -1481,7 +1481,7 @@ ion-footer {
   }
 }
 .terms {
-  --max-height: 75%;
+  --max-height: 80%;
   --max-width: 90%;
 }
 /* Basic CSS for apps built with Ionic */
