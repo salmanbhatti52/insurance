@@ -229,6 +229,23 @@ export class InsuranceAppService {
       headers: header,
     });
   }
+  trackclaim(url, data?) {
+    const username = 'c31a6a20-7eda-41da-a7df-d14b501c237c';
+    const password = 'DECHANNEL';
+    const encodedCredentials = btoa(`${username}:${password}`);
+    let header;
+
+    header = new HttpHeaders({
+      'Authorization': 'Basic ' + encodedCredentials,
+      "Accept": "application/json",
+      'Content-Type': "application/json",
+    });
+    // header.append('Access-Control-Allow-Origin', '*');
+    // header.append('Access-Control-Allow-Headers');
+    return this.http.get(`${url}`, {
+      headers: header,
+    });
+  }
 
   renewal(url, token) {
 

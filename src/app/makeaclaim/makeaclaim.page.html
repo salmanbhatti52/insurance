@@ -177,106 +177,145 @@
       </div>
     </div>
 
+    <div *ngIf="requestsType=='ClaimTracker'">
+
+      <div class="label" style="margin: 12px 0px 0px;">Enter Vechile Registration Number</div>
+      <div class="inputfield">
+        <ion-input style="height: 48px;" type="text" placeholder="Reference Number" class="in-text"
+          [(ngModel)]="vechregnum">
+        </ion-input>
+      </div>
+
+    </div>
+
+    <ion-modal [isOpen]="isModalOpen">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <!-- <div class="container" style="transform: translate(0%, 50%)">
+          <div style="display: flex;align-items: center;">
+            <div>
+              <ion-icon name="checkmark-circle" class="iconcls"></ion-icon>
+            </div>
+            <div class="htext">{{claim}}</div>
+          </div>
+
+          <div style="margin-top: 5%;">
+            <ion-button class="btn1" (click)="setOpen(false)">Close</ion-button>
+          </div>
+        </div> -->
+
+          <ion-row>
+            <ion-col size="2" style="text-align: -webkit-center;">
+              <img style="width: 26px;
+              margin-top: 24px;" src="assets/tracking/01.svg" *ngIf="claim==''">
+              <img style="width: 26px;
+                margin-top: 24px;" src="assets/tracking/02.svg"
+                *ngIf="claim=='claims received and under verification'">
+              <img style="width: 26px;
+                margin-top: 24px;" src="assets/tracking/03.svg" *ngIf="claim=='claims verified and being processed'">
+              <img style="width: 26px;
+                 margin-top: 24px;" src="assets/tracking/04.svg"
+                *ngIf="claim=='edv sent to you and awaiting submission'">
+              <img style="    width: 26px;
+                 margin-top: 24px;" src="assets/tracking/05.svg" *ngIf="claim=='final approval'">
+              <img style="    width: 26px;
+                 margin-top: 24px;" src="assets/tracking/06.svg" *ngIf="claim=='payment in progress'">
+
+            </ion-col>
+            <ion-col size="10">
+              <ion-row>
+                <ion-col size="3">
+                  <img style="    height: 68px;
+                    width: 50px;
+                    border: 1px solid #A2BB06;
+                    border-radius: 10px;
+                    padding: 10px;" src="assets/tracking/s1.svg">
+                </ion-col>
+                <ion-col size="9">
+
+                  <p>Claims received and under verification</p>
+                </ion-col>
+              </ion-row>
+
+
+              <ion-row style="margin-top: 32px;">
+                <ion-col size="3">
+                  <img style="    height: 68px;
+                    width: 50px;
+                    border: 1px solid #A2BB06;
+                    border-radius: 10px;
+                    padding: 10px;" src="assets/tracking/s2.svg">
+                </ion-col>
+                <ion-col size="9">
+
+                  <p>Claim verified and being processed</p>
+                </ion-col>
+              </ion-row>
+
+              <ion-row style="margin-top: 32px;">
+                <ion-col size="3">
+                  <img style="    height: 68px;
+                    width: 50px;
+                    border: 1px solid #A2BB06;
+                    border-radius: 10px;
+                    padding: 10px;" src="assets/tracking/s3.svg">
+                </ion-col>
+                <ion-col size="9">
+
+                  <p>EDV sent to you and awaiting submission</p>
+                </ion-col>
+              </ion-row>
+
+              <ion-row style="margin-top: 32px;">
+                <ion-col size="3">
+                  <img style="    height: 68px;
+                    width: 50px;
+                    border: 1px solid #A2BB06;
+                    border-radius: 10px;
+                    padding: 10px;" src="assets/tracking/s4.svg">
+                </ion-col>
+                <ion-col size="9">
+
+                  <p>Final Approval</p>
+                </ion-col>
+              </ion-row>
+
+
+              <ion-row style="margin-top: 32px;">
+                <ion-col size="3">
+                  <img style="    height: 68px;
+                    width: 50px;
+                    border: 1px solid #A2BB06;
+                    border-radius: 10px;
+                    padding: 10px;" src="assets/tracking/s5.svg">
+                </ion-col>
+                <ion-col size="9">
+
+                  <p>Payment in progress</p>
+                </ion-col>
+              </ion-row>
+
+            </ion-col>
+          </ion-row>
+
+          <div style="margin-top: 5%;">
+            <ion-button class="btn1" (click)="setOpen(false)">Close</ion-button>
+          </div>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
   </div>
 
 
 
-  <div *ngIf="requestsType=='ClaimTracker'">
-
-
-    <ion-row>
-      <ion-col size="2" style="text-align: -webkit-center;">
-        <img style="    width: 26px;
-          margin-top: 24px;" src="assets/tracking/01.svg">
-
-      </ion-col>
-
-
-      <ion-col size="10">
-        <ion-row>
-          <ion-col size="3">
-            <img style="    height: 68px;
-              width: 50px;
-              border: 1px solid #A2BB06;
-              border-radius: 10px;
-              padding: 10px;" src="assets/tracking/s1.svg">
-          </ion-col>
-          <ion-col size="9">
-
-            <p>Claims received and under verification</p>
-          </ion-col>
-        </ion-row>
-
-
-        <ion-row style="margin-top: 32px;">
-          <ion-col size="3">
-            <img style="    height: 68px;
-              width: 50px;
-              border: 1px solid #A2BB06;
-              border-radius: 10px;
-              padding: 10px;" src="assets/tracking/s2.svg">
-          </ion-col>
-          <ion-col size="9">
-
-            <p>Claim verified and being processed</p>
-          </ion-col>
-        </ion-row>
-
-        <ion-row style="margin-top: 32px;">
-          <ion-col size="3">
-            <img style="    height: 68px;
-              width: 50px;
-              border: 1px solid #A2BB06;
-              border-radius: 10px;
-              padding: 10px;" src="assets/tracking/s3.svg">
-          </ion-col>
-          <ion-col size="9">
-
-            <p>EDV sent to you and awaiting submission</p>
-          </ion-col>
-        </ion-row>
-
-        <ion-row style="margin-top: 32px;">
-          <ion-col size="3">
-            <img style="    height: 68px;
-              width: 50px;
-              border: 1px solid #A2BB06;
-              border-radius: 10px;
-              padding: 10px;" src="assets/tracking/s4.svg">
-          </ion-col>
-          <ion-col size="9">
-
-            <p>Final Approval</p>
-          </ion-col>
-        </ion-row>
-
-
-        <ion-row style="margin-top: 32px;">
-          <ion-col size="3">
-            <img style="    height: 68px;
-              width: 50px;
-              border: 1px solid #A2BB06;
-              border-radius: 10px;
-              padding: 10px;" src="assets/tracking/s5.svg">
-          </ion-col>
-          <ion-col size="9">
-
-            <p>Payment in progress</p>
-          </ion-col>
-        </ion-row>
-
-      </ion-col>
-    </ion-row>
-
-
-
-
-  </div>
 
 
 </ion-content>
-<ion-footer *ngIf="requestsType=='NewClaim'">
-  <div class="btndiv">
+<ion-footer>
+  <div class="btndiv" *ngIf="requestsType=='NewClaim'">
     <ion-button class="btn1" (click)="reportclaim()">Submit claim</ion-button>
+  </div>
+  <div class="btndiv" *ngIf="requestsType=='ClaimTracker'">
+    <ion-button class="btn1" (click)="setOpen(true)">Track claim</ion-button>
   </div>
 </ion-footer>

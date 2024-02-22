@@ -58,6 +58,9 @@ export class MakeaclaimPage implements OnInit {
   accidentdescribe: any = '';
   selectedDate: any;
   Insurancename: any;
+  bearertoken: any;
+  claim: any;
+  isModalOpen = false;
   constructor(public api: InsuranceAppService, public router: Router,
     public alert: AlertController) { }
 
@@ -239,7 +242,7 @@ export class MakeaclaimPage implements OnInit {
               console.log(err);
               this.api.hideLoader()
 
-              this.alertboxshow(err.error.Messageresponse);
+              this.alertboxshow(err.error.Message);
 
 
 
@@ -254,6 +257,51 @@ export class MakeaclaimPage implements OnInit {
     }
   }
 
+
+  setOpen(isOpen: boolean) {
+    if (isOpen == true) {
+      this.api.showLoader();
+      const myData = {
+        sid: 'ECHANNEL2',
+        token: '78CD825E-2F6A-4986-962C-7F0FA3E945BD',
+      };
+      this.api.gibsapi(myData).subscribe(
+        (res: any) => {
+          console.log(res);
+
+          this.api.trackclaim('https://app.cornerstone.com.ng/claimapi/api/ProcessClaim/CustomerStatus?regno=' + this.vechregnum).subscribe((response: any) => {
+            this.api.hideLoader();
+            console.log(response);
+            this.isModalOpen = isOpen;
+            if (response.Message == "Success") {
+              this.claim = response.Messageresponse.toLowerCase();
+              console.log('dasdsadsadd', this.claim);
+              // this.alertboxshow('status: ' + this.claim);
+            } else {
+              this.api.hideLoader();
+              this.alertboxshow(response.Messageresponse);
+            }
+
+
+
+          }, (err) => {
+            console.log(err);
+            this.api.hideLoader();
+            this.alertboxshow(err.error.Messageresponse);
+          });
+
+        },
+        (err) => {
+          console.log(err);
+          this.api.hideLoader();
+          this.alertboxshow(err.Messageresponse);
+        }
+      );
+    } else {
+      this.isModalOpen = false;
+    }
+
+  }
   // dateChanged(value, type) {
   //   if (type == 'start') {
   //     // this.tourStartDate = value;

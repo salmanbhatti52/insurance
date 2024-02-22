@@ -47,6 +47,14 @@ ion-footer{
   background-color: white !important;
   font-family: Bliss Pro;
 }
+ion-modal#example-modal {
+  --width: fit-content;
+  --min-width: 295px;
+  --height:190px;
+  --border-radius:17px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6) !important;
+}
 .header-md::after {
     left: 0;
     bottom: -5px;

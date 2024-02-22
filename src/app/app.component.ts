@@ -151,23 +151,23 @@ export class AppComponent {
 
   ngOnInit() {
     this.platform.ready().then(() => {
-      setTimeout(() => {
-        this.initializeApp();
-        this.api.loginas = localStorage.getItem('loginas');
-        SplashScreen.hide();
-        if (localStorage.getItem('userid') == null) {
-          this.navCtrl.navigateRoot(['start-screen']);
-        } else {
-          this.navCtrl.navigateRoot(['home-page-screen-after-login']);
-          // if (this.api.loginas == 'user') {
-          //   this.navCtrl.navigateRoot(['home-page-screen-after-login']);
-          // } else {
-          //   this.navCtrl.navigateRoot(['dashboard']);
-          // }
-        }
+      // setTimeout(() => {
+      //   this.initializeApp();
+      //   this.api.loginas = localStorage.getItem('loginas');
+      //   SplashScreen.hide();
+      //   if (localStorage.getItem('userid') == null) {
+      //     this.navCtrl.navigateRoot(['start-screen']);
+      //   } else {
+      //     this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+      //     // if (this.api.loginas == 'user') {
+      //     //   this.navCtrl.navigateRoot(['home-page-screen-after-login']);
+      //     // } else {
+      //     //   this.navCtrl.navigateRoot(['dashboard']);
+      //     // }
+      //   }
 
-        //aliiii
-      }, 4000);
+      //   //aliiii
+      // }, 4000);
     });
   }
 

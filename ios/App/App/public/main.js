@@ -900,6 +900,23 @@ let InsuranceAppService = class InsuranceAppService {
     });
   }
 
+  trackclaim(url, data) {
+    const username = 'c31a6a20-7eda-41da-a7df-d14b501c237c';
+    const password = 'DECHANNEL';
+    const encodedCredentials = btoa_lite__WEBPACK_IMPORTED_MODULE_1__(`${username}:${password}`);
+    let header;
+    header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+      'Authorization': 'Basic ' + encodedCredentials,
+      "Accept": "application/json",
+      'Content-Type': "application/json"
+    }); // header.append('Access-Control-Allow-Origin', '*');
+    // header.append('Access-Control-Allow-Headers');
+
+    return this.http.get(`${url}`, {
+      headers: header
+    });
+  }
+
   renewal(url, token) {
     console.log('token in api ervice====', token);
     let header;
