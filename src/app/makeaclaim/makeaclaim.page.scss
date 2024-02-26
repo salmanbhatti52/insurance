@@ -119,9 +119,10 @@
     margin: 0% auto;
   }
   p{
-    color: #000;
+    color: #5D5D5D;
 
     font-size: 13px;
+    opacity: 0.6;
   }
   .iconcls{
     font-size: 20px;
@@ -153,4 +154,9 @@
   background: #E8E8E7;
   // box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 16px 0px;
 
+}
+.active{
+  color: #A2BB06;
+  font-weight: 700;
+  opacity: 1 !important;
 }

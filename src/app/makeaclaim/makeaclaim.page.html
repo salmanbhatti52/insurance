@@ -233,7 +233,8 @@
                 </ion-col>
                 <ion-col size="9">
 
-                  <p>Claims received and under verification</p>
+                  <p [class.active]="claim=='claims received and under verification'">Claims received and under
+                    verification</p>
                 </ion-col>
               </ion-row>
 
@@ -248,7 +249,8 @@
                 </ion-col>
                 <ion-col size="9">
 
-                  <p>Claim verified and being processed</p>
+                  <p [class.active]="claim=='claims verified and being processed'">Claim verified and being processed
+                  </p>
                 </ion-col>
               </ion-row>
 
@@ -262,7 +264,8 @@
                 </ion-col>
                 <ion-col size="9">
 
-                  <p>EDV sent to you and awaiting submission</p>
+                  <p [class.active]="claim=='edv sent to you and awaiting submission'">EDV sent to you and awaiting
+                    submission</p>
                 </ion-col>
               </ion-row>
 
@@ -276,7 +279,7 @@
                 </ion-col>
                 <ion-col size="9">
 
-                  <p>Final Approval</p>
+                  <p [class.active]="claim=='final approval'">Final Approval</p>
                 </ion-col>
               </ion-row>
 
@@ -291,7 +294,7 @@
                 </ion-col>
                 <ion-col size="9">
 
-                  <p>Payment in progress</p>
+                  <p [class.active]="claim=='payment in progress'">Payment in progress</p>
                 </ion-col>
               </ion-row>
 
