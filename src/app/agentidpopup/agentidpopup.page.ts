@@ -74,6 +74,7 @@ export class AgentidpopupPage implements OnInit {
 
             this.signIn();
           } else {
+            this.api.hideLoader();
             // this.api.presenttoast(res.result.message);
             this.api.alertboxshow(res.result.message);
           }
