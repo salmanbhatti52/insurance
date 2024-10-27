@@ -15,6 +15,7 @@ $RECYCLE.BIN/
 
 *.log
 log.txt
+info.txt
 npm-debug.log*
 
 /.angular
