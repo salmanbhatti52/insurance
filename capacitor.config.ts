@@ -1,4 +1,5 @@
 import { CapacitorConfig } from '@capacitor/cli';
+import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard';
 
 const config: CapacitorConfig = {
   appId: 'com.cornerstone.insurance',
@@ -11,6 +12,11 @@ const config: CapacitorConfig = {
       launchAutoHide: false,
       showSpinner: false,
       androidScaleType: 'CENTER_CROP',
+    },
+    Keyboard: {
+      resize: KeyboardResize.Body,
+      // style: KeyboardStyle.Dark,
+      resizeOnFullScreen: true,
     },
   },
 };

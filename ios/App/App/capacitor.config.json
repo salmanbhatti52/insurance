@@ -9,6 +9,10 @@
 			"launchAutoHide": false,
 			"showSpinner": false,
 			"androidScaleType": "CENTER_CROP"
+		},
+		"Keyboard": {
+			"resize": "body",
+			"resizeOnFullScreen": true
 		}
 	}
 }
