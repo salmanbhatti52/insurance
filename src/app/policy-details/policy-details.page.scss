@@ -1,0 +1,37 @@
+.title{
+    text-align: center;
+    font-family: Bliss Pro;
+    font-size: 20px;
+    color: #1A0F55;
+    font-weight: bold;
+  }
+
+  .boxdiv{
+    background: #fff;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  }
+
+  .transaction_heading{
+    color: #1A206D;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .transaction_ref{
+    color: #1A206D;
+    text-decoration: underline;
+  }
+
+  .receipt_div{
+    // display: flex;
+    margin-bottom: 7%;
+    // flex-direction: column;
+    padding: 11px;
+  }
+
+  .download_btn{
+    font-size: 16px;
+    color: #1A0f55;
+  }

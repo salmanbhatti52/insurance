@@ -136,19 +136,23 @@
 
               <img *ngIf="p.name =='Motor Insurance'" (error)="handleImgError2($event, userIMG)" src="{{p.image}}"
                 alt="" class="cimg" />
+              
+              <img *ngIf="p.name =='Investment plans'" (error)="handleImgError2($event, userIMG)" src="{{p.image}}"
+                alt="" class="cimg" />
             </div>
             <p class="gp-div">{{p.name}}</p>
           </div>
         </ion-col>
-        <ion-col siz="4">
+        <!-- <ion-col siz="4">
           <div class="gc-div" (click)="investmentsubProducts()">
-            <!-- (click)="openQuote(p)" -->
             <div class="gimg-div">
               <img src="assets/images/investmentplan2.png" alt="" class="cimg" />
             </div>
             <p class="gp-div">Investment plans</p>
           </div>
-        </ion-col>
+        </ion-col> -->
+            <!-- (click)="openQuote(p)" -->
+
       </ion-row>
     </ion-grid>
 

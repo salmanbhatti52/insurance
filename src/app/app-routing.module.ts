@@ -326,6 +326,10 @@ const routes: Routes = [
   {
     path: 'paymentpopup',
     loadChildren: () => import('./paymentpopup/paymentpopup.module').then( m => m.PaymentpopupPageModule)
+  },
+  {
+    path: 'policy-details',
+    loadChildren: () => import('./policy-details/policy-details.module').then( m => m.PolicyDetailsPageModule)
   }
 
 

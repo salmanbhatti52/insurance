@@ -9,9 +9,9 @@ import * as btoa from 'btoa-lite';
 })
 export class InsuranceAppService {
   // Live:
-  url = 'https://www.cornerstone.com.ng/webservice'
+  // url = 'https://www.cornerstone.com.ng/webservice'
 
-  // url = 'https://www.cornerstone.com.ng/devtest/webservice';
+  url = 'https://www.cornerstone.com.ng/devtest/webservice';
   authurl = 'https://testcipapiservices.gibsonline.com/api/auth';
   // url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/'
 
@@ -28,6 +28,23 @@ export class InsuranceAppService {
     private alert: AlertController
 
   ) { }
+
+  submitFormData(data:{[key:string]:any}){
+    const formdData = new FormData();
+    
+    Object.keys(data).forEach((key:string)=>{
+      const value = data[key];
+
+      if(value instanceof File){
+        formdData.append(key,value,value.name);
+      }else{
+        formdData.append(key,value);
+      }
+    });
+
+    return this.http.post(this.url,formdData);
+  }
+
   insertData(myData) {
     console.log('data', myData);
 
@@ -45,6 +62,7 @@ export class InsuranceAppService {
       headers: header,
     });
   }
+  
   gibsapi(myData) {
     let header;
 

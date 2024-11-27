@@ -26,17 +26,44 @@
 <ion-content>
   <div class="container">
     <div class="c-center">
-      <p class="con-p1">Choose one to get a Quote</p>
+      <p class="con-p1" *ngIf="insurancename!='Investment plans'">Choose one to get a Quote</p>
     </div>
     <div style="font-size: 20px; color: #000; font-weight: 500; margin-bottom: 3%">
       {{insurancename}} products are:
     </div>
 
     <div class="boxdiv" *ngFor="let sp of subProducts">
-      <div style="display: flex; margin-bottom: 7%" (click)="seeDetails(sp)">
+      <div *ngIf="sp.name" style="display: flex; margin-bottom: 7%" (click)="seeDetails(sp)">
         <img (error)="handleImgError($event, userIMG)" src="{{sp.image}}" alt=""
           style="width: 100px; height: 100px; object-fit: cover" />
         <p class="con-p2">{{sp.name}}</p>
+      </div>
+      <div>
+      <div *ngIf="sp.productName" style="display: flex;
+          margin-bottom: 7%;
+          flex-direction: column;
+          padding: 11px;" >
+        <p class="con-p2" style="margin: 0px;">Name: {{sp.productName}}</p>
+        <p style="margin: 0px;">Policy Id: {{sp.policyId}}</p>
+        <p style="margin: 0px;">Insured Name: {{sp.insuredName}}</p>
+        <p style="margin: 0px;">Amount Paid: {{sp.amountPaid}}</p>
+        <p style="margin: 0px;">New Payment Status: 
+          <span *ngIf="sp.repayment==false">N/A</span>
+          <span *ngIf="sp.repayment==true">Available</span>
+        </p>
+        <p style="margin: 0px;">Account Statement Status: 
+          <span *ngIf="sp.accountStatementAvailable==false">N/A</span>
+          <span *ngIf="sp.accountStatementAvailable==true">Available</span>
+        </p>
+
+        <ion-icon name="ellipsis-vertical" (click)="showOptions(sp.policyId)" style="position: absolute;right: 27px;"></ion-icon>
+        <div *ngIf="policyId==sp.policyId" class="option_div">
+          <div style="margin-bottom: 4px;" (click)="downloadPolicyDoc(sp.policyId)">Download Policy Certificate</div>
+          <div style="margin-bottom: 4px;" (click)="fetchPolicyTransactions(sp.policyId)">Get transaction history for receipt</div>
+          <div style="margin-bottom: 4px;" (click)="downloadAccountStatement(sp.policyId)">Download IES Account Statement</div>
+          <div style="margin-bottom: 4px;" (click)="getPastAndUpcomingPayments(sp.policyId,sp.repayment)">Get Past and Upcoming Payments</div>
+        </div>
+      </div>
       </div>
     </div>
     <div class="boxdiv" *ngIf="productID==1">

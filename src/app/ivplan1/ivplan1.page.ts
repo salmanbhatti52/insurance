@@ -242,7 +242,7 @@ export class Ivplan1Page implements OnInit {
         },
         (err) => {
           this.api.hideLoader();
-          console.log(err);
+          console.log('error: ',err);
         }
       );
   }

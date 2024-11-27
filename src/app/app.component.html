@@ -22,9 +22,9 @@
           <!-- <div class="imgdiv">
             <img src="assets/images/icons/userimg.svg">
           </div> -->
-          <div class="textdiv" *ngIf="api.loginas=='user' || api.loginas=='agent'">
-            <div class="text1">Username: {{api.username}}</div>
-          </div>
+          <!-- <div class="textdiv" *ngIf="api.loginas=='user' || api.loginas=='agent'">
+            <div class="text1">{{api.username}}</div>
+          </div> -->
         </div>
         <div style="width:90%;margin:0% auto;" *ngIf="api.loginas=='user'">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">

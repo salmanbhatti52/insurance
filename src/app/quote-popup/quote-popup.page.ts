@@ -17,7 +17,8 @@ export class QuotePopupPage implements OnInit {
   productID: any;
   insurancename: any;
   motorsubproducts = [];
-
+  policyId:any;
+  showDropDown = false;
   arr1 = [];
   arr2 = [];
   arr3 = [];
@@ -57,6 +58,122 @@ export class QuotePopupPage implements OnInit {
     console.log(this.insurancename);
 
   }
+
+  showOptions(val:any){
+    if(this.policyId == val){
+      this.policyId = '';
+    }else{
+      this.policyId = val;
+    }
+  }
+
+  downloadPolicyDoc(policyId:any){
+    this.policyId = '';
+    let data = {
+      'verify_token':localStorage.getItem('token'),
+      'method':'getPolicyCertificate',
+      'policyId':policyId
+    }
+    this.api.showLoader();
+    this.api.submitFormData(data).subscribe((res:any)=>{
+      this.api.hideLoader();
+      
+      console.log('Get Policy Doc Res: ',res);
+      if(res.status_no == 1){
+        this.api.presenttoast(res.message);
+        localStorage.setItem('policyCertificate',res.certificate_link);
+        this.router.navigate(['policy-details']);
+      }else{
+
+      }
+      
+    },(err:any)=>{
+
+    });
+
+  }
+
+  fetchPolicyTransactions(policyId:any){
+    this.policyId = '';
+    let data = {
+      'verify_token':localStorage.getItem('token'),
+      'method':'getTransactionHistoryForReceipt',
+      'policyId':policyId
+    }
+    this.api.showLoader();
+    this.api.submitFormData(data).subscribe((res:any)=>{
+      this.api.hideLoader();
+      
+      console.log('Get Policy Transactions Res: ',res);
+      if(res.status_no == 1){
+        // this.api.presenttoast(res.message);
+        localStorage.setItem('transactionsHistory',JSON.stringify(res.transactionHistory));
+        this.router.navigate(['policy-details']);
+      }else{
+
+      }
+      
+    },(err:any)=>{
+
+    });
+  }
+
+  downloadAccountStatement(policyId:any){
+    this.policyId = '';
+    let data = {
+      'verify_token':localStorage.getItem('token'),
+      'method':'getIESAccountStatement',
+      'policyId':policyId
+    }
+    this.api.showLoader();
+    this.api.submitFormData(data).subscribe((res:any)=>{
+      this.api.hideLoader();
+      
+      console.log('Get Account Statement Res: ',res);
+      if(res.status_no == 1){
+        this.api.presenttoast(res.message);
+        localStorage.setItem('accountStatement',res.accountStatementLink);
+        this.router.navigate(['policy-details']);
+      }else{
+        this.api.presenttoast(res.message);
+      }
+      
+    },(err:any)=>{
+
+    });
+  }
+
+  getPastAndUpcomingPayments(policyId:any,repaymentStatus:any){
+    this.policyId = '';
+    if(repaymentStatus == true){
+      let data = {
+        'verify_token':localStorage.getItem('token'),
+        'method':'getTransactionHistory',
+        'policyId':policyId
+      }
+      this.api.showLoader();
+      this.api.submitFormData(data).subscribe((res:any)=>{
+        this.api.hideLoader();
+        
+        console.log('Get Policy Transactions History Res: ',res);
+        if(res.status_no == 1){
+          // this.api.presenttoast(res.message);
+          localStorage.setItem('nextPayments',JSON.stringify(res.nextPayment));
+          localStorage.setItem('pastPayments',JSON.stringify(res.pastPayment));
+          this.router.navigate(['policy-details']);
+        }else{
+  
+        }
+        
+      },(err:any)=>{
+  
+      });
+    }else{
+      this.api.presenttoast('No new payments available for this policy.')
+    }
+    
+  }
+
 
   goback() {
 
@@ -134,7 +251,7 @@ export class QuotePopupPage implements OnInit {
         } else {
           if (sp.name == 'Student Plan' || sp.name == 'Europe / Schengen' || sp.name == 'Travel Care Premier' || sp.name == 'Travel Care Visa') {
             this.router.navigate(['/mypolicies']);
-          } else {
+          } else if(sp.parent_id !=27) {
             localStorage.setItem('localtravel', JSON.stringify(sp));
             this.router.navigate(['/internationalinformation']);
           }

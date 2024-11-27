@@ -1,0 +1,73 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row>
+      <ion-col size="2" style="padding-left: 25px">
+        <ion-buttons>
+          <div style="width:100% ;">
+            <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
+          </div>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Policy Details</div>
+      </ion-col>
+      <ion-col class="titleclass" size="2"> </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+  <div style="padding: 20px 20px;">
+    
+    <div *ngIf="policyCertificateUrl" style="text-align: center;">
+      <div style="margin-bottom: 15px;">Click the link below to download your policy certificate.</div>
+      <a class="dowonload_btn" href="{{policyCertificateUrl}}" download="certificate.pdf">Download</a>
+    </div>
+
+    <div *ngIf="transactionsHistory && transactionReceiptUrl==undefined">
+      <div class="transaction_heading">Policy Transactions History</div>
+      <div style="margin-bottom: 10px;text-align: left;">Click a transaction reference number to download its reciept</div>
+      <div *ngFor="let data of transactionsHistory" class="boxdiv receipt_div">
+        <div>Transation Reference: <span (click)="fetchTransactionReceipt(data.transactionReference)" class="transaction_ref">{{data.transactionReference}}</span></div>
+        <div>Transation Amount: {{data.transactionAmount}}</div>
+        <div>Transation Date: {{data.transactionDate}}</div>
+        <div>Transation Type: {{data.transactionType}}</div>
+        <div>Transation Status: {{data.transactionStatus}}</div>
+      </div>
+    </div>
+
+    <div *ngIf="transactionReceiptUrl" style="text-align: center;">
+      <div style="margin-bottom: 15px;">Click the link below to download your transaction receipt.</div>
+      <a class="download_btn" href="{{transactionReceiptUrl}}" download="receipt.pdf">Download</a>
+    </div>
+    
+    <div *ngIf="accountStatementUrl" style="text-align: center;">
+      <div style="margin-bottom: 15px;">Click the link below to download your IES account statement .</div>
+      <a class="download_btn" href="{{accountStatementUrl}}" download="account_statement.pdf">Download</a>
+    </div>
+
+    <div *ngIf="nextPayments">
+      <div class="transaction_heading">Policy Next Payment</div>
+      <!-- <div style="margin-bottom: 10px;text-align: left;">Click a transaction reference number to download its reciept</div> -->
+      <div *ngFor="let data of nextPayments" class="boxdiv receipt_div">
+        <div>Insured Name: {{data.insuredName}}</div>
+        <div>Payment Due Date: {{data.paymentDueDate}}</div>
+        <div>Amount Due: {{data.amountDue}}</div>
+      </div>
+    </div>
+
+    <div *ngIf="pastPayments">
+      <div class="transaction_heading">Policy Past Payments</div>
+      <!-- <div style="margin-bottom: 10px;text-align: left;">Click a transaction reference number to download its reciept</div> -->
+      <div *ngFor="let data of pastPayments" class="boxdiv receipt_div">
+        <div>Date: {{data.date}}</div>
+        <div>Risk Premium: {{data.riskPremium}}</div>
+        <div>Invested Amount: {{data.investedAmount}}</div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+</ion-content>

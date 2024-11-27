@@ -112,11 +112,17 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     this.router.navigate(['/sub-products']);
   }
   openProduct(product, comingFrom) {
-    console.log('seleted product', product);
+    console.log('selected product', product);
     localStorage.setItem('productName', product.name);
     localStorage.setItem('productid', product.id);
-    this.subProducts(product.id, comingFrom);
+    if(product.name == 'Investment plans'){
+      this.getPurchasedProducts(comingFrom);
+    }else{
+      this.subProducts(product.id, comingFrom);
+    }
+    
   }
+
   subProducts(id, comingFrom) {
     const myData =
       'myData={"verify_token":"' +
@@ -154,6 +160,29 @@ export class HomePageScreenAfterLoginPage implements OnInit {
       }
     );
   }
+
+  getPurchasedProducts(comingFrom:any){
+    let data:{[key:string]:any} = {
+      'verify_token':localStorage.getItem('token'),
+      'method':'getPurchasedPolicies'
+    }
+    this.api.showLoader();
+    this.api.submitFormData(data).subscribe((res:any)=>{
+      this.api.hideLoader();
+      console.log('purchased products: ',res);
+      if(res.status_no==1){
+        let subProducts = [];
+        subProducts = res.purchasePolicies;
+        localStorage.setItem('subProducts',JSON.stringify(subProducts));
+        this.PopupCust(comingFrom);
+      }else{
+
+      }
+    },(error:any)=>{
+
+    });
+  }
+  
   tab1Click() {
     if (localStorage.getItem('userid')) {
       this.navCtrl.navigateRoot('explore-screen-before-login-expanded');

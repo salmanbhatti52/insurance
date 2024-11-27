@@ -26,6 +26,15 @@
   font-weight:bold;
   margin-top: 0px;
 }
+
+.option_div{
+  position: absolute;
+  background: white;
+  z-index: 12;
+  right: 48px;
+  padding: 9px;
+  border: 1px solid #1A206D;
+}
 .con-p2{
   color: #1A206D;
   font-size: 20px;
