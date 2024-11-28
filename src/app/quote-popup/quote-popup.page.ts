@@ -48,6 +48,11 @@ export class QuotePopupPage implements OnInit {
       if (value.name != "Travel Care Premier" && value.name != "Travel Care Visa") {
         subproducts.push(value);
       }
+      if(value.name == 'Children Education Fund'){
+        value.image='assets/images/investmentplans/4.png';
+      }else if(value.name == 'iSave Plan'){
+        value.image = 'assets/images/investmentplans/1.png';
+      }
       this.subProducts = subproducts
       this.arr1 = this.subProducts;
     });
@@ -251,7 +256,8 @@ export class QuotePopupPage implements OnInit {
         } else {
           if (sp.name == 'Student Plan' || sp.name == 'Europe / Schengen' || sp.name == 'Travel Care Premier' || sp.name == 'Travel Care Visa') {
             this.router.navigate(['/mypolicies']);
-          } else if(sp.parent_id !=27) {
+          } else  {
+            // if(sp.parent_id !=27)
             localStorage.setItem('localtravel', JSON.stringify(sp));
             this.router.navigate(['/internationalinformation']);
           }

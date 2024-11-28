@@ -111,12 +111,14 @@ export class HomePageScreenAfterLoginPage implements OnInit {
   investmentsubProducts() {
     this.router.navigate(['/sub-products']);
   }
+  
   openProduct(product, comingFrom) {
     console.log('selected product', product);
     localStorage.setItem('productName', product.name);
     localStorage.setItem('productid', product.id);
     if(product.name == 'Investment plans'){
-      this.getPurchasedProducts(comingFrom);
+      this.investmentsubProducts();
+      // this.getPurchasedProducts(comingFrom);
     }else{
       this.subProducts(product.id, comingFrom);
     }

@@ -26,7 +26,7 @@
 <ion-content>
   <div class="container">
     <div class="c-center">
-      <p class="con-p1" *ngIf="insurancename!='Investment plans'">Choose one to get a Quote</p>
+      <p class="con-p1" >Choose one to get a Quote</p>
     </div>
     <div style="font-size: 20px; color: #000; font-weight: 500; margin-bottom: 3%">
       {{insurancename}} products are:
@@ -36,10 +36,12 @@
       <div *ngIf="sp.name" style="display: flex; margin-bottom: 7%" (click)="seeDetails(sp)">
         <img (error)="handleImgError($event, userIMG)" src="{{sp.image}}" alt=""
           style="width: 100px; height: 100px; object-fit: cover" />
+          <!-- <img *ngIf="sp.name == 'Children Education Fund'" src="assets/images/investmentplans/4.png" alt="">
+          <img *ngIf="sp.name == 'iSave Plan'" src="assets/images/investmentplans/1.png" alt=""> -->
         <p class="con-p2">{{sp.name}}</p>
       </div>
-      <div>
-      <div *ngIf="sp.productName" style="display: flex;
+      <!-- <div> -->
+      <!-- <div *ngIf="sp.productName" style="display: flex;
           margin-bottom: 7%;
           flex-direction: column;
           padding: 11px;" >
@@ -63,8 +65,8 @@
           <div style="margin-bottom: 4px;" (click)="downloadAccountStatement(sp.policyId)">Download IES Account Statement</div>
           <div style="margin-bottom: 4px;" (click)="getPastAndUpcomingPayments(sp.policyId,sp.repayment)">Get Past and Upcoming Payments</div>
         </div>
-      </div>
-      </div>
+      </div> -->
+      <!-- </div> -->
     </div>
     <div class="boxdiv" *ngIf="productID==1">
       <div style="display: flex; margin-bottom: 7%" (click)="gibsproducts('COMPREHENSIVE')">
