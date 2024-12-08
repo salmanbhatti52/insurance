@@ -20,6 +20,8 @@ export class InsuranceAppService {
 
   comingFrom: any = 0;
   loginas;
+  selectedPolicy: any;
+  selectedTransaction: any;
 
   constructor(
     private toastctrl: ToastController,

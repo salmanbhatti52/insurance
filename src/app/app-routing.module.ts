@@ -330,6 +330,42 @@ const routes: Routes = [
   {
     path: 'policy-details',
     loadChildren: () => import('./policy-details/policy-details.module').then( m => m.PolicyDetailsPageModule)
+  },
+  {
+    path: 'policy1',
+    loadChildren: () => import('./policy1/policy1.module').then( m => m.Policy1PageModule)
+  },
+  {
+    path: 'viewpurchasedpolicy',
+    loadChildren: () => import('./viewpurchasedpolicy/viewpurchasedpolicy.module').then( m => m.ViewpurchasedpolicyPageModule)
+  },
+  {
+    path: 'policybtn',
+    loadChildren: () => import('./policybtn/policybtn.module').then( m => m.PolicybtnPageModule)
+  },
+  {
+    path: 'transrechistory',
+    loadChildren: () => import('./transrechistory/transrechistory.module').then( m => m.TransrechistoryPageModule)
+  },
+  {
+    path: 'transreceipt',
+    loadChildren: () => import('./transreceipt/transreceipt.module').then( m => m.TransreceiptPageModule)
+  },
+  {
+    path: 'transhistory',
+    loadChildren: () => import('./transhistory/transhistory.module').then( m => m.TranshistoryPageModule)
+  },
+  {
+    path: 'policypaymentdetail',
+    loadChildren: () => import('./policypaymentdetail/policypaymentdetail.module').then( m => m.PolicypaymentdetailPageModule)
+  },
+  {
+    path: 'policystatement',
+    loadChildren: () => import('./policystatement/policystatement.module').then( m => m.PolicystatementPageModule)
+  },
+  {
+    path: 'policycertificate',
+    loadChildren: () => import('./policycertificate/policycertificate.module').then( m => m.PolicycertificatePageModule)
   }
 
 

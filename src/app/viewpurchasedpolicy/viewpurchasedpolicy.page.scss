@@ -1,0 +1,61 @@
+.title {
+    text-align: center;
+    font-family: Bliss Pro;
+    font-size: 20px;
+    color: #1A206D;
+    font-weight: bold;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 5% auto;
+}
+
+.boxdiv {
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
+
+.icondiv {
+    text-align: right;
+    margin-right: 0%;
+}
+
+.c-center {
+    text-align: center;
+}
+
+.con-p1 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+.con-p2 {
+    width: 100%;
+    color: #1A206D;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.ff {
+    display: flex;
+    align-items: center;
+}
+
+p {
+    display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+.policy {
+    color: #c5d300 !important;
+    font-weight: 700 !important;
+}

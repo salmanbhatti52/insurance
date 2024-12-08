@@ -1,0 +1,37 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+    <ion-toolbar class="headBgGlobal">
+        <ion-row style="display: flex; align-items: center">
+            <ion-col size="2" style="padding-left: 25px">
+                <div style="width:100% ;" (click)="goback()">
+                    <img src="assets/images/back-arrow.svg" alt="sb-btn">
+                </div>
+            </ion-col>
+            <ion-col size="8">
+                <div class="title">Purchased Policies</div>
+            </ion-col>
+            <ion-col size="2"> </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="wrapper">
+        <div class="boxdiv" *ngFor="let sp of purchasedPolicy" (click)="policyBtn(sp)">
+            <ion-row>
+                <ion-col class="ff">
+                    <p class="con-p2 policy">{{sp.productName}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="6" class="ff">
+                    <p class="con-p2 ">{{sp.insuredName}}</p>
+                </ion-col>
+                <ion-col size="6" class="ff" style="text-align: right;">
+                    <p class="con-p2">₦ {{sp.amountPaid}}</p>
+                </ion-col>
+            </ion-row>
+
+
+        </div>
+    </div>
+</ion-content>

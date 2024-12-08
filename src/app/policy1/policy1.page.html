@@ -1,0 +1,47 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+    <ion-toolbar class="headBgGlobal">
+        <ion-row style="display: flex; align-items: center">
+            <ion-col size="2" style="padding-left: 25px">
+                <div style="width:100% ;" (click)="goback()">
+                    <img src="assets/images/back-arrow.svg" alt="sb-btn">
+                </div>
+            </ion-col>
+            <ion-col size="8">
+                <div class="title">Policy Plans</div>
+            </ion-col>
+            <ion-col size="2"> </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="wrapper">
+        <div class="boxdiv">
+            <div (click)="seeDetails()">
+                <ion-row>
+                    <ion-col size="4" class="ff">
+                        <img src="assets/images/purchased.svg" alt="" style="width: 170px; height: 83px" />
+                    </ion-col>
+                    <ion-col size="8" class="ff">
+                        <p class="con-p2">View Purchased Policy</p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+        </div>
+
+        <div class="boxdiv" style="margin-top: 20px;">
+            <div (click)="purchaseNewPolicy()">
+                <ion-row>
+                    <ion-col size="4" class="ff">
+                        <img src="assets/images/purchase.svg" alt="" style="width: 170px; height: 83px" />
+                    </ion-col>
+                    <ion-col size="8" class="ff">
+                        <p class="con-p2">Purchase New Policy</p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+        </div>
+    </div>
+</ion-content>

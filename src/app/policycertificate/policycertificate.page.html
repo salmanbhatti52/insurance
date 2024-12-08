@@ -1,0 +1,22 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+    <ion-toolbar class="headBgGlobal">
+        <ion-row style="display: flex; align-items: center">
+            <ion-col size="2" style="padding-left: 25px">
+                <div style="width:100% ;" (click)="goback()">
+                    <img src="assets/images/back-arrow.svg" alt="sb-btn">
+                </div>
+            </ion-col>
+            <ion-col size="8">
+                <div class="title">Policy Certificate</div>
+            </ion-col>
+            <ion-col size="2">
+                <ion-icon style="font-size: 25px; color: #A8B400;" (click)="downloadPdf()" name="cloud-download"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+    <pdf-viewer [src]="transReceipt" [render-text]="true" [original-size]="false" style="width: 400px; height: 500px"></pdf-viewer>
+
+</ion-content>

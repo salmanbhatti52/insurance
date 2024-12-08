@@ -1,0 +1,90 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+    <ion-toolbar class="headBgGlobal">
+        <ion-row style="display: flex; align-items: center">
+            <ion-col size="2" style="padding-left: 25px">
+                <div style="width:100% ;" (click)="goback()">
+                    <img src="assets/images/back-arrow.svg" alt="sb-btn">
+                </div>
+            </ion-col>
+            <ion-col size="8">
+                <div class="title">Policy Plans</div>
+            </ion-col>
+            <ion-col size="2"> </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="wrapper">
+        <div class="boxdiv">
+            <div (click)="receiptHistory()">
+                <ion-row>
+                    <ion-col size="4" class="ff">
+                        <img src="assets/images/history.svg" alt="" style="width: 170px; height: 83px" />
+                    </ion-col>
+                    <ion-col size="8" class="ff">
+                        <p class="con-p2">Download Receipt</p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+        </div>
+
+        <div class="boxdiv" style="margin-top: 20px;">
+            <div (click)="confirmationDownloadCertificate()">
+                <ion-row>
+                    <ion-col size="4" class="ff">
+                        <img src="assets/images/certificate.svg" alt="" style="width: 170px; height: 83px" />
+                    </ion-col>
+                    <ion-col size="8" class="ff">
+                        <p class="con-p2">Policy Certificate </p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+        </div>
+
+        <div class="boxdiv" style="margin-top: 20px;">
+            <div (click)="transactionHistory()">
+                <ion-row>
+                    <ion-col size="4" class="ff">
+                        <img src="assets/images/transaction.svg" alt="" style="width: 170px; height: 83px" />
+                    </ion-col>
+                    <ion-col size="8" class="ff">
+                        <p class="con-p2">Transaction History</p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+        </div>
+
+        <div class="boxdiv" style="margin-top: 20px;">
+            <div (click)="paymentDetail()">
+                <ion-row>
+                    <ion-col size="4" class="ff">
+                        <img src="assets/images/payment_detail.svg" alt="" style="width: 170px; height: 83px" />
+                    </ion-col>
+                    <ion-col size="8" class="ff">
+                        <p class="con-p2">Payment Details</p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+        </div>
+
+        <div class="boxdiv" style="margin-top: 20px;" *ngIf="accountStatement">
+            <div (click)="confirmationDownloadStatement()">
+                <ion-row>
+                    <ion-col size="4" class="ff">
+                        <img src="assets/images/statement.svg" alt="" style="width: 170px; height: 83px" />
+                    </ion-col>
+                    <ion-col size="8" class="ff">
+                        <p class="con-p2">Policy Statement</p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+        </div>
+
+    </div>
+</ion-content>

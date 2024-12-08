@@ -1,0 +1,74 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+    <ion-toolbar class="headBgGlobal">
+        <ion-row style="display: flex; align-items: center">
+            <ion-col size="2" style="padding-left: 25px">
+                <div style="width:100% ;" (click)="goback()">
+                    <img src="assets/images/back-arrow.svg" alt="sb-btn">
+                </div>
+            </ion-col>
+            <ion-col size="8">
+                <div class="title">Transaction History</div>
+            </ion-col>
+            <ion-col size="2"> </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="wrapper">
+        <div class="title" style="text-align: left;">Next Payments</div>
+        <div *ngIf="nextPayment">
+            <div class="boxdiv" *ngFor="let sp of nextPayment">
+                <ion-row>
+                    <ion-col class="ff">
+                        <p class="con-p2 policy">{{sp.insuredName}}</p>
+                    </ion-col>
+                    <ion-col class="ff" style="text-align: right;">
+                        <p class="con-p2">₦ {{sp.amountDue}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="6" class="ff">
+                        <p class="con-p2 ">Due Date</p>
+                    </ion-col>
+                    <ion-col size="6" class="ff" style="text-align: right;">
+                        <p class="con-p2">{{sp.paymentDueDate}}</p>
+                    </ion-col>
+                </ion-row>
+
+
+            </div>
+        </div>
+        <div *ngIf="!nextPayment">
+            <p class="no">No Next Payments</p>
+        </div>
+        <div class="title" style="text-align: left; margin-top: 10px;">Past Payments</div>
+        <div *ngIf="pastPayment">
+            <div class="boxdiv" *ngFor="let sp of pastPayment">
+                <ion-row>
+                    <ion-col class="ff">
+                        <p class="con-p2 policy">{{sp.date}}</p>
+                    </ion-col>
+                    <ion-col class="ff" style="text-align: right;">
+                        <p class="con-p2">₦ {{sp.investedAmount}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="riskPremium">
+                    <ion-col size="6" class="ff">
+                        <p class="con-p2 ">Risk Premium</p>
+                    </ion-col>
+                    <ion-col size="6" class="ff" style="text-align: right;">
+                        <p class="con-p2">{{sp.riskPremium}}</p>
+                    </ion-col>
+                </ion-row>
+
+
+            </div>
+        </div>
+
+        <div *ngIf="!pastPayment">
+            <p class="no">No Past Payments</p>
+        </div>
+
+    </div>
+</ion-content>

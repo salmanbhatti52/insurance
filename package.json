@@ -21,6 +21,7 @@
     "@angular/router": "^14.0.0",
     "@awesome-cordova-plugins/core": "^6.1.0",
     "@awesome-cordova-plugins/in-app-browser": "^6.3.0",
+    "@capacitor-community/file-opener": "^6.0.1",
     "@capacitor-community/http": "^1.4.1",
     "@capacitor/android": "3.5.1",
     "@capacitor/app": "1.1.1",
@@ -47,6 +48,7 @@
     "date-fns": "^2.28.0",
     "jetifier": "^2.0.0",
     "moment": "^2.29.4",
+    "ng2-pdf-viewer": "^10.4.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
