@@ -39,7 +39,7 @@ export class Policy1Page implements OnInit {
   purchaseNewPolicy() {
     const browser = this.iab.create(
       'https://cornerstone.com.ng/products/detail/Mjc=',
-      '_blank'
+      '_system'
     );
   }
 

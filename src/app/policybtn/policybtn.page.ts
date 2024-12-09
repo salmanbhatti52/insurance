@@ -49,7 +49,7 @@ export class PolicybtnPage implements OnInit {
   purchaseNewPolicy() {
     const browser = this.iab.create(
       'https://webchat.ebanqo.io/cornerstone',
-      '_blank'
+      '_system'
     );
   }
 
@@ -59,7 +59,7 @@ export class PolicybtnPage implements OnInit {
     // this.router.navigate(['/policystatement']);
     const browser = this.iab.create(
       this.accountStatement,
-      '_blank'
+      '_system'
     );
 
   }
@@ -129,7 +129,7 @@ export class PolicybtnPage implements OnInit {
           this.policyCertif = res.receiptURL;
           const browser = this.iab.create(
             this.policyCertif,
-            '_blank'
+            '_system'
           );
         } else {
           this.api.presenttoast(res.message)

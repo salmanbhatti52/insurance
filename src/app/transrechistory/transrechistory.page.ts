@@ -117,7 +117,7 @@ export class TransrechistoryPage implements OnInit {
 
           const browser = this.iab.create(
             res.receiptURL,
-            '_blank'
+            '_system'
           );
 
 
