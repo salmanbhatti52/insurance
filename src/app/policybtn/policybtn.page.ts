@@ -126,7 +126,7 @@ export class PolicybtnPage implements OnInit {
         console.log('getPolicyCertificate==============', res);
 
         if (res.status_no == 1) {
-          this.policyCertif = res.receiptURL;
+          this.policyCertif = res.certificate_link;
           const browser = this.iab.create(
             this.policyCertif,
             '_system'
