@@ -18,7 +18,7 @@
     <div class="wrapper">
         <div class="title" style="text-align: left;">Next Payments</div>
         <div *ngIf="nextPayment">
-            <div class="boxdiv" *ngFor="let sp of nextPayment">
+            <div class="boxdiv" *ngFor="let sp of nextPayment" (click)="nextPay(sp)">
                 <ion-row>
                     <ion-col class="ff">
                         <p class="con-p2 policy">{{sp.insuredName}}</p>

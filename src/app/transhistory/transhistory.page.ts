@@ -37,7 +37,10 @@ export class TranshistoryPage implements OnInit {
     this.location.back();
   }
 
-
+  nextPay(sp: any) {
+    this.api.nextPayment = sp
+    this.router.navigate(['nextpayment'])
+  }
   seeDetails() {
     this.router.navigate(['/viewpurchasedpolicy']);
   }

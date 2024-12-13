@@ -366,6 +366,10 @@ const routes: Routes = [
   {
     path: 'policycertificate',
     loadChildren: () => import('./policycertificate/policycertificate.module').then( m => m.PolicycertificatePageModule)
+  },
+  {
+    path: 'nextpayment',
+    loadChildren: () => import('./nextpayment/nextpayment.module').then( m => m.NextpaymentPageModule)
   }
 
 
