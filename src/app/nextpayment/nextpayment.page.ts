@@ -6,39 +6,12 @@ import { InsuranceAppService } from '../services/insurance-app.service';
 import * as moment from 'moment';
 import { PaystackOptions } from 'angular4-paystack';
 
-declare var PaystackPop: any;
-
-
 @Component({
   selector: 'app-nextpayment',
   templateUrl: './nextpayment.page.html',
   styleUrls: ['./nextpayment.page.scss'],
 })
 export class NextpaymentPage implements OnInit {
-  paymentStatus: string;
-
-
-  makePayment() {
-    const handler = PaystackPop.setup({
-      key: 'your-public-key', // Replace with your Paystack public key
-      email: 'user@example.com', // Replace with the user's email
-      amount: 10000, // Amount in kobo
-      currency: 'NGN', // Nigerian Naira
-      ref: `${Math.ceil(Math.random() * 10e10)}`, // Unique transaction reference
-      callback: (response: any) => {
-        console.log('Payment successful:', response);
-        this.paymentStatus = 'Payment successful!';
-        // Verify payment on your backend here
-      },
-      onClose: () => {
-        console.log('Payment cancelled.');
-        this.paymentStatus = 'Payment cancelled!';
-      },
-    });
-
-    handler.openIframe();
-  }
-
 
   quoteItems: any;
   quoteArrayLength: number;
@@ -122,7 +95,7 @@ export class NextpaymentPage implements OnInit {
 
     this.amt = this.api.nextPayment.amountDue + '00'
     this.amtShow = this.api.nextPayment.amountDue
-
+    
 
 
 
@@ -321,11 +294,6 @@ export class NextpaymentPage implements OnInit {
 
     }
   }
-
-
-
-
-
 
 
 }
