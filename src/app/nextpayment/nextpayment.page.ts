@@ -5,6 +5,7 @@ import { NavController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import * as moment from 'moment';
 import { PaystackOptions } from 'angular4-paystack';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 
 @Component({
   selector: 'app-nextpayment',
@@ -42,7 +43,8 @@ export class NextpaymentPage implements OnInit {
   constructor(public location: Location,
     public router: Router,
     public api: InsuranceAppService,
-    public navCtrl: NavController) { }
+    public navCtrl: NavController,
+    public iab: InAppBrowser) { }
   firstName: string;
   lastName: string;
   companyName: string;
@@ -95,7 +97,7 @@ export class NextpaymentPage implements OnInit {
 
     this.amt = this.api.nextPayment.amountDue + '00'
     this.amtShow = this.api.nextPayment.amountDue
-    
+
 
 
 
@@ -293,6 +295,13 @@ export class NextpaymentPage implements OnInit {
       }
 
     }
+  }
+
+  pay() {
+    const browser = this.iab.create(
+      'https://checkout.paystack.com/w8sppel38nn6ubd',
+      '_blank'
+    );
   }
 
 
