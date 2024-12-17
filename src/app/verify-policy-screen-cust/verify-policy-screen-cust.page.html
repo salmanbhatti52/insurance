@@ -1,39 +1,39 @@
 <ion-header [translucent]="true" class="ion-no-border cheader">
-  <ion-toolbar class="headBgGlobal">
-    <ion-row style="display: flex;
+    <ion-toolbar class="headBgGlobal">
+        <ion-row style="display: flex;
     align-items: center;">
-      <ion-col size="2" style="padding-left: 25px;">
-        <ion-menu-toggle>
-          <ion-buttons>
-            <div style="width:100% ;">
-              <img src="assets/images/sb-button.svg" alt="sb-btn">
-            </div>
-          </ion-buttons>
-        </ion-menu-toggle>
-      </ion-col>
-      <ion-col size="8">
-        <div class="title">Renew Policy</div>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
+            <ion-col size="2" style="padding-left: 25px;">
+                <ion-menu-toggle>
+                    <ion-buttons>
+                        <div style="width:100% ;">
+                            <img src="assets/images/sb-button.svg" alt="sb-btn">
+                        </div>
+                    </ion-buttons>
+                </ion-menu-toggle>
+            </ion-col>
+            <ion-col size="8">
+                <div class="title">Renew Policy</div>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
 
 </ion-header>
 
 <ion-content>
-  <div class="container">
+    <div class="container">
 
-    <div class="img-div">
-      <img src="assets/images/policy-tick.svg" alt="" style="width: 110px;
+        <div class="img-div">
+            <img src="assets/images/policy-tick.svg" alt="" style="width: 110px;
       height:110px;">
-    </div>
+        </div>
 
-    <div style="
+        <div style="
     text-align: center;
     margin:20px auto 0px;">
-      <p class="con-p1">Renew your vehicle policy in minutes</p>
-    </div>
+            <p class="con-p1">Renew your vehicle policy in minutes</p>
+        </div>
 
-    <!-- <div style="margin-top:25px;">
+        <!-- <div style="margin-top:25px;">
       <label class="con-l1">Policy Type</label>
       <div class="dropbox">
         <div class="innerdropbox" (click)="openlist()">
@@ -52,64 +52,64 @@
       </div>
     </div> -->
 
-    <div style="margin-top: 25px;">
-      <label class="con-l2">Policy Number</label>
-      <div>
-        <ion-input class="input" placeholder="13254PA" [(ngModel)]="pnumber"></ion-input>
-      </div>
-    </div>
+        <div style="margin-top: 25px;">
+            <label class="con-l2">Vehicle Licence Number</label>
+            <div>
+                <ion-input class="input" placeholder="13254PA" [(ngModel)]="pnumber"></ion-input>
+            </div>
+        </div>
 
-    <!-- <div style="margin-top:25px;">
+        <!-- <div style="margin-top:25px;">
       <ion-label class="con-l3">OR</ion-label>
       <label class="con-l4">Vehicle Registration Number</label>
       <div>
         <ion-input class="input" placeholder="13254PA"></ion-input>
       </div>
     </div> -->
-    <div *ngIf="policy==true">
-      <div class="box box-success">
-        <div class="panel-body">
-          <div class="table-responsive">
-            <table class="table quotetable table-bordered">
-              <tbody>
-                <tr>
-                  <td style="width: 30%; color: black;">First Name</td>
-                  <td style="color: black;">{{first_name}}</td>
-                </tr>
-                <tr>
-                  <td style="width: 30%; color: black;">Last Name</td>
-                  <td style="color: black;">{{last_name}}</td>
-                </tr>
-                <tr>
-                  <td style="width: 30%; color: black;">Date Of Birth</td>
-                  <td style="color: black;">{{dob}}</td>
-                </tr>
-                <tr>
-                  <td style="width: 30%; color: black;">Email</td>
-                  <td style="color: black;">{{email}}</td>
-                </tr>
-                <tr>
-                  <td style="width: 30%; color: black;">Phone Number</td>
-                  <td style="color: black;">{{phone_number}}</td>
-                </tr>
-                <tr>
-                  <td style="width: 30%; color: black;">Address</td>
-                  <td style="color: black;">{{address}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div *ngIf="policy==true">
+            <div class="box box-success">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table quotetable table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 30%; color: black;">First Name</td>
+                                    <td style="color: black;">{{first_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 30%; color: black;">Last Name</td>
+                                    <td style="color: black;">{{last_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 30%; color: black;">Date Of Birth</td>
+                                    <td style="color: black;">{{dob}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 30%; color: black;">Email</td>
+                                    <td style="color: black;">{{email}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 30%; color: black;">Phone Number</td>
+                                    <td style="color: black;">{{phone_number}}</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 30%; color: black;">Address</td>
+                                    <td style="color: black;">{{address}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+
     </div>
-
-
-  </div>
 
 </ion-content>
 
 <ion-footer>
-  <div style="text-align:center ; margin: 0px auto 30px;">
-    <ion-button class="btn" (click)="PopupCust()">Submit</ion-button>
-  </div>
+    <div style="text-align:center ; margin: 0px auto 30px;">
+        <ion-button class="btn" (click)="PopupCust()">Submit</ion-button>
+    </div>
 </ion-footer>

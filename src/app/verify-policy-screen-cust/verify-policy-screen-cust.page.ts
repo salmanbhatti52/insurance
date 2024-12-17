@@ -102,6 +102,8 @@ export class VerifyPolicyScreenCustPage implements OnInit {
             console.log(response);
             this.api.hideLoader();
 
+          }, (err) => {
+            this.api.alertboxshow('Validation Failed');
           });
           // let encode1 = encodeURIComponent(this.pnumber);
           // console.log('dasdsadsa', encode1);
@@ -116,7 +118,8 @@ export class VerifyPolicyScreenCustPage implements OnInit {
           // });
         },
         (err) => {
-          console.log(err);
+
+          console.log('rrr-------------', err.error.message);
 
         }
       );

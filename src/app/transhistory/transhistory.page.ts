@@ -39,6 +39,7 @@ export class TranshistoryPage implements OnInit {
 
   nextPay(sp: any) {
     this.api.nextPayment = sp
+    console.log('sp-----------', sp)
     this.router.navigate(['nextpayment'])
   }
   seeDetails() {
