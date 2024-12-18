@@ -9,9 +9,9 @@ import * as btoa from 'btoa-lite';
 })
 export class InsuranceAppService {
   // Live:
-  // url = 'https://www.cornerstone.com.ng/webservice'
+  url = 'https://www.cornerstone.com.ng/webservice'
 
-  url = 'https://www.cornerstone.com.ng/devtest/webservice';
+  // url = 'https://www.cornerstone.com.ng/devtest/webservice';
   authurl = 'https://testcipapiservices.gibsonline.com/api/auth';
   // url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/'
 
