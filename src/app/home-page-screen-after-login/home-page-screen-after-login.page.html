@@ -130,9 +130,9 @@
                         <!-- (click)="openQuote(p)" -->
                         <div *ngIf="p.name !='Investment plans'" [class.middle-mg]='i%2==0'>
                             <div class="gimg-div">
-                                <img *ngIf="p.name =='Travel Insurance'" (error)="handleImgError($event, userIMG)" src="{{p.image}}" alt="" class="cimg" />
+                                <img *ngIf="p.name =='Travel Insurance'" (error)="handleImgError($event, userIMG)" src="assets/images/travel.svg" alt="" class="cimg" />
 
-                                <img *ngIf="p.name =='Motor Insurance'" (error)="handleImgError2($event, userIMG)" src="{{p.image}}" alt="" class="cimg" />
+                                <img *ngIf="p.name =='Motor Insurance'" (error)="handleImgError2($event, userIMG)" src="assets/images/car.svg" alt="" class="cimg" />
 
                                 <!-- <img *ngIf="p.name =='Investment plans'" (error)="handleImgError2($event, userIMG)" src="assets/images/investmentplan2.png" alt="" class="cimg" /> -->
                             </div>
