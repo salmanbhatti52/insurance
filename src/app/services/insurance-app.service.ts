@@ -15,6 +15,8 @@ export class InsuranceAppService {
   authurl = 'https://testcipapiservices.gibsonline.com/api/auth';
   // url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/'
 
+  flutterwaveAPIKey = "FLWPUBK_TEST-4fdbf14bb4f70e2e6fe3dae2d18a4fc8-X";
+
   fpval: any;
   username: any;
 
@@ -32,20 +34,20 @@ export class InsuranceAppService {
 
   ) { }
 
-  submitFormData(data:{[key:string]:any}){
+  submitFormData(data: { [key: string]: any }) {
     const formdData = new FormData();
-    
-    Object.keys(data).forEach((key:string)=>{
+
+    Object.keys(data).forEach((key: string) => {
       const value = data[key];
 
-      if(value instanceof File){
-        formdData.append(key,value,value.name);
-      }else{
-        formdData.append(key,value);
+      if (value instanceof File) {
+        formdData.append(key, value, value.name);
+      } else {
+        formdData.append(key, value);
       }
     });
 
-    return this.http.post(this.url,formdData);
+    return this.http.post(this.url, formdData);
   }
 
   insertData(myData) {
@@ -65,7 +67,7 @@ export class InsuranceAppService {
       headers: header,
     });
   }
-  
+
   gibsapi(myData) {
     let header;
 

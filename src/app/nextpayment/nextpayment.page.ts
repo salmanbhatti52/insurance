@@ -6,6 +6,7 @@ import { InsuranceAppService } from '../services/insurance-app.service';
 import * as moment from 'moment';
 import { PaystackOptions } from 'angular4-paystack';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { FlutterwaveService, InlinePaymentOptions, PaymentSuccessResponse } from 'flutterwave-angular-v3';
 
 @Component({
   selector: 'app-nextpayment',
@@ -38,13 +39,16 @@ export class NextpaymentPage implements OnInit {
     email: 'user@mail.com',
     ref: `${Math.ceil(Math.random() * 10e10)}`
   }
+  loggedInUserInfo: any;
+  paymetdone: any = '';
 
 
   constructor(public location: Location,
     public router: Router,
     public api: InsuranceAppService,
     public navCtrl: NavController,
-    public iab: InAppBrowser) { }
+    public iab: InAppBrowser,
+    private flutterwaveService: FlutterwaveService) { }
   firstName: string;
   lastName: string;
   companyName: string;
@@ -73,6 +77,16 @@ export class NextpaymentPage implements OnInit {
   dobValue = '';
   yomValue = '';
   genderVal
+
+
+
+  publicKey: any = ''
+  customerDetails: any = ''
+  customizations: any = ''
+  meta: any = ''
+  paymentData: InlinePaymentOptions; // Declare the paymentData property.
+
+
   paymentInit() {
     console.log('Payment initialized');
   }
@@ -89,10 +103,34 @@ export class NextpaymentPage implements OnInit {
     // this.enddate = moment(new Date(result)).format('YYYY-MM-DD');
     // this.subprodName = localStorage.getItem('subProName');
     // this.productID = localStorage.getItem('product_id');
-    console.log('this.api.nextPayment=====', this.api.nextPayment);
+    console.log('LoginUserInfo=====', JSON.parse(localStorage.getItem('LoginUserInfo')))
+   
+    this.loggedInUserInfo = JSON.parse(localStorage.getItem('LoginUserInfo'))
+
+    this.publicKey = this.api.flutterwaveAPIKey;
+
+    this.customerDetails = {
+      name: this.loggedInUserInfo.first_name + ' ' + this.loggedInUserInfo.last_name,
+      email: this.loggedInUserInfo.email,
+      phone_number: this.loggedInUserInfo.phone,
+    };
+
+    this.customizations = {
+      title: "Cornerstone payment",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL1eJCezNB-KM9Exk7Pwri7EBDcNP0vbDhsw&s",
+    };
+
+    this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
+
+
+    this.meta = { counsumer_id: this.loggedInUserInfo.user_id, consumer_mac: this.reference };
+
+    this.prepareOpt()
+
+
+
 
     this.email = localStorage.getItem('email');
-    this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
 
     this.amt = this.api.nextPayment.amountDue + '00'
@@ -115,6 +153,24 @@ export class NextpaymentPage implements OnInit {
     // }
     console.log('dsdasdasd', localStorage.getItem('productName'));
 
+  }
+
+
+  prepareOpt() {
+    this.paymentData = {
+      public_key: this.publicKey,
+      tx_ref: this.generateReference(),
+      amount: this.api.nextPayment.amountDue,
+      currency: "NGN",
+      payment_options: "card,ussd",
+      redirect_url: "",
+      meta: this.meta,
+      customer: this.customerDetails,
+      customizations: this.customizations,
+      callback: this.makePaymentCallback,
+      onclose: this.closedPaymentModal,
+      callbackContext: this,
+    };
   }
 
   paymentDone(ref: any) {
@@ -305,4 +361,40 @@ export class NextpaymentPage implements OnInit {
   }
 
 
+
+
+
+  ///////////////////////////
+
+
+
+
+  //////////////////////////
+
+
+
+  makePayment() {
+    this.flutterwaveService.inlinePay(this.paymentData);
+  }
+  makePaymentCallback(response: PaymentSuccessResponse): void {
+    console.log("Payment callback", JSON.stringify(response));
+    this.paymetdone = JSON.stringify(response)
+    this.api.presenttoast('Payment has been done succesfully.')
+    this.location.back()
+
+
+    //{"status":"successful","customer":{"name":"BLESSING DOE","email":"atfar@cornerstone.com.ng","phone_number":"0809765435"},"transaction_id":8289225,"tx_ref":"1735044787946","flw_ref":"FLW-MOCK-e6574da8796e025d097a836dcacaedcb","currency":"NGN","amount":60000,"charged_amount":60000,"charge_response_code":"00","charge_response_message":"Please enter the OTP sent to your mobile number 080****** and email te**@rave**.com","created_at":"2024-12-24T12:54:38.000Z"}
+  }
+  closedPaymentModal(): void {
+    if (this.paymetdone) {
+      console.log("payment is closed");
+      this.api.presenttoast('Payment has been done succesfully.')
+      this.location.back()
+    }
+  }
+
+  generateReference(): string {
+    let date = new Date();
+    return date.getTime().toString();
+  }
 }

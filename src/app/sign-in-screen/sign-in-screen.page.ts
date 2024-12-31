@@ -98,6 +98,8 @@ export class SignInScreenPage implements OnInit {
         if (res.email) {
 
           this.api.presenttoast('Welcome!');
+
+          localStorage.setItem('LoginUserInfo', JSON.stringify(res));
           localStorage.setItem('userid', res.user_id);
           localStorage.setItem('token', res.token);
           localStorage.setItem('title', res.title);
@@ -160,6 +162,8 @@ export class SignInScreenPage implements OnInit {
                   console.log('res==', res);
                   if (res.email) {
                     this.api.presenttoast('Welcome!');
+                    localStorage.setItem('LoginUserInfo', JSON.stringify(res));
+
                     localStorage.setItem('userid', res.user_id);
                     localStorage.setItem('token', res.token);
                     localStorage.setItem('title', res.title);

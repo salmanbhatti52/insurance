@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import * as moment from 'moment';
+import { FlutterwaveService, InlinePaymentOptions, PaymentSuccessResponse } from 'flutterwave-angular-v3';
 
 @Component({
   selector: 'app-payment',
@@ -30,12 +31,15 @@ export class PaymentPage implements OnInit {
   quoteId: any;
   paystacktrxref: any;
   trxref: any;
+  loggedInUserInfo: any = '';
+  paymetdone: any = '';
 
 
   constructor(public location: Location,
     public router: Router,
     public api: InsuranceAppService,
-    public navCtrl: NavController) { }
+    public navCtrl: NavController,
+    public flutterwaveService: FlutterwaveService) { }
   firstName: string;
   lastName: string;
   companyName: string;
@@ -64,6 +68,14 @@ export class PaymentPage implements OnInit {
   dobValue = '';
   yomValue = '';
   genderVal
+
+
+  publicKey: any = ''
+  customerDetails: any = ''
+  customizations: any = ''
+  meta: any = ''
+  paymentData: InlinePaymentOptions;
+
   paymentInit() {
     console.log('Payment initialized');
   }
@@ -99,6 +111,51 @@ export class PaymentPage implements OnInit {
     }
     console.log('dsdasdasd', localStorage.getItem('productName'));
 
+
+
+    this.publicKey = this.api.flutterwaveAPIKey;
+    this.loggedInUserInfo = JSON.parse(localStorage.getItem('LoginUserInfo'))
+
+    this.publicKey = this.api.flutterwaveAPIKey;
+
+    this.customerDetails = {
+      name: this.loggedInUserInfo.first_name + ' ' + this.loggedInUserInfo.last_name,
+      email: this.loggedInUserInfo.email,
+      phone_number: this.loggedInUserInfo.phone,
+    };
+
+    this.customizations = {
+      title: "Cornerstone payment",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL1eJCezNB-KM9Exk7Pwri7EBDcNP0vbDhsw&s",
+    };
+
+    this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
+
+
+    this.meta = { counsumer_id: this.loggedInUserInfo.user_id, consumer_mac: this.reference };
+
+    this.prepareOpt()
+
+
+  }
+
+
+  prepareOpt() {
+    console.log('amt-====' + this.quoteItems[this.quoteItems.length - 1].value)
+    this.paymentData = {
+      public_key: this.publicKey,
+      tx_ref: this.generateReference(),
+      amount: this.quoteItems[this.quoteItems.length - 1].value,
+      currency: "NGN",
+      payment_options: "card,ussd",
+      redirect_url: "",
+      meta: this.meta,
+      customer: this.customerDetails,
+      customizations: this.customizations,
+      callback: this.makePaymentCallback,
+      onclose: this.closedPaymentModal,
+      callbackContext: this,
+    };
   }
 
   paymentDone(ref: any) {
@@ -139,6 +196,10 @@ export class PaymentPage implements OnInit {
       this.api.alertboxshow('Something went Wrong');
     }
 
+
+
+
+
   }
 
   //new paystackapi method////
@@ -171,17 +232,23 @@ export class PaymentPage implements OnInit {
 
   }
   /////////////////
+  /// syed ali plz flutterwave
   paystackpayment() {
     let datasend =
       'myData={"transaction_ref":' +
       '"' + this.trxref + '"' +
-      ',"paystack_transaction_ref":' +
-      '"' + this.paystacktrxref + '"' +
+      ',"flutterwave_transaction_id":' +
+      '"' + this.paymetdone.tx_ref + '"' +
       ',"quote_id":' +
       '"' + this.quoteId + '"' +
       ',"verify_token":"' +
       localStorage.getItem('token') +
-      '","method":"standalonePaystackConfirm"}';
+      // '","method":"standalonePaystackConfirm"}';
+      '","method":"standaloneFlutterwaveConfirm"}';
+
+
+
+
 
     this.api.showLoader()
     this.api.insertData(datasend).subscribe((res: any) => {
@@ -481,4 +548,34 @@ export class PaymentPage implements OnInit {
 
   //   })
   // }
+
+
+  makePayment() {
+    console.log('makePayment,,,,,,,,,,', this.paymentData)
+    this.flutterwaveService.inlinePay(this.paymentData);
+  }
+  makePaymentCallback(response: PaymentSuccessResponse): void {
+    console.log("Payment callback", JSON.stringify(response));
+    this.paymetdone = response
+    this.api.presenttoast('Payment has been done succesfully.')
+    this.location.back()
+
+
+    //{"status":"successful","customer":{"name":"BLESSING DOE","email":"atfar@cornerstone.com.ng","phone_number":"0809765435"},"transaction_id":8289225,"tx_ref":"1735044787946","flw_ref":"FLW-MOCK-e6574da8796e025d097a836dcacaedcb","currency":"NGN","amount":60000,"charged_amount":60000,"charge_response_code":"00","charge_response_message":"Please enter the OTP sent to your mobile number 080****** and email te**@rave**.com","created_at":"2024-12-24T12:54:38.000Z"}
+  }
+  closedPaymentModal(): void {
+    if (this.paymetdone) {
+      console.log("payment is closed");
+
+      this.paystackpayment()
+
+      this.api.presenttoast('Payment has been done succesfully.')
+      this.location.back()
+    }
+  }
+
+  generateReference(): string {
+    let date = new Date();
+    return date.getTime().toString();
+  }
 }

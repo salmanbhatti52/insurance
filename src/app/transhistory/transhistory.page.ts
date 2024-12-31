@@ -30,7 +30,11 @@ export class TranshistoryPage implements OnInit {
   ngOnInit() {
     this.token = localStorage.getItem('token');
     console.log(this.token);
+  }
+
+  ionViewWillEnter() {
     this.getTransactionHistory()
+
   }
 
   goback() {
@@ -40,7 +44,7 @@ export class TranshistoryPage implements OnInit {
   nextPay(sp: any) {
     this.api.nextPayment = sp
     console.log('sp-----------', sp)
-    // this.router.navigate(['nextpayment'])
+    this.router.navigate(['nextpayment'])
   }
   seeDetails() {
     this.router.navigate(['/viewpurchasedpolicy']);

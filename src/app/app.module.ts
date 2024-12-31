@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { Angular4PaystackModule } from 'angular4-paystack';
+import { FlutterwaveModule } from "flutterwave-angular-v3"
+
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { Angular4PaystackModule } from 'angular4-paystack';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    FlutterwaveModule,
     // pk_test_ff6f2927d464e23a6ddf592be475db01de695970
     Angular4PaystackModule.forRoot('pk_test_c613fc7d428a64fd1e5daea22f8380551b28c78e'),
   ],
