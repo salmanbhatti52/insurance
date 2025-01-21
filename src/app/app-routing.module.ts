@@ -370,6 +370,10 @@ const routes: Routes = [
   {
     path: 'nextpayment',
     loadChildren: () => import('./nextpayment/nextpayment.module').then( m => m.NextpaymentPageModule)
+  },
+  {
+    path: 'policypay',
+    loadChildren: () => import('./policypay/policypay.module').then( m => m.PolicypayPageModule)
   }
 
 

@@ -28,9 +28,9 @@
         <div class="c-center">
             <p class="con-p1">Choose one to get a Quote</p>
         </div>
-        <div style="font-size: 20px; color: #000; font-weight: 500; margin-bottom: 3%">
+        <!-- <div style="font-size: 20px; color: #000; font-weight: 500; margin-bottom: 3%">
             {{insurancename}} products are:
-        </div>
+        </div> -->
 
         <div class="boxdiv" *ngFor="let sp of subProducts">
             <div *ngIf="sp.name && sp.name !='Local Travel Insurance'" style="display: flex; margin-bottom: 7%" (click)="seeDetails(sp)">

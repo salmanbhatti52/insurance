@@ -16,7 +16,7 @@
 
 <ion-content>
     <div class="wrapper">
-        <div class="boxdiv" *ngFor="let sp of transactionHistory" (click)="transreceipt(sp)">
+        <div class="boxdiv" *ngFor="let sp of transactionHistory">
             <ion-row>
                 <ion-col class="ff">
                     <p class="con-p2 policy">{{sp.transactionType}}</p>
@@ -30,7 +30,9 @@
                     <p class="con-p2 ">{{sp.transactionDate}}</p>
                 </ion-col>
                 <ion-col size="6" class="ff" style="text-align: right;">
-                    <p class="con-p2">{{sp.transactionStatus}}</p>
+                    <p class="con-p2 aa">{{sp.transactionStatus}}
+                        <ion-icon (click)="transreceipt(sp)" class="downloadbtn" name="cloud-download"></ion-icon>
+                    </p>
                 </ion-col>
             </ion-row>
 

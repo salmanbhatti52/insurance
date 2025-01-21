@@ -16,24 +16,24 @@
 
 </ion-header> -->
 <ion-content>
-  <div style="background: #1a206d; height: 250px">
-    <ion-row style="display: flex; align-items: center; padding-top: 5%">
-      <ion-col size="10" style="padding-left: 27px"> </ion-col>
+    <div style="background: #1a206d; height: 250px">
+        <ion-row style="display: flex; align-items: center; padding-top: 5%">
+            <ion-col size="10" style="padding-left: 27px"> </ion-col>
 
-      <ion-col class="titleclass" size="2">
-        <!-- <img class="pro-img" (click)="updateProfile()" src="assets/images/profile.svg" alt="profile"> -->
-      </ion-col>
-    </ion-row>
-    <div class="top-container" style="margin-top: 20px">
-      <p class="name-para">Lets!</p>
-      <p class="wc-para">Explore</p>
+            <ion-col class="titleclass" size="2">
+                <!-- <img class="pro-img" (click)="updateProfile()" src="assets/images/profile.svg" alt="profile"> -->
+            </ion-col>
+        </ion-row>
+        <div class="top-container" style="margin-top: 20px">
+            <p class="name-para">Lets!</p>
+            <p class="wc-para">Explore</p>
 
-      <div class="slide-div" style="margin-top: 20px">
-        <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide">
-          <ion-slide>
-            <div class="mid-div" style="width: 99%">
-              <div class="mid-sub-div">
-                <!-- <div>
+            <div class="slide-div" style="margin-top: 20px">
+                <ion-slides pager="true" [options]="slideOpts" scrollbar="true" (ionSlideDidChange)="active-slide">
+                    <ion-slide>
+                        <div class="mid-div" style="width: 99%">
+                            <div class="mid-sub-div">
+                                <!-- <div>
                   <p class="p1">Get Immediate</p>
                   <p class="p2">Claim assistance</p>
                   <ion-progress-bar
@@ -50,17 +50,17 @@
                     >Learn more</ion-button
                   >
                 </div> -->
-                <div style="width: 100%" (click)="learnmore()">
-                  <img style="border-radius: 10px 50px 10px 10px" class="ins-nce" src="assets/images/slider/pt1.jpg" />
-                </div>
-              </div>
-            </div>
-          </ion-slide>
+                                <div style="width: 100%" (click)="learnmore()">
+                                    <img style="border-radius: 10px 50px 10px 10px" class="ins-nce" src="assets/images/slider/pt1.jpg" />
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
 
-          <ion-slide>
-            <div class="mid-div" style="width: 99%">
-              <div class="mid-sub-div">
-                <!-- <div>
+                    <ion-slide>
+                        <div class="mid-div" style="width: 99%">
+                            <div class="mid-sub-div">
+                                <!-- <div>
                   <p class="p1">Get Immediate</p>
                   <p class="p2">Claim assistance</p>
                   <ion-progress-bar
@@ -77,14 +77,14 @@
                     >Learn more</ion-button
                   >
                 </div> -->
-                <div style="width: 100%" (click)="learnmore2()">
-                  <img style="border-radius: 10px 50px 10px 10px" class="ins-nce" src="assets/images/slider/pt2.jpg" />
-                </div>
-              </div>
-            </div>
-          </ion-slide>
+                                <div style="width: 100%" (click)="learnmore2()">
+                                    <img style="border-radius: 10px 50px 10px 10px" class="ins-nce" src="assets/images/slider/pt2.jpg" />
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
 
-          <!-- <ion-slide>
+                    <!-- <ion-slide>
             <div class="mid-div" style="width: 99%">
               <div class="mid-sub-div">
 
@@ -98,46 +98,79 @@
               </div>
             </div>
           </ion-slide> -->
-        </ion-slides>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div style="display: flex; align-items: center">
-      <p class="mid-p1">PRODUCTS</p>
-      <!-- <p class="mid-p2" (click)="toogleShow()">See more <img class="arrow" src="assets/images/down-arrow.svg"
-          *ngIf="!show"> <img class="arrow" src="assets/images/arrow-up.svg" alt="" *ngIf="show"> </p> -->
-    </div>
-
-    <ion-grid style="padding: 0px; width: 100%">
-      <ion-row style="margin: 16px 0px">
-        <!-- padding:6px 6px 6px 0px;  -->
-        <ion-col size="4" style="width: 100%" *ngFor="let p of products">
-          <div class="gc-div" (click)="openProduct(p,p.name)">
-            <!-- (click)="openQuote(p)" -->
-            <div style="display: flex" class="gimg-div">
-              <img *ngIf="p.name =='Travel Insurance'" (error)="handleImgError($event, userIMG)" src="{{p.image}}"
-                alt="" class="cimg" />
-
-              <img *ngIf="p.name =='Motor Insurance'" (error)="handleImgError2($event, userIMG)" src="{{p.image}}"
-                alt="" class="cimg" />
+                </ion-slides>
             </div>
-            <p class="gp-div">{{p.name}}</p>
-          </div>
-        </ion-col>
-        <ion-col siz="4">
+        </div>
+    </div>
+    <div class="container">
+        <div style="display: flex; align-items: center">
+            <p class="mid-p1">PRODUCTS</p>
+            <!-- <p class="mid-p2" (click)="toogleShow()">See more <img class="arrow" src="assets/images/down-arrow.svg"
+          *ngIf="!show"> <img class="arrow" src="assets/images/arrow-up.svg" alt="" *ngIf="show"> </p> -->
+        </div>
+
+        <!-- <ion-grid style="padding: 0px; width: 100%">
+            <ion-row style="margin: 16px 0px">
+                <ion-col size="4" style="width: 100%" *ngFor="let p of products">
+                    <div class="gc-div" (click)="openProduct(p,p.name)">
+                        <div style="display: flex" class="gimg-div">
+                            <img *ngIf="p.name =='Travel Insurance'" (error)="handleImgError($event, userIMG)" src="{{p.image}}" alt="" class="cimg" />
+
+                            <img *ngIf="p.name =='Motor Insurance'" (error)="handleImgError2($event, userIMG)" src="{{p.image}}" alt="" class="cimg" />
+                        </div>
+                        <p class="gp-div">{{p.name}}</p>
+                    </div>
+                </ion-col>
+                = <ion-col siz="4">
           <div class="gc-div" (click)="investmentsubProducts()">
-            <!-- (click)="openQuote(p)" -->
             <div class="gimg-div">
               <img src="assets/images/investmentplan.png" alt="" class="cimg" />
             </div>
             <p class="gp-div">Investment plans</p>
           </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+        </ion-col> 
+            </ion-row>
+        </ion-grid> -->
 
-    <!-- <ion-grid style="padding:0px; width: 100%;">
+        <ion-grid style="padding: 0px; width: 100%">
+            <ion-row style="margin: 16px 0px">
+                <!-- padding:6px 6px 6px 0px;  -->
+                <ion-col style="width: 100%; display: flex;">
+                    <div class="gc-div" *ngFor="let p of products; let i = index" (click)="openProduct(p,p.name)">
+                        <!-- (click)="openQuote(p)" -->
+                        <div *ngIf="p.name !='Investment plans'" [class.middle-mg]='i%2==0'>
+                            <div class="gimg-div">
+                                <img *ngIf="p.name =='Travel Insurance'" (error)="handleImgError($event, userIMG)" src="assets/images/travel.svg" alt="" class="cimg" />
+
+                                <img *ngIf="p.name =='Motor Insurance'" (error)="handleImgError2($event, userIMG)" src="assets/images/car.svg" alt="" class="cimg" />
+
+                                <!-- <img *ngIf="p.name =='Investment plans'" (error)="handleImgError2($event, userIMG)" src="assets/images/investmentplan2.png" alt="" class="cimg" /> -->
+                            </div>
+                            <p class="gp-div">{{p.name}}</p>
+                        </div>
+                    </div>
+                    <div style="margin-left: 10px;" class="gc-div" (click)="goToPolicy1()">
+                        <div class="gimg-div">
+                            <img src="assets/images/investmentplan2.png" alt="" class="cimg" />
+                        </div>
+                        <p class="gp-div">Investment Plans</p>
+                    </div>
+                </ion-col>
+                <!-- <ion-col siz="4">
+                  <div class="gc-div" (click)="goToPolicy1()">
+                      <div class="gimg-div">
+                          <img src="assets/images/policy_plan.svg" alt="" class="cimg" />
+                      </div>
+                      <p class="gp-div">Policy Plans</p>
+                  </div>
+              </ion-col> -->
+                <!-- (click)="openQuote(p)" -->
+
+            </ion-row>
+        </ion-grid>
+
+
+        <!-- <ion-grid style="padding:0px; width: 100%;">
       <ion-row style="margin-top:16px ;">
         <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;" (click)="gotologin()">
           <div class="gc-div">
@@ -247,43 +280,43 @@
 
     </ion-grid> -->
 
-    <div style="display: flex; align-items: center; margin-top: 26px">
-      <p class="mid-p1">Services</p>
-      <!-- <p class="mid-p2">See more <img class="arrow" src="assets/images/down-arrow.svg"> </p> -->
-    </div>
+        <div style="display: flex; align-items: center; margin-top: 26px">
+            <p class="mid-p1">Services</p>
+            <!-- <p class="mid-p2">See more <img class="arrow" src="assets/images/down-arrow.svg"> </p> -->
+        </div>
 
-    <ion-grid style="padding: 0px; width: 100%">
-      <ion-row style="margin-top: 16px">
-        <ion-col size="4" style="padding: 6px 6px 6px 0px; width: 100%" (click)="tab2Click()">
-          <div class="gc-div">
-            <div class="gimg-div">
-              <img class="imgclass" src="assets/images/get-insured.svg" alt="" />
-            </div>
-            <p class="gp-div">Get Insured</p>
-          </div>
-        </ion-col>
+        <ion-grid style="padding: 0px; width: 100%">
+            <ion-row style="margin-top: 16px">
+                <ion-col size="4" style="padding: 6px 6px 6px 0px; width: 100%" (click)="tab2Click()">
+                    <div class="gc-div">
+                        <div class="gimg-div">
+                            <img class="imgclass" src="assets/images/get-insured.svg" alt="" />
+                        </div>
+                        <p class="gp-div">Get Insured</p>
+                    </div>
+                </ion-col>
 
-        <ion-col size="4" style="padding: 6px; width: 100%" (click)="makeaclaim()">
-          <div class="gc-div">
-            <div class="gimg-div">
-              <img class="imgclass" src="assets/images/report-claim.svg" alt="" />
-            </div>
-            <p class="gp-div">Report a Claim</p>
-          </div>
-        </ion-col>
+                <ion-col size="4" style="padding: 6px; width: 100%" (click)="makeaclaim()">
+                    <div class="gc-div">
+                        <div class="gimg-div">
+                            <img class="imgclass" src="assets/images/report-claim.svg" alt="" />
+                        </div>
+                        <p class="gp-div">Report a Claim</p>
+                    </div>
+                </ion-col>
 
-        <ion-col size="4" style="padding: 6px 0px 6px 6px; width: 100%" (click)="gotorenewpolicy()">
-          <div class="gc-div">
-            <div class="gimg-div">
-              <img class="imgclass" src="assets/images/renew-policy.svg" alt="" />
-            </div>
-            <p class="gp-div">Renew Policy</p>
-          </div>
-        </ion-col>
-      </ion-row>
+                <ion-col size="4" style="padding: 6px 0px 6px 6px; width: 100%" (click)="gotorenewpolicy()">
+                    <div class="gc-div">
+                        <div class="gimg-div">
+                            <img class="imgclass" src="assets/images/renew-policy.svg" alt="" />
+                        </div>
+                        <p class="gp-div">Renew Policy</p>
+                    </div>
+                </ion-col>
+            </ion-row>
 
-      <ion-row style="margin-top: 10px">
-        <!-- <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;">
+            <ion-row style="margin-top: 10px">
+                <!-- <ion-col size="4" style="padding:6px 6px 6px 0px; width: 100%;">
           <div class="gc-div">
             <div class="gimg-div" >
               <img class="imgclass" src="assets/images/agent-login.svg" alt="">
@@ -292,16 +325,16 @@
           </div>
         </ion-col> -->
 
-        <ion-col size="4" style="padding: 6px; width: 100%" (click)="policylookup()">
-          <div class="gc-div">
-            <div class="gimg-div">
-              <img class="imgclass" src="assets/images/sec-doc.svg" alt="" />
-            </div>
-            <p class="gp-div">Verify Policy</p>
-          </div>
-        </ion-col>
+                <ion-col size="4" style="padding: 6px; width: 100%" (click)="policylookup()">
+                    <div class="gc-div">
+                        <div class="gimg-div">
+                            <img class="imgclass" src="assets/images/sec-doc.svg" alt="" />
+                        </div>
+                        <p class="gp-div">Verify Policy</p>
+                    </div>
+                </ion-col>
 
-        <!-- <ion-col size="4" style="padding:6px 0px 6px 6px; width: 100%;">
+                <!-- <ion-col size="4" style="padding:6px 0px 6px 6px; width: 100%;">
           <div class="gc-div">
             <div class="gimg-div" >
               <img class="imgclass" src="assets/images/helping-staff.svg" alt="">
@@ -309,31 +342,31 @@
             <p class="gp-div">Get in Touch</p>
           </div>
         </ion-col> -->
-      </ion-row>
-    </ion-grid>
+            </ion-row>
+        </ion-grid>
 
-    <div style="height: 20px"></div>
-  </div>
+        <div style="height: 20px"></div>
+    </div>
 </ion-content>
 
 <ion-footer>
-  <ion-tabs style="top: 10px !important">
-    <ion-tab-bar slot="bottom" class="ion-no-border">
-      <hr />
-      <ion-tab-button (click)="tab1Click()">
-        <img src="assets/images/discover.svg" class="activeimg" />
-        <ion-label class="fontactive">Discover</ion-label>
-      </ion-tab-button>
+    <ion-tabs style="top: 10px !important">
+        <ion-tab-bar slot="bottom" class="ion-no-border">
+            <hr />
+            <ion-tab-button (click)="tab1Click()">
+                <img src="assets/images/discover.svg" class="activeimg" />
+                <ion-label class="fontactive">Discover</ion-label>
+            </ion-tab-button>
 
-      <ion-tab-button (click)="tab2Click()">
-        <img src="assets/images/home.svg" class="img" />
-        <ion-label class="font">Home</ion-label>
-      </ion-tab-button>
+            <ion-tab-button (click)="tab2Click()">
+                <img src="assets/images/home.svg" class="img" />
+                <ion-label class="font">Home</ion-label>
+            </ion-tab-button>
 
-      <ion-tab-button (click)="tab3Click()">
-        <img src="assets/images/contactus.svg" class="img" />
-        <ion-label class="font">Contact Us</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+            <ion-tab-button (click)="tab3Click()">
+                <img src="assets/images/contactus.svg" class="img" />
+                <ion-label class="font">Contact Us</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
 </ion-footer>

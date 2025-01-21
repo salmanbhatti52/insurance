@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InsuranceAppService } from '../services/insurance-app.service';
+import { Location } from '@angular/common';
 
 declare var require: any;
 @Component({
@@ -10,7 +11,7 @@ declare var require: any;
 export class PolicylookupPage implements OnInit {
   show = false;
   Title = 'Select Policy Type';
-  listarray = [{ Title: 'Gen Business' }, { Title: 'Life/Investment' }];
+  listarray = [{ Title: 'General Business' }, { Title: 'Life/Investment' }];
   uTitle = '';
   policy = false;
   policynum = '';
@@ -25,7 +26,9 @@ export class PolicylookupPage implements OnInit {
   gibspolicy = false;
   statusdesc: any;
 
-  constructor(public api: InsuranceAppService) { }
+  constructor(public api: InsuranceAppService,
+    public location: Location
+  ) { }
 
   ngOnInit() {
     var number = 'YEKINI, AZEEZAT, ABOSEDE';
@@ -229,5 +232,11 @@ export class PolicylookupPage implements OnInit {
 
     //   })
     // })
+  }
+
+
+
+  goback() {
+    this.location.back();
   }
 }

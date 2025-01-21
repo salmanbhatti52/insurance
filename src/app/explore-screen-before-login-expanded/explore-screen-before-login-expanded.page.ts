@@ -33,7 +33,7 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     public menuCtrl: MenuController,
     public iab: InAppBrowser,
     public platform: Platform
-  ) {}
+  ) { }
 
   ionViewWillLeave() {
     // enable the root left menu when leaving this page
@@ -257,5 +257,10 @@ export class ExploreScreenBeforeLoginExpandedPage implements OnInit {
     const source = ev.srcElement;
     const imgSrc = `assets/images/car.svg`;
     source.src = imgSrc;
+  }
+
+  goToPolicy1() {
+    this.router.navigate(['/policy1']);
+
   }
 }

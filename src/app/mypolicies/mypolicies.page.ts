@@ -38,9 +38,11 @@ export class MypoliciesPage implements OnInit {
   showRoadSide = false;
   tourStartDate = format(new Date(), 'yyyy-MM-dd');
   tourEndDate = format(new Date(), 'yyyy-MM-dd');
+  dob = format(new Date(), 'yyyy-MM-dd');
   otheName = '';
   showPickerStartDate = false;
   showPickerEndDate = false;
+  showPickerEndDatedob = false;
   ageGroup = 'Please Select';
   useTitle = 'Please Select';
   roadSideVal = 'Please Select';
@@ -662,6 +664,10 @@ export class MypoliciesPage implements OnInit {
       this.tourStartDate = value;
       console.log('this.tourStartDate ----', this.tourStartDate);
       this.showPickerStartDate = false;
+    } else if (type == 'dob') {
+      this.dob = value;
+      console.log('this.tourEndDate ----', this.tourEndDate);
+      this.showPickerEndDatedob = false;
     } else {
       this.tourEndDate = value;
       console.log('this.tourEndDate ----', this.tourEndDate);
@@ -903,6 +909,9 @@ export class MypoliciesPage implements OnInit {
           this.ageGroup +
           '", "other_name":"' +
           this.otheName +
+
+          '", "date_of_birth":"' +
+         '2000-01-04' +
           '","verify_token":"' +
           localStorage.getItem('token') +
           '","method":"save_product_quote"}';

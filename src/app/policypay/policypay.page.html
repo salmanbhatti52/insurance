@@ -1,0 +1,72 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+    <ion-toolbar class="headBgGlobal">
+        <ion-row>
+            <ion-col size="2" style="padding-left: 25px">
+                <ion-buttons>
+                    <div style="width:100% ;">
+                        <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
+                    </div>
+                </ion-buttons>
+
+            </ion-col>
+            <ion-col size="8">
+                <div class="title" style="color: black">Make Payment</div>
+            </ion-col>
+            <ion-col class="titleclass" size="2"> </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="wrapper">
+        <div style="display: flex; align-items: center; justify-content: space-around">
+            <img height="50px" src="assets/images/access_point.png" />
+            <h1 style="margin: 0px; font-size: 22px; margin-left: 6px; color: black">
+                (Amount : ₦ {{amtShow}} )
+            </h1>
+        </div>
+
+
+        <table class="table">
+            <tbody>
+                <tr>
+
+
+                    <td style="color: black">
+                        <strong>Flutterwave  </strong><br /><img height="100px;" src="https://flutterwave.com/images/logo/full.svg" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</ion-content>
+<ion-footer>
+    <!-- <div class="btndiv">
+  <ion-button class="btn" (click)="paymentDone()"> Proceed</ion-button>
+</div> -->
+    <!-- pk_live_a8ca720ed1feb2f3304e6ab91eae45e42706406f -->
+    <!-- pk_test_ff6f2927d464e23a6ddf592be475db01de695970 -->
+    <div class="btndiv">
+        <!-- <button angular4-paystack [key]="'pk_test_c613fc7d428a64fd1e5daea22f8380551b28c78e'" [email]="email" [amount]="amt" [ref]="reference" class="btn11" (paymentInit)="paymentInit()" (onClose)="paymentCancel()" (callback)="paymentDone($event)">
+    Pay with Paystack 
+  </button> -->
+
+        <button class="btn11" (click)="makePayment()">
+      Pay with Flutterwave
+  </button>
+
+
+        <!-- <button (click)="makePayment()">Pay</button> -->
+
+
+        <!-- <angular4-paystack [class]="'btn btn-primary btn-lg'" [key]="'pk_test_c613fc7d428a64fd1e5daea22f8380551b28c78e'" [email]="email" [amount]="amt" [ref]="reference" [style]="{'margin': 'auto', display: 'block'}" (close)="paymentCancel()" (callback)="paymentDone($event)">Pay With Paystack Test</angular4-paystack> -->
+        <!-- <ion-button (click)="payment_method()">checkpayemntres</ion-button> -->
+
+
+        <!-- <button angular4-paystack [paystackOptions]="options" (paymentInit)="paymentInit()" (onClose)="paymentCancel()" (callback)="paymentDone($event)">
+      Pay with Paystack Ali
+    </button> -->
+    </div>
+</ion-footer>

@@ -238,7 +238,7 @@ export class PaymentPage implements OnInit {
       'myData={"transaction_ref":' +
       '"' + this.trxref + '"' +
       ',"flutterwave_transaction_id":' +
-      '"' + this.paymetdone.tx_ref + '"' +
+      '"' + this.paymetdone.transaction_id + '"' +
       ',"quote_id":' +
       '"' + this.quoteId + '"' +
       ',"verify_token":"' +

@@ -6,8 +6,8 @@ android {
         applicationId "com.cornerstone.insurance"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 4300
-        versionName '3.0'
+        versionCode 4600
+        versionName '3.3'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.

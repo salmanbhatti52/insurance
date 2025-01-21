@@ -9,11 +9,12 @@ import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 import { FlutterwaveService, InlinePaymentOptions, PaymentSuccessResponse } from 'flutterwave-angular-v3';
 
 @Component({
-  selector: 'app-nextpayment',
-  templateUrl: './nextpayment.page.html',
-  styleUrls: ['./nextpayment.page.scss'],
+  selector: 'app-policypay',
+  templateUrl: './policypay.page.html',
+  styleUrls: ['./policypay.page.scss'],
 })
-export class NextpaymentPage implements OnInit {
+export class PolicypayPage implements OnInit {
+
 
   quoteItems: any;
   quoteArrayLength: number;
@@ -133,8 +134,8 @@ export class NextpaymentPage implements OnInit {
     this.email = localStorage.getItem('email');
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
 
-    this.amt = this.api.nextPayment.amountDue + '00'
-    this.amtShow = this.api.nextPayment.amountDue
+    this.amt = this.api.policyamountDue + '00'
+    this.amtShow = this.api.policyamountDue
 
 
 
@@ -160,7 +161,7 @@ export class NextpaymentPage implements OnInit {
     this.paymentData = {
       public_key: this.publicKey,
       tx_ref: this.generateReference(),
-      amount: this.api.nextPayment.amountDue,
+      amount: this.api.policyamountDue,
       currency: "NGN",
       payment_options: "card,ussd",
       redirect_url: "",
@@ -220,25 +221,15 @@ export class NextpaymentPage implements OnInit {
   }
   /////////////////
   paystackpayment(ref) {
-    // let datasend =
-    //   'myData={"transaction_ref":' +
-    //   '"' + this.trxref + '"' +
-    //   ',"paystack_transaction_ref":' +
-    //   '"' + this.paystacktrxref + '"' +
-    //   ',"quote_id":' +
-    //   '"' + this.quoteId + '"' +
-    //   ',"verify_token":"' +
-    //   localStorage.getItem('token') +
-    //   '","method":"standalonePaystackConfirm"}';
 
     var fluterpay = JSON.parse(this.paymetdone)
 
     let datasend = 'myData={"transaction_ref":' +
-      '"' + ref + '"' +
+      '"' + this.api.nextPayment.quote.transaction_ref + '"' +
       ',"flutterwave_transaction_id":' +
       '"' + fluterpay.transaction_id + '"' +
       ',"quote_id":' +
-      '"' + this.quoteId + '"' +
+      '"' + this.api.nextPayment.quote.id + '"' +
       ',"verify_token":"' +
       localStorage.getItem('token') +
       // '","method":"standalonePaystackConfirm"}';
@@ -250,11 +241,7 @@ export class NextpaymentPage implements OnInit {
       if (res.status_no == 1) {
         this.api.hideLoader();
         this.api.presenttoast('Payment has been done succesfully.')
-        // if (localStorage.getItem('productName') == 'Motor Insurance') {
-        // this.sendcertificate()
-        // } else {
-        // this.api.presenttoast(res.message)
-        // this.api.alertboxshow(res.message)
+
         this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
         console.log(this.draftArr);
 
@@ -400,8 +387,7 @@ export class NextpaymentPage implements OnInit {
   closedPaymentModal(): void {
     if (this.paymetdone) {
       console.log("payment is closed");
-      this.api.presenttoast('Payment has been done succesfully.')
-      this.getTransactionHistory()
+      this.paystackpayment(this.api.nextPayment.quote.details.transaction_ref)
 
       setTimeout(() => {
         this.location.back()

@@ -10,12 +10,21 @@ import * as btoa from 'btoa-lite';
 export class InsuranceAppService {
   // Live:
   url = 'https://www.cornerstone.com.ng/webservice'
+  flutterwaveAPIKey = "FLWPUBK-ea5dbc9de4ddb38309432794c2d62e81-X";
+
+  //DEV
 
   // url = 'https://www.cornerstone.com.ng/devtest/webservice';
+  // flutterwaveAPIKey = "FLWPUBK_TEST-4fdbf14bb4f70e2e6fe3dae2d18a4fc8-X";
+
+
   authurl = 'https://testcipapiservices.gibsonline.com/api/auth';
   // url1 = 'http://testcipapiservices.gibsonline.com/api/Agents/'
 
-  flutterwaveAPIKey = "FLWPUBK_TEST-4fdbf14bb4f70e2e6fe3dae2d18a4fc8-X";
+
+
+
+
 
   fpval: any;
   username: any;
@@ -25,6 +34,7 @@ export class InsuranceAppService {
   selectedPolicy: any;
   selectedTransaction: any;
   nextPayment: any;
+  policyamountDue: any;
 
   constructor(
     private toastctrl: ToastController,
@@ -64,6 +74,24 @@ export class InsuranceAppService {
     header.append('Access-Control-Allow-Methods', '*');
     header.append('Access-Control-Allow-Headers');
     return this.http.post(this.url, myData, {
+      headers: header,
+    });
+  }
+
+  renewalC(url, myData) {
+    console.log('data', myData);
+
+    let header;
+
+    header = new HttpHeaders({
+      // "Content-Type": "application/json",
+      "Accept": "application/json",
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+    header.append('Access-Control-Allow-Origin', '*');
+    header.append('Access-Control-Allow-Methods', '*');
+    header.append('Access-Control-Allow-Headers');
+    return this.http.post(url, myData, {
       headers: header,
     });
   }

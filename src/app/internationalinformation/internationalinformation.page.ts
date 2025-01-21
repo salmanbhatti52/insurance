@@ -17,6 +17,7 @@ export class InternationalinformationPage implements OnInit {
     this.localtravelproduct = JSON.parse(localStorage.getItem('localtravel'));
     this.productname = this.localtravelproduct.name
     console.log('localtravelproduct', this.localtravelproduct);
+    console.log('productname========' + this.productname);
   }
 
   goback() {

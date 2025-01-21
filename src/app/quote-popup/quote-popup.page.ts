@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { InsuranceAppService } from '../services/insurance-app.service';
+import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
 @Component({
   selector: 'app-quote-popup',
   templateUrl: './quote-popup.page.html',
@@ -17,7 +18,7 @@ export class QuotePopupPage implements OnInit {
   productID: any;
   insurancename: any;
   motorsubproducts = [];
-  policyId:any;
+  policyId: any;
   showDropDown = false;
   arr1 = [];
   arr2 = [];
@@ -31,7 +32,8 @@ export class QuotePopupPage implements OnInit {
   constructor(public router: Router,
     public modal: ModalController,
     public location: Location,
-    public api: InsuranceAppService) { }
+    public api: InsuranceAppService,
+    public iab: InAppBrowser) { }
 
   ngOnInit() {
 
@@ -48,9 +50,9 @@ export class QuotePopupPage implements OnInit {
       if (value.name != "Travel Care Premier" && value.name != "Travel Care Visa") {
         subproducts.push(value);
       }
-      if(value.name == 'Children Education Fund'){
-        value.image='assets/images/investmentplans/4.png';
-      }else if(value.name == 'iSave Plan'){
+      if (value.name == 'Children Education Fund') {
+        value.image = 'assets/images/investmentplans/4.png';
+      } else if (value.name == 'iSave Plan') {
         value.image = 'assets/images/investmentplans/1.png';
       }
       this.subProducts = subproducts
@@ -64,119 +66,119 @@ export class QuotePopupPage implements OnInit {
 
   }
 
-  showOptions(val:any){
-    if(this.policyId == val){
+  showOptions(val: any) {
+    if (this.policyId == val) {
       this.policyId = '';
-    }else{
+    } else {
       this.policyId = val;
     }
   }
 
-  downloadPolicyDoc(policyId:any){
+  downloadPolicyDoc(policyId: any) {
     this.policyId = '';
     let data = {
-      'verify_token':localStorage.getItem('token'),
-      'method':'getPolicyCertificate',
-      'policyId':policyId
+      'verify_token': localStorage.getItem('token'),
+      'method': 'getPolicyCertificate',
+      'policyId': policyId
     }
     this.api.showLoader();
-    this.api.submitFormData(data).subscribe((res:any)=>{
+    this.api.submitFormData(data).subscribe((res: any) => {
       this.api.hideLoader();
-      
-      console.log('Get Policy Doc Res: ',res);
-      if(res.status_no == 1){
+
+      console.log('Get Policy Doc Res: ', res);
+      if (res.status_no == 1) {
         this.api.presenttoast(res.message);
-        localStorage.setItem('policyCertificate',res.certificate_link);
+        localStorage.setItem('policyCertificate', res.certificate_link);
         this.router.navigate(['policy-details']);
-      }else{
+      } else {
 
       }
-      
-    },(err:any)=>{
+
+    }, (err: any) => {
 
     });
 
   }
 
-  fetchPolicyTransactions(policyId:any){
+  fetchPolicyTransactions(policyId: any) {
     this.policyId = '';
     let data = {
-      'verify_token':localStorage.getItem('token'),
-      'method':'getTransactionHistoryForReceipt',
-      'policyId':policyId
+      'verify_token': localStorage.getItem('token'),
+      'method': 'getTransactionHistoryForReceipt',
+      'policyId': policyId
     }
     this.api.showLoader();
-    this.api.submitFormData(data).subscribe((res:any)=>{
+    this.api.submitFormData(data).subscribe((res: any) => {
       this.api.hideLoader();
-      
-      console.log('Get Policy Transactions Res: ',res);
-      if(res.status_no == 1){
+
+      console.log('Get Policy Transactions Res: ', res);
+      if (res.status_no == 1) {
         // this.api.presenttoast(res.message);
-        localStorage.setItem('transactionsHistory',JSON.stringify(res.transactionHistory));
+        localStorage.setItem('transactionsHistory', JSON.stringify(res.transactionHistory));
         this.router.navigate(['policy-details']);
-      }else{
+      } else {
 
       }
-      
-    },(err:any)=>{
+
+    }, (err: any) => {
 
     });
   }
 
-  downloadAccountStatement(policyId:any){
+  downloadAccountStatement(policyId: any) {
     this.policyId = '';
     let data = {
-      'verify_token':localStorage.getItem('token'),
-      'method':'getIESAccountStatement',
-      'policyId':policyId
+      'verify_token': localStorage.getItem('token'),
+      'method': 'getIESAccountStatement',
+      'policyId': policyId
     }
     this.api.showLoader();
-    this.api.submitFormData(data).subscribe((res:any)=>{
+    this.api.submitFormData(data).subscribe((res: any) => {
       this.api.hideLoader();
-      
-      console.log('Get Account Statement Res: ',res);
-      if(res.status_no == 1){
+
+      console.log('Get Account Statement Res: ', res);
+      if (res.status_no == 1) {
         this.api.presenttoast(res.message);
-        localStorage.setItem('accountStatement',res.accountStatementLink);
+        localStorage.setItem('accountStatement', res.accountStatementLink);
         this.router.navigate(['policy-details']);
-      }else{
+      } else {
         this.api.presenttoast(res.message);
       }
-      
-    },(err:any)=>{
+
+    }, (err: any) => {
 
     });
   }
 
-  getPastAndUpcomingPayments(policyId:any,repaymentStatus:any){
+  getPastAndUpcomingPayments(policyId: any, repaymentStatus: any) {
     this.policyId = '';
-    if(repaymentStatus == true){
+    if (repaymentStatus == true) {
       let data = {
-        'verify_token':localStorage.getItem('token'),
-        'method':'getTransactionHistory',
-        'policyId':policyId
+        'verify_token': localStorage.getItem('token'),
+        'method': 'getTransactionHistory',
+        'policyId': policyId
       }
       this.api.showLoader();
-      this.api.submitFormData(data).subscribe((res:any)=>{
+      this.api.submitFormData(data).subscribe((res: any) => {
         this.api.hideLoader();
-        
-        console.log('Get Policy Transactions History Res: ',res);
-        if(res.status_no == 1){
+
+        console.log('Get Policy Transactions History Res: ', res);
+        if (res.status_no == 1) {
           // this.api.presenttoast(res.message);
-          localStorage.setItem('nextPayments',JSON.stringify(res.nextPayment));
-          localStorage.setItem('pastPayments',JSON.stringify(res.pastPayment));
+          localStorage.setItem('nextPayments', JSON.stringify(res.nextPayment));
+          localStorage.setItem('pastPayments', JSON.stringify(res.pastPayment));
           this.router.navigate(['policy-details']);
-        }else{
-  
+        } else {
+
         }
-        
-      },(err:any)=>{
-  
+
+      }, (err: any) => {
+
       });
-    }else{
+    } else {
       this.api.presenttoast('No new payments available for this policy.')
     }
-    
+
   }
 
 
@@ -256,10 +258,17 @@ export class QuotePopupPage implements OnInit {
         } else {
           if (sp.name == 'Student Plan' || sp.name == 'Europe / Schengen' || sp.name == 'Travel Care Premier' || sp.name == 'Travel Care Visa') {
             this.router.navigate(['/mypolicies']);
-          } else  {
+          } else {
             // if(sp.parent_id !=27)
             localStorage.setItem('localtravel', JSON.stringify(sp));
-            this.router.navigate(['/internationalinformation']);
+            if (sp.name == 'Worldwide Family Cover') {
+              const browser = this.iab.create(
+                'https://cornerstone.com.ng/quotes/NjE=',
+                '_system'
+              );
+            } else {
+              this.router.navigate(['/internationalinformation']);
+            }
           }
         }
 
