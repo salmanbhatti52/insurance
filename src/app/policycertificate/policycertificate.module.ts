@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PolicycertificatePageRoutingModule } from './policycertificate-routing.module';
 
 import { PolicycertificatePage } from './policycertificate.page';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     FormsModule,
     IonicModule,
     PolicycertificatePageRoutingModule,
-    PdfViewerModule
+    // PdfViewerModule
   ],
   declarations: [PolicycertificatePage]
 })

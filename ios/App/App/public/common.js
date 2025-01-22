@@ -50,6 +50,191 @@ TermsandconditionPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
+/***/ 39162:
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@capacitor-community/file-opener/dist/esm/definitions.js ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+
+
+/***/ }),
+
+/***/ 37302:
+/*!*************************************************************************!*\
+  !*** ./node_modules/@capacitor-community/file-opener/dist/esm/index.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FileOpener": () => (/* binding */ FileOpener)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 26549);
+/* harmony import */ var _definitions_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions.js */ 39162);
+
+const FileOpener = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('FileOpener');
+
+
+
+/***/ }),
+
+/***/ 93568:
+/*!********************************************************************!*\
+  !*** ./node_modules/@capacitor/filesystem/dist/esm/definitions.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Directory": () => (/* binding */ Directory),
+/* harmony export */   "Encoding": () => (/* binding */ Encoding),
+/* harmony export */   "FilesystemDirectory": () => (/* binding */ FilesystemDirectory),
+/* harmony export */   "FilesystemEncoding": () => (/* binding */ FilesystemEncoding)
+/* harmony export */ });
+var Directory;
+
+(function (Directory) {
+  /**
+   * The Documents directory
+   * On iOS it's the app's documents directory.
+   * Use this directory to store user-generated content.
+   * On Android it's the Public Documents folder, so it's accessible from other apps.
+   * It's not accesible on Android 10 unless the app enables legacy External Storage
+   * by adding `android:requestLegacyExternalStorage="true"` in the `application` tag
+   * in the `AndroidManifest.xml`.
+   * It's not accesible on Android 11 or newer.
+   *
+   * @since 1.0.0
+   */
+  Directory["Documents"] = "DOCUMENTS";
+  /**
+   * The Data directory
+   * On iOS it will use the Documents directory.
+   * On Android it's the directory holding application files.
+   * Files will be deleted when the application is uninstalled.
+   *
+   * @since 1.0.0
+   */
+
+  Directory["Data"] = "DATA";
+  /**
+   * The Library directory
+   * On iOS it will use the Library directory.
+   * On Android it's the directory holding application files.
+   * Files will be deleted when the application is uninstalled.
+   *
+   * @since 1.1.0
+   */
+
+  Directory["Library"] = "LIBRARY";
+  /**
+   * The Cache directory
+   * Can be deleted in cases of low memory, so use this directory to write app-specific files
+   * that your app can re-create easily.
+   *
+   * @since 1.0.0
+   */
+
+  Directory["Cache"] = "CACHE";
+  /**
+   * The external directory
+   * On iOS it will use the Documents directory
+   * On Android it's the directory on the primary shared/external
+   * storage device where the application can place persistent files it owns.
+   * These files are internal to the applications, and not typically visible
+   * to the user as media.
+   * Files will be deleted when the application is uninstalled.
+   *
+   * @since 1.0.0
+   */
+
+  Directory["External"] = "EXTERNAL";
+  /**
+   * The external storage directory
+   * On iOS it will use the Documents directory
+   * On Android it's the primary shared/external storage directory.
+   * It's not accesible on Android 10 unless the app enables legacy External Storage
+   * by adding `android:requestLegacyExternalStorage="true"` in the `application` tag
+   * in the `AndroidManifest.xml`.
+   * It's not accesible on Android 11 or newer.
+   *
+   * @since 1.0.0
+   */
+
+  Directory["ExternalStorage"] = "EXTERNAL_STORAGE";
+})(Directory || (Directory = {}));
+
+var Encoding;
+
+(function (Encoding) {
+  /**
+   * Eight-bit UCS Transformation Format
+   *
+   * @since 1.0.0
+   */
+  Encoding["UTF8"] = "utf8";
+  /**
+   * Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of the
+   * Unicode character set
+   * This encoding is only supported on Android.
+   *
+   * @since 1.0.0
+   */
+
+  Encoding["ASCII"] = "ascii";
+  /**
+   * Sixteen-bit UCS Transformation Format, byte order identified by an
+   * optional byte-order mark
+   * This encoding is only supported on Android.
+   *
+   * @since 1.0.0
+   */
+
+  Encoding["UTF16"] = "utf16";
+})(Encoding || (Encoding = {}));
+/**
+ * @deprecated Use `Directory`.
+ * @since 1.0.0
+ */
+
+
+const FilesystemDirectory = Directory;
+/**
+ * @deprecated Use `Encoding`.
+ * @since 1.0.0
+ */
+
+const FilesystemEncoding = Encoding;
+
+/***/ }),
+
+/***/ 91662:
+/*!**************************************************************!*\
+  !*** ./node_modules/@capacitor/filesystem/dist/esm/index.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Directory": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.Directory),
+/* harmony export */   "Encoding": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.Encoding),
+/* harmony export */   "Filesystem": () => (/* binding */ Filesystem),
+/* harmony export */   "FilesystemDirectory": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.FilesystemDirectory),
+/* harmony export */   "FilesystemEncoding": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.FilesystemEncoding)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 26549);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 93568);
+
+const Filesystem = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Filesystem', {
+  web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_filesystem_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 64046)).then(m => new m.FilesystemWeb())
+});
+
+
+
+/***/ }),
+
 /***/ 73696:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-8937ead0.js ***!
@@ -275,7 +460,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "a": () => (/* binding */ attachComponent),
 /* harmony export */   "d": () => (/* binding */ detachComponent)
 /* harmony export */ });
-/* harmony import */ var E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
 
 
@@ -285,7 +470,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const attachComponent = /*#__PURE__*/function () {
-  var _ref = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (delegate, container, component, cssClasses, componentProps, inline) {
+  var _ref = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (delegate, container, component, cssClasses, componentProps, inline) {
     var _a;
 
     if (delegate) {
@@ -334,7 +519,7 @@ const CoreDelegate = () => {
   let Reference;
 
   const attachViewToDom = /*#__PURE__*/function () {
-    var _ref2 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (parentElement, userComponent, userComponentProps = {}, cssClasses = []) {
+    var _ref2 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (parentElement, userComponent, userComponentProps = {}, cssClasses = []) {
       var _a, _b;
 
       BaseComponent = parentElement;
@@ -605,7 +790,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "r": () => (/* binding */ resetContentScrollY),
 /* harmony export */   "s": () => (/* binding */ scrollToTop)
 /* harmony export */ });
-/* harmony import */ var E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
 /* harmony import */ var _index_9ac92660_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-9ac92660.js */ 2141);
 
@@ -642,7 +827,7 @@ const isIonContent = el => el && el.tagName === ION_CONTENT_TAG_NAME;
 
 
 const getScrollElement = /*#__PURE__*/function () {
-  var _ref = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
+  var _ref = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
     if (isIonContent(el)) {
       yield new Promise(resolve => (0,_helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__.c)(el, resolve));
       return el.getScrollElement();
@@ -1326,7 +1511,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "h": () => (/* binding */ hostContext),
 /* harmony export */   "o": () => (/* binding */ openURL)
 /* harmony export */ });
-/* harmony import */ var E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 
 
 /*!
@@ -1365,7 +1550,7 @@ const getClassMap = classes => {
 const SCHEME = /^[a-z][a-z0-9+\-.]*:/;
 
 const openURL = /*#__PURE__*/function () {
-  var _ref = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (url, ev, direction, animation) {
+  var _ref = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (url, ev, direction, animation) {
     if (url != null && url[0] !== '#' && !SCHEME.test(url)) {
       const router = document.querySelector('ion-router');
 
@@ -1396,7 +1581,7 @@ const openURL = /*#__PURE__*/function () {
   \**************************************************************************/
 /***/ ((module) => {
 
-module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  font-size: 20px;\n  color: #1A0F55;\n  font-weight: bold;\n}\n\n.container {\n  width: 90%;\n  margin: 5% auto;\n}\n\np {\n  line-height: 1.3;\n  margin-bottom: 0px;\n}\n\nul {\n  line-height: 1.3;\n  padding-left: 10%;\n  margin: 5px 0px;\n}\n\nul li {\n  padding: 3px 0px;\n}\n\nh4 {\n  font-size: 18px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlcm1zYW5kY29uZGl0aW9uLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBQ0Esc0JBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxVQUFBO0VBQ0EsZUFBQTtBQUVGOztBQUNBO0VBQ0UsZ0JBQUE7RUFDQSxrQkFBQTtBQUVGOztBQUNBO0VBQ0UsZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLGVBQUE7QUFFRjs7QUFBQTtFQUNFLGdCQUFBO0FBR0Y7O0FBREE7RUFDRSxlQUFBO0FBSUYiLCJmaWxlIjoidGVybXNhbmRjb25kaXRpb24ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRpdGxle1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBmb250LWZhbWlseTogQmxpc3MgUHJvO1xyXG4gIGZvbnQtc2l6ZTogMjBweDtcclxuICBjb2xvcjogIzFBMEY1NTtcclxuICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG4uY29udGFpbmVye1xyXG4gIHdpZHRoOiA5MCU7XHJcbiAgbWFyZ2luOiA1JSBhdXRvO1xyXG59XHJcblxyXG5we1xyXG4gIGxpbmUtaGVpZ2h0OiAxLjM7XHJcbiAgbWFyZ2luLWJvdHRvbTogMHB4O1xyXG5cclxufVxyXG51bHtcclxuICBsaW5lLWhlaWdodDogMS4zO1xyXG4gIHBhZGRpbmctbGVmdDogMTAlO1xyXG4gIG1hcmdpbjogNXB4IDBweDtcclxufVxyXG51bCBsaXtcclxuICBwYWRkaW5nOiAzcHggMHB4O1xyXG59XHJcbmg0e1xyXG4gIGZvbnQtc2l6ZTogMThweDtcclxufVxyXG4iXX0= */";
+module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  font-size: 20px;\n  color: #1A0F55;\n  font-weight: bold;\n}\n\n.container {\n  width: 90%;\n  margin: 5% auto;\n}\n\np {\n  line-height: 1.3;\n  margin-bottom: 0px;\n}\n\nul {\n  line-height: 1.3;\n  padding-left: 10%;\n  margin: 5px 0px;\n}\n\nul li {\n  padding: 3px 0px;\n}\n\nh4 {\n  font-size: 18px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlcm1zYW5kY29uZGl0aW9uLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBQ0Esc0JBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxVQUFBO0VBQ0EsZUFBQTtBQUVGOztBQUNBO0VBQ0UsZ0JBQUE7RUFDQSxrQkFBQTtBQUVGOztBQUNBO0VBQ0UsZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLGVBQUE7QUFFRjs7QUFBQTtFQUNFLGdCQUFBO0FBR0Y7O0FBREE7RUFDRSxlQUFBO0FBSUYiLCJmaWxlIjoidGVybXNhbmRjb25kaXRpb24ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRpdGxle1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGZvbnQtZmFtaWx5OiBCbGlzcyBQcm87XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgY29sb3I6ICMxQTBGNTU7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuLmNvbnRhaW5lcntcbiAgd2lkdGg6IDkwJTtcbiAgbWFyZ2luOiA1JSBhdXRvO1xufVxuXG5we1xuICBsaW5lLWhlaWdodDogMS4zO1xuICBtYXJnaW4tYm90dG9tOiAwcHg7XG5cbn1cbnVse1xuICBsaW5lLWhlaWdodDogMS4zO1xuICBwYWRkaW5nLWxlZnQ6IDEwJTtcbiAgbWFyZ2luOiA1cHggMHB4O1xufVxudWwgbGl7XG4gIHBhZGRpbmc6IDNweCAwcHg7XG59XG5oNHtcbiAgZm9udC1zaXplOiAxOHB4O1xufVxuIl19 */";
 
 /***/ }),
 
@@ -1406,7 +1591,7 @@ module.exports = ".title {\n  text-align: center;\n  font-family: Bliss Pro;\n  
   \**************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\r\n  <ion-toolbar class=\"headBgGlobal\">\r\n    <ion-row>\r\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\r\n        <!-- <ion-buttons>\r\n          <div style=\"width:100% ;\">\r\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\r\n          </div>\r\n        </ion-buttons> -->\r\n\r\n        <ion-menu-toggle>\r\n          <ion-buttons>\r\n            <div style=\"width: 100%\">\r\n              <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\r\n            </div>\r\n          </ion-buttons>\r\n        </ion-menu-toggle>\r\n      </ion-col>\r\n      <ion-col size=\"8\">\r\n        <div class=\"title\">Terms and Condition</div>\r\n      </ion-col>\r\n      <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <h4><b>Introduction</b></h4>\r\n    <p style=\"color: #000\">\r\n      Welcome to Cornerstone Insurance Plc! By using our mobile app and/or using the services that are provided, you\r\n      acknowledge that you have read, understood, and agree to be bound by our Terms and Conditions. These Terms and\r\n      Conditions unconditionally extend and apply to all related applications, internet service or website extensions.\r\n      If you are not in agreement with all of these Terms and Conditions, you are prohibited from using this Mobile\r\n      Application, and you may discontinue use immediately. Cornerstone Insurance Plc. recommends that you save or print\r\n      a copy of these Terms and Conditions for future reference.\r\n    </p>\r\n\r\n    <h4><b>Agreement to Terms and Conditions</b></h4>\r\n    <p> Cornerstone Insurance Plc. Terms and Conditions (these “Terms” or these “Terms and Conditions”) contained in\r\n      this Agreement shall govern your use of this Mobile app and all its content (collectively referred to herein as\r\n      this “Mobile app”). These Terms outline the rules and regulations guiding the use of the Cornerstone Insurance\r\n      located at <a href=\"https://apps.apple.com/ng/app/cornerstone-insurance-plc/id6449826223\">\r\n        https://apps.apple.com/ng/app/cornerstone-insurance-plc/id6449826223</a>.\r\n    </p>\r\n\r\n    <h4><b>Definitions/Terminology</b></h4>\r\n    <p>\r\n      The following definitions apply to these Terms and Conditions, Privacy Statement, Disclaimer Notice, and all\r\n      Agreements: “User”, “Visitor”, “Client”, “Customer”, “You”, and “Your”, refers to you, the person(s) that use this\r\n      App. “Cornerstone Insurance Plc.”, “We”, “Our”, and “Us”, refers to our Mobile App/Company. “Party”, “Parties”, or\r\n      “Us”, refers to both you and us. All terms refer to all considerations of Cornerstone Insurance App necessary to\r\n      undertake support to you for the express purpose of meeting your user needs in respect of our services, under and\r\n      subject to, prevailing law of the state or country in which Cornerstone Insurance Mobile App operates (Nigeria).\r\n      Any use of these definitions or other glossary in the singular, plural, capitalization, and/or pronoun are\r\n      interchangeable but refer to the same.\r\n\r\n    </p>\r\n    <h4><b>Intellectual Property Rights</b></h4>\r\n    <p>\r\n      Other than the content you own and opted to include on this Application, under these Terms, Cornerstone Insurance\r\n      Plc Mobile Application and or its licensors own and reserve all intellectual property rights of this Mobile\r\n      Application. You are granted a limited license, subject to the restrictions entailed in these Terms and\r\n      Conditions, for purpose of viewing the Mobile Application’s content.\r\n\r\n    </p>\r\n\r\n\r\n\r\n\r\n  </div>\r\n</ion-content>";
+module.exports = "<ion-header [translucent]=\"true\" class=\"ion-no-border cheader\">\n  <ion-toolbar class=\"headBgGlobal\">\n    <ion-row>\n      <ion-col size=\"2\" style=\"padding-left: 25px\">\n        <!-- <ion-buttons>\n          <div style=\"width:100% ;\">\n            <img (click)=\"goback()\" src=\"assets/images/back-arrow.svg\" alt=\"sb-btn\">\n          </div>\n        </ion-buttons> -->\n\n        <ion-menu-toggle>\n          <ion-buttons>\n            <div style=\"width: 100%\">\n              <img src=\"assets/images/menuebtnblue.svg\" alt=\"sb-btn\" />\n            </div>\n          </ion-buttons>\n        </ion-menu-toggle>\n      </ion-col>\n      <ion-col size=\"8\">\n        <div class=\"title\">Terms and Condition</div>\n      </ion-col>\n      <ion-col class=\"titleclass\" size=\"2\"> </ion-col>\n    </ion-row>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=\"container\">\n    <h4><b>Introduction</b></h4>\n    <p style=\"color: #000\">\n      Welcome to Cornerstone Insurance Plc! By using our mobile app and/or using the services that are provided, you\n      acknowledge that you have read, understood, and agree to be bound by our Terms and Conditions. These Terms and\n      Conditions unconditionally extend and apply to all related applications, internet service or website extensions.\n      If you are not in agreement with all of these Terms and Conditions, you are prohibited from using this Mobile\n      Application, and you may discontinue use immediately. Cornerstone Insurance Plc. recommends that you save or print\n      a copy of these Terms and Conditions for future reference.\n    </p>\n\n    <h4><b>Agreement to Terms and Conditions</b></h4>\n    <p> Cornerstone Insurance Plc. Terms and Conditions (these “Terms” or these “Terms and Conditions”) contained in\n      this Agreement shall govern your use of this Mobile app and all its content (collectively referred to herein as\n      this “Mobile app”). These Terms outline the rules and regulations guiding the use of the Cornerstone Insurance\n      located at <a href=\"https://apps.apple.com/ng/app/cornerstone-insurance-plc/id6449826223\">\n        https://apps.apple.com/ng/app/cornerstone-insurance-plc/id6449826223</a>.\n    </p>\n\n    <h4><b>Definitions/Terminology</b></h4>\n    <p>\n      The following definitions apply to these Terms and Conditions, Privacy Statement, Disclaimer Notice, and all\n      Agreements: “User”, “Visitor”, “Client”, “Customer”, “You”, and “Your”, refers to you, the person(s) that use this\n      App. “Cornerstone Insurance Plc.”, “We”, “Our”, and “Us”, refers to our Mobile App/Company. “Party”, “Parties”, or\n      “Us”, refers to both you and us. All terms refer to all considerations of Cornerstone Insurance App necessary to\n      undertake support to you for the express purpose of meeting your user needs in respect of our services, under and\n      subject to, prevailing law of the state or country in which Cornerstone Insurance Mobile App operates (Nigeria).\n      Any use of these definitions or other glossary in the singular, plural, capitalization, and/or pronoun are\n      interchangeable but refer to the same.\n\n    </p>\n    <h4><b>Intellectual Property Rights</b></h4>\n    <p>\n      Other than the content you own and opted to include on this Application, under these Terms, Cornerstone Insurance\n      Plc Mobile Application and or its licensors own and reserve all intellectual property rights of this Mobile\n      Application. You are granted a limited license, subject to the restrictions entailed in these Terms and\n      Conditions, for purpose of viewing the Mobile Application’s content.\n\n    </p>\n\n\n\n\n  </div>\n</ion-content>";
 
 /***/ })
 

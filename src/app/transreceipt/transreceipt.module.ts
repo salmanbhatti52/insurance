@@ -8,7 +8,7 @@ import { TransreceiptPageRoutingModule } from './transreceipt-routing.module';
 
 import { TransreceiptPage } from './transreceipt.page';
 
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     FormsModule,
     IonicModule,
     TransreceiptPageRoutingModule,
-    PdfViewerModule
+    // PdfViewerModule
   ],
   declarations: [TransreceiptPage]
 })

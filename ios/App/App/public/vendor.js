@@ -1235,7 +1235,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "registerWebPlugin": () => (/* binding */ registerWebPlugin),
 /* harmony export */   "setPlatform": () => (/* binding */ setPlatform)
 /* harmony export */ });
-/* harmony import */ var E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 
 
 /*! Capacitor: https://capacitorjs.com/ - MIT License */
@@ -1421,7 +1421,7 @@ const createCapacitor = win => {
     let jsImplementation;
 
     const loadPluginImplementation = /*#__PURE__*/function () {
-      var _ref = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      var _ref = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
         if (!jsImplementation && platform in jsImplementations) {
           jsImplementation = typeof jsImplementations[platform] === 'function' ? jsImplementation = yield jsImplementations[platform]() : jsImplementation = jsImplementations[platform];
         } else if (capCustomPlatform !== null && !jsImplementation && 'web' in jsImplementations) {
@@ -1475,7 +1475,7 @@ const createCapacitor = win => {
         });
 
         if (prop === 'addListener') {
-          p.remove = /*#__PURE__*/(0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+          p.remove = /*#__PURE__*/(0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
             return remove();
           });
         }
@@ -1503,7 +1503,7 @@ const createCapacitor = win => {
       }, callback);
 
       const remove = /*#__PURE__*/function () {
-        var _ref3 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+        var _ref3 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
           const callbackId = yield call;
           removeListener({
             eventName,
@@ -1519,7 +1519,7 @@ const createCapacitor = win => {
       const p = new Promise(resolve => call.then(() => resolve({
         remove
       })));
-      p.remove = /*#__PURE__*/(0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      p.remove = /*#__PURE__*/(0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
         console.warn(`Using addListener() without 'await' is deprecated.`);
         yield remove();
       });
@@ -1638,7 +1638,7 @@ class WebPlugin {
     }
 
     const remove = /*#__PURE__*/function () {
-      var _ref5 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      var _ref5 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
         return _this.removeListener(eventName, listenerFunc);
       });
 
@@ -1652,7 +1652,7 @@ class WebPlugin {
     });
     Object.defineProperty(p, 'remove', {
       value: function () {
-        var _ref6 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+        var _ref6 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
           console.warn(`Using addListener() without 'await' is deprecated.`);
           yield remove();
         });
@@ -1668,7 +1668,7 @@ class WebPlugin {
   removeAllListeners() {
     var _this2 = this;
 
-    return (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       _this2.listeners = {};
 
       for (const listener in _this2.windowListeners) {
@@ -1713,7 +1713,7 @@ class WebPlugin {
   removeListener(eventName, listenerFunc) {
     var _this3 = this;
 
-    return (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       const listeners = _this3.listeners[eventName];
 
       if (!listeners) {
@@ -13581,7 +13581,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "blockHardwareBackButton": () => (/* binding */ blockHardwareBackButton),
 /* harmony export */   "startHardwareBackButton": () => (/* binding */ startHardwareBackButton)
 /* harmony export */ });
-/* harmony import */ var E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 
 
 /*!
@@ -13628,7 +13628,7 @@ const startHardwareBackButton = () => {
     doc.dispatchEvent(ev);
 
     const executeAction = /*#__PURE__*/function () {
-      var _ref = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (handlerRegister) {
+      var _ref = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (handlerRegister) {
         try {
           if (handlerRegister === null || handlerRegister === void 0 ? void 0 : handlerRegister.handler) {
             const result = handlerRegister.handler(processHandlers);
@@ -14722,7 +14722,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "s": () => (/* binding */ setPageHidden),
 /* harmony export */   "t": () => (/* binding */ transition)
 /* harmony export */ });
-/* harmony import */ var E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var _index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-88bdeaae.js */ 39479);
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
 
@@ -14789,7 +14789,7 @@ const beforeTransition = opts => {
 };
 
 const runTransition = /*#__PURE__*/function () {
-  var _ref = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
+  var _ref = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
     const animationBuilder = yield getAnimationBuilder(opts);
     const ani = animationBuilder && _index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_1__.B.isBrowser ? animation(animationBuilder, opts) : noAnimation(opts); // fast path for no animation
 
@@ -14814,7 +14814,7 @@ const afterTransition = opts => {
 };
 
 const getAnimationBuilder = /*#__PURE__*/function () {
-  var _ref2 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
+  var _ref2 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
     if (!opts.leavingEl || !opts.animated || opts.duration === 0) {
       return undefined;
     }
@@ -14833,7 +14833,7 @@ const getAnimationBuilder = /*#__PURE__*/function () {
 }();
 
 const animation = /*#__PURE__*/function () {
-  var _ref3 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (animationBuilder, opts) {
+  var _ref3 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (animationBuilder, opts) {
     yield waitForReady(opts, true);
     const trans = animationBuilder(opts.baseEl, opts);
     fireWillEvents(opts.enteringEl, opts.leavingEl);
@@ -14859,7 +14859,7 @@ const animation = /*#__PURE__*/function () {
 }();
 
 const noAnimation = /*#__PURE__*/function () {
-  var _ref4 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
+  var _ref4 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
     const enteringEl = opts.enteringEl;
     const leavingEl = opts.leavingEl;
     yield waitForReady(opts, false);
@@ -14876,7 +14876,7 @@ const noAnimation = /*#__PURE__*/function () {
 }();
 
 const waitForReady = /*#__PURE__*/function () {
-  var _ref5 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts, defaultDeep) {
+  var _ref5 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts, defaultDeep) {
     const deep = opts.deepWait !== undefined ? opts.deepWait : defaultDeep;
     const promises = deep ? [deepReady(opts.enteringEl), deepReady(opts.leavingEl)] : [shallowReady(opts.enteringEl), shallowReady(opts.leavingEl)];
     yield Promise.all(promises);
@@ -14889,7 +14889,7 @@ const waitForReady = /*#__PURE__*/function () {
 }();
 
 const notifyViewReady = /*#__PURE__*/function () {
-  var _ref6 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (viewIsReady, enteringEl) {
+  var _ref6 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (viewIsReady, enteringEl) {
     if (viewIsReady) {
       yield viewIsReady(enteringEl);
     }
@@ -14951,7 +14951,7 @@ const shallowReady = el => {
 };
 
 const deepReady = /*#__PURE__*/function () {
-  var _ref7 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
+  var _ref7 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
     const element = el;
 
     if (element) {
@@ -15052,7 +15052,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "s": () => (/* binding */ setPlatformHelpers),
 /* harmony export */   "w": () => (/* binding */ win)
 /* harmony export */ });
-/* harmony import */ var E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 
 
 /*!
@@ -16368,7 +16368,7 @@ const dispatchHooks = (hostRef, isInitialLoad) => {
 };
 
 const updateComponent = /*#__PURE__*/function () {
-  var _ref = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (hostRef, instance, isInitialLoad) {
+  var _ref = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (hostRef, instance, isInitialLoad) {
     // updateComponent
     const elm = hostRef.$hostElement$;
     const endUpdate = createTime('update', hostRef.$cmpMeta$.$tagName$);
@@ -17050,7 +17050,7 @@ const proxyComponent = (Cstr, cmpMeta, flags) => {
 };
 
 const initializeComponent = /*#__PURE__*/function () {
-  var _ref2 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (elm, hostRef, cmpMeta, hmrVersionId, Cstr) {
+  var _ref2 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (elm, hostRef, cmpMeta, hmrVersionId, Cstr) {
     // initializeComponent
     if ((hostRef.$flags$ & 32
     /* hasInitializedComponent */
@@ -17554,7 +17554,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "m": () => (/* binding */ menuController)
 /* harmony export */ });
-/* harmony import */ var E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var _hardware_back_button_490df115_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hardware-back-button-490df115.js */ 70159);
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
 /* harmony import */ var _ionic_global_00475c3a_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ionic-global-00475c3a.js */ 537);
@@ -17663,7 +17663,7 @@ const createMenuController = () => {
   const menus = [];
 
   const open = /*#__PURE__*/function () {
-    var _ref = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -17679,7 +17679,7 @@ const createMenuController = () => {
   }();
 
   const close = /*#__PURE__*/function () {
-    var _ref2 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref2 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       const menuEl = yield menu !== undefined ? get(menu) : getOpen();
 
       if (menuEl !== undefined) {
@@ -17695,7 +17695,7 @@ const createMenuController = () => {
   }();
 
   const toggle = /*#__PURE__*/function () {
-    var _ref3 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref3 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -17711,7 +17711,7 @@ const createMenuController = () => {
   }();
 
   const enable = /*#__PURE__*/function () {
-    var _ref4 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (shouldEnable, menu) {
+    var _ref4 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (shouldEnable, menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -17727,7 +17727,7 @@ const createMenuController = () => {
   }();
 
   const swipeGesture = /*#__PURE__*/function () {
-    var _ref5 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (shouldEnable, menu) {
+    var _ref5 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (shouldEnable, menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -17743,7 +17743,7 @@ const createMenuController = () => {
   }();
 
   const isOpen = /*#__PURE__*/function () {
-    var _ref6 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref6 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       if (menu != null) {
         const menuEl = yield get(menu); // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
 
@@ -17760,7 +17760,7 @@ const createMenuController = () => {
   }();
 
   const isEnabled = /*#__PURE__*/function () {
-    var _ref7 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref7 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -17776,7 +17776,7 @@ const createMenuController = () => {
   }();
 
   const get = /*#__PURE__*/function () {
-    var _ref8 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref8 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       yield waitUntilReady();
 
       if (menu === 'start' || menu === 'end') {
@@ -17818,7 +17818,7 @@ const createMenuController = () => {
 
 
   const getOpen = /*#__PURE__*/function () {
-    var _ref9 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    var _ref9 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield waitUntilReady();
       return _getOpenSync();
     });
@@ -17833,7 +17833,7 @@ const createMenuController = () => {
 
 
   const getMenus = /*#__PURE__*/function () {
-    var _ref10 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    var _ref10 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield waitUntilReady();
       return getMenusSync();
     });
@@ -17849,7 +17849,7 @@ const createMenuController = () => {
 
 
   const isAnimating = /*#__PURE__*/function () {
-    var _ref11 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    var _ref11 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield waitUntilReady();
       return isAnimatingSync();
     });
@@ -17890,7 +17890,7 @@ const createMenuController = () => {
   };
 
   const _setOpen = /*#__PURE__*/function () {
-    var _ref12 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu, shouldOpen, animated) {
+    var _ref12 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu, shouldOpen, animated) {
       if (isAnimatingSync()) {
         return false;
       }
@@ -19476,7 +19476,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "s": () => (/* binding */ safeCall),
 /* harmony export */   "t": () => (/* binding */ toastController)
 /* harmony export */ });
-/* harmony import */ var E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var _ionic_global_00475c3a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-00475c3a.js */ 537);
 /* harmony import */ var _hardware_back_button_490df115_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hardware-back-button-490df115.js */ 70159);
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
@@ -19502,7 +19502,7 @@ const createController = tagName => {
     },
 
     getTop() {
-      return (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      return (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
         return getOverlay(document, tagName);
       })();
     }
@@ -19859,7 +19859,7 @@ const setRootAriaHidden = (hidden = false) => {
 };
 
 const present = /*#__PURE__*/function () {
-  var _ref = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, name, iosEnterAnimation, mdEnterAnimation, opts) {
+  var _ref = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, name, iosEnterAnimation, mdEnterAnimation, opts) {
     var _a, _b;
 
     if (overlay.presented) {
@@ -19915,7 +19915,7 @@ const present = /*#__PURE__*/function () {
 
 
 const focusPreviousElementOnDismiss = /*#__PURE__*/function () {
-  var _ref2 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlayEl) {
+  var _ref2 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlayEl) {
     let previousElement = document.activeElement;
 
     if (!previousElement) {
@@ -19939,7 +19939,7 @@ const focusPreviousElementOnDismiss = /*#__PURE__*/function () {
 }();
 
 const dismiss = /*#__PURE__*/function () {
-  var _ref3 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, data, role, name, iosLeaveAnimation, mdLeaveAnimation, opts) {
+  var _ref3 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, data, role, name, iosLeaveAnimation, mdLeaveAnimation, opts) {
     var _a, _b;
 
     if (!overlay.presented) {
@@ -20002,7 +20002,7 @@ const getAppRoot = doc => {
 };
 
 const overlayAnimation = /*#__PURE__*/function () {
-  var _ref4 = (0,E_Eigix_i2_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, animationBuilder, baseEl, opts) {
+  var _ref4 = (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, animationBuilder, baseEl, opts) {
     // Make overlay visible in case it's hidden
     baseEl.classList.remove('overlay-hidden');
     const aniRoot = overlay.el;
@@ -119655,6 +119655,470 @@ const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.Version('14.0.1')
 /**
  * Generated bundle index. Do not edit.
  */
+
+
+
+/***/ }),
+
+/***/ 76210:
+/*!*********************************************************************************!*\
+  !*** ./node_modules/flutterwave-angular-v3/fesm2022/flutterwave-angular-v3.mjs ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FlutterwaveModule": () => (/* binding */ FlutterwaveModule),
+/* harmony export */   "FlutterwaveService": () => (/* binding */ FlutterwaveService),
+/* harmony export */   "MakePaymentComponent": () => (/* binding */ MakePaymentComponent)
+/* harmony export */ });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ 94666);
+
+
+
+
+
+class ApiTrackingService {
+  /*  trackingFeatures = {
+      'initiateCardCharge': 'Initiate-Card-charge',
+      'initiateCardChargeError': 'Initiate-Card-charge-error',
+      'validateCardCharge': 'Validate-Card-charge',
+      'validateCardChargeError': 'Validate-Card-charge-error',
+      'verifyCardCharge': 'Verify-Card-charge',
+      'verifyCardChargeError': 'Verify-Card-charge-error',
+      'initiateAccountCharge': 'Initiate-Account-charge',
+      'initiateAccountChargeError': 'Initiate-Account-charge-error',
+      'accountChargeValidate': 'Account-charge-validate',
+      'accountChargeValidateError': 'Account-charge-validate-error',
+      'accountChargeVerify': 'Account-charge-verify',
+      'accountChargeVerifyError': 'Account-charge-verify-error',
+    }*/
+  constructor() {
+    this.trackingEndPoint = 'https://kgelfdz7mf.execute-api.us-east-1.amazonaws.com/staging/sendevent';
+    this.packageVersion = '1.2.1';
+    this.language = 'Angular V3';
+  }
+
+  track(data) {
+    const trackingData = {
+      publicKey: data.paymentData.public_key,
+      language: this.language,
+      version: this.packageVersion,
+      title: '',
+      message: '0' // data.responseTime
+
+    };
+    const paymentOptions = data.paymentData.payment_options || '';
+    const paymentOptionsArray = paymentOptions ? paymentOptions.split(',') : [];
+    let title = '';
+
+    if (paymentOptionsArray.length === 0) {
+      title = 'Initiate-Charge-Dashboard';
+    } else if (paymentOptionsArray.length === 1) {
+      title = 'Initiate-Charge-' + paymentOptions;
+    } else {
+      title = 'Initiate-Charge-Multiple';
+    }
+
+    trackingData.title = data.response.status === 'successful' ? title : title + '-error';
+    this.submitTracking(trackingData);
+  }
+
+  submitTracking(data) {
+    fetch(this.trackingEndPoint, {
+      method: 'POST',
+      body: JSON.stringify(data)
+    }).then(res => {});
+  }
+
+}
+
+ApiTrackingService.ɵfac = function ApiTrackingService_Factory(t) {
+  return new (t || ApiTrackingService)();
+};
+
+ApiTrackingService.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+  token: ApiTrackingService,
+  factory: ApiTrackingService.ɵfac,
+  providedIn: 'root'
+});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ApiTrackingService, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable,
+    args: [{
+      providedIn: 'root'
+    }]
+  }], () => [], null);
+})(); // This reference is necessary to ensure TypeScript recognizes the global FlutterwaveCheckout function.
+/// <reference path="../index.d.ts" />
+
+
+class FlutterwaveService {
+  constructor(tracker) {
+    this.tracker = tracker;
+  }
+
+  inlinePay(paymentData) {
+    const data = { ...paymentData,
+      callback: response => {
+        this.submitToTracker(paymentData, response, 10000);
+
+        if (paymentData.callbackContext && paymentData.callback) {
+          paymentData.callbackContext[paymentData.callback.name](response);
+        }
+      },
+      onclose: () => {
+        try {
+          if (paymentData.callbackContext && paymentData.onclose) {
+            paymentData.callbackContext[paymentData.onclose.name]();
+          }
+        } catch (e) {}
+      }
+    };
+
+    if (window.FlutterwaveCheckout) {
+      window.FlutterwaveCheckout(data);
+    } else {
+      console.error('FlutterwaveCheckout is not defined');
+    }
+  }
+
+  asyncInlinePay(paymentData) {
+    return new Promise((resolve, reject) => {
+      paymentData = { ...paymentData,
+        callback: $event => {
+          this.submitToTracker(paymentData, $event, 10000);
+          resolve($event);
+        },
+        onclose: () => resolve('closed')
+      };
+
+      if (window.FlutterwaveCheckout) {
+        window.FlutterwaveCheckout(paymentData);
+      } else {
+        console.error('FlutterwaveCheckout is not defined');
+      }
+    });
+  }
+
+  submitToTracker(paymentData, response, responseTime) {
+    this.tracker.track({
+      paymentData,
+      response,
+      responseTime
+    });
+  }
+  /**
+   *
+   * @param waitDuration {Number} Seconds before closing payment modal
+   */
+
+
+  closePaymentModal(waitDuration = 0) {
+    setTimeout(() => {
+      document.getElementsByName('checkout')[0].setAttribute('style', 'position:fixed;top:0;left:0;z-index:-1;border:none;opacity:0;pointer-events:none;width:100%;height:100%;');
+      document.body.style.overflow = ''; // document.getElementsByName('checkout')[0].setAttribute('style', 'z-index: -1; opacity: 0')
+    }, waitDuration * 1000);
+  }
+
+}
+
+FlutterwaveService.ɵfac = function FlutterwaveService_Factory(t) {
+  return new (t || FlutterwaveService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](ApiTrackingService));
+};
+
+FlutterwaveService.ɵprov = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+  token: FlutterwaveService,
+  factory: FlutterwaveService.ɵfac,
+  providedIn: 'root'
+});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](FlutterwaveService, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable,
+    args: [{
+      providedIn: 'root'
+    }]
+  }], () => [{
+    type: ApiTrackingService
+  }], null);
+})();
+
+class FlutterwaveModule {
+  constructor() {
+    const inlineSdk = 'https://checkout.flutterwave.com/v3.js';
+    const script = document.createElement('script');
+    script.src = inlineSdk;
+
+    if (!document.querySelector(`[src="${inlineSdk}"]`)) {
+      document.body.appendChild(script);
+    }
+  }
+
+}
+
+FlutterwaveModule.ɵfac = function FlutterwaveModule_Factory(t) {
+  return new (t || FlutterwaveModule)();
+};
+
+FlutterwaveModule.ɵmod = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+  type: FlutterwaveModule,
+  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__.CommonModule]
+});
+FlutterwaveModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+  providers: [FlutterwaveService, ApiTrackingService],
+  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__.CommonModule]
+});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](FlutterwaveModule, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.NgModule,
+    args: [{
+      declarations: [],
+      providers: [FlutterwaveService, ApiTrackingService],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__.CommonModule]
+    }]
+  }], () => [], null);
+})();
+
+class MakePaymentComponent {
+  constructor(flutterwaveService) {
+    this.flutterwaveService = flutterwaveService;
+    this.callback = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.close = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.customer_defaults = {
+      email: '',
+      phone_number: '',
+      name: ''
+    };
+    this.meta_defaults = {
+      consumer_id: '',
+      consumer_mac: ''
+    };
+    this.customizations_defaults = {
+      title: '',
+      description: '',
+      logo: ''
+    };
+    const inlineSdk = 'https://checkout.flutterwave.com/v3.js';
+    const script = document.createElement('script');
+    script.src = inlineSdk;
+
+    if (!document.querySelector(`[src="${inlineSdk}"]`)) {
+      document.body.appendChild(script);
+    }
+  }
+
+  ngOnInit() {}
+
+  makePayment() {
+    this.prepareForPayment();
+
+    if (window.FlutterwaveCheckout) {
+      window.FlutterwaveCheckout(this.inlinePaymentOptions);
+    } else {
+      console.error('FlutterwaveCheckout is not defined');
+    }
+  }
+
+  prepareForPayment() {
+    this.customer = this.customer || {};
+    this.meta = this.meta || {};
+    this.customizations = this.customizations || {};
+
+    if (this.data) {
+      this.inlinePaymentOptions = { ...this.data,
+        callback: response => {
+          this.flutterwaveService.submitToTracker(this.data, response, 10000);
+
+          if (this.data?.callbackContext && this.data.callback) {
+            this.data.callbackContext[this.data.callback.name](response);
+          }
+        },
+        onclose: () => {
+          try {
+            if (this.data?.callbackContext && this.data.onclose) {
+              this.data.callbackContext[this.data.onclose.name]();
+            }
+          } catch (e) {}
+        }
+      };
+    } else {
+      this.inlinePaymentOptions = {
+        callbackContext: null,
+        public_key: this.public_key,
+        tx_ref: this.tx_ref,
+        amount: this.amount,
+        currency: this.currency || 'NGN',
+        payment_options: this.payment_options || 'card, mobilemoney, ussd',
+        redirect_url: this.redirect_url || '',
+        meta: { ...this.meta_defaults,
+          ...this.meta
+        },
+        customer: { ...this.customer_defaults,
+          ...this.customer
+        },
+        callback: response => {
+          this.flutterwaveService.submitToTracker(this.inlinePaymentOptions, response, 10000);
+          this.callback.emit(response);
+        },
+        onclose: () => this.close.emit(),
+        customizations: { ...this.customizations_defaults,
+          ...this.customizations
+        }
+      };
+
+      if (this.payment_plan) {
+        this.inlinePaymentOptions.payment_plan = this.payment_plan;
+      }
+
+      if (this.subaccounts) {
+        this.inlinePaymentOptions.subaccounts = this.subaccounts;
+      }
+
+      if (this.integrity_hash) {
+        this.inlinePaymentOptions.integrity_hash = this.integrity_hash;
+      }
+    }
+  }
+
+}
+
+MakePaymentComponent.ɵfac = function MakePaymentComponent_Factory(t) {
+  return new (t || MakePaymentComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](FlutterwaveService));
+};
+
+MakePaymentComponent.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+  type: MakePaymentComponent,
+  selectors: [["flutterwave-make-payment"]],
+  inputs: {
+    public_key: "public_key",
+    tx_ref: "tx_ref",
+    amount: "amount",
+    currency: "currency",
+    payment_options: "payment_options",
+    payment_plan: "payment_plan",
+    subaccounts: "subaccounts",
+    integrity_hash: "integrity_hash",
+    redirect_url: "redirect_url",
+    meta: "meta",
+    customer: "customer",
+    customizations: "customizations",
+    text: "text",
+    style: "style",
+    className: "className",
+    data: "data"
+  },
+  outputs: {
+    callback: "callback",
+    close: "close"
+  },
+  standalone: true,
+  features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([FlutterwaveService, ApiTrackingService]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵStandaloneFeature"]],
+  decls: 2,
+  vars: 3,
+  consts: [[3, "ngStyle", "ngClass", "click"]],
+  template: function MakePaymentComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MakePaymentComponent_Template_button_click_0_listener() {
+        return ctx.makePayment();
+      });
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    }
+
+    if (rf & 2) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", ctx.style)("ngClass", ctx.className ? ctx.className : "flutterwave-pay-button");
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.text || "Pay", "\n");
+    }
+  },
+  dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_1__.CommonModule, _angular_common__WEBPACK_IMPORTED_MODULE_1__.NgClass, _angular_common__WEBPACK_IMPORTED_MODULE_1__.NgStyle],
+  styles: [".flutterwave-pay-button[_ngcontent-%COMP%]{background-color:#f5a623;border-radius:4px;border-color:#f5a623;box-shadow:0 2px 3px #ccc;color:#fff;display:block;font-size:12px;font-weight:700;padding:14px 22px;text-align:center;text-decoration:none;-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out}"]
+});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MakePaymentComponent, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Component,
+    args: [{
+      selector: 'flutterwave-make-payment',
+      standalone: true,
+      providers: [FlutterwaveService, ApiTrackingService],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__.CommonModule],
+      template: "<button\n  [ngStyle]=\"style\"\n  [ngClass]=\"className ? className : 'flutterwave-pay-button'\"\n  (click)=\"makePayment()\">\n  {{text || 'Pay'}}\n</button>\n",
+      styles: [".flutterwave-pay-button{background-color:#f5a623;border-radius:4px;border-color:#f5a623;box-shadow:0 2px 3px #ccc;color:#fff;display:block;font-size:12px;font-weight:700;padding:14px 22px;text-align:center;text-decoration:none;-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out}\n"]
+    }]
+  }], () => [{
+    type: FlutterwaveService
+  }], {
+    public_key: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    tx_ref: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    amount: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    currency: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    payment_options: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    payment_plan: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    subaccounts: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    integrity_hash: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    redirect_url: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    meta: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    customer: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    callback: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    close: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    customizations: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    text: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    style: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    className: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    data: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }]
+  });
+})();
+/*
+ * Public API Surface of flutterwave
+ */
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
 
 
 
