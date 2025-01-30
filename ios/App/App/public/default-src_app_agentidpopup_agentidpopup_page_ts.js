@@ -44,6 +44,7 @@ let AgentidpopupPage = class AgentidpopupPage {
                 manufacturer: "IES",
                 active: false
             }];
+        this.isdisabled = false;
     }
     ngOnInit() {
     }
@@ -59,6 +60,7 @@ let AgentidpopupPage = class AgentidpopupPage {
             this.api.presenttoast('Enter Agent ID');
         }
         else {
+            this.isdisabled = true;
             if (this.agentloginType == "Gibs") {
                 var myData = {
                     "username": "DigitechApp",
@@ -68,6 +70,7 @@ let AgentidpopupPage = class AgentidpopupPage {
                     console.log(res);
                     let token = res.accessToken;
                     this.getresult(token);
+                    this.isdisabled = false;
                 }, (err) => {
                     console.log(err);
                     this.api.hideLoader();
@@ -79,6 +82,7 @@ let AgentidpopupPage = class AgentidpopupPage {
                 this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=901&agent=' + this.agentId, token).subscribe((res) => {
                     console.log(res);
                     this.api.hideLoader();
+                    this.isdisabled = false;
                     if (res.result.status == 1) {
                         localStorage.setItem('loginas', 'agent');
                         this.api.loginas = 'agent';
@@ -224,7 +228,7 @@ module.exports = ".bg {\n  --background: #A8B400 !important;\n  border-radius: 3
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content class=\"\">\n  <div style=\"background: #dedede; height: 100%; width: 100%\">\n    <div class=\"v-center\">\n      <div class=\"icondiv\" (click)=\"dismiss()\">\n        <img src=\"assets/images/close-circle.svg\" alt=\"\" />\n      </div>\n\n      <div class=\"main\">\n        <div class=\"label\">Select Agent Type</div>\n        <div class=\"dropbox\">\n          <div class=\"innerdropbox\" (click)=\"openVhclMakeList()\">\n            <div class=\"euro-text\" style=\"width: 100%\">{{agentloginType}}</div>\n            <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%\">\n              <img\n                style=\"height: 6.6px; width: 11.36px\"\n                src=\"assets/images/down-arrow.svg\"\n                *ngIf=\"showMaker==false\"\n              />\n              <img\n                style=\"height: 6.6px; width: 11.36px\"\n                src=\"assets/images/yuparrow.svg\"\n                *ngIf=\"showMaker==true\"\n              />\n            </div>\n          </div>\n          <div *ngIf=\"showMaker==true\" style=\"height: auto; overflow: scroll\">\n            <div\n              *ngFor=\"let list of vechileMakenew; let i=index\"\n              (click)=\"selectVehicleMaker(list,i)\"\n            >\n              <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">\n                {{list.manufacturer}}\n              </div>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"label\">Enter Agent ID</div>\n        <ion-input\n          type=\"text\"\n          class=\"input1\"\n          placeholder=\"1254PAG\"\n          [(ngModel)]=\"agentId\"\n        ></ion-input>\n\n        <div class=\"btndiv\" (click)=\"search()\">\n          <ion-button class=\"btn\"\n            ><img\n              style=\"margin-right: 6px\"\n              src=\"assets/images/search-normal.svg\"\n              alt=\"\"\n            />\n            LOGIN\n          </ion-button>\n        </div>\n      </div>\n    </div>\n  </div>\n</ion-content>\n";
+module.exports = "<ion-content class=\"\">\n    <div style=\"background: #dedede; height: 100%; width: 100%\">\n        <div class=\"v-center\">\n            <div class=\"icondiv\" (click)=\"dismiss()\">\n                <img src=\"assets/images/close-circle.svg\" alt=\"\" />\n            </div>\n\n            <div class=\"main\">\n                <div class=\"label\">Select Agent Type</div>\n                <div class=\"dropbox\">\n                    <div class=\"innerdropbox\" (click)=\"openVhclMakeList()\">\n                        <div class=\"euro-text\" style=\"width: 100%\">{{agentloginType}}</div>\n                        <div class=\"imgdiv\" style=\"padding-bottom: 2px; width: 5%\">\n                            <img style=\"height: 6.6px; width: 11.36px\" src=\"assets/images/down-arrow.svg\" *ngIf=\"showMaker==false\" />\n                            <img style=\"height: 6.6px; width: 11.36px\" src=\"assets/images/yuparrow.svg\" *ngIf=\"showMaker==true\" />\n                        </div>\n                    </div>\n                    <div *ngIf=\"showMaker==true\" style=\"height: auto; overflow: scroll\">\n                        <div *ngFor=\"let list of vechileMakenew; let i=index\" (click)=\"selectVehicleMaker(list,i)\">\n                            <div class=\"euro-text1\" [class.activeproduct]=\"list.active==true\">\n                                {{list.manufacturer}}\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class=\"label\">Enter Agent ID</div>\n                <ion-input type=\"text\" class=\"input1\" placeholder=\"1254PAG\" [(ngModel)]=\"agentId\"></ion-input>\n\n                <div class=\"btndiv\">\n                    <ion-button (click)=\"search()\" [disabled]=\"isdisabled\" class=\"btn\"><img style=\"margin-right: 6px\" src=\"assets/images/search-normal.svg\" alt=\"\" /> LOGIN\n                    </ion-button>\n                </div>\n            </div>\n        </div>\n    </div>\n</ion-content>";
 
 /***/ })
 

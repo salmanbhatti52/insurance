@@ -264,7 +264,7 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
     // '","method":"payment_method_select"}';
     // this.api.renewalC('https://cornerstone.com.ng/devtest/webservice/renewal', myData).subscribe(
 
-    this.api.renewalC('https://www.cornerstone.com.ng/webservice', myData).subscribe(res => {
+    this.api.renewalC('https://www.cornerstone.com.ng/webservice/renewal', myData).subscribe(res => {
       this.api.hideLoader(); // if (res.status_no == 1) {
 
       if (res.status_no != 0) {
@@ -294,7 +294,7 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
     this.api.showLoader();
     const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","registration_number":"' + this.pnumber + '","method":"edit_renewal_quote"}'; // this.api.renewalC('https://cornerstone.com.ng/devtest/webservice/renewal', myData).subscribe(
 
-    this.api.renewalC('https://www.cornerstone.com.ng/webservice', myData).subscribe(res => {
+    this.api.renewalC('https://www.cornerstone.com.ng/webservice/renewal', myData).subscribe(res => {
       this.api.hideLoader();
 
       if (res.status_no == 1) {
@@ -398,7 +398,7 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
     const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","registration_number":"' + this.pnumber + '","referred_by":"' + (this.referred_by ?? 'NO') + '","referrer_details":"' + (this.referred_by ?? 'NO') + '","pep_category":"' + pep_category + '","occupation":"' + '' + '","method":"renew_your_policy"}';
     console.log('myData----------------', myData); // this.api.renewalC('https://cornerstone.com.ng/devtest/webservice/renewal', myData).subscribe(
 
-    this.api.renewalC('https://www.cornerstone.com.ng/webservice', myData).subscribe(res => {
+    this.api.renewalC('https://www.cornerstone.com.ng/webservice/renewal', myData).subscribe(res => {
       this.api.hideLoader();
       console.log('renew_your_policy----------------', JSON.stringify(res));
 
@@ -418,7 +418,7 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
     '","method":"save_product_proposal"}';
     this.api.showLoader(); // this.api.renewalC('https://cornerstone.com.ng/devtest/webservice/renewal', datasend).subscribe((res: any) => {
 
-    this.api.renewalC('https://www.cornerstone.com.ng/webservice', datasend).subscribe(res => {
+    this.api.renewalC('https://www.cornerstone.com.ng/webservice/renewal', datasend).subscribe(res => {
       console.log('save_product_proposal---------------', res);
 
       if (res.status_no == 1) {

@@ -45,7 +45,7 @@ const routes = [
     },
     {
         path: 'mypolicies',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_mypolicies_mypolicies_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./mypolicies/mypolicies.module */ 87507)).then(m => m.MypoliciesPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("default-node_modules_moment_moment_js"), __webpack_require__.e("src_app_mypolicies_mypolicies_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./mypolicies/mypolicies.module */ 87507)).then(m => m.MypoliciesPageModule)
     },
     {
         path: 'explore-screen-before-login-expanded',
@@ -97,7 +97,7 @@ const routes = [
     },
     {
         path: 'mypolicies',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("src_app_mypolicies_mypolicies_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./mypolicies/mypolicies.module */ 87507)).then(m => m.MypoliciesPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("default-node_modules_moment_moment_js"), __webpack_require__.e("src_app_mypolicies_mypolicies_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./mypolicies/mypolicies.module */ 87507)).then(m => m.MypoliciesPageModule)
     },
     {
         path: 'explore-screen-before-login-expanded',
@@ -515,7 +515,8 @@ let AppComponent = class AppComponent {
     // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
     {
       title: 'My Policies',
-      url: 'allpolicies',
+      // url: 'allpolicies',
+      url: 'viewpurchasedpolicy',
       img: '/assets/images/icons/policy.svg',
       img1: '/assets/images/icons/activepolicy.svg',
       status: 'unchecked'
