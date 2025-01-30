@@ -163,7 +163,7 @@ export class PolicypayPage implements OnInit {
       tx_ref: this.generateReference(),
       amount: this.api.policyamountDue,
       currency: "NGN",
-      payment_options: "card,ussd",
+      // payment_options: "card,ussd",
       redirect_url: "",
       meta: this.meta,
       customer: this.customerDetails,

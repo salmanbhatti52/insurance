@@ -213,7 +213,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
     // '","method":"payment_method_select"}';
 
     // this.api.renewalC('https://cornerstone.com.ng/devtest/webservice/renewal', myData).subscribe(
-    this.api.renewalC('https://www.cornerstone.com.ng/webservice', myData).subscribe(
+    this.api.renewalC('https://www.cornerstone.com.ng/webservice/renewal', myData).subscribe(
       (res: any) => {
         this.api.hideLoader();
 
@@ -262,7 +262,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
 
 
     // this.api.renewalC('https://cornerstone.com.ng/devtest/webservice/renewal', myData).subscribe(
-    this.api.renewalC('https://www.cornerstone.com.ng/webservice', myData).subscribe(
+    this.api.renewalC('https://www.cornerstone.com.ng/webservice/renewal', myData).subscribe(
       (res: any) => {
         this.api.hideLoader();
 
@@ -381,7 +381,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
 
 
     // this.api.renewalC('https://cornerstone.com.ng/devtest/webservice/renewal', myData).subscribe(
-    this.api.renewalC('https://www.cornerstone.com.ng/webservice', myData).subscribe(
+    this.api.renewalC('https://www.cornerstone.com.ng/webservice/renewal', myData).subscribe(
       (res: any) => {
         this.api.hideLoader();
         console.log('renew_your_policy----------------', JSON.stringify(res))
@@ -442,7 +442,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
 
     this.api.showLoader()
     // this.api.renewalC('https://cornerstone.com.ng/devtest/webservice/renewal', datasend).subscribe((res: any) => {
-    this.api.renewalC('https://www.cornerstone.com.ng/webservice', datasend).subscribe((res: any) => {
+    this.api.renewalC('https://www.cornerstone.com.ng/webservice/renewal', datasend).subscribe((res: any) => {
       console.log('save_product_proposal---------------', res);
       if (res.status_no == 1) {
         this.api.hideLoader();

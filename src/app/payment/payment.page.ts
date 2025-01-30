@@ -147,7 +147,7 @@ export class PaymentPage implements OnInit {
       tx_ref: this.generateReference(),
       amount: this.quoteItems[this.quoteItems.length - 1].value,
       currency: "NGN",
-      payment_options: "card,ussd",
+      // payment_options: "card,ussd",
       redirect_url: "",
       meta: this.meta,
       customer: this.customerDetails,

@@ -93,7 +93,8 @@ export class AppComponent {
     // { title: 'My Policy', url: 'mypolicies', img: '/assets/images/icons/mypolicy.svg', img1: '/assets/images/icons/activemypolicy.svg', status: 'unchecked' },
     {
       title: 'My Policies',
-      url: 'allpolicies',
+      // url: 'allpolicies',
+      url: 'viewpurchasedpolicy',
       img: '/assets/images/icons/policy.svg',
       img1: '/assets/images/icons/activepolicy.svg',
       status: 'unchecked',

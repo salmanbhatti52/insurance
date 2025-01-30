@@ -162,7 +162,7 @@ export class NextpaymentPage implements OnInit {
       tx_ref: this.generateReference(),
       amount: this.api.nextPayment.amountDue,
       currency: "NGN",
-      payment_options: "card,ussd",
+      // payment_options: "card,ussd",
       redirect_url: "",
       meta: this.meta,
       customer: this.customerDetails,

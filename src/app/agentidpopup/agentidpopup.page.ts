@@ -22,6 +22,7 @@ export class AgentidpopupPage implements OnInit {
     manufacturer: "IES",
     active: false
   }];
+  isdisabled: any = false;
 
   constructor(public modal: ModalController,
     public navCtrl: NavController,
@@ -44,6 +45,8 @@ export class AgentidpopupPage implements OnInit {
       this.api.presenttoast('Enter Agent ID')
     } else {
 
+      this.isdisabled = true
+
       if (this.agentloginType == "Gibs") {
         var myData = {
           "username": "DigitechApp",
@@ -53,6 +56,8 @@ export class AgentidpopupPage implements OnInit {
           console.log(res);
           let token = res.accessToken
           this.getresult(token)
+          this.isdisabled = false
+
         }, (err) => {
           console.log(err);
           this.api.hideLoader();
@@ -64,6 +69,7 @@ export class AgentidpopupPage implements OnInit {
         this.api.get('https://ies.cornerstone.com.ng/demo2/api_ies/ies_connect.php?process=Processopenledapi&process_code=901&agent=' + this.agentId, token).subscribe((res: any) => {
           console.log(res);
           this.api.hideLoader()
+          this.isdisabled = false
 
           if (res.result.status == 1) {
             localStorage.setItem('loginas', 'agent')

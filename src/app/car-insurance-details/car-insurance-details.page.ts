@@ -34,7 +34,7 @@ export class CarInsuranceDetailsPage implements OnInit {
   // -- For Travel insurance -- //
   passPortNo = '';
   nationality = '';
-  destination = '';
+  destination = 'NA';
   kinInfo = '';
   // -- For Travel insurance -- //
 
@@ -331,9 +331,11 @@ export class CarInsuranceDetailsPage implements OnInit {
       response.message = 'Passport number required';
     } else if (this.nationality == '') {
       response.message = 'Nationality required';
-    } else if (this.destination == '') {
-      response.message = 'Destination required';
-    } else if (this.kinInfo == '') {
+    }
+    // else if (this.destination == '') {
+    //   response.message = 'Destination required';
+    // } 
+    else if (this.kinInfo == '') {
       response.message = 'kin info required';
     } else if (this.clientAddress == '') {
       response.message = 'Address required';

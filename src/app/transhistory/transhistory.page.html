@@ -36,29 +36,30 @@
                     </ion-col>
                 </ion-row>
 
+                <p class="con-p2 cc">Click to Make Payment</p>
 
             </div>
         </div>
-        <div *ngIf="!nextPayment">
-            <p class="no">No Next Payments</p>
+        <div *ngIf="!nextPayment ">
+            <p class="no ">No Next Payments</p>
         </div>
-        <div class="title" style="text-align: left; margin-top: 10px;">Past Payments</div>
-        <div *ngIf="pastPayment">
-            <div class="boxdiv" *ngFor="let sp of pastPayment">
+        <div class="title " style="text-align: left; margin-top: 10px; ">Past Payments</div>
+        <div *ngIf="pastPayment ">
+            <div class="boxdiv " *ngFor="let sp of pastPayment ">
                 <ion-row>
-                    <ion-col class="ff">
-                        <p class="con-p2 policy">{{sp.date}}</p>
+                    <ion-col class="ff ">
+                        <p class="con-p2 policy ">{{sp.date}}</p>
                     </ion-col>
-                    <ion-col class="ff" style="text-align: right;">
-                        <p class="con-p2">₦ {{sp.investedAmount}}</p>
+                    <ion-col class="ff " style="text-align: right; ">
+                        <p class="con-p2 ">₦ {{sp.investedAmount}}</p>
                     </ion-col>
                 </ion-row>
-                <ion-row *ngIf="riskPremium">
-                    <ion-col size="6" class="ff">
+                <ion-row *ngIf="riskPremium ">
+                    <ion-col size="6 " class="ff ">
                         <p class="con-p2 ">Risk Premium</p>
                     </ion-col>
-                    <ion-col size="6" class="ff" style="text-align: right;">
-                        <p class="con-p2">{{sp.riskPremium}}</p>
+                    <ion-col size="6 " class="ff " style="text-align: right; ">
+                        <p class="con-p2 ">{{sp.riskPremium}}</p>
                     </ion-col>
                 </ion-row>
 
@@ -66,8 +67,8 @@
             </div>
         </div>
 
-        <div *ngIf="!pastPayment">
-            <p class="no">No Past Payments</p>
+        <div *ngIf="!pastPayment ">
+            <p class="no ">No Past Payments</p>
         </div>
 
     </div>

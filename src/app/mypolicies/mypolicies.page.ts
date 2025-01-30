@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { Router } from '@angular/router';
 import { format, parseISO, getDate, getMonth, getYear } from 'date-fns';
+import * as moment from 'moment';
 @Component({
   selector: 'app-mypolicies',
   templateUrl: './mypolicies.page.html',
@@ -43,7 +44,7 @@ export class MypoliciesPage implements OnInit {
   showPickerStartDate = false;
   showPickerEndDate = false;
   showPickerEndDatedob = false;
-  ageGroup = 'Please Select';
+  ageGroup: any = 'Age Next Birthday';
   useTitle = 'Please Select';
   roadSideVal = 'Please Select';
   vehicleVal = 'Please Select';
@@ -660,6 +661,24 @@ export class MypoliciesPage implements OnInit {
   }
 
   dateChanged(value, type) {
+    console.log('value---------', value)
+    console.log('type---------', type)
+
+
+    const startDate = moment(value); // Example date
+
+    // Get the current date
+    const currentDate = moment();
+
+    // Calculate the difference in years
+    const yearsDifference = currentDate.diff(startDate, 'years');
+
+    console.log(`Difference in years================: ${yearsDifference}`);
+
+    this.ageGroup = yearsDifference + 1;
+
+
+
     if (type == 'start') {
       this.tourStartDate = value;
       console.log('this.tourStartDate ----', this.tourStartDate);
@@ -693,6 +712,8 @@ export class MypoliciesPage implements OnInit {
       response.message = 'Phone required';
     } else if (this.userEmail == '') {
       response.message = 'Email required';
+    } else if (this.ageGroup < 18) {
+      response.message = 'Your age must be 18 or above for this products!';
     } else {
       response.message = 'Form validated.';
       response.status = true;
@@ -911,7 +932,7 @@ export class MypoliciesPage implements OnInit {
           this.otheName +
 
           '", "date_of_birth":"' +
-         '2000-01-04' +
+          '2000-01-04' +
           '","verify_token":"' +
           localStorage.getItem('token') +
           '","method":"save_product_quote"}';
