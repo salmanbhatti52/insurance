@@ -274,16 +274,21 @@ let ExploreScreenBeforeLoginExpandedPage = class ExploreScreenBeforeLoginExpande
   }
 
   getProducts() {
-    const myData = 'myData={"verify_token":"' + localStorage.getItem('token') + '","method":"get_avilable_products"}';
-    this.api.insertData(myData).subscribe(res => {
-      console.log(res);
-
-      if (res.message == 'success') {
-        this.products = res.myproduct;
-      }
-    }, err => {
-      console.log(err);
-    });
+    this.products = this.api.allProducts.myproduct; // const myData =
+    //   'myData={"verify_token":"' +
+    //   localStorage.getItem('token') +
+    //   '","method":"get_avilable_products"}';
+    // this.api.insertData(myData).subscribe(
+    //   (res: any) => {
+    //     console.log(res);
+    //     if (res.message == 'success') {
+    //       this.products = res.myproduct;
+    //     }
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
   }
 
   investmentsubProducts() {
