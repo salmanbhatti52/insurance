@@ -36,6 +36,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
   year_of_manufacture: string;
   referred_by: any;
   date_of_birth: any;
+  amount_of_policy: any;
   constructor(public modal: ModalController,
     public location: Location,
     public router: Router,
@@ -270,6 +271,7 @@ export class VerifyPolicyScreenCustPage implements OnInit {
 
           this.api.policyamountDue = res.amount
 
+
           this.renewPPP(res)
         } else {
         }
@@ -320,7 +322,20 @@ export class VerifyPolicyScreenCustPage implements OnInit {
         if (vvv.field_name == 'date_of_birth') {
           this.date_of_birth = vvv.value
         }
+
+        if (vvv.field_name == 'amount') {
+          this.amount_of_policy = vvv.value
+        }
       }
+
+
+
+      if (this.api.policyamountDue) {
+
+      } else {
+        this.api.policyamountDue = this.amount_of_policy
+      }
+
     } else {
       let vvv = val.quote.details
       if (vvv) {
