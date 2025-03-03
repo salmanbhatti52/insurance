@@ -1,0 +1,133 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+    <ion-toolbar class="headBgGlobal">
+        <ion-row>
+            <ion-col size="2" style="padding-left: 25px">
+                <ion-buttons>
+                    <div style="width:100% ;">
+                        <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
+                    </div>
+                </ion-buttons>
+
+                <!-- <ion-menu-toggle>
+          <ion-buttons>
+            <div style="width: 100%">
+              <img src="assets/images/menuebtnblue.svg" alt="sb-btn" />
+            </div>
+          </ion-buttons>
+        </ion-menu-toggle> -->
+            </ion-col>
+            <ion-col size="8">
+                <div class="title">Make a Quote</div>
+            </ion-col>
+            <ion-col class="titleclass" size="2"> </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="wrapper">
+
+
+        <div style="border: 1px solid #a8b400; border-radius: 12px">
+            <div class="main">
+                <div>
+                    <div class="text" style="text-align: center">
+                        <b>COVERS</b>
+                    </div>
+                    <div class="text1">{{accidentcovers.covers_name}}</div>
+                </div>
+                <div>
+                    <div class="cflex1">
+                        <div class="text3">DEATH</div>
+                        <div class="text4">₦{{accidentcovers.death_cover}}</div>
+                    </div>
+
+                    <div class="cflex1">
+                        <div class="text3">PERMANENT DISABILITY</div>
+                        <div class="text4">₦{{accidentcovers.disability_cover}}</div>
+                    </div>
+
+                    <div class="cflex1">
+                        <div class="text3">
+                            MEDICAL EXPENSES
+                        </div>
+                        <div class="text4">₦{{accidentcovers.medical_cover}}</div>
+                    </div>
+
+                    <div class="cflex1">
+                        <div class="text3">BURIAL EXPENSES </div>
+                        <div class="text4">₦{{accidentcovers.burial_cover}}</div>
+                    </div>
+
+                    <div class="cflex1">
+                        <div class="text3">PREMIUM (N)</div>
+                        <div class="text4">₦{{accidentcovers.premium}}</div>
+                    </div>
+
+                    <div class="btndiv">
+                        <ion-button class="btn" (click)="goto(accidentcovers.id, accidentcovers.premium)">Pay</ion-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="margin-top: 20px;">
+            <div class="label">Are you open to exploring enhanced benefit packages related to death, permanent disability, and medical expenses?</div>
+            <div class="inputfield">
+                <div class="innerdropbox">
+                    <ion-select style="width: 96%;" aria-label="Cover" placeholder="Select Cover" [(ngModel)]="cover_opt" (ionChange)="handleChange($event)">
+                        <ion-select-option [value]="Yes">Yes</ion-select-option>
+                        <ion-select-option [value]="No">No</ion-select-option>
+                    </ion-select>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="showAllCovers">
+            <div style="border: 1px solid #a8b400; border-radius: 12px; margin-top: 20px;" *ngFor="let cov of accidentcoversArr">
+                <div class="main">
+                    <div>
+                        <div class="text" style="text-align: center">
+                            <b>COVERS</b>
+                        </div>
+                        <div class="text1">{{cov.covers_name}}</div>
+                    </div>
+                    <div>
+                        <div class="cflex1">
+                            <div class="text3">DEATH</div>
+                            <div class="text4">₦{{cov.death_cover}}</div>
+                        </div>
+
+                        <div class="cflex1">
+                            <div class="text3">PERMANENT DISABILITY</div>
+                            <div class="text4">₦{{cov.disability_cover}}</div>
+                        </div>
+
+                        <div class="cflex1">
+                            <div class="text3">
+                                MEDICAL EXPENSES
+                            </div>
+                            <div class="text4">₦{{cov.medical_cover}}</div>
+                        </div>
+
+                        <div class="cflex1">
+                            <div class="text3">BURIAL EXPENSES </div>
+                            <div class="text4">₦{{cov.burial_cover}}</div>
+                        </div>
+
+                        <div class="cflex1">
+                            <div class="text3">PREMIUM (N)</div>
+                            <div class="text4">₦{{cov.premium}}</div>
+                        </div>
+
+                        <div class="btndiv">
+                            <ion-button class="btn" (click)="goto(cov.id, cov.premium)">Pay</ion-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

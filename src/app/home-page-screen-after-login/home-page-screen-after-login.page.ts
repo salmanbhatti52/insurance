@@ -115,6 +115,11 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     this.router.navigate(['/sub-products']);
   }
 
+
+  goToAccident() {
+    this.router.navigate(['/accident1']);
+  }
+
   goToPolicy1() {
     this.router.navigate(['/policy1']);
 

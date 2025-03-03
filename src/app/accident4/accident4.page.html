@@ -1,0 +1,50 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+    <ion-toolbar class="headBgGlobal">
+        <ion-row>
+            <ion-col size="2" style="padding-left: 25px">
+                <ion-buttons>
+                    <div style="width:100% ;">
+                        <img (click)="goback()" src="assets/images/back-arrow.svg" alt="sb-btn">
+                    </div>
+                </ion-buttons>
+
+            </ion-col>
+            <ion-col size="8">
+                <div class="title" style="color: black">Make Payment</div>
+            </ion-col>
+            <ion-col class="titleclass" size="2"> </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="wrapper">
+        <div style="display: flex; align-items: center; justify-content: space-around">
+            <img height="50px" src="assets/images/access_point.png" />
+            <h1 style="margin: 0px; font-size: 22px; margin-left: 6px; color: black">
+                (Amount : ₦ {{amtShow}} )
+            </h1>
+        </div>
+
+
+        <table class="table">
+            <tbody>
+                <tr>
+
+
+                    <td style="color: black">
+                        <strong>Flutterwave </strong><br /><img height="100px;" src="https://flutterwave.com/images/logo/full.svg" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</ion-content>
+<ion-footer>
+
+    <div class="btndiv">
+        <button class="btn11" (click)="makePayment()"> Pay with Flutterwave</button>
+    </div>
+</ion-footer>

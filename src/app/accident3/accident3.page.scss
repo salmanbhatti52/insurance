@@ -122,7 +122,7 @@
 
 .imgdiv {
     width: 100%;
-    text-align: center;
+    text-align: right;
 }
 
 .headtext {
@@ -340,4 +340,20 @@ tr td:first-child {
     }
 }
 
+.b-box {
+    border: 2px solid #E8E8E7;
+    padding: 5px 10px;
+    margin: 10px 0px;
+}
+
+ion-select {
+    width: 96%;
+}
+
 // -------------------------done-------------------------------
+.doob {
+    margin: 4% 0%;
+    --background: #e8e8e7;
+    height: 48px;
+    padding: 13px 15px;
+}

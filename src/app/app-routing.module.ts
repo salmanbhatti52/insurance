@@ -374,6 +374,22 @@ const routes: Routes = [
   {
     path: 'policypay',
     loadChildren: () => import('./policypay/policypay.module').then( m => m.PolicypayPageModule)
+  },
+  {
+    path: 'accident1',
+    loadChildren: () => import('./accident1/accident1.module').then( m => m.Accident1PageModule)
+  },
+  {
+    path: 'accident2',
+    loadChildren: () => import('./accident2/accident2.module').then( m => m.Accident2PageModule)
+  },
+  {
+    path: 'accident3',
+    loadChildren: () => import('./accident3/accident3.module').then( m => m.Accident3PageModule)
+  },
+  {
+    path: 'accident4',
+    loadChildren: () => import('./accident4/accident4.module').then( m => m.Accident4PageModule)
   }
 
 
