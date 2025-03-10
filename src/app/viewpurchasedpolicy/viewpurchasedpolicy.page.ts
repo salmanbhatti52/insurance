@@ -31,7 +31,14 @@ export class ViewpurchasedpolicyPage implements OnInit {
   }
 
   goback() {
-    this.location.back();
+    this.api.isFrom = ''
+    if (this.api.isFrom == 'accident') {
+      this.router.navigate(['/home-page-screen-after-login'], { replaceUrl: true });
+    } else {
+      this.location.back();
+    }
+
+
   }
 
 

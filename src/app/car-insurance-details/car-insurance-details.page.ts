@@ -145,10 +145,10 @@ export class CarInsuranceDetailsPage implements OnInit {
     }
 
     if (this.policyhldrVal == 'Private') {
-      this.dobValue = format(new Date(), 'yyyy-MM-dd');
+      this.dobValue = localStorage.getItem('policy_birthday_date');
       this.genderVal = 'Please Select';
     } else {
-      this.dobValue = '1998-01-01';
+      this.dobValue = localStorage.getItem('policy_birthday_date');
       this.genderVal = 'Male';
     }
 

@@ -932,12 +932,15 @@ export class MypoliciesPage implements OnInit {
           this.otheName +
 
           '", "date_of_birth":"' +
-          '2000-01-04' +
+          this.dob +
           '","verify_token":"' +
           localStorage.getItem('token') +
           '","method":"save_product_quote"}';
 
+        localStorage.setItem('policy_birthday_date', this.dob);
+
         break;
+
       case 'Third Party':
         formValidationResult = this.validateThirdParty();
         myData =
