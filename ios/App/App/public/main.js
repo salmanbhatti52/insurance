@@ -386,6 +386,22 @@ const routes = [
     {
         path: 'policypay',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_policypay_policypay_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./policypay/policypay.module */ 29557)).then(m => m.PolicypayPageModule)
+    },
+    {
+        path: 'accident1',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_accident1_accident1_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./accident1/accident1.module */ 3147)).then(m => m.Accident1PageModule)
+    },
+    {
+        path: 'accident2',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_accident2_accident2_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./accident2/accident2.module */ 98993)).then(m => m.Accident2PageModule)
+    },
+    {
+        path: 'accident3',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_date-fns_esm_format_index_js"), __webpack_require__.e("default-node_modules_moment_moment_js"), __webpack_require__.e("src_app_accident3_accident3_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./accident3/accident3.module */ 74225)).then(m => m.Accident3PageModule)
+    },
+    {
+        path: 'accident4',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_accident4_accident4_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./accident4/accident4.module */ 7641)).then(m => m.Accident4PageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
