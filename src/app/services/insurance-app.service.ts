@@ -45,6 +45,7 @@ export class InsuranceAppService {
   pep_occupations: any;
   accidentcovers_val_amount: any;
   accidentProduct: any;
+  isFrom: string;
 
   constructor(
     private toastctrl: ToastController,

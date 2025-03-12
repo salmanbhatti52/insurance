@@ -102,10 +102,18 @@ export class TransrechistoryPage implements OnInit {
     console.log('getTransactionReceipt==============', this.api.selectedTransaction);
 
 
+    // const myData =
+    //   'myData={"verify_token":"' + localStorage.getItem('token') +
+    //   '","transRef":"' + this.api.selectedTransaction.transactionReference +
+    //   '","method":"getTransactionReceipt"}';
+
+
     const myData =
       'myData={"verify_token":"' + localStorage.getItem('token') +
-      '","transRef":"' + this.api.selectedTransaction.transactionReference +
-      '","method":"getTransactionReceipt"}';
+      '","policyId":"' + this.api.selectedPolicy.policyId +
+      '","method":"getPolicyCertificate"}';
+
+
     this.api.insertData(myData).subscribe(
       (res: any) => {
         this.api.hideLoader();
@@ -116,7 +124,7 @@ export class TransrechistoryPage implements OnInit {
           // this.open(this.transReceipt)
 
           const browser = this.iab.create(
-            res.receiptURL,
+            res.certificate_link,
             '_system'
           );
 

@@ -247,7 +247,9 @@ export class Accident4Page implements OnInit {
     console.log("Payment callback", JSON.stringify(response));
     this.paymetdone = JSON.stringify(response)
     this.api.presenttoast('Payment has been done succesfully.')
-    this.router.navigate(['/home-page-screen-after-login'], { replaceUrl: true });
+    this.router.navigate(['/viewpurchasedpolicy'], { replaceUrl: true });
+
+    this.api.isFrom = 'accident'
 
 
 

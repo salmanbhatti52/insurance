@@ -124,6 +124,9 @@ export class HomePageScreenAfterLoginPage implements OnInit {
     this.router.navigate(['/policy1']);
 
   }
+  goToMyPolicy() {
+    this.router.navigate(['/viewpurchasedpolicy']);
+  }
 
   openProduct(product, comingFrom) {
     console.log('selected product', product);
