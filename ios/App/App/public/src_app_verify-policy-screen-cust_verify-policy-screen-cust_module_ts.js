@@ -350,6 +350,14 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
         if (vvv.field_name == 'date_of_birth') {
           this.date_of_birth = vvv.value;
         }
+
+        if (vvv.field_name == 'amount') {
+          this.amount_of_policy = vvv.value;
+        }
+      }
+
+      if (this.api.policyamountDue) {} else {
+        this.api.policyamountDue = this.amount_of_policy;
       }
     } else {
       let vvv = val.quote.details;
