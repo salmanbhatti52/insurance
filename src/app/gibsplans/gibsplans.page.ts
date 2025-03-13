@@ -957,6 +957,34 @@ export class GibsplansPage implements OnInit {
 
   }
 
+  get_auto_reg_info_fun($ev: any) {
+    const myData =
+      'myData={"verify_token":"' +
+      localStorage.getItem('token') +
+      '","registration_number":"' + this.regNo + '","method":"get_auto_reg_info"}';
+    this.api.insertData(myData).subscribe(
+      (res: any) => {
+        console.log('get_auto_reg_info_fun=========', res);
+        var car = res.response
+        // if (res.status_no == 1) {
+        const [firstName, lastName] = car.ownerName.split(" ");
 
+        this.chasisNo = car.chassisNumber
+        this.engNo = car.engineNumber
+        this.fName = firstName
+        this.lName = lastName
+        this.compName = car.ownerName
+        this.vehclr = car.vehicleColor
+        ///////////
+        this.vehicleMakeVal = car.vehicleMake
+        this.vehicleModelVal = car.vehicleModel
+
+        // }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
 }

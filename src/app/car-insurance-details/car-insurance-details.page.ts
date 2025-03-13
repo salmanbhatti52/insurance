@@ -27,6 +27,213 @@ const IMAGE_DIR = 'stored-images';
   styleUrls: ['./car-insurance-details.page.scss'],
 })
 export class CarInsuranceDetailsPage implements OnInit {
+  vechilenewarray = [];
+  EnchancednewClasses = [];
+  requestsType: any;
+  subProName: any;
+  show = false;
+  box = 'unchecked';
+
+  fName = '';
+  lName = '';
+  userEmail = '';
+  mobNumber = '';
+  compName = '';
+  valOfVehicle = '';
+  showPlan = false;
+  showTitle = false;
+  showAgeGroup = false;
+  showVehicle = false;
+  showMaker = false;
+  showPolicyholder = false;
+  showVehicleModel = false;
+  showVehicleUsage = false;
+  showFloodExt = false;
+  showExcessBuyBack = false;
+  showVehicleTracking = false;
+  showRoadSide = false;
+  tourStartDate = format(new Date(), 'yyyy-MM-dd');
+  tourEndDate = format(new Date(), 'yyyy-MM-dd');
+  dob = format(new Date(), 'yyyy-MM-dd');
+  otheName = '';
+  showPickerStartDate = false;
+  showPickerEndDate = false;
+  showPickerEndDatedob = false;
+  ageGroup: any = 'Age Next Birthday';
+  useTitle = 'Please Select';
+  roadSideVal = 'Please Select';
+  vehicleVal = 'Please Select';
+  vehicleMakeVal = 'Please Select';
+  vehicleModelVal = 'Please Select';
+  floodExtVal = 'Please Select';
+  excessBuyBackVal = 'Please Select';
+  vehicleTrackingVal = 'Please Select';
+  autoPlanVal = 'Please Auto Plan';
+  autoPlanName = 'Please Auto Plan';
+  vehicleClass: any;
+
+  eCcarClasses: any;
+  vehicleMake: any;
+  policyhldrList = [{ plcyhldrType: 'Private' }, { plcyhldrType: 'Corporate' }];
+  vehicleModel: any;
+  floodExtValues = [{ floodExt: 'Yes' }, { floodExt: 'No' }];
+  ExcessBuyBack = [{ excessByBack: 'Yes' }, { excessByBack: 'No' }];
+  vehicleTrackingValues = [{ vehicleTrack: 'Yes' }, { vehicleTrack: 'No' }];
+  titleList = [
+    {
+      id: 0,
+      title: 'Mr',
+    },
+    {
+      id: 1,
+      title: 'Mrs',
+    },
+    // {
+    //   id: 2,
+    //   title: 'Mrs',
+    // },
+    // {
+    //   i: 3,
+    //   title: 'Miss',
+    // },
+    {
+      autoPlan: 2,
+      title: 'Ms',
+    },
+    {
+      autoPlan: 3,
+      title: 'Chief',
+    },
+
+    {
+      id: 4,
+      title: 'Dr',
+    },
+    {
+      autoPlan: 5,
+      title: 'Air Vice Marshall',
+    },
+    {
+      autoPlan: 6,
+      title: 'Alhaji',
+    },
+    // {
+    //   autoPlan: 9,
+    //   title: 'Ms',
+    // },
+    // {
+    //   autoPlan: 10,
+    //   title: 'Chief',
+    // }
+  ];
+  isavetitle = [
+    { id: '0', title: 'Mr', active: false },
+    { id: '1', title: 'Ms', active: false },
+    { id: '2', title: 'Dr', active: false },
+    { id: '3', title: 'Air Vice Marshall', active: false },
+    { id: '4', title: 'Alhaji', active: false },
+    { id: '5', title: 'Ambassador', active: false },
+    { id: '6', title: 'Architect', active: false },
+    { id: '7', title: 'Barr', active: false },
+    { id: '8', title: 'Bishop', active: false },
+    { id: '9', title: 'Brig', active: false },
+    { id: '10', title: 'Brig GEN', active: false },
+    { id: '11', title: 'CAPT', active: false },
+    { id: '12', title: 'Chief(Mrs)', active: false },
+    { id: '13', title: 'Commander ', active: false },
+    { id: '14', title: 'Dr(Mrs)', active: false },
+    { id: '15', title: 'Elder', active: false },
+    { id: '16', title: 'Hajia', active: false },
+    { id: '17', title: 'Hajia(Chief)', active: false },
+    { id: '18', title: 'His Excellency', active: false },
+    { id: '19', title: 'Lt Col', active: false },
+    { id: '21', title: 'Major', active: false },
+    { id: '22', title: 'Major Gen', active: false },
+    { id: '23', title: 'Master', active: false },
+    { id: '24', title: 'Professor', active: false },
+    { id: '25', title: 'Rev Sis', active: false },
+    { id: '26', title: 'Reverend', active: false },
+    { id: '27', title: 'Senator', active: false },
+  ];
+  autoPlansOfChoice = [
+    {
+      autoPlan: 'Auto Compact (2%) (Third Party Fire & Theft)',
+      value: 'auto_compact',
+    },
+    {
+      autoPlan: 'Auto Bronze (2.5%)',
+      value: 'auto_bronze',
+    },
+    {
+      autoPlan: 'Auto Silver (3%)',
+      value: 'auto_silver',
+    },
+    {
+      autoPlan: 'Auto Gold (3.5%)',
+      value: 'auto_gold',
+    },
+    {
+      autoPlan: 'Auto Platinum (4%)',
+      value: 'auto_platinum',
+    },
+  ];
+
+  ageGroupList = [
+    {
+      id: 1,
+      title: '18 - 65 Years Old',
+    },
+    {
+      id: 2,
+      title: '66 - 75 Years Old',
+    },
+    {
+      id: 3,
+      title: '76 - 80 Years Old',
+    },
+  ];
+  roadSideAssistance = [{ roadSide: 'Yes' }, { roadSide: 'No' }];
+  Paymentfrequency = [
+    { id: '0', title: 'Monthly', active: false },
+    { id: '1', title: 'Quarterly', active: false },
+    { id: '2', title: 'Half-yearly', active: false },
+    { id: '3', title: 'Yearly', active: false },
+  ];
+  Pfrequency = 'Please Select';
+  showpaymentfrequency = false;
+  duration: any;
+  sumassured = 'Please Select';
+  showsumassured = false;
+  sumassuredarray = [
+    { id: '0', value: '100000', active: false },
+    { id: '1', value: '200000', active: false },
+    { id: '2', value: '300000', active: false },
+    { id: '3', value: '400000', active: false },
+    { id: '4', value: '500000', active: false },
+    { id: '5', value: '600000', active: false },
+    { id: '6', value: '700000', active: false },
+    { id: '7', value: '800000', active: false },
+    { id: '8', value: '900000', active: false },
+    { id: '9', value: '1000000', active: false },
+  ];
+  // valuetype = 'Third Party';
+  vehicleModelNew = [];
+  draftArr: any = '';
+
+
+  /////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
   propsalResponse: any;
   quoteItems: any;
   fullName = '';
@@ -58,7 +265,6 @@ export class CarInsuranceDetailsPage implements OnInit {
   showPickerYom = false;
   showPickerDob = false;
   showPickerCorp = false;
-  show = false;
   showGender = false;
   subProductName = localStorage.getItem('subProName');
   productname = localStorage.getItem('productName');
@@ -112,8 +318,7 @@ export class CarInsuranceDetailsPage implements OnInit {
   policyhldrVal: any = '';
   // For file images //
 
-  draftArr: any = '';
-  subProName: any;
+
 
   constructor(
     public location: Location,
@@ -130,9 +335,37 @@ export class CarInsuranceDetailsPage implements OnInit {
     this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
     // this.quoteItems = JSON.parse(localStorage.getItem('quoteItems'));
     this.getReferrerList();
+
+
+    console.log('new Date().toISOString()===', new Date().toISOString());
+
+    this.subProName = localStorage.getItem('subProName');
+    console.log('subproduct name-----', this.subProName);
+
+    this.getCarVehicleTypeCls();
+    this.getCarMakeCompanies();
+
+    this.userEmail = localStorage.getItem('email');
+    this.mobNumber = localStorage.getItem('number');
+
+    if (this.mobNumber == '' || this.mobNumber == 'null') {
+      this.mobNumber = ''
+    }
   }
 
   ionViewWillEnter() {
+
+    this.vehicleVal = 'Please Select';
+    this.vehicleMakeVal = 'Select Manufacturer';
+    this.policyhldrVal = 'Please Select';
+    this.vehicleModelVal = 'Select Model';
+    this.fName = localStorage.getItem('fname');;
+    this.lName = localStorage.getItem('lname');
+
+    this.compName = '';
+
+
+
     console.log('fullName----', localStorage.getItem('userfullname'));
     console.log('policyhldrVal----', localStorage.getItem('policyhldrVal'));
     this.policyhldrVal = localStorage.getItem('policyhldrVal');
@@ -353,7 +586,7 @@ export class CarInsuranceDetailsPage implements OnInit {
     }
     return response;
   }
-  createProposal(propsalType) {
+  async createProposal(propsalType) {
     console.log('propsalType---formValidationResult', propsalType);
     console.log('this.genderVal----', this.genderVal);
 
@@ -436,6 +669,7 @@ export class CarInsuranceDetailsPage implements OnInit {
         data: form,
       };
       console.log('form form config', config);
+      await this.createQuote()
       this.http
         .post(config.url, config.data, {
           headers: config.headers,
@@ -562,5 +796,496 @@ export class CarInsuranceDetailsPage implements OnInit {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
+  }
+
+
+
+  createQuote() {
+    let formValidationResult = {
+      message: 'This product is under developement',
+      status: false,
+    };
+    console.log('checkTest---', formValidationResult);
+
+    let myData = '';
+    formValidationResult = this.validateThirdParty();
+    myData =
+      'myData={\r\n    "product_id":"' +
+      localStorage.getItem('subProId') +
+      '",\r\n    "vehicle_class":"' +
+      this.vehicleVal +
+      '",\r\n    "first_name": "' +
+      this.fName +
+      '",\r\n    "last_name":"' +
+      this.lName +
+      '",\r\n    "vehicle_manufacturer":"' +
+      this.vehicleMakeVal +
+      '",\r\n    "vehicle_model":"' +
+      this.vehicleModelVal +
+      '",\r\n    "policyholder_type":"' +
+      this.policyhldrVal +
+      '",\r\n    "mobile":"' +
+      this.mobNumber +
+      '",\r\n    "company_name":"' +
+      this.compName +
+      '",\r\n    "email":"' +
+      this.userEmail +
+      '",\r\n    "verify_token":"' +
+      localStorage.getItem('token') +
+      '",\r\n    "method": "save_product_quote" \r\n}';
+
+
+
+    if (formValidationResult.status) {
+      // --- Calling API To create quote --- //
+
+      console.log('this.policyhldrVal---', this.policyhldrVal);
+
+      localStorage.setItem('policyhldrVal', this.policyhldrVal);
+
+      this.api.insertData(myData).subscribe(
+        (data: any) => {
+          console.log('data response for products----', data);
+
+          if (data.message == 'success') {
+            //ali
+            var obj = {
+              title: data.info.product_name,
+              product_id: data.info.product_id,
+              quote_id: data.info.quote_id,
+              subProName: data.info.product_name,
+              quoteItems: JSON.stringify(data.quoteItems),
+              image:
+                'https://www.cornerstone.com.ng/assets/uploads/product/2.jpg',
+              path: '/yourquote',
+              datetime: new Date().toISOString(),
+            };
+
+            this.draftArr = JSON.parse(localStorage.getItem('draftArr'));
+
+            if (this.draftArr) {
+              this.draftArr.push(obj);
+            } else {
+              this.draftArr = [obj];
+            }
+            localStorage.setItem('draftArr', JSON.stringify(this.draftArr));
+
+            this.api.presenttoast(data.info.message);
+            localStorage.setItem('userfullname', this.fName + ' ' + this.lName);
+            localStorage.setItem('fname', this.fName);
+            localStorage.setItem('lname', this.lName);
+            localStorage.setItem('email', this.userEmail);
+            localStorage.setItem('product_id', data.info.product_id);
+            localStorage.setItem('quote_id', data.info.quote_id);
+            localStorage.setItem('subProName', data.info.product_name);
+            localStorage.setItem('quoteItems', JSON.stringify(data.quoteItems));
+            localStorage.setItem('vechileval', this.vehicleVal)
+            localStorage.setItem('vechilemakeval', this.vehicleMakeVal);
+            localStorage.setItem('vechilemodelval', this.vehicleModelVal)
+            localStorage.setItem('phonenumber', this.mobNumber)
+            // this.router.navigate(['/yourquote']);
+          } else {
+            this.api.presenttoast(data.message);
+          }
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+      // --- Calling API To create quote --- //
+    } else {
+      this.api.presenttoast(formValidationResult.message);
+    }
+  }
+
+
+  validateThirdParty() {
+    const response = { message: 'message', status: false };
+    if (this.vehicleVal == 'Please Select') {
+      response.message = 'Vehicle Class required';
+    } else if (this.vehicleMakeVal == 'Manufacturer') {
+      response.message = 'Vehicle Make required';
+    } else if (this.vehicleModelVal == 'Select Model') {
+      response.message = 'Vehicle Model required';
+    } else if (this.policyhldrVal == 'Please Select') {
+      response.message = 'Policyholder Type required';
+    } else if (this.policyhldrVal == 'Private') {
+      console.log('private');
+      if (this.fName == '') {
+        response.message = 'First Name required';
+      } else if (this.lName == '') {
+        response.message = 'Last Name required';
+      } else if (this.userEmail == '') {
+        console.log('not private');
+        response.message = 'Email Address required';
+      } else if (this.mobNumber == '') {
+        response.message = 'Phone Number required';
+      } else {
+        response.message = 'Third party validated';
+        response.status = true;
+      }
+    } else if (this.policyhldrVal == 'Corporate') {
+      if (this.compName == '') {
+        response.message = 'Company Name required';
+      } else if (this.userEmail == '') {
+        response.message = 'Email Address required';
+      } else if (this.mobNumber == '') {
+        response.message = 'Phone Number required';
+      } else {
+        response.message = 'Third party validated';
+        response.status = true;
+      }
+    }
+    return response;
+  }
+
+
+  getCarVehicleTypeCls() {
+    // this.api.showLoader()
+    if (this.subProName === 'Third Party') {
+      const myData =
+        'myData={"verify_token":"' +
+        localStorage.getItem('token') +
+        '","product_class":"vehicle_class_thirdparty","method":"get_car_classes"}';
+      this.api.insertData(myData).subscribe(
+        (res: any) => {
+          console.log(res);
+          this.api.hideLoader();
+          if (res.values !== '') {
+            this.vehicleClass = res.values;
+            console.log(this.vehicleClass);
+            this.vehicleClass.map((val, index) => {
+              const data = {
+                name: val,
+                active: false,
+              };
+              this.vechilenewarray.push(data);
+            });
+            console.log('dadasdsadsa======', this.vechilenewarray);
+          }
+        },
+        (err) => {
+          console.log('err', err);
+          this.api.hideLoader();
+        }
+      );
+    } else if (this.subProName == 'Enhanced Comprehensive') {
+      const myData =
+        'myData={"verify_token":"' +
+        localStorage.getItem('token') +
+        '","method":"get_car_classes","product_class":"vehicle_class_enhanced_comprehensive"}';
+      this.api.insertData(myData).subscribe(
+        (res: any) => {
+          console.log(res);
+          this.api.hideLoader();
+          if (res.values != '') {
+            this.eCcarClasses = res.values;
+            console.log(
+              'Enhanced Comprehensive car classes==',
+              this.eCcarClasses
+            );
+            this.eCcarClasses.map((val, index) => {
+              const data = {
+                name: val,
+                active: false,
+              };
+              this.EnchancednewClasses.push(data);
+            });
+            // console.log('EnchancednewClasses======', this.EnchancednewClasses);
+          }
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } else if (this.subProName == 'Auto Variants') {
+    } else {
+    }
+  }
+  vechileMakenew = [];
+  getCarMakeCompanies() {
+    const myData =
+      'myData={"verify_token":"' +
+      localStorage.getItem('token') +
+      '","method":"get_car_companies"}';
+    this.api.insertData(myData).subscribe(
+      (res: any) => {
+        console.log(res);
+        if (res.values != '') {
+          this.vehicleMake = res.values;
+          console.log(this.vehicleMake);
+          this.vehicleMake.map((val, index) => {
+            const data = {
+              manufacturer: val.manufacturer,
+              active: false,
+            };
+            this.vechileMakenew.push(data);
+          });
+          // console.log('vechileMakenew array====', this.vechileMakenew);
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+
+  openRoadSideAssistance() {
+    if (this.showRoadSide == true) {
+      this.showRoadSide = false;
+    } else {
+      this.showRoadSide = true;
+    }
+  }
+  openAutoPlanList() {
+    if (this.showPlan == true) {
+      this.showPlan = false;
+    } else {
+      this.showPlan = true;
+    }
+  }
+  openDropDwon(type) {
+    console.log('DROPDOWN TYPE ----', type);
+    if (type == 'title') {
+      this.showTitle = !this.showTitle;
+    } else if (type == 'age') {
+      this.showAgeGroup = !this.showAgeGroup;
+    }
+  }
+  openVehicleList() {
+    if (this.showVehicle == true) {
+      this.showVehicle = false;
+    } else {
+      this.showVehicle = true;
+    }
+  }
+
+  openVhclMakeList() {
+    if (this.showMaker == true) {
+      this.showMaker = false;
+    } else {
+      this.showMaker = true;
+    }
+  }
+
+
+  selectRoadSideAssistance(list) {
+    this.roadSideVal = list.roadSide;
+    this.showRoadSide = false;
+  }
+  selectVehicleTracking(list) {
+    this.vehicleTrackingVal = list.vehicleTrack;
+    this.showVehicleTracking = false;
+  }
+  selectAutoPlan(list) {
+    this.autoPlanVal = list.autoPlan;
+    this.autoPlanName = list.value;
+    this.showPlan = false;
+  }
+  selectFloodExt(list) {
+    this.floodExtVal = list.floodExt;
+    this.showFloodExt = false;
+  }
+  selectpaymentfrequency(list, index) {
+    this.Pfrequency = list.title;
+    this.showpaymentfrequency = false;
+    this.Paymentfrequency.map((val, i) => {
+      // console.log(i);
+
+      if (index == i) {
+        this.Paymentfrequency[i].active = true;
+      }
+      if (index != i) {
+        this.Paymentfrequency[i].active = false;
+      }
+    });
+  }
+  selectsumassured(list, index) {
+    this.sumassured = list.value;
+    this.showsumassured = false;
+    this.sumassuredarray.map((val, i) => {
+      // console.log(i);
+
+      if (index == i) {
+        this.sumassuredarray[i].active = true;
+      }
+      if (index != i) {
+        this.sumassuredarray[i].active = false;
+      }
+    });
+  }
+  selectExcessBuyBack(list) {
+    this.excessBuyBackVal = list.excessByBack;
+    this.showpaymentfrequency = false;
+  }
+  selectVehicleCls(list, index) {
+    this.vehicleVal = list.name;
+    this.showVehicle = false;
+
+    if (this.subProName == 'Third Party') {
+      this.vechilenewarray.map((val, i) => {
+        console.log(this.vechilenewarray);
+
+        if (index == i) {
+          this.vechilenewarray[i].active = true;
+        }
+        if (index != i) {
+          this.vechilenewarray[i].active = false;
+        }
+      });
+      // console.log('ddddddddddddddddd', this.vechilenewarray);
+    }
+    if (this.subProName == 'Enhanced Comprehensive') {
+      this.EnchancednewClasses.map((val, i) => {
+        if (index == i) {
+          this.EnchancednewClasses[i].active = true;
+        }
+        if (index != i) {
+          this.EnchancednewClasses[i].active = false;
+        }
+      });
+      // console.log('ddddddddddddddddd', this.EnchancednewClasses);
+    }
+  }
+  selectDropDown(list, type) {
+    console.log('type----', type);
+    console.log('List data ----', list);
+    if (type == 'title') {
+      this.useTitle = list.title;
+      this.showTitle = false;
+    } else if (type == 'age') {
+      this.ageGroup = list.title;
+      this.showAgeGroup = false;
+    }
+  }
+
+  selectVehicleMaker(list, index) {
+    this.vehicleMakeVal = list.manufacturer;
+    this.vehicleModelVal = '';
+    this.showMaker = false;
+    this.vechileMakenew.map((val, i) => {
+      if (index == i) {
+        this.vechileMakenew[i].active = true;
+      }
+      if (index != i) {
+        this.vechileMakenew[i].active = false;
+      }
+    });
+
+    this.getVehicleModels();
+  }
+  getVehicleModels() {
+    this.vehicleModelNew = [];
+    const myData =
+      'myData={"verify_token":"' +
+      localStorage.getItem('token') +
+      '","method":"get_car_models","manufacturer":"' +
+      this.vehicleMakeVal +
+      '"}';
+    this.api.insertData(myData).subscribe(
+      (res: any) => {
+        console.log(res);
+        if (res.values != '') {
+          this.vehicleModel = res.values;
+          console.log(this.vehicleModel);
+          this.vehicleModel.map((val, index) => {
+            const data = {
+              model: val.model,
+              active: false,
+            };
+            this.vehicleModelNew.push(data);
+          });
+          console.log('vehicleModelNew', this.vehicleModelNew);
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  selectPolicyholder(list) {
+    this.policyhldrVal = list.plcyhldrType;
+    this.showPolicyholder = false;
+  }
+
+  selectTitle(list, index) {
+    this.useTitle = list.title;
+    this.showTitle = false;
+    this.isavetitle.map((val, i) => {
+      // console.log(i);
+
+      if (index == i) {
+        this.isavetitle[i].active = true;
+      }
+      if (index != i) {
+        this.isavetitle[i].active = false;
+      }
+    });
+  }
+
+  selectVehicleModel(list, index) {
+    this.vehicleModelVal = list.model;
+    this.showVehicleModel = false;
+
+    this.vehicleModelNew.map((val, i) => {
+      if (index == i) {
+        this.vehicleModelNew[i].active = true;
+      }
+      if (index != i) {
+        this.vehicleModelNew[i].active = false;
+      }
+    });
+    console.log('vechileMakenew--------', this.vehicleModelNew);
+  }
+
+  opnenVehicleModelList() {
+    if (this.showVehicleModel == true) {
+      this.showVehicleModel = false;
+    } else {
+      this.showVehicleModel = true;
+    }
+  }
+
+
+  openPolicyhldrList() {
+    if (this.showPolicyholder == true) {
+      this.showPolicyholder = false;
+    } else {
+      this.showPolicyholder = true;
+    }
+  }
+
+
+
+
+  get_auto_reg_info_fun($ev: any) {
+    const myData =
+      'myData={"verify_token":"' +
+      localStorage.getItem('token') +
+      '","registration_number":"' + this.regNo + '","method":"get_auto_reg_info"}';
+    this.api.insertData(myData).subscribe(
+      (res: any) => {
+        console.log('get_auto_reg_info_fun=========', res);
+        var car = res.response
+        // if (res.status_no == 1) {
+          const [firstName, lastName] = car.ownerName.split(" ");
+
+          this.chasisNo = car.chassisNumber
+          this.engNo = car.engineNumber
+          this.fName = firstName
+          this.lName = lastName
+          this.compName = car.ownerName
+          this.vehclr = car.vehicleColor
+          ///////////
+          this.vehicleMakeVal = car.vehicleMake
+          this.vehicleModelVal = car.vehicleModel
+
+        // }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

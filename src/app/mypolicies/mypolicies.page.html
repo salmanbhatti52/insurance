@@ -41,16 +41,11 @@
             <!-------------- third party discription ------------------->
             <div *ngIf="subProName=='Third Party'">
                 <div class="thirdParty-wrapper">
-                    <!-- <div class="htext" style="margin-bottom: 10px">
-                        <img src="assets/images/thirdPartyCorp.svg" alt="" />Motor Third-party Insurance Quote
-                    </div> -->
                     <div class="htext" style="color: black; font-size: 18px">
                         Please provide your details below to get your quote
                     </div>
                     <div class="flex-cls">
-                        <!-- <div>
-              <img src="assets/images/slider/1.svg">
-            </div> -->
+
                         <div style="width: 80%; margin: 0% auto">
                             <div class="label">
                                 Vehicle Class <span style="color: #a8b400">*</span>
@@ -73,7 +68,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!----------- second form ---------------------------->
                             <div class="label">
                                 Vehicle Make <span style="color: #a8b400">*</span>
                             </div>
@@ -114,7 +108,6 @@
                                 </div>
                             </div>
 
-                            <!----------- fourth form ---------------------------->
                             <div class="label">
                                 Policyholder Type <span style="color: #a8b400">*</span>
                             </div>
@@ -151,7 +144,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!----------- fifth form ---------------------------->
                             <div *ngIf="policyhldrVal=='Corporate'">
                                 <div class="label">Company Name</div>
                                 <div class="inputfield">
@@ -161,7 +153,6 @@
                                 </div>
                             </div>
 
-                            <!----------- fifth form ---------------------------->
                             <div class="label">
                                 Email Address<span style="color: #a8b400">*</span>
                             </div>
@@ -171,7 +162,6 @@
                                 </div>
                             </div>
 
-                            <!----------- sixth form ---------------------------->
                             <div class="label">
                                 Phone Number <span style="color: #a8b400">*</span>
                             </div>
@@ -180,7 +170,6 @@
                                     <ion-input [(ngModel)]="mobNumber" style="height: 48px" type="tel" placeholder="923565466554" class="in-text"></ion-input>
                                 </div>
                             </div>
-                            <!-- ---------------------------------------------------------------- -->
                             <div style="width: 90%; margin: 8% auto" (click)="createQuote(subProName)">
                                 <ion-button class="btn">Continue</ion-button>
                             </div>
