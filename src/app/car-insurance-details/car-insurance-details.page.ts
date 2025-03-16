@@ -1269,17 +1269,28 @@ export class CarInsuranceDetailsPage implements OnInit {
         console.log('get_auto_reg_info_fun=========', res);
         var car = res.response
         // if (res.status_no == 1) {
+        if (car.ownerName) {
           const [firstName, lastName] = car.ownerName.split(" ");
-
-          this.chasisNo = car.chassisNumber
-          this.engNo = car.engineNumber
           this.fName = firstName
           this.lName = lastName
           this.compName = car.ownerName
+        }
+
+        if (car.chassisNumber) {
+          this.chasisNo = car.chassisNumber
+        }
+        if (car.engineNumber) {
+          this.engNo = car.engineNumber
+        }
+        if (car.vehicleColor) {
           this.vehclr = car.vehicleColor
-          ///////////
+        }
+        if (car.vehicleMake) {
           this.vehicleMakeVal = car.vehicleMake
+        }
+        if (car.vehicleModel) {
           this.vehicleModelVal = car.vehicleModel
+        }
 
         // }
       },

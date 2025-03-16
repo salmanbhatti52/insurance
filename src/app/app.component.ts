@@ -46,6 +46,13 @@ export class AppComponent {
       status: 'unchecked',
     },
     {
+      title: 'Purchased History',
+      url: 'viewpurchasedpolicy',
+      img: '/assets/images/purchased_1.svg',
+      img1: '/assets/images/purchased.svg',
+      status: 'unchecked',
+    },
+    {
       title: 'Renewals',
       url: 'verify-policy-screen-cust',
       img: '/assets/images/icons/renewals.svg',
