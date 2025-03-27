@@ -46,6 +46,7 @@ export class InsuranceAppService {
   accidentcovers_val_amount: any;
   accidentProduct: any;
   isFrom: string;
+  vehicleInfoPolicy: any;
 
   constructor(
     private toastctrl: ToastController,

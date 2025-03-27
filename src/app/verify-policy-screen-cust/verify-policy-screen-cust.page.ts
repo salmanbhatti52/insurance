@@ -1,11 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { VerifyPolicyPopupCustPage } from '../verify-policy-popup-cust/verify-policy-popup-cust.page';
 import axios from 'axios';
 import { InsuranceAppService } from '../services/insurance-app.service';
 import { HttpHeaders, HttpParams, HttpClient, HttpParamsOptions } from '@angular/common/http';
+import { PolicypPage } from '../policyp/policyp.page';
 
 
 @Component({
@@ -41,7 +42,8 @@ export class VerifyPolicyScreenCustPage implements OnInit {
     public location: Location,
     public router: Router,
     public api: InsuranceAppService,
-    private http: HttpClient,) { }
+    private http: HttpClient,
+    public alertController: AlertController) { }
 
   ngOnInit() {
 
@@ -222,11 +224,10 @@ export class VerifyPolicyScreenCustPage implements OnInit {
         if (res.status_no != 0) {
 
           if (res.status == 'paid') {
-            this.api.presenttoast('Payment has been already done.')
-
+            this.presentAlert()
           } else {
-            this.edit_renewal_quote()
-
+            this.api.vehicleInfoPolicy = res.quoteItems
+            this.showVehicleInfoModal()
           }
 
 
@@ -248,6 +249,37 @@ export class VerifyPolicyScreenCustPage implements OnInit {
     );
   }
 
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Payment Status',
+      message: 'No Payment Due.',
+      mode: 'ios',
+      buttons: ['Ok'],
+    });
+
+    await alert.present();
+  }
+
+
+  async showVehicleInfoModal() {
+    const modal = await this.modal.create({
+      component: PolicypPage,
+      // cssClass: 'policyPClass'
+    });
+    modal.onDidDismiss().then((data) => {
+      const val = data['data']; // Here's your selected user!
+      console.log('val:---------------', val);
+
+      if (val == 'pay') {
+        this.edit_renewal_quote()
+      }
+
+
+
+    });
+    return await modal.present();
+  }
 
   edit_renewal_quote() {
     if (!this.pnumber) {

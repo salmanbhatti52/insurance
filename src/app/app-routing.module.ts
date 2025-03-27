@@ -390,6 +390,10 @@ const routes: Routes = [
   {
     path: 'accident4',
     loadChildren: () => import('./accident4/accident4.module').then( m => m.Accident4PageModule)
+  },
+  {
+    path: 'policyp',
+    loadChildren: () => import('./policyp/policyp.module').then( m => m.PolicypPageModule)
   }
 
 

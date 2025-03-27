@@ -53,7 +53,7 @@ export class AppComponent {
       status: 'unchecked',
     },
     {
-      title: 'Renewals',
+      title: 'Vehicle Renewals',
       url: 'verify-policy-screen-cust',
       img: '/assets/images/icons/renewals.svg',
       img1: '/assets/images/icons/activerenewls.svg',
@@ -114,7 +114,7 @@ export class AppComponent {
       status: 'unchecked',
     },
     {
-      title: 'Renewals',
+      title: 'Vehicle Renewals',
       url: 'verify-policy-screen-cust',
       img: '/assets/images/icons/renewals.svg',
       img1: '/assets/images/icons/activerenewls.svg',

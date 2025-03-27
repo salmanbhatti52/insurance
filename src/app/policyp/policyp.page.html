@@ -1,0 +1,110 @@
+<ion-header [translucent]="true" class="ion-no-border cheader">
+  <ion-toolbar class="headBgGlobal">
+    <ion-row>
+      <ion-col size="2" style="padding-left: 25px">
+        <ion-buttons>
+          <div style="width:100% ;">
+            <img (click)="close('close')" src="assets/images/back-arrow.svg" alt="sb-btn">
+          </div>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="8">
+        <div class="title">Vehicle Information</div>
+      </ion-col>
+      <ion-col class="titleclass" size="2"> </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="wrapper">
+
+
+    <div style="border: 1px solid #a8b400; border-radius: 12px">
+      <div class="main">
+        <div>
+          <!-- <div class="text" style="text-align: center">
+            <b>COVERS</b>
+          </div> -->
+          <!-- <div class="text1">{{vehicleInfoPolicy.covers_name}}</div> -->
+        </div>
+        <div>
+
+
+          <div *ngIf="insured_name" class="cflex1">
+            <div class="text3">Insured Name</div>
+            <div class="text4">{{insured_name}}</div>
+          </div>
+
+          <div *ngIf="product" class="cflex1">
+            <div class="text3">Product Name</div>
+            <div class="text4">{{product}}</div>
+          </div>
+
+          <div *ngIf="gibs_policy_number" class="cflex1">
+            <div class="text3">GIBBS Policy No</div>
+            <div class="text4">{{gibs_policy_number}}</div>
+          </div>
+
+          <div *ngIf="insurance_type" class="cflex1">
+            <div class="text3">Insurance Type</div>
+            <div class="text4">{{insurance_type}}</div>
+          </div>
+
+          <div *ngIf="registration_no" class="cflex1">
+            <div class="text3">Registration Number</div>
+            <div class="text4">{{registration_no}}</div>
+          </div>
+
+          <div *ngIf="menufecturer" class="cflex1">
+            <div class="text3">Vehicle Manufacturer</div>
+            <div class="text4">{{menufecturer}}</div>
+          </div>
+
+          <div *ngIf="model" class="cflex1">
+            <div class="text3">Vehicle Model</div>
+            <div class="text4">{{model}}</div>
+          </div>
+
+          <div *ngIf="flood_extension" class="cflex1">
+            <div class="text3">Flood Extension</div>
+            <div class="text4">{{flood_extension}}</div>
+          </div>
+
+          <div *ngIf="buy_back" class="cflex1">
+            <div class="text3">Excess Buy Back</div>
+            <div class="text4">{{buy_back}}</div>
+          </div>
+
+          <div *ngIf="reffered_by" class="cflex1">
+            <div class="text3">Referred By</div>
+            <div class="text4">{{reffered_by}}</div>
+          </div>
+
+          <div *ngIf="referrer" class="cflex1">
+            <div class="text3">Referrer</div>
+            <div class="text4">{{referrer}}</div>
+          </div>
+
+
+          <div *ngIf="expiry_date" class="cflex1">
+            <div class="text3">Expiry Date</div>
+            <div class="text4">{{expiry_date}}</div>
+          </div>
+
+
+          <div *ngIf="amount" class="cflex1">
+            <div class="text3">Payable Amount</div>
+            <div *ngIf="Namount" class="text4">{{Namount}}</div>
+            <div *ngIf="!Namount" class="text4">₦ {{amount | number:'0.0'}}</div>
+          </div>
+
+
+          <div class="btndiv">
+            <ion-button class="btn" (click)="close('pay')">Pay</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

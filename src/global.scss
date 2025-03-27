@@ -12,225 +12,243 @@
 /* Core CSS required for Ionic components to work properly */
 // @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @font-face {
-    font-family: Bliss Pro;
-    src: url('/assets/BlissPro-Medium/BlissPro-Medium.ttf');
+  font-family: Bliss Pro;
+  src: url('/assets/BlissPro-Medium/BlissPro-Medium.ttf');
 }
 
-.headBgGlobal{
+.headBgGlobal {
   --padding-top: 3% !important;
   --background: #fff;
 }
 
-.headBgGlobalafterlogin{
+.headBgGlobalafterlogin {
   --padding-top: 3% !important;
   --background: #1a206d !important;
 }
 
-.ios{
-  .headBgGlobal{
+.ios {
+  .headBgGlobal {
     --padding-top: 6% !important;
     --background: #fff;
   }
 }
-ion-header{
+
+ion-header {
   font-family: Bliss Pro;
   background-color: white !important;
 }
-ion-toolbar{
+
+ion-toolbar {
   --background: white !important;
 }
-ion-content{
-  --background:white !important;
+
+ion-content {
+  --background: white !important;
   font-family: Bliss Pro;
 }
-ion-footer{
+
+ion-footer {
   background-color: white !important;
   font-family: Bliss Pro;
 }
+
 ion-modal#example-modal {
   --width: fit-content;
   --min-width: 295px;
-  --height:190px;
-  --border-radius:17px;
+  --height: 190px;
+  --border-radius: 17px;
   --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
   background: rgba(0, 0, 0, 0.6) !important;
 }
+
 .header-md::after {
-    left: 0;
-    bottom: -5px;
-    background-position: left 0 top -2px;
-    position: absolute;
-    width: 100%;
-     height: 0px !important;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
-    background-repeat: repeat-x;
-    content: "";
+  left: 0;
+  bottom: -5px;
+  background-position: left 0 top -2px;
+  position: absolute;
+  width: 100%;
+  height: 0px !important;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
+  background-repeat: repeat-x;
+  content: "";
 }
+
 .footer-md::before {
-    left: 0;
-    top: -2px;
-    bottom: auto;
-    background-position: left 0 top 0;
-    position: absolute;
-    width: 100%;
-    height: 0px !important;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
-    background-repeat: repeat-x;
-    content: "";
+  left: 0;
+  top: -2px;
+  bottom: auto;
+  background-position: left 0 top 0;
+  position: absolute;
+  width: 100%;
+  height: 0px !important;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAHBAMAAADzDtBxAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABXRSTlMUCS0gBIh/TXEAAAAaSURBVAjXYxCEAgY4UIICBmMogMsgFLtAAQCNSwXZKOdPxgAAAABJRU5ErkJggg==);
+  background-repeat: repeat-x;
+  content: "";
 }
+
 .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
-    display: inline-block;
-    border-radius: 100%;
-    opacity: 0.2;
-    opacity: 1.0;
-    border-radius: 5px;
-    // --bullet-background:white !important;
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 100%;
+  opacity: 0.2;
+  opacity: 1.0;
+  border-radius: 5px;
+  // --bullet-background:white !important;
 }
+
 .radio {
   height: 16px;
   width: 16px;
   --color: #A8B400 !important;
   --color-checked: #A8B400 !important;
 }
-.slides2{
+
+.slides2 {
   .swiper-pagination-bullet-active {
-    --bullet-background-active:#cb4848 !important;
-  //   width: 24px !important;
+    --bullet-background-active: #cb4848 !important;
+    //   width: 24px !important;
   }
 }
-.slides1{
+
+.slides1 {
   .swiper-pagination-bullet-active {
-    --bullet-background-active:#A8B400 !important;
-  //   width: 24px !important;
+    --bullet-background-active: #A8B400 !important;
+    //   width: 24px !important;
   }
 }
 
 
 .swiper-pagination {
-    position: relative ;
-    padding-bottom: 15px ;
- }
- .swiper-container-horizontal>.swiper-pagination-bullets {
-    bottom: 25px !important;
-    left: 40px !important;
-    width: 100%;
+  position: relative;
+  padding-bottom: 15px;
 }
 
-.chart-container{
+.swiper-container-horizontal>.swiper-pagination-bullets {
+  bottom: 25px !important;
+  left: 40px !important;
+  width: 100%;
+}
+
+.chart-container {
   height: 50vh;
-  width:100%;
+  width: 100%;
 }
 
 
-.PolicyPopupCust{
+.PolicyPopupCust {
   --border-radius: 32px;
-    --max-height: 65%;
-    --max-width: 90%;
-    --width: 90%;
-    --height: 65%;
-  background-color:rgba(255,255,255,1) !important;
+  --max-height: 65%;
+  --max-width: 90%;
+  --width: 90%;
+  --height: 65%;
+  background-color: rgba(255, 255, 255, 1) !important;
   --box-shadow: #00000029 0px 0px 22px 0px;
 }
 
-.QuotePopup{
+.QuotePopup {
   --border-radius: 32px;
+  --max-height: 56%;
+  --max-width: 90%;
+  --width: 90%;
+  --height: 56%;
+  background-color: rgba(255, 255, 255, 1) !important;
+  --box-shadow: #00000029 0px 0px 22px 0px;
+
+}
+
+.AgentPopupclass {
+  --border-radius: 32px;
+  --max-height: 40%;
+  --max-width: 90%;
+  --width: 90%;
+  --height: 40%;
+  background-color: rgba(255, 255, 255, 1) !important;
+  --box-shadow: #00000029 0px 0px 22px 0px;
+}
+
+@media only screen and (max-width:375px)and (min-height:667px) {
+  .PolicyPopupCust {
+    --border-radius: 32px;
+    --max-height: 80%;
+    --max-width: 90%;
+    --width: 90%;
+    --height: 80%;
+    background-color: rgba(255, 255, 255, 1) !important;
+    --box-shadow: #00000029 0px 0px 22px 0px;
+  }
+
+
+}
+
+@media only screen and (max-width:375px)and (min-height:812px) {
+  .PolicyPopupCust {
+    --border-radius: 32px;
+    --max-height: 50%;
+    --max-width: 90%;
+    --width: 90%;
+    --height: 50%;
+    background-color: rgba(255, 255, 255, 1) !important;
+    --box-shadow: #00000029 0px 0px 22px 0px;
+  }
+
+  .QuotePopup {
+    --border-radius: 32px;
     --max-height: 56%;
     --max-width: 90%;
     --width: 90%;
-    --height: 56%;
-  background-color:rgba(255,255,255,1) !important;
-  --box-shadow: #00000029 0px 0px 22px 0px;
-
-}
-.AgentPopupclass{
-  --border-radius: 32px;
-  --max-height:40%;
-  --max-width: 90%;
-  --width: 90%;
-  --height:40%;
-  background-color:rgba(255,255,255,1) !important;
-  --box-shadow: #00000029 0px 0px 22px 0px;
-}
-@media only screen and (max-width:375px)and (min-height:667px) {
-  .PolicyPopupCust{
-    --border-radius: 32px;
-      --max-height: 80%;
-      --max-width: 90%;
-      --width: 90%;
-      --height: 80%;
-    background-color:rgba(255,255,255,1) !important;
-    --box-shadow: #00000029 0px 0px 22px 0px;
-  }
-
-
-}
-@media only screen and (max-width:375px)and (min-height:812px) {
-  .PolicyPopupCust{
-    --border-radius: 32px;
-      --max-height: 50%;
-      --max-width: 90%;
-      --width: 90%;
-      --height: 50%;
-    background-color:rgba(255,255,255,1) !important;
-    --box-shadow: #00000029 0px 0px 22px 0px;
-  }
-
-  .QuotePopup{
-    --border-radius: 32px;
-      --max-height: 56%;
-      --max-width: 90%;
-      --width: 90%;
-      --height: 45%;
-    background-color:rgba(255,255,255,1) !important;
+    --height: 45%;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
 
   }
-  .AgentPopupclass{
+
+  .AgentPopupclass {
     --border-radius: 32px;
     --max-height: 32%;
     --max-width: 90%;
     --width: 90%;
-    --height:30%;
-    background-color:rgba(255,255,255,1) !important;
+    --height: 30%;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
 
 }
+
 @media only screen and (max-width:360px)and (min-height:740px) {
-  .PolicyPopupCust{
+  .PolicyPopupCust {
     --border-radius: 32px;
-      --max-height: 55%;
-      --max-width: 90%;
-      --width: 90%;
-      --height: 55%;
-    background-color:rgba(255,255,255,1) !important;
+    --max-height: 55%;
+    --max-width: 90%;
+    --width: 90%;
+    --height: 55%;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
 
-  .QuotePopup{
+  .QuotePopup {
     --border-radius: 32px;
-      --max-height: 56%;
-      --max-width: 90%;
-      --width: 90%;
-      --height: 50%;
-    background-color:rgba(255,255,255,1) !important;
+    --max-height: 56%;
+    --max-width: 90%;
+    --width: 90%;
+    --height: 50%;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
 
   }
 
-  .AgentPopupclass{
+  .AgentPopupclass {
     --border-radius: 32px;
     --max-height: 32%;
     --max-width: 90%;
     --width: 90%;
     --height: 32%;
-    background-color:rgba(255,255,255,1) !important;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
 
 }
+
 // @media only screen and (max-width:360px)and (min-height:640px) {
 
 //   .AgentPopupclass{
@@ -245,62 +263,64 @@ ion-modal#example-modal {
 
 // }
 @media only screen and (max-width:390px)and (min-height:844px) {
-  .PolicyPopupCust{
+  .PolicyPopupCust {
     --border-radius: 32px;
-      --max-height: 65%;
-      --max-width: 90%;
-      --width: 90%;
-      --height: 65%;
-    background-color:rgba(255,255,255,1) !important;
+    --max-height: 65%;
+    --max-width: 90%;
+    --width: 90%;
+    --height: 65%;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
 
-  .AgentPopupclass{
+  .AgentPopupclass {
     --border-radius: 32px;
     --max-height: 30%;
     --max-width: 90%;
     --width: 90%;
     --height: 30%;
-    background-color:rgba(255,255,255,1) !important;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
 }
+
 @media only screen and (max-width:412px)and (min-height:914px) {
-  .PolicyPopupCust{
+  .PolicyPopupCust {
     --border-radius: 32px;
-      --max-height: 45%;
-      --max-width: 90%;
-      --width: 90%;
-      --height: 45%;
-    background-color:rgba(255,255,255,1) !important;
+    --max-height: 45%;
+    --max-width: 90%;
+    --width: 90%;
+    --height: 45%;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
 
-  .QuotePopup{
+  .QuotePopup {
     --border-radius: 32px;
-      --max-height: 56%;
-      --max-width: 90%;
-      --width: 90%;
-      --height: 40%;
-    background-color:rgba(255,255,255,1) !important;
+    --max-height: 56%;
+    --max-width: 90%;
+    --width: 90%;
+    --height: 40%;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
 
   }
 
-  .AgentPopupclass{
+  .AgentPopupclass {
     --border-radius: 32px;
     --max-height: 32%;
     --max-width: 90%;
     --width: 90%;
     --height: 28%;
-    background-color:rgba(255,255,255,1) !important;
+    background-color: rgba(255, 255, 255, 1) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
 
 }
-.terms{
+
+.terms {
   --max-height: 80%;
-    --max-width: 90%;
+  --max-width: 90%;
 }
 
 @import "~@ionic/angular/css/core.css";
@@ -332,6 +352,7 @@ ion-modal#example-modal {
   bottom: 63px !important;
   z-index: 199;
 }
+
 .initial-prompt-message-wrapper {
 
   color: #000 !important;
@@ -367,7 +388,7 @@ ion-modal#example-modal {
 }
 
 
-.btn-primary{
+.btn-primary {
   background: #1A206D;
   border-radius: 12px;
   width: 100%;
@@ -378,3 +399,23 @@ ion-modal#example-modal {
   text-transform: capitalize;
 }
 
+
+@media (orientation: portrait) {
+  .policyPClass {
+    --height: 345px;
+    --width: 90%;
+    --border-radius: 10px;
+    // --border-radius: 1rem;
+    background: #00000045;
+  }
+}
+
+@media (orientation: landscape) {
+  .policyPClass {
+    --height: 80%;
+    --width: 90%;
+    --border-radius: 10px;
+    // --border-radius: 1rem;
+    background: #00000045;
+  }
+}
