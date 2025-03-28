@@ -61,7 +61,7 @@ const routes = [
     },
     {
         path: 'verify-policy-screen-cust',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_verify-policy-screen-cust_verify-policy-screen-cust_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./verify-policy-screen-cust/verify-policy-screen-cust.module */ 17956)).then(m => m.VerifyPolicyScreenCustPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_policyp_policyp_page_ts"), __webpack_require__.e("src_app_verify-policy-screen-cust_verify-policy-screen-cust_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./verify-policy-screen-cust/verify-policy-screen-cust.module */ 17956)).then(m => m.VerifyPolicyScreenCustPageModule)
     },
     {
         path: 'renewals',
@@ -117,7 +117,7 @@ const routes = [
     },
     {
         path: 'verify-policy-screen-cust',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_verify-policy-screen-cust_verify-policy-screen-cust_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./verify-policy-screen-cust/verify-policy-screen-cust.module */ 17956)).then(m => m.VerifyPolicyScreenCustPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_policyp_policyp_page_ts"), __webpack_require__.e("src_app_verify-policy-screen-cust_verify-policy-screen-cust_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./verify-policy-screen-cust/verify-policy-screen-cust.module */ 17956)).then(m => m.VerifyPolicyScreenCustPageModule)
     },
     {
         path: 'renewals',
@@ -402,6 +402,10 @@ const routes = [
     {
         path: 'accident4',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_accident4_accident4_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./accident4/accident4.module */ 7641)).then(m => m.Accident4PageModule)
+    },
+    {
+        path: 'policyp',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_policyp_policyp_page_ts"), __webpack_require__.e("src_app_policyp_policyp_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./policyp/policyp.module */ 8783)).then(m => m.PolicypPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -484,7 +488,13 @@ let AppComponent = class AppComponent {
       img1: '/assets/images/icons/activemypolicy.svg',
       status: 'unchecked'
     }, {
-      title: 'Renewals',
+      title: 'Purchased History',
+      url: 'viewpurchasedpolicy',
+      img: '/assets/images/purchased_1.svg',
+      img1: '/assets/images/purchased.svg',
+      status: 'unchecked'
+    }, {
+      title: 'Vehicle Renewals',
       url: 'verify-policy-screen-cust',
       img: '/assets/images/icons/renewals.svg',
       img1: '/assets/images/icons/activerenewls.svg',
@@ -543,7 +553,7 @@ let AppComponent = class AppComponent {
       img1: '/assets/images/icons/activemypolicy.svg',
       status: 'unchecked'
     }, {
-      title: 'Renewals',
+      title: 'Vehicle Renewals',
       url: 'verify-policy-screen-cust',
       img: '/assets/images/icons/renewals.svg',
       img1: '/assets/images/icons/activerenewls.svg',

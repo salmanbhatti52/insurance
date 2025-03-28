@@ -1264,7 +1264,7 @@ ion-toolbar {
   --background: white !important;
 }
 ion-content {
-  --background:white !important;
+  --background: white !important;
   font-family: Bliss Pro;
 }
 ion-footer {
@@ -1274,8 +1274,8 @@ ion-footer {
 ion-modal#example-modal {
   --width: fit-content;
   --min-width: 295px;
-  --height:190px;
-  --border-radius:17px;
+  --height: 190px;
+  --border-radius: 17px;
   --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
   background: rgba(0, 0, 0, 0.6) !important;
 }
@@ -1318,10 +1318,10 @@ ion-modal#example-modal {
   --color-checked: #A8B400 !important;
 }
 .slides2 .swiper-pagination-bullet-active {
-  --bullet-background-active:#cb4848 !important;
+  --bullet-background-active: #cb4848 !important;
 }
 .slides1 .swiper-pagination-bullet-active {
-  --bullet-background-active:#A8B400 !important;
+  --bullet-background-active: #A8B400 !important;
 }
 .swiper-pagination {
   position: relative;
@@ -1356,10 +1356,10 @@ ion-modal#example-modal {
 }
 .AgentPopupclass {
   --border-radius: 32px;
-  --max-height:40%;
+  --max-height: 40%;
   --max-width: 90%;
   --width: 90%;
-  --height:40%;
+  --height: 40%;
   background-color: rgb(255, 255, 255) !important;
   --box-shadow: #00000029 0px 0px 22px 0px;
 }
@@ -1400,7 +1400,7 @@ ion-modal#example-modal {
     --max-height: 32%;
     --max-width: 90%;
     --width: 90%;
-    --height:30%;
+    --height: 30%;
     background-color: rgb(255, 255, 255) !important;
     --box-shadow: #00000029 0px 0px 22px 0px;
   }
@@ -1542,6 +1542,22 @@ ion-modal#example-modal {
   color: #fff;
   font-weight: 500;
   text-transform: capitalize;
+}
+@media (orientation: portrait) {
+  .policyPClass {
+    --height: 345px;
+    --width: 90%;
+    --border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2705882353);
+  }
+}
+@media (orientation: landscape) {
+  .policyPClass {
+    --height: 80%;
+    --width: 90%;
+    --border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2705882353);
+  }
 }
 
 /*# sourceMappingURL=styles.css.map*/

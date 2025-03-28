@@ -317,7 +317,7 @@ let QuotePopupPage = class QuotePopupPage {
             if (sp.product_for_quote == 1) {
                 if (sp.name == 'Third Party') {
                     // this.router.navigate(['/gibsproducts']);
-                    this.router.navigate(['/mypolicies']);
+                    this.router.navigate(['/car-insurance-details']);
                 }
                 else {
                     if (sp.name == 'Student Plan' || sp.name == 'Europe / Schengen' || sp.name == 'Travel Care Premier' || sp.name == 'Travel Care Visa') {

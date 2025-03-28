@@ -91,15 +91,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "VerifyPolicyScreenCustPage": () => (/* binding */ VerifyPolicyScreenCustPage)
 /* harmony export */ });
 /* harmony import */ var _Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _verify_policy_screen_cust_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./verify-policy-screen-cust.page.html?ngResource */ 74306);
 /* harmony import */ var _verify_policy_screen_cust_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./verify-policy-screen-cust.page.scss?ngResource */ 4107);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 94666);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 94666);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/insurance-app.service */ 22111);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ 58987);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ 58987);
+/* harmony import */ var _policyp_policyp_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../policyp/policyp.page */ 45775);
+
 
 
 
@@ -111,12 +113,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
-  constructor(modal, location, router, api, http) {
+  constructor(modal, location, router, api, http, alertController) {
     this.modal = modal;
     this.location = location;
     this.router = router;
     this.api = api;
     this.http = http;
+    this.alertController = alertController;
     this.show = false;
     this.Insurance = 'Car Insurance';
     this.listarray = [{
@@ -269,9 +272,10 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
 
       if (res.status_no != 0) {
         if (res.status == 'paid') {
-          this.api.presenttoast('Payment has been already done.');
+          this.presentAlert();
         } else {
-          this.edit_renewal_quote();
+          this.api.vehicleInfoPolicy = res.quoteItems;
+          this.showVehicleInfoModal();
         }
       } else {
         this.api.presenttoast(res.message);
@@ -284,6 +288,41 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
     }, err => {
       this.api.hideLoader();
     });
+  }
+
+  presentAlert() {
+    var _this2 = this;
+
+    return (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const alert = yield _this2.alertController.create({
+        header: 'Payment Status',
+        message: 'No Payment Due.',
+        mode: 'ios',
+        buttons: ['Ok']
+      });
+      yield alert.present();
+    })();
+  }
+
+  showVehicleInfoModal() {
+    var _this3 = this;
+
+    return (0,_Users_muhammadali_Documents_Ali_my_insurance_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this3.modal.create({
+        component: _policyp_policyp_page__WEBPACK_IMPORTED_MODULE_4__.PolicypPage // cssClass: 'policyPClass'
+
+      });
+      modal.onDidDismiss().then(data => {
+        const val = data['data']; // Here's your selected user!
+
+        console.log('val:---------------', val);
+
+        if (val == 'pay') {
+          _this3.edit_renewal_quote();
+        }
+      });
+      return yield modal.present();
+    })();
   }
 
   edit_renewal_quote() {
@@ -446,18 +485,20 @@ let VerifyPolicyScreenCustPage = class VerifyPolicyScreenCustPage {
 };
 
 VerifyPolicyScreenCustPage.ctorParameters = () => [{
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ModalController
 }, {
-  type: _angular_common__WEBPACK_IMPORTED_MODULE_5__.Location
+  type: _angular_common__WEBPACK_IMPORTED_MODULE_6__.Location
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router
 }, {
   type: _services_insurance_app_service__WEBPACK_IMPORTED_MODULE_3__.InsuranceAppService
 }, {
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_7__.HttpClient
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_8__.HttpClient
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.AlertController
 }];
 
-VerifyPolicyScreenCustPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
+VerifyPolicyScreenCustPage = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
   selector: 'app-verify-policy-screen-cust',
   template: _verify_policy_screen_cust_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_verify_policy_screen_cust_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
